@@ -18,6 +18,8 @@ export interface ModelRenderingAdapter {
   readonly name: string;
   /** The viewer owns and disposes the returned graph's geometries and materials. */
   build(parts: readonly PlacedPart[], options?: ModelRenderOptions): THREE.Group;
+  /** Optional domain-aware Canvas fallback, also usable by instruction exports. */
+  renderFallback?(canvas: HTMLCanvasElement, parts: readonly PlacedPart[], options: ModelRenderOptions & { showGrid?: boolean }): void;
 }
 
 export interface ModelViewerProps extends ModelRenderOptions {
@@ -25,6 +27,8 @@ export interface ModelViewerProps extends ModelRenderOptions {
   showGrid?: boolean;
   className?: string;
   onReady?: () => void;
+  adapter?: ModelRenderingAdapter;
+  allowUnderside?: boolean;
 }
 
 function slopeGeometry(width: number, height: number, depth: number): THREE.BufferGeometry {
@@ -162,8 +166,9 @@ function disposeGraph(root: THREE.Object3D) {
 }
 
 interface ViewerRuntime {
-  replaceModel: (parts: PlacedPart[], options: ModelRenderOptions, showGrid: boolean) => void;
+  replaceModel: (parts: PlacedPart[], options: ModelRenderOptions, showGrid: boolean, adapter: ModelRenderingAdapter) => void;
   resize: () => void;
+  setAllowUnderside: (allow: boolean) => void;
   dispose: () => void;
 }
 
@@ -267,11 +272,11 @@ function createRuntime(canvas: HTMLCanvasElement, host: HTMLDivElement, ready: (
     render();
   };
 
-  const replaceModel: ViewerRuntime['replaceModel'] = (parts, options, showGrid) => {
+  const replaceModel: ViewerRuntime['replaceModel'] = (parts, options, showGrid, adapter) => {
     scene.remove(model, stage);
     disposeGraph(model);
     disposeGraph(stage);
-    model = simplifiedLegoAdapter.build(parts, options);
+    model = adapter.build(parts, options);
     bounds = new THREE.Box3().setFromObject(model);
     if (bounds.isEmpty()) bounds.set(new THREE.Vector3(-2, 0, -2), new THREE.Vector3(2, 5, 2));
     const center = bounds.getCenter(new THREE.Vector3());
@@ -315,6 +320,11 @@ function createRuntime(canvas: HTMLCanvasElement, host: HTMLDivElement, ready: (
   return {
     replaceModel,
     resize: fit,
+    setAllowUnderside(allow) {
+      controls.maxPolarAngle = Math.PI * (allow ? 0.94 : 0.48);
+      controls.update();
+      render();
+    },
     dispose() {
       disposed = true;
       cancelAnimationFrame(frame);
@@ -330,7 +340,7 @@ function createRuntime(canvas: HTMLCanvasElement, host: HTMLDivElement, ready: (
   };
 }
 
-function CanvasFallback({ parts, highlightIds, exploded, showGrid, onReady }: ModelViewerProps) {
+function CanvasFallback({ parts, highlightIds, exploded, showGrid, onReady, adapter }: ModelViewerProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const readyRef = useRef(onReady);
   readyRef.current = onReady;
@@ -342,21 +352,22 @@ function CanvasFallback({ parts, highlightIds, exploded, showGrid, onReady }: Mo
       const ratio = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.max(1, host.clientWidth * ratio);
       canvas.height = Math.max(1, host.clientHeight * ratio);
-      renderIsometric(canvas, parts, { highlightIds, exploded, showGrid });
+      if (adapter?.renderFallback) adapter.renderFallback(canvas, parts, { highlightIds, exploded, showGrid });
+      else renderIsometric(canvas, parts, { highlightIds, exploded, showGrid });
       readyRef.current?.();
     };
     const observer = new ResizeObserver(draw);
     observer.observe(host);
     draw();
     return () => observer.disconnect();
-  }, [parts, highlightIds, exploded, showGrid]);
+  }, [parts, highlightIds, exploded, showGrid, adapter]);
   return <>
     <canvas ref={canvasRef} className="model-viewer-canvas" aria-label={`积木模型示意图，共 ${parts.length} 个零件`} style={{ display: 'block', width: '100%', height: '100%' }} />
     <span className="model-viewer-fallback" role="status" style={{ position: 'absolute', left: 16, bottom: 16, fontSize: 11, color: '#627567', background: '#ffffffcf', borderRadius: 8, padding: '6px 9px' }}>WebGL 不可用，已切换示意图</span>
   </>;
 }
 
-export function ModelViewer({ parts, highlightIds, showGrid = true, className = '', exploded = false, onReady }: ModelViewerProps) {
+export function ModelViewer({ parts, highlightIds, showGrid = true, className = '', exploded = false, onReady, adapter = simplifiedLegoAdapter, allowUnderside = false }: ModelViewerProps) {
   const hostRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const runtimeRef = useRef<ViewerRuntime | null>(null);
@@ -384,15 +395,19 @@ export function ModelViewer({ parts, highlightIds, showGrid = true, className = 
   }, [fallback]);
 
   useEffect(() => {
+    runtimeRef.current?.setAllowUnderside(allowUnderside);
+  }, [allowUnderside, fallback]);
+
+  useEffect(() => {
     if (!fallback) {
-      try { runtimeRef.current?.replaceModel(parts, { highlightIds, exploded }, showGrid); }
+      try { runtimeRef.current?.replaceModel(parts, { highlightIds, exploded }, showGrid, adapter); }
       catch { setFallback(true); }
     }
-  }, [parts, highlightIds, showGrid, exploded, fallback]);
+  }, [parts, highlightIds, showGrid, exploded, fallback, adapter]);
 
   return <div ref={hostRef} className={`model-viewer ${className}`.trim()} style={{ width: '100%', height: '100%', minHeight: 260, position: 'relative', overflow: 'hidden' }}>
     {fallback
-      ? <CanvasFallback parts={parts} highlightIds={highlightIds} showGrid={showGrid} exploded={exploded} onReady={onReady} />
+      ? <CanvasFallback parts={parts} highlightIds={highlightIds} showGrid={showGrid} exploded={exploded} onReady={onReady} adapter={adapter} />
       : <canvas ref={canvasRef} className="model-viewer-canvas" tabIndex={0} aria-label={`交互式 3D 积木模型，共 ${parts.length} 个零件。拖动旋转，滚轮缩放，方向键平移。`} style={{ display: 'block', width: '100%', height: '100%', touchAction: 'none' }} />}
   </div>;
 }
