@@ -68,6 +68,43 @@ function freeze<T>(value: T): T {
 }
 
 /** Compatibility evidence is explicit. An identified combination is not automatically generatable. */
+const adjustableHolderAssembly: GeneratableWheelAssemblyDefinition = {
+  id: 'automotive-3700-3673-66727-18977', name: '独立 Technic 3700 轮架', status: 'generatable',
+  wheelPart: '66727', tyrePart: '18977', holderPart: '3700', axlePart: '3673',
+  compatibleTyres: ['18977'], compatibleWheels: ['66727'],
+  requiredQuantities: [
+    { partId: '3700', quantity: 4, role: 'holder' }, { partId: '3673', quantity: 4, role: 'axle' },
+    { partId: '66727', quantity: 4, role: 'wheel' }, { partId: '18977', quantity: 4, role: 'tyre' },
+  ],
+  rotationAxis: 'x', wheelRadius: 1.5, wheelWidth: 1.4, minimumClearanceLdu: 0,
+  // Poses describe the 8-stud reference layout. Wider automotive planners
+  // translate independent right mounts and recalculate actual track.
+  supportedVehicleWidths: [8, 10, 12], track: 5.6,
+  mountingConnection: { axleFamily: MODERN_SPEED_AXLE_FAMILY, tyreFamily: MODERN_SPEED_TYRE_FAMILY },
+  interfaces: [
+    { partA: '3700', partB: '3673', connectionType: 'wheel-axle', allowsRotation: true, verifiedNesting: true },
+    { partA: '3673', partB: '66727', connectionType: 'wheel-axle', allowsRotation: true, verifiedNesting: true },
+    { partA: '66727', partB: '18977', connectionType: 'tyre-fit', allowsRotation: false, verifiedNesting: true },
+  ],
+  supportedOrientations: { left: outwardLeft, right: upright },
+  poses: {
+    holder: { partId: '3700', role: 'holder', offset: { x: -2, y: -1, z: 2 }, orientation: upright },
+    left: [
+      { partId: '3673', role: 'axle', offset: { x: -2, y: 0, z: 3.75 }, orientation: upright },
+      { partId: '66727', role: 'wheel', offset: { x: -2.5, y: 0, z: 3.75 }, orientation: outwardLeft },
+      { partId: '18977', role: 'tyre', offset: { x: -2.8, y: 0, z: 3.75 }, orientation: outwardLeft },
+    ],
+    right: [
+      { partId: '3673', role: 'axle', offset: { x: 2, y: 0, z: 3.75 }, orientation: upright },
+      { partId: '66727', role: 'wheel', offset: { x: 2.5, y: 0, z: 3.75 }, orientation: upright },
+      { partId: '18977', role: 'tyre', offset: { x: 2.8, y: 0, z: 3.75 }, orientation: upright },
+    ],
+  },
+  rotatingParts: [{ partId: '3673', quantity: 1 }, { partId: '66727', quantity: 1 }, { partId: '18977', quantity: 1 }],
+  chassisMount: { width: 4, basePlateZ: 5, supports: [] }, sourceRevision: SPEED_LDRAW_REVISION,
+  notes: ['3700.dat 与 3673.dat 共用 peghole 圆孔接口；独立四轮架，不改变 Pin 长度。', '姿态及碰撞校验已建模，实物夹持力、摩擦及制造公差尚待验证。'],
+};
+
 export const WHEEL_ASSEMBLY_REGISTRY: readonly WheelAssemblyDefinition[] = freeze([
   {
     id: 'speed-modern-18975-3673-66727-18977', name: '现代 Speed / Technic Pin 轮组', status: 'generatable',
@@ -104,6 +141,7 @@ export const WHEEL_ASSEMBLY_REGISTRY: readonly WheelAssemblyDefinition[] = freez
     sourceRevision: SPEED_LDRAW_REVISION,
     notes: ['沿用既有固定版本 LDraw 校准几何；未新增零件或扩大已验证兼容列表。', '轮胎为轴对称圆环旋转包络；不模拟轮胎形变、制造公差、载荷或真实摩擦，实物验证仍待用户反馈。'],
   },
+  adjustableHolderAssembly,
   {
     id: 'classic-4600-4624-3641', name: '经典轮轴组合（仅识别）', status: 'recognizedOnly',
     wheelPart: '4624', tyrePart: '3641', holderPart: '4600', axlePart: null,
@@ -111,7 +149,7 @@ export const WHEEL_ASSEMBLY_REGISTRY: readonly WheelAssemblyDefinition[] = freez
     requiredQuantities: [{ partId: '4600', quantity: 2, role: 'holder' }, { partId: '4624', quantity: 4, role: 'wheel' }, { partId: '3641', quantity: 4, role: 'tyre' }],
     sourceRevision: SPEED_LDRAW_REVISION,
     reason: '已识别 LDraw car.ldr / 4624c01 装配关系；精确轮轴接口、姿态和碰撞几何未校准，不参与自动选择。',
-    notes: ['不能将经典细轮轴与现代 Technic Pin 圆孔互换；当前可生成轮组数量仍为 1。'],
+    notes: ['不能将经典细轮轴与现代 Technic Pin 圆孔互换；此经典组合仍不能生成。库存模式采用 18975，汽车自由设计另有独立 3700 轮架。'],
   },
 ]);
 
@@ -140,8 +178,8 @@ export function discoverAvailableWheelAssemblies(items: readonly SpeedInventoryI
 }
 
 /** Selection never infers compatibility from category names or unverified catalog metadata. */
-export function selectWheelAssembly(items: readonly SpeedInventoryItem[], vehicleWidth = 8): GeneratableWheelAssemblyDefinition | undefined {
-  return discoverAvailableWheelAssemblies(items).find((entry): entry is WheelAssemblyAvailability & { definition: GeneratableWheelAssemblyDefinition } => entry.available && entry.definition.status === 'generatable' && entry.definition.supportedVehicleWidths.includes(vehicleWidth))?.definition;
+export function selectWheelAssembly(items: readonly SpeedInventoryItem[], vehicleWidth = 8, mode: 'inventory' | 'automotive' = 'inventory'): GeneratableWheelAssemblyDefinition | undefined {
+  return discoverAvailableWheelAssemblies(items).find((entry): entry is WheelAssemblyAvailability & { definition: GeneratableWheelAssemblyDefinition } => entry.available && entry.definition.status === 'generatable' && (mode === 'automotive' || entry.definition.id !== adjustableHolderAssembly.id) && entry.definition.supportedVehicleWidths.includes(vehicleWidth))?.definition;
 }
 
 export function wheelAssemblyForWheel(partId: string): GeneratableWheelAssemblyDefinition | undefined {

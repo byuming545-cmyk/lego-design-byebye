@@ -103,8 +103,12 @@ export class SpeedCollisionValidator {
   }
 }
 
+export interface WheelValidationLimits {
+  trackStuds?: { min: number; max: number };
+  wheelbaseStuds?: { min: number; max: number };
+}
 export class WheelValidator {
-  validate(model: VehicleModel): WheelValidation {
+  validate(model: VehicleModel, limits: WheelValidationLimits = {}): WheelValidation {
     const errors: string[] = [], collisions: string[] = [];
     const wheels = model.parts.filter(part => getSpeedPartDefinition(part.partId)?.category === 'Wheel');
     const tyres = model.parts.filter(part => getSpeedPartDefinition(part.partId)?.category === 'Tyre');
@@ -153,8 +157,11 @@ export class WheelValidator {
     if (xs.length !== 2 || ys.length !== 2 || zs.length !== 1 || new Set(centers.map(c => `${c.x}:${c.y}`)).size !== 4) errors.push('四个车轮的位置没有形成等高的前后双轴矩形。');
     const centerlineLdu = model.parameters.width * 10;
     if (!Number.isFinite(centerlineLdu) || xs.length === 2 && Math.abs((xs[0] + xs[1]) / 2 - centerlineLdu) > SPEED_EPSILON) errors.push('左右车轮未围绕车辆设计中心线对称。');
-    if (xs.length === 2 && (xs[1] - xs[0] < 90 || xs[1] - xs[0] > 160 || Math.abs((xs[1] - xs[0]) / 20 - model.parameters.track) > SPEED_EPSILON)) errors.push('左右轮距不合理或与设计参数不一致。');
-    if (ys.length === 2 && (ys[1] - ys[0] < 120 || ys[1] - ys[0] > 360 || Math.abs((ys[1] - ys[0]) / 20 - model.parameters.wheelbase) > SPEED_EPSILON)) errors.push('前后轴距不合理或与设计参数不一致。');
+    const trackLimits = limits.trackStuds ?? { min: 4.5, max: 8 };
+    const wheelbaseLimits = limits.wheelbaseStuds ?? { min: 6, max: 18 };
+    if (![trackLimits, wheelbaseLimits].every(range => Number.isFinite(range.min) && Number.isFinite(range.max) && range.min > 0 && range.max >= range.min)) errors.push('轮组校验范围无效。');
+    if (xs.length === 2 && (xs[1] - xs[0] < trackLimits.min * 20 || xs[1] - xs[0] > trackLimits.max * 20 || Math.abs((xs[1] - xs[0]) / 20 - model.parameters.track) > SPEED_EPSILON)) errors.push('左右轮距不合理或与设计参数不一致。');
+    if (ys.length === 2 && (ys[1] - ys[0] < wheelbaseLimits.min * 20 || ys[1] - ys[0] > wheelbaseLimits.max * 20 || Math.abs((ys[1] - ys[0]) / 20 - model.parameters.wheelbase) > SPEED_EPSILON)) errors.push('前后轴距不合理或与设计参数不一致。');
     for (const tyre of tyres) for (const other of model.parts) {
       if (tyre === other) continue;
       const clearance = tyreAssemblies.get(tyre.instanceId)?.minimumClearanceLdu ?? 0;

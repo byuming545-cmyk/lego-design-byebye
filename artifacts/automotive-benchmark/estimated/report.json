@@ -1,0 +1,2082 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-20T05:21:50.266Z",
+  "mode": "estimated-concept",
+  "candidateCount": 8,
+  "dataDir": "/tmp/bricklab-automotive-v03-final",
+  "externalNetworkRequests": 0,
+  "physicalBuildsVerified": 0,
+  "visualResemblance": "not-assessed",
+  "cases": [
+    {
+      "id": "s63-8-wide",
+      "profileId": "mercedes-amg-s63-w223",
+      "targetVehicle": "Mercedes-AMG S 63 W223",
+      "widthStuds": 8,
+      "status": "nominal_geometry_pass",
+      "httpStatus": 200,
+      "message": "3 个候选通过几何设计门槛与物理规则校验；尚未实拼。",
+      "errorCode": null,
+      "generationTimeMs": 9138,
+      "estimated": true,
+      "dimensionBasis": "estimated",
+      "unknownDimensionFields": [
+        "lengthMm",
+        "widthMm",
+        "heightMm",
+        "wheelbaseMm"
+      ],
+      "researchStatus": "pending",
+      "sources": [
+        {
+          "id": "catalog-mercedes-amg-s63-w223",
+          "kind": "catalog_seed",
+          "url": null,
+          "accessStatus": "not_fetched"
+        },
+        {
+          "id": "official-s63-amg",
+          "kind": "official",
+          "url": "https://www.mercedes-amg.com/en/home/vehicles/s-class/sedan.html",
+          "accessStatus": "blocked"
+        },
+        {
+          "id": "official-s63-mbusa",
+          "kind": "official",
+          "url": "https://www.mbusa.com/en/vehicles/model/s-class/sedan/s63e",
+          "accessStatus": "blocked"
+        }
+      ],
+      "blockedSourceCount": 2,
+      "libraryReferenceCount": 0,
+      "selectedReferenceCount": 0,
+      "grammarReferenceCount": 0,
+      "sessionId": "auto-ac517b90-8d7d-4236-b657-1649fdb38265",
+      "previewPath": "#/automotive-lab?session=auto-ac517b90-8d7d-4236-b657-1649fdb38265",
+      "sessionArtifact": "models/s63-8-wide.session.json.gz",
+      "bestCandidateId": "automotive-e8b5a20a-e493-4a5e-889d-25560ba438c7",
+      "candidates": [
+        {
+          "candidateId": "automotive-e8b5a20a-e493-4a5e-889d-25560ba438c7",
+          "planId": "automotive-plan-8-5",
+          "status": "accepted",
+          "rank": 1,
+          "partCount": 132,
+          "scores": {
+            "automotiveDesignScore": 99.81,
+            "legoStyle": 100,
+            "vehicleSimilarity": 86.46,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 95.22,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/s63-8-wide.1.automotive-e8b5a20a-e493-4a5e-889d-25560ba438c7.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-41367547-12ca-4f21-bfea-4b634a2a341d",
+          "planId": "automotive-plan-8-1",
+          "status": "accepted",
+          "rank": 2,
+          "partCount": 137,
+          "scores": {
+            "automotiveDesignScore": 99.81,
+            "legoStyle": 100,
+            "vehicleSimilarity": 85.34,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 92.83,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/s63-8-wide.2.automotive-41367547-12ca-4f21-bfea-4b634a2a341d.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-68083b3d-8d85-4063-ad30-94ec1b5ffa25",
+          "planId": "automotive-plan-8-8",
+          "status": "accepted",
+          "rank": 3,
+          "partCount": 115,
+          "scores": {
+            "automotiveDesignScore": 99.33,
+            "legoStyle": 100,
+            "vehicleSimilarity": 76.76,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 91.73,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/s63-8-wide.3.automotive-68083b3d-8d85-4063-ad30-94ec1b5ffa25.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-9bb647da-c707-4a5c-b517-5ad3060b9502",
+          "planId": "automotive-plan-8-2",
+          "status": "not-selected",
+          "rank": 7,
+          "partCount": 147,
+          "scores": {
+            "automotiveDesignScore": 98.12,
+            "legoStyle": 100,
+            "vehicleSimilarity": 77.51,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 89.75,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-a1343094-5d22-4c9a-9482-bdc5de6fbc6d",
+          "planId": "automotive-plan-8-3",
+          "status": "not-selected",
+          "rank": 4,
+          "partCount": 139,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 76.22,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 91.68,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-6ba06ae0-6d27-4316-823a-247dae6e8a8f",
+          "planId": "automotive-plan-8-4",
+          "status": "not-selected",
+          "rank": 8,
+          "partCount": 126,
+          "scores": {
+            "automotiveDesignScore": 97.9,
+            "legoStyle": 100,
+            "vehicleSimilarity": 77.03,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 89.54,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-7b1b77fb-010b-4e64-b709-d718559b0697",
+          "planId": "automotive-plan-8-6",
+          "status": "not-selected",
+          "rank": 5,
+          "partCount": 128,
+          "scores": {
+            "automotiveDesignScore": 98.12,
+            "legoStyle": 100,
+            "vehicleSimilarity": 80.24,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 90.71,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-a53f3b47-360c-43b8-8746-951e7a559596",
+          "planId": "automotive-plan-8-7",
+          "status": "not-selected",
+          "rank": 6,
+          "partCount": 132,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 77.12,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 89.99,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        }
+      ],
+      "failures": [],
+      "images": {
+        "status": "captured",
+        "paths": [
+          "../../automotive/s63-8-wide-preview.png",
+          "../../automotive/s63-8-wide-overview.png",
+          "../../automotive/s63-8-wide-mobile.png",
+          "../../automotive/s63-8-wide-mobile-preview.png"
+        ]
+      },
+      "warnings": [
+        "参考检索、设计模式与几何评分属于规则系统；没有训练神经网络，也没有分析车辆照片。",
+        "真实参考库初始为空；空库时只能使用明确标注的工程先验。",
+        "官方网页在开发环境中受到网络限制，车型尺寸尚待联网核验或手动输入。",
+        "Official vehicle hosts were blocked by the development network policy. Dimensions remain unknown; catalogue tags have not been confirmed by live research. Image analysis is not configured.",
+        "Module shape and wheel targets include documented engineering assumptions; dimension provenance does not imply photographic shape analysis.",
+        "Dimension targets include explicitly enabled engineering estimates. These are not measured specifications for the named vehicle.",
+        "Identity priorities include editorial catalogue tags that have not been confirmed by live research.",
+        "自由设计使用虚拟零件，不代表你拥有这些零件。",
+        "只使用已建模的几何与连接；尚未支持的零件不参与生成。",
+        "颜色属于真实 LEGO 色表；具体零件与颜色的生产、库存及购买可用性未核实。",
+        "标称几何校验不代替实物搭建测试。",
+        "Reference library is empty. No official reference was selected; generation must use explicitly labeled engineering priors.",
+        "候选通过物理几何校验后仍须通过独立造型质量排名；未达门槛时不返回可导出的成品。"
+      ]
+    },
+    {
+      "id": "s63-10-wide",
+      "profileId": "mercedes-amg-s63-w223",
+      "targetVehicle": "Mercedes-AMG S 63 W223",
+      "widthStuds": 10,
+      "status": "nominal_geometry_pass",
+      "httpStatus": 200,
+      "message": "3 个候选通过几何设计门槛与物理规则校验；尚未实拼。",
+      "errorCode": null,
+      "generationTimeMs": 22436,
+      "estimated": true,
+      "dimensionBasis": "estimated",
+      "unknownDimensionFields": [
+        "lengthMm",
+        "widthMm",
+        "heightMm",
+        "wheelbaseMm"
+      ],
+      "researchStatus": "pending",
+      "sources": [
+        {
+          "id": "catalog-mercedes-amg-s63-w223",
+          "kind": "catalog_seed",
+          "url": null,
+          "accessStatus": "not_fetched"
+        },
+        {
+          "id": "official-s63-amg",
+          "kind": "official",
+          "url": "https://www.mercedes-amg.com/en/home/vehicles/s-class/sedan.html",
+          "accessStatus": "blocked"
+        },
+        {
+          "id": "official-s63-mbusa",
+          "kind": "official",
+          "url": "https://www.mbusa.com/en/vehicles/model/s-class/sedan/s63e",
+          "accessStatus": "blocked"
+        }
+      ],
+      "blockedSourceCount": 2,
+      "libraryReferenceCount": 0,
+      "selectedReferenceCount": 0,
+      "grammarReferenceCount": 0,
+      "sessionId": "auto-7058cc4b-4128-4d72-b4e3-2a6b34fe585e",
+      "previewPath": "#/automotive-lab?session=auto-7058cc4b-4128-4d72-b4e3-2a6b34fe585e",
+      "sessionArtifact": "models/s63-10-wide.session.json.gz",
+      "bestCandidateId": "automotive-92e927f3-b5b7-4bde-bd5a-6fdc5cc48747",
+      "candidates": [
+        {
+          "candidateId": "automotive-92e927f3-b5b7-4bde-bd5a-6fdc5cc48747",
+          "planId": "automotive-plan-10-4",
+          "status": "accepted",
+          "rank": 1,
+          "partCount": 167,
+          "scores": {
+            "automotiveDesignScore": 99.76,
+            "legoStyle": 100,
+            "vehicleSimilarity": 82.18,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 93.72,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/s63-10-wide.1.automotive-92e927f3-b5b7-4bde-bd5a-6fdc5cc48747.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-3b7161c1-8762-4948-ae33-db48848b22ef",
+          "planId": "automotive-plan-10-1",
+          "status": "accepted",
+          "rank": 2,
+          "partCount": 180,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 78.1,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 92.34,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/s63-10-wide.2.automotive-3b7161c1-8762-4948-ae33-db48848b22ef.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-ade826ab-4d43-40cb-a99c-705cf1f1e545",
+          "planId": "automotive-plan-10-5",
+          "status": "accepted",
+          "rank": 3,
+          "partCount": 186,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 81.78,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 91.62,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/s63-10-wide.3.automotive-ade826ab-4d43-40cb-a99c-705cf1f1e545.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-ea518882-fd52-40cb-a30a-523f613ca4bb",
+          "planId": "automotive-plan-10-2",
+          "status": "not-selected",
+          "rank": 7,
+          "partCount": 180,
+          "scores": {
+            "automotiveDesignScore": 98.97,
+            "legoStyle": 100,
+            "vehicleSimilarity": 71.85,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 89.94,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-79244c1c-d7f3-4e5c-8125-b8ae4bad7084",
+          "planId": "automotive-plan-10-3",
+          "status": "not-selected",
+          "rank": 8,
+          "partCount": 188,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 69.18,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 87.21,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-b35bffdf-9090-496c-8d50-35c268d2ce47",
+          "planId": "automotive-plan-10-6",
+          "status": "not-selected",
+          "rank": 5,
+          "partCount": 184,
+          "scores": {
+            "automotiveDesignScore": 98.97,
+            "legoStyle": 100,
+            "vehicleSimilarity": 73.45,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 90.5,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-72d1305d-28bf-427c-a14a-1b80dc5c8b83",
+          "planId": "automotive-plan-10-7",
+          "status": "not-selected",
+          "rank": 6,
+          "partCount": 181,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 72.34,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 90.32,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-599182b5-036f-4b69-8fe3-3357f670e49b",
+          "planId": "automotive-plan-10-8",
+          "status": "not-selected",
+          "rank": 4,
+          "partCount": 180,
+          "scores": {
+            "automotiveDesignScore": 99.76,
+            "legoStyle": 100,
+            "vehicleSimilarity": 80.27,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 91.05,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        }
+      ],
+      "failures": [],
+      "images": {
+        "status": "captured",
+        "paths": [
+          "../../automotive/s63-10-wide-preview.png",
+          "../../automotive/s63-10-wide-overview.png"
+        ]
+      },
+      "warnings": [
+        "参考检索、设计模式与几何评分属于规则系统；没有训练神经网络，也没有分析车辆照片。",
+        "真实参考库初始为空；空库时只能使用明确标注的工程先验。",
+        "官方网页在开发环境中受到网络限制，车型尺寸尚待联网核验或手动输入。",
+        "Official vehicle hosts were blocked by the development network policy. Dimensions remain unknown; catalogue tags have not been confirmed by live research. Image analysis is not configured.",
+        "Module shape and wheel targets include documented engineering assumptions; dimension provenance does not imply photographic shape analysis.",
+        "Dimension targets include explicitly enabled engineering estimates. These are not measured specifications for the named vehicle.",
+        "Identity priorities include editorial catalogue tags that have not been confirmed by live research.",
+        "自由设计使用虚拟零件，不代表你拥有这些零件。",
+        "只使用已建模的几何与连接；尚未支持的零件不参与生成。",
+        "颜色属于真实 LEGO 色表；具体零件与颜色的生产、库存及购买可用性未核实。",
+        "标称几何校验不代替实物搭建测试。",
+        "Reference library is empty. No official reference was selected; generation must use explicitly labeled engineering priors.",
+        "候选通过物理几何校验后仍须通过独立造型质量排名；未达门槛时不返回可导出的成品。"
+      ]
+    },
+    {
+      "id": "s63-12-wide",
+      "profileId": "mercedes-amg-s63-w223",
+      "targetVehicle": "Mercedes-AMG S 63 W223",
+      "widthStuds": 12,
+      "status": "nominal_geometry_pass",
+      "httpStatus": 200,
+      "message": "3 个候选通过几何设计门槛与物理规则校验；尚未实拼。",
+      "errorCode": null,
+      "generationTimeMs": 42723,
+      "estimated": true,
+      "dimensionBasis": "estimated",
+      "unknownDimensionFields": [
+        "lengthMm",
+        "widthMm",
+        "heightMm",
+        "wheelbaseMm"
+      ],
+      "researchStatus": "pending",
+      "sources": [
+        {
+          "id": "catalog-mercedes-amg-s63-w223",
+          "kind": "catalog_seed",
+          "url": null,
+          "accessStatus": "not_fetched"
+        },
+        {
+          "id": "official-s63-amg",
+          "kind": "official",
+          "url": "https://www.mercedes-amg.com/en/home/vehicles/s-class/sedan.html",
+          "accessStatus": "blocked"
+        },
+        {
+          "id": "official-s63-mbusa",
+          "kind": "official",
+          "url": "https://www.mbusa.com/en/vehicles/model/s-class/sedan/s63e",
+          "accessStatus": "blocked"
+        }
+      ],
+      "blockedSourceCount": 2,
+      "libraryReferenceCount": 0,
+      "selectedReferenceCount": 0,
+      "grammarReferenceCount": 0,
+      "sessionId": "auto-69241e8a-66b6-4d3c-8541-2bcd7b93e270",
+      "previewPath": "#/automotive-lab?session=auto-69241e8a-66b6-4d3c-8541-2bcd7b93e270",
+      "sessionArtifact": "models/s63-12-wide.session.json.gz",
+      "bestCandidateId": "automotive-050c0aa6-0592-412a-bd2e-4bab960097d7",
+      "candidates": [
+        {
+          "candidateId": "automotive-050c0aa6-0592-412a-bd2e-4bab960097d7",
+          "planId": "automotive-plan-12-6",
+          "status": "accepted",
+          "rank": 1,
+          "partCount": 222,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 81.89,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 93.66,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/s63-12-wide.1.automotive-050c0aa6-0592-412a-bd2e-4bab960097d7.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-9633ce37-b2aa-48f9-8b6f-2c5e184e89d6",
+          "planId": "automotive-plan-12-1",
+          "status": "accepted",
+          "rank": 2,
+          "partCount": 233,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 81.83,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 93.64,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/s63-12-wide.2.automotive-9633ce37-b2aa-48f9-8b6f-2c5e184e89d6.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-4c611da4-72c0-4d49-8081-1cfe90ba1b10",
+          "planId": "automotive-plan-12-2",
+          "status": "accepted",
+          "rank": 3,
+          "partCount": 227,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 80.56,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 93.2,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/s63-12-wide.3.automotive-4c611da4-72c0-4d49-8081-1cfe90ba1b10.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-3616509d-9b7b-422d-bac9-88d45d4cfa21",
+          "planId": "automotive-plan-12-3",
+          "status": "not-selected",
+          "rank": 6,
+          "partCount": 238,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 77.61,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 90.16,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-d23ab06c-7095-4fb7-b2cf-93530d372909",
+          "planId": "automotive-plan-12-4",
+          "status": "not-selected",
+          "rank": 5,
+          "partCount": 223,
+          "scores": {
+            "automotiveDesignScore": 98.88,
+            "legoStyle": 100,
+            "vehicleSimilarity": 76.6,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 91.59,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-3ef3c720-0ba8-4885-b893-1b095c29f76b",
+          "planId": "automotive-plan-12-5",
+          "status": "not-selected",
+          "rank": 4,
+          "partCount": 233,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 83.17,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 92.11,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-9531f6c2-bc9f-445a-b5e6-34b67188049a",
+          "planId": "automotive-plan-12-7",
+          "status": "rejected",
+          "rank": null,
+          "partCount": 235,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 78.16,
+            "structure": 100,
+            "buildability": 0,
+            "weightedTotal": 87.36,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": false,
+          "hardErrors": [],
+          "designErrors": [
+            "Instruction steps do not form a complete, bounded, internally consistent build sequence."
+          ],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-86b5421b-19df-4411-9062-93d46781ac37",
+          "planId": "automotive-plan-12-8",
+          "status": "not-selected",
+          "rank": 7,
+          "partCount": 226,
+          "scores": {
+            "automotiveDesignScore": 98.88,
+            "legoStyle": 100,
+            "vehicleSimilarity": 75.99,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 89.37,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        }
+      ],
+      "failures": [
+        {
+          "candidateId": "automotive-9531f6c2-bc9f-445a-b5e6-34b67188049a",
+          "hardErrors": [],
+          "designErrors": [
+            "Instruction steps do not form a complete, bounded, internally consistent build sequence."
+          ]
+        }
+      ],
+      "images": {
+        "status": "captured",
+        "paths": [
+          "../../automotive/s63-12-wide-preview.png",
+          "../../automotive/s63-12-wide-overview.png"
+        ]
+      },
+      "warnings": [
+        "参考检索、设计模式与几何评分属于规则系统；没有训练神经网络，也没有分析车辆照片。",
+        "真实参考库初始为空；空库时只能使用明确标注的工程先验。",
+        "官方网页在开发环境中受到网络限制，车型尺寸尚待联网核验或手动输入。",
+        "Official vehicle hosts were blocked by the development network policy. Dimensions remain unknown; catalogue tags have not been confirmed by live research. Image analysis is not configured.",
+        "Module shape and wheel targets include documented engineering assumptions; dimension provenance does not imply photographic shape analysis.",
+        "Dimension targets include explicitly enabled engineering estimates. These are not measured specifications for the named vehicle.",
+        "Identity priorities include editorial catalogue tags that have not been confirmed by live research.",
+        "自由设计使用虚拟零件，不代表你拥有这些零件。",
+        "只使用已建模的几何与连接；尚未支持的零件不参与生成。",
+        "颜色属于真实 LEGO 色表；具体零件与颜色的生产、库存及购买可用性未核实。",
+        "标称几何校验不代替实物搭建测试。",
+        "Reference library is empty. No official reference was selected; generation must use explicitly labeled engineering priors.",
+        "候选通过物理几何校验后仍须通过独立造型质量排名；未达门槛时不返回可导出的成品。"
+      ]
+    },
+    {
+      "id": "m4-8-wide",
+      "profileId": "bmw-m4-g82",
+      "targetVehicle": "BMW M4 G82",
+      "widthStuds": 8,
+      "status": "nominal_geometry_pass",
+      "httpStatus": 200,
+      "message": "3 个候选通过几何设计门槛与物理规则校验；尚未实拼。",
+      "errorCode": null,
+      "generationTimeMs": 7043,
+      "estimated": true,
+      "dimensionBasis": "estimated",
+      "unknownDimensionFields": [
+        "lengthMm",
+        "widthMm",
+        "heightMm",
+        "wheelbaseMm"
+      ],
+      "researchStatus": "pending",
+      "sources": [
+        {
+          "id": "catalog-bmw-m4-g82",
+          "kind": "catalog_seed",
+          "url": null,
+          "accessStatus": "not_fetched"
+        },
+        {
+          "id": "official-m4",
+          "kind": "official",
+          "url": "https://www.bmwusa.com/vehicles/m-models/m4-coupe/overview.html",
+          "accessStatus": "blocked"
+        }
+      ],
+      "blockedSourceCount": 1,
+      "libraryReferenceCount": 0,
+      "selectedReferenceCount": 0,
+      "grammarReferenceCount": 0,
+      "sessionId": "auto-f8993121-890c-42f3-a888-9a44ff33cb15",
+      "previewPath": "#/automotive-lab?session=auto-f8993121-890c-42f3-a888-9a44ff33cb15",
+      "sessionArtifact": "models/m4-8-wide.session.json.gz",
+      "bestCandidateId": "automotive-c6182714-638d-4e54-9547-15d377136573",
+      "candidates": [
+        {
+          "candidateId": "automotive-c6182714-638d-4e54-9547-15d377136573",
+          "planId": "automotive-plan-8-1",
+          "status": "accepted",
+          "rank": 1,
+          "partCount": 116,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 83.75,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 94.31,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/m4-8-wide.1.automotive-c6182714-638d-4e54-9547-15d377136573.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-b84e00e1-ab6b-4334-8723-c49ce9853224",
+          "planId": "automotive-plan-8-8",
+          "status": "accepted",
+          "rank": 2,
+          "partCount": 124,
+          "scores": {
+            "automotiveDesignScore": 99.43,
+            "legoStyle": 100,
+            "vehicleSimilarity": 81.75,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 93.5,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/m4-8-wide.2.automotive-b84e00e1-ab6b-4334-8723-c49ce9853224.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-0beb2583-14a1-4ac9-a1f2-5a8e9289700f",
+          "planId": "automotive-plan-8-5",
+          "status": "accepted",
+          "rank": 3,
+          "partCount": 118,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 83.64,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 92.27,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/m4-8-wide.3.automotive-0beb2583-14a1-4ac9-a1f2-5a8e9289700f.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-6e5f3d67-ebc8-47da-b6a2-857b2a6da03d",
+          "planId": "automotive-plan-8-2",
+          "status": "not-selected",
+          "rank": 5,
+          "partCount": 118,
+          "scores": {
+            "automotiveDesignScore": 99.12,
+            "legoStyle": 100,
+            "vehicleSimilarity": 74.87,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 91.03,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-d97eaa8d-45df-4454-9418-632360379abf",
+          "planId": "automotive-plan-8-3",
+          "status": "not-selected",
+          "rank": 8,
+          "partCount": 126,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 76.15,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 89.65,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-c5959d20-e103-4232-89e4-534bca6c0171",
+          "planId": "automotive-plan-8-4",
+          "status": "not-selected",
+          "rank": 7,
+          "partCount": 108,
+          "scores": {
+            "automotiveDesignScore": 98.67,
+            "legoStyle": 100,
+            "vehicleSimilarity": 72.54,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 90.12,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-4e9e36c1-54c0-4263-90e4-9b5035cf226e",
+          "planId": "automotive-plan-8-6",
+          "status": "not-selected",
+          "rank": 6,
+          "partCount": 123,
+          "scores": {
+            "automotiveDesignScore": 99.98,
+            "legoStyle": 100,
+            "vehicleSimilarity": 73.52,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 90.73,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-af282085-d12a-4943-8ba2-837d9a94071b",
+          "planId": "automotive-plan-8-7",
+          "status": "not-selected",
+          "rank": 4,
+          "partCount": 112,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 76.89,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 91.91,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        }
+      ],
+      "failures": [],
+      "images": {
+        "status": "captured",
+        "paths": [
+          "../../automotive/m4-8-wide-preview.png",
+          "../../automotive/m4-8-wide-overview.png"
+        ]
+      },
+      "warnings": [
+        "参考检索、设计模式与几何评分属于规则系统；没有训练神经网络，也没有分析车辆照片。",
+        "真实参考库初始为空；空库时只能使用明确标注的工程先验。",
+        "官方网页在开发环境中受到网络限制，车型尺寸尚待联网核验或手动输入。",
+        "Official vehicle hosts were blocked by the development network policy. Dimensions remain unknown; catalogue tags have not been confirmed by live research. Image analysis is not configured.",
+        "Module shape and wheel targets include documented engineering assumptions; dimension provenance does not imply photographic shape analysis.",
+        "Dimension targets include explicitly enabled engineering estimates. These are not measured specifications for the named vehicle.",
+        "Identity priorities include editorial catalogue tags that have not been confirmed by live research.",
+        "自由设计使用虚拟零件，不代表你拥有这些零件。",
+        "只使用已建模的几何与连接；尚未支持的零件不参与生成。",
+        "颜色属于真实 LEGO 色表；具体零件与颜色的生产、库存及购买可用性未核实。",
+        "标称几何校验不代替实物搭建测试。",
+        "Reference library is empty. No official reference was selected; generation must use explicitly labeled engineering priors.",
+        "候选通过物理几何校验后仍须通过独立造型质量排名；未达门槛时不返回可导出的成品。"
+      ]
+    },
+    {
+      "id": "911-8-wide",
+      "profileId": "porsche-911-992",
+      "targetVehicle": "Porsche 911 992",
+      "widthStuds": 8,
+      "status": "nominal_geometry_pass",
+      "httpStatus": 200,
+      "message": "3 个候选通过几何设计门槛与物理规则校验；尚未实拼。",
+      "errorCode": null,
+      "generationTimeMs": 6738,
+      "estimated": true,
+      "dimensionBasis": "estimated",
+      "unknownDimensionFields": [
+        "lengthMm",
+        "widthMm",
+        "heightMm",
+        "wheelbaseMm"
+      ],
+      "researchStatus": "pending",
+      "sources": [
+        {
+          "id": "catalog-porsche-911-992",
+          "kind": "catalog_seed",
+          "url": null,
+          "accessStatus": "not_fetched"
+        },
+        {
+          "id": "official-911",
+          "kind": "official",
+          "url": "https://www.porsche.com/usa/models/911/carrera-models/911-carrera/",
+          "accessStatus": "blocked"
+        }
+      ],
+      "blockedSourceCount": 1,
+      "libraryReferenceCount": 0,
+      "selectedReferenceCount": 0,
+      "grammarReferenceCount": 0,
+      "sessionId": "auto-7a75011b-c38d-483c-961f-ce7462c5693f",
+      "previewPath": "#/automotive-lab?session=auto-7a75011b-c38d-483c-961f-ce7462c5693f",
+      "sessionArtifact": "models/911-8-wide.session.json.gz",
+      "bestCandidateId": "automotive-c24b9b02-2e56-44df-b066-a4cc61bad64f",
+      "candidates": [
+        {
+          "candidateId": "automotive-c24b9b02-2e56-44df-b066-a4cc61bad64f",
+          "planId": "automotive-plan-8-4",
+          "status": "accepted",
+          "rank": 1,
+          "partCount": 114,
+          "scores": {
+            "automotiveDesignScore": 99.6,
+            "legoStyle": 100,
+            "vehicleSimilarity": 79.56,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 92.77,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/911-8-wide.1.automotive-c24b9b02-2e56-44df-b066-a4cc61bad64f.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-4d8a707a-6604-471e-8c14-26e9392e6024",
+          "planId": "automotive-plan-8-1",
+          "status": "accepted",
+          "rank": 2,
+          "partCount": 119,
+          "scores": {
+            "automotiveDesignScore": 98.48,
+            "legoStyle": 100,
+            "vehicleSimilarity": 76.95,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 91.63,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/911-8-wide.2.automotive-4d8a707a-6604-471e-8c14-26e9392e6024.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-70ce0f71-5a0d-418e-9bca-0fa12e460ffe",
+          "planId": "automotive-plan-8-5",
+          "status": "accepted",
+          "rank": 3,
+          "partCount": 121,
+          "scores": {
+            "automotiveDesignScore": 99.71,
+            "legoStyle": 100,
+            "vehicleSimilarity": 79.53,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 90.78,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/911-8-wide.3.automotive-70ce0f71-5a0d-418e-9bca-0fa12e460ffe.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-52a669fe-8692-48f0-bd3d-8b2b9ae43f60",
+          "planId": "automotive-plan-8-2",
+          "status": "not-selected",
+          "rank": 4,
+          "partCount": 116,
+          "scores": {
+            "automotiveDesignScore": 98.48,
+            "legoStyle": 100,
+            "vehicleSimilarity": 74.34,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 90.72,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-e3fa7559-683a-472c-b2f3-de235bd2e6a4",
+          "planId": "automotive-plan-8-3",
+          "status": "not-selected",
+          "rank": 8,
+          "partCount": 124,
+          "scores": {
+            "automotiveDesignScore": 98.11,
+            "legoStyle": 100,
+            "vehicleSimilarity": 68.79,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 86.7,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-2b5b8090-34d8-4b3e-919a-f45c6bdfa363",
+          "planId": "automotive-plan-8-6",
+          "status": "not-selected",
+          "rank": 7,
+          "partCount": 123,
+          "scores": {
+            "automotiveDesignScore": 95.78,
+            "legoStyle": 100,
+            "vehicleSimilarity": 68.31,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 88.06,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-e2b0a196-a79a-4f87-b1c5-86371a913392",
+          "planId": "automotive-plan-8-7",
+          "status": "not-selected",
+          "rank": 6,
+          "partCount": 117,
+          "scores": {
+            "automotiveDesignScore": 99.6,
+            "legoStyle": 100,
+            "vehicleSimilarity": 76.37,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 89.65,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-2232b561-3dd1-4e74-91ef-febcfe35bcdb",
+          "planId": "automotive-plan-8-8",
+          "status": "not-selected",
+          "rank": 5,
+          "partCount": 129,
+          "scores": {
+            "automotiveDesignScore": 97.06,
+            "legoStyle": 100,
+            "vehicleSimilarity": 74.95,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 90.64,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        }
+      ],
+      "failures": [],
+      "images": {
+        "status": "captured",
+        "paths": [
+          "../../automotive/911-8-wide-preview.png",
+          "../../automotive/911-8-wide-overview.png"
+        ]
+      },
+      "warnings": [
+        "参考检索、设计模式与几何评分属于规则系统；没有训练神经网络，也没有分析车辆照片。",
+        "真实参考库初始为空；空库时只能使用明确标注的工程先验。",
+        "官方网页在开发环境中受到网络限制，车型尺寸尚待联网核验或手动输入。",
+        "Official vehicle hosts were blocked by the development network policy. Dimensions remain unknown; catalogue tags have not been confirmed by live research. Image analysis is not configured.",
+        "Module shape and wheel targets include documented engineering assumptions; dimension provenance does not imply photographic shape analysis.",
+        "Dimension targets include explicitly enabled engineering estimates. These are not measured specifications for the named vehicle.",
+        "Identity priorities include editorial catalogue tags that have not been confirmed by live research.",
+        "自由设计使用虚拟零件，不代表你拥有这些零件。",
+        "只使用已建模的几何与连接；尚未支持的零件不参与生成。",
+        "颜色属于真实 LEGO 色表；具体零件与颜色的生产、库存及购买可用性未核实。",
+        "标称几何校验不代替实物搭建测试。",
+        "Reference library is empty. No official reference was selected; generation must use explicitly labeled engineering priors.",
+        "候选通过物理几何校验后仍须通过独立造型质量排名；未达门槛时不返回可导出的成品。"
+      ]
+    },
+    {
+      "id": "roma-8-wide",
+      "profileId": "ferrari-roma",
+      "targetVehicle": "Ferrari Roma",
+      "widthStuds": 8,
+      "status": "nominal_geometry_pass",
+      "httpStatus": 200,
+      "message": "3 个候选通过几何设计门槛与物理规则校验；尚未实拼。",
+      "errorCode": null,
+      "generationTimeMs": 6431,
+      "estimated": true,
+      "dimensionBasis": "estimated",
+      "unknownDimensionFields": [
+        "lengthMm",
+        "widthMm",
+        "heightMm",
+        "wheelbaseMm"
+      ],
+      "researchStatus": "pending",
+      "sources": [
+        {
+          "id": "catalog-ferrari-roma",
+          "kind": "catalog_seed",
+          "url": null,
+          "accessStatus": "not_fetched"
+        },
+        {
+          "id": "official-roma",
+          "kind": "official",
+          "url": "https://www.ferrari.com/en-EN/auto/ferrari-roma",
+          "accessStatus": "blocked"
+        }
+      ],
+      "blockedSourceCount": 1,
+      "libraryReferenceCount": 0,
+      "selectedReferenceCount": 0,
+      "grammarReferenceCount": 0,
+      "sessionId": "auto-2ea49cbd-4e36-452c-8863-d7b2321ca3d8",
+      "previewPath": "#/automotive-lab?session=auto-2ea49cbd-4e36-452c-8863-d7b2321ca3d8",
+      "sessionArtifact": "models/roma-8-wide.session.json.gz",
+      "bestCandidateId": "automotive-52e5f3ec-6e5d-4d71-aab2-14e3c03c1411",
+      "candidates": [
+        {
+          "candidateId": "automotive-52e5f3ec-6e5d-4d71-aab2-14e3c03c1411",
+          "planId": "automotive-plan-8-5",
+          "status": "accepted",
+          "rank": 1,
+          "partCount": 122,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 80.49,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 93.17,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/roma-8-wide.1.automotive-52e5f3ec-6e5d-4d71-aab2-14e3c03c1411.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-b7545ba6-ff9a-42f6-9b2d-363a6c647e83",
+          "planId": "automotive-plan-8-7",
+          "status": "accepted",
+          "rank": 2,
+          "partCount": 118,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 77.51,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 92.13,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/roma-8-wide.2.automotive-b7545ba6-ff9a-42f6-9b2d-363a6c647e83.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-1e168914-185c-4a39-84dc-0aa1677fee97",
+          "planId": "automotive-plan-8-4",
+          "status": "accepted",
+          "rank": 3,
+          "partCount": 117,
+          "scores": {
+            "automotiveDesignScore": 99.89,
+            "legoStyle": 100,
+            "vehicleSimilarity": 80.7,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 91.22,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/roma-8-wide.3.automotive-1e168914-185c-4a39-84dc-0aa1677fee97.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-b9ab6f08-452e-4569-8273-7c322336d2bc",
+          "planId": "automotive-plan-8-1",
+          "status": "not-selected",
+          "rank": 4,
+          "partCount": 124,
+          "scores": {
+            "automotiveDesignScore": 100,
+            "legoStyle": 100,
+            "vehicleSimilarity": 77.6,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 90.16,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-8731b66e-5e8c-4c83-881f-bfac1564179c",
+          "planId": "automotive-plan-8-2",
+          "status": "not-selected",
+          "rank": 7,
+          "partCount": 124,
+          "scores": {
+            "automotiveDesignScore": 99.92,
+            "legoStyle": 100,
+            "vehicleSimilarity": 70.05,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 87.5,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-a42cbb97-ad51-475f-b8ea-6a8732eec24d",
+          "planId": "automotive-plan-8-3",
+          "status": "not-selected",
+          "rank": 6,
+          "partCount": 128,
+          "scores": {
+            "automotiveDesignScore": 99.97,
+            "legoStyle": 100,
+            "vehicleSimilarity": 67.58,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 88.65,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-752213fe-df2c-4dae-bcdc-ee42db7ca882",
+          "planId": "automotive-plan-8-6",
+          "status": "not-selected",
+          "rank": 8,
+          "partCount": 129,
+          "scores": {
+            "automotiveDesignScore": 98.38,
+            "legoStyle": 100,
+            "vehicleSimilarity": 66.39,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 85.91,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-27e9696a-3ae6-4920-8a15-1511d88dc3dc",
+          "planId": "automotive-plan-8-8",
+          "status": "not-selected",
+          "rank": 5,
+          "partCount": 121,
+          "scores": {
+            "automotiveDesignScore": 99.92,
+            "legoStyle": 100,
+            "vehicleSimilarity": 71.61,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 90.05,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        }
+      ],
+      "failures": [],
+      "images": {
+        "status": "captured",
+        "paths": [
+          "../../automotive/roma-8-wide-preview.png",
+          "../../automotive/roma-8-wide-overview.png"
+        ]
+      },
+      "warnings": [
+        "参考检索、设计模式与几何评分属于规则系统；没有训练神经网络，也没有分析车辆照片。",
+        "真实参考库初始为空；空库时只能使用明确标注的工程先验。",
+        "官方网页在开发环境中受到网络限制，车型尺寸尚待联网核验或手动输入。",
+        "Official vehicle hosts were blocked by the development network policy. Dimensions remain unknown; catalogue tags have not been confirmed by live research. Image analysis is not configured.",
+        "Module shape and wheel targets include documented engineering assumptions; dimension provenance does not imply photographic shape analysis.",
+        "Dimension targets include explicitly enabled engineering estimates. These are not measured specifications for the named vehicle.",
+        "Identity priorities include editorial catalogue tags that have not been confirmed by live research.",
+        "自由设计使用虚拟零件，不代表你拥有这些零件。",
+        "只使用已建模的几何与连接；尚未支持的零件不参与生成。",
+        "颜色属于真实 LEGO 色表；具体零件与颜色的生产、库存及购买可用性未核实。",
+        "标称几何校验不代替实物搭建测试。",
+        "Reference library is empty. No official reference was selected; generation must use explicitly labeled engineering priors.",
+        "候选通过物理几何校验后仍须通过独立造型质量排名；未达门槛时不返回可导出的成品。"
+      ]
+    },
+    {
+      "id": "revuelto-8-wide",
+      "profileId": "lamborghini-revuelto",
+      "targetVehicle": "Lamborghini Revuelto",
+      "widthStuds": 8,
+      "status": "nominal_geometry_pass",
+      "httpStatus": 200,
+      "message": "3 个候选通过几何设计门槛与物理规则校验；尚未实拼。",
+      "errorCode": null,
+      "generationTimeMs": 6677,
+      "estimated": true,
+      "dimensionBasis": "estimated",
+      "unknownDimensionFields": [
+        "lengthMm",
+        "widthMm",
+        "heightMm",
+        "wheelbaseMm"
+      ],
+      "researchStatus": "pending",
+      "sources": [
+        {
+          "id": "catalog-lamborghini-revuelto",
+          "kind": "catalog_seed",
+          "url": null,
+          "accessStatus": "not_fetched"
+        },
+        {
+          "id": "official-revuelto",
+          "kind": "official",
+          "url": "https://www.lamborghini.com/en-en/models/revuelto",
+          "accessStatus": "blocked"
+        }
+      ],
+      "blockedSourceCount": 1,
+      "libraryReferenceCount": 0,
+      "selectedReferenceCount": 0,
+      "grammarReferenceCount": 0,
+      "sessionId": "auto-2a8b2283-7327-43a6-9692-5d2ce59bd5b8",
+      "previewPath": "#/automotive-lab?session=auto-2a8b2283-7327-43a6-9692-5d2ce59bd5b8",
+      "sessionArtifact": "models/revuelto-8-wide.session.json.gz",
+      "bestCandidateId": "automotive-94cb8e97-27a4-4634-a755-71802a0a027f",
+      "candidates": [
+        {
+          "candidateId": "automotive-94cb8e97-27a4-4634-a755-71802a0a027f",
+          "planId": "automotive-plan-8-4",
+          "status": "accepted",
+          "rank": 1,
+          "partCount": 118,
+          "scores": {
+            "automotiveDesignScore": 95.11,
+            "legoStyle": 100,
+            "vehicleSimilarity": 70.27,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 88.62,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/revuelto-8-wide.1.automotive-94cb8e97-27a4-4634-a755-71802a0a027f.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-2613508d-4523-467a-bb80-e6bd597ca029",
+          "planId": "automotive-plan-8-1",
+          "status": "accepted",
+          "rank": 2,
+          "partCount": 122,
+          "scores": {
+            "automotiveDesignScore": 95.51,
+            "legoStyle": 100,
+            "vehicleSimilarity": 69.15,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 88.3,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/revuelto-8-wide.2.automotive-2613508d-4523-467a-bb80-e6bd597ca029.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-76b48eb6-526e-4b59-aaf8-9d84e3eb5b6a",
+          "planId": "automotive-plan-8-2",
+          "status": "accepted",
+          "rank": 3,
+          "partCount": 122,
+          "scores": {
+            "automotiveDesignScore": 95.51,
+            "legoStyle": 100,
+            "vehicleSimilarity": 68.19,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 87.97,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements."
+          ],
+          "modelArtifact": "models/revuelto-8-wide.3.automotive-76b48eb6-526e-4b59-aaf8-9d84e3eb5b6a.packed.json.gz"
+        },
+        {
+          "candidateId": "automotive-d9a28660-7a9a-4289-9138-dd9d7343aee1",
+          "planId": "automotive-plan-8-3",
+          "status": "not-selected",
+          "rank": 8,
+          "partCount": 130,
+          "scores": {
+            "automotiveDesignScore": 96.97,
+            "legoStyle": 100,
+            "vehicleSimilarity": 67.29,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 85.95,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-8de5e9b9-30be-4bd7-b4c7-c89853ebc217",
+          "planId": "automotive-plan-8-5",
+          "status": "not-selected",
+          "rank": 4,
+          "partCount": 124,
+          "scores": {
+            "automotiveDesignScore": 96.74,
+            "legoStyle": 100,
+            "vehicleSimilarity": 71.73,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 87.45,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-53ba0678-9181-4709-8885-4337d61e5e1b",
+          "planId": "automotive-plan-8-6",
+          "status": "not-selected",
+          "rank": 7,
+          "partCount": 125,
+          "scores": {
+            "automotiveDesignScore": 94.64,
+            "legoStyle": 100,
+            "vehicleSimilarity": 64.66,
+            "structure": 100,
+            "buildability": 100,
+            "weightedTotal": 86.56,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-6981da45-51c7-4e04-9b75-e6e3c2e2dbe6",
+          "planId": "automotive-plan-8-7",
+          "status": "not-selected",
+          "rank": 6,
+          "partCount": 121,
+          "scores": {
+            "automotiveDesignScore": 95.11,
+            "legoStyle": 100,
+            "vehicleSimilarity": 71.43,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 87.02,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        },
+        {
+          "candidateId": "automotive-2651acc7-c2f4-474b-9ca7-d0a3db250bf5",
+          "planId": "automotive-plan-8-8",
+          "status": "not-selected",
+          "rank": 5,
+          "partCount": 121,
+          "scores": {
+            "automotiveDesignScore": 96.74,
+            "legoStyle": 100,
+            "vehicleSimilarity": 70.77,
+            "structure": 90,
+            "buildability": 100,
+            "weightedTotal": 87.12,
+            "method": "geometric-heuristic"
+          },
+          "physicalValid": true,
+          "designAccepted": true,
+          "hardErrors": [],
+          "designErrors": [],
+          "warnings": [
+            "轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。",
+            "结构分数是连接规则符合度，不代表载荷、重心、扭矩或实物强度测试。",
+            "Reference image links are not analyzed; this score does not measure visual resemblance.",
+            "Some proportion targets are explicit engineering assumptions, not verified vehicle measurements.",
+            "This candidate was evaluated during ranking; only published candidates have packed model artifacts."
+          ],
+          "modelArtifact": null
+        }
+      ],
+      "failures": [],
+      "images": {
+        "status": "captured",
+        "paths": [
+          "../../automotive/revuelto-8-wide-preview.png",
+          "../../automotive/revuelto-8-wide-overview.png"
+        ]
+      },
+      "warnings": [
+        "参考检索、设计模式与几何评分属于规则系统；没有训练神经网络，也没有分析车辆照片。",
+        "真实参考库初始为空；空库时只能使用明确标注的工程先验。",
+        "官方网页在开发环境中受到网络限制，车型尺寸尚待联网核验或手动输入。",
+        "Official vehicle hosts were blocked by the development network policy. Dimensions remain unknown; catalogue tags have not been confirmed by live research. Image analysis is not configured.",
+        "Module shape and wheel targets include documented engineering assumptions; dimension provenance does not imply photographic shape analysis.",
+        "Dimension targets include explicitly enabled engineering estimates. These are not measured specifications for the named vehicle.",
+        "Identity priorities include editorial catalogue tags that have not been confirmed by live research.",
+        "自由设计使用虚拟零件，不代表你拥有这些零件。",
+        "只使用已建模的几何与连接；尚未支持的零件不参与生成。",
+        "颜色属于真实 LEGO 色表；具体零件与颜色的生产、库存及购买可用性未核实。",
+        "标称几何校验不代替实物搭建测试。",
+        "Reference library is empty. No official reference was selected; generation must use explicitly labeled engineering priors.",
+        "候选通过物理几何校验后仍须通过独立造型质量排名；未达门槛时不返回可导出的成品。"
+      ]
+    }
+  ],
+  "summary": {
+    "cases": 7,
+    "nominalGeometryPassed": 7,
+    "qualityFailed": 0,
+    "researchPending": 0,
+    "executionFailed": 0,
+    "generatedSessions": 7,
+    "acceptedCandidates": 21
+  },
+  "notes": [
+    "Nominal geometry PASS means the API accepted catalog geometry, connection, wheel, structure, instruction and rule-based design gates. It does not demonstrate real-vehicle visual resemblance or a physical build.",
+    "No live research request is made. Source access statuses are recorded profile metadata, not fresh network checks.",
+    "Independent AutomotiveDesignScore is recorded only when exposed by the API. Missing independent or rejected-candidate score records remain null.",
+    "Screenshots are pending until actual browser captures are attached. Preview paths refer to saved UI sessions; packed JSON artifacts are not screenshots.",
+    "Actual browser screenshots are attached for all seven saved sessions. Direct review found shared rectangular cabins, flat roofs and similar front fascias; recognizable target-vehicle identity is not established. This visual limitation remains despite passing geometric heuristics.",
+    "Published model/session snapshots are losslessly gzip-compressed (.json.gz); fresh CLI runs write plain JSON. All 28 snapshots were decompressed and JSON-parsed after packaging."
+  ],
+  "visualReview": {
+    "method": "Direct inspection of all seven actual browser preview PNGs",
+    "overall": "These are rule-built LEGO concept cars. Shared rectangular cabins, flat roofs and similar front fascias dominate. Length and cabin proportions vary; target vehicle recognition is not demonstrated.",
+    "vehicleRecognition": "not-established",
+    "physicalBuildsVerified": 0,
+    "manifest": "../../automotive/manifest.json"
+  }
+}

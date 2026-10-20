@@ -26,6 +26,7 @@ import {
 import ModelViewer from "./components/ModelViewer.js";
 import { PartThumbnail } from "./components/PartThumbnail.js";
 import SpeedCreative from "./pages/SpeedCreative.js";
+import AutomotiveDesigner from "./pages/AutomotiveDesigner.js";
 import type {
   GenerationOptions,
   GenerationResult,
@@ -122,11 +123,19 @@ function Toggle({
 }
 
 export default function App() {
-  const [area, setArea] = useState<'general' | 'speed'>(() => window.location.hash === '#/speed' ? 'speed' : 'general');
+  type Area = 'general' | 'speed' | 'automotive' | 'automotive-lab';
+  const currentArea = (): Area => {
+    const route = (window.location.hash ? window.location.hash.slice(1) : window.location.pathname).split('?')[0];
+    return route === '/automotive-lab' ? 'automotive-lab' : route === '/automotive' ? 'automotive' : route === '/speed' ? 'speed' : 'general';
+  };
+  const [area, setArea] = useState<Area>(currentArea);
+  const automotiveActive = area === 'automotive' || area === 'automotive-lab';
+  const [automotiveOpened, setAutomotiveOpened] = useState(automotiveActive);
+  useEffect(() => { if (automotiveActive) setAutomotiveOpened(true); }, [automotiveActive]);
   const [speedOpened, setSpeedOpened] = useState(area === 'speed');
   useEffect(() => { if (area === 'speed') setSpeedOpened(true); }, [area]);
   useEffect(() => {
-    const navigate = () => setArea(window.location.hash === '#/speed' ? 'speed' : 'general');
+    const navigate = () => setArea(currentArea());
     window.addEventListener('hashchange', navigate);
     return () => window.removeEventListener('hashchange', navigate);
   }, []);
@@ -294,7 +303,7 @@ export default function App() {
 
   return (
     <div className="app-shell">
-      <header className="site-header">
+      <header className="site-header" hidden={automotiveActive}>
         <a
           className="brand"
           href="#"
@@ -322,6 +331,7 @@ export default function App() {
             通用创意
           </button>
           <button className={area === 'speed' ? 'nav-link active' : 'nav-link'} onClick={() => { window.location.hash = '/speed'; setArea('speed'); }}>Speed Creative</button>
+          <button className="nav-link" onClick={() => { window.location.hash = '/automotive'; setArea('automotive'); }}>自由汽车设计</button>
           <button
             className={area === 'general' && view === "steps" ? "nav-link active general-guide-nav" : "nav-link general-guide-nav"}
             disabled={!result}
@@ -338,7 +348,8 @@ export default function App() {
       </header>
 
       {(speedOpened || area === 'speed') && <div hidden={area !== 'speed'}><SpeedCreative /></div>}
-      <main hidden={area === 'speed'}>
+      {(automotiveOpened || automotiveActive) && <div hidden={!automotiveActive}><AutomotiveDesigner lab={area === 'automotive-lab'} /></div>}
+      <main hidden={area !== 'general'}>
         <section className="page-intro">
           <div>
             <div className="eyebrow">
@@ -963,7 +974,7 @@ export default function App() {
         </section>
       </main>
 
-      <footer>
+      <footer hidden={automotiveActive}>
         <span className="footer-brand">bricklab.</span>
         <span>为每一块积木，寻找下一种可能。</span>
         <span>独立创意原型 · 与 LEGO® 集团无关联</span>

@@ -1,8 +1,10 @@
-# BRICKLAB · LEGO Speed Creative V0.2.1 — Validation Edition
+# BRICKLAB · LEGO Automotive Designer V0.3
 
 一个可运行的中文网页原型：读取套装零件库存，输入创意，生成受库存约束的积木模型，查看 3D 与分步拼搭，导出中文 PDF 说明书和结构化 JSON。
 
-项目保留通用创意 V0.1 和独立的 [Speed Creative](#speed-creative-v021)。本轮增加真实库存快照、10 套 Benchmark、缺件频次、轮组 Registry、结构校验、模型持久化、JSON 导入与实拼反馈。完整结果见 [V0.2.1 交付报告](docs/V0.2.1交付报告.md)；[V0.2 交付报告](docs/V0.2交付报告.md) 保留为历史记录。
+项目保留通用创意 V0.1 和独立的 [Speed Creative](#speed-creative-v021)。V0.3 增加独立的 Free Automotive Designer：LDraw/MPD 参考导入、比例分析、局部拼搭模式、车型资料与 Design Brief、8/10/12 格宽模块重排、5–20 候选搜索及质量筛选。操作、来源与限制见 [V0.3 使用与开发说明](docs/AUTOMOTIVE_V0.3.md)。[V0.2.1 交付报告](docs/V0.2.1交付报告.md)和 [V0.2 交付报告](docs/V0.2交付报告.md)保留为历史记录。
+
+**V0.3 是检索与规则生成基础版，尚未实现照片视觉理解或神经网络训练。** 当前未导入可确认许可的真实整车参考模型，官方车型网页在云环境中被网络策略阻止。目录车型尺寸保持未知；用户可填写有来源的技术参数，或明确选择工程估算概念稿。得分衡量规则与几何比例，不能证明已经复刻真实奔驰 S63 或达到官方 Speed Champions 设计水平。自由零件库仅含可靠建模零件，数量不受个人库存限制；具体零件颜色供应未核实。
 
 **当前真实在线读取与验收为 0 套，实物拼搭为 0 次。** 已实际运行的 10 套 Benchmark 均标注 `Real online validation pending`；缺少 API Key 时不使用演示库存填充真实结果，也不据此新增零件支持。自动校验通过只说明符合当前软件规则。
 
@@ -16,7 +18,7 @@ V0.1 使用**规则模板 + 库存约束搜索**，支持机器人、汽车、�
 
 ### Windows：从 ZIP 启动
 
-本版工作分支为 `codex/speed-creative-v0.2.1`，可下载 [V0.2.1 分支 ZIP](https://github.com/byuming545-cmyk/lego-design-byebye/archive/refs/heads/codex/speed-creative-v0.2.1.zip)。
+本版工作分支为 `codex/automotive-designer-v0.3`，可下载 [V0.3 分支 ZIP](https://github.com/byuming545-cmyk/lego-design-byebye/archive/refs/heads/codex/automotive-designer-v0.3.zip)。
 
 先安装 Node.js 24.19.0 或更高的 24.x 版本，再解压下载的项目 ZIP。进入**能够看到 `package.json` 的文件夹**；如果第一层只有同名文件夹，继续进入一层。
 
@@ -35,7 +37,7 @@ npm run build
 npm start
 ```
 
-出现服务已启动的信息后，保持命令窗口开启，浏览器打开 **<http://localhost:3001/#/speed>**。停止服务可在命令窗口按 `Ctrl+C`。`npm start` 默认使用 production：`auto` 缺 Key 时，库存请求返回中文 `503 / MISSING_API_KEY`，页面显示“Rebrickable API Key 未配置。”；服务和健康检查仍可启动。演示必须按上面显式配置 `mock`。不要在 Windows 中复制下面云环境的 `/workspace` 路径或 Bash 环境变量前缀。
+出现服务已启动的信息后，保持命令窗口开启，浏览器打开 **<http://localhost:3001/#/automotive>**；调试页为 <http://localhost:3001/#/automotive-lab>，旧版入口为 <http://localhost:3001/#/speed>。停止服务可在命令窗口按 `Ctrl+C`。自由汽车设计不需要 Rebrickable Key；库存模式在 production `auto` 缺 Key 时返回中文 `503 / MISSING_API_KEY`，演示请显式配置 `mock`。不要在 Windows 中复制下面云环境的 `/workspace` 路径或 Bash 环境变量前缀。
 
 ### 当前云环境：开发模式
 

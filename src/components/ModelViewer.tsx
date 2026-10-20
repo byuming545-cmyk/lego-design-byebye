@@ -29,6 +29,8 @@ export interface ModelViewerProps extends ModelRenderOptions {
   onReady?: () => void;
   adapter?: ModelRenderingAdapter;
   allowUnderside?: boolean;
+  /** Automotive coordinates put the vehicle nose at longitudinal y=0. */
+  initialView?: 'default' | 'front';
 }
 
 function slopeGeometry(width: number, height: number, depth: number): THREE.BufferGeometry {
@@ -172,7 +174,7 @@ interface ViewerRuntime {
   dispose: () => void;
 }
 
-function createRuntime(canvas: HTMLCanvasElement, host: HTMLDivElement, ready: () => void, fail: () => void): ViewerRuntime {
+function createRuntime(canvas: HTMLCanvasElement, host: HTMLDivElement, ready: () => void, fail: () => void, initialView: 'default' | 'front' = 'default'): ViewerRuntime {
   const renderer = new THREE.WebGLRenderer({
     canvas, antialias: true, alpha: true, preserveDrawingBuffer: true,
     powerPreference: 'low-power',
@@ -187,7 +189,7 @@ function createRuntime(canvas: HTMLCanvasElement, host: HTMLDivElement, ready: (
 
   const scene = new THREE.Scene();
   const camera = new THREE.OrthographicCamera(-10, 10, 10, -10, 0.1, 1000);
-  camera.position.set(20, 17, 24);
+  camera.position.set(20, 17, initialView === 'front' ? -24 : 24);
   const controls = new OrbitControls(camera, canvas);
   controls.enableDamping = false;
   controls.enablePan = true;
@@ -228,6 +230,8 @@ function createRuntime(canvas: HTMLCanvasElement, host: HTMLDivElement, ready: (
       if (disposed) return;
       try {
         renderer.render(scene, camera);
+        canvas.dataset.renderer = 'webgl';
+        canvas.dataset.renderedParts = String(model.children.length);
         if (!notified) { notified = true; ready(); }
       } catch { fail(); }
     });
@@ -273,6 +277,7 @@ function createRuntime(canvas: HTMLCanvasElement, host: HTMLDivElement, ready: (
   };
 
   const replaceModel: ViewerRuntime['replaceModel'] = (parts, options, showGrid, adapter) => {
+    delete canvas.dataset.renderedParts;
     scene.remove(model, stage);
     disposeGraph(model);
     disposeGraph(stage);
@@ -354,6 +359,8 @@ function CanvasFallback({ parts, highlightIds, exploded, showGrid, onReady, adap
       canvas.height = Math.max(1, host.clientHeight * ratio);
       if (adapter?.renderFallback) adapter.renderFallback(canvas, parts, { highlightIds, exploded, showGrid });
       else renderIsometric(canvas, parts, { highlightIds, exploded, showGrid });
+      canvas.dataset.renderer = 'canvas2d';
+      canvas.dataset.renderedParts = String(parts.length);
       readyRef.current?.();
     };
     const observer = new ResizeObserver(draw);
@@ -367,7 +374,7 @@ function CanvasFallback({ parts, highlightIds, exploded, showGrid, onReady, adap
   </>;
 }
 
-export function ModelViewer({ parts, highlightIds, showGrid = true, className = '', exploded = false, onReady, adapter = simplifiedLegoAdapter, allowUnderside = false }: ModelViewerProps) {
+export function ModelViewer({ parts, highlightIds, showGrid = true, className = '', exploded = false, onReady, adapter = simplifiedLegoAdapter, allowUnderside = false, initialView = 'default' }: ModelViewerProps) {
   const hostRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const runtimeRef = useRef<ViewerRuntime | null>(null);
@@ -379,7 +386,7 @@ export function ModelViewer({ parts, highlightIds, showGrid = true, className = 
     if (fallback || !hostRef.current || !canvasRef.current) return;
     let runtime: ViewerRuntime;
     try {
-      runtime = createRuntime(canvasRef.current, hostRef.current, () => readyRef.current?.(), () => setFallback(true));
+      runtime = createRuntime(canvasRef.current, hostRef.current, () => readyRef.current?.(), () => setFallback(true), initialView);
       runtimeRef.current = runtime;
     } catch {
       setFallback(true);
@@ -392,18 +399,18 @@ export function ModelViewer({ parts, highlightIds, showGrid = true, className = 
       runtimeRef.current = null;
       runtime.dispose();
     };
-  }, [fallback]);
+  }, [fallback, initialView]);
 
   useEffect(() => {
     runtimeRef.current?.setAllowUnderside(allowUnderside);
-  }, [allowUnderside, fallback]);
+  }, [allowUnderside, fallback, initialView]);
 
   useEffect(() => {
     if (!fallback) {
       try { runtimeRef.current?.replaceModel(parts, { highlightIds, exploded }, showGrid, adapter); }
       catch { setFallback(true); }
     }
-  }, [parts, highlightIds, showGrid, exploded, fallback, adapter]);
+  }, [parts, highlightIds, showGrid, exploded, fallback, adapter, initialView]);
 
   return <div ref={hostRef} className={`model-viewer ${className}`.trim()} style={{ width: '100%', height: '100%', minHeight: 260, position: 'relative', overflow: 'hidden' }}>
     {fallback

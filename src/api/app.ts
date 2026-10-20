@@ -7,6 +7,7 @@ import { createInventoryProvider, InventoryError, MissingRebrickableInventoryPro
 import type { GenerationOptions, GenerationResult, SetInventory } from '../types/index.js';
 import { validateModel } from '../validators/index.js';
 import { createSpeedRouter } from '../speed/api.js';
+import { createAutomotiveRouter } from '../automotive/api.js';
 
 interface AppOptions {
   provider?: SetInventoryProvider;
@@ -51,11 +52,13 @@ export function createApp(options: AppOptions = {}) {
   const defaultJson = express.json({ limit: '32kb', strict: true });
   const modelJson = express.json({ limit: '40mb', strict: true });
   const feedbackJson = express.json({ limit: '1mb', strict: true });
-  app.use((request, response, next) => (request.path === '/api/speed/models/import' ? modelJson : /^\/api\/speed\/models\/[^/]+\/feedback$/.test(request.path) ? feedbackJson : defaultJson)(request, response, next));
+  const referenceJson = express.json({ limit: '10mb', strict: true });
+  app.use((request, response, next) => (request.path === '/api/speed/models/import' ? modelJson : request.path === '/api/automotive/references/import' ? referenceJson : /^\/api\/speed\/models\/[^/]+\/feedback$/.test(request.path) ? feedbackJson : defaultJson)(request, response, next));
   app.use('/api/speed', createSpeedRouter(provider));
+  app.use('/api/automotive', createAutomotiveRouter());
 
   app.get('/api/health', (_request, response) => {
-    response.json({ status: 'ok', version: '0.2.1', provider: provider.source, demo: provider.source === 'mock', dataMode: provider instanceof MissingRebrickableInventoryProvider ? 'unconfigured' : provider.source === 'mock' ? 'mock' : 'real' });
+    response.json({ status: 'ok', version: '0.3.0', provider: provider.source, demo: provider.source === 'mock', dataMode: provider instanceof MissingRebrickableInventoryProvider ? 'unconfigured' : provider.source === 'mock' ? 'mock' : 'real' });
   });
 
   app.get('/api/sets/:setNumber', async (request, response) => {

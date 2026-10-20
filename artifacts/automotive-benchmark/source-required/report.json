@@ -1,0 +1,388 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-20T05:33:23.828Z",
+  "mode": "source-required",
+  "candidateCount": 8,
+  "dataDir": "/tmp/bricklab-automotive-v03-final",
+  "externalNetworkRequests": 0,
+  "physicalBuildsVerified": 0,
+  "visualResemblance": "not-assessed",
+  "cases": [
+    {
+      "id": "s63-8-wide",
+      "profileId": "mercedes-amg-s63-w223",
+      "targetVehicle": "Mercedes-AMG S 63 W223",
+      "widthStuds": 8,
+      "status": "research_pending",
+      "httpStatus": 422,
+      "message": "Vehicle dimensions are unknown or unverified: length, width, height, wheelbase. Complete official research or supply a sourced manual profile. Explicitly enable estimated proportions for a labelled conceptual study.",
+      "errorCode": "UNKNOWN_DIMENSIONS",
+      "generationTimeMs": 24,
+      "estimated": false,
+      "dimensionBasis": null,
+      "unknownDimensionFields": [
+        "lengthMm",
+        "widthMm",
+        "heightMm",
+        "wheelbaseMm"
+      ],
+      "researchStatus": "pending",
+      "sources": [
+        {
+          "id": "catalog-mercedes-amg-s63-w223",
+          "kind": "catalog_seed",
+          "url": null,
+          "accessStatus": "not_fetched"
+        },
+        {
+          "id": "official-s63-amg",
+          "kind": "official",
+          "url": "https://www.mercedes-amg.com/en/home/vehicles/s-class/sedan.html",
+          "accessStatus": "blocked"
+        },
+        {
+          "id": "official-s63-mbusa",
+          "kind": "official",
+          "url": "https://www.mbusa.com/en/vehicles/model/s-class/sedan/s63e",
+          "accessStatus": "blocked"
+        }
+      ],
+      "blockedSourceCount": 2,
+      "libraryReferenceCount": 0,
+      "selectedReferenceCount": 0,
+      "grammarReferenceCount": 0,
+      "sessionId": null,
+      "previewPath": null,
+      "sessionArtifact": null,
+      "bestCandidateId": null,
+      "candidates": [],
+      "failures": [],
+      "images": {
+        "status": "pending",
+        "paths": []
+      },
+      "warnings": []
+    },
+    {
+      "id": "s63-10-wide",
+      "profileId": "mercedes-amg-s63-w223",
+      "targetVehicle": "Mercedes-AMG S 63 W223",
+      "widthStuds": 10,
+      "status": "research_pending",
+      "httpStatus": 422,
+      "message": "Vehicle dimensions are unknown or unverified: length, width, height, wheelbase. Complete official research or supply a sourced manual profile. Explicitly enable estimated proportions for a labelled conceptual study.",
+      "errorCode": "UNKNOWN_DIMENSIONS",
+      "generationTimeMs": 9,
+      "estimated": false,
+      "dimensionBasis": null,
+      "unknownDimensionFields": [
+        "lengthMm",
+        "widthMm",
+        "heightMm",
+        "wheelbaseMm"
+      ],
+      "researchStatus": "pending",
+      "sources": [
+        {
+          "id": "catalog-mercedes-amg-s63-w223",
+          "kind": "catalog_seed",
+          "url": null,
+          "accessStatus": "not_fetched"
+        },
+        {
+          "id": "official-s63-amg",
+          "kind": "official",
+          "url": "https://www.mercedes-amg.com/en/home/vehicles/s-class/sedan.html",
+          "accessStatus": "blocked"
+        },
+        {
+          "id": "official-s63-mbusa",
+          "kind": "official",
+          "url": "https://www.mbusa.com/en/vehicles/model/s-class/sedan/s63e",
+          "accessStatus": "blocked"
+        }
+      ],
+      "blockedSourceCount": 2,
+      "libraryReferenceCount": 0,
+      "selectedReferenceCount": 0,
+      "grammarReferenceCount": 0,
+      "sessionId": null,
+      "previewPath": null,
+      "sessionArtifact": null,
+      "bestCandidateId": null,
+      "candidates": [],
+      "failures": [],
+      "images": {
+        "status": "pending",
+        "paths": []
+      },
+      "warnings": []
+    },
+    {
+      "id": "s63-12-wide",
+      "profileId": "mercedes-amg-s63-w223",
+      "targetVehicle": "Mercedes-AMG S 63 W223",
+      "widthStuds": 12,
+      "status": "research_pending",
+      "httpStatus": 422,
+      "message": "Vehicle dimensions are unknown or unverified: length, width, height, wheelbase. Complete official research or supply a sourced manual profile. Explicitly enable estimated proportions for a labelled conceptual study.",
+      "errorCode": "UNKNOWN_DIMENSIONS",
+      "generationTimeMs": 4,
+      "estimated": false,
+      "dimensionBasis": null,
+      "unknownDimensionFields": [
+        "lengthMm",
+        "widthMm",
+        "heightMm",
+        "wheelbaseMm"
+      ],
+      "researchStatus": "pending",
+      "sources": [
+        {
+          "id": "catalog-mercedes-amg-s63-w223",
+          "kind": "catalog_seed",
+          "url": null,
+          "accessStatus": "not_fetched"
+        },
+        {
+          "id": "official-s63-amg",
+          "kind": "official",
+          "url": "https://www.mercedes-amg.com/en/home/vehicles/s-class/sedan.html",
+          "accessStatus": "blocked"
+        },
+        {
+          "id": "official-s63-mbusa",
+          "kind": "official",
+          "url": "https://www.mbusa.com/en/vehicles/model/s-class/sedan/s63e",
+          "accessStatus": "blocked"
+        }
+      ],
+      "blockedSourceCount": 2,
+      "libraryReferenceCount": 0,
+      "selectedReferenceCount": 0,
+      "grammarReferenceCount": 0,
+      "sessionId": null,
+      "previewPath": null,
+      "sessionArtifact": null,
+      "bestCandidateId": null,
+      "candidates": [],
+      "failures": [],
+      "images": {
+        "status": "pending",
+        "paths": []
+      },
+      "warnings": []
+    },
+    {
+      "id": "m4-8-wide",
+      "profileId": "bmw-m4-g82",
+      "targetVehicle": "BMW M4 G82",
+      "widthStuds": 8,
+      "status": "research_pending",
+      "httpStatus": 422,
+      "message": "Vehicle dimensions are unknown or unverified: length, width, height, wheelbase. Complete official research or supply a sourced manual profile. Explicitly enable estimated proportions for a labelled conceptual study.",
+      "errorCode": "UNKNOWN_DIMENSIONS",
+      "generationTimeMs": 12,
+      "estimated": false,
+      "dimensionBasis": null,
+      "unknownDimensionFields": [
+        "lengthMm",
+        "widthMm",
+        "heightMm",
+        "wheelbaseMm"
+      ],
+      "researchStatus": "pending",
+      "sources": [
+        {
+          "id": "catalog-bmw-m4-g82",
+          "kind": "catalog_seed",
+          "url": null,
+          "accessStatus": "not_fetched"
+        },
+        {
+          "id": "official-m4",
+          "kind": "official",
+          "url": "https://www.bmwusa.com/vehicles/m-models/m4-coupe/overview.html",
+          "accessStatus": "blocked"
+        }
+      ],
+      "blockedSourceCount": 1,
+      "libraryReferenceCount": 0,
+      "selectedReferenceCount": 0,
+      "grammarReferenceCount": 0,
+      "sessionId": null,
+      "previewPath": null,
+      "sessionArtifact": null,
+      "bestCandidateId": null,
+      "candidates": [],
+      "failures": [],
+      "images": {
+        "status": "pending",
+        "paths": []
+      },
+      "warnings": []
+    },
+    {
+      "id": "911-8-wide",
+      "profileId": "porsche-911-992",
+      "targetVehicle": "Porsche 911 992",
+      "widthStuds": 8,
+      "status": "research_pending",
+      "httpStatus": 422,
+      "message": "Vehicle dimensions are unknown or unverified: length, width, height, wheelbase. Complete official research or supply a sourced manual profile. Explicitly enable estimated proportions for a labelled conceptual study.",
+      "errorCode": "UNKNOWN_DIMENSIONS",
+      "generationTimeMs": 8,
+      "estimated": false,
+      "dimensionBasis": null,
+      "unknownDimensionFields": [
+        "lengthMm",
+        "widthMm",
+        "heightMm",
+        "wheelbaseMm"
+      ],
+      "researchStatus": "pending",
+      "sources": [
+        {
+          "id": "catalog-porsche-911-992",
+          "kind": "catalog_seed",
+          "url": null,
+          "accessStatus": "not_fetched"
+        },
+        {
+          "id": "official-911",
+          "kind": "official",
+          "url": "https://www.porsche.com/usa/models/911/carrera-models/911-carrera/",
+          "accessStatus": "blocked"
+        }
+      ],
+      "blockedSourceCount": 1,
+      "libraryReferenceCount": 0,
+      "selectedReferenceCount": 0,
+      "grammarReferenceCount": 0,
+      "sessionId": null,
+      "previewPath": null,
+      "sessionArtifact": null,
+      "bestCandidateId": null,
+      "candidates": [],
+      "failures": [],
+      "images": {
+        "status": "pending",
+        "paths": []
+      },
+      "warnings": []
+    },
+    {
+      "id": "roma-8-wide",
+      "profileId": "ferrari-roma",
+      "targetVehicle": "Ferrari Roma",
+      "widthStuds": 8,
+      "status": "research_pending",
+      "httpStatus": 422,
+      "message": "Vehicle dimensions are unknown or unverified: length, width, height, wheelbase. Complete official research or supply a sourced manual profile. Explicitly enable estimated proportions for a labelled conceptual study.",
+      "errorCode": "UNKNOWN_DIMENSIONS",
+      "generationTimeMs": 4,
+      "estimated": false,
+      "dimensionBasis": null,
+      "unknownDimensionFields": [
+        "lengthMm",
+        "widthMm",
+        "heightMm",
+        "wheelbaseMm"
+      ],
+      "researchStatus": "pending",
+      "sources": [
+        {
+          "id": "catalog-ferrari-roma",
+          "kind": "catalog_seed",
+          "url": null,
+          "accessStatus": "not_fetched"
+        },
+        {
+          "id": "official-roma",
+          "kind": "official",
+          "url": "https://www.ferrari.com/en-EN/auto/ferrari-roma",
+          "accessStatus": "blocked"
+        }
+      ],
+      "blockedSourceCount": 1,
+      "libraryReferenceCount": 0,
+      "selectedReferenceCount": 0,
+      "grammarReferenceCount": 0,
+      "sessionId": null,
+      "previewPath": null,
+      "sessionArtifact": null,
+      "bestCandidateId": null,
+      "candidates": [],
+      "failures": [],
+      "images": {
+        "status": "pending",
+        "paths": []
+      },
+      "warnings": []
+    },
+    {
+      "id": "revuelto-8-wide",
+      "profileId": "lamborghini-revuelto",
+      "targetVehicle": "Lamborghini Revuelto",
+      "widthStuds": 8,
+      "status": "research_pending",
+      "httpStatus": 422,
+      "message": "Vehicle dimensions are unknown or unverified: length, width, height, wheelbase. Complete official research or supply a sourced manual profile. Explicitly enable estimated proportions for a labelled conceptual study.",
+      "errorCode": "UNKNOWN_DIMENSIONS",
+      "generationTimeMs": 3,
+      "estimated": false,
+      "dimensionBasis": null,
+      "unknownDimensionFields": [
+        "lengthMm",
+        "widthMm",
+        "heightMm",
+        "wheelbaseMm"
+      ],
+      "researchStatus": "pending",
+      "sources": [
+        {
+          "id": "catalog-lamborghini-revuelto",
+          "kind": "catalog_seed",
+          "url": null,
+          "accessStatus": "not_fetched"
+        },
+        {
+          "id": "official-revuelto",
+          "kind": "official",
+          "url": "https://www.lamborghini.com/en-en/models/revuelto",
+          "accessStatus": "blocked"
+        }
+      ],
+      "blockedSourceCount": 1,
+      "libraryReferenceCount": 0,
+      "selectedReferenceCount": 0,
+      "grammarReferenceCount": 0,
+      "sessionId": null,
+      "previewPath": null,
+      "sessionArtifact": null,
+      "bestCandidateId": null,
+      "candidates": [],
+      "failures": [],
+      "images": {
+        "status": "pending",
+        "paths": []
+      },
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "cases": 7,
+    "nominalGeometryPassed": 0,
+    "qualityFailed": 0,
+    "researchPending": 7,
+    "executionFailed": 0,
+    "generatedSessions": 0,
+    "acceptedCandidates": 0
+  },
+  "notes": [
+    "Nominal geometry PASS means the API accepted catalog geometry, connection, wheel, structure, instruction and rule-based design gates. It does not demonstrate real-vehicle visual resemblance or a physical build.",
+    "No live research request is made. Source access statuses are recorded profile metadata, not fresh network checks.",
+    "Independent AutomotiveDesignScore is recorded only when exposed by the API. Missing independent or rejected-candidate score records remain null.",
+    "Screenshots are pending until actual browser captures are attached. Preview paths refer to saved UI sessions; packed JSON artifacts are not screenshots."
+  ]
+}

@@ -18,7 +18,7 @@ describe('wheel compatibility registry and stock discovery', () => {
     const stock = analyzeSpeedInventories([createSpeedDemoInventory()]);
     const classic = WHEEL_ASSEMBLY_REGISTRY.find(entry => entry.wheelPart === '4624')!;
     expect(classic.status).toBe('recognizedOnly');
-    expect(generatableWheelAssemblies()).toHaveLength(1);
+    expect(generatableWheelAssemblies()).toHaveLength(2);
     for (const row of stock.items.filter(row => ['18975', '3673', '66727', '18977'].includes(row.partId))) row.quantityAvailable = 0;
     for (const partId of ['4600', '4624', '3641']) {
       const definition = getSpeedPartDefinition(partId)!;

@@ -104,6 +104,31 @@ function modernHolder(): SpeedPartDefinition {
   ]);
 }
 
+function technicSingleHolder(): SpeedPartDefinition {
+  // Native 3700 spans x=-20..20,z=-10..10,y=0..24. Rotate its
+  // native z bore into internal x; translate bottom to z=0. The 10-LDU
+  // native bore height therefore becomes 14 LDU above the bottom.
+  const points = standardGrid(1, 2, 3, true);
+  for (const sign of [-1, 1]) points.push({
+    id: `wheelSocket:${sign < 0 ? 'left' : 'right'}`, type: 'wheelSocket',
+    localPosition: { x: 0.5, y: 1, z: 1.75 }, direction: { x: sign, y: 0, z: 0 },
+    compatibleTypes: ['wheelPin'], fitFamily: MODERN_SPEED_AXLE_FAMILY, allowsRotation: true,
+  });
+  return mechanical('3700', 'Technic Brick 1 x 2 with Hole', 'WheelHolder', { x: 1, y: 2, z: 3 }, {
+    kind: 'holder', wheelSystem: 'speed-modern',
+    boxes: [{ min: { x: 0, y: 0, z: 0 }, max: { x: 1, y: 2, z: 3 } }],
+    holes: [
+      { axis: 'x', center: { x: 0.5, y: 1, z: 1.75 }, radius: 0.3, width: 1 },
+      { axis: 'x', center: { x: 0.05, y: 1, z: 1.75 }, radius: 0.4, width: 0.1 },
+      { axis: 'x', center: { x: 0.95, y: 1, z: 1.75 }, radius: 0.4, width: 0.1 },
+    ],
+  }, points, [
+    '固定版本 3700.dat：peghole 位于 native (0,10,±10)，主体高 24 LDU；转换后的孔心高 14 LDU。',
+    '仅扣除源文件的贯穿 6 LDU 孔与表面 8 LDU counterbore；孔周围空腔采用保守实体包络。',
+    '独立轮架通过真实凸点连接在底板和上方板梁之间，可按不同车宽重新布局；没有伸缩轮轴。',
+  ]);
+}
+
 function modernPin(): SpeedPartDefinition {
   return mechanical('3673', 'Technic Pin', 'Other', { x: 2, y: 0.8, z: 2 }, {
     kind: 'round', axis: 'x', radius: 0.3, width: 2, center: { x: 0, y: 0, z: 0 }, wheelSystem: 'speed-modern',
@@ -271,6 +296,7 @@ const DEFINITIONS: SpeedPartDefinition[] = [
   partial('3641', 'Tyre 6/50 x 8 Offset Tread', 'Tyre'),
   partial('4600', "Plate  2 x  2 with 2 Wheel Pins", 'WheelHolder'),
   modernHolder(),
+  technicSingleHolder(),
   modernPin(),
   partial('87552', "Panel  1 x  2 x  2 Reinforced", 'Panel'),
   shapedSlope('85984', 'Slope Brick 31 1 x 2 x 0.667', 2, 1, 2, 'slope', false, false),
