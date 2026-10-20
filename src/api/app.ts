@@ -6,6 +6,7 @@ import { createBuildSteps } from '../instructions/steps.js';
 import { createInventoryProvider, InventoryError, normalizeSetNumber, type SetInventoryProvider } from '../inventory/index.js';
 import type { GenerationOptions, GenerationResult, SetInventory } from '../types/index.js';
 import { validateModel } from '../validators/index.js';
+import { createSpeedRouter } from '../speed/api.js';
 
 interface AppOptions {
   provider?: SetInventoryProvider;
@@ -48,9 +49,10 @@ export function createApp(options: AppOptions = {}) {
   const provider = options.provider ?? createInventoryProvider();
   app.disable('x-powered-by');
   app.use(express.json({ limit: '32kb', strict: true }));
+  app.use('/api/speed', createSpeedRouter(provider));
 
   app.get('/api/health', (_request, response) => {
-    response.json({ status: 'ok', version: '0.1.0', provider: provider.source, demo: provider.source === 'mock' });
+    response.json({ status: 'ok', version: '0.2.0', provider: provider.source, demo: provider.source === 'mock' });
   });
 
   app.get('/api/sets/:setNumber', async (request, response) => {

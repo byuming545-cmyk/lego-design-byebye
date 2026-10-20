@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import ModelViewer from "./components/ModelViewer.js";
 import { PartThumbnail } from "./components/PartThumbnail.js";
+import SpeedCreative from "./pages/SpeedCreative.js";
 import type {
   GenerationOptions,
   GenerationResult,
@@ -121,6 +122,14 @@ function Toggle({
 }
 
 export default function App() {
+  const [area, setArea] = useState<'general' | 'speed'>(() => window.location.hash === '#/speed' ? 'speed' : 'general');
+  const [speedOpened, setSpeedOpened] = useState(area === 'speed');
+  useEffect(() => { if (area === 'speed') setSpeedOpened(true); }, [area]);
+  useEffect(() => {
+    const navigate = () => setArea(window.location.hash === '#/speed' ? 'speed' : 'general');
+    window.addEventListener('hashchange', navigate);
+    return () => window.removeEventListener('hashchange', navigate);
+  }, []);
   const [setNumber, setSetNumber] = useState("10696");
   const [inventory, setInventory] = useState<SetInventory | null>(null);
   const [result, setResult] = useState<GenerationResult | null>(null);
@@ -151,7 +160,7 @@ export default function App() {
   });
 
   useEffect(() => {
-    if (initialLoad.current) return;
+    if (area !== 'general' || initialLoad.current) return;
     initialLoad.current = true;
     void (async () => {
       try {
@@ -176,7 +185,7 @@ export default function App() {
         setLoadingSet(false);
       }
     })();
-  }, []);
+  }, [area]);
 
   useEffect(() => {
     if (!notice) return;
@@ -292,6 +301,8 @@ export default function App() {
           aria-label="Bricklab 首页"
           onClick={(e) => {
             e.preventDefault();
+            window.location.hash = '/general';
+            setArea('general');
             setView("model");
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
@@ -305,27 +316,29 @@ export default function App() {
         </a>
         <nav aria-label="主导航">
           <button
-            className={view === "model" ? "nav-link active" : "nav-link"}
-            onClick={() => setView("model")}
+            className={area === 'general' && view === "model" ? "nav-link active" : "nav-link"}
+            onClick={() => { window.location.hash = '/general'; setArea('general'); setView("model"); }}
           >
-            创意工作台
+            通用创意
           </button>
+          <button className={area === 'speed' ? 'nav-link active' : 'nav-link'} onClick={() => { window.location.hash = '/speed'; setArea('speed'); }}>Speed Creative</button>
           <button
-            className={view === "steps" ? "nav-link active" : "nav-link"}
+            className={area === 'general' && view === "steps" ? "nav-link active general-guide-nav" : "nav-link general-guide-nav"}
             disabled={!result}
-            onClick={() => setView("steps")}
+            onClick={() => { window.location.hash = '/general'; setArea('general'); setView("steps"); }}
           >
             我的拼搭指南
           </button>
         </nav>
         <button className="version-button" onClick={() => setAboutOpen(true)}>
-          <span className="status-dot" /> V0.1{" "}
+          <span className="status-dot" /> {area === 'speed' ? 'V0.2' : 'V0.1'}{" "}
           <span className="version-label">· 创意实验中</span>
           <ArrowUpRight size={14} />
         </button>
       </header>
 
-      <main>
+      {(speedOpened || area === 'speed') && <div hidden={area !== 'speed'}><SpeedCreative /></div>}
+      <main hidden={area === 'speed'}>
         <section className="page-intro">
           <div>
             <div className="eyebrow">
@@ -986,26 +999,28 @@ export default function App() {
         <span className="brand-icon">
           <Box size={26} />
         </span>
-        <div className="eyebrow">BRICKLAB · V0.1</div>
+        <div className="eyebrow">BRICKLAB · {area === 'speed' ? 'SPEED CREATIVE V0.2' : 'V0.1'}</div>
         <h2>
           让已有的积木，
           <br />
           遇见新的想象。
         </h2>
         <p>
-          这是一个规则驱动的创意重拼原型，目前支持机器人、汽车、房子与小动物四种基础模板。
+          {area === 'speed'
+            ? 'Speed Creative 是独立的原创汽车工作台，按实际库存生成约 8 stud 宽的模块化小车。设计与文字修改由有限规则驱动。'
+            : '这是一个规则驱动的创意重拼原型，目前支持机器人、汽车、房子与小动物四种基础模板。'}
         </p>
         <h3>关于演示数据</h3>
         <p>
-          未配置 Rebrickable 时，10696 与 11013
-          使用人工编写的演示库存，并非对应官方套装的真实零件清单。真实数据由服务器端的
-          Rebrickable 数据源提供。
+          {area === 'speed'
+            ? 'DEMO-SPEED 是人工合成的独立零件池，不代表任何官方套装。真实套装需要在服务器配置 Rebrickable API Key，缺少 Key 时不会用演示零件替代。'
+            : '未配置 Rebrickable 时，10696 与 11013 使用人工编写的演示库存，并非对应官方套装的真实零件清单。真实数据由服务器端的 Rebrickable 数据源提供。'}
         </p>
         <h3>关于拼搭校验</h3>
         <p>
-          模型按 studs 网格与 plate
-          高度计算，检查库存、明显重叠和上下连接。简化外形与连接规则不代表完整
-          CAD 或物理稳定性认证。汽车是静态积木造型，特殊机械件暂不参与生成。
+          {area === 'speed'
+            ? '车辆检查库存、显式连接图、实体碰撞、轮轴安装、轮胎间隙及规则式结构支撑。这些检查尚未经过实物拼搭、摩擦或承重测试。'
+            : '模型按 studs 网格与 plate 高度计算，检查库存、明显重叠和上下连接。简化外形与连接规则不代表完整 CAD 或物理稳定性认证。汽车是静态积木造型，特殊机械件暂不参与生成。'}
         </p>
         <button className="generate-button" onClick={() => setAboutOpen(false)}>
           知道了，继续创作
