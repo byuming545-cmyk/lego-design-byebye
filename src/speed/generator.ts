@@ -4,7 +4,8 @@ import { SpeedGenerationError } from './errors.js';
 import { partBoundsLdu, SPEED_EPSILON, vehicleDimensions } from './geometry.js';
 import { SpeedCollisionValidator, SpeedConnectionValidator, speedPartsCollide, validateVehicle, WheelValidator } from './validators.js';
 import { buildVehicleSteps } from './steps.js';
-import type { SpeedInventory, SpeedInventoryItem, SpeedPlacedPart, VehicleCandidate, VehicleDesignOptions, VehicleModel, VehicleModuleId } from './types.js';
+import { discoverAvailableWheelAssemblies, selectWheelAssembly } from './wheelAssemblies.js';
+import type { SpeedInventory, SpeedInventoryItem, SpeedOrientation, SpeedPlacedPart, VehicleCandidate, VehicleDesignOptions, VehicleModel, VehicleModuleId } from './types.js';
 
 export { SpeedGenerationError } from './errors.js';
 interface Stock { item: SpeedInventoryItem; remaining: number; available: number }
@@ -28,18 +29,22 @@ export function generateVehicleModel(inventory: SpeedInventory, options: Vehicle
     else stocks.set(id, { item, remaining: item.quantityAvailable, available: item.quantityAvailable });
   }
   const stock = [...stocks.values()];
-  const missing = ([['18975', 2], ['3673', 4], ['66727', 4], ['18977', 4]] as const).filter(([id, needed]) => stock.filter(entry => entry.item.partId === id).reduce((sum, entry) => sum + entry.remaining, 0) < needed);
-  if (missing.length) throw new SpeedGenerationError(`当前库存缺少已验证现代轮组的关键零件：${missing.map(([id, needed]) => `${id} 至少 ${needed} 件`).join('、')}。不会按 Wheel 类别强行替代不兼容轮毂。`, 'MISSING_SPEED_PARTS');
+  const vehicleWidth = 8, centerline = vehicleWidth / 2;
+  const assembly = selectWheelAssembly(stock.map(entry => ({ ...entry.item, quantityAvailable: entry.available })), vehicleWidth);
+  if (!assembly) {
+    const missing = discoverAvailableWheelAssemblies(stock.map(entry => ({ ...entry.item, quantityAvailable: entry.available }))).filter(entry => entry.definition.status === 'generatable');
+    throw new SpeedGenerationError(`当前库存中没有可识别的完整四轮组合。已验证轮组缺件：${missing.map(entry => `${entry.definition.name}：${entry.missing.map(row => `${row.partId} 至少 ${row.required} 件（当前 ${row.available} 件）`).join('、')}`).join('；')}。仅识别的组合不会参与生成。`, 'MISSING_SPEED_PARTS');
+  }
   const parts: SpeedPlacedPart[] = [];
   let sequence = 0;
   const make = (entry: Stock, moduleId: VehicleModuleId, x: number, y: number, z: number, rotation: 0 | 90 | 180 | 270 = 0): SpeedPlacedPart => {
     const definition = getSpeedPartDefinition(entry.item.partId)!;
     return { instanceId: `speed-part-${String(++sequence).padStart(3, '0')}`, partId: definition.partId, name: definition.name, category: definition.category, color: { ...entry.item.color }, dimensions: { ...definition.dimensions! }, position: { x, y, z }, orientation: { x: 0, y: 0, z: rotation }, moduleId, connectionPoints: structuredClone(definition.connectionPoints), activeConnections: [], buildStep: 1 };
   };
-  const take = (partId: string, moduleId: VehicleModuleId, x: number, y: number, z: number, rotation: 0 | 180 = 0): SpeedPlacedPart => {
+  const take = (partId: string, moduleId: VehicleModuleId, x: number, y: number, z: number, orientation: SpeedOrientation): SpeedPlacedPart => {
     const entry = stock.filter(row => row.item.partId === partId && row.remaining).sort((a, b) => b.remaining - a.remaining)[0];
-    if (!entry) throw new SpeedGenerationError(`缺少关键零件 ${partId}；无法完成真实现代轮组 / 底盘。`, 'MISSING_SPEED_PARTS');
-    const placed = make(entry, moduleId, x, y, z, rotation); entry.remaining--; parts.push(placed); return placed;
+    if (!entry) throw new SpeedGenerationError(`缺少关键零件 ${partId}；无法完成「${assembly.name}」轮组 / 底盘。`, 'MISSING_SPEED_PARTS');
+    const placed = make(entry, moduleId, x, y, z); placed.orientation = { ...orientation }; entry.remaining--; parts.push(placed); return placed;
   };
 
   /** Exact inventory-constrained tiling; every non-base course needs real studs. */
@@ -77,7 +82,7 @@ export function generateVehicleModel(inventory: SpeedInventory, options: Vehicle
           const part = make(entry, moduleId, px + (rotation ? w : 0), py, z, rotation);
           const contacts = worldConnectionPoints(part).filter(point => point.type === 'antiStud' && point.worldDirection.z < -0.9).flatMap(point => topPoints.get(pointKey(point.positionLdu)) ?? []);
           if (!allowUnanchored && !contacts.length) continue;
-          const bondLead = moduleId === 'chassis' && z === 6 && placed.length === 0 && w === width && d <= 2 ? d === 1 ? 2 : 1 : 0;
+          const bondLead = moduleId === 'chassis' && z === assembly.chassisMount.basePlateZ + 1 && placed.length === 0 && w === width && d <= 2 ? d === 1 ? 2 : 1 : 0;
           choices.push({ part, entry, occupied, contacts, joins: new Set(contacts.map(root)).size, bondLead });
         }
       }
@@ -108,18 +113,18 @@ export function generateVehicleModel(inventory: SpeedInventory, options: Vehicle
   const reservedRoof = parts.splice(0);
   if (wingWidth) pack('aero', (8 - wingWidth) / 2, length - 2, wingWidth, 2, 12, 1, true);
   const reservedWing = parts.splice(0);
-  // Recessed modern holders and filler bricks form level, real stud surfaces.
-  for (const y of [frontAxle - 1, rearAxle - 1]) {
-    take('18975', 'chassis', 2, y, 1);
-    pack('chassis', 3, y, 2, 2, 2, 3);
+  // Mount poses and recess support volumes belong to the assembly definition.
+  for (const y of [frontAxle, rearAxle]) {
+    const holder = assembly.poses.holder;
+    take(holder.partId, 'chassis', centerline + holder.offset.x, y + holder.offset.y, holder.offset.z, holder.orientation);
+    for (const support of assembly.chassisMount.supports) pack('chassis', centerline + support.x, y + support.y, support.width, support.depth, support.z, support.height);
   }
-  pack('chassis', 2, 0, 4, length, 5, 1, true);
-  pack('chassis', 2, 0, 4, length, 6, 1);
+  const chassisX = centerline - assembly.chassisMount.width / 2;
+  pack('chassis', chassisX, 0, assembly.chassisMount.width, length, assembly.chassisMount.basePlateZ, 1, true);
+  pack('chassis', chassisX, 0, assembly.chassisMount.width, length, assembly.chassisMount.basePlateZ + 1, 1);
   for (const y of [frontAxle, rearAxle]) for (const left of [true, false]) {
     const moduleId = left ? 'leftWheelModule' : 'rightWheelModule';
-    take('3673', moduleId, left ? 2 : 6, y, 3.75);
-    take('66727', moduleId, left ? 1.5 : 6.5, y, 3.75, left ? 180 : 0);
-    take('18977', moduleId, left ? 1.2 : 6.8, y, 3.75, left ? 180 : 0);
+    for (const pose of assembly.poses[left ? 'left' : 'right']) take(pose.partId, moduleId, centerline + pose.offset.x, y + pose.offset.y, pose.offset.z, pose.orientation);
   }
   pack('front', 2, 0, 4, frontAxle + 2, 7, 1);
   pack('rear', 2, rearAxle - 2, 4, length - (rearAxle - 2), 7, 1);
@@ -174,14 +179,14 @@ export function generateVehicleModel(inventory: SpeedInventory, options: Vehicle
     else usage.set(id, { partId: part.partId, colorId: part.color.id, quantityUsed: 1, quantityAvailable: stocks.get(id)!.available });
   }
   const model: VehicleModel = {
-    id: `speed-${Date.now().toString(36)}-${variant}`, name: `${options.vehicleType === 'gt' ? '长轴 GT' : options.vehicleType === 'concept' ? '前移驾驶舱概念车' : '宽体原创跑车'}`,
+    id: `speed-${crypto.randomUUID()}`, name: `${options.vehicleType === 'gt' ? '长轴 GT' : options.vehicleType === 'concept' ? '前移驾驶舱概念车' : '宽体原创跑车'}`,
     description: `基于实际库存，以底盘和真实轮组为先的 ${options.style} ${options.vehicleType} 规则设计。`, vehicleType: options.vehicleType, style: options.style, options: { ...options },
-    parameters: { width: 8, length, wheelbase: rearAxle - frontAxle, track: 5.6, cockpitPosition: cockpitStart, hoodLength: cockpitStart, roofHeight: actualRoofHeight },
+    parameters: { width: vehicleWidth, length, wheelbase: rearAxle - frontAxle, track: assembly.track, cockpitPosition: cockpitStart, hoodLength: cockpitStart, roofHeight: actualRoofHeight },
     parts, connections: [], modules: (Object.keys(moduleNames) as VehicleModuleId[]).map(id => ({ id, name: moduleNames[id], partIds: parts.filter(part => part.moduleId === id).map(part => part.instanceId), connectionIds: [], locked: false, structuralScore: 0 })),
     dimensions: vehicleDimensions(parts), inventoryUsage: [...usage.values()], designNotes: [
-      '使用两层交错 Plate 底盘跨接前后 18975 轮架，连接依据真实凸点位置；中间填充砖补齐轮架凹台。',
+      `使用两层交错 Plate 底盘跨接前后 ${assembly.holderPart} 轮架，连接依据真实凸点位置；填充结构来自轮组注册表的安装要求。`,
       '分配库存时先预留承重车顶与跨接尾翼板，避免装饰消耗掉关键结构件。',
-      '四轮采用 18975 → 3673 无摩擦 Pin → 66727 轮毂 → 18977 轮胎；不是将轮胎贴在车身侧面。',
+      `四轮由兼容注册表选择「${assembly.name}」：${[assembly.holderPart, assembly.axlePart, assembly.wheelPart, assembly.tyrePart].filter(Boolean).join(' → ')}；半径 ${assembly.wheelRadius} stud，轴宽 ${assembly.wheelWidth} stud。`,
       '宽体侧裙仅放在前后车轮之间，轮位处保留完整轮胎旋转空间；车宽约 8 stud。',
       `实际使用 ${curvedDetails} 件已支持曲面零件；所有装饰均来自库存，未使用尚未校准的挡风玻璃或轮拱。`,
       `采用 ${roofBase === 15 ? '双层砖高车柱' : roofBase === 12 ? '单层砖低车柱' : '单板低矮座舱支柱'}；车顶实际最高 ${actualRoofHeight} plate，车顶 / 侧裙增加 ${roofTiles} / ${sideTiles} 件库存饰面。`,

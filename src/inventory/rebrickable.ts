@@ -1,6 +1,8 @@
+import { randomUUID } from 'node:crypto';
 import { getPartDefinition } from '../lego/catalog.js';
-import type { PartInventoryItem, SetInventory } from '../types/index.js';
+import type { PartInventoryItem, RawInventoryItem, SetInventory } from '../types/index.js';
 import { InventoryError, normalizeSetNumber, type SetInventoryProvider } from './provider.js';
+import { saveInventorySnapshot } from './snapshot.js';
 
 type JsonObject = Record<string, unknown>;
 const BASE = 'https://rebrickable.com';
@@ -18,6 +20,8 @@ function invalidData(): never {
 interface RebrickableOptions {
   fetch?: typeof globalThis.fetch;
   timeoutMs?: number;
+  /** Server-only snapshot root; never included in returned inventories. */
+  dataDir?: string;
 }
 
 /** Only the server instantiates this class; the API key never enters client JSON. */
@@ -25,11 +29,13 @@ export class RebrickableInventoryProvider implements SetInventoryProvider {
   readonly source = 'rebrickable' as const;
   private readonly fetcher: typeof globalThis.fetch;
   private readonly timeoutMs: number;
+  private readonly dataDir?: string;
 
   constructor(private readonly apiKey: string, options: RebrickableOptions = {}) {
-    if (!apiKey.trim()) throw new InventoryError('请在服务端配置 REBRICKABLE_API_KEY。', 'MISSING_API_KEY', 503);
+    if (!apiKey.trim()) throw new InventoryError('Rebrickable API Key 未配置。', 'MISSING_API_KEY', 503);
     this.fetcher = options.fetch ?? globalThis.fetch;
     this.timeoutMs = options.timeoutMs ?? 10_000;
+    this.dataDir = options.dataDir;
   }
 
   private async request(url: URL): Promise<unknown> {
@@ -66,8 +72,12 @@ export class RebrickableInventoryProvider implements SetInventoryProvider {
     let next: URL | null = new URL(`${partsPath}?page_size=1000&inc_minifig_parts=1`, BASE);
     const visited = new Set<string>();
     const inventory = new Map<string, PartInventoryItem>();
+    const spareInventory = new Map<string, PartInventoryItem>();
+    const rawItems: RawInventoryItem[] = [];
+    const pages: JsonObject[] = [];
     let rows = 0;
     let totalQuantity = 0;
+    let spareQuantity = 0;
     let expectedCount: number | undefined;
     for (let page = 0; next !== null; page++) {
       if (page >= MAX_PAGES || visited.has(next.href)) {
@@ -78,20 +88,29 @@ export class RebrickableInventoryProvider implements SetInventoryProvider {
       if (!object(data) || !Array.isArray(data.results) || (data.next !== null && typeof data.next !== 'string') || !Number.isSafeInteger(data.count) || Number(data.count) < 0) invalidData();
       if (expectedCount === undefined) expectedCount = Number(data.count);
       if (expectedCount !== data.count || expectedCount > MAX_ROWS) invalidData();
-      for (const row of data.results) {
+      pages.push(data);
+      for (const [rowIndex, row] of data.results.entries()) {
         if (!object(row) || !object(row.part) || !object(row.color)) invalidData();
         const { part, color } = row;
-        if (typeof part.part_num !== 'string' || part.part_num.length > 100 || typeof part.name !== 'string' || typeof color.name !== 'string' || !Number.isSafeInteger(color.id) || !Number.isSafeInteger(row.quantity) || Number(row.quantity) < 1) invalidData();
+        if (typeof part.part_num !== 'string' || !part.part_num.length || part.part_num.length > 100 || typeof part.name !== 'string' || typeof color.name !== 'string' || !Number.isSafeInteger(color.id) || Number(color.id) < 0 || !Number.isSafeInteger(row.quantity) || Number(row.quantity) < 1) invalidData();
+        if (part.part_cat_id !== undefined && part.part_cat_id !== null && (!Number.isSafeInteger(part.part_cat_id) || Number(part.part_cat_id) < 0)) invalidData();
+        if (row.is_spare !== undefined && row.is_spare !== null && typeof row.is_spare !== 'boolean') invalidData();
+        const isSpare = typeof row.is_spare === 'boolean' ? row.is_spare : null;
+        const partCategoryId = typeof part.part_cat_id === 'number' ? part.part_cat_id : null;
+        const normalizedColor = { id: Number(color.id), name: color.name.slice(0, 100), hex: typeof color.rgb === 'string' && /^[a-fA-F0-9]{6}$/.test(color.rgb) ? `#${color.rgb.toUpperCase()}` : '#A0A5A9' };
         rows++;
         totalQuantity += Number(row.quantity);
+        if (isSpare) spareQuantity += Number(row.quantity);
         if (rows > MAX_ROWS || totalQuantity > MAX_QUANTITY) invalidData();
+        rawItems.push({ partId: part.part_num, name: part.name, partCategoryId, color: { ...normalizedColor, name: color.name }, quantity: Number(row.quantity), isSpare, page: page + 1, row: rowIndex + 1 });
         const definition = getPartDefinition(part.part_num);
         const key = `${part.part_num}:${color.id}`;
-        const existing = inventory.get(key);
+        const destination = isSpare ? spareInventory : inventory;
+        const existing = destination.get(key);
         if (existing) existing.quantityAvailable += Number(row.quantity);
-        else inventory.set(key, {
+        else destination.set(key, {
           partId: part.part_num, name: part.name.slice(0, 200), category: definition?.category ?? 'Unsupported',
-          color: { id: Number(color.id), name: color.name.slice(0, 100), hex: typeof color.rgb === 'string' && /^[a-fA-F0-9]{6}$/.test(color.rgb) ? `#${color.rgb.toUpperCase()}` : '#A0A5A9' },
+          color: normalizedColor, partCategoryId,
           quantityAvailable: Number(row.quantity), quantityUsed: 0,
           supported: Boolean(definition), dimensions: definition ? { ...definition.dimensions } : { x: 1, y: 1, z: 1 },
         });
@@ -107,11 +126,27 @@ export class RebrickableInventoryProvider implements SetInventoryProvider {
       }
     }
     if (rows !== expectedCount) invalidData();
+    for (const [key, item] of inventory) {
+      item.quantitySpare = spareInventory.get(key)?.quantityAvailable ?? 0;
+      item.quantityTotal = item.quantityAvailable + item.quantitySpare;
+    }
+    for (const [key, item] of spareInventory) {
+      item.quantitySpare = item.quantityAvailable;
+      item.quantityTotal = item.quantityAvailable + (inventory.get(key)?.quantityAvailable ?? 0);
+    }
     const items = [...inventory.values()];
     const unsupported = items.filter(item => !item.supported).reduce((sum, item) => sum + item.quantityAvailable, 0);
-    return {
+    const warnings = unsupported ? [`${unsupported} 个零件暂未收录到 V0.1 几何目录，仅展示且不会用于生成。未支持零件的尺寸为占位值。`] : [];
+    warnings.push(`生成库存不包含备用零件（spares）；另行保留 ${spareQuantity} 件备用零件供溯源。`);
+    if (rawItems.some(item => item.isSpare === null)) warnings.push('部分上游库存行未提供 spare 标记，已按非备用库存保留；原始快照中标记为未知。');
+    const result: SetInventory = {
       setNumber, name: metadata.name.slice(0, 200), source: this.source, sourceLabel: 'Rebrickable · 实时套装库存', items,
-      warnings: unsupported ? [`${unsupported} 个零件暂未收录到 V0.1 几何目录，仅展示且不会用于生成。未支持零件的尺寸为占位值。`] : [],
+      warnings, snapshotId: randomUUID(), fetchedAt: new Date().toISOString(), sparePolicy: 'excluded',
+      rawItems, spareItems: [...spareInventory.values()],
+      quantitySummary: { regularQuantity: totalQuantity - spareQuantity, spareQuantity, totalQuantity },
+      ...(Number.isSafeInteger(metadata.theme_id) && Number(metadata.theme_id) >= 0 ? { themeId: Number(metadata.theme_id) } : {}),
     };
+    await saveInventorySnapshot(result, { metadata, pages }, this.dataDir);
+    return result;
   }
 }

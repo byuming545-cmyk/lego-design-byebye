@@ -2,7 +2,8 @@ import type { ValidationResult } from '../types/index.js';
 import { getSpeedPartDefinition } from './catalog.js';
 import { deriveConnections, graphComponents, worldConnectionPoints } from './connections.js';
 import { partBoundsLdu, primitiveBounds, primitivesIntersect, SPEED_EPSILON, vehicleDimensions, worldHoles, worldPrimitives, type WorldCylinder, type WorldPrimitive } from './geometry.js';
-import type { SpeedInventory, SpeedPlacedPart, StructuralValidation, VehicleModel, VehicleModuleId, VehicleValidation, WheelValidation } from './types.js';
+import { generatableWheelAssemblies, wheelAssemblyInterface, wheelBearingAssembly, type GeneratableWheelAssemblyDefinition } from './wheelAssemblies.js';
+import type { SpeedInventory, SpeedPlacedPart, SpeedVector, StructuralValidation, VehicleModel, VehicleModuleId, VehicleValidation, WheelValidation } from './types.js';
 
 export const validationResult = (errors: string[], warnings: string[] = []): ValidationResult => ({ valid: errors.length === 0, errors: [...new Set(errors)], warnings: [...new Set(warnings)] });
 const sorted = (values: string[]) => [...values].sort();
@@ -43,10 +44,10 @@ export { SpeedConnectionValidator as ConnectionValidator };
 
 /** Only the three source-verified, exactly seated mechanical interfaces may nest. */
 export function verifiedMechanicalNesting(a: SpeedPlacedPart, b: SpeedPlacedPart): boolean {
-  const pair = [a.partId, b.partId].sort().join(':');
-  if (!['18975:3673', '3673:66727', '18977:66727'].includes(pair)) return false;
+  const registered = wheelAssemblyInterface(a.partId, b.partId);
+  if (!registered?.verifiedNesting) return false;
   const edges = deriveConnections([a, b]);
-  if (!edges.some(edge => edge.connectionType === 'wheel-axle' || edge.connectionType === 'tyre-fit')) return false;
+  if (!edges.some(edge => edge.connectionType === registered.connectionType && edge.allowsRotation === registered.allowsRotation)) return false;
   const first = worldPrimitives(a).find(shape => shape.kind === 'cylinder');
   const second = worldPrimitives(b).find(shape => shape.kind === 'cylinder');
   if (first?.kind === 'cylinder' && second?.kind === 'cylinder') {
@@ -55,7 +56,7 @@ export function verifiedMechanicalNesting(a: SpeedPlacedPart, b: SpeedPlacedPart
   }
   // 18975 has compound solid boxes; its circular bore is an explicitly verified
   // interface cutout. Exact pin seating above prevents a generic box exception.
-  return pair === '18975:3673';
+  return generatableWheelAssemblies().some(assembly => assembly.holderPart === a.partId && assembly.axlePart === b.partId || assembly.holderPart === b.partId && assembly.axlePart === a.partId);
 }
 
 function coveredByBore(pin: SpeedPlacedPart, shaft: WorldCylinder, female: SpeedPlacedPart, material: WorldPrimitive): boolean {
@@ -108,40 +109,65 @@ export class WheelValidator {
     const wheels = model.parts.filter(part => getSpeedPartDefinition(part.partId)?.category === 'Wheel');
     const tyres = model.parts.filter(part => getSpeedPartDefinition(part.partId)?.category === 'Tyre');
     const edges = deriveConnections(model.parts);
-    const neighbors = (id: string, type: 'wheel-axle' | 'tyre-fit') => edges.filter(edge => edge.connectionType === type && (edge.partA === id || edge.partB === id)).map(edge => ({ edge, part: model.parts.find(part => part.instanceId === (edge.partA === id ? edge.partB : edge.partA))! }));
+    const byId = new Map(model.parts.map(part => [part.instanceId, part]));
+    const tyreAssemblies = new Map<string, GeneratableWheelAssemblyDefinition>();
     let axleConnections = 0, groundedWheels = 0;
     if (wheels.length !== 4 || tyres.length !== 4) errors.push(`需要恰好四个轮毂和四个轮胎，当前为 ${wheels.length} / ${tyres.length}。`);
     for (const wheel of wheels) {
-      const fittedTyres = neighbors(wheel.instanceId, 'tyre-fit').filter(item => item.part.partId === '18977');
-      const axles = neighbors(wheel.instanceId, 'wheel-axle').filter(item => item.part.partId === '3673' && item.edge.allowsRotation);
-      if (wheel.partId !== '66727' || fittedTyres.length !== 1 || axles.length !== 1) errors.push(`${wheel.instanceId} 缺少已验证的独立轮胎或可旋转 Technic Pin 连接。`);
-      else {
-        const pin = axles[0].part;
-        const holders = neighbors(pin.instanceId, 'wheel-axle').filter(item => item.part.partId === '18975');
-        if (holders.length !== 1) errors.push(`${wheel.instanceId} 的 Pin 没有正确插入 18975 轮架。`);
-        else axleConnections++;
-      }
-      const tyre = fittedTyres[0]?.part;
+      const definitions = generatableWheelAssemblies().filter(assembly => assembly.wheelPart === wheel.partId && assembly.compatibleWheels.includes(wheel.partId));
+      if (!definitions.length) { errors.push(`${wheel.instanceId} 的轮毂尚无可生成的兼容轮组定义。`); continue; }
+      const candidates = definitions.map(assembly => {
+        const members = new Set<string>(), holders = new Set<string>(), queue = [wheel.instanceId];
+        const assemblyEdges = edges.filter(edge => assembly.interfaces.some(iface => {
+          const a = byId.get(edge.partA)?.partId, b = byId.get(edge.partB)?.partId;
+          return (iface.partA === a && iface.partB === b || iface.partA === b && iface.partB === a) && edge.connectionType === iface.connectionType && edge.allowsRotation === iface.allowsRotation;
+        }));
+        // Traverse only registered interfaces, stopping at the fixed holder so
+        // the opposite wheel never joins this independent bearing.
+        while (queue.length) {
+          const id = queue.pop()!, part = byId.get(id)!;
+          if (part.partId === assembly.holderPart) { holders.add(id); continue; }
+          if (members.has(id)) continue;
+          members.add(id);
+          for (const edge of assemblyEdges) {
+            if (edge.partA === id) queue.push(edge.partB);
+            else if (edge.partB === id) queue.push(edge.partA);
+          }
+        }
+        const fitted = [...members].map(id => byId.get(id)!).filter(part => assembly.compatibleTyres.includes(part.partId));
+        return { assembly, fitted, valid: holders.size === 1 && fitted.length === 1 && Boolean(wheelBearingAssembly([...members].map(id => byId.get(id)!), assembly.id)) };
+      });
+      const matched = candidates.find(candidate => candidate.valid) ?? candidates[0];
+      if (!matched.valid) errors.push(`${wheel.instanceId} 缺少「${definitions.map(assembly => assembly.name).join(' / ')}」要求的独立轮胎、轮轴或合法轮架连接。`);
+      else axleConnections++;
+      const tyre = matched.fitted[0];
+      if (tyre) tyreAssemblies.set(tyre.instanceId, matched.assembly);
       if (tyre && Math.abs(partBoundsLdu(tyre).min.z) < SPEED_EPSILON) groundedWheels++;
     }
     const cylinders = tyres.map(part => worldPrimitives(part).find(shape => shape.kind === 'cylinder')).filter(shape => shape !== undefined);
-    if (cylinders.some(shape => shape.kind !== 'cylinder' || shape.axis !== 'x')) errors.push('轮轴必须沿车辆横向 x 轴安装。');
+    if (tyres.some(tyre => worldPrimitives(tyre).some(shape => shape.kind === 'cylinder' && shape.axis !== (tyreAssemblies.get(tyre.instanceId)?.rotationAxis ?? 'x')))) errors.push('轮轴必须沿注册表要求的车辆横向 x 轴安装。');
     if (groundedWheels !== 4) errors.push(`四个轮胎须在同一水平面落地，当前接地 ${groundedWheels} 个。`);
     const centers = cylinders.filter(shape => shape.kind === 'cylinder').map(shape => shape.center);
     const unique = (values: number[]) => [...new Set(values.map(value => Math.round(value / SPEED_EPSILON) * SPEED_EPSILON))].sort((a, b) => a - b);
     const xs = unique(centers.map(center => center.x)), ys = unique(centers.map(center => center.y)), zs = unique(centers.map(center => center.z));
     if (xs.length !== 2 || ys.length !== 2 || zs.length !== 1 || new Set(centers.map(c => `${c.x}:${c.y}`)).size !== 4) errors.push('四个车轮的位置没有形成等高的前后双轴矩形。');
+    const centerlineLdu = model.parameters.width * 10;
+    if (!Number.isFinite(centerlineLdu) || xs.length === 2 && Math.abs((xs[0] + xs[1]) / 2 - centerlineLdu) > SPEED_EPSILON) errors.push('左右车轮未围绕车辆设计中心线对称。');
     if (xs.length === 2 && (xs[1] - xs[0] < 90 || xs[1] - xs[0] > 160 || Math.abs((xs[1] - xs[0]) / 20 - model.parameters.track) > SPEED_EPSILON)) errors.push('左右轮距不合理或与设计参数不一致。');
     if (ys.length === 2 && (ys[1] - ys[0] < 120 || ys[1] - ys[0] > 360 || Math.abs((ys[1] - ys[0]) / 20 - model.parameters.wheelbase) > SPEED_EPSILON)) errors.push('前后轴距不合理或与设计参数不一致。');
     for (const tyre of tyres) for (const other of model.parts) {
-      if (tyre === other || !speedPartsCollide(tyre, other)) continue;
+      if (tyre === other) continue;
+      const clearance = tyreAssemblies.get(tyre.instanceId)?.minimumClearanceLdu ?? 0;
+      const materialCollision = speedPartsCollide(tyre, other);
+      const marginCollision = clearance > 0 && !verifiedMechanicalNesting(tyre, other) && worldPrimitives(tyre).some(shape => shape.kind === 'cylinder' && worldPrimitives(other).some(body => primitivesIntersect({ ...shape, radius: shape.radius + clearance, innerRadius: Math.max(0, shape.innerRadius - clearance), halfWidth: shape.halfWidth + clearance }, body)));
+      if (!materialCollision && !marginCollision) continue;
       collisions.push(`${tyre.instanceId} 的旋转包络与 ${other.instanceId} 碰撞。`);
     }
     for (const part of model.parts.filter(part => !['Wheel', 'Tyre'].includes(getSpeedPartDefinition(part.partId)?.category ?? ''))) {
       if (partBoundsLdu(part).min.z < 1 - SPEED_EPSILON) errors.push(`${part.instanceId} 缺少基本离地间隙。`);
     }
     errors.push(...collisions);
-    return { ...validationResult(errors, ['轮组按已验证 LDraw 接口及旋转包络筛查；尚未进行实物摩擦、载荷或制造公差测试。']), wheelCount: wheels.length, groundedWheels, collisions: [...new Set(collisions)], rotationalClearance: collisions.length === 0 && wheels.length === 4 && tyres.length === 4 && axleConnections === 4, axleConnections };
+    return { ...validationResult(errors, ['轮组按注册表中的 LDraw 接口及轴对称圆环旋转包络筛查；相同外形的旋转不会改变包络，尚不模拟花纹、形变、实物摩擦、载荷或制造公差。']), wheelCount: wheels.length, groundedWheels, collisions: [...new Set(collisions)], rotationalClearance: collisions.length === 0 && wheels.length === 4 && tyres.length === 4 && axleConnections === 4, axleConnections };
   }
 }
 
@@ -177,7 +203,76 @@ export class SpeedInventoryValidator {
   }
 }
 
-const decorative = (part: SpeedPlacedPart): boolean => ['Tile', 'Slope', 'CurvedSlope', 'CurvedTile', 'Grille', 'RoundTile', 'Light'].includes(getSpeedPartDefinition(part.partId)?.category ?? '');
+/** A role is a support heuristic, not permission to carry arbitrary payloads. */
+export function structuralConnectionRole(part: SpeedPlacedPart): 'structural' | 'decorative' {
+  return ['Tile', 'Slope', 'CurvedSlope', 'CurvedTile', 'Grille', 'RoundTile', 'Light'].includes(getSpeedPartDefinition(part.partId)?.category ?? '') ? 'decorative' : 'structural';
+}
+const decorative = (part: SpeedPlacedPart): boolean => structuralConnectionRole(part) === 'decorative';
+
+export interface StructuralSupportAssessment {
+  role: 'structural' | 'decorative';
+  anchorCount: number;
+  extentLdu: number;
+  spreadLdu: number;
+  longAxisSpreadLdu: number;
+  issue: 'unanchored-decoration' | 'few-anchors' | 'narrow-support' | 'concentrated-long-support' | null;
+  score: number;
+}
+
+/** Uses spatial support coverage, permitting legitimate small single-stud details. */
+export function evaluateStructuralSupport(parts: readonly SpeedPlacedPart[], anchors: readonly SpeedVector[]): StructuralSupportAssessment {
+  const boxes = parts.map(partBoundsLdu), axes = ['x', 'y', 'z'] as const;
+  const lengths = axes.map(axis => boxes.length ? Math.max(...boxes.map(box => box.max[axis])) - Math.min(...boxes.map(box => box.min[axis])) : 0);
+  const extentLdu = Math.max(...lengths), longAxis = axes[lengths.indexOf(extentLdu)];
+  const unique = [...new Map(anchors.map(point => [`${Math.round(point.x * 1000)}:${Math.round(point.y * 1000)}:${Math.round(point.z * 1000)}`, point])).values()];
+  let spreadLdu = 0;
+  for (const a of unique) for (const b of unique) spreadLdu = Math.max(spreadLdu, Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z));
+  const longAxisSpreadLdu = unique.length ? Math.max(...unique.map(point => point[longAxis])) - Math.min(...unique.map(point => point[longAxis])) : 0;
+  const role = parts.length > 0 && parts.every(decorative) ? 'decorative' : 'structural';
+  let issue: StructuralSupportAssessment['issue'] = null;
+  if (role === 'decorative' && parts.length <= 2 && extentLdu <= 40 + SPEED_EPSILON) {
+    if (!unique.length) issue = 'unanchored-decoration';
+  } else if (unique.length < 2 || spreadLdu < 20 - SPEED_EPSILON) issue = 'few-anchors';
+  else if (extentLdu >= 120 - SPEED_EPSILON && spreadLdu < 40 - SPEED_EPSILON) issue = 'narrow-support';
+  else if (extentLdu >= 200 - SPEED_EPSILON && longAxisSpreadLdu < extentLdu * 0.4 - SPEED_EPSILON) issue = 'concentrated-long-support';
+  return { role, anchorCount: unique.length, extentLdu, spreadLdu, longAxisSpreadLdu, issue, score: issue ? issue === 'few-anchors' ? 30 : issue === 'unanchored-decoration' ? 0 : 50 : unique.length >= 4 || role === 'decorative' ? 100 : 90 };
+}
+
+/** Longitudinal load path and real stud bonds across same-course plate/brick seams. */
+export function evaluateChassisContinuity(chassis: readonly SpeedPlacedPart[]): ValidationResult {
+  const errors: string[] = [];
+  const rails = chassis.filter(part => ['Plate', 'Brick', 'ModifiedPlate', 'ModifiedBrick'].includes(getSpeedPartDefinition(part.partId)?.category ?? ''));
+  if (!rails.length) return validationResult(['底盘缺少可形成纵向承重路径的 Plate / Brick。']);
+  const edges = deriveConnections(rails).filter(edge => !edge.allowsRotation), byId = new Map(rails.map(part => [part.instanceId, part]));
+  const wheelStations = chassis.filter(part => getSpeedPartDefinition(part.partId)?.category === 'WheelHolder').flatMap(worldConnectionPoints).filter(point => point.type === 'wheelSocket' || point.type === 'wheelPin').map(point => point.positionLdu.y);
+  if (wheelStations.length) {
+    const front = Math.min(...wheelStations), rear = Math.max(...wheelStations);
+    const spansAxles = graphComponents(rails, edges).some(component => {
+      const boxes = component.map(id => partBoundsLdu(byId.get(id)!));
+      return Math.min(...boxes.map(box => box.min.y)) <= front + SPEED_EPSILON && Math.max(...boxes.map(box => box.max.y)) >= rear - SPEED_EPSILON;
+    });
+    if (!spansAxles) errors.push('底盘 Plate / Brick 自身没有形成跨越前后轮架的连续纵向刚性路径。');
+  }
+  const boxes = new Map(rails.map(part => [part.instanceId, partBoundsLdu(part)]));
+  const seams: Array<{ y: number; front: string; rear: string }> = [];
+  for (const a of rails) for (const b of rails) {
+    if (a === b) continue;
+    const first = boxes.get(a.instanceId)!, second = boxes.get(b.instanceId)!;
+    if (Math.abs(first.min.z - second.min.z) < SPEED_EPSILON && Math.abs(first.max.z - second.max.z) < SPEED_EPSILON && Math.abs(first.max.y - second.min.y) < SPEED_EPSILON && Math.min(first.max.x, second.max.x) - Math.max(first.min.x, second.min.x) > SPEED_EPSILON) seams.push({ y: first.max.y, front: a.instanceId, rear: b.instanceId });
+  }
+  for (const seam of seams) {
+    const bonded = rails.some(bridge => {
+      const box = boxes.get(bridge.instanceId)!;
+      if (box.min.y > seam.y - 10 + SPEED_EPSILON || box.max.y < seam.y + 10 - SPEED_EPSILON) return false;
+      const points = worldConnectionPoints(bridge), contacts = edges.filter(edge => (edge.connectionType === 'stud' || edge.connectionType === 'side-stud') && (edge.partA === bridge.instanceId || edge.partB === bridge.instanceId)).map(edge => ({ other: edge.partA === bridge.instanceId ? edge.partB : edge.partA, y: points.find(point => point.id === (edge.partA === bridge.instanceId ? edge.connectionPointA : edge.connectionPointB))!.positionLdu.y }));
+      // A bonded seam in another rail or another course cannot stand in for
+      // connections to the two actual pieces meeting at this seam.
+      return contacts.some(point => point.other === seam.front && point.y <= seam.y - 10 + SPEED_EPSILON) && contacts.some(point => point.other === seam.rear && point.y >= seam.y + 10 - SPEED_EPSILON);
+    });
+    if (!bonded) errors.push(`底盘在纵向 ${Number((seam.y / 20).toFixed(2))} stud 的 Plate / Brick 接缝缺少两侧均有真实连接的错缝跨接件。`);
+  }
+  return validationResult(errors);
+}
 
 export class StructuralValidator {
   validate(model: VehicleModel): StructuralValidation {
@@ -185,6 +280,7 @@ export class StructuralValidator {
     const moduleScores: StructuralValidation['moduleScores'] = [];
     const chassis = model.parts.filter(part => part.moduleId === 'chassis'), chassisIds = new Set(chassis.map(part => part.instanceId));
     if (!chassis.length || graphComponents(chassis, rigidEdges.filter(edge => chassisIds.has(edge.partA) && chassisIds.has(edge.partB))).length !== 1) errors.push('承重底盘本身没有形成刚性连续连接网络，不能依靠自由旋转轴承连接车架。');
+    errors.push(...evaluateChassisContinuity(chassis).errors);
     const moduleIds = new Set<VehicleModuleId>();
     for (const module of model.modules) {
       if (moduleIds.has(module.id)) errors.push(`模块 ${module.id} 重复。`);
@@ -202,10 +298,16 @@ export class StructuralValidator {
       for (const component of components) {
         const componentIds = new Set(component), componentParts = members.filter(part => componentIds.has(part.instanceId));
         if (module.id === 'leftWheelModule' || module.id === 'rightWheelModule') {
-          if (componentParts.some(part => !['3673', '66727', '18977'].includes(part.partId)) || componentParts.length !== 3 || !['3673', '66727', '18977'].every(id => componentParts.filter(part => part.partId === id).length === 1)) {
-            errors.push(`${module.id} 的轴承例外仅适用于独立 Pin / 轮毂 / 轮胎三件总成，不能承载额外结构件。`); score = 0; continue;
+          const assemblies = generatableWheelAssemblies().filter(assembly => wheelBearingAssembly(componentParts, assembly.id));
+          if (!assemblies.length) {
+            errors.push(`${module.id} 的轴承例外仅适用于注册表中独立的轮轴 / 轮毂 / 轮胎总成，不能承载额外结构件。`); score = 0; continue;
           }
-          const bearing = edges.some(edge => edge.connectionType === 'wheel-axle' && edge.allowsRotation && (componentIds.has(edge.partA) && anchoredOutside.has(edge.partB) || componentIds.has(edge.partB) && anchoredOutside.has(edge.partA)));
+          const bearing = assemblies.some(assembly => edges.some(edge => {
+            const insideId = componentIds.has(edge.partA) && anchoredOutside.has(edge.partB) ? edge.partA : componentIds.has(edge.partB) && anchoredOutside.has(edge.partA) ? edge.partB : undefined;
+            if (!insideId) return false;
+            const inside = model.parts.find(part => part.instanceId === insideId)!, outside = model.parts.find(part => part.instanceId === (insideId === edge.partA ? edge.partB : edge.partA))!;
+            return outside.partId === assembly.holderPart && assembly.interfaces.some(iface => (iface.partA === inside.partId && iface.partB === outside.partId || iface.partA === outside.partId && iface.partB === inside.partId) && iface.connectionType === edge.connectionType && iface.allowsRotation && edge.allowsRotation);
+          }));
           if (!bearing) { errors.push(`${module.id} 的独立轮组没有连接到已固定的轮架轴承。`); score = 0; }
           continue;
         }
@@ -218,18 +320,12 @@ export class StructuralValidator {
           const p = connector.positionLdu; anchors.set(`${Math.round(p.x * 1000)}:${Math.round(p.y * 1000)}:${Math.round(p.z * 1000)}`, p);
         }
         totalAnchors += anchors.size;
-        const boxes = componentParts.map(partBoundsLdu);
-        const extent = Math.max(...(['x', 'y', 'z'] as const).map(axis => Math.max(...boxes.map(box => box.max[axis])) - Math.min(...boxes.map(box => box.min[axis]))));
-        if (componentParts.every(decorative) && module.id === 'details' && componentParts.length <= 2 && extent <= 40 + SPEED_EPSILON) {
-          if (!anchors.size) { errors.push('小型细节子组件没有合法连接。'); score = 0; }
-          continue;
-        }
-        const points = [...anchors.values()];
-        let spread = 0;
-        for (const a of points) for (const b of points) spread = Math.max(spread, Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z));
-        if (anchors.size < 2 || spread < 20 - SPEED_EPSILON) { errors.push(`${module.id} 内的独立子组件 ${component[0]} 缺少至少两个相距 1 stud 的承重连接点。`); score = Math.min(score, 30); }
-        else if (extent >= 120 - SPEED_EPSILON && spread < 40 - SPEED_EPSILON) { errors.push(`${module.id} 的长子组件缺少分散支撑，锚点距离至少应为 2 stud。`); score = Math.min(score, 50); }
-        else score = Math.min(score, anchors.size >= 4 ? 100 : 90);
+        const support = evaluateStructuralSupport(componentParts, [...anchors.values()]);
+        if (support.issue === 'unanchored-decoration') errors.push('小型细节子组件没有合法连接。');
+        else if (support.issue === 'few-anchors') errors.push(`${module.id} 内的独立子组件 ${component[0]} 缺少至少两个相距 1 stud 的承重连接点。`);
+        else if (support.issue === 'narrow-support') errors.push(`${module.id} 的长子组件缺少分散支撑，锚点距离至少应为 2 stud。`);
+        else if (support.issue === 'concentrated-long-support') errors.push(`${module.id} 的长主梁支撑过于集中，沿主跨度的锚点覆盖不足 40%。`);
+        score = Math.min(score, support.score);
       }
       moduleScores.push({ moduleId: module.id, score, anchorCount: totalAnchors });
     }
@@ -255,7 +351,8 @@ export class StructuralValidator {
       const edge = edges[bridgeIndex];
       if (edge.connectionType !== 'stud' && edge.connectionType !== 'side-stud') continue;
       const separated = graphComponents(model.parts, edges.filter((edge, index) => !edge.allowsRotation && index !== bridgeIndex)).filter(component => !component.includes(root));
-      const payload = model.parts.filter(part => separated.some(component => component.includes(part.instanceId)) && !['3673', '66727', '18977'].includes(part.partId));
+      const bearingParts = new Set(generatableWheelAssemblies().flatMap(assembly => assembly.rotatingParts.map(row => row.partId)));
+      const payload = model.parts.filter(part => separated.some(component => component.includes(part.instanceId)) && !bearingParts.has(part.partId));
       const structural = payload.filter(part => !decorative(part));
       const boxes = payload.map(partBoundsLdu);
       const payloadExtent = boxes.length ? Math.max(...(['x', 'y', 'z'] as const).map(axis => Math.max(...boxes.map(box => box.max[axis])) - Math.min(...boxes.map(box => box.min[axis])))) : 0;

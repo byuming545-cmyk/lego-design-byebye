@@ -1,4 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { randomUUID } from 'node:crypto';
 
 export default defineConfig({
   testDir: "./tests/e2e",
@@ -22,6 +25,6 @@ export default defineConfig({
     url: "http://127.0.0.1:5173",
     reuseExistingServer: !process.env.CI,
     timeout: 60000,
-    env: { INVENTORY_PROVIDER: "mock" },
+    env: { INVENTORY_PROVIDER: "mock", BRICKLAB_DATA_DIR: path.join(tmpdir(), `bricklab-e2e-${randomUUID()}`) },
   },
 });

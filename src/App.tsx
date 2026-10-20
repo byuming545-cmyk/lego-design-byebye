@@ -331,7 +331,7 @@ export default function App() {
           </button>
         </nav>
         <button className="version-button" onClick={() => setAboutOpen(true)}>
-          <span className="status-dot" /> {area === 'speed' ? 'V0.2' : 'V0.1'}{" "}
+          <span className="status-dot" /> {area === 'speed' ? 'V0.2.1' : 'V0.1'}{" "}
           <span className="version-label">· 创意实验中</span>
           <ArrowUpRight size={14} />
         </button>
@@ -999,7 +999,7 @@ export default function App() {
         <span className="brand-icon">
           <Box size={26} />
         </span>
-        <div className="eyebrow">BRICKLAB · {area === 'speed' ? 'SPEED CREATIVE V0.2' : 'V0.1'}</div>
+        <div className="eyebrow">BRICKLAB · {area === 'speed' ? 'SPEED CREATIVE V0.2.1 · VALIDATION EDITION' : 'V0.1'}</div>
         <h2>
           让已有的积木，
           <br />
@@ -1019,7 +1019,7 @@ export default function App() {
         <h3>关于拼搭校验</h3>
         <p>
           {area === 'speed'
-            ? '车辆检查库存、显式连接图、实体碰撞、轮轴安装、轮胎间隙及规则式结构支撑。这些检查尚未经过实物拼搭、摩擦或承重测试。'
+            ? '自动校验检查库存、连接、碰撞、轮组与规则式结构支撑。它不证明真实积木一定可以拼出。实拼反馈由用户实际尝试后自报，并关联具体模型版本；未实拼为 untested。'
             : '模型按 studs 网格与 plate 高度计算，检查库存、明显重叠和上下连接。简化外形与连接规则不代表完整 CAD 或物理稳定性认证。汽车是静态积木造型，特殊机械件暂不参与生成。'}
         </p>
         <button className="generate-button" onClick={() => setAboutOpen(false)}>

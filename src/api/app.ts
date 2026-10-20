@@ -3,7 +3,7 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { generateModel, GenerationError } from '../generators/index.js';
 import { createBuildSteps } from '../instructions/steps.js';
-import { createInventoryProvider, InventoryError, normalizeSetNumber, type SetInventoryProvider } from '../inventory/index.js';
+import { createInventoryProvider, InventoryError, MissingRebrickableInventoryProvider, normalizeSetNumber, type SetInventoryProvider } from '../inventory/index.js';
 import type { GenerationOptions, GenerationResult, SetInventory } from '../types/index.js';
 import { validateModel } from '../validators/index.js';
 import { createSpeedRouter } from '../speed/api.js';
@@ -48,11 +48,14 @@ export function createApp(options: AppOptions = {}) {
   const app = express();
   const provider = options.provider ?? createInventoryProvider();
   app.disable('x-powered-by');
-  app.use(express.json({ limit: '32kb', strict: true }));
+  const defaultJson = express.json({ limit: '32kb', strict: true });
+  const modelJson = express.json({ limit: '40mb', strict: true });
+  const feedbackJson = express.json({ limit: '1mb', strict: true });
+  app.use((request, response, next) => (request.path === '/api/speed/models/import' ? modelJson : /^\/api\/speed\/models\/[^/]+\/feedback$/.test(request.path) ? feedbackJson : defaultJson)(request, response, next));
   app.use('/api/speed', createSpeedRouter(provider));
 
   app.get('/api/health', (_request, response) => {
-    response.json({ status: 'ok', version: '0.2.0', provider: provider.source, demo: provider.source === 'mock' });
+    response.json({ status: 'ok', version: '0.2.1', provider: provider.source, demo: provider.source === 'mock', dataMode: provider instanceof MissingRebrickableInventoryProvider ? 'unconfigured' : provider.source === 'mock' ? 'mock' : 'real' });
   });
 
   app.get('/api/sets/:setNumber', async (request, response) => {

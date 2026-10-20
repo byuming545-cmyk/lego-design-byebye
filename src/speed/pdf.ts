@@ -86,6 +86,7 @@ export async function buildSpeedInstructionsPdf(candidate: VehicleCandidate, inv
     },
   };
   const options: InstructionsPdfOptions = {
+    jpegQuality: 0.7,
     editionLabel: 'Speed Creative · V0.2',
     creator: 'BRICKLAB Speed Creative V0.2',
     footerLabel: 'BRICKLAB  /  Speed Creative 拼搭说明书',

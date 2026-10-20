@@ -58,6 +58,10 @@ export interface InventorySource {
   name: string;
   source: 'mock' | 'rebrickable' | 'custom';
   quantity: number;
+  snapshotId?: string;
+  fetchedAt?: string;
+  sparePolicy?: 'excluded';
+  themeId?: number;
 }
 /** User-reported loose stock; geometry and support always come from the catalog. */
 export interface SpeedExtraPart {

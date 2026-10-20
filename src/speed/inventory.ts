@@ -1,6 +1,7 @@
 import { InventoryError, normalizeSetNumber } from '../inventory/provider.js';
 import type { PartColor, PartInventoryItem, SetInventory } from '../types/index.js';
 import { getSpeedPartDefinition } from './catalog.js';
+import { discoverAvailableWheelAssemblies } from './wheelAssemblies.js';
 import type { InventorySource, SpeedExtraPart, SpeedInventory, SpeedInventoryAnalysis, SpeedInventoryItem } from './types.js';
 
 export const SPEED_DEMO_SET_NUMBER = 'DEMO-SPEED';
@@ -112,6 +113,7 @@ function analyze(items: SpeedInventoryItem[]): SpeedInventoryAnalysis {
     return { ...family, tyres, holderSockets, directHolderPins, pins, mounts: directHolderPins + Math.min(holderSockets, pins) };
   });
   const ready = available.some(family => family.wheels >= 4 && family.tyres >= 4 && family.mounts >= 4);
+  if (ready && !discoverAvailableWheelAssemblies(items).some(assembly => assembly.available)) missingRequirements.push('接口库存数量齐全，但尚无已完成几何验证、可以生成的登记轮组。');
   const best = available.sort((a, b) =>
     (Math.min(b.wheels, b.tyres, b.mounts) - Math.min(a.wheels, a.tyres, a.mounts)) || b.wheels - a.wheels,
   )[0];
@@ -229,7 +231,10 @@ export function analyzeSpeedInventories(inventories: SetInventory[]): SpeedInven
     seen.add(setNumber);
     if (seen.size > MAX_SPEED_SETS) invalid(`一次最多分析 ${MAX_SPEED_SETS} 个不同套装。`, 'TOO_MANY_SPEED_SETS');
     const sourceId = `set:${setNumber}`;
-    sources.push({ sourceId, setNumber, name: inventory.name, source: inventory.source, quantity: 1 });
+    sources.push({ sourceId, setNumber, name: inventory.name, source: inventory.source, quantity: 1,
+      ...(inventory.snapshotId ? { snapshotId: inventory.snapshotId, fetchedAt: inventory.fetchedAt, sparePolicy: inventory.sparePolicy } : {}),
+      ...(inventory.themeId !== undefined ? { themeId: inventory.themeId } : {}),
+    });
     for (const warning of inventory.warnings ?? []) {
       // Those warnings concern the older 11-ID catalog and are stale after reclassification.
       if (!/V0\.1.*(?:目录|不参与生成)|未收录到 V0\.1/.test(warning)) warnings.add(`${setNumber}：${warning}`);

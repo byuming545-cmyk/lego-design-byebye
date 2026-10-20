@@ -19,6 +19,28 @@ export interface PartInventoryItem {
   quantityUsed: number;
   supported: boolean;
   dimensions: PartDimensions;
+  /** Rebrickable's category ID is preserved separately from our local geometry category. */
+  partCategoryId?: number | null;
+  /** Spare stock is traceable but excluded from quantityAvailable. */
+  quantitySpare?: number;
+  quantityTotal?: number;
+}
+/** One upstream row, retained before merging exact part / color identities. */
+export interface RawInventoryItem {
+  partId: string;
+  name: string;
+  partCategoryId: number | null;
+  color: PartColor;
+  quantity: number;
+  /** null means the upstream row did not supply spare information. */
+  isSpare: boolean | null;
+  page: number;
+  row: number;
+}
+export interface InventoryQuantitySummary {
+  regularQuantity: number;
+  spareQuantity: number;
+  totalQuantity: number;
 }
 export interface SetInventory {
   setNumber: string;
@@ -27,6 +49,14 @@ export interface SetInventory {
   sourceLabel: string;
   items: PartInventoryItem[];
   warnings: string[];
+  themeId?: number;
+  snapshotId?: string;
+  fetchedAt?: string;
+  sparePolicy?: 'excluded';
+  rawItems?: RawInventoryItem[];
+  /** A separate list, never consumed by generators through items. */
+  spareItems?: PartInventoryItem[];
+  quantitySummary?: InventoryQuantitySummary;
 }
 export type Rotation = 0 | 90 | 180 | 270;
 export interface PlacedPart {
