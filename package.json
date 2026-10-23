@@ -1,6 +1,6 @@
 {
   "name": "bricklab",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -21,7 +21,12 @@
     "benchmark:automotive": "tsx src/cli/automotive-benchmark.ts",
     "report:parts": "tsx src/cli/parts-foundation-report.ts",
     "verify:assembly": "tsx src/cli/assembly-verify.ts",
-    "smoke:assembly": "tsx src/cli/assembly-smoke.ts"
+    "smoke:assembly": "tsx src/cli/assembly-smoke.ts",
+    "astra:case": "tsx src/cli/astra-case.ts",
+    "astra:pack": "tsx src/cli/astra-pack.ts",
+    "astra:check": "tsx src/cli/astra-check.ts",
+    "audit:connections": "tsx src/cli/connection-parse-audit.ts",
+    "verify:interfaces": "tsx src/cli/assembly-deferred.ts"
   },
   "dependencies": {
     "@fontsource/noto-sans-sc": "^5.2.9",

@@ -52,6 +52,16 @@ export interface ConnectionImportIssue {
   file: string;
   line?: number;
   message: string;
+  /** Exact imported context, when the diagnostic belongs to a Shadow directive. */
+  directive?: string;
+  source?: ConnectionSourceFile;
+  transforms?: ConnectionTransformEvidence[];
+}
+
+export interface DiscardedConnectionIssue extends ConnectionImportIssue {
+  affectedConnectionIds: string[];
+  discardedBy: { file: string; line: number; directive: string };
+  reason: 'source-clear-removed-all-affected-points';
 }
 
 export interface ConnectionImportResult {
@@ -65,6 +75,10 @@ export interface ConnectionImportResult {
   issues: ConnectionImportIssue[];
   sourceFiles: ConnectionSourceFile[];
   license: 'CC-BY-SA-4.0';
+  /** Parser semantics have their own version even when the source bytes are unchanged. */
+  parserVersion?: string;
+  /** Retained audit evidence; these diagnostics concern source points explicitly cleared later. */
+  discardedIssues?: DiscardedConnectionIssue[];
 }
 
 export interface ConnectionLibrary {

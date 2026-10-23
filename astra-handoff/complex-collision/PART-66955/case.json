@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "caseId": "PART-66955",
+  "category": "HOLLOW_GEOMETRY",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "66955",
+      "ldrawId": "66955",
+      "identitySystem": "ldraw",
+      "sourceDigest": "0be52e4b91479da1dac5206984b9ba8dacecf6c68543a240ccf3d4f9e2e1a5a7",
+      "geometryHash": "b6648dfa721ff962961a0b8ce7130b23e6f92c615d5a46fb217154af6eeef2f2",
+      "connectionMetadataHash": "ab0ba7cf02ffb8e4965be971432449021b6240c8d260945ed91e5a182c41f675"
+    }
+  ],
+  "affectedPhysicalInterfaces": [
+    "b83624dccf23bf961e8ca3c6b369af380106c2303673628878b4376eec3e7927"
+  ],
+  "connections": [
+    {
+      "id": "p/stud3.dat:8:0",
+      "sourceId": "stud3",
+      "kind": "cylinder",
+      "family": "stud",
+      "gender": "M",
+      "position": [
+        0,
+        -20,
+        20
+      ],
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "orientation": [
+        -1,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 4,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "id": "stud3",
+        "gender": "M",
+        "caps": "one",
+        "secs": "R 4 4",
+        "scale": "YOnly"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "p/stud3.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+        "transforms": [
+          {
+            "file": "parts/66955.dat",
+            "line": 27,
+            "directive": "1 16 0 -20 20 -1 0 0 0 -1 0 0 0 1 stud3.dat",
+            "position": [
+              0,
+              -20,
+              20
+            ],
+            "matrix": [
+              -1,
+              0,
+              0,
+              0,
+              -1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": {
+    "rotation": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "translation": [
+      0,
+      0,
+      0
+    ]
+  },
+  "transformStatus": "SOURCE_IDENTITY",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "blocked",
+    "reasonCodes": [
+      "non-manifold-boundary"
+    ],
+    "details": {
+      "reason": "Native oriented boundary multiplicity is unresolved."
+    }
+  },
+  "replay": {
+    "kind": "proxy",
+    "partId": "66955"
+  },
+  "reproductionCommand": "npm run astra:case -- PART-66955",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/1-4chrd.dat",
+    "data/parts-foundation/ldraw/files/p/1-4cyls2.dat",
+    "data/parts-foundation/ldraw/files/p/1-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/1-4ndis.dat",
+    "data/parts-foundation/ldraw/files/p/2-4chrd.dat",
+    "data/parts-foundation/ldraw/files/p/2-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/2-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/2-4ndis.dat",
+    "data/parts-foundation/ldraw/files/p/3-16cyli.dat",
+    "data/parts-foundation/ldraw/files/p/3-16edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/4-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring3.dat",
+    "data/parts-foundation/ldraw/files/p/5-16edge.dat",
+    "data/parts-foundation/ldraw/files/p/box2-5.dat",
+    "data/parts-foundation/ldraw/files/p/box2-7.dat",
+    "data/parts-foundation/ldraw/files/p/box3u2p.dat",
+    "data/parts-foundation/ldraw/files/p/box4-1.dat",
+    "data/parts-foundation/ldraw/files/p/rect2p.dat",
+    "data/parts-foundation/ldraw/files/p/rect3.dat",
+    "data/parts-foundation/ldraw/files/p/recte3.dat",
+    "data/parts-foundation/ldraw/files/p/recte4.dat",
+    "data/parts-foundation/ldraw/files/p/stud3.dat",
+    "data/parts-foundation/ldraw/files/p/stud3a.dat",
+    "data/parts-foundation/ldraw/files/p/stud4a.dat",
+    "data/parts-foundation/ldraw/files/parts/66955.dat",
+    "data/parts-foundation/ldraw/files/parts/s/66955s01.dat",
+    "data/parts-foundation/shadow/files/p/stud3.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [
+    {
+      "reasonCodes": [
+        "collision-proxy-non-manifold-boundary"
+      ],
+      "reasons": [
+        "Native oriented boundary multiplicity is unresolved."
+      ],
+      "sourceChecks": [
+        {
+          "name": "source-integrity",
+          "outcome": "passed",
+          "reason": "Pinned native geometry and every source-backed connection file are hashed and licensed."
+        },
+        {
+          "name": "collision",
+          "outcome": "blocked",
+          "reason": "Native oriented boundary multiplicity is unresolved."
+        }
+      ]
+    }
+  ],
+  "attemptsAlreadyMade": [
+    "Loaded and fingerprinted the actual pinned native source.",
+    "Ran the current per-part migration source/fixture prerequisites."
+  ],
+  "whySolStopped": "Further progress requires missing source semantics or complex solid/retention rules; no ad hoc geometry or collision exception was introduced.",
+  "diagnosticOnly": true
+}

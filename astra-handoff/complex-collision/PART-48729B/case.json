@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "caseId": "PART-48729B",
+  "category": "HOLLOW_GEOMETRY",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "48729b",
+      "ldrawId": "48729b",
+      "identitySystem": "ldraw",
+      "sourceDigest": "bbfb99b27cfcff264aa112fd267a588e96cad1ce2e4899f0bb7a2066e0200ee1",
+      "geometryHash": "2b53eeadb90c834367c9810da497b32babc9b5655784ace7e5b94772fad2ffa9",
+      "connectionMetadataHash": "52c94a299895d7c674d418da55bab6a27937b374613f3de51ed5998f0dfbb524"
+    }
+  ],
+  "affectedPhysicalInterfaces": [
+    "d78f20cf7070a993ee97f391b402b150c4b6df9d08aa2ddbd1943605ae5fe7ec",
+    "249e8bf8ffa204db96b4a6bb55780e86def6b8dc1a44fc5d010ff2ba00c323a4"
+  ],
+  "connections": [
+    {
+      "id": "parts/48729b.dat:8:0",
+      "sourceId": null,
+      "kind": "clip",
+      "family": "clip",
+      "gender": "F",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "units": "LDU",
+      "sections": [],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": 4,
+      "length": 8,
+      "group": null,
+      "properties": {
+        "radius": "4",
+        "length": "8",
+        "center": "true",
+        "ori": "1 0 0 0 0 1 0 -1 0"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/48729b.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "4337ee7e407f822d3d60b17dcd5baf973a0adc5fa12569cfee0043f49d968dc0",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/48729b.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CLP [radius=4] [length=8] [center=true] [ori=1 0 0 0 0 1 0 -1 0]",
+        "transforms": []
+      },
+      "physicalVerified": false
+    },
+    {
+      "id": "parts/48729b.dat:9:1",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "M",
+      "position": [
+        0,
+        10,
+        0
+      ],
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        -1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 4,
+          "length": 21
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "M",
+        "caps": "one",
+        "secs": "R 4 21",
+        "slide": "true",
+        "pos": "0 10 0",
+        "ori": "1 0 0 0 -1 0 0 0 -1"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/48729b.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "4337ee7e407f822d3d60b17dcd5baf973a0adc5fa12569cfee0043f49d968dc0",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/48729b.dat",
+        "line": 9,
+        "raw": "0 !LDCAD SNAP_CYL [gender=M] [caps=one] [secs=R 4 21] [slide=true] [pos=0 10 0] [ori=1 0 0 0 -1 0 0 0 -1]",
+        "transforms": []
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": {
+    "rotation": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "translation": [
+      0,
+      0,
+      0
+    ]
+  },
+  "transformStatus": "SOURCE_IDENTITY",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "blocked",
+    "reasonCodes": [
+      "non-manifold-boundary"
+    ],
+    "details": {
+      "reason": "Native oriented boundary multiplicity is unresolved."
+    }
+  },
+  "replay": {
+    "kind": "proxy",
+    "partId": "48729b"
+  },
+  "reproductionCommand": "npm run astra:case -- PART-48729B",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/1-8sphe.dat",
+    "data/parts-foundation/ldraw/files/p/3-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/4-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-8sphe.dat",
+    "data/parts-foundation/ldraw/files/p/rect.dat",
+    "data/parts-foundation/ldraw/files/parts/48729b.dat",
+    "data/parts-foundation/shadow/files/parts/48729b.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [
+    {
+      "reasonCodes": [
+        "collision-proxy-non-manifold-boundary"
+      ],
+      "reasons": [
+        "Native oriented boundary multiplicity is unresolved."
+      ],
+      "sourceChecks": [
+        {
+          "name": "source-integrity",
+          "outcome": "passed",
+          "reason": "Pinned native geometry and every source-backed connection file are hashed and licensed."
+        },
+        {
+          "name": "collision",
+          "outcome": "blocked",
+          "reason": "Native oriented boundary multiplicity is unresolved."
+        }
+      ]
+    }
+  ],
+  "attemptsAlreadyMade": [
+    "Loaded and fingerprinted the actual pinned native source.",
+    "Ran the current per-part migration source/fixture prerequisites."
+  ],
+  "whySolStopped": "Further progress requires missing source semantics or complex solid/retention rules; no ad hoc geometry or collision exception was introduced.",
+  "diagnosticOnly": true
+}

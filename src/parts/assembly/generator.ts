@@ -1,5 +1,7 @@
 import { createHash } from 'node:crypto';
 import { loadBundledLDrawManifest } from '../ldraw/index.js';
+import { physicalConnectionKey, physicalEndpointKey } from './multipoint.js';
+import { solveAttachment } from './solver.js';
 import type { ImportedConnectionPoint } from '../connections/types.js';
 import type {
   AssemblyAttachRequest, AssemblyInterfaceCapability, NativeAssembly, NativeAssemblyPart,
@@ -39,7 +41,30 @@ export interface NativeGeneratedAssembly extends NativeAssembly {
   warnings: string[];
   assemblyValidation: { checked: true; valid: true; issues: [] };
 }
-export interface NativeGeneratorSearch { attempts: number; acceptedAttachments: number; rejectedAttachments: number; backtracks: number; testedRoots: number; exhausted: boolean; rejectionCounts: Record<string, number> }
+export interface NativeGeneratorSearch {
+  /** Candidate endpoint / quarter-turn attempts, including source-solver prechecks. */
+  attempts: number;
+  attachmentApiCalls: number;
+  /** Accepted and rejected branch placements; backtracked placements remain counted. */
+  acceptedAttachments: number;
+  rejectedAttachments: number;
+  transformFailures: number;
+  compatibilityFailures: number;
+  collisionFailures: number;
+  occupancyFailures: number;
+  designGoalFailures: number;
+  backtracks: number;
+  testedRoots: number;
+  exhausted: boolean;
+  timeBudgetExceeded: boolean;
+  catalogTimeMs: number;
+  searchTimeMs: number;
+  budget: { maxAttempts: number; maxBacktracks: number; maxSearchTimeMs: number };
+  finalPlacements: number;
+  finalConnectionEdges: number;
+  rejectionCounts: Record<string, number>;
+  rejectionReasons: { code: string; reason: string; count: number }[];
+}
 export interface NativeGenerationResult {
   status: 'generated' | 'blocked';
   module: NativeModuleType;
@@ -83,6 +108,10 @@ function unitBrick(part: CatalogPart) { return /^Brick\s+1\s+x\s+1\s*$/i.test(pa
 function tile(part: CatalogPart) { return /^Tile\s+\d+\s+x\s+\d+(?:\s+with Groove)?\s*$/i.test(part.name); }
 function sideStud(part: CatalogPart) { return part.points.some(point => stud(point) && horizontal(point.direction)); }
 function sortedNumbers(input: number[]) { return [...new Set(input.map(value => Math.round(value * 1e6) / 1e6))].sort((a, b) => a - b); }
+function distinctPhysicalPoints(points: readonly ImportedConnectionPoint[]) {
+  const seen = new Set<string>();
+  return points.filter(point => { const key = physicalConnectionKey(point); if (seen.has(key)) return false; seen.add(key); return true; });
+}
 function topStudPoints(part: CatalogPart) { return part.points.filter(point => stud(point) && up(point.direction)); }
 function hasTwoDimensionalStudGrid(part: CatalogPart) {
   const points = topStudPoints(part);
@@ -142,10 +171,12 @@ export class NativeAssemblyGenerator {
   private catalogPromise?: Promise<CatalogPart[]>;
   private readonly maxAttempts: number;
   private readonly maxBacktracks: number;
-  constructor(readonly engine: NativeGeneratorEngine, readonly options: { partIds?: readonly string[]; maxAttempts?: number; maxBacktracks?: number } = {}) {
+  private readonly maxSearchTimeMs: number;
+  constructor(readonly engine: NativeGeneratorEngine, readonly options: { partIds?: readonly string[]; maxAttempts?: number; maxBacktracks?: number; maxSearchTimeMs?: number } = {}) {
     this.maxAttempts = options.maxAttempts ?? 1800;
     this.maxBacktracks = options.maxBacktracks ?? 120;
-    if (!Number.isSafeInteger(this.maxAttempts) || this.maxAttempts < 1 || this.maxAttempts > 30_000 || !Number.isSafeInteger(this.maxBacktracks) || this.maxBacktracks < 0 || this.maxBacktracks > 5000) throw new Error('生成搜索预算无效。');
+    this.maxSearchTimeMs = options.maxSearchTimeMs ?? 10_000;
+    if (!Number.isSafeInteger(this.maxAttempts) || this.maxAttempts < 1 || this.maxAttempts > 30_000 || !Number.isSafeInteger(this.maxBacktracks) || this.maxBacktracks < 0 || this.maxBacktracks > 5000 || !Number.isSafeInteger(this.maxSearchTimeMs) || this.maxSearchTimeMs < 1 || this.maxSearchTimeMs > 120_000) throw new Error('生成搜索预算无效。');
   }
   private catalog(): Promise<CatalogPart[]> {
     this.catalogPromise ??= (async () => {
@@ -156,7 +187,7 @@ export class NativeAssemblyGenerator {
         if (!capability?.assemblyVerified || !capability.generatable || !capability.allowedConnectionIds.length) continue;
         const native = await this.engine.getPart(id), geometry = native?.geometry;
         if (!native || geometry?.status !== 'geometryReady' || !geometry.bounds || !geometry.mesh || geometry.source.integrity !== 'verified' || geometry.source.licenseStatus !== 'complete' || native.connections.status !== 'ready') continue;
-        const points = native.connections.points.filter(point => capability.allowedConnectionIds.includes(point.id) && point.dimensionsResolved);
+        const points = distinctPhysicalPoints(native.connections.points.filter(point => capability.allowedConnectionIds.includes(point.id) && point.dimensionsResolved));
         if (!points.length) continue;
         const [x, y, z] = geometry.bounds.max.map((value, axis) => value - geometry.bounds!.min[axis]);
         if (!finite([x, y, z]) || [x, y, z].some(value => value <= 0)) continue;
@@ -168,11 +199,38 @@ export class NativeAssemblyGenerator {
   }
   async generate(request: NativeModuleRequest): Promise<NativeGenerationResult> {
     requestValid(request);
-    const search: NativeGeneratorSearch = { attempts: 0, acceptedAttachments: 0, rejectedAttachments: 0, backtracks: 0, testedRoots: 0, exhausted: false, rejectionCounts: {} };
+    const started = performance.now();
+    const search: NativeGeneratorSearch = { attempts: 0, attachmentApiCalls: 0, acceptedAttachments: 0, rejectedAttachments: 0, transformFailures: 0, compatibilityFailures: 0, collisionFailures: 0, occupancyFailures: 0, designGoalFailures: 0, backtracks: 0, testedRoots: 0, exhausted: false, timeBudgetExceeded: false, catalogTimeMs: 0, searchTimeMs: 0, budget: { maxAttempts: this.maxAttempts, maxBacktracks: this.maxBacktracks, maxSearchTimeMs: this.maxSearchTimeMs }, finalPlacements: 0, finalConnectionEdges: 0, rejectionCounts: {}, rejectionReasons: [] };
     const reasons = new Set<string>();
+    const recordRejection = (code: string, reason: string) => {
+      search.rejectionCounts[code] = (search.rejectionCounts[code] ?? 0) + 1;
+      const boundedReason = reason.slice(0, 1000);
+      const existing = search.rejectionReasons.find(row => row.code === code && row.reason === boundedReason);
+      if (existing) existing.count++;
+      else if (search.rejectionReasons.length < 32) search.rejectionReasons.push({ code, reason: boundedReason, count: 1 });
+      if (reasons.size < 12) reasons.add(`${code}: ${reason}`);
+    };
+    const rejectCandidate = (rejections: { code: string; reason: string }[]) => {
+      search.rejectedAttachments++;
+      const codes = rejections.map(row => row.code);
+      if (codes.some(code => /collision|overlap|penetration/.test(code))) search.collisionFailures++;
+      if (codes.some(code => !/collision/.test(code) && /transform|solver|rotation|pose/.test(code))) search.transformFailures++;
+      if (codes.some(code => /compat|rule|connection-unknown/.test(code))) search.compatibilityFailures++;
+      if (codes.some(code => /occup|duplicate-endpoint/.test(code))) search.occupancyFailures++;
+      if (codes.includes('design-goal')) search.designGoalFailures++;
+      for (const rejection of rejections) recordRejection(rejection.code, rejection.reason);
+    };
+    let searchStarted = started;
+    const finish = () => { search.searchTimeMs = Math.round((performance.now() - searchStarted) * 1000) / 1000; };
     const catalog = await this.catalog(), byId = new Map(catalog.map(part => [part.native.partId, part]));
+    searchStarted = performance.now();
+    search.catalogTimeMs = Math.round((searchStarted - started) * 1000) / 1000;
+    const budgetReached = () => {
+      search.timeBudgetExceeded ||= performance.now() - searchStarted >= this.maxSearchTimeMs;
+      return search.attempts >= this.maxAttempts || search.backtracks >= this.maxBacktracks || search.timeBudgetExceeded;
+    };
     const target = request.partCount ?? DEFAULT_COUNTS[request.module];
-    const block = (reason: string): NativeGenerationResult => ({ status: 'blocked', module: request.module, model: null, reasons: [...new Set([reason, ...reasons])].slice(0, 20), search });
+    const block = (reason: string): NativeGenerationResult => { finish(); return { status: 'blocked', module: request.module, model: null, reasons: [...new Set([reason, ...reasons])].slice(0, 20), search }; };
     if (!catalog.length) return block('当前没有同时通过装配验证、批次准入和来源校验的真实零件。');
     if (request.module === 'wheel-module') {
       const wheelReady = catalog.some(part => part.capability.ruleIds.some(rule => /wheel|tyre|rim/i.test(rule)));
@@ -204,13 +262,19 @@ export class NativeAssemblyGenerator {
     if (!choicesAt(1).length || request.module === 'basic-snot' && !choicesAt(2).length) return block('该结构所需类别没有通过当前装配与接口准入的真实零件。');
 
     const anchorsAt = (graph: NativeAssembly, root: CatalogPart) => {
-      const occupied = new Set(graph.edges.flatMap(edge => [`${edge.fixedInstanceId}:${edge.fixedConnectionId}`, `${edge.movingInstanceId}:${edge.movingConnectionId}`]));
+      const placements = new Map(graph.placements.map(placement => [placement.instanceId, placement]));
+      const keyFor = (instanceId: string, connectionId: string) => {
+        const placement = placements.get(instanceId), part = placement && byId.get(placement.partId);
+        const point = part?.native.connections.points.find(candidate => candidate.id === connectionId);
+        return point ? physicalEndpointKey(instanceId, point) : `${instanceId}:unavailable:${connectionId}`;
+      };
+      const occupied = new Set(graph.edges.flatMap(edge => [keyFor(edge.fixedInstanceId, edge.fixedConnectionId), keyFor(edge.movingInstanceId, edge.movingConnectionId)]));
       const anchors: Anchor[] = [];
       for (const placement of graph.placements) {
         const part = byId.get(placement.partId)!;
         if (!part) continue;
         for (const point of part.points) {
-          if (!stud(point) || occupied.has(`${placement.instanceId}:${point.id}`)) continue;
+          if (!stud(point) || occupied.has(physicalEndpointKey(placement.instanceId, point))) continue;
           const direction = rotate(placement.transform.rotation, point.direction), position = world(placement.transform, point.position);
           if (request.module === 'basic-snot' && graph.placements.length === 2) {
             if (placement.instanceId === graph.placements[0].instanceId || !horizontal(direction)) continue;
@@ -236,27 +300,31 @@ export class NativeAssemblyGenerator {
         : (request.module === 'simple-chassis' ? separation(b) - separation(a) : 0) || a.position[0] - b.position[0] || a.position[2] - b.position[2]).slice(0, 128);
     };
 
-    const postPlacementGoal = (graph: NativeAssembly, candidate: CatalogPart, root: CatalogPart) => {
-      const placed = graph.placements.at(-1)!;
+    const placementGoal = (placed: NativePlacement, placementCount: number, candidate: CatalogPart, root: CatalogPart, rootPlacement: NativePlacement) => {
       const localUp = rotate(placed.transform.rotation, [0, -1, 0]);
-      if (request.module === 'basic-snot' && graph.placements.length === 3) return horizontal(localUp);
+      if (request.module === 'basic-snot' && placementCount === 3) return horizontal(localUp);
       if (!up(localUp)) return false;
-      return footprintContained(candidate, placed, root, graph.placements[0]) &&
-        (request.module !== 'simple-roof' || peakFacesInward(candidate, placed, root, graph.placements[0]));
+      return footprintContained(candidate, placed, root, rootPlacement) &&
+        (request.module !== 'simple-roof' || peakFacesInward(candidate, placed, root, rootPlacement));
+    };
+    const usedRootPoints = (graph: NativeAssembly, root: CatalogPart) => {
+      const rootId = graph.placements[0].instanceId;
+      const occupied = new Set(graph.edges.flatMap(edge => edge.fixedInstanceId === rootId ? [edge.fixedConnectionId] : edge.movingInstanceId === rootId ? [edge.movingConnectionId] : []).map(id => root.native.connections.points.find(point => point.id === id)).filter((point): point is ImportedConnectionPoint => !!point).map(physicalConnectionKey));
+      return topStudPoints(root).filter(point => occupied.has(physicalConnectionKey(point)));
     };
     const goalComplete = (graph: NativeAssembly, root: CatalogPart) => {
       if (graph.placements.length !== target || graph.edges.length < target - 1) return false;
       if (request.module === 'basic-snot') return graph.placements.some(placement => horizontal(rotate(placement.transform.rotation, [0, -1, 0])));
       if (request.module === 'wall') {
-        const usedRoot = new Set(graph.edges.filter(edge => edge.fixedInstanceId === graph.placements[0].instanceId).map(edge => edge.fixedConnectionId));
-        return wallRootPoints(root, target - 1).every(point => usedRoot.has(point.id));
+        const usedRoot = new Set(usedRootPoints(graph, root).map(physicalConnectionKey));
+        return wallRootPoints(root, target - 1).every(point => usedRoot.has(physicalConnectionKey(point)));
       }
       if (request.module === 'simple-box') {
-        const usedRoot = new Set(graph.edges.filter(edge => edge.fixedInstanceId === graph.placements[0].instanceId).map(edge => edge.fixedConnectionId));
-        return borderPoints(root).every(point => usedRoot.has(point.id));
+        const usedRoot = new Set(usedRootPoints(graph, root).map(physicalConnectionKey));
+        return borderPoints(root).every(point => usedRoot.has(physicalConnectionKey(point)));
       }
       if (request.module === 'simple-chassis') {
-        const usedRoot = graph.edges.filter(edge => edge.fixedInstanceId === graph.placements[0].instanceId).map(edge => root.points.find(point => point.id === edge.fixedConnectionId)!);
+        const usedRoot = usedRootPoints(graph, root);
         const points = topStudPoints(root);
         return [0, 2].every(axis => Math.min(...usedRoot.map(point => point.position[axis])) === Math.min(...points.map(point => point.position[axis])) && Math.max(...usedRoot.map(point => point.position[axis])) === Math.max(...points.map(point => point.position[axis])));
       }
@@ -265,23 +333,31 @@ export class NativeAssemblyGenerator {
 
     const visit = async (graph: NativeAssembly, root: CatalogPart): Promise<NativeAssembly | null> => {
       if (goalComplete(graph, root)) return graph;
-      if (graph.placements.length >= target || search.attempts >= this.maxAttempts || search.backtracks >= this.maxBacktracks) return null;
+      if (graph.placements.length >= target || budgetReached()) return null;
       const choices = choicesAt(graph.placements.length, root), anchors = anchorsAt(graph, root);
       for (const anchor of anchors) for (const candidate of choices) {
         const connections = candidate.points.filter(point => receiving(point) && up(point.direction)).slice(0, 32);
         for (const connection of connections) for (const twistDegrees of [0, 90, 180, 270]) {
-          if (search.attempts >= this.maxAttempts || search.backtracks >= this.maxBacktracks) return null;
+          if (budgetReached()) return null;
           search.attempts++;
-          const result = await this.engine.attachPart(graph, { anchorInstanceId: anchor.placement.instanceId, anchorConnectionId: anchor.point.id, partId: candidate.native.partId, candidateConnectionId: connection.id, twistDegrees });
-          if (!result.accepted) {
-            search.rejectedAttachments++;
-            for (const rejection of result.rejections) {
-              search.rejectionCounts[rejection.code] = (search.rejectionCounts[rejection.code] ?? 0) + 1;
-              if (reasons.size < 12) reasons.add(`${rejection.code}: ${rejection.reason}`);
-            }
+          const solved = solveAttachment({ fixedPart: anchor.part.native, fixedPlacement: anchor.placement, fixedConnectionId: anchor.point.id, movingPart: candidate.native, movingConnectionId: connection.id, twistsDeg: [twistDegrees] });
+          if (solved.status !== 'solved') {
+            rejectCandidate([{ code: solved.status === 'incompatible' || solved.status === 'unknown' ? 'compatibility-precheck' : 'transform-precheck', reason: solved.reason }]);
             continue;
           }
-          if (!postPlacementGoal(result.graph, candidate, root)) { search.rejectedAttachments++; search.rejectionCounts['design-goal'] = (search.rejectionCounts['design-goal'] ?? 0) + 1; continue; }
+          // Only a source-solver pose is inspected here. It never enters the
+          // graph; every accepted placement still goes through attachPart.
+          if (!solved.candidates.some(pose => placementGoal({ instanceId: 'solver-preview', partId: candidate.native.partId, transform: pose.transform }, graph.placements.length + 1, candidate, root, graph.placements[0]))) {
+            rejectCandidate([{ code: 'design-goal', reason: 'The source-solved pose does not satisfy the requested module footprint/orientation.' }]);
+            continue;
+          }
+          search.attachmentApiCalls++;
+          const result = await this.engine.attachPart(graph, { anchorInstanceId: anchor.placement.instanceId, anchorConnectionId: anchor.point.id, partId: candidate.native.partId, candidateConnectionId: connection.id, twistDegrees });
+          if (!result.accepted) {
+            rejectCandidate(result.rejections);
+            continue;
+          }
+          if (!placementGoal(result.graph.placements.at(-1)!, result.graph.placements.length, candidate, root, result.graph.placements[0])) { rejectCandidate([{ code: 'design-goal', reason: 'The accepted attachment did not retain the requested design orientation or footprint.' }]); continue; }
           search.acceptedAttachments++;
           const complete = await visit(result.graph, root);
           if (complete) return complete;
@@ -292,7 +368,7 @@ export class NativeAssemblyGenerator {
     };
 
     for (const root of roots) {
-      if (search.attempts >= this.maxAttempts || search.backtracks >= this.maxBacktracks) break;
+      if (budgetReached()) break;
       search.testedRoots++;
       let base: NativeAssembly;
       try { base = await this.engine.createAssembly(root.native.partId); }
@@ -301,10 +377,14 @@ export class NativeAssemblyGenerator {
       if (graph) {
         const validation = await this.engine.validateGraph(graph);
         if (!validation.valid) { reasons.add(`final-graph-verification: ${validation.issues.join(' ')}`); continue; }
-        return { status: 'generated', module: request.module, model: createNativeAssemblyDocument(graph, request.module, catalog), reasons: [], search };
+        search.finalPlacements = graph.placements.length;
+        search.finalConnectionEdges = graph.edges.length;
+        const model = createNativeAssemblyDocument(graph, request.module, catalog);
+        finish();
+        return { status: 'generated', module: request.module, model, reasons: [], search };
       }
     }
-    search.exhausted = search.attempts >= this.maxAttempts || search.backtracks >= this.maxBacktracks;
+    search.exhausted = budgetReached();
     return block(search.exhausted ? '合法装配搜索已达到预算，未移动或改造真实零件强行完成。' : '已尝试当前可用零件、接口和离散旋转，未找到满足结构目标的合法装配。');
   }
 }

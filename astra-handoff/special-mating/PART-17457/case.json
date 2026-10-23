@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "caseId": "PART-17457",
+  "category": "CONNECTION_PARSE",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "17457",
+      "ldrawId": "17457",
+      "identitySystem": "ldraw",
+      "sourceDigest": "099382bc4694ae52d0f116baeca8108858d92fb07c42f6ce1e36d1504c7f1722",
+      "geometryHash": "d25a97bf3c59050bc52ee343492fe81c68b07f1e465ae866dc17b3931df869af",
+      "connectionMetadataHash": "1b2b62e01a0fbe15c96319ab5a3c91c40b9725411cc162659ae93f5e6d19b80f"
+    }
+  ],
+  "affectedPhysicalInterfaces": [],
+  "connections": [],
+  "currentTransform": null,
+  "transformStatus": "UNRESOLVED",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "missing",
+    "reasonCodes": [
+      "no-connections"
+    ],
+    "details": {
+      "status": "missing",
+      "pointCount": 0,
+      "issues": [
+        {
+          "code": "no-connections",
+          "file": "17457",
+          "message": "No imported supported source connections are available."
+        }
+      ],
+      "sourceFiles": [
+        {
+          "library": "LDraw",
+          "path": "parts/17457.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "fbb0a86b5091632aa629d8ada5c3e86113d0ff048bf729306d75e9f39eb01f10",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/17457.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "parts/s/17457s01.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "30eb19a0e918659d0cb49c6740ad1e2a7fd17398343f9309252a14862a9b4fa9",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/17457s01.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/rect.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "ffeb2dd3d9b83c38841f18f1f74800fbba9e90c5fb6badfff2a795f08a96cb71",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/box5.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "ccb7b8a1d36692335b10ea6aa196849afcad4b15331683ed8112a10b50977318",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box5.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/rect3.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "07ac46908b6668d993b6de0fb001a34cd996542106b80ebc7de63317d8dde865",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect3.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/rect2p.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "faac2b36241a9de0c0108471e59c45734df6c79813332d9cacf97f6391886acc",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect2p.dat"
+        }
+      ]
+    }
+  },
+  "replay": {
+    "kind": "parse",
+    "partId": "17457"
+  },
+  "reproductionCommand": "npm run astra:case -- PART-17457",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/box5.dat",
+    "data/parts-foundation/ldraw/files/p/rect.dat",
+    "data/parts-foundation/ldraw/files/p/rect2p.dat",
+    "data/parts-foundation/ldraw/files/p/rect3.dat",
+    "data/parts-foundation/ldraw/files/parts/17457.dat",
+    "data/parts-foundation/ldraw/files/parts/s/17457s01.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-connections.test.ts"
+  ],
+  "evidence": [
+    {
+      "reasonCodes": [
+        "EVIDENCE_MISSING"
+      ],
+      "reasons": [
+        "No recognizable source interface is available for current assembly qualification."
+      ],
+      "sourceChecks": [
+        {
+          "name": "source-integrity",
+          "outcome": "blocked",
+          "reason": "No current complete interface test evidence is available."
+        }
+      ]
+    }
+  ],
+  "attemptsAlreadyMade": [
+    "Loaded and fingerprinted the actual pinned native source.",
+    "Ran the current per-part migration source/fixture prerequisites."
+  ],
+  "whySolStopped": "Further progress requires missing source semantics or complex solid/retention rules; no ad hoc geometry or collision exception was introduced.",
+  "diagnosticOnly": true
+}

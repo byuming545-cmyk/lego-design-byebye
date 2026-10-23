@@ -13,6 +13,7 @@ import { buildNativeCollisionProxy } from './assembly/proxy.js';
 import { IDENTITY_TRANSFORM } from './assembly/math.js';
 import { createBundledElementDesignMapper, buildFailedPartRecoveryQueue, buildInstructionCoverage, type ElementDesignMapper, type ElementMappingResult } from './recovery/index.js';
 import type { AssemblyMigrationEntry } from './assembly/migration.js';
+import type { PhysicalInterfaceCoverage } from './assembly/coverage.js';
 
 export const FOUNDATION_BUNDLE_ROOT = fileURLToPath(new URL('../../data/parts-foundation/', import.meta.url));
 export const FOUNDATION_LIMITATIONS = [
@@ -42,6 +43,7 @@ export interface FoundationPart extends PartReadiness {
   mapping?: ElementMappingResult;
   enabledConnectionIds?: string[];
   assemblyReport?: AssemblyMigrationEntry;
+  interfaceCoverage?: PhysicalInterfaceCoverage;
 }
 export interface FoundationPartDetail {
   part: FoundationPart;
@@ -162,6 +164,7 @@ export class RealPartRegistry {
         issues: [...geometry.issues.map(issue => `${issue.code}: ${issue.message}`), ...connections.issues.map(issue => `${issue.code}: ${issue.message}`), ...(proxy.status !== 'ready' ? [`${proxy.reasonCode}: ${proxy.reason}`] : []), ...(!readiness.generatable ? entry?.reasons ?? ['尚未通过逐件拼接与净空校验，禁止生成。'] : entry?.disabledConnectionIds.length ? [`${entry.disabledConnectionIds.length} 个来源接口未开放；仅可使用白名单接口。`] : [])],
         observedSetNumbers: [], evidence: geometry.source.files,
         enabledConnectionIds: entry?.allowedConnectionIds ?? [], ...(entry ? { assemblyReport: entry } : {}),
+        ...(entry?.interfaceCoverage ? { interfaceCoverage: entry.interfaceCoverage } : {}),
       },
       geometry, connections,
     };
@@ -170,7 +173,13 @@ export class RealPartRegistry {
     await this.ready();
     this.refreshElements(await this.inventories());
     const normalized = query.trim().toLowerCase();
-    return [...this.parts.values()].filter(part => !normalized || [part.id, part.name, part.category, part.elementId, part.sourcePartId, part.designId, part.mapping?.partId].some(value => value?.toLowerCase().includes(normalized))).map(part => structuredClone(part));
+    return [...this.parts.values()].filter(part => !normalized || [part.id, part.name, part.category, part.elementId, part.sourcePartId, part.designId, part.mapping?.partId].some(value => value?.toLowerCase().includes(normalized))).map(part => {
+      const summary = structuredClone(part);
+      delete summary.assemblyReport;
+      summary.evidence = [];
+      if (summary.interfaceCoverage) summary.interfaceCoverage.decisions = [];
+      return summary;
+    });
   }
   async get(id: string): Promise<FoundationPartDetail | undefined> {
     await this.ready();
@@ -247,7 +256,7 @@ export class RealPartRegistry {
     });
     const count = (key: keyof PartReadiness) => parts.filter(part => part[key] === true).length;
     return {
-      schemaVersion: 1, version: '0.5.0', mode: 'real-parts-foundation',
+      schemaVersion: 1, version: '0.6.0', mode: 'real-parts-foundation',
       counts: { catalogOnly: count('catalogOnly'), geometryReady: count('geometryReady'), connectionReady: count('connectionReady'), collisionReady: count('collisionReady'), assemblyVerified: count('assemblyVerified'), generatable: count('generatable'), verified: count('verified'),
         ldrawPartIds: parts.filter(part => part.identitySystem === 'ldraw').length, observedElementIds: parts.filter(part => part.identitySystem === 'lego-element').length,
         readableDocuments: this.documents.filter(document => document.status === 'ready').length, physicalBuildsVerified: 0 },
@@ -259,7 +268,7 @@ export class RealPartRegistry {
       nextPriorityStatus: 'source-observed-recovery-frequency; LDraw cross-reference still required',
       userReportedDesignRanking: ranking.designRanking,
       userReportedPartRanking: ranking.partRanking,
-      assembly: { counts: assembly.counts, partLibraryVersion: assembly.partLibraryVersion, assemblyEngineVersion: assembly.assemblyEngineVersion, connectionRuleVersion: assembly.connectionRuleVersion, collisionVersion: assembly.collisionVersion, verificationScope: assembly.verificationScope, runtimeValidation: assembly.runtimeValidation },
+      assembly: { counts: assembly.counts, interfaceCoverage: assembly.interfaceCoverage, partLibraryVersion: assembly.partLibraryVersion, assemblyEngineVersion: assembly.assemblyEngineVersion, connectionRuleVersion: assembly.connectionRuleVersion, collisionVersion: assembly.collisionVersion, verificationScope: assembly.verificationScope, runtimeValidation: assembly.runtimeValidation },
       elementMapping: this.mapper!.summary(), recovery: { counts: recovery.counts, blockedReasons: recovery.blockedReasons }, instructionCoverage: coverage,
       capabilities: { neuralTraining: false, pdfTo3d: false, nativeLDrawGeometry: true, sourceConnections: true, inventoryElementExtraction: true, legacyGenerationEnabled: false, nativeAssemblyGeneration: assembly.counts.generatable > 0 },
       limitations: [...FOUNDATION_LIMITATIONS, ...new Set(this.sourceProblems)],

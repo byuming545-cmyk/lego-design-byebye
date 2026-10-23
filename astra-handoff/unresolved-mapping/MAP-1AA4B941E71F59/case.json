@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "caseId": "MAP-1AA4B941E71F59",
+  "category": "MAPPING_EVIDENCE_MISSING",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "22385",
+      "ldrawId": null,
+      "identitySystem": "rebrickable",
+      "sourceDigest": "6afab811ed3d2566c1a32c2bd243afbfb7627095388494841c33d32e4efe71ba",
+      "geometryHash": null,
+      "connectionMetadataHash": null
+    }
+  ],
+  "affectedElements": [
+    "6245251"
+  ],
+  "connections": [],
+  "currentTransform": null,
+  "transformStatus": "NOT_APPLICABLE",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "PROBABLE_BUT_UNVERIFIED",
+    "reasonCodes": [
+      "ldraw-cross-reference-not-verified",
+      "catalog-conversion-not-exact-variant-proof",
+      "target-outside-current-pinned-library",
+      "exact-variant-identity-not-verified"
+    ],
+    "details": {
+      "elementId": "6245251",
+      "status": "mapped",
+      "verificationStatus": "source-observed",
+      "independentlyVerifiedOfficial": false,
+      "partId": "22385",
+      "partIdSystem": "rebrickable",
+      "designId": "35341",
+      "color": {
+        "system": "rebrickable",
+        "id": "0",
+        "name": "Black",
+        "rgb": "05131D"
+      },
+      "partName": "Tile Special 2 x 3 Pentagonal",
+      "category": "Tiles Special",
+      "material": "Plastic",
+      "ldrawPartId": null,
+      "ldrawCrossReference": null,
+      "source": {
+        "id": "rebrickable-downloads-mirror-2026-10-22-13-13",
+        "url": "https://github.com/ojuuji/rb.db/releases/download/2026-10-22-13-13/rb.db.xz",
+        "revision": "03547a1273f36f7ea7beb5ff7e67bc40830c15d8",
+        "sha256": "6afab811ed3d2566c1a32c2bd243afbfb7627095388494841c33d32e4efe71ba",
+        "trust": "source-observed",
+        "dataLicense": "not-independently-verified",
+        "independentlyVerifiedOfficial": false
+      },
+      "rawElementRow": {
+        "element_id": 6245251,
+        "part_num": "22385",
+        "color_id": 0,
+        "design_id": 35341
+      },
+      "mappingStatus": "PROBABLE_BUT_UNVERIFIED",
+      "geometryPipelineAllowed": false,
+      "ldrawCandidatePartIds": [
+        "35341"
+      ],
+      "evidence": [
+        {
+          "stage": "element-to-external-catalogue",
+          "identitySystem": "lego-element",
+          "identityId": "6245251",
+          "candidateLDrawPartId": null,
+          "source": {
+            "url": "https://github.com/ojuuji/rb.db/releases/download/2026-10-22-13-13/rb.db.xz",
+            "revision": "03547a1273f36f7ea7beb5ff7e67bc40830c15d8",
+            "sha256": "6afab811ed3d2566c1a32c2bd243afbfb7627095388494841c33d32e4efe71ba",
+            "rawText": "{\"element_id\":6245251,\"part_num\":\"22385\",\"color_id\":0,\"design_id\":35341}"
+          },
+          "reasons": [
+            "source-observed-external-identity; not independent official verification"
+          ]
+        },
+        {
+          "stage": "external-catalogue-to-ldraw",
+          "identitySystem": "lego-design",
+          "identityId": "35341",
+          "candidateLDrawPartId": "35341",
+          "source": {
+            "url": "https://github.com/leozide/leocad/blob/306520badc87c00cc4afd29c2cb45496b5c286bd/resources/ldraw.xml",
+            "revision": "306520badc87c00cc4afd29c2cb45496b5c286bd",
+            "sha256": "2c1ddba5985edecaff361be7a63187e08877aec0a08ae35ec5e4ac04b1025a4b",
+            "line": 31560,
+            "rawText": "<Brick ldraw=\"35341.dat\" lego=\"35341\" />"
+          },
+          "reasons": [
+            "catalog-conversion-not-exact-variant-proof",
+            "target-outside-current-pinned-library"
+          ]
+        }
+      ],
+      "reasons": [
+        "ldraw-cross-reference-not-verified",
+        "catalog-conversion-not-exact-variant-proof",
+        "target-outside-current-pinned-library",
+        "exact-variant-identity-not-verified"
+      ]
+    }
+  },
+  "replay": {
+    "kind": "mapping",
+    "elementId": "6245251"
+  },
+  "reproductionCommand": "npm run astra:case -- MAP-1AA4B941E71F59",
+  "relevantSourceFiles": [
+    "data/parts-foundation/mappings/manifest.json",
+    "data/parts-foundation/mappings/element-rows.json",
+    "data/parts-foundation/mappings/ldraw-mapping-review.json"
+  ],
+  "relevantTests": [
+    "tests/parts-recovery.test.ts"
+  ],
+  "evidence": [
+    {
+      "elementId": "6245251",
+      "status": "mapped",
+      "verificationStatus": "source-observed",
+      "independentlyVerifiedOfficial": false,
+      "partId": "22385",
+      "partIdSystem": "rebrickable",
+      "designId": "35341",
+      "color": {
+        "system": "rebrickable",
+        "id": "0",
+        "name": "Black",
+        "rgb": "05131D"
+      },
+      "partName": "Tile Special 2 x 3 Pentagonal",
+      "category": "Tiles Special",
+      "material": "Plastic",
+      "ldrawPartId": null,
+      "ldrawCrossReference": null,
+      "source": {
+        "id": "rebrickable-downloads-mirror-2026-10-22-13-13",
+        "url": "https://github.com/ojuuji/rb.db/releases/download/2026-10-22-13-13/rb.db.xz",
+        "revision": "03547a1273f36f7ea7beb5ff7e67bc40830c15d8",
+        "sha256": "6afab811ed3d2566c1a32c2bd243afbfb7627095388494841c33d32e4efe71ba",
+        "trust": "source-observed",
+        "dataLicense": "not-independently-verified",
+        "independentlyVerifiedOfficial": false
+      },
+      "rawElementRow": {
+        "element_id": 6245251,
+        "part_num": "22385",
+        "color_id": 0,
+        "design_id": 35341
+      },
+      "mappingStatus": "PROBABLE_BUT_UNVERIFIED",
+      "geometryPipelineAllowed": false,
+      "ldrawCandidatePartIds": [
+        "35341"
+      ],
+      "evidence": [
+        {
+          "stage": "element-to-external-catalogue",
+          "identitySystem": "lego-element",
+          "identityId": "6245251",
+          "candidateLDrawPartId": null,
+          "source": {
+            "url": "https://github.com/ojuuji/rb.db/releases/download/2026-10-22-13-13/rb.db.xz",
+            "revision": "03547a1273f36f7ea7beb5ff7e67bc40830c15d8",
+            "sha256": "6afab811ed3d2566c1a32c2bd243afbfb7627095388494841c33d32e4efe71ba",
+            "rawText": "{\"element_id\":6245251,\"part_num\":\"22385\",\"color_id\":0,\"design_id\":35341}"
+          },
+          "reasons": [
+            "source-observed-external-identity; not independent official verification"
+          ]
+        },
+        {
+          "stage": "external-catalogue-to-ldraw",
+          "identitySystem": "lego-design",
+          "identityId": "35341",
+          "candidateLDrawPartId": "35341",
+          "source": {
+            "url": "https://github.com/leozide/leocad/blob/306520badc87c00cc4afd29c2cb45496b5c286bd/resources/ldraw.xml",
+            "revision": "306520badc87c00cc4afd29c2cb45496b5c286bd",
+            "sha256": "2c1ddba5985edecaff361be7a63187e08877aec0a08ae35ec5e4ac04b1025a4b",
+            "line": 31560,
+            "rawText": "<Brick ldraw=\"35341.dat\" lego=\"35341\" />"
+          },
+          "reasons": [
+            "catalog-conversion-not-exact-variant-proof",
+            "target-outside-current-pinned-library"
+          ]
+        }
+      ],
+      "reasons": [
+        "ldraw-cross-reference-not-verified",
+        "catalog-conversion-not-exact-variant-proof",
+        "target-outside-current-pinned-library",
+        "exact-variant-identity-not-verified"
+      ]
+    }
+  ],
+  "attemptsAlreadyMade": [
+    "Preserved explicit Element / LEGO Design / Rebrickable identities and colour facts.",
+    "Reviewed the fixed explicit cross-reference evidence and retained all conflicting candidates."
+  ],
+  "whySolStopped": "The exact LDraw mold/print/component identity chain is not verified; names, numeric equality and missing local alternatives cannot resolve it.",
+  "diagnosticOnly": true,
+  "mappingSourceFingerprint": {
+    "mappingPolicyVersion": "exact-identity-chain-1",
+    "manifestSha256": "b9c63b63c18ce598896fa29726cc578a4b7b4d8c35eb827f00d058565a07a41b",
+    "elementSnapshotSha256": "6afab811ed3d2566c1a32c2bd243afbfb7627095388494841c33d32e4efe71ba",
+    "reviewSnapshotSha256": "225a49d5f241a44532f2412fbdedd327ab73b81e9e94de363025bdbe16985728"
+  }
+}

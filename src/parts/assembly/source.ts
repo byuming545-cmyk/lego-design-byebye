@@ -2,8 +2,9 @@ import { createHash } from 'node:crypto';
 import { createBundledLDrawImporter, createBundledLDrawResolver, loadBundledLDrawManifest, type BundledLDrawManifest } from '../ldraw/index.js';
 import { createBundledConnectionImporter } from '../connections/index.js';
 import type { NativeAssemblyPart } from './types.js';
+import { CONNECTION_PARSER_VERSION } from '../connections/importer.js';
 
-export const PART_LIBRARY_VERSION = 'ldraw-c43ed06a-shadow-9b1131fb';
+export const PART_LIBRARY_VERSION = 'ldraw-c43ed06a-shadow-9b1131fb-parser-2';
 const sourceHashes = new WeakMap<NativeAssemblyPart, string>();
 
 function freezeSource<T>(value: T, seen = new WeakSet<object>()): T {
@@ -20,6 +21,7 @@ export function nativePartSourceHash(part: NativeAssemblyPart): string {
   const existing = Object.isFrozen(part) ? sourceHashes.get(part) : undefined;
   if (existing) return existing;
   const hash = createHash('sha256').update(JSON.stringify({
+    connectionParserVersion: CONNECTION_PARSER_VERSION,
     partId: part.partId,
     geometryRevision: part.geometry.source.revision,
     geometryRoot: part.geometry.source.rootFile,

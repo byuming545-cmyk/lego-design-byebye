@@ -1,0 +1,5727 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-23T18:49:10.915Z",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "manifestSha256": "51abc16829d15b5d392c730f82ccf56544cad09035457016eaf85aae22680096",
+  "cases": 537,
+  "reproduced": 537,
+  "failed": 0,
+  "diagnosticOnly": true,
+  "physicalBuildVerified": false,
+  "elapsedMs": 65989,
+  "results": [
+    {
+      "caseId": "CLIP-BAR",
+      "reproduced": true,
+      "recordedStatus": "unknown",
+      "actualStatus": "unknown",
+      "reasonCodes": [
+        "clip-bar-seating-unresolved"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-02129CB9C6B2C6",
+      "reproduced": true,
+      "recordedStatus": "PROBABLE_BUT_UNVERIFIED",
+      "actualStatus": "PROBABLE_BUT_UNVERIFIED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "catalog-conversion-not-exact-variant-proof",
+        "target-outside-current-pinned-library",
+        "exact-variant-identity-not-verified"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-02E6D45695CB58",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-034F5286D531BF",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-057748EA51DE20",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-061C77D29187D1",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-067F9DE8F461D5",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-076E0A013CEDC0",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-079B7F3A0F4887",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-07AFAA6978B113",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-086359582397AD",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-093D042A9B97A0",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-0988FCD1D12166",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-0D9FC0BE9DB7F8",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-0E881B986F88B4",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-1109386AB1E07B",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-117176410430DA",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-122D6443060BAC",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-13A819B3CB97AC",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-13DEB6185DE7D8",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-149547873A2EA7",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-14C6DA25A98120",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-14F85EEC35B72D",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-152A998162B5CD",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-17A96F8DC32B1F",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-1968740821C438",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-1A5E2978715FDB",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-1AA4B941E71F59",
+      "reproduced": true,
+      "recordedStatus": "PROBABLE_BUT_UNVERIFIED",
+      "actualStatus": "PROBABLE_BUT_UNVERIFIED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "catalog-conversion-not-exact-variant-proof",
+        "target-outside-current-pinned-library",
+        "exact-variant-identity-not-verified"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-1BC9C66DC31094",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-1BFCEBDDAB5316",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-1C6F25E78DF3AE",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-1D5594ECBED18C",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-1D6426C8CE2C8D",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-1D9155FDDB9955",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-1F93C267278FD0",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-1FB4278CAF7ED1",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-203D19D880A843",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-2091DFB49D6839",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-209E9F25868826",
+      "reproduced": true,
+      "recordedStatus": "PROBABLE_BUT_UNVERIFIED",
+      "actualStatus": "PROBABLE_BUT_UNVERIFIED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "catalog-conversion-not-exact-variant-proof",
+        "target-outside-current-pinned-library",
+        "exact-variant-identity-not-verified"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-2141E77B0DE0F2",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-21A2B28A98D01C",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-2307190A1E73F4",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-23C533DD0DC2E3",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-24CBD944DC3CD5",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-24FAEF9438AB54",
+      "reproduced": true,
+      "recordedStatus": "PROBABLE_BUT_UNVERIFIED",
+      "actualStatus": "PROBABLE_BUT_UNVERIFIED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "catalog-conversion-not-exact-variant-proof",
+        "target-outside-current-pinned-library",
+        "exact-variant-identity-not-verified"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-25C86DE79B1255",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-26AAF707F5EEC6",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-2807FAE95C70E3",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-28674EE199CD78",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-29BAEB02520097",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-2C156FEAE97A4D",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-2D8E13311EE7AE",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-2E845BB9B703B6",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-2EE467921CC4E2",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-2F87E73E6B0058",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-2FB7E6CC813C17",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-301C67A58294B3",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-3092D11CEF8AD2",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-3126E75F6DA2E8",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-322299865B654D",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-32319C5265A6C0",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-3234BC3707EB1D",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-34747A29D506AC",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-3606E1C5B56C9F",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-360E00C60C46D4",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-368DCD6366D176",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-36CD4EF9025A9B",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-379E331030283F",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-38EB054D6280EE",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-3B20AD5826F0C2",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-3CDDDFDF0076FE",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-3D1D5294BEE6AA",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-3DC1C411CDCCFB",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-3DF817321BD8F5",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-3ED2CAA97C718B",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-3F341717411EC6",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-410CCF339C4751",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-41C29836CBC8FF",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-41E31F26A80127",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-420B6E897F7508",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-4296A601640B1D",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-441A0E63D09427",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-4421D6C0D80818",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-44465EC6605A3C",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-444F785038DCF2",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-46BF7EA20FB86D",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-46E379E9F3E927",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-489F565B561156",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-4AFE034D1095B3",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-4C4483A01B044B",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-4E9E4791DC3DEF",
+      "reproduced": true,
+      "recordedStatus": "PROBABLE_BUT_UNVERIFIED",
+      "actualStatus": "PROBABLE_BUT_UNVERIFIED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "catalog-conversion-not-exact-variant-proof",
+        "custom-part-not-in-ldraw-section",
+        "transparent-material-variant-not-proven",
+        "adjacent-transform-target-disagrees",
+        "exact-variant-identity-not-verified"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-4EF4B88BE64F50",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-4F16367354F982",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-507FB1ED900FCC",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-51AF37738BC3C6",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-5216D97BFD4C09",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-52EDD70E81EAD0",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-548B4B0A6329A2",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-554363927B1677",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-56AFC5E3DC5485",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-56CFF10C8DE6DD",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-572C37BC0A44BB",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-573599C403FF4F",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-581306C5AD3F20",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-58E78610B80D5A",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-58F8CA701015E8",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-5934332B473A5A",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-5A449A998F3811",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-5AD75C0B27C346",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-5B2540D3E68727",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-5BC3F459023DFA",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-5CC9334C159372",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-5D2A0074CC72DD",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-5E63F57F6A4A80",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-5FB42562C930B2",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-64A3288745ACB9",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-64B0E1E511E8FE",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-67254E2C54DB33",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-67DB836EB67BD9",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-684971646E8DE8",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-694F5F7496293A",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-69D9A5475B8DE8",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-6B326DB4F7BAAF",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-6DF595A99C9FD9",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-6E31DA6E8F5B4F",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-6F6E32DAA6D537",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-6FE82C4E4F46DA",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-71E8B66D146F4C",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-72341AF396E5F2",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-728748970CFECB",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-7334BA9BF7142F",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-73BC5246ACCBA9",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-74BAFB9914C45A",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-7684D59AB83F05",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-77D79AEBE9D24D",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-784619EE4D3D5C",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-78E7A63D89F0A8",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-791EB4BAEF9BAE",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-796C32E80D98DD",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-798358426D6A6D",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-79A5EBAC669A5E",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-7B32AAE24F6427",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-7F493D9ADFCB49",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-8057097D60DA9A",
+      "reproduced": true,
+      "recordedStatus": "PROBABLE_BUT_UNVERIFIED",
+      "actualStatus": "PROBABLE_BUT_UNVERIFIED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "catalog-conversion-not-exact-variant-proof",
+        "target-outside-current-pinned-library",
+        "exact-variant-identity-not-verified"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-80C89CC8DD8956",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-80F2F613717022",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-81039019AC5DA4",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-81D9541E2A9AAE",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-82519E5D080204",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-8341214526ED2C",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-861D222C700608",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-86E1DBDE4189F1",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-8769DC54ECD46C",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-87DC4170CE40DF",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-88ADFE311DD911",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-897180142C0248",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-89F68580058329",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-8A40676CE7EF1F",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-8AEAA325AE81CE",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-8B79DFE57E2C74",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-8BA0CAA052FC14",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-8CE425E01C37A4",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-8D0299C56E83AF",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-8D22B0B0DFED6F",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-8D60AD494C5619",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-8E0D0376A1138F",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-8E41710A1D2171",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-8FA2E1271FA913",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-8FFD0E9A1598C0",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-90B2A5E5586DA8",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-9330DFD291487C",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-93EB464318A01E",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-94FB93EB6286DE",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-9502DFDB962280",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-96EC4AAE6B8668",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-9789492E500924",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-9885693A38AE0C",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-98BE76972AED48",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-98D783A0557742",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-9A01103CBDE2CF",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-9A105B83EB3131",
+      "reproduced": true,
+      "recordedStatus": "PROBABLE_BUT_UNVERIFIED",
+      "actualStatus": "PROBABLE_BUT_UNVERIFIED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "catalog-conversion-not-exact-variant-proof",
+        "target-outside-current-pinned-library",
+        "exact-variant-identity-not-verified"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-9A89348552F47D",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-9DA42B23E5F028",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-9EC64E11F8172A",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-9F9EC6D23113FC",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-9FA4E479659231",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-A0D5090062B5C1",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-A11192558FB129",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-A134F6EB0067EA",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-A3FD386F8EC15C",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-A516DDA1CCAB41",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-A5498AC1564CC5",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-A588FFA534A0CB",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-A5D008205F7899",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-A60CE74C019E2D",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-A6BFC15DA83599",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-A7C27FEFC8EC4D",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-A7C42D6C4DF0E5",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-A83E24A9C406B9",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-AA2512143FC60F",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-AA71EE7A1EEA5E",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-ABC031FB9A91EB",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-AC0062F46C7DF5",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-AC847DDA66955F",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-AD47961DC857D0",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-AD48AD5FCCE216",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-AD84C0DF808E03",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-B0055E3923CF7C",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-B1AFC7A5380B11",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-B225C453E6EA67",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-B22E6B5B37F1AD",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-B2AF55C40C2F15",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-B36EE79990FEC2",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-B37AB6DB7B2756",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-B3C320314B2917",
+      "reproduced": true,
+      "recordedStatus": "PROBABLE_BUT_UNVERIFIED",
+      "actualStatus": "PROBABLE_BUT_UNVERIFIED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "catalog-conversion-not-exact-variant-proof",
+        "target-outside-current-pinned-library",
+        "exact-variant-identity-not-verified"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-B3E52ABCABD828",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-B4EC00E13FB8B5",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-B86611B0D093A2",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-B885005E36AC07",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-BA0AA99351C454",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-BCF594150362D8",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-BE114A6E6B1953",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-BFC90E6245437B",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C0032A25161DCA",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C0E791CF0A3157",
+      "reproduced": true,
+      "recordedStatus": "PROBABLE_BUT_UNVERIFIED",
+      "actualStatus": "PROBABLE_BUT_UNVERIFIED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "catalog-conversion-not-exact-variant-proof",
+        "target-outside-current-pinned-library",
+        "exact-variant-identity-not-verified"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C1D2A6403B5B7A",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C22C88F2448927",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C2328F0E4C0E30",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C3110354611C5A",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C38BA9350FD921",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C409B31CECAB14",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C413D83CA4A2F5",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C4232BF874D82E",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C4512B25094133",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C502769FE444AD",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C582AF70290226",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C5BC7A26E82224",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C93284C06411D3",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C971A372D2802F",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C99E737AE57101",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-C9D008CC954DE0",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-CB322980B68A66",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-CBAD2749239011",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-CBBBD13DD0C868",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-CBE37F1BF280ED",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-CBEE34A70AF359",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-CBF348950C84F8",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-CC71910B5EC9B4",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-CCF8E12C72BB73",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-CCF981E49217AE",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-CD0BF04F722BB7",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-CF50B66984DD93",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-CF6963AFA87386",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-D19FB030501975",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-D28C9EAD707CA4",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-D369C71490BD7B",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-D4071CA42A4780",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-D47AEAA2BA4932",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-D61225C05497C3",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-D7C6404ACE29F6",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-D7FDB3ABCC3125",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-D871A938A4C50A",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-D97B6A24E4144A",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-D9804C09E139A9",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-DAE97D070AE747",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-DCF724A386D4C5",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-DD47989E4E2EF2",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-DD5263657F8A3D",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-DE3ADA33E0C04E",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-DECBCE6E8A42D3",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-E03431569B29AC",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-E085A24D32E2A9",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-E0F3E6EB1AF12C",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-E190E6D06AAF05",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-E1B06263995592",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-E2256F6317DAD9",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-E2611CA8B8D128",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-E2F9E11B35C059",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-E436D84859BB4E",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-E57946F05DBF60",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-E5D6D4967CED69",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-E6EA65A04CA88D",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-EB13589D05D3F9",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-EC27030E916DBD",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-ED5C809903A200",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-EDBD594D57956D",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-EE51786F91A8CA",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-EE8D0FDBB2C550",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-EF168DC4FC4B92",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-EF3A375583602D",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-F014C3E441BEA8",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-F045684F55FB66",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-F35E9F20D428C7",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-F4A1234BDD8533",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-F6D84409981454",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-FA77BECD1940FD",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-FBBDD016956329",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-FC5E2A6DACD611",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-FD0EA3AF40AC4B",
+      "reproduced": true,
+      "recordedStatus": "CONFLICT",
+      "actualStatus": "CONFLICT",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "conflicting-ldraw-cross-references",
+        "conflicting-explicit-ldraw-targets"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-FE501F41EC74FC",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MAP-FEBEBD4274EEF0",
+      "reproduced": true,
+      "recordedStatus": "UNRESOLVED",
+      "actualStatus": "UNRESOLVED",
+      "reasonCodes": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "MULTI-3020-3710",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "surface-partition-limit"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-10312",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-103918",
+      "reproduced": true,
+      "recordedStatus": "missing",
+      "actualStatus": "missing",
+      "reasonCodes": [
+        "no-connections"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-11211",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-11215",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-11289",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "unresolved-boundary-cap"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-11290",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-11291",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-11301",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-11477",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-external-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-13252",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-directive"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-13349",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-13547",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-14520",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-14769",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-15068",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-external-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-15625",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-16477",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-17454",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-17457",
+      "reproduced": true,
+      "recordedStatus": "missing",
+      "actualStatus": "missing",
+      "reasonCodes": [
+        "no-connections"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-1846",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-18591",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-18671",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-18729",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-1874",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-18972",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-18973",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-18974",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-18975",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "invalid-directive"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-18976",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-18977",
+      "reproduced": true,
+      "recordedStatus": "missing",
+      "actualStatus": "missing",
+      "reasonCodes": [
+        "no-connections"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-18986",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-18990",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-19212",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "unresolved-boundary-cap"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-20455",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-20684",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-21849",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-22390",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-22391",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-22483",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-2336",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-2337",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-directive"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-23448",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-24151",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-external-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-2418A",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-directive"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-24201",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-24299",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-24307",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-24309",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-2436A",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-2436B",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-2513",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-28802",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-28964",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "unresolved-boundary-cap"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-29115",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-29119",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-external-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-29120",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-external-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-2916",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-3004",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-3007",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-3008",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-3009",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-3010",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-30209",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-30250",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-30263",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling",
+        "unsupported-directive"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-30374",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-3038",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-30382",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-3040B",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-3041",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-30602",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-32084",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-32803",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-35789",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-3622",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-3641",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-3673",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "invalid-directive"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-36841",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-3700",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-3787",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-external-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-3956",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-4079",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-41747",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-41748",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-41761",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-41764",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-41765",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-41766",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-41767",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-41768",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-41769",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-41770",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-42021",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-42022",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-42023",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-42060",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-42061",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-42862",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-42918",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-43710",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-43711",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-43712",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-43722",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-43723",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-44126",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-external-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-44674",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-external-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-44675",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-45410",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-45411",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-directive"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-4585",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-4600",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-4624",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-4732",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-47456",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-47457",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-47458",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-48724",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-48729B",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "non-manifold-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-49097",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-50745",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-50950",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-52038",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-52107",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling",
+        "invalid-directive"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-54091",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-54095",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-54096",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-56204",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-directive"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-5712",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-60470B",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-6087",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-61068",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-external-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-6111",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-61487",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-61678",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-62360",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "unresolved-boundary-cap"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-62361",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-64570",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "unresolved-boundary-cap"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-65132",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "unresolved-boundary-cap"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-65632",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-65633",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-65635",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-66727",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-66955",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "non-manifold-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-66956",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-70681",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-71771",
+      "reproduced": true,
+      "recordedStatus": "missing",
+      "actualStatus": "missing",
+      "reasonCodes": [
+        "no-connections"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-73562",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-76766",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "unresolved-boundary-cap"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-79389",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-80177",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-80178",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-80567",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-85970",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-85984",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "collision-or-transform-blocked"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-88930",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-external-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-93273",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-93587",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-93589",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-93590",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-93597",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-93604",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-93606",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "branched-native-boundary"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-98138",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-98282",
+      "reproduced": true,
+      "recordedStatus": "partial",
+      "actualStatus": "partial",
+      "reasonCodes": [
+        "unsupported-scaling"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-98835",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-external-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PART-99206",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "open-nonplanar-shell"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PIN-HOLE",
+      "reproduced": true,
+      "recordedStatus": "incompatible",
+      "actualStatus": "incompatible",
+      "reasonCodes": [
+        "same-mating-gender"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-11212-E8D3B393DC",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "surface-partition-limit"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-13760-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-15573-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-2352-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-2412B-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-2422-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-2431-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-28974A-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3003-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3022-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3023-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3023B-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3026-561D97746C",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "isolated-interface-timeout"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3026-7DE2F16846",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "isolated-interface-timeout"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3026-F695A2CF67",
+      "reproduced": true,
+      "recordedStatus": "PASS",
+      "actualStatus": "PASS",
+      "reasonCodes": [],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3027-E8D3B393DC",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "surface-partition-limit"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3027-F695A2CF67",
+      "reproduced": true,
+      "recordedStatus": "PASS",
+      "actualStatus": "PASS",
+      "reasonCodes": [],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3028-E8D3B393DC",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "surface-partition-limit"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3028-F695A2CF67",
+      "reproduced": true,
+      "recordedStatus": "PASS",
+      "actualStatus": "PASS",
+      "reasonCodes": [],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3029-E8D3B393DC",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "surface-partition-limit"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3029-F695A2CF67",
+      "reproduced": true,
+      "recordedStatus": "PASS",
+      "actualStatus": "PASS",
+      "reasonCodes": [],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3030-E8D3B393DC",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "surface-partition-limit"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3030-F695A2CF67",
+      "reproduced": true,
+      "recordedStatus": "PASS",
+      "actualStatus": "PASS",
+      "reasonCodes": [],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3031-E8D3B393DC",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "surface-partition-limit"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3032-E8D3B393DC",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "surface-partition-limit"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3033-E8D3B393DC",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "surface-partition-limit"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3033-F695A2CF67",
+      "reproduced": true,
+      "recordedStatus": "PASS",
+      "actualStatus": "PASS",
+      "reasonCodes": [],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3035-E8D3B393DC",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "surface-partition-limit"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3036-E8D3B393DC",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "surface-partition-limit"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3036-F695A2CF67",
+      "reproduced": true,
+      "recordedStatus": "PASS",
+      "actualStatus": "PASS",
+      "reasonCodes": [],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3068B-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3460-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3666-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-36840-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3710-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3788-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3794B-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-3958-E8D3B393DC",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "surface-partition-limit"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-4070-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-4162-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-41682-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-41854-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-42446-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-44728-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-4477-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-4598-E8D3B393DC",
+      "reproduced": true,
+      "recordedStatus": "collision",
+      "actualStatus": "collision",
+      "reasonCodes": [
+        "solid-volume-intersection"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-4598-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-47905-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-5090-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-50947-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-50967-E8D3B393DC",
+      "reproduced": true,
+      "recordedStatus": "collision",
+      "actualStatus": "collision",
+      "reasonCodes": [
+        "solid-volume-intersection"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-5175-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-60212-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-63864-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-6636-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-69906-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-73825-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-87087-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-87552-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-87580-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-93274-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-98287-E8D3B393DC",
+      "reproduced": true,
+      "recordedStatus": "blocked",
+      "actualStatus": "blocked",
+      "reasonCodes": [
+        "surface-partition-limit"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-98287-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-99207-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-99780-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "PORT-99781-FE5BA3ADF2",
+      "reproduced": true,
+      "recordedStatus": "REQUIRES_ASTRA_REVIEW",
+      "actualStatus": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "compatibility-unknown"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "WHEEL-HOLDER",
+      "reproduced": true,
+      "recordedStatus": "unknown",
+      "actualStatus": "unknown",
+      "reasonCodes": [
+        "standard-stud-identity-unresolved"
+      ],
+      "physicalBuildVerified": false
+    },
+    {
+      "caseId": "WHEEL-TYRE",
+      "reproduced": true,
+      "recordedStatus": "unknown",
+      "actualStatus": "unknown",
+      "reasonCodes": [
+        "grouped-interface-seating-unresolved"
+      ],
+      "physicalBuildVerified": false
+    }
+  ]
+}

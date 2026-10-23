@@ -1,0 +1,381 @@
+{
+  "schemaVersion": 1,
+  "caseId": "PART-2513",
+  "category": "HOLLOW_GEOMETRY",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "2513",
+      "ldrawId": "2513",
+      "identitySystem": "ldraw",
+      "sourceDigest": "e4c46fb334e653f1f3bf6a1ad106d2ac2baa040a257361e11949bc75e8daddf4",
+      "geometryHash": "e2b7169d66b35034562fc2a40fa60955ea19426bd9360c981a214e372438d031",
+      "connectionMetadataHash": "3cd5c4cc84cc75fbf49800ca5a76494dd0448873790974925d3026f46f58042f"
+    }
+  ],
+  "affectedPhysicalInterfaces": [
+    "cdd26b8a8f6768e73b238b4e2e0d91971e8e86b4dfbe1f978b39e162a908f616",
+    "58c249cb69deb4b49a519ca13b0dfcc8830b94aad95608d3d2b45d534742195f",
+    "bba39fe2697ad41051b8af562be456a78557271a6f64ab5ea69b26476e30dbf2",
+    "240a3538f0765b595ff7ee66f8ae2de02acad0f5cbfb9b97ef6c75b9307e629a",
+    "72fd2b9f0c2b83237db296e423369eb4f23286e638b2bbe9c20af90904f36a32",
+    "ffbdc7f901a73312352180738bca3512a30be80d06b58049e2207d694ca32d32",
+    "3872e7efb34e4ddc973f1acab867a3c44f524dc7f9811c894b66e222254296ce",
+    "1a8b049702672903637a1696c3a2440ab8036d5ba7b40499be12415433cfde2c",
+    "a61d9656e69b7a591497aa358cfea5deb48739a648ed2fc00cbd8b06552e0c15",
+    "71df6583bf2c31b06f2249710777b67c9522aa69b25b6019499dd4ce5893b53b",
+    "9a25ac34847335715f1d17bafef378a408e914584b66e7c47d6500b3afd8db99",
+    "01485d170665f0d06453fc0129a539820250683ed71942afda3aa28e01aac62e"
+  ],
+  "connections": [
+    {
+      "id": "p/stud.dat:8:0",
+      "sourceId": "studC",
+      "kind": "cylinder",
+      "family": "stud",
+      "gender": "M",
+      "position": [
+        -30,
+        0,
+        0
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "id": "studC",
+        "gender": "M",
+        "caps": "one",
+        "secs": "R 6 4"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "p/stud.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [ID=studC] [gender=M] [caps=one] [secs=R 6 4]",
+        "transforms": [
+          {
+            "file": "parts/2513.dat",
+            "line": 17,
+            "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\2513s01.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "file": "parts/s/2513s01.dat",
+            "line": 284,
+            "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 stug-1x4.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "file": "p/stug-1x4.dat",
+            "line": 12,
+            "directive": "1 16 -30 0 0 1 0 0 0 1 0 0 0 1 stud.dat",
+            "position": [
+              -30,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    },
+    {
+      "id": "p/stud.dat:8:1",
+      "sourceId": "studC",
+      "kind": "cylinder",
+      "family": "stud",
+      "gender": "M",
+      "position": [
+        -10,
+        0,
+        0
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "id": "studC",
+        "gender": "M",
+        "caps": "one",
+        "secs": "R 6 4"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "p/stud.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [ID=studC] [gender=M] [caps=one] [secs=R 6 4]",
+        "transforms": [
+          {
+            "file": "parts/2513.dat",
+            "line": 17,
+            "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\2513s01.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "file": "parts/s/2513s01.dat",
+            "line": 284,
+            "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 stug-1x4.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "file": "p/stug-1x4.dat",
+            "line": 13,
+            "directive": "1 16 -10 0 0 1 0 0 0 1 0 0 0 1 stud.dat",
+            "position": [
+              -10,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": {
+    "rotation": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "translation": [
+      0,
+      0,
+      0
+    ]
+  },
+  "transformStatus": "SOURCE_IDENTITY",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "blocked",
+    "reasonCodes": [
+      "branched-native-boundary"
+    ],
+    "details": {
+      "reason": "The source mesh has open/branched boundary chains."
+    }
+  },
+  "replay": {
+    "kind": "proxy",
+    "partId": "2513"
+  },
+  "reproductionCommand": "npm run astra:case -- PART-2513",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/1-4cyls.dat",
+    "data/parts-foundation/ldraw/files/p/1-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/1-8edge.dat",
+    "data/parts-foundation/ldraw/files/p/2-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/2-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/3-8disc.dat",
+    "data/parts-foundation/ldraw/files/p/3-8edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/4-4cyls.dat",
+    "data/parts-foundation/ldraw/files/p/4-4cylse.dat",
+    "data/parts-foundation/ldraw/files/p/4-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring3.dat",
+    "data/parts-foundation/ldraw/files/p/5-8edge.dat",
+    "data/parts-foundation/ldraw/files/p/box2-5.dat",
+    "data/parts-foundation/ldraw/files/p/box2-7.dat",
+    "data/parts-foundation/ldraw/files/p/box3u2p.dat",
+    "data/parts-foundation/ldraw/files/p/rect.dat",
+    "data/parts-foundation/ldraw/files/p/rect2p.dat",
+    "data/parts-foundation/ldraw/files/p/rect3.dat",
+    "data/parts-foundation/ldraw/files/p/stud.dat",
+    "data/parts-foundation/ldraw/files/p/stud4a.dat",
+    "data/parts-foundation/ldraw/files/p/stug-1x4.dat",
+    "data/parts-foundation/ldraw/files/parts/2513.dat",
+    "data/parts-foundation/ldraw/files/parts/s/2513s01.dat",
+    "data/parts-foundation/shadow/files/p/stud.dat",
+    "data/parts-foundation/shadow/files/parts/s/2513s01.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [
+    {
+      "reasonCodes": [
+        "collision-proxy-branched-native-boundary"
+      ],
+      "reasons": [
+        "The source mesh has open/branched boundary chains."
+      ],
+      "sourceChecks": [
+        {
+          "name": "source-integrity",
+          "outcome": "passed",
+          "reason": "Pinned native geometry and every source-backed connection file are hashed and licensed."
+        },
+        {
+          "name": "collision",
+          "outcome": "blocked",
+          "reason": "The source mesh has open/branched boundary chains."
+        }
+      ]
+    }
+  ],
+  "attemptsAlreadyMade": [
+    "Loaded and fingerprinted the actual pinned native source.",
+    "Ran the current per-part migration source/fixture prerequisites."
+  ],
+  "whySolStopped": "Further progress requires missing source semantics or complex solid/retention rules; no ad hoc geometry or collision exception was introduced.",
+  "diagnosticOnly": true
+}

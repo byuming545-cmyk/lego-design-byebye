@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-23T18:48:57.608Z",
+  "status": "PASS",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "scope": "Current pinned native sources, source-bound per-interface permissions, final-pose mesh collision and complete connection graph; no physical build certification.",
+  "physicalBuildVerified": false,
+  "runtimeAdmission": {
+    "status": "ready",
+    "issues": [],
+    "reportLoaded": true,
+    "checkedAt": "2026-10-23T18:36:35.893Z"
+  },
+  "migrationReportSha256": "ff5daa419f01ad48c0489992b204d9445d75cbdce3fd31a382d7f4c030a466f8",
+  "currentCounts": {
+    "parts": {
+      "total": 245,
+      "assemblyVerified": 79,
+      "generatable": 79,
+      "blocked": 166,
+      "verifiedInterfaces": 1262,
+      "disabledInterfaces": 3432,
+      "testedPhysicalInterfaces": 1514,
+      "deferredPhysicalInterfaces": 0,
+      "deferredRawConnectionIds": 0,
+      "wheelModulesVerified": 0,
+      "physicalBuildsVerified": 0
+    },
+    "source": {
+      "totalRoots": 245,
+      "geometryReady": 245,
+      "connectionReady": 197,
+      "connectionPartial": 44,
+      "connectionMissing": 4
+    },
+    "physicalInterfaces": {
+      "rawSourceConnectionRecords": 4694,
+      "logicalConnectionGroups": 2862,
+      "physicalInterfacesDiscovered": 4632,
+      "verifiedPass": 1248,
+      "verifiedBlocked": 786,
+      "requiresAstraReview": 2598,
+      "pending": 0,
+      "verifiedPhysicalInterfaces": 1248,
+      "enabledPhysicalInterfaces": 1248,
+      "enabledRawConnectionIds": 1262,
+      "verifiedCoveragePercent": 26.943,
+      "processedCoveragePercent": 100,
+      "fullyAssemblyVerified": 23,
+      "interfaceVerificationComplete": 241,
+      "partiallyGeneratable": 56,
+      "blockedParts": 162,
+      "unresolvedParts": 4
+    }
+  },
+  "smoke": {
+    "command": "npm run smoke:assembly",
+    "exitCode": 0,
+    "summary": {
+      "requested": 7,
+      "generated": 6,
+      "blocked": 1,
+      "failed": 0,
+      "physicalBuildsVerified": 0
+    },
+    "defaultModuleMultiPointPlacements": 0,
+    "bridgeProbe": {
+      "status": "passed",
+      "nodes": 4,
+      "edges": 4,
+      "attachmentApiCalls": 3,
+      "reasons": [],
+      "artifact": "regression-probes/production-bridge.json"
+    },
+    "report": "artifacts/assembly-development/generator-smoke.json"
+  },
+  "unit": {
+    "command": "npm test -- --maxWorkers=2",
+    "exitCode": 0,
+    "passedFiles": 38,
+    "totalFiles": 38,
+    "passedTests": 569,
+    "totalTests": 569,
+    "durationSeconds": 90.4
+  },
+  "browser": {
+    "uniqueScenarios": 9,
+    "finalPassed": 9,
+    "finalUnresolvedFailures": 0,
+    "initial": {
+      "command": "npm run test:e2e",
+      "exitCode": 1,
+      "passed": 7,
+      "failed": 2,
+      "durationReported": "1.2m"
+    },
+    "correction": {
+      "file": "tests/e2e/assemblyChecks.ts",
+      "reason": "The final UI clarified the enabled raw connection ID label; the shared test helper still selected its previous exact text.",
+      "before": "已开放原始 ID",
+      "after": "已开放原始连接 ID",
+      "substantiveAssertionsChanged": false,
+      "timeoutsChanged": false
+    },
+    "affectedScenarioRecheck": {
+      "command": "npm run test:e2e -- --grep 'reports every real source part|opens the real library by default'",
+      "exitCode": 0,
+      "passed": 2,
+      "failed": 0,
+      "durationSeconds": 37.7
+    },
+    "scope": [
+      "245-row and aggregate/per-part physical coverage consistency",
+      "real source attachment and incompatible gender rejection",
+      "native wall/chassis generation and wheel restriction",
+      "export/import and version/occupancy invalidation",
+      "desktop and mobile WebGL source geometry/connector pixel checks",
+      "mapping and legacy workflow restrictions"
+    ]
+  },
+  "compiledPreview": {
+    "command": "npm run test:preview",
+    "exitCode": 0,
+    "passedTests": 3,
+    "totalTests": 3,
+    "durationSeconds": 32.4,
+    "setupCommand": "npm run preview",
+    "successfulBuildCommand": "npm run build",
+    "includesTypecheck": true,
+    "includesServerCompilation": true,
+    "compiledAstraCheckCli": "dist-server/cli/astra-check.js",
+    "scope": [
+      "one-origin compiled UI/API/native mesh/fonts",
+      "source and generation restrictions",
+      "current attachment/export/import and stale version rejection"
+    ],
+    "buildWarnings": [
+      "Vite reports a minified chunk larger than 500 kB."
+    ]
+  },
+  "screenshots": [
+    "artifacts/assembly-development/screenshots/source-verified-attachment.png",
+    "artifacts/assembly-development/screenshots/native-chassis.png",
+    "artifacts/assembly-development/screenshots/mobile-assembly.png",
+    "artifacts/parts-foundation/3001-native-source-connectors.png",
+    "artifacts/parts-foundation/part-lab-desktop.png",
+    "artifacts/parts-foundation/part-lab-mobile-390.png"
+  ],
+  "relatedIndependentEvidence": "artifacts/assembly-development/astra-replay-validation.json",
+  "logs": [
+    {
+      "path": "artifacts/assembly-development/validation-logs/smoke-final.txt",
+      "bytes": 3278,
+      "sha256": "5b66fedc9352b0d139c37c990053a330add8adbfddcb40b51369e04606777a4c"
+    },
+    {
+      "path": "artifacts/assembly-development/validation-logs/unit-final.txt",
+      "bytes": 222,
+      "sha256": "bb9cfcc30712cd49a40f3c367cfd137c9991e5d3dac2946dfead070db176c269"
+    },
+    {
+      "path": "artifacts/assembly-development/validation-logs/e2e-initial.txt",
+      "bytes": 10264,
+      "sha256": "0589710dca7b21b58209a7af23f619f2363eec0ccf770749b687d9de879aac21"
+    },
+    {
+      "path": "artifacts/assembly-development/validation-logs/e2e-label-recheck.txt",
+      "bytes": 919,
+      "sha256": "21dc7a85e446807e1ea39259bd4199a4267ec28a3eec63f31d3805e758a08bf1"
+    },
+    {
+      "path": "artifacts/assembly-development/validation-logs/preview-final.txt",
+      "bytes": 1584,
+      "sha256": "9b7787ef0ede3e9f6fe9dfd29e428c617aacaba4fc78963453152aad161a3ecc"
+    }
+  ]
+}

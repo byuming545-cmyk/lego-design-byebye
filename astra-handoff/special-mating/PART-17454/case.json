@@ -1,0 +1,658 @@
+{
+  "schemaVersion": 1,
+  "caseId": "PART-17454",
+  "category": "CONNECTION_PARSE",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "17454",
+      "ldrawId": "17454",
+      "identitySystem": "ldraw",
+      "sourceDigest": "7571cbdbf76f971354c8f2cfafb07c475a31cd7210b5be6c6faf0429adc2bfcb",
+      "geometryHash": "ee6ab9a750e04cc791d8137d949ef90d11736b90505b39146c105aa2c9f4117b",
+      "connectionMetadataHash": "f2cb27a32950f1731130996c52aacf1ba2d0436e431b133781bffa74282c7a63"
+    }
+  ],
+  "affectedPhysicalInterfaces": [],
+  "connections": [
+    {
+      "id": "p/stud2.dat:9:0",
+      "sourceId": "studO",
+      "kind": "cylinder",
+      "family": "stud",
+      "gender": "M",
+      "position": [
+        -30,
+        0,
+        0
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "orientation": [
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "id": "studO",
+        "gender": "M",
+        "caps": "one",
+        "secs": "R 6 4"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "p/stud2.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "62e2ba6afee204d3e4a457d026569e6114e99f1fe6a4c3524b5af93a573570eb",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud2.dat",
+        "line": 9,
+        "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=M] [caps=one] [secs=R 6 4]",
+        "transforms": [
+          {
+            "file": "parts/17454.dat",
+            "line": 21,
+            "directive": "1 16 0 0 0 0 0 -1 0 1 0 1 0 0 stug2-4x1.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              0,
+              0,
+              -1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "file": "p/stug2-4x1.dat",
+            "line": 12,
+            "directive": "1 16 0 0 30 1 0 0 0 1 0 0 0 1 stud2.dat",
+            "position": [
+              0,
+              0,
+              30
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    },
+    {
+      "id": "p/stud2.dat:10:1",
+      "sourceId": "studO",
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "F",
+      "position": [
+        -30,
+        -4,
+        0
+      ],
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "orientation": [
+        0,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 4,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "id": "studO",
+        "gender": "F",
+        "caps": "one",
+        "secs": "R 4 4",
+        "pos": "0 -4 0",
+        "ori": "1 0 0 0 -1 0 0 0 -1"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "p/stud2.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "62e2ba6afee204d3e4a457d026569e6114e99f1fe6a4c3524b5af93a573570eb",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud2.dat",
+        "line": 10,
+        "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=F] [caps=one] [secs=R 4 4] [pos=0 -4 0] [ori=1 0 0 0 -1 0 0 0 -1]",
+        "transforms": [
+          {
+            "file": "parts/17454.dat",
+            "line": 21,
+            "directive": "1 16 0 0 0 0 0 -1 0 1 0 1 0 0 stug2-4x1.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              0,
+              0,
+              -1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "file": "p/stug2-4x1.dat",
+            "line": 12,
+            "directive": "1 16 0 0 30 1 0 0 0 1 0 0 0 1 stud2.dat",
+            "position": [
+              0,
+              0,
+              30
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": null,
+  "transformStatus": "UNRESOLVED",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "partial",
+    "reasonCodes": [
+      "unsupported-scaling"
+    ],
+    "details": {
+      "status": "partial",
+      "pointCount": 15,
+      "issues": [
+        {
+          "code": "unsupported-scaling",
+          "file": "p/stud3.dat",
+          "line": 8,
+          "message": "Inherited non-rigid scaling retained in the source frame; physical dimensions are unresolved.",
+          "directive": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "source": {
+            "library": "LDCadShadowLibrary",
+            "path": "p/stud3.dat",
+            "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+            "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+            "license": "CC-BY-SA-4.0",
+            "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat"
+          },
+          "transforms": [
+            {
+              "file": "parts/17454.dat",
+              "line": 24,
+              "directive": "1 16 0 42.75 0 -1 0 0 0 -1.3125 0 0 0 1 stug3-1x3.dat",
+              "position": [
+                0,
+                42.75,
+                0
+              ],
+              "matrix": [
+                -1,
+                0,
+                0,
+                0,
+                -1.3125,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "p/stug3-1x3.dat",
+              "line": 12,
+              "directive": "1 16 -20 0 0 1 0 0 0 1 0 0 0 1 stud3.dat",
+              "position": [
+                -20,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "code": "unsupported-scaling",
+          "file": "p/stud3.dat",
+          "line": 8,
+          "message": "Inherited non-rigid scaling retained in the source frame; physical dimensions are unresolved.",
+          "directive": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "source": {
+            "library": "LDCadShadowLibrary",
+            "path": "p/stud3.dat",
+            "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+            "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+            "license": "CC-BY-SA-4.0",
+            "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat"
+          },
+          "transforms": [
+            {
+              "file": "parts/17454.dat",
+              "line": 24,
+              "directive": "1 16 0 42.75 0 -1 0 0 0 -1.3125 0 0 0 1 stug3-1x3.dat",
+              "position": [
+                0,
+                42.75,
+                0
+              ],
+              "matrix": [
+                -1,
+                0,
+                0,
+                0,
+                -1.3125,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "p/stug3-1x3.dat",
+              "line": 13,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 stud3.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "code": "unsupported-scaling",
+          "file": "p/stud3.dat",
+          "line": 8,
+          "message": "Inherited non-rigid scaling retained in the source frame; physical dimensions are unresolved.",
+          "directive": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "source": {
+            "library": "LDCadShadowLibrary",
+            "path": "p/stud3.dat",
+            "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+            "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+            "license": "CC-BY-SA-4.0",
+            "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat"
+          },
+          "transforms": [
+            {
+              "file": "parts/17454.dat",
+              "line": 24,
+              "directive": "1 16 0 42.75 0 -1 0 0 0 -1.3125 0 0 0 1 stug3-1x3.dat",
+              "position": [
+                0,
+                42.75,
+                0
+              ],
+              "matrix": [
+                -1,
+                0,
+                0,
+                0,
+                -1.3125,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "p/stug3-1x3.dat",
+              "line": 14,
+              "directive": "1 16 20 0 0 1 0 0 0 1 0 0 0 1 stud3.dat",
+              "position": [
+                20,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "sourceFiles": [
+        {
+          "library": "LDraw",
+          "path": "parts/17454.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "edc6319e09794aa06c75e60479545674e233e715f9f4c96b19f2d16cf8fccf57",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/17454.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "parts/s/17454s01.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "99f314df7c1c757e80a30ef5f842c6fdc4f82ed9299142dd778e5ec193cd2f2e",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/17454s01.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/rect.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "ffeb2dd3d9b83c38841f18f1f74800fbba9e90c5fb6badfff2a795f08a96cb71",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/rect3.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "07ac46908b6668d993b6de0fb001a34cd996542106b80ebc7de63317d8dde865",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect3.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/1-4cylo.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "792a01362608c3f385dd7f01a1bd7d19cf9ed8a40f793266345cc86d1d98f3af",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4cylo.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/1-4edge.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "9ce2de7e67bbac575d52cfdc771b9d00856efc9b88002d97db8e665e50f4d467",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4edge.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/1-4cyli.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "5a7168952a5a3570327873b9a5802fa7b3be40967ab78c03b6a2bfd4419a1f10",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4cyli.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/1-4ndis.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "ff6685838636e7ab6152356d8f09e4f00a38af0d878b0881423f5c45fb868f0c",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4ndis.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/rect1.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "48fdcd3181587b4bdc89d356a5aee21268688f3f2fcdd4d6f5c1a3d49b1a1ceb",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect1.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/rect2a.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "6d75ffb88e705a35f34e095ec0848a7bb70b577a376fdae05804da214b0d6369",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect2a.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/1-4chrd.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "ccba3a97b5cc358754e476b78b4ce61cce5f404cd15e37471b73df3e81784aec",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4chrd.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/stug2-4x1.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "179d252971d76f12196c7c2c3b6f89bb6c7eab21d9df9625f44a8064e49e4996",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug2-4x1.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/stud2.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "5ed3702c7d7000bfac2906f12b74ae312c59194a8e3b504952820c826b51c810",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud2.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/4-4edge.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/4-4cyli.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/4-4ring2.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "6fb38804b1f5e9bee8c0b80caf1397b09454fc58b048dc19045b6f37c8762ab0",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring2.dat"
+        },
+        {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud2.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "62e2ba6afee204d3e4a457d026569e6114e99f1fe6a4c3524b5af93a573570eb",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud2.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/stug3-1x3.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "80f86a2ea87dfabc79c3daf963a14c7757caceea6b402ac4f2178a6088de08ac",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug3-1x3.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/stud3.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "d29e9160faeaf85b2b72a098e89a81f41e0082517a82065d7b1f149b5fd2addd",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud3.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/4-4disc.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4disc.dat"
+        },
+        {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud3.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat"
+        },
+        {
+          "library": "LDraw",
+          "path": "p/rect2p.dat",
+          "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "sha256": "faac2b36241a9de0c0108471e59c45734df6c79813332d9cacf97f6391886acc",
+          "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+          "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect2p.dat"
+        }
+      ]
+    }
+  },
+  "replay": {
+    "kind": "parse",
+    "partId": "17454"
+  },
+  "reproductionCommand": "npm run astra:case -- PART-17454",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/1-4chrd.dat",
+    "data/parts-foundation/ldraw/files/p/1-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/1-4cylo.dat",
+    "data/parts-foundation/ldraw/files/p/1-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/1-4ndis.dat",
+    "data/parts-foundation/ldraw/files/p/4-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/4-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring2.dat",
+    "data/parts-foundation/ldraw/files/p/rect.dat",
+    "data/parts-foundation/ldraw/files/p/rect1.dat",
+    "data/parts-foundation/ldraw/files/p/rect2a.dat",
+    "data/parts-foundation/ldraw/files/p/rect2p.dat",
+    "data/parts-foundation/ldraw/files/p/rect3.dat",
+    "data/parts-foundation/ldraw/files/p/stud2.dat",
+    "data/parts-foundation/ldraw/files/p/stud3.dat",
+    "data/parts-foundation/ldraw/files/p/stug2-4x1.dat",
+    "data/parts-foundation/ldraw/files/p/stug3-1x3.dat",
+    "data/parts-foundation/ldraw/files/parts/17454.dat",
+    "data/parts-foundation/ldraw/files/parts/s/17454s01.dat",
+    "data/parts-foundation/shadow/files/p/stud2.dat",
+    "data/parts-foundation/shadow/files/p/stud3.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-connections.test.ts"
+  ],
+  "evidence": [
+    {
+      "reasonCodes": [
+        "connection-source-partial"
+      ],
+      "reasons": [
+        "unsupported-scaling: p/stud3.dat:8: Inherited non-rigid scaling retained in the source frame; physical dimensions are unresolved."
+      ],
+      "sourceChecks": [
+        {
+          "name": "source-integrity",
+          "outcome": "passed",
+          "reason": "Pinned native geometry and every source-backed connection file are hashed and licensed."
+        }
+      ]
+    }
+  ],
+  "attemptsAlreadyMade": [
+    "Loaded and fingerprinted the actual pinned native source.",
+    "Ran the current per-part migration source/fixture prerequisites."
+  ],
+  "whySolStopped": "Further progress requires missing source semantics or complex solid/retention rules; no ad hoc geometry or collision exception was introduced.",
+  "diagnosticOnly": true
+}

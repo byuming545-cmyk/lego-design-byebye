@@ -8,6 +8,8 @@ import { createAssemblySourceLoader, loadStandardAssemblyFixtures } from '../src
 import { verifyNativePartAssembly } from '../src/parts/assembly/verification.js';
 import { exportNativeAssemblyBomCsv, exportNativeAssemblyJson, exportNativeAssemblyLDraw } from '../src/parts/assembly/documents.js';
 import { isRigidTransform, rotate } from '../src/parts/assembly/math.js';
+import { solveAttachment } from '../src/parts/assembly/solver.js';
+import { checkMultiPointConnection } from '../src/parts/assembly/multipoint.js';
 
 const repository = new NativePartRepository();
 let plate: NativeAssemblyPart;
@@ -62,7 +64,7 @@ describe('real native generator eligibility', () => {
 });
 
 describe('real source assembly generation and exports', () => {
-  const sourceIds = ['3005', '3001', '3024', '3022', '3020', '3031', '3070b', '87087', '54200'];
+  const sourceIds = ['3005', '3001', '3024', '3023b', '3022', '3020', '3031', '3070b', '87087', '54200'];
   const capabilities = new Map<string, AssemblyInterfaceCapability>();
   const models = new Map<string, NativeGeneratedAssembly>();
   let generator: NativeAssemblyGenerator, production: AttachmentEngine;
@@ -83,12 +85,17 @@ describe('real source assembly generation and exports', () => {
     const model = result.model!;
     models.set(module, model);
     expect(model.placements.length).toBe(module === 'simple-box' ? 13 : module === 'basic-snot' ? 3 : 5);
-    expect(model.edges).toHaveLength(model.placements.length - 1);
+    expect(model.edges.length).toBeGreaterThanOrEqual(model.placements.length - 1);
     expect(model.placements.every(placement => sourceIds.includes(placement.partId) && capabilities.get(placement.partId)?.assemblyVerified && capabilities.get(placement.partId)?.generatable && isRigidTransform(placement.transform))).toBe(true);
     expect(model.assemblyValidation).toEqual({ checked: true, valid: true, issues: [] });
     expect(await production.validateGraph(model)).toEqual({ valid: true, issues: [] });
     expect(model.bom.reduce((sum, row) => sum + row.quantity, 0)).toBe(model.placements.length);
     expect(model.steps).toHaveLength(model.placements.length);
+    expect(new Set(model.steps.flatMap(step => step.connectionEdgeIds)).size).toBe(model.edges.length);
+    expect(result.search).toMatchObject({ finalPlacements: model.placements.length, finalConnectionEdges: model.edges.length });
+    expect(result.search.searchTimeMs).toBeGreaterThanOrEqual(0);
+    expect(result.search.attachmentApiCalls).toBeLessThanOrEqual(result.search.attempts);
+    expect(result.search.acceptedAttachments + result.search.rejectedAttachments).toBe(result.search.attempts);
     expect(model.physicalBuildVerified).toBe(false);
     if (module === 'basic-snot') expect(model.placements.some(placement => Math.abs(rotate(placement.transform.rotation, [0, -1, 0])[1]) < 1e-6)).toBe(true);
     if (module === 'simple-chassis') {
@@ -128,7 +135,57 @@ describe('real source assembly generation and exports', () => {
     const { contentSha256: _previous, ...document } = stretched;
     stretched.contentSha256 = createHash('sha256').update(JSON.stringify(document)).digest('hex');
     expect(() => exportNativeAssemblyLDraw(stretched)).toThrow('非刚性变换');
+    const invented = structuredClone(model);
+    invented.placements[0].partId = 'invented-legacy-proxy';
+    invented.sourceHashes['invented-legacy-proxy'] = model.sourceHashes[model.placements[0].partId];
+    invented.sources.push({ ...model.sources.find(source => source.path === `parts/${model.placements[0].partId}.dat`)!, path: 'parts/invented-legacy-proxy.dat' });
+    const { contentSha256: _oldHash, ...inventedDocument } = invented;
+    invented.contentSha256 = createHash('sha256').update(JSON.stringify(inventedDocument)).digest('hex');
+    expect(() => exportNativeAssemblyJson(invented)).toThrow('不在当前零件库');
+    const stale = { ...model, assemblyEngineVersion: 'native-assembly-expired-fixture' };
+    const { contentSha256: _staleHash, ...staleContents } = stale;
+    stale.contentSha256 = createHash('sha256').update(JSON.stringify(staleContents)).digest('hex');
+    expect(() => exportNativeAssemblyJson(stale)).toThrow('版本已失效');
   });
+
+  it('exports a real plate bridging two placed source parts with multiple new edges and one BOM/step addition', async () => {
+    const initial = await new NativeAssemblyGenerator(production, { partIds: ['3023b', '3024'], maxAttempts: 12 }).generate({ module: 'platform', partCount: 3 });
+    expect(initial.status, initial.reasons.join('\n')).toBe('generated');
+    const base = initial.model!;
+    const fixedPlacement = base.placements[1], fixed = (await production.getPart(fixedPlacement.partId))!, moving = (await production.getPart('3023b'))!;
+    const anchor = fixed.connections.points.find(point => point.gender === 'M' && capabilities.get(fixed.partId)!.allowedConnectionIds.includes(point.id))!;
+    const receiver = moving.connections.points.find(point => point.gender === 'F' && point.position[0] === -10 && point.position[2] === 0 && capabilities.get(moving.partId)!.allowedConnectionIds.includes(point.id))!;
+    const solved = solveAttachment({ fixedPart: fixed, fixedPlacement, fixedConnectionId: anchor.id, movingPart: moving, movingConnectionId: receiver.id });
+    let twistDegrees: number | undefined;
+    for (const candidate of solved.candidates) {
+      let matches = 0;
+      for (const placement of base.placements.slice(1)) matches += checkMultiPointConnection({ fixedPart: (await production.getPart(placement.partId))!, fixedPlacement: placement, movingPart: moving, movingPlacement: { instanceId: 'source-preview', partId: moving.partId, transform: candidate.transform } }).matches.length;
+      if (matches >= 2) { twistDegrees = candidate.twistDeg; break; }
+    }
+    expect(twistDegrees).toBeDefined();
+    const attached = await production.attachPart(base, { anchorInstanceId: fixedPlacement.instanceId, anchorConnectionId: anchor.id, partId: moving.partId, candidateConnectionId: receiver.id, twistDegrees });
+    expect(attached.accepted, attached.rejections.map(row => row.reason).join('\n')).toBe(true);
+    expect(attached.graph.placements).toHaveLength(4);
+    expect(attached.graph.edges).toHaveLength(4);
+    expect(await production.validateGraph(attached.graph)).toEqual({ valid: true, issues: [] });
+    // This fixture document uses the actual engine graph and existing source
+    // closures; no extra geometry or placement is constructed in the test.
+    const document = {
+      ...base, ...attached.graph,
+      bom: base.bom.map(row => row.partId === moving.partId ? { ...row, quantity: row.quantity + 1 } : row),
+      steps: attached.graph.placements.map((placement, index) => ({ step: index + 1, addedInstanceId: placement.instanceId, partId: placement.partId, connectionEdgeIds: attached.graph.edges.filter(edge => edge.movingInstanceId === placement.instanceId).map(edge => edge.id) })),
+    };
+    const { contentSha256: _old, ...contents } = document;
+    document.contentSha256 = createHash('sha256').update(JSON.stringify(contents)).digest('hex');
+    expect(JSON.parse(exportNativeAssemblyJson(document)).steps[3].connectionEdgeIds).toHaveLength(2);
+    expect(exportNativeAssemblyLDraw(document).split(/\r?\n/).filter(line => line.startsWith('1 '))).toHaveLength(4);
+    expect(exportNativeAssemblyBomCsv(document)).toContain('"3023b","Plate  1 x  2",2');
+    const changedSteps = structuredClone(document);
+    changedSteps.steps[3].connectionEdgeIds.pop();
+    const { contentSha256: _previous, ...badContents } = changedSteps;
+    changedSteps.contentSha256 = createHash('sha256').update(JSON.stringify(badContents)).digest('hex');
+    expect(() => exportNativeAssemblyJson(changedSteps)).toThrow('多点连接');
+  }, 60_000);
 
   it('backtracks from an actual valid attachment when a later design constraint closes that branch', async () => {
     // A reserved assembly branch models a later design constraint. Every pose

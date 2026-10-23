@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "caseId": "MAP-4F16367354F982",
+  "category": "MAPPING_EVIDENCE_MISSING",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "36841",
+      "ldrawId": null,
+      "identitySystem": "rebrickable",
+      "sourceDigest": "6afab811ed3d2566c1a32c2bd243afbfb7627095388494841c33d32e4efe71ba",
+      "geometryHash": null,
+      "connectionMetadataHash": null
+    }
+  ],
+  "affectedElements": [
+    "6296132",
+    "6299338",
+    "6403225",
+    "6248078"
+  ],
+  "connections": [],
+  "currentTransform": null,
+  "transformStatus": "NOT_APPLICABLE",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "UNRESOLVED",
+    "reasonCodes": [
+      "ldraw-cross-reference-not-verified",
+      "no-explicit-ldraw-cross-reference"
+    ],
+    "details": {
+      "elementId": "6296132",
+      "status": "mapped",
+      "verificationStatus": "source-observed",
+      "independentlyVerifiedOfficial": false,
+      "partId": "36841",
+      "partIdSystem": "rebrickable",
+      "designId": "36841",
+      "color": {
+        "system": "rebrickable",
+        "id": "15",
+        "name": "White",
+        "rgb": "FFFFFF"
+      },
+      "partName": "Bracket 1 x 1 - 1 x 1",
+      "category": "Plates Special",
+      "material": "Plastic",
+      "ldrawPartId": null,
+      "ldrawCrossReference": null,
+      "source": {
+        "id": "rebrickable-downloads-mirror-2026-10-22-13-13",
+        "url": "https://github.com/ojuuji/rb.db/releases/download/2026-10-22-13-13/rb.db.xz",
+        "revision": "03547a1273f36f7ea7beb5ff7e67bc40830c15d8",
+        "sha256": "6afab811ed3d2566c1a32c2bd243afbfb7627095388494841c33d32e4efe71ba",
+        "trust": "source-observed",
+        "dataLicense": "not-independently-verified",
+        "independentlyVerifiedOfficial": false
+      },
+      "rawElementRow": {
+        "element_id": 6296132,
+        "part_num": "36841",
+        "color_id": 15,
+        "design_id": 36841
+      },
+      "mappingStatus": "UNRESOLVED",
+      "geometryPipelineAllowed": false,
+      "ldrawCandidatePartIds": [],
+      "evidence": [
+        {
+          "stage": "element-to-external-catalogue",
+          "identitySystem": "lego-element",
+          "identityId": "6296132",
+          "candidateLDrawPartId": null,
+          "source": {
+            "url": "https://github.com/ojuuji/rb.db/releases/download/2026-10-22-13-13/rb.db.xz",
+            "revision": "03547a1273f36f7ea7beb5ff7e67bc40830c15d8",
+            "sha256": "6afab811ed3d2566c1a32c2bd243afbfb7627095388494841c33d32e4efe71ba",
+            "rawText": "{\"element_id\":6296132,\"part_num\":\"36841\",\"color_id\":15,\"design_id\":36841}"
+          },
+          "reasons": [
+            "source-observed-external-identity; not independent official verification"
+          ]
+        }
+      ],
+      "reasons": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ]
+    }
+  },
+  "replay": {
+    "kind": "mapping",
+    "elementId": "6296132"
+  },
+  "reproductionCommand": "npm run astra:case -- MAP-4F16367354F982",
+  "relevantSourceFiles": [
+    "data/parts-foundation/mappings/manifest.json",
+    "data/parts-foundation/mappings/element-rows.json",
+    "data/parts-foundation/mappings/ldraw-mapping-review.json"
+  ],
+  "relevantTests": [
+    "tests/parts-recovery.test.ts"
+  ],
+  "evidence": [
+    {
+      "elementId": "6296132",
+      "status": "mapped",
+      "verificationStatus": "source-observed",
+      "independentlyVerifiedOfficial": false,
+      "partId": "36841",
+      "partIdSystem": "rebrickable",
+      "designId": "36841",
+      "color": {
+        "system": "rebrickable",
+        "id": "15",
+        "name": "White",
+        "rgb": "FFFFFF"
+      },
+      "partName": "Bracket 1 x 1 - 1 x 1",
+      "category": "Plates Special",
+      "material": "Plastic",
+      "ldrawPartId": null,
+      "ldrawCrossReference": null,
+      "source": {
+        "id": "rebrickable-downloads-mirror-2026-10-22-13-13",
+        "url": "https://github.com/ojuuji/rb.db/releases/download/2026-10-22-13-13/rb.db.xz",
+        "revision": "03547a1273f36f7ea7beb5ff7e67bc40830c15d8",
+        "sha256": "6afab811ed3d2566c1a32c2bd243afbfb7627095388494841c33d32e4efe71ba",
+        "trust": "source-observed",
+        "dataLicense": "not-independently-verified",
+        "independentlyVerifiedOfficial": false
+      },
+      "rawElementRow": {
+        "element_id": 6296132,
+        "part_num": "36841",
+        "color_id": 15,
+        "design_id": 36841
+      },
+      "mappingStatus": "UNRESOLVED",
+      "geometryPipelineAllowed": false,
+      "ldrawCandidatePartIds": [],
+      "evidence": [
+        {
+          "stage": "element-to-external-catalogue",
+          "identitySystem": "lego-element",
+          "identityId": "6296132",
+          "candidateLDrawPartId": null,
+          "source": {
+            "url": "https://github.com/ojuuji/rb.db/releases/download/2026-10-22-13-13/rb.db.xz",
+            "revision": "03547a1273f36f7ea7beb5ff7e67bc40830c15d8",
+            "sha256": "6afab811ed3d2566c1a32c2bd243afbfb7627095388494841c33d32e4efe71ba",
+            "rawText": "{\"element_id\":6296132,\"part_num\":\"36841\",\"color_id\":15,\"design_id\":36841}"
+          },
+          "reasons": [
+            "source-observed-external-identity; not independent official verification"
+          ]
+        }
+      ],
+      "reasons": [
+        "ldraw-cross-reference-not-verified",
+        "no-explicit-ldraw-cross-reference"
+      ]
+    }
+  ],
+  "attemptsAlreadyMade": [
+    "Preserved explicit Element / LEGO Design / Rebrickable identities and colour facts.",
+    "Reviewed the fixed explicit cross-reference evidence and retained all conflicting candidates."
+  ],
+  "whySolStopped": "The exact LDraw mold/print/component identity chain is not verified; names, numeric equality and missing local alternatives cannot resolve it.",
+  "diagnosticOnly": true,
+  "mappingSourceFingerprint": {
+    "mappingPolicyVersion": "exact-identity-chain-1",
+    "manifestSha256": "b9c63b63c18ce598896fa29726cc578a4b7b4d8c35eb827f00d058565a07a41b",
+    "elementSnapshotSha256": "6afab811ed3d2566c1a32c2bd243afbfb7627095388494841c33d32e4efe71ba",
+    "reviewSnapshotSha256": "225a49d5f241a44532f2412fbdedd327ab73b81e9e94de363025bdbe16985728"
+  }
+}

@@ -1,12 +1,14 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import type { Server } from 'node:http';
-import { mkdtemp, rm } from 'node:fs/promises';
+import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { tmpdir } from 'node:os';
 import { createApp } from '../src/api/app.js';
 import { MockInventoryProvider } from '../src/inventory/index.js';
 import type { FoundationPartDetail } from '../src/parts/registry.js';
 import { assessPartReadiness, type PartCheck } from '../src/parts/trust.js';
+import type { AssemblyMigrationReport } from '../src/parts/assembly/migration.js';
+import type { RuntimeAssemblyStatus } from '../src/parts/assembly/service.js';
 
 let server: Server, base: string, directory: string;
 beforeAll(async () => {
@@ -30,8 +32,20 @@ describe('real source foundation HTTP API', () => {
     const response = await get('/status');
     expect(response.status).toBe(200);
     const status = await response.json();
-    const migration = await (await get('/assembly/status')).json();
-    expect(status.counts).toMatchObject({ readableDocuments: 6, ldrawPartIds: 245, observedElementIds: 531, geometryReady: 245, connectionReady: 195, catalogOnly: 531 });
+    const migration = await (await get('/assembly/status')).json() as RuntimeAssemblyStatus;
+    const report = JSON.parse(await readFile(new URL('../data/parts-foundation/assembly/migration.json', import.meta.url), 'utf8')) as AssemblyMigrationReport;
+    expect(status.version).toBe('0.6.0');
+    expect(status.counts).toMatchObject({ readableDocuments: 6, ldrawPartIds: 245, observedElementIds: 531, geometryReady: 245, connectionReady: 197, catalogOnly: 531 });
+    expect(migration.sourceCounts).toEqual({ totalRoots: 245, geometryReady: 245, connectionReady: 197, connectionPartial: 44, connectionMissing: 4 });
+    expect(migration.sourceCounts).toEqual(report.sourceCounts);
+    expect(migration.counts).toEqual(report.counts);
+    expect(migration.runtimeValidation).toMatchObject({ status: 'ready', reportLoaded: true, issues: [] });
+    expect(status.assembly.counts).toEqual(migration.counts);
+    expect(status.assembly.interfaceCoverage).toEqual(migration.interfaceCoverage);
+    expect(migration.interfaceCoverage?.physicalInterfacesDiscovered).toBe(4632);
+    expect(migration.interfaceCoverage).toEqual(report.interfaceCoverage);
+    const nativeCatalog = (await (await get('/parts')).json()).parts.filter((part: { identitySystem: string }) => part.identitySystem === 'ldraw');
+    expect(status.counts.collisionReady).toBe(nativeCatalog.filter((part: { collisionReady: boolean }) => part.collisionReady).length);
     expect(status.counts.assemblyVerified).toBe(migration.counts.assemblyVerified);
     expect(status.counts.generatable).toBe(migration.counts.generatable);
     expect(status.counts.generatable).toBeGreaterThan(0);
@@ -44,10 +58,11 @@ describe('real source foundation HTTP API', () => {
     expect(status.referenceSets.filter((set: { elementCount: number }) => set.elementCount === 0).every((set: { supportedPercentage: unknown }) => set.supportedPercentage === null)).toBe(true);
     expect(status.mining).toMatchObject({ actualSetDenominator: 4, expectedSetDenominator: 6, observedRowCount: 667, designRanking: [], partRanking: [] });
     expect(status.elementRanking).toHaveLength(531);
-    expect(status.elementMapping).toMatchObject({ observedElements: 531, mappedBySource: 531, resolvedLDraw: 0, independentlyVerifiedOfficial: 0, sourceTrust: 'source-observed' });
+    expect(status.elementMapping).toMatchObject({ observedElements: 531, mappedBySource: 531, resolvedLDraw: 0, independentlyVerifiedOfficial: 0, sourceTrust: 'source-observed', mappingStatusCounts: { VERIFIED: 0, PROBABLE_BUT_UNVERIFIED: 14, CONFLICT: 88, UNRESOLVED: 429 } });
+    expect(status.instructionCoverage.overall.mappingStatusCounts).toEqual(status.elementMapping.mappingStatusCounts);
     expect(status.nextPriority).toHaveLength(50);
     expect(status.nextPriority.every((row: { sourceTrust: string; partId: unknown }) => row.sourceTrust === 'source-observed' && typeof row.partId === 'string')).toBe(true);
-  }, 30_000);
+  }, 45_000);
 
   it('returns authentic native mesh and only source-bound, fixture-verified assembly interfaces', async () => {
     const response = await get('/parts/3001');
@@ -65,13 +80,16 @@ describe('real source foundation HTTP API', () => {
     expect(detail.geometry!.collision).toMatchObject({ kind: 'aabb', derivedFrom: 'native-mesh', cavitiesResolved: false });
     expect(detail.part.checks.find(check => check.id === 'attachment')?.outcome).toBe(entry.assemblyVerified ? 'passed' : 'not-run');
     expect(detail.part.assemblyReport?.scope).toBe('source-backed-tested-interfaces-only');
+    expect(detail.part.interfaceCoverage).toEqual(migration.entries.find((row: { partId: string }) => row.partId === '3001').interfaceCoverage);
   });
 
   it('keeps PDF element observations separate and never creates a replacement mesh', async () => {
     const response = await get('/parts/element%3A4666579');
     expect(response.status).toBe(200);
     const detail = await response.json() as FoundationPartDetail;
-    expect(detail).toMatchObject({ part: { id: 'element:4666579', elementId: '4666579', designId: '6562', identitySystem: 'lego-element', status: 'catalogOnly', geometryReady: false, assemblyVerified: false, generatable: false, mapping: { status: 'mapped', partId: '3749', partIdSystem: 'rebrickable', designId: '6562', ldrawPartId: null, independentlyVerifiedOfficial: false, source: { trust: 'source-observed' } } }, geometry: null, connections: null });
+    expect(detail).toMatchObject({ part: { id: 'element:4666579', elementId: '4666579', designId: '6562', identitySystem: 'lego-element', status: 'catalogOnly', geometryReady: false, assemblyVerified: false, generatable: false, mapping: { status: 'mapped', mappingStatus: 'CONFLICT', geometryPipelineAllowed: false, partId: '3749', partIdSystem: 'rebrickable', designId: '6562', ldrawPartId: null, independentlyVerifiedOfficial: false, source: { trust: 'source-observed' } } }, geometry: null, connections: null });
+    const probable = await (await get('/parts/element%3A6514193')).json() as FoundationPartDetail;
+    expect(probable).toMatchObject({ part: { geometryReady: false, generatable: false, mapping: { status: 'mapped', mappingStatus: 'PROBABLE_BUT_UNVERIFIED', geometryPipelineAllowed: false, designId: '35380', partId: '98138', ldrawCandidatePartIds: ['98138'], ldrawPartId: null } }, geometry: null, connections: null });
     expect(detail.part.observedSetNumbers).toHaveLength(4);
     const list = await (await get('/parts?query=4666579')).json();
     expect(list.parts).toHaveLength(1);
@@ -97,9 +115,12 @@ describe('real source foundation HTTP API', () => {
     const detail = await (await get('/parts/element%3A9999991')).json();
     expect(detail.part.observedSetNumbers).toEqual(['77254-1', '77263-1']);
     expect(detail.geometry).toBeNull();
+    expect(detail.part.mapping).toMatchObject({ status: 'unresolved', mappingStatus: 'UNRESOLVED', geometryPipelineAllowed: false, ldrawPartId: null });
     const status = await (await get('/status')).json();
     expect(status.counts.observedElementIds).toBe(532);
     expect(status.nextPriority).toEqual(previous.nextPriority);
+    expect(status.elementMapping.mappingStatusCounts).toEqual(previous.elementMapping.mappingStatusCounts);
+    expect(status.instructionCoverage.overall.denominator).toBe(531);
     expect(status.referenceSets.find((set: { setId: string }) => set.setId === '77263').mappedPartCount).toBe(previous.referenceSets.find((set: { setId: string }) => set.setId === '77263').mappedPartCount);
   });
 

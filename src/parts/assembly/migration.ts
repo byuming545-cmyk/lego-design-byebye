@@ -5,6 +5,7 @@ import type { AssemblyInterfaceCapability, NativeAssemblyPart } from './types.js
 import { ASSEMBLY_ENGINE_VERSION } from './engine.js';
 import { CONNECTION_RULE_VERSION } from './compatibility.js';
 import { COLLISION_VERSION } from './collision.js';
+import type { aggregatePhysicalInterfaceCoverage } from './coverage.js';
 
 export const ASSEMBLY_MIGRATION_VERSION = 'native-assembly-migration-1';
 export type AssemblyMigrationBatch = '1-basic-brick-plate-tile' | '2-modified-bracket-snot' | '3-slope-curved-wedge' | '4-body-windscreen-mudguard' | '5-wheel-tyre-axle' | '6-bar-clip-detail' | 'other-source-part';
@@ -14,6 +15,8 @@ export interface AssemblyMigrationEntry extends NativePartAssemblyVerification {
   blockedCategory: 'geometry' | 'connection' | 'collision' | 'special-assembly' | 'other' | null;
 }
 export interface AssemblyMigrationReport {
+  interfaceCoverage?: ReturnType<typeof aggregatePhysicalInterfaceCoverage>;
+  deferredRun?: { targetCount: number; pass: number; blocked: number; requiresAstraReview: number; pending: number; directTests: number; sharedPrecondition: number; reviewDependency: number; interrupted: boolean; checkpointDirectory: string; testVersion: string };
   schemaVersion: 1;
   migrationVersion: string;
   partLibraryVersion: string;
@@ -46,7 +49,7 @@ export interface RepresentativePairVerification {
   result: ConnectionFixtureVerification | null;
 }
 
-async function verifyRepresentativePairs(loader: AssemblySourceLoader, engine: AssemblyVerificationEngine): Promise<RepresentativePairVerification[]> {
+export async function verifyRepresentativePairs(loader: AssemblySourceLoader, engine: AssemblyVerificationEngine): Promise<RepresentativePairVerification[]> {
   const records: RepresentativePairVerification[] = [];
   for (const definition of AUTOMOTIVE_ASSEMBLY_PAIR_FIXTURES) {
     const record: RepresentativePairVerification = { ...definition, status: 'blocked', reason: '', fixedSourceDigest: null, movingSourceDigest: null, result: null };
@@ -76,7 +79,7 @@ async function verifyRepresentativePairs(loader: AssemblySourceLoader, engine: A
   }
   return records;
 }
-function batchFor(root: AssemblySourceRoot): AssemblyMigrationBatch {
+export function batchFor(root: AssemblySourceRoot): AssemblyMigrationBatch {
   const name = root.name;
   if (/\b(?:Wheel|Tyre|Technic|Axlehole|Axle|Wheel Pins)\b/i.test(name)) return '5-wheel-tyre-axle';
   if (/\b(?:Bar|Clip|Clips|Minifig)\b/i.test(name)) return '6-bar-clip-detail';
@@ -86,7 +89,7 @@ function batchFor(root: AssemblySourceRoot): AssemblyMigrationBatch {
   if (/\b(?:Brick|Plate|Tile)\b/i.test(name)) return '1-basic-brick-plate-tile';
   return 'other-source-part';
 }
-function blockedCategory(result: NativePartAssemblyVerification, batch: AssemblyMigrationBatch): AssemblyMigrationEntry['blockedCategory'] {
+export function blockedCategory(result: NativePartAssemblyVerification, batch: AssemblyMigrationBatch): AssemblyMigrationEntry['blockedCategory'] {
   if (result.assemblyVerified) return null;
   if (result.reasonCodes.some(code => /geometry|integrity/.test(code))) return 'geometry';
   if (result.reasonCodes.some(code => /source-partial|connection-missing/.test(code))) return 'connection';

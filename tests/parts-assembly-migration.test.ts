@@ -5,7 +5,8 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { AttachmentEngine, ASSEMBLY_ENGINE_VERSION } from '../src/parts/assembly/engine.js';
 import { NativePartRepository, nativePartSourceHash, PART_LIBRARY_VERSION } from '../src/parts/assembly/source.js';
 import { createAssemblySourceLoader, loadStandardAssemblyFixtures } from '../src/parts/assembly/fixtures.js';
-import { fingerprintAssemblyPart, verifyNativePartAssembly } from '../src/parts/assembly/verification.js';
+import { fingerprintAssemblyPart, prioritizePhysicalInterfaceIds, verifyNativePartAssembly } from '../src/parts/assembly/verification.js';
+import { groupPhysicalInterfaces } from '../src/parts/assembly/interfaces.js';
 import type { LoadedAssemblyFixture } from '../src/parts/assembly/fixtures.js';
 import type { AssemblyMigrationReport } from '../src/parts/assembly/migration.js';
 import { CONNECTION_RULE_VERSION } from '../src/parts/assembly/compatibility.js';
@@ -33,7 +34,7 @@ describe('all-native-root assembly migration', () => {
     const ids = await repository.listIds();
     expect(ids).toHaveLength(245);
     expect(report.entries.map(entry => entry.partId).sort()).toEqual([...ids].sort());
-    expect(report.sourceCounts).toEqual({ totalRoots: 245, geometryReady: 245, connectionReady: 195, connectionPartial: 46, connectionMissing: 4 });
+    expect(report.sourceCounts).toEqual({ totalRoots: 245, geometryReady: 245, connectionReady: 197, connectionPartial: 44, connectionMissing: 4 });
     expect(report.counts.total).toBe(245);
     expect(report.counts.assemblyVerified + report.counts.blocked).toBe(245);
     expect(report.counts.assemblyVerified).toBeGreaterThan(0);
@@ -76,26 +77,49 @@ describe('all-native-root assembly migration', () => {
     }
   });
 
-  it('keeps budget-deferred ports disabled and selects large-plate interior plus spatial extrema', async () => {
-    expect(report.interfaceBudget).toBe(32);
-    expect(report.counts.deferredPhysicalInterfaces).toBeGreaterThan(0);
-    for (const entry of report.entries) {
-      expect(entry.testedPhysicalInterfaceCount).toBeLessThanOrEqual(32);
-      expect(entry.deferredConnectionIds.every(id => entry.disabledConnectionIds.includes(id) && !entry.allowedConnectionIds.includes(id))).toBe(true);
-      if (entry.deferredConnectionIds.length) expect(entry.reasonCodes).toContain('deferred-interface-budget');
+  it('gives every former deferred port a source-bound terminal decision and preserves representative source prioritization', async () => {
+    expect(report.interfaceBudget).toBeNull();
+    expect(report.counts.deferredPhysicalInterfaces).toBe(0);
+    expect(report.deferredRun).toMatchObject({ targetCount: 978, pending: 0, interrupted: false });
+    const baseline = JSON.parse(gunzipSync(readFileSync(new URL('../artifacts/assembly-development/v05-physical-index.json.gz', import.meta.url))).toString('utf8')) as {
+      counts: { pending: number };
+      entries: { partId: string; groups: { physicalInterfaceId: string; status: string }[] }[];
+    };
+    expect(baseline.counts.pending).toBe(978);
+    let targets = 0;
+    for (const before of baseline.entries) {
+      const current = report.entries.find(entry => entry.partId === before.partId)!;
+      for (const group of before.groups.filter(group => group.status === 'PENDING')) {
+        targets++;
+        const decision = current.interfaceCoverage!.decisions.find(decision => decision.physicalInterfaceId === group.physicalInterfaceId);
+        expect(decision, `${before.partId}/${group.physicalInterfaceId}`).toBeDefined();
+        expect(['PASS', 'BLOCKED', 'REQUIRES_ASTRA_REVIEW']).toContain(decision!.status);
+        if (decision!.status === 'PASS') expect(decision!.rawConnectionIds.every(id => current.allowedConnectionIds.includes(id))).toBe(true);
+        else expect(decision!.rawConnectionIds.every(id => current.disabledConnectionIds.includes(id) && !current.allowedConnectionIds.includes(id))).toBe(true);
+      }
     }
-    const large = fullReport.entries.find(entry => entry.partId === '3026')!;
+    expect(targets).toBe(978);
+    for (const entry of report.entries) {
+      expect(entry.interfaceCoverage?.pending).toBe(0);
+      expect(entry.deferredConnectionIds).toEqual([]);
+      for (const decision of entry.interfaceCoverage!.decisions) if (decision.status !== 'PASS') {
+        expect(decision.rawConnectionIds.every(id => entry.disabledConnectionIds.includes(id) && !entry.allowedConnectionIds.includes(id))).toBe(true);
+      }
+    }
     const part = (await repository.getPart('3026'))!;
     const ordinaryStuds = part.connections.points.filter(point => point.gender === 'M' && point.sections.length === 1 && point.sections[0].radius === 6);
-    const attempted = large.fixtures.filter(fixture => !fixture.reasonCodes.includes('deferred-interface-budget')).map(fixture => part.connections.points.find(point => point.id === fixture.connectionId)!).filter(point => ordinaryStuds.includes(point));
-    expect(attempted.length).toBeGreaterThan(4);
+    const groups = groupPhysicalInterfaces(part), byId = new Map(groups.map(group => [group.physicalInterfaceId, group]));
+    const priority = prioritizePhysicalInterfaceIds(part);
+    expect(new Set(priority).size).toBe(groups.length);
+    const initialStuds = priority.slice(0, 32).map(id => byId.get(id)!.points[0]).filter(point => ordinaryStuds.includes(point));
+    expect(initialStuds.length).toBeGreaterThan(4);
     for (const axis of [0, 2]) {
-      expect(Math.min(...attempted.map(point => point.position[axis]))).toBe(Math.min(...ordinaryStuds.map(point => point.position[axis])));
-      expect(Math.max(...attempted.map(point => point.position[axis]))).toBe(Math.max(...ordinaryStuds.map(point => point.position[axis])));
+      expect(Math.min(...initialStuds.map(point => point.position[axis]))).toBe(Math.min(...ordinaryStuds.map(point => point.position[axis])));
+      expect(Math.max(...initialStuds.map(point => point.position[axis]))).toBe(Math.max(...ordinaryStuds.map(point => point.position[axis])));
     }
     const min = [0, 2].map(axis => Math.min(...ordinaryStuds.map(point => point.position[axis])));
     const max = [0, 2].map(axis => Math.max(...ordinaryStuds.map(point => point.position[axis])));
-    expect(attempted.some(point => point.position[0] > min[0] && point.position[0] < max[0] && point.position[2] > min[1] && point.position[2] < max[1])).toBe(true);
+    expect(initialStuds.some(point => point.position[0] > min[0] && point.position[0] < max[0] && point.position[2] > min[1] && point.position[2] < max[1])).toBe(true);
   });
 
   it('executes real source stud fixtures through transform, reverse, native collision, rotation and graph checks', async () => {

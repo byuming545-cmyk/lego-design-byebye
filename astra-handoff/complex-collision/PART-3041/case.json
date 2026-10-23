@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "caseId": "PART-3041",
+  "category": "HOLLOW_GEOMETRY",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "3041",
+      "ldrawId": "3041",
+      "identitySystem": "ldraw",
+      "sourceDigest": "a727d247bccd91faea4ac2b5e43b6c9587823506a4d1303812877c3d96e6701d",
+      "geometryHash": "21e61fb57974902a6363d8eecca5de41445fc1680b34ac478b76222b875cb5c1",
+      "connectionMetadataHash": "356241e001d432de4a95719d4ddd1309d531b5f56d14adb6428b732a9b7edc34"
+    }
+  ],
+  "affectedPhysicalInterfaces": [
+    "58bf0c61abcdbfc5bd6d61f441e3912d98953971ad90788861c436679f552a71",
+    "7fb59da672789f15cac5d013aa636b981b5d0ae45c90e344a9f1ff71153f9e2c",
+    "5938d601c013655c2531063002170540de675aa6c950587a451649c254781740",
+    "661e4fde09c844c94a3453a580df7ff17d614887ca1c3e56015653c276b18c4c",
+    "7edd2132b6958308759cecfafe3b4349ffb9d0603791e03939c67316bb09243b",
+    "ec6c447c8de48e4ec18bca38d405bbcc82eafc0fafec7b20be39ae029f56586e",
+    "0d0521b3bcd5b12017aaf3ac7e6def84258a70c7b12932fd4dcc94ee5fe8929b",
+    "169f2c1ebb180fc6b86f2aa6d0e0f2ad97f307fdec25daf45f51e8fc103e85ab"
+  ],
+  "connections": [
+    {
+      "id": "parts/s/3041s01.dat:8:0",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "F",
+      "position": [
+        -30,
+        24,
+        -10
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "F",
+        "caps": "one",
+        "secs": "R 6 4",
+        "pos": "0 24 0",
+        "grid": "C 4 C 2 20 20"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/s/3041s01.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "91e13d8c4cf1971ad4d94bcc7ed8920b013a6dff4738ea503891c563b5c2af43",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3041s01.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 6 4] [pos=0 24 0] [grid=C 4 C 2 20 20]",
+        "transforms": [
+          {
+            "file": "parts/3041.dat",
+            "line": 18,
+            "directive": "1 16 0 00 0 1 0 0 0 1 0 0 0 1 s\\3041s01.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    },
+    {
+      "id": "parts/s/3041s01.dat:8:1",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "F",
+      "position": [
+        -30,
+        24,
+        10
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "F",
+        "caps": "one",
+        "secs": "R 6 4",
+        "pos": "0 24 0",
+        "grid": "C 4 C 2 20 20"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/s/3041s01.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "91e13d8c4cf1971ad4d94bcc7ed8920b013a6dff4738ea503891c563b5c2af43",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3041s01.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 6 4] [pos=0 24 0] [grid=C 4 C 2 20 20]",
+        "transforms": [
+          {
+            "file": "parts/3041.dat",
+            "line": 18,
+            "directive": "1 16 0 00 0 1 0 0 0 1 0 0 0 1 s\\3041s01.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": {
+    "rotation": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "translation": [
+      0,
+      0,
+      0
+    ]
+  },
+  "transformStatus": "SOURCE_IDENTITY",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "blocked",
+    "reasonCodes": [
+      "open-nonplanar-shell"
+    ],
+    "details": {
+      "reason": "An open native boundary has no source-proven planar internal cap."
+    }
+  },
+  "replay": {
+    "kind": "proxy",
+    "partId": "3041"
+  },
+  "reproductionCommand": "npm run astra:case -- PART-3041",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/1-4cyls.dat",
+    "data/parts-foundation/ldraw/files/p/2-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring3.dat",
+    "data/parts-foundation/ldraw/files/p/box2-5.dat",
+    "data/parts-foundation/ldraw/files/p/box4o4a.dat",
+    "data/parts-foundation/ldraw/files/p/stud4a.dat",
+    "data/parts-foundation/ldraw/files/parts/3041.dat",
+    "data/parts-foundation/ldraw/files/parts/s/3041s01.dat",
+    "data/parts-foundation/shadow/files/parts/s/3041s01.dat",
+    "data/parts-foundation/shadow/files/parts/3041.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [
+    {
+      "reasonCodes": [
+        "collision-proxy-open-nonplanar-shell"
+      ],
+      "reasons": [
+        "An open native boundary has no source-proven planar internal cap."
+      ],
+      "sourceChecks": [
+        {
+          "name": "source-integrity",
+          "outcome": "passed",
+          "reason": "Pinned native geometry and every source-backed connection file are hashed and licensed."
+        },
+        {
+          "name": "collision",
+          "outcome": "blocked",
+          "reason": "An open native boundary has no source-proven planar internal cap."
+        }
+      ]
+    }
+  ],
+  "attemptsAlreadyMade": [
+    "Loaded and fingerprinted the actual pinned native source.",
+    "Ran the current per-part migration source/fixture prerequisites."
+  ],
+  "whySolStopped": "Further progress requires missing source semantics or complex solid/retention rules; no ad hoc geometry or collision exception was introduced.",
+  "diagnosticOnly": true
+}

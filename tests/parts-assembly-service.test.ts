@@ -6,6 +6,7 @@ import { NativePartRepository, PART_LIBRARY_VERSION } from '../src/parts/assembl
 import { AssemblyService } from '../src/parts/assembly/service.js';
 import { AttachmentEngine } from '../src/parts/assembly/engine.js';
 import { runAssemblyMigration, type AssemblyMigrationReport } from '../src/parts/assembly/migration.js';
+import { groupPhysicalInterfaces } from '../src/parts/assembly/interfaces.js';
 
 const repository = new NativePartRepository();
 const directories: string[] = [];
@@ -76,6 +77,7 @@ describe('runtime assembly service admission', () => {
     expect(status.counts.generatable).toBe(0);
     expect(status.runtimeValidation.status).toBe('blocked');
     expect(status.runtimeValidation.issues.join(' ')).toContain('versions');
+    expect(status.interfaceCoverage).toMatchObject({ verifiedPass: 0, enabledPhysicalInterfaces: 0, enabledRawConnectionIds: 0 });
   }, 20000);
 
   it('revokes only the source-mismatched entry without granting its old interfaces', async () => {
@@ -83,7 +85,9 @@ describe('runtime assembly service admission', () => {
     const service = await serviceFor(report);
     expect((await service.getCapability('3005'))).toMatchObject({ assemblyVerified: false, generatable: false, allowedConnectionIds: [], reasonCodes: ['runtime-source-mismatch'] });
     expect((await service.getCapability('3024'))?.generatable).toBe(true);
-    expect((await service.status()).counts.generatable).toBe(1);
+    const status = await service.status();
+    expect(status.counts.generatable).toBe(1);
+    expect((await service.getEntry('3005'))!.interfaceCoverage).toMatchObject({ verifiedPass: 0, enabledPhysicalInterfaces: 0, enabledRawConnectionIds: 0 });
   }, 20000);
 
   it('refuses unproved allowlists while retaining other independently proved parts', async () => {
@@ -106,5 +110,59 @@ describe('runtime assembly service admission', () => {
     for (const fixture of changedFixtureReport.entries.find((entry) => entry.partId === '3005')!.fixtures) if (fixture.status === 'verified') fixture.fixtureSourceDigest = 'f'.repeat(64);
     const rejected = await serviceFor(changedFixtureReport);
     expect((await rejected.getCapability('3005'))).toMatchObject({ assemblyVerified: false, generatable: false, allowedConnectionIds: [] });
+  }, 20000);
+
+  it('deduplicates actual physical interfaces and ignores forged cached coverage totals', async () => {
+    const baseline = await serviceFor(actualReport), trusted = (await baseline.getEntry('3024'))!;
+    const native = (await repository.getPart('3024'))!, groups = groupPhysicalInterfaces(native);
+    expect(native.connections.points).toHaveLength(3); expect(groups).toHaveLength(2);
+    expect(trusted.interfaceCoverage).toMatchObject({ rawSourceConnectionRecords: 3, physicalInterfacesDiscovered: 2, verifiedPass: 2, enabledPhysicalInterfaces: 2, enabledRawConnectionIds: 3 });
+    const report = structuredClone(actualReport), row = report.entries.find((entry) => entry.partId === '3024')!;
+    row.interfaceCoverage = structuredClone(trusted.interfaceCoverage!);
+    Object.assign(row.interfaceCoverage, { rawSourceConnectionRecords: 999999, physicalInterfacesDiscovered: 999999, verifiedPass: 999999, enabledPhysicalInterfaces: 999999, enabledRawConnectionIds: 999999, verifiedCoveragePercent: 100 });
+    Object.assign(report.counts, { total: 999999, generatable: 999999, verifiedInterfaces: 999999 });
+    (report as unknown as Record<string, unknown>).interfaceCoverage = { physicalInterfacesDiscovered: 999999, verifiedPass: 999999, enabledRawConnectionIds: 999999 };
+    const service = await serviceFor(report), current = (await service.getEntry('3024'))!, status = await service.status();
+    expect(current.interfaceCoverage).toMatchObject({ rawSourceConnectionRecords: 3, physicalInterfacesDiscovered: 2, verifiedPass: 2, enabledPhysicalInterfaces: 2, enabledRawConnectionIds: 3 });
+    expect(status.counts.total).toBe((await repository.listIds()).length); expect(status.counts.generatable).toBe(2);
+    expect(status.interfaceCoverage).toMatchObject({ verifiedPass: 4, enabledPhysicalInterfaces: 4, enabledRawConnectionIds: 5 });
+    expect(status.interfaceCoverage!.physicalInterfacesDiscovered).not.toBe(999999);
+  }, 20000);
+
+  it('fails closed for malformed, duplicated or source-mismatched coverage decisions without breaking status()', async () => {
+    const baseline = await serviceFor(actualReport), coverage = (await baseline.getEntry('3024'))!.interfaceCoverage!;
+    const variants: unknown[][] = [
+      [null],
+      [structuredClone(coverage.decisions[0]), structuredClone(coverage.decisions[0])],
+      [{ ...structuredClone(coverage.decisions[0]), rawConnectionIds: ['wrong-source-alias'] }],
+    ];
+    for (const decisions of variants) {
+      const report = structuredClone(actualReport), row = report.entries.find((entry) => entry.partId === '3024')!;
+      row.interfaceCoverage = { ...structuredClone(coverage), decisions } as typeof row.interfaceCoverage;
+      const service = await serviceFor(report);
+      await expect(service.status()).resolves.toMatchObject({ counts: { generatable: 1 } });
+      expect(await service.getCapability('3024')).toMatchObject({ assemblyVerified: false, generatable: false, allowedConnectionIds: [] });
+      expect((await service.getEntry('3024'))!.interfaceCoverage).toMatchObject({ verifiedPass: 0, enabledPhysicalInterfaces: 0, enabledRawConnectionIds: 0 });
+      expect((await service.getCapability('3005'))!.generatable).toBe(true);
+    }
+  }, 20000);
+
+  it('downgrades cached PASS decisions when their fixture proof is absent or revoked', async () => {
+    const baseline = await serviceFor(actualReport), coverage = (await baseline.getEntry('3024'))!.interfaceCoverage!;
+    expect(coverage.decisions.every((decision) => decision.status === 'PASS')).toBe(true);
+    for (const mode of ['missing-fixture', 'changed-fixture-source'] as const) {
+      const report = structuredClone(actualReport), row = report.entries.find((entry) => entry.partId === '3024')!;
+      row.interfaceCoverage = structuredClone(coverage);
+      if (mode === 'missing-fixture') row.fixtures = [];
+      else for (const fixture of row.fixtures) fixture.fixtureSourceDigest = '0'.repeat(64);
+      // The cached decisions and flags still claim PASS. They are insufficient
+      // without current native fixture evidence and current runtime admission.
+      expect(row.assemblyVerified && row.generatable).toBe(true);
+      const service = await serviceFor(report), current = (await service.getEntry('3024'))!;
+      expect(current).toMatchObject({ assemblyVerified: false, generatable: false, allowedConnectionIds: [] });
+      expect(current.interfaceCoverage).toMatchObject({ verifiedPass: 0, verifiedBlocked: 2, enabledPhysicalInterfaces: 0, enabledRawConnectionIds: 0 });
+      expect(current.interfaceCoverage!.decisions.every((decision) => decision.status === 'BLOCKED' && decision.reasonCodes.includes('runtime-interface-proof-revoked'))).toBe(true);
+      await expect(service.status()).resolves.toMatchObject({ interfaceCoverage: { verifiedPass: 2, enabledPhysicalInterfaces: 2, enabledRawConnectionIds: 2 } });
+    }
   }, 20000);
 });

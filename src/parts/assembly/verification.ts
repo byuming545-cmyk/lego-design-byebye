@@ -7,6 +7,8 @@ import { solveAttachment } from './solver.js';
 import { checkNativePairCollision } from './collision.js';
 import { nativePartSourceHash } from './source.js';
 import { buildNativeCollisionProxy } from './proxy.js';
+import { physicalConnectionSignature, groupPhysicalInterfaces } from './interfaces.js';
+import type { PhysicalInterfaceCoverage } from './coverage.js';
 
 export type AssemblyVerificationCheckName = 'source-integrity' | 'connection' | 'transform' | 'reverse-connection' | 'collision' | 'illegal-collision' | 'rotation' | 'connection-graph' | 'generator-smoke';
 export interface AssemblyVerificationCheck { name: AssemblyVerificationCheckName; outcome: 'passed' | 'blocked'; reason: string }
@@ -37,8 +39,14 @@ export interface ConnectionFixtureVerification {
   reasons: string[];
   /** Another raw source record at the exact same physical interface can share this proof. */
   equivalentConnectionIds: string[];
+  /** Last actually attempted native fixture pose; diagnostic evidence, never a PASS by itself. */
+  lastAttempt?: { fixturePartId: string; fixtureConnectionId: string; fixtureSourceDigest: string; twistDeg: number | null; transform: RigidTransform | null; stage: 'transform' | 'collision' | 'assembly'; status: string; reasonCode: string; reason: string };
 }
 export interface NativePartAssemblyVerification extends AssemblyInterfaceCapability {
+  interfaceCoverage?: PhysicalInterfaceCoverage;
+  fullyAssemblyVerified?: boolean;
+  interfaceVerificationComplete?: boolean;
+  partiallyGeneratable?: boolean;
   status: 'assemblyVerified' | 'blocked';
   name: string;
   geometryReady: boolean;
@@ -61,7 +69,7 @@ export interface NativePartAssemblyVerification extends AssemblyInterfaceCapabil
   deferredPhysicalInterfaceCount: number;
   deferredConnectionIds: string[];
 }
-export interface PartAssemblyVerificationOptions { maxInterfacesPerPart?: number | null }
+export interface PartAssemblyVerificationOptions { maxInterfacesPerPart?: number | null; onlyConnectionIds?: string[] }
 
 /** Structural subset shared with the actual AttachmentEngine, not a test double in production. */
 export interface AssemblyVerificationEngine {
@@ -86,8 +94,7 @@ export function fingerprintAssemblyPart(part: NativeAssemblyPart): AssemblySourc
   return result;
 }
 function physicalSignature(point: ImportedConnectionPoint): string {
-  const semanticProperties = Object.fromEntries(Object.entries(point.properties).filter(([key]) => !['pos', 'ori', 'grid'].includes(key)).sort(([a], [b]) => a.localeCompare(b)));
-  return JSON.stringify([point.kind, point.family, point.gender, point.position, point.direction, point.orientation, point.sections, point.radius, point.length, point.group, semanticProperties, point.dimensionsResolved]);
+  return physicalConnectionSignature(point);
 }
 function interfaceStratum(point: ImportedConnectionPoint): string {
   return JSON.stringify([point.kind, point.family, point.gender, point.direction.map(value => Math.round(value * 1e6)), point.sections, point.radius, point.length, point.group]);
@@ -120,6 +127,17 @@ function selectInterfaceGroups(groups: ImportedConnectionPoint[][], budget: numb
     if (!added) break;
   }
   return selected;
+}
+/** Stable representative waves: profiles, genders, axes, interior and spatial extrema precede dense repeats. */
+export function prioritizePhysicalInterfaceIds(part: NativeAssemblyPart): string[] {
+  let remaining = groupPhysicalInterfaces(part);
+  const ordered: string[] = [];
+  while (remaining.length) {
+    const selected = selectInterfaceGroups(remaining.map(group => group.points), Math.min(32, remaining.length));
+    for (const points of selected) ordered.push(remaining.find(group => group.points === points)!.physicalInterfaceId);
+    remaining = remaining.filter(group => !selected.has(group.points));
+  }
+  return ordered;
 }
 function check(name: AssemblyVerificationCheckName, passed: boolean, reason: string): AssemblyVerificationCheck { return { name, outcome: passed ? 'passed' : 'blocked', reason }; }
 function transformsNear(a: RigidTransform, b: RigidTransform): boolean {
@@ -174,7 +192,11 @@ export async function verifyAssemblyConnectionWithFixtures(part: NativeAssemblyP
   for (const candidate of candidates.slice(0, 8)) {
     const fixturePart = candidate.fixture.part!;
     const solved = solveAttachment({ fixedPart: part, fixedPlacement: fixed, fixedConnectionId: point.id, movingPart: fixturePart, movingConnectionId: candidate.point.id });
-    if (solved.status !== 'solved' || !solved.candidates.length) { lastFailure = solved.reason; continue; }
+    if (solved.status !== 'solved' || !solved.candidates.length) {
+      lastFailure = solved.reason;
+      result.lastAttempt = { fixturePartId: fixturePart.partId, fixtureConnectionId: candidate.point.id, fixtureSourceDigest: fingerprintAssemblyPart(fixturePart).digest, twistDeg: null, transform: null, stage: 'transform', status: solved.status, reasonCode: 'fixture-transform-unresolved', reason: solved.reason };
+      continue;
+    }
     const validTransforms = solved.candidates.every(value => isRigidTransform(value.transform));
     const rotations = solved.candidates.map(value => value.twistDeg);
     const rotationsValid = solved.compatibility.allowedTwistsDeg.length > 0 && rotations.every(angle => solved.compatibility.allowedTwistsDeg.includes(angle)) && solved.compatibility.allowedTwistsDeg.every(angle => rotations.includes(angle));
@@ -182,6 +204,7 @@ export async function verifyAssemblyConnectionWithFixtures(part: NativeAssemblyP
     for (const placement of solved.candidates) {
       const moving: NativePlacement = { instanceId: `fixture-${fixturePart.partId}`, partId: fixturePart.partId, transform: placement.transform };
       const collided = checkNativePairCollision(part, fixed, fixturePart, moving, placement.penetrationZone);
+      result.lastAttempt = { fixturePartId: fixturePart.partId, fixtureConnectionId: candidate.point.id, fixtureSourceDigest: fingerprintAssemblyPart(fixturePart).digest, twistDeg: placement.twistDeg, transform: placement.transform, stage: 'collision', status: collided.status, reasonCode: collided.reasonCode, reason: collided.reason };
       if (collided.status !== 'clear') { lastFailure = collided.reason; continue; }
       const reverse = solveAttachment({ fixedPart: fixturePart, fixedPlacement: moving, fixedConnectionId: candidate.point.id, movingPart: part, movingConnectionId: point.id });
       const reverseValid = reverse.status === 'solved' && reverse.candidates.some(value => transformsNear(value.transform, fixed.transform));
@@ -201,8 +224,12 @@ export async function verifyAssemblyConnectionWithFixtures(part: NativeAssemblyP
       const attached = await engine.attachPart(graph, { anchorInstanceId, anchorConnectionId: point.id, partId: fixturePart.partId, candidateConnectionId: candidate.point.id, twistDegrees: placement.twistDeg });
       const graphValidation = attached.accepted ? await engine.validateGraph(attached.graph) : { valid: false, issues: attached.rejections.map(rejection => rejection.reason) };
       const duplicate = attached.accepted ? await engine.attachPart(attached.graph, { anchorInstanceId, anchorConnectionId: point.id, partId: fixturePart.partId, candidateConnectionId: candidate.point.id, twistDegrees: placement.twistDeg }) : null;
-      const occupiedRejected = duplicate !== null && !duplicate.accepted && duplicate.graph.placements.length === 2 && duplicate.graph.edges.length === 1;
-      const graphValid = attached.accepted && attached.graph.placements.length === 2 && attached.graph.edges.length === 1 && graphValidation.valid && occupiedRejected;
+      const otherInstance = attached.graph.placements.find(value => value.instanceId !== anchorInstanceId)?.instanceId;
+      const subjectAliases = new Set(aliases), mateAliases = new Set(groupPhysicalInterfaces(fixturePart).find(group => group.rawConnectionIds.includes(candidate.point.id))?.rawConnectionIds ?? [candidate.point.id]);
+      const allEdgesBindPair = attached.graph.edges.every(edge => edge.fixedInstanceId === anchorInstanceId && edge.movingInstanceId === otherInstance || edge.movingInstanceId === anchorInstanceId && edge.fixedInstanceId === otherInstance);
+      const requestedPairRecorded = attached.graph.edges.some(edge => edge.fixedInstanceId === anchorInstanceId ? subjectAliases.has(edge.fixedConnectionId) && mateAliases.has(edge.movingConnectionId) : subjectAliases.has(edge.movingConnectionId) && mateAliases.has(edge.fixedConnectionId));
+      const occupiedRejected = duplicate !== null && !duplicate.accepted && JSON.stringify(duplicate.graph) === JSON.stringify(attached.graph);
+      const graphValid = attached.accepted && attached.graph.placements.length === 2 && attached.graph.edges.length >= 1 && allEdgesBindPair && requestedPairRecorded && graphValidation.valid && occupiedRejected;
       const checks: AssemblyVerificationCheck[] = [
         check('connection', true, 'Real source profiles passed the named compatibility rule.'),
         check('transform', validTransforms && alignmentValid, 'Source connection anchors and axes agree in the solved rigid world frame.'),
@@ -210,12 +237,13 @@ export async function verifyAssemblyConnectionWithFixtures(part: NativeAssemblyP
         check('collision', true, 'The native mesh collision validator accepted the source-rule connection pose.'),
         check('illegal-collision', illegalRejected, `Coincident duplicate source geometry must be rejected; result: ${illegal.status}.`),
         check('rotation', rotationsValid, 'Solver enumerated every allowed discrete source-rule twist and no extra rotation.'),
-        check('connection-graph', graphValid, graphValid ? 'Actual attachment engine created two source-bound nodes and one valid edge, then rejected reuse of the occupied connection without adding nodes.' : graphValidation.issues.join('; ') || 'Attachment engine did not accept the fixture or reject occupied endpoint reuse.'),
+        check('connection-graph', graphValid, graphValid ? 'Two source-bound nodes contain the requested physical pair and all validated coincident edges; occupied-port reuse was rejected without changing the graph.' : graphValidation.issues.join('; ') || 'Attachment engine did not preserve the requested physical pair and its occupied graph.'),
         check('generator-smoke', graphValid, 'The actual attachment path placed the fixture through compatibility, transform, collision and graph update.'),
       ];
       result.fixturePartId = fixturePart.partId; result.fixtureRole = candidate.fixture.definition.role;
       result.fixtureConnectionId = candidate.point.id; result.fixtureSourceDigest = fingerprintAssemblyPart(fixturePart).digest;
       result.ruleId = solved.compatibility.ruleId; result.compatibleTwistsDeg = rotations; result.acceptedTwistDeg = placement.twistDeg; result.transform = placement.transform; result.checks = checks;
+      result.lastAttempt = { fixturePartId: fixturePart.partId, fixtureConnectionId: candidate.point.id, fixtureSourceDigest: fingerprintAssemblyPart(fixturePart).digest, twistDeg: placement.twistDeg, transform: placement.transform, stage: 'assembly', status: checks.every(value => value.outcome === 'passed') ? 'verified' : 'blocked', reasonCode: checks.every(value => value.outcome === 'passed') ? 'fixture-verified' : 'fixture-assembly-unresolved', reason: checks.filter(value => value.outcome !== 'passed').map(value => value.reason).join('; ') || 'All current fixture checks passed.' };
       if (checks.every(value => value.outcome === 'passed')) { result.status = 'verified'; return result; }
       result.reasonCodes.push(...checks.filter(value => value.outcome !== 'passed').map(value => `${value.name}-unresolved`));
       result.reasons.push(...checks.filter(value => value.outcome !== 'passed').map(value => value.reason));
@@ -254,7 +282,9 @@ export async function verifyNativePartAssembly(part: NativeAssemblyPart, name: s
     if (!proxyReady) { reasonCodes.push(`collision-proxy-${proxy.reasonCode}`); reasons.push(proxy.reason); }
   }
   if (geometryReady && sourceVerified && part.connections.status === 'ready' && proxyReady) {
-    const selected = selectInterfaceGroups([...groups.values()], budget);
+    const requestedIds = options.onlyConnectionIds ? new Set(options.onlyConnectionIds) : null;
+    if (requestedIds && [...requestedIds].some(id => !part.connections.points.some(point => point.id === id))) throw new Error('Requested verification interface does not exist in the current native source.');
+    const selected = requestedIds ? new Set([...groups.values()].filter(points => points.some(point => requestedIds.has(point.id)))) : selectInterfaceGroups([...groups.values()], budget);
     for (const points of groups.values()) {
       if (selected.has(points)) { testedPhysicalInterfaceCount++; results.push(await verifyAssemblyConnectionWithFixtures(part, points[0], points.map(value => value.id), fixtures, engine)); }
       else {

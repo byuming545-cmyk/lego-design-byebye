@@ -7,7 +7,7 @@ export default defineConfig({
   testDir: "./tests/e2e",
   outputDir: 'test-results/e2e',
   // Current production scope. Older generation workflows remain as historical
-  // fixtures; their HTTP/UI entry points remain blocked in V0.5.
+  // fixtures; their HTTP/UI entry points remain blocked in V0.6.
   testMatch: ['parts-foundation.spec.ts', 'assembly.spec.ts'],
   timeout: 60000,
   expect: { timeout: 15000 },

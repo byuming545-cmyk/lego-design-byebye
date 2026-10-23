@@ -1,0 +1,583 @@
+{
+  "schemaVersion": 1,
+  "caseId": "MULTI-3020-3710",
+  "category": "COMPLEX_COLLISION",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "3020",
+      "ldrawId": "3020",
+      "identitySystem": "ldraw",
+      "sourceDigest": "80a9087f99c69a761bdca464d42f1c5fba250a7d0637c968c6c6b3034f272d79",
+      "geometryHash": "f0a57e8b041de19ad15268003d51cfa4c6c0acc346ed1420f98217decd0790ab",
+      "connectionMetadataHash": "0bafaadfa5d0dad2fed28fb4335ebe8c9e9cd1e346fd216b4563824c1c5b1177"
+    },
+    {
+      "partId": "3710",
+      "ldrawId": "3710",
+      "identitySystem": "ldraw",
+      "sourceDigest": "812b09f5e0d9cd3dec58f856a85cc18a1b9a84b8f6d9aae5d17cdc57cd51364d",
+      "geometryHash": "4a3a58b8e3d58e2cbab26907006603861b0721cc3a5845ddc3dafdb9f3c67580",
+      "connectionMetadataHash": "6e280a44f110f4df97040f7e700a1ecc5e8515029ec28f471191cd5131c5af79"
+    }
+  ],
+  "connections": [
+    {
+      "id": "p/stud.dat:8:0",
+      "sourceId": "studC",
+      "kind": "cylinder",
+      "family": "stud",
+      "gender": "M",
+      "position": [
+        30,
+        0,
+        10
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "id": "studC",
+        "gender": "M",
+        "caps": "one",
+        "secs": "R 6 4"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "p/stud.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [ID=studC] [gender=M] [caps=one] [secs=R 6 4]",
+        "transforms": [
+          {
+            "file": "parts/3020.dat",
+            "line": 32,
+            "directive": "1 16 30 0 10 1 0 0 0 1 0 0 0 1 stud.dat",
+            "position": [
+              30,
+              0,
+              10
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    },
+    {
+      "id": "parts/3710.dat:8:7",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "F",
+      "position": [
+        -30,
+        8,
+        0
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "S",
+          "radius": 6,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "F",
+        "caps": "one",
+        "secs": "S 6 4",
+        "pos": "0 8 0",
+        "grid": "C 4 1 20 0"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/3710.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "13ff795c4eedf37e4336c29ba7fd3c142439a1f76085459917e9b3b4afd56bfb",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3710.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 4 1 20 0]",
+        "transforms": []
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": {
+    "rotation": [
+      -1,
+      0,
+      -1.2246467991473532e-16,
+      0,
+      1,
+      0,
+      1.2246467991473532e-16,
+      0,
+      -1
+    ],
+    "translation": [
+      0,
+      -8,
+      10.000000000000004
+    ]
+  },
+  "transformStatus": "SOLVED_CANDIDATE",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "blocked",
+    "reasonCodes": [
+      "surface-partition-limit"
+    ],
+    "details": {
+      "compatibility": {
+        "status": "compatible",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "ruleVersion": "source-stud-1.0.0",
+        "reason": "Explicit standard stud and capped underside source sections permit a fully seated candidate; collision and assembly verification are still required.",
+        "reasonCode": "standard-stud-source-rule",
+        "connectionType": "standard-stud-underside",
+        "axisRelation": "same",
+        "insertionDepthLdu": 4,
+        "allowedTwistsDeg": [
+          0,
+          90,
+          180,
+          270
+        ],
+        "permittedTranslation": "fully-seated",
+        "toleranceLdu": 0.0001,
+        "sourceEvidence": [
+          {
+            "kind": "source-directive",
+            "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat",
+            "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+            "file": "p/stud.dat",
+            "line": 8,
+            "sha256": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+            "note": "0 !LDCAD SNAP_CYL [ID=studC] [gender=M] [caps=one] [secs=R 6 4]"
+          },
+          {
+            "kind": "source-directive",
+            "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3710.dat",
+            "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+            "file": "parts/3710.dat",
+            "line": 8,
+            "sha256": "13ff795c4eedf37e4336c29ba7fd3c142439a1f76085459917e9b3b4afd56bfb",
+            "note": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 4 1 20 0]"
+          },
+          {
+            "kind": "source-document",
+            "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/CONTRIBUTING.md",
+            "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+            "file": "CONTRIBUTING.md",
+            "line": null,
+            "sha256": null,
+            "note": "Rotation: all information points into negative Y at rest. IDs: studC/studO are the normal closed/open stud. Source stud and underside sections establish their dimensions and seating planes."
+          },
+          {
+            "kind": "implementation-policy",
+            "url": "docs/ASSEMBLY_CONNECTION_RULES.md",
+            "revision": "source-stud-1.0.0",
+            "file": "docs/ASSEMBLY_CONNECTION_RULES.md",
+            "line": null,
+            "sha256": null,
+            "note": "Quarter-turn candidates are a conservative grid-preserving subset. No continuous rotation, sliding, deformation allowance or manufactured clearance is granted."
+          }
+        ]
+      },
+      "candidate": {
+        "transform": {
+          "rotation": [
+            -1,
+            0,
+            -1.2246467991473532e-16,
+            0,
+            1,
+            0,
+            1.2246467991473532e-16,
+            0,
+            -1
+          ],
+          "translation": [
+            0,
+            -8,
+            10.000000000000004
+          ]
+        },
+        "twistDeg": 180,
+        "axis": [
+          0,
+          -1,
+          0
+        ],
+        "anchor": [
+          30,
+          0,
+          10
+        ],
+        "insertionDirection": [
+          0,
+          1,
+          0
+        ],
+        "insertionPath": [
+          [
+            30,
+            -4,
+            10
+          ],
+          [
+            30,
+            0,
+            10
+          ]
+        ],
+        "penetrationZone": {
+          "kind": "cylinder",
+          "center": [
+            30,
+            -2,
+            10
+          ],
+          "axis": [
+            0,
+            -1,
+            0
+          ],
+          "radius": 6,
+          "depth": 4,
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "sourceEvidence": [
+            {
+              "kind": "source-directive",
+              "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat",
+              "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+              "file": "p/stud.dat",
+              "line": 8,
+              "sha256": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+              "note": "0 !LDCAD SNAP_CYL [ID=studC] [gender=M] [caps=one] [secs=R 6 4]"
+            },
+            {
+              "kind": "source-directive",
+              "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3710.dat",
+              "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+              "file": "parts/3710.dat",
+              "line": 8,
+              "sha256": "13ff795c4eedf37e4336c29ba7fd3c142439a1f76085459917e9b3b4afd56bfb",
+              "note": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 4 1 20 0]"
+            },
+            {
+              "kind": "source-document",
+              "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/CONTRIBUTING.md",
+              "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+              "file": "CONTRIBUTING.md",
+              "line": null,
+              "sha256": null,
+              "note": "Rotation: all information points into negative Y at rest. IDs: studC/studO are the normal closed/open stud. Source stud and underside sections establish their dimensions and seating planes."
+            },
+            {
+              "kind": "implementation-policy",
+              "url": "docs/ASSEMBLY_CONNECTION_RULES.md",
+              "revision": "source-stud-1.0.0",
+              "file": "docs/ASSEMBLY_CONNECTION_RULES.md",
+              "line": null,
+              "sha256": null,
+              "note": "Quarter-turn candidates are a conservative grid-preserving subset. No continuous rotation, sliding, deformation allowance or manufactured clearance is granted."
+            }
+          ],
+          "toleranceLdu": 0.0001
+        }
+      },
+      "collision": {
+        "status": "blocked",
+        "reasonCode": "surface-partition-limit",
+        "reason": "A native surface requires more cells than the bounded complete partition can certify.",
+        "collisionVersion": "native-closed-bvh-partition-1.0.0",
+        "toleranceLdu": 0.0001,
+        "triangleTests": 1648,
+        "checkedSurfacePatches": 0,
+        "proof": {
+          "broadPhaseOnly": false,
+          "closedSourceProxies": true,
+          "completeSurfacePartition": false,
+          "containmentChecked": false,
+          "sourceEvidence": [
+            {
+              "libraryRevision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+              "meshSha256": "8c68d89bed6904851f6241d04ec0b9ed546e814736a6b12fd053ec1f5437fda8",
+              "sourceFiles": [
+                {
+                  "path": "p/4-4cyli.dat",
+                  "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4"
+                },
+                {
+                  "path": "p/4-4disc.dat",
+                  "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f"
+                },
+                {
+                  "path": "p/4-4edge.dat",
+                  "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da"
+                },
+                {
+                  "path": "p/4-4ring3.dat",
+                  "sha256": "1f2835ac308154edc2d6f479d8e742a55be981f6167b20bfa100c195bc0731dd"
+                },
+                {
+                  "path": "p/box5.dat",
+                  "sha256": "ccb7b8a1d36692335b10ea6aa196849afcad4b15331683ed8112a10b50977318"
+                },
+                {
+                  "path": "p/stud.dat",
+                  "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4"
+                },
+                {
+                  "path": "p/stud4.dat",
+                  "sha256": "871cdcab26e7f5113488a24c453d6fabda75b275b06de592e0bfaad4292c12a3"
+                },
+                {
+                  "path": "parts/3020.dat",
+                  "sha256": "d0613b566eea4c8ce5ece5c910cb065db75197b6f04a05b421fea03bacbda8d0"
+                }
+              ]
+            },
+            {
+              "libraryRevision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+              "meshSha256": "6b14f56270541583a28fa4982bca80fffb95bc75bcc5e7a61900d6c6de21e2e7",
+              "sourceFiles": [
+                {
+                  "path": "p/4-4cyli.dat",
+                  "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4"
+                },
+                {
+                  "path": "p/4-4disc.dat",
+                  "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f"
+                },
+                {
+                  "path": "p/4-4edge.dat",
+                  "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da"
+                },
+                {
+                  "path": "p/box4t.dat",
+                  "sha256": "72c7629db2b741e680ad548b2cbec631e44f75cdde206001b423ccb0f3b60c1f"
+                },
+                {
+                  "path": "p/box5.dat",
+                  "sha256": "ccb7b8a1d36692335b10ea6aa196849afcad4b15331683ed8112a10b50977318"
+                },
+                {
+                  "path": "p/stud.dat",
+                  "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4"
+                },
+                {
+                  "path": "p/stud3.dat",
+                  "sha256": "d29e9160faeaf85b2b72a098e89a81f41e0082517a82065d7b1f149b5fd2addd"
+                },
+                {
+                  "path": "p/stug-1x4.dat",
+                  "sha256": "e88852b15ca37121e12f7052a234e4a90dc99a8c6d22d45e041f47103c2fb71c"
+                },
+                {
+                  "path": "p/stug3-1x3.dat",
+                  "sha256": "80f86a2ea87dfabc79c3daf963a14c7757caceea6b402ac4f2178a6088de08ac"
+                },
+                {
+                  "path": "parts/3710.dat",
+                  "sha256": "1a2d17e3e35750ccf02a54c7aee0cf7485c1c8596492746fc798d341399a3a6e"
+                },
+                {
+                  "path": "parts/s/3710s01.dat",
+                  "sha256": "57df307f7e3843f4c702311b82e93988bab6d688cbb8ab82bb4338184696780e"
+                }
+              ]
+            }
+          ],
+          "topology": [
+            {
+              "status": "closed-oriented-chain",
+              "sourceTriangles": 700,
+              "internalCaps": 196,
+              "sourceCoveredCapArea": 1800.179687039998,
+              "signedVolume": 20939.556759040002
+            },
+            {
+              "status": "closed-oriented-chain",
+              "sourceTriangles": 364,
+              "internalCaps": 98,
+              "sourceCoveredCapArea": 587.8137753599999,
+              "signedVolume": 11695.25510143999
+            }
+          ],
+          "penetrationZone": {
+            "kind": "cylinder",
+            "center": [
+              30,
+              -2,
+              10
+            ],
+            "axis": [
+              0,
+              -1,
+              0
+            ],
+            "radius": 6,
+            "depth": 4,
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+            "sourceEvidence": [
+              {
+                "kind": "source-directive",
+                "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat",
+                "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+                "file": "p/stud.dat",
+                "line": 8,
+                "sha256": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+                "note": "0 !LDCAD SNAP_CYL [ID=studC] [gender=M] [caps=one] [secs=R 6 4]"
+              },
+              {
+                "kind": "source-directive",
+                "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3710.dat",
+                "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+                "file": "parts/3710.dat",
+                "line": 8,
+                "sha256": "13ff795c4eedf37e4336c29ba7fd3c142439a1f76085459917e9b3b4afd56bfb",
+                "note": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 4 1 20 0]"
+              },
+              {
+                "kind": "source-document",
+                "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/CONTRIBUTING.md",
+                "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+                "file": "CONTRIBUTING.md",
+                "line": null,
+                "sha256": null,
+                "note": "Rotation: all information points into negative Y at rest. IDs: studC/studO are the normal closed/open stud. Source stud and underside sections establish their dimensions and seating planes."
+              },
+              {
+                "kind": "implementation-policy",
+                "url": "docs/ASSEMBLY_CONNECTION_RULES.md",
+                "revision": "source-stud-1.0.0",
+                "file": "docs/ASSEMBLY_CONNECTION_RULES.md",
+                "line": null,
+                "sha256": null,
+                "note": "Quarter-turn candidates are a conservative grid-preserving subset. No continuous rotation, sliding, deformation allowance or manufactured clearance is granted."
+              }
+            ],
+            "toleranceLdu": 0.0001
+          },
+          "penetrationZoneValidated": true,
+          "wholePairExempted": false,
+          "certificateKey": "ce35523ed7ea23458ee63af26a416ae4a59459d466cbf2f3efc4913fa1ab7959",
+          "reusedCertificate": false
+        }
+      }
+    }
+  },
+  "replay": {
+    "kind": "interface",
+    "partId": "3020",
+    "connectionId": "p/stud.dat:8:0",
+    "fixturePartId": "3710",
+    "fixtureConnectionId": "parts/3710.dat:8:7",
+    "twistDegrees": 180
+  },
+  "reproductionCommand": "npm run astra:case -- MULTI-3020-3710",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/4-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/4-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring3.dat",
+    "data/parts-foundation/ldraw/files/p/box5.dat",
+    "data/parts-foundation/ldraw/files/p/stud.dat",
+    "data/parts-foundation/ldraw/files/p/stud4.dat",
+    "data/parts-foundation/ldraw/files/parts/3020.dat",
+    "data/parts-foundation/shadow/files/p/stud4.dat",
+    "data/parts-foundation/shadow/files/p/stud.dat",
+    "data/parts-foundation/shadow/files/parts/3020.dat",
+    "data/parts-foundation/ldraw/files/p/box4t.dat",
+    "data/parts-foundation/ldraw/files/p/stud3.dat",
+    "data/parts-foundation/ldraw/files/p/stug-1x4.dat",
+    "data/parts-foundation/ldraw/files/p/stug3-1x3.dat",
+    "data/parts-foundation/ldraw/files/parts/3710.dat",
+    "data/parts-foundation/ldraw/files/parts/s/3710s01.dat",
+    "data/parts-foundation/shadow/files/p/stud3.dat",
+    "data/parts-foundation/shadow/files/parts/3710.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [],
+  "attemptsAlreadyMade": [
+    "Checked the shared rigid source transform and all coincident source mates.",
+    "Retained the actual bounded native collision result."
+  ],
+  "whySolStopped": "Source-coordinate multi-point alignment does not establish complete native solid clearance. Complex partition redesign is reserved for Astra.",
+  "diagnosticOnly": true
+}

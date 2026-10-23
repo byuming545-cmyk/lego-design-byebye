@@ -7,6 +7,7 @@ import { NATIVE_MODULE_TYPES, type NativeModuleType } from './assembly/generator
 import { exportNativeAssemblyBomCsv, exportNativeAssemblyJson, exportNativeAssemblyLDraw } from './assembly/documents.js';
 import { buildNativeCollisionProxy } from './assembly/proxy.js';
 import { IDENTITY_TRANSFORM } from './assembly/math.js';
+import { NativeModelImportError } from './assembly/modelImport.js';
 
 const object = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value);
 function bad(message: string): never { throw new InventoryError(message, 'INVALID_FOUNDATION_REQUEST', 400); }
@@ -16,6 +17,17 @@ export function createPartsFoundationRouter(options: { dataDir?: string; registr
   const registry = options.registry ?? new RealPartRegistry(options);
   const assembly = registry.assemblyService;
   router.get('/assembly/status', async (_request, response) => { response.json(await assembly.status()); });
+  router.post('/assembly/models/import', async (request, response) => {
+    const body = request.body;
+    if (!object(body) || Object.keys(body).some(key => key !== 'content') || typeof body.content !== 'string' || body.content.length > 5 * 1024 * 1024) bad('请提供不超过 5 MiB 的真实装配 JSON 文件内容。');
+    try {
+      const value: unknown = JSON.parse(body.content as string);
+      response.json(await assembly.importModel(value));
+    } catch (error) {
+      if (error instanceof NativeModelImportError || error instanceof SyntaxError) bad(error instanceof NativeModelImportError ? error.message : '模型 JSON 格式无效。');
+      throw error;
+    }
+  });
   router.post('/assembly/attach', async (request, response) => {
     const body = request.body;
     const keys = ['partA', 'connectionA', 'partB', 'connectionB', 'twistDegrees'];

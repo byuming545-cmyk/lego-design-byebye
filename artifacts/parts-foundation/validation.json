@@ -1,22 +1,40 @@
 {
   "schemaVersion": 1,
-  "date": "2026-10-23",
-  "version": "0.5.0",
+  "date": "2026-10-24",
+  "timezone": "Asia/Shanghai",
+  "generatedAt": "2026-10-23T18:49:51.442Z",
+  "version": "0.6.0",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
   "checks": {
     "unitAndApi": {
       "command": "npm test -- --maxWorkers=2",
-      "filesPassed": 32,
-      "testsPassed": 496,
+      "filesPassed": 38,
+      "testsPassed": 569,
       "passed": true
-    },
-    "pdfLayout": {
-      "lastVerifiedVersion": "0.4.0",
-      "testsPassed": 5,
-      "sourceUnchangedThisRelease": true
     },
     "developmentBrowser": {
       "command": "npm run test:e2e",
-      "scenariosPassed": 8,
+      "scenariosPassed": 9,
+      "finalUnresolvedFailures": 0,
+      "initialRun": {
+        "command": "npm run test:e2e",
+        "exitCode": 1,
+        "passed": 7,
+        "failed": 2,
+        "durationReported": "1.2m"
+      },
+      "affectedScenarioRecheck": {
+        "command": "npm run test:e2e -- --grep 'reports every real source part|opens the real library by default'",
+        "exitCode": 0,
+        "passed": 2,
+        "failed": 0,
+        "durationSeconds": 37.7
+      },
       "realApi": true,
       "realWebglPixels": true,
       "mobileWidth": 390,
@@ -43,9 +61,19 @@
     },
     "productionGeneratorSmoke": {
       "command": "npm run smoke:assembly",
+      "requested": 7,
       "generated": 6,
       "blocked": 1,
       "failed": 0,
+      "physicalBuildsVerified": 0,
+      "bridgeProbe": {
+        "status": "passed",
+        "nodes": 4,
+        "edges": 4,
+        "attachmentApiCalls": 3,
+        "reasons": [],
+        "artifact": "regression-probes/production-bridge.json"
+      },
       "report": "artifacts/assembly-development/generator-smoke.json"
     },
     "sourceAndRecoveryReport": {
@@ -53,26 +81,99 @@
       "exitCode": 0,
       "runtimeValidation": "ready",
       "runtimeIssues": 0
+    },
+    "deferredInterfaceRun": {
+      "command": "npm run verify:interfaces",
+      "allCurrentGroupsTerminal": true,
+      "physicalInterfaces": {
+        "rawSourceConnectionRecords": 4694,
+        "logicalConnectionGroups": 2862,
+        "physicalInterfacesDiscovered": 4632,
+        "verifiedPass": 1248,
+        "verifiedBlocked": 786,
+        "requiresAstraReview": 2598,
+        "pending": 0,
+        "verifiedPhysicalInterfaces": 1248,
+        "enabledPhysicalInterfaces": 1248,
+        "enabledRawConnectionIds": 1262,
+        "verifiedCoveragePercent": 26.943,
+        "processedCoveragePercent": 100,
+        "fullyAssemblyVerified": 23,
+        "interfaceVerificationComplete": 241,
+        "partiallyGeneratable": 56,
+        "blockedParts": 162,
+        "unresolvedParts": 4
+      },
+      "oldDeferredTargets": {
+        "targetCount": 978,
+        "pass": 274,
+        "blocked": 0,
+        "requiresAstraReview": 704,
+        "pending": 0,
+        "directTests": 321,
+        "sharedPrecondition": 0,
+        "reviewDependency": 657,
+        "interrupted": false,
+        "checkpointDirectory": "/tmp/bricklab-v06-interface-checkpoints",
+        "testVersion": "native-interface-suite-0.6.0-worker-2"
+      },
+      "executionCounts": {
+        "directTests": 1514,
+        "sharedSourcePrecondition": 2433,
+        "reviewDependency": 685
+      },
+      "report": "artifacts/assembly-development/interface-tests.json.gz"
+    },
+    "astraReplay": {
+      "command": "npm run astra:check",
+      "cases": 537,
+      "reproduced": 537,
+      "failed": 0,
+      "diagnosticOnly": true,
+      "physicalBuildVerified": false,
+      "manifestSha256": "51abc16829d15b5d392c730f82ccf56544cad09035457016eaf85aae22680096",
+      "report": "artifacts/assembly-development/astra-replay-validation.json"
+    },
+    "compiledServer": {
+      "port": 3000,
+      "healthVersion": "0.6.0",
+      "runtimeValidation": "ready",
+      "runtimeIssues": 0
     }
   },
   "scope": {
-    "currentBrowserTests": "Native Part Lab, source-backed assembly, generation and retained exports; legacy authenticity gates",
-    "legacyBrowserGenerationFlows": "retained historical files; production legacy generation stays blocked",
+    "currentBrowserTests": [
+      "245-row and aggregate/per-part physical coverage consistency",
+      "real source attachment and incompatible gender rejection",
+      "native wall/chassis generation and wheel restriction",
+      "export/import and version/occupancy invalidation",
+      "desktop and mobile WebGL source geometry/connector pixel checks",
+      "mapping and legacy workflow restrictions"
+    ],
+    "legacyBrowserGenerationFlows": "Production legacy generation remains blocked",
     "migrationRoots": 245,
-    "assemblyVerifiedParts": 78,
-    "generatableParts": 78,
-    "blockedParts": 167,
-    "enabledSourceConnectionIds": 1001,
-    "disabledSourceConnectionIds": 3693,
-    "maxTestedPhysicalInterfacesPerPart": 32,
-    "testedPhysicalInterfaces": 1221,
-    "deferredPhysicalInterfaces": 978,
+    "assemblyVerifiedParts": 79,
+    "generatableParts": 79,
+    "blockedParts": 166,
+    "enabledSourceConnectionIds": 1262,
+    "disabledSourceConnectionIds": 3432,
+    "physicalInterfacesDiscovered": 4632,
+    "verifiedPhysicalInterfaces": 1248,
+    "testedPhysicalInterfaces": 1514,
+    "deferredPhysicalInterfaces": 0,
     "pdfTo3d": false,
     "elementMappingsObservedFromSource": 531,
     "elementMappingsIndependentlyVerifiedOfficial": 0,
     "elementToLDrawCrossReferencesVerified": 0,
+    "elementMappingFourStates": {
+      "VERIFIED": 0,
+      "PROBABLE_BUT_UNVERIFIED": 14,
+      "CONFLICT": 88,
+      "UNRESOLVED": 429
+    },
     "instructionElementsGeneratable": 0,
     "physicalBuildsVerified": 0,
     "sweptWholePartInsertionCertified": false
-  }
+  },
+  "releaseEvidence": "artifacts/assembly-development/release-verification.json"
 }

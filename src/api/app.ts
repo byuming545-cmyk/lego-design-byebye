@@ -58,14 +58,14 @@ export function createApp(options: AppOptions = {}) {
   const modelJson = express.json({ limit: '40mb', strict: true });
   const feedbackJson = express.json({ limit: '1mb', strict: true });
   const referenceJson = express.json({ limit: '10mb', strict: true });
-  app.use((request, response, next) => (request.path === '/api/speed/models/import' ? modelJson : request.path === '/api/automotive/references/import' || request.path === '/api/parts-foundation/inventories/import' ? referenceJson : /^\/api\/speed\/models\/[^/]+\/feedback$/.test(request.path) ? feedbackJson : defaultJson)(request, response, next));
+  app.use((request, response, next) => (request.path === '/api/speed/models/import' ? modelJson : request.path === '/api/automotive/references/import' || request.path === '/api/parts-foundation/inventories/import' || request.path === '/api/parts-foundation/assembly/models/import' ? referenceJson : /^\/api\/speed\/models\/[^/]+\/feedback$/.test(request.path) ? feedbackJson : defaultJson)(request, response, next));
   app.use('/api/parts-foundation', createPartsFoundationRouter({ dataDir: options.partsDataDir }));
   app.use(createLegacyAuthenticityGate(options.legacyGenerationPolicy));
   app.use('/api/speed', createSpeedRouter(provider));
   app.use('/api/automotive', createAutomotiveRouter());
 
   app.get('/api/health', (_request, response) => {
-    response.json({ status: 'ok', version: '0.5.0', provider: provider.source, demo: provider.source === 'mock', dataMode: provider instanceof MissingRebrickableInventoryProvider ? 'unconfigured' : provider.source === 'mock' ? 'mock' : 'real', primaryArea: '/part-lab', nativeAssemblyArea: '/part-lab?mode=assembly', legacyGenerationEnabled: options.legacyGenerationPolicy === 'test-fixture' });
+    response.json({ status: 'ok', version: '0.6.0', provider: provider.source, demo: provider.source === 'mock', dataMode: provider instanceof MissingRebrickableInventoryProvider ? 'unconfigured' : provider.source === 'mock' ? 'mock' : 'real', primaryArea: '/part-lab', nativeAssemblyArea: '/part-lab?mode=assembly', legacyGenerationEnabled: options.legacyGenerationPolicy === 'test-fixture' });
   });
 
   app.get('/api/sets/:setNumber', async (request, response) => {

@@ -1,16 +1,16 @@
-# BRICKLAB · 真实 LEGO 装配基础 V0.5
+# BRICKLAB · 真实 LEGO 装配验证 V0.6
 
 当前首页是 **Part Lab `/part-lab`**：查看有来源的原生 LEGO 网格、连接点、说明书证据，并在“装配模式”选择真实零件与已验证接口自动拼接。运行网站无需 Rebrickable 密钥或在线下载几何。
 
-原生包的 **245 个 LDraw 根零件全部进入迁移队列：78 个通过限定接口的软件装配与生成准入，167 个保留明确阻塞原因**。开放 1,001 个源接口 ID，其余 3,693 个禁用。每件首轮最多测试 32 个不同物理接口，未测口不会随零件整体解锁。墙体、平台、简单车架、盒体、屋顶、侧向模块 6 项实际生成通过；轮组仍阻塞。
+原生包的 **245 个 LDraw 根零件全部保留在迁移队列**。V0.6 重新验证现有接口，增加可中断恢复的分批测试、多点连接图及接口占用检查。工作台分别显示 PASS、BLOCKED、需要 Astra 复核、PENDING，以及完整通过、部分准入和处理完成状态；运行时只开放具有当前来源、版本和夹具证明的接口。当前 4,632 个物理接口组中 1,248 个 PASS、786 个 BLOCKED、2,598 个转审、0 个 PENDING；79 件零件具有限定接口生成资格。978 个旧延期接口已全部形成终态，其中 274 个 PASS。完整口径见 [V0.6 A–H 工程报告](docs/SOL_ENGINEERING_V0.6.md)和工作台的实际状态。
 
-6 本可读说明书的 4 份附录提取了 667 行、531 个不同 Element ID；另两本超过传输上限。**531 个元素已取得 Part / Design / 颜色的明确镜像来源记录，信任标签为 `source-observed`；已核定的 LDraw 跨编号关系仍为 0。** 因此本批说明书元素的装配/生成覆盖仍为 0，不能套用原生包 78 个通过结果。不同编号空间和碰撞代理就绪数分别统计。
+6 本可读说明书的 4 份附录提取了 667 行、531 个不同 Element ID；另两本超过传输上限。**531 个元素已有 `source-observed` 的 Part / Design / 颜色记录，精确 LDraw 身份链为 0 VERIFIED、14 PROBABLE、88 CONFLICT、429 UNRESOLVED。** 正式几何查询仅接纳 VERIFIED，本批说明书元素的装配/生成恢复仍为 0。外部目录查询、精确几何身份与原生装配资格分别统计。
 
 **旧版通用、Speed、Automotive 的参数化生成、改造和导出继续暂停。** 新基础模块通过 `attachPart()` 求姿态、检查原生碰撞并更新连接图，仅使用当前报告授权的零件与接口。历史算法保留供回归，客户端参数和环境变量不能绕过生产门禁。
 
-本轮 A–K 结果、来源、四版本号与未完成项见 [V0.5 装配报告](docs/REAL_PARTS_V0.5.md)、[Element 恢复报告](docs/PART_RECOVERY_REPORT.md)和[连接规则依据](docs/ASSEMBLY_CONNECTION_RULES.md)。软件装配资格只适用于白名单接口；没有实物拼搭认证、制造公差认证或整件插入轨迹扫掠认证。镜像数据许可未独立核定，与其构建代码的 MIT 许可分别记录。
+本轮 A–H 结果见 [V0.6 工程报告](docs/SOL_ENGINEERING_V0.6.md)，具体依据见 [多点装配](docs/MULTIPOINT_CONNECTIONS.md)、[解析审计](docs/CONNECTION_PARSE_AUDIT.md)、[Element 恢复](docs/PART_RECOVERY_REPORT.md)和[连接规则](docs/ASSEMBLY_CONNECTION_RULES.md)。软件装配资格只适用于白名单接口；没有实物拼搭认证、制造公差认证或整件插入轨迹扫掠认证。镜像数据许可未独立核定，与其构建代码的 MIT 许可分别记录。
 
-历史版本文档：[V0.4](docs/REAL_PARTS_V0.4.md)、[V0.3](docs/AUTOMOTIVE_V0.3.md)、[V0.2.1](docs/V0.2.1交付报告.md)、[V0.2](docs/V0.2交付报告.md)。本文后部旧生成流程仅为历史说明，以本版真实性门禁为准。
+历史版本文档：[V0.5](docs/REAL_PARTS_V0.5.md)、[V0.4](docs/REAL_PARTS_V0.4.md)、[V0.3](docs/AUTOMOTIVE_V0.3.md)、[V0.2.1](docs/V0.2.1交付报告.md)、[V0.2](docs/V0.2交付报告.md)。本文后部旧生成流程仅为历史说明，以本版真实性门禁为准。
 
 本项目为独立创意原型，与 LEGO® 集团无关联。
 
@@ -20,7 +20,7 @@
 
 ### Windows：从 ZIP 启动
 
-本版工作分支为 `codex/real-lego-assembly-expansion`，可下载 [V0.5 分支 ZIP](https://github.com/byuming545-cmyk/lego-design-byebye/archive/refs/heads/codex/real-lego-assembly-expansion.zip)。
+本版工作分支为 `codex/sol-assembly-verification`，可下载 [V0.6 分支 ZIP](https://github.com/byuming545-cmyk/lego-design-byebye/archive/refs/heads/codex/sol-assembly-verification.zip)。
 
 先安装 Node.js 24.19.0 或更高的 24.x 版本，再解压下载的项目 ZIP。进入**能够看到 `package.json` 的文件夹**；如果第一层只有同名文件夹，继续进入一层。
 
@@ -32,7 +32,7 @@ npm run build
 npm start
 ```
 
-出现服务已启动的信息后，保持命令窗口开启，浏览器打开 **<http://localhost:3001/part-lab>**。搜索 `3001` 查看原生砖与接口范围；搜索 `element:4666579` 查看来源映射及说明书页码。点击“装配模式”自动拼接或生成基础结构，点击“说明书与套装”查看覆盖状态。停止服务按 `Ctrl+C`。运行网站无需 `.env`、API Key 或 Python。不要在 Windows 中复制下面云环境的 `/workspace` 路径或 Bash 环境变量前缀。
+出现服务已启动的信息后，保持命令窗口开启，浏览器打开 **<http://localhost:3001/part-lab>**。搜索 `3001` 查看原生砖、接口覆盖和白名单；搜索 `element:4666579` 查看映射四态及说明书页码。点击“装配模式”自动拼接、生成基础结构或重新验证导出的 JSON。导入返回 `NEEDS_REVALIDATION` 时不开放导出；`VALID` 仅证明当前来源、接口和最终姿态连接图，导入模块名称仍是文件标签。停止服务按 `Ctrl+C`。运行网站无需 `.env`、API Key 或 Python。不要在 Windows 中复制下面云环境的 `/workspace` 路径或 Bash 环境变量前缀。
 
 ### 当前云环境：开发模式
 
@@ -78,7 +78,19 @@ npm start
 
 `npm run report:parts` 从实际原生注册表、当前生产接口准入、531 个元素的恢复队列和逐本说明书覆盖重建 `artifacts/parts-foundation/` 下的 JSON/CSV。它会区分原生装配数量、碰撞代理数量和说明书元素分母；已完成映射的元素不再列入“待映射”清单，另列需要核定 LDraw 对应的目标。返回 0 表示运行报告核定 ready，2 表示已输出报告但当前装配准入未 ready，1 表示命令错误。
 
-更换零件来源或装配引擎后，可运行 `npm run verify:assembly` 重新迁移全部 245 个原生根零件；默认每件最多测试 32 个不同物理接口，其余口保持禁用。此命令耗时较长，网站正常启动无需重跑。`npm run verify:assembly -- --all-interfaces` 用于后续逐步扩大测试范围，仍受真实来源与碰撞资源限制。重新生成迁移证据后，运行 `report:parts` 并重启服务。
+V0.6 的接口测试使用独立工作线程、原子检查点及来源/夹具/版本绑定；正常启动网站无需重跑。更换原生来源、连接解析、装配或碰撞规则后，旧证据必须失效。补测命令的当前参数和断点恢复方法见 [V0.6 工程报告](docs/SOL_ENGINEERING_V0.6.md)。历史 `npm run verify:assembly` 仍保留每件最多 32 个接口的范围，不能把其局部通过当作整件全部接口通过。
+
+```text
+npm run verify:interfaces
+npm run smoke:assembly
+npm run report:parts
+npm run audit:connections
+npm run astra:pack
+npm run astra:check
+npm run astra:case -- WHEEL-TYRE
+```
+
+前三条分别重建当前接口证据、运行基础结构回归和汇总实际准入报告。`audit:connections` 重放源语法审计；`astra:pack` 从当前版本的实际阻塞记录生成交接资料；`astra:check` 核对整包诊断重放；`astra:case` 重现单个记录，附加 `--debug` 可导出原生调试场景。Astra 诊断不授予生产生成资格，未知物理预期保留 `EXPECTED_UNKNOWN`。复杂碰撞、轮胎/轮毂/轮轴和 clip/bar 专门规则继续作为明确复核项，不使用临时例外提高通过率。
 
 ## 历史 V0.1 使用流程（当前生成入口已暂停）
 

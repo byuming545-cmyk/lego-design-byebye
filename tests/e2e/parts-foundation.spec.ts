@@ -1,6 +1,8 @@
 import { expect, test, type Locator, type Page, type Response } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
+import { expectCoverageMatches } from './assemblyChecks.js';
+import type { InterfaceCoverageData } from '../../src/components/InterfaceCoverage.js';
 
 const artifactDirectory = path.resolve('artifacts/parts-foundation');
 const pathname = (response: Response) => decodeURIComponent(new URL(response.url()).pathname);
@@ -16,9 +18,10 @@ interface FoundationStatus {
     elementRanking: { identity: { id: string }; distinctSetCount: number; observedQuantity: number }[];
   };
   partRanking?: { identity: { id: string; system: string }; distinctSetCount: number; observedQuantity: number }[];
+  elementMapping: { mappedBySource: number; mappingStatusCounts: Record<string, number> };
 }
 interface NativePartDetail {
-  part: { id: string; status: string; geometryReady: boolean; catalogOnly: boolean; assemblyVerified: boolean; generatable: boolean; verified: boolean; mapping?: { status: string; partId: string | null; designId: string | null; ldrawPartId: string | null; color: { id: string; name: string } | null; source: { trust: string; independentlyVerifiedOfficial: boolean } | null } };
+  part: { id: string; status: string; geometryReady: boolean; catalogOnly: boolean; assemblyVerified: boolean; generatable: boolean; verified: boolean; interfaceCoverage: InterfaceCoverageData; mapping?: { status: string; mappingStatus: string; geometryPipelineAllowed: boolean; partId: string | null; designId: string | null; ldrawPartId: string | null; color: { id: string; name: string } | null; source: { trust: string; independentlyVerifiedOfficial: boolean } | null } };
   geometry: null | {
     status: string;
     mesh: { positions: number[][]; indices: number[] };
@@ -132,7 +135,7 @@ test.describe('real parts foundation with actual bundled sources and WebGL', () 
     expect(status.counts.verified).toBe(catalog.filter(part => part.verified).length);
     expect(migration.counts.assemblyVerified + migration.counts.blocked).toBe(migration.counts.total);
     expect(status.counts).toMatchObject({ observedElementIds: 531, readableDocuments: 6 });
-    for (const [label, key] of [['已有真实几何', 'geometryReady'], ['仅目录', 'catalogOnly'], ['数字装配已验证', 'assemblyVerified'], ['允许用于生成', 'generatable'], ['完成验证', 'verified']]) {
+    for (const [label, key] of [['已有真实几何', 'geometryReady'], ['仅目录', 'catalogOnly'], ['有已验证接口', 'assemblyVerified'], ['允许用于生成', 'generatable'], ['限定范围复核', 'verified']]) {
       await expect(page.locator('.part-counts > div').filter({ hasText: label }).locator('strong')).toHaveText(String(status.counts[key]));
     }
 
@@ -142,6 +145,8 @@ test.describe('real parts foundation with actual bundled sources and WebGL', () 
     expect(migrationPart).toBeDefined();
     expect(detail.part.assemblyVerified).toBe(migrationPart!.assemblyVerified);
     expect(detail.part.generatable).toBe(migrationPart!.generatable);
+    await expectCoverageMatches(page.getByRole('region', { name: '本零件物理接口验证覆盖', exact: true }), detail.part.interfaceCoverage);
+    await expect(page.locator('.part-interface-qualification')).toContainText(detail.part.interfaceCoverage.fullyAssemblyVerified ? '全部已发现接口通过' : '未全部通过');
     expect(detail.geometry?.status).toBe('geometryReady');
     expect(detail.geometry!.mesh.indices.length).toBeGreaterThan(300);
     expect(detail.geometry!.source.files.length).toBeGreaterThan(1);
@@ -172,9 +177,13 @@ test.describe('real parts foundation with actual bundled sources and WebGL', () 
     expect(detail.part.mapping?.color).not.toBeNull();
     expect(detail.part.mapping?.source).toMatchObject({ trust: 'source-observed', independentlyVerifiedOfficial: false });
     expect(detail.part.mapping?.ldrawPartId).toBeNull();
+    expect(detail.part.mapping?.mappingStatus).not.toBe('VERIFIED');
+    expect(detail.part.mapping?.geometryPipelineAllowed).toBe(false);
     await expect(page.locator('.part-native-canvas canvas')).toHaveCount(0);
     await expect(page.locator('.part-missing-mesh')).toContainText('暂无经过来源确认的原生几何');
     await expect(page.locator('.part-mapping-evidence')).toContainText('来源记录已映射');
+    await expect(page.locator('.part-mapping-evidence')).toContainText(detail.part.mapping!.mappingStatus);
+    await expect(page.locator('.part-mapping-evidence')).toContainText('未获准，仅 VERIFIED 映射可进入正式几何流程');
     await expect(page.locator('.part-mapping-evidence')).toContainText('待核对，未绑定几何');
     await page.screenshot({ path: path.join(artifactDirectory, 'element-mapped-no-invented-geometry.png'), fullPage: true });
     await page.getByRole('checkbox', { name: '只看允许用于生成的零件' }).check();
@@ -197,6 +206,10 @@ test.describe('real parts foundation with actual bundled sources and WebGL', () 
     await page.getByRole('tab', { name: '说明书与套装' }).click();
     await expect(page.getByRole('heading', { name: '套装资料覆盖', exact: true })).toBeVisible();
     await expect(page.locator('.part-reference-card')).toHaveCount(6);
+    expect(Object.values(status.elementMapping.mappingStatusCounts).reduce((sum, count) => sum + count, 0)).toBe(status.counts.observedElementIds);
+    for (const [key, count] of Object.entries(status.elementMapping.mappingStatusCounts)) {
+      await expect(page.locator('.part-mapping-summary dl > div').filter({ has: page.getByText(key, { exact: true }) }).locator('dd')).toHaveText(String(count));
+    }
     const documents = page.locator('.part-reference-view .part-table').first().locator('tbody tr');
     await expect(documents).toHaveCount(8);
     await expect(documents.filter({ hasText: '已读取' })).toHaveCount(6);

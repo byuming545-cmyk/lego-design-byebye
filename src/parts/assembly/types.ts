@@ -22,6 +22,7 @@ export interface AssemblyVersions {
   collisionVersion: string;
 }
 export interface AssemblyGraphEdge {
+  /** One source-supported physical mating pair; a single attachment can add many edges. */
   id: string;
   fixedInstanceId: string;
   fixedConnectionId: string;
@@ -38,6 +39,7 @@ export interface NativeAssembly extends AssemblyVersions {
   schemaVersion: 1;
   id: string;
   placements: NativePlacement[];
+  /** Every coincident supported mating pair is recorded, including multi-part bridges. */
   edges: AssemblyGraphEdge[];
   sourceHashes: Record<string, string>;
   physicalBuildVerified: false;

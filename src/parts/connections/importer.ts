@@ -2,11 +2,12 @@ import { createHash } from 'node:crypto';
 import type {
   ConnectionImportIssue, ConnectionImportOptions, ConnectionImportResult,
   ConnectionLibrary, ConnectionMatrix, ConnectionSourceFile,
-  ConnectionTransformEvidence, ConnectionVector, ImportedConnectionPoint,
+  ConnectionTransformEvidence, ConnectionVector, DiscardedConnectionIssue, ImportedConnectionPoint,
 } from './types.js';
 
 export const SHADOW_REVISION = '9b1131fb1991f8c0bfc072325e4e12f6271aba35';
 export const SHADOW_SOURCE_ROOT = `https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/${SHADOW_REVISION}/`;
+export const CONNECTION_PARSER_VERSION = 'ldcad-shadow-parser-2-clear-scope';
 const IDENTITY: ConnectionMatrix = [1, 0, 0, 0, 1, 0, 0, 0, 1];
 const ZERO: ConnectionVector = [0, 0, 0];
 
@@ -90,11 +91,27 @@ function family(kind: ImportedConnectionPoint['kind'], id: string | null, group:
 
 export async function importLdcadShadow(partId: string, library: ConnectionLibrary, options: ConnectionImportOptions = {}): Promise<ConnectionImportResult> {
   const issues: ConnectionImportIssue[] = [];
+  const discardedIssues: DiscardedConnectionIssue[] = [];
+  // Only dimension warnings tied to emitted points can be retired by a source CLEAR.
+  // Syntax, integrity, missing-source and resource failures are never discarded.
+  const pointScopedIssues = new Map<ConnectionImportIssue, Set<ImportedConnectionPoint>>();
   const sources = new Map<string, ConnectionSourceFile>();
   const cache = new Map<string, Promise<string | undefined>>();
   const maxDepth = options.maxDepth ?? 48, maxPoints = options.maxPoints ?? 20000, maxFiles = options.maxFiles ?? 4000, maxVisits = options.maxVisits ?? 30000;
-  let visits = 0, serial = 0;
-  const report = (issue: ConnectionImportIssue) => { if (issues.length < 300) issues.push(issue); };
+  let visits = 0, serial = 0, issueBudgetExceeded = false;
+  const report = (issue: ConnectionImportIssue) => { if (issues.length < 300) issues.push(issue); else issueBudgetExceeded = true; return issue; };
+  function sourceClear(removed: ImportedConnectionPoint[], file: string, line: number, directive: string) {
+    const removedSet = new Set(removed);
+    for (const [issue, affected] of pointScopedIssues) {
+      if (!affected.size || ![...affected].every(point => removedSet.has(point))) continue;
+      const index = issues.indexOf(issue);
+      if (index >= 0) {
+        issues.splice(index, 1);
+        discardedIssues.push({ ...issue, affectedConnectionIds: [...affected].map(point => point.id), discardedBy: { file, line, directive }, reason: 'source-clear-removed-all-affected-points' });
+      }
+      pointScopedIssues.delete(issue);
+    }
+  }
   async function read(path: string, layer: 'geometry' | 'shadow') {
     const key = `${layer}:${path}`;
     if (!cache.has(key)) {
@@ -153,10 +170,12 @@ export async function importLdcadShadow(partId: string, library: ConnectionLibra
       const raw = lines[i].trim(), match = /^0\s+!LDCAD\s+(SNAP_[A-Z_]+)(?:\s+(.*))?$/i.exec(raw);
       if (!match) continue;
       const command = match[1].toUpperCase(), props = properties(match[2] ?? '');
-      const invalid = (message: string, code: ConnectionImportIssue['code'] = 'invalid-directive') => report({ code, file: path, line: i + 1, message });
+      const invalid = (message: string, code: ConnectionImportIssue['code'] = 'invalid-directive') => report({ code, file: path, line: i + 1, message, directive: raw, source: { ...source }, transforms: evidence.map(e => ({ ...e, position: [...e.position] as ConnectionVector, matrix: [...e.matrix] as ConnectionMatrix })) });
       if (!props) { invalid('Malformed or duplicate bracket properties.'); continue; }
       if (command === 'SNAP_CLEAR') {
         if (Object.keys(props).some((key) => !['id'].includes(key))) { invalid('Unsupported SNAP_CLEAR filter.', 'unsupported-directive'); points = []; continue; }
+        const removed = props.id ? points.filter((point) => point.sourceId === props.id) : points;
+        sourceClear(removed, path, i + 1, raw);
         points = props.id ? points.filter((point) => point.sourceId !== props.id) : [];
         continue;
       }
@@ -199,12 +218,16 @@ export async function importLdcadShadow(partId: string, library: ConnectionLibra
       const orientation = multiply(transform, ori), directionRaw = vector(orientation, [0, -1, 0]), norm = Math.hypot(...directionRaw);
       if (!finite(orientation) || !Number.isFinite(norm) || norm < 1e-10) { invalid('Singular/non-finite connection orientation.'); continue; }
       const dimensionsResolved = rigid(orientation);
-      if (!dimensionsResolved) invalid('Inherited non-rigid scaling retained in the source frame; physical dimensions are unresolved.', 'unsupported-scaling');
-      if (props.scale && !['none', 'yonly'].includes(props.scale.toLowerCase())) invalid('Unsupported scaling mode; source remains unverified.', 'unsupported-scaling');
+      const dimensionIssues: ConnectionImportIssue[] = [];
+      if (!dimensionsResolved) dimensionIssues.push(invalid('Inherited non-rigid scaling retained in the source frame; physical dimensions are unresolved.', 'unsupported-scaling'));
+      if (props.scale && !['none', 'yonly'].includes(props.scale.toLowerCase())) dimensionIssues.push(invalid('Unsupported scaling mode; source remains unverified.', 'unsupported-scaling'));
+      for (const issue of dimensionIssues) pointScopedIssues.set(issue, new Set());
       for (const offset of offsets) {
         const pointPosition = add(position, vector(transform, add(pos, offset)));
         if (!finite(pointPosition)) { invalid('Connection position overflows finite coordinates.'); continue; }
-        points.push({ id: `${path}:${i + 1}:${serial++}`, sourceId: props.id ?? null, kind, family: family(kind, props.id ?? null, props.group ?? null, sections, gender), gender, position: pointPosition, direction: directionRaw.map((v) => v / norm) as ConnectionVector, orientation, units: 'LDU', sections: sections.map((s) => ({ ...s })), dimensionsFrame: 'source-local', dimensionsResolved, radius, length, group: props.group ?? null, properties: { ...props }, source: { ...source, line: i + 1, raw, transforms: evidence.map((e) => ({ ...e, position: [...e.position] as ConnectionVector, matrix: [...e.matrix] as ConnectionMatrix })) }, physicalVerified: false });
+        const point: ImportedConnectionPoint = { id: `${path}:${i + 1}:${serial++}`, sourceId: props.id ?? null, kind, family: family(kind, props.id ?? null, props.group ?? null, sections, gender), gender, position: pointPosition, direction: directionRaw.map((v) => v / norm) as ConnectionVector, orientation, units: 'LDU', sections: sections.map((s) => ({ ...s })), dimensionsFrame: 'source-local', dimensionsResolved, radius, length, group: props.group ?? null, properties: { ...props }, source: { ...source, line: i + 1, raw, transforms: evidence.map((e) => ({ ...e, position: [...e.position] as ConnectionVector, matrix: [...e.matrix] as ConnectionMatrix })) }, physicalVerified: false };
+        points.push(point);
+        for (const issue of dimensionIssues) pointScopedIssues.get(issue)!.add(point);
         if (points.length > maxPoints) { invalid('Connection point budget exceeded.', 'resource-limit'); return []; }
       }
     }
@@ -219,5 +242,6 @@ export async function importLdcadShadow(partId: string, library: ConnectionLibra
     else report({ code: 'missing-geometry', file: safe, message: 'Native root part is not in this source library.' });
   }
   if (points.length === 0) report({ code: 'no-connections', file: partId, message: 'No imported supported source connections are available.' });
-  return { partId, status: points.length ? (issues.length ? 'partial' : 'ready') : 'missing', units: 'LDU', coordinateSystem: 'LDraw-native', physicalVerified: false, points, issues, sourceFiles: [...sources.values()], license: 'CC-BY-SA-4.0' };
+  if (issueBudgetExceeded && issues.length < 300) issues.push({ code: 'resource-limit', file: partId, message: 'Issue budget was exceeded; unrecorded diagnostics cannot be treated as successful parsing.' });
+  return { partId, status: points.length ? (issues.length || issueBudgetExceeded ? 'partial' : 'ready') : 'missing', units: 'LDU', coordinateSystem: 'LDraw-native', physicalVerified: false, points, issues, discardedIssues, parserVersion: CONNECTION_PARSER_VERSION, sourceFiles: [...sources.values()], license: 'CC-BY-SA-4.0' };
 }

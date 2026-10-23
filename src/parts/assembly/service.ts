@@ -13,6 +13,9 @@ import type { AssemblyInterfaceCapability, NativeAssemblyPart } from './types.js
 import type { ConnectionFixtureVerification, AssemblyVerificationCheckName } from './verification.js';
 import type { ImportedConnectionPoint } from '../connections/types.js';
 import type { BundledLDrawManifest } from '../ldraw/types.js';
+import { inspectNativeModelImport } from './modelImport.js';
+import { physicalConnectionSignature, groupPhysicalInterfaces } from './interfaces.js';
+import { aggregatePhysicalInterfaceCoverage, buildPhysicalInterfaceCoverage, type PhysicalInterfaceDecision } from './coverage.js';
 
 export const ASSEMBLY_REPORT_DIRECTORY = fileURLToPath(new URL('../../../data/parts-foundation/assembly/', import.meta.url));
 const MAX_REPORT_BYTES = 48 * 1024 * 1024;
@@ -40,12 +43,25 @@ export type RuntimeAssemblyStatus = Omit<AssemblyMigrationReport, 'generatedAt'>
 type RootRecord = BundledLDrawManifest['roots'][number];
 const errorMessage = (error: unknown) => error instanceof Error ? error.message.slice(0, 500) : 'Unknown report/source error.';
 function listOfStrings(value: unknown): value is string[] { return Array.isArray(value) && value.length <= 20000 && value.every((item) => typeof item === 'string' && item.length <= 1000); }
-function pointSignature(point: ImportedConnectionPoint): string { return JSON.stringify([point.kind, point.family, point.gender, point.position, point.direction, point.orientation, point.sections, point.radius, point.length, point.group, point.properties, point.dimensionsResolved]); }
+function coverageShape(value: unknown): boolean {
+  if (value === undefined) return true;
+  if (!value || typeof value !== 'object' || !Array.isArray((value as { decisions?: unknown }).decisions)) return false;
+  const decisions = (value as { decisions: unknown[] }).decisions;
+  if (decisions.length > 20000) return false;
+  const seen = new Set<string>();
+  return decisions.every(value => {
+    if (!value || typeof value !== 'object') return false;
+    const decision = value as PhysicalInterfaceDecision;
+    if (typeof decision.physicalInterfaceId !== 'string' || !/^[a-f0-9]{64}$/.test(decision.physicalInterfaceId) || seen.has(decision.physicalInterfaceId) || !listOfStrings(decision.rawConnectionIds) || !listOfStrings(decision.reasonCodes) || !listOfStrings(decision.reasons) || !['PASS', 'BLOCKED', 'REQUIRES_ASTRA_REVIEW', 'PENDING'].includes(decision.status)) return false;
+    seen.add(decision.physicalInterfaceId); return true;
+  });
+}
+function pointSignature(point: ImportedConnectionPoint): string { return physicalConnectionSignature(point); }
 function equalTransforms(a: NonNullable<ConnectionFixtureVerification['transform']>, b: NonNullable<ConnectionFixtureVerification['transform']>) { return distance(a.translation, b.translation) < 1e-5 && a.rotation.every((value, index) => Math.abs(value - b.rotation[index]) < 1e-6); }
 function entryShape(value: unknown): value is AssemblyMigrationEntry {
   if (!value || typeof value !== 'object') return false;
   const entry = value as AssemblyMigrationEntry;
-  return typeof entry.partId === 'string' && !!entry.source && typeof entry.source.digest === 'string' && listOfStrings(entry.allowedConnectionIds) && listOfStrings(entry.verifiedConnectionIds) && listOfStrings(entry.ruleIds) && listOfStrings(entry.reasonCodes) && listOfStrings(entry.reasons) && Array.isArray(entry.sourceChecks) && Array.isArray(entry.fixtures) && entry.fixtures.length <= 20000 && entry.fixtures.every((fixture) => !!fixture && typeof fixture.connectionId === 'string' && listOfStrings(fixture.equivalentConnectionIds) && Array.isArray(fixture.checks));
+  return typeof entry.partId === 'string' && !!entry.source && typeof entry.source.digest === 'string' && listOfStrings(entry.allowedConnectionIds) && listOfStrings(entry.verifiedConnectionIds) && listOfStrings(entry.ruleIds) && listOfStrings(entry.reasonCodes) && listOfStrings(entry.reasons) && Array.isArray(entry.sourceChecks) && Array.isArray(entry.fixtures) && entry.fixtures.length <= 20000 && entry.fixtures.every((fixture) => !!fixture && typeof fixture.connectionId === 'string' && listOfStrings(fixture.equivalentConnectionIds) && Array.isArray(fixture.checks)) && coverageShape(entry.interfaceCoverage);
 }
 function sourceFingerprint(part: NativeAssemblyPart | undefined, root: RootRecord) {
   return part ? {
@@ -135,6 +151,33 @@ export class AssemblyService {
         continue;
       }
       this.entries.set(root.partId, await this.validateEntry(root, part, raw));
+    }
+    for (const entry of this.entries.values()) {
+      const part = this.sourceParts.get(entry.partId);
+      if (!part) continue;
+      const allowed = new Set(entry.allowedConnectionIds);
+      const retainedDecisions: PhysicalInterfaceDecision[] = entry.interfaceCoverage?.decisions ?? groupPhysicalInterfaces(part).map(group => {
+        const proof = entry.fixtures.find(fixture => fixture.status === 'verified' && group.rawConnectionIds.every(id => fixture.connectionId === id || fixture.equivalentConnectionIds.includes(id)));
+        return { physicalInterfaceId: group.physicalInterfaceId, rawConnectionIds: group.rawConnectionIds,
+          status: proof ? 'PASS' as const : 'PENDING' as const,
+          reasonCodes: proof ? [] : ['verification-not-completed'], reasons: proof ? [] : ['No retained terminal physical-interface decision is available.'], ...(proof ? { proof } : {}) };
+      });
+      const decisions: PhysicalInterfaceDecision[] = retainedDecisions.map(decision => {
+        if (decision.status !== 'PASS' || decision.rawConnectionIds.every(id => allowed.has(id))) return decision;
+        return { ...decision, status: 'BLOCKED', reasonCodes: [...decision.reasonCodes, 'runtime-interface-proof-revoked'], reasons: [...decision.reasons, 'Current source-bound runtime admission rejected this interface proof.'] };
+      });
+      try {
+        entry.interfaceCoverage = buildPhysicalInterfaceCoverage(part, decisions, entry.allowedConnectionIds);
+        entry.fullyAssemblyVerified = entry.interfaceCoverage.fullyAssemblyVerified;
+        entry.partiallyGeneratable = entry.interfaceCoverage.partiallyGeneratable;
+        entry.interfaceVerificationComplete = entry.interfaceCoverage.interfaceVerificationComplete;
+      }
+      catch {
+        const blocked = blockedEntry((roots.find(root => root.partId === part.partId))!, part, 'runtime-coverage-source-mismatch', 'Physical interface decisions do not match the current source aliases.');
+        blocked.interfaceCoverage = buildPhysicalInterfaceCoverage(part, [], []);
+        this.entries.set(part.partId, blocked);
+        this.runtimeIssues.push(`${part.partId}: coverage aliases differ from the current source. Admission revoked.`);
+      }
     }
     this.chooseDefaultPair();
   }
@@ -241,8 +284,11 @@ export class AssemblyService {
       schemaVersion: 1, migrationVersion: ASSEMBLY_MIGRATION_VERSION, partLibraryVersion: PART_LIBRARY_VERSION, assemblyEngineVersion: ASSEMBLY_ENGINE_VERSION, connectionRuleVersion: CONNECTION_RULE_VERSION, collisionVersion: COLLISION_VERSION,
       generatedAt: this.report?.generatedAt ?? null, scope: 'every-pinned-native-root', verificationScope: 'only-listed-connection-ids; no physical-build claim',
       interfaceBudget: this.report?.interfaceBudget ?? null,
+      ...(this.report?.deferredRun ? { deferredRun: this.report.deferredRun } : {}),
       sourceCounts: { totalRoots: entries.length, geometryReady: entries.filter((entry) => entry.geometryReady).length, connectionReady: entries.filter((entry) => entry.connectionSourceStatus === 'ready').length, connectionPartial: entries.filter((entry) => entry.connectionSourceStatus === 'partial').length, connectionMissing: entries.filter((entry) => entry.connectionSourceStatus === 'missing').length },
-      counts, blockedReasons, batches, fixtures: this.report?.fixtures ?? [], representativePairs: this.report?.representativePairs ?? [], entries, queue: entries,
+      counts, blockedReasons, batches, fixtures: this.report?.fixtures ?? [], representativePairs: this.report?.representativePairs ?? [], entries,
+      queue: entries.map(entry => ({ ...entry, fixtures: [], source: { ...entry.source, geometryFiles: [], connectionFiles: [] }, ...(entry.interfaceCoverage ? { interfaceCoverage: { ...entry.interfaceCoverage, decisions: [] } } : {}) })),
+      interfaceCoverage: aggregatePhysicalInterfaceCoverage(entries.flatMap(entry => entry.interfaceCoverage ? [entry.interfaceCoverage] : [])),
       capabilities: capabilities.filter((entry): entry is AssemblyInterfaceCapability => !!entry), ...(this.defaultPair ? { defaultPair: this.defaultPair } : {}), physicalBuildVerified: false,
       limitations: [...(this.report?.limitations ?? []), 'Runtime capabilities require current source hashes, current engine versions and retained passing fixtures for each allowed source endpoint.', 'Insertion paths are source-axis seating candidates; swept whole-part insertion clearance and physical builds are not certified.'],
       runtimeValidation: { status: !this.envelopeValid ? 'blocked' : this.runtimeIssues.length ? 'partial' : 'ready', issues: [...this.runtimeIssues], reportLoaded: this.reportLoaded, checkedAt: this.checkedAt },
@@ -258,6 +304,15 @@ export class AssemblyService {
     await this.ready(); this.generator ??= new NativeAssemblyGenerator(this.engine);
     const result = await this.generator.generate(request);
     if (result.status === 'generated' && result.model) {
+      this.models.set(result.model.id, structuredClone(result.model));
+      while (this.models.size > MAX_RETAINED_MODELS) this.models.delete(this.models.keys().next().value!);
+    }
+    return result;
+  }
+  async importModel(value: unknown) {
+    await this.ready();
+    const result = await inspectNativeModelImport(value, this.engine);
+    if (result.status === 'VALID' && result.model) {
       this.models.set(result.model.id, structuredClone(result.model));
       while (this.models.size > MAX_RETAINED_MODELS) this.models.delete(this.models.keys().next().value!);
     }

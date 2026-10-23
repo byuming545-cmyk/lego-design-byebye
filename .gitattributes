@@ -1,5 +1,7 @@
 # Store generated CSV canonically while preserving Windows-friendly checkouts.
 artifacts/**/*.csv text eol=crlf
+astra-handoff/**/*.csv text eol=crlf
+artifacts/assembly-development/validation-logs/*.txt -text -whitespace
 # Native library checksums refer to the original bytes, including CRLF.
 data/parts-foundation/ldraw/files/** -text -whitespace
 data/parts-foundation/shadow/files/** -text -whitespace

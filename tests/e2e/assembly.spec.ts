@@ -1,11 +1,16 @@
 import { test, expect, type Page } from '@playwright/test';
+import { createHash } from 'node:crypto';
+import { readFile } from 'node:fs/promises';
+import { expectConnectedAssembly, expectCoverageMatches } from './assemblyChecks.js';
+import type { AggregateInterfaceCoverageData, InterfaceCoverageData } from '../../src/components/InterfaceCoverage.js';
 
 interface DefaultPair { partA: string; connectionA: string; partB: string; connectionB: string; twistDegrees?: number }
 interface Status {
   counts: { total: number; assemblyVerified: number; generatable: number; blocked: number; wheelModulesVerified?: number };
-  queue?: { partId: string; assemblyVerified: boolean; generatable: boolean; reasons: string[] }[];
-  entries?: { partId: string; assemblyVerified: boolean; generatable: boolean; reasons: string[] }[];
+  queue?: { partId: string; assemblyVerified: boolean; generatable: boolean; reasons: string[]; interfaceCoverage: InterfaceCoverageData }[];
+  entries?: { partId: string; assemblyVerified: boolean; generatable: boolean; reasons: string[]; interfaceCoverage: InterfaceCoverageData }[];
   defaultPair: DefaultPair | null;
+  interfaceCoverage: AggregateInterfaceCoverageData;
 }
 
 test.setTimeout(180_000);
@@ -67,8 +72,20 @@ test('reports every real source part as passed or blocked with an explicit scope
   expect(report.counts.generatable).toBeGreaterThan(0);
   expect(entries.every((entry) => entry.assemblyVerified || entry.reasons.length > 0)).toBe(true);
   await expect(page.locator('.assembly-counts > div').first().locator('strong')).toHaveText(String(report.counts.total));
+  await expectCoverageMatches(page.getByRole('region', { name: '物理接口验证覆盖', exact: true }), report.interfaceCoverage);
+  expect(report.interfaceCoverage.fullyAssemblyVerified).toBe(entries.filter((entry) => entry.interfaceCoverage.fullyAssemblyVerified).length);
+  expect(report.interfaceCoverage.partiallyGeneratable).toBe(entries.filter((entry) => entry.interfaceCoverage.partiallyGeneratable).length);
+  for (const [label, key] of [['fullyAssemblyVerified 零件', 'fullyAssemblyVerified'], ['partiallyGeneratable 零件', 'partiallyGeneratable'], ['接口已全部处理的零件', 'interfaceVerificationComplete']] as const) {
+    await expect(page.locator('.assembly-part-qualifications > div').filter({ has: page.getByText(label, { exact: true }) }).locator('dd')).toHaveText(String(report.interfaceCoverage[key]));
+  }
   if (entries.length > 20) await page.getByRole('button', { name: `查看全部 ${entries.length} 个结果`, exact: true }).click();
   await expect(page.locator('.assembly-migration tbody tr')).toHaveCount(entries.length);
+  for (const entry of entries) {
+    const row = page.locator('.assembly-migration tbody tr').filter({ has: page.getByRole('cell', { name: entry.partId, exact: true }) });
+    await expect(row).toContainText(`${entry.interfaceCoverage.verifiedPass} / ${entry.interfaceCoverage.physicalInterfacesDiscovered}`);
+    if (entry.interfaceCoverage.fullyAssemblyVerified) await expect(row).toContainText('fullyAssemblyVerified');
+    else if (entry.interfaceCoverage.partiallyGeneratable) await expect(row).toContainText('partiallyGeneratable');
+  }
   const blocked = entries.find((entry) => !entry.assemblyVerified);
   if (blocked) {
     await page.getByLabel('搜索装配迁移零件', { exact: true }).fill(blocked.partId);
@@ -88,7 +105,7 @@ test('attaches a source-verified pair and rejects the same mating gender', async
   const accepted = await attach(page);
   expect(accepted.accepted).toBe(true);
   expect(accepted.assembly.placements).toHaveLength(2);
-  expect(accepted.assembly.edges).toHaveLength(1);
+  expectConnectedAssembly(accepted.assembly);
   await expect(page.locator('.assembly-result-heading')).toContainText('通过当前装配检查');
   await expect(page.getByRole('heading', { name: 'Part B 最终变换 · LDraw LDU', exact: true })).toBeVisible();
   await expectRealCanvas(page);
@@ -117,7 +134,7 @@ test('generates source-bound wall and chassis modules and preserves unsupported 
     const result = await generation.json();
     expect(result.status).toBe('generated');
     expect(result.model.placements.length).toBeGreaterThan(1);
-    expect(result.model.edges.length).toBe(result.model.placements.length - 1);
+    expectConnectedAssembly(result.model);
     expect(result.model.placements.every((placement: { partId: string }) => allowed.has(placement.partId))).toBe(true);
     for (const key of ['partLibraryVersion', 'assemblyEngineVersion', 'connectionRuleVersion', 'collisionVersion']) expect(typeof result.model[key]).toBe('string');
     await expectRealCanvas(page);
@@ -133,6 +150,55 @@ test('generates source-bound wall and chassis modules and preserves unsupported 
     await expect(page.locator('.assembly-result-heading')).toContainText('本次未通过');
     await expect(page.locator('.assembly-reasons').first()).toContainText(wheel.reasons[0]);
   } else expect(['generated', 'blocked']).toContain(wheel.status);
+});
+
+test('imports exported real models through current validation and prevents export after version or occupancy invalidation', async ({ page }) => {
+  await open(page);
+  const generationResponse = page.waitForResponse((item) => item.url().endsWith('/api/parts-foundation/assembly/generate') && item.request().method() === 'POST');
+  await page.getByRole('button', { name: '墙体', exact: true }).click();
+  const generated = await (await generationResponse).json();
+  expect(generated.status).toBe('generated');
+  expectConnectedAssembly(generated.model);
+  await expect(page.locator('.assembly-export-buttons').getByRole('button', { name: '模型 JSON', exact: true })).toBeEnabled();
+  const download = page.waitForEvent('download');
+  await page.locator('.assembly-export-buttons').getByRole('button', { name: '模型 JSON', exact: true }).click();
+  const file = await download, filename = await file.path();
+  expect(filename).not.toBeNull();
+  const content = await readFile(filename!, 'utf8');
+  const exported = JSON.parse(content);
+  expectConnectedAssembly(exported);
+
+  async function upload(raw: string) {
+    await page.getByLabel('选择真实装配模型 JSON', { exact: true }).setInputFiles({ name: 'real-assembly.json', mimeType: 'application/json', buffer: Buffer.from(raw) });
+    const response = page.waitForResponse((item) => item.url().endsWith('/api/parts-foundation/assembly/models/import') && item.request().method() === 'POST');
+    await page.getByRole('button', { name: '验证导入模型', exact: true }).click();
+    const result = await response;
+    expect(result.ok(), `${result.status()} ${await result.text()}`).toBe(true);
+    return await result.json();
+  }
+  const imported = await upload(content);
+  expect(imported.status).toBe('VALID');
+  expect(imported.model.id).not.toBe(exported.id);
+  expectConnectedAssembly(imported.model);
+  await expect(page.locator('.assembly-import-status')).toContainText('VALID');
+  await expect(page.locator('.assembly-export-buttons').getByRole('button', { name: '模型 JSON', exact: true })).toBeEnabled();
+
+  const { contentSha256: _checksum, ...stale } = exported;
+  stale.assemblyEngineVersion = 'outdated-engine-for-revalidation-test';
+  const expired = await upload(JSON.stringify({ ...stale, contentSha256: createHash('sha256').update(JSON.stringify(stale)).digest('hex') }));
+  expect(expired.status).toBe('NEEDS_REVALIDATION');
+  expect(expired.model).toBeNull();
+  expect(expired.reasons.length).toBeGreaterThan(0);
+  await expect(page.locator('.assembly-import-status')).toContainText('NEEDS_REVALIDATION');
+  await expect(page.locator('.assembly-export-buttons')).toHaveCount(0);
+
+  const { contentSha256: _oldChecksum, ...occupied } = JSON.parse(content);
+  occupied.edges.push({ ...occupied.edges[0], id: 'duplicate-source-endpoint-for-revalidation-test' });
+  const duplicated = await upload(JSON.stringify({ ...occupied, contentSha256: createHash('sha256').update(JSON.stringify(occupied)).digest('hex') }));
+  expect(duplicated.status).toBe('NEEDS_REVALIDATION');
+  expect(duplicated.model).toBeNull();
+  expect(duplicated.reasons.length).toBeGreaterThan(0);
+  await expect(page.locator('.assembly-export-buttons')).toHaveCount(0);
 });
 
 test('mobile assembly mode keeps source controls, accepted rendering and debug data within the viewport', async ({ page }, testInfo) => {

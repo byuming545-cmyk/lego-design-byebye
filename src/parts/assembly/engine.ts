@@ -4,9 +4,10 @@ import { solveAttachment, type AttachmentCandidate } from './solver.js';
 import { checkNativePairCollision, COLLISION_VERSION } from './collision.js';
 import { distance, finiteVector, IDENTITY_TRANSFORM, isRigidTransform } from './math.js';
 import { nativePartSourceHash, PART_LIBRARY_VERSION } from './source.js';
+import { checkMultiPointConnection, physicalMatingPairKey, sourceEndpointKey, validateConnectionOccupancy } from './multipoint.js';
 import type { AssemblyAttachRequest, AssemblyGraphEdge, AssemblyInterfaceCapability, NativeAssembly, NativeAssemblyPart, NativePlacement } from './types.js';
 
-export const ASSEMBLY_ENGINE_VERSION = 'native-assembly-0.5.0';
+export const ASSEMBLY_ENGINE_VERSION = 'native-assembly-0.6.0';
 type PairCollision = Awaited<ReturnType<typeof checkNativePairCollision>>;
 export interface AttachResult {
   accepted: boolean;
@@ -27,10 +28,7 @@ export interface AttachmentEngineOptions {
 
 function graphDigest(graph: NativeAssembly) { return createHash('sha256').update(JSON.stringify(graph)).digest('hex'); }
 function endpointKey(instanceId: string, connectionId: string, part?: NativeAssemblyPart) {
-  const point = part?.connections.points.find(point => point.id === connectionId);
-  // Shadow inheritance can repeat the very same physical socket under two
-  // source-line IDs. Its occupancy belongs to the physical endpoint, not its alias.
-  return point ? JSON.stringify([instanceId, point.gender, point.position.map(value => Math.round(value * 1e7)), point.direction.map(value => Math.round(value * 1e7))]) : JSON.stringify([instanceId, connectionId]);
+  return sourceEndpointKey(instanceId, connectionId, part);
 }
 function sameTransform(a: NativePlacement['transform'], b: NativePlacement['transform']) {
   return distance(a.translation, b.translation) < 1e-5 && a.rotation.every((value, index) => Math.abs(value - b.rotation[index]) < 1e-6);
@@ -123,11 +121,28 @@ export class AttachmentEngine {
     const visited = new Set<string>(), pending = [graph.placements[0].instanceId];
     while (pending.length) { const id = pending.pop()!; if (visited.has(id)) continue; visited.add(id); pending.push(...(adjacency.get(id) ?? [])); }
     if (visited.size !== graph.placements.length) issues.push('Floating/disconnected source parts are forbidden.');
+    issues.push(...validateConnectionOccupancy(graph.edges, parts).issues);
     if (issues.length) return { valid: false, issues: [...new Set(issues)] };
+    const recordedPhysicalPairs = new Set(graph.edges.map(edge => {
+      const a = parts.get(edge.fixedInstanceId)!.connections.points.find(point => point.id === edge.fixedConnectionId)!;
+      const b = parts.get(edge.movingInstanceId)!.connections.points.find(point => point.id === edge.movingConnectionId)!;
+      return physicalMatingPairKey(edge.fixedInstanceId, a, edge.movingInstanceId, b);
+    }));
+    const allowed = new Map<string, ReadonlySet<string>>();
+    if (this.mode === 'production') for (const [instanceId, part] of parts) allowed.set(instanceId, new Set((await this.getCapability(part.partId))?.allowedConnectionIds ?? []));
     for (let i = 0; i < graph.placements.length; i++) for (let j = i + 1; j < graph.placements.length; j++) {
       const a = graph.placements[i], b = graph.placements[j];
+      const partA = parts.get(a.instanceId)!, partB = parts.get(b.instanceId)!;
+      const multipoint = checkMultiPointConnection({ fixedPart: partA, fixedPlacement: a, movingPart: partB, movingPlacement: b, allowedFixedConnectionIds: allowed.get(a.instanceId), allowedMovingConnectionIds: allowed.get(b.instanceId) });
+      if (multipoint.status !== 'consistent') { issues.push(...multipoint.issues.map(issue => `Multi-point ${a.instanceId}/${b.instanceId}: ${issue.reason}`)); continue; }
+      for (const match of multipoint.matches) {
+        issues.push(...await this.eligibility(partA, match.fixedConnectionId, match.compatibility.ruleId!), ...await this.eligibility(partB, match.movingConnectionId, match.compatibility.ruleId!));
+        const pointA = partA.connections.points.find(point => point.id === match.fixedConnectionId)!, pointB = partB.connections.points.find(point => point.id === match.movingConnectionId)!;
+        if (!recordedPhysicalPairs.has(physicalMatingPairKey(a.instanceId, pointA, b.instanceId, pointB))) issues.push('Graph omits a real supported coincident multi-point connection.');
+      }
+      if (issues.length) continue;
       const edge = graph.edges.find(edge => edge.fixedInstanceId === a.instanceId && edge.movingInstanceId === b.instanceId || edge.fixedInstanceId === b.instanceId && edge.movingInstanceId === a.instanceId);
-      const collision = await checkNativePairCollision(parts.get(a.instanceId)!, a, parts.get(b.instanceId)!, b, edge ? edgeCandidates.get(edge.id)?.penetrationZone : undefined);
+      const collision = await checkNativePairCollision(partA, a, partB, b, edge ? edgeCandidates.get(edge.id)?.penetrationZone : undefined);
       if (collision.status !== 'clear') issues.push(`Native pair ${a.instanceId}/${b.instanceId}: ${collision.reason}`);
     }
     return { valid: issues.length === 0, issues: [...new Set(issues)] };
@@ -173,22 +188,47 @@ export class AttachmentEngine {
       let instanceId = `p-${graph.placements.length}`;
       while (graph.placements.some(part => part.instanceId === instanceId)) instanceId += '-new';
       const movingPlacement: NativePlacement = { instanceId, partId: movingPart.partId, transform: structuredClone(candidate.transform) };
+      const newEdges: AssemblyGraphEdge[] = [];
+      let multipointBlocked = false;
+      const movingAllowed = this.mode === 'production' ? new Set((await this.getCapability(movingPart.partId))?.allowedConnectionIds ?? []) : undefined;
+      const candidateOccupied = new Set(occupied);
+      const collisionZones = new Map<string, AttachmentCandidate['penetrationZone']>();
+      for (const existing of graph.placements) {
+        const part = existingParts.get(existing.instanceId)!;
+        const fixedAllowed = this.mode === 'production' ? new Set((await this.getCapability(part.partId))?.allowedConnectionIds ?? []) : undefined;
+        const multipoint = checkMultiPointConnection({ fixedPart: part, fixedPlacement: existing, movingPart, movingPlacement,
+          allowedFixedConnectionIds: fixedAllowed, allowedMovingConnectionIds: movingAllowed,
+          ...(existing.instanceId === fixedPlacement.instanceId ? { preferredFixedConnectionId: request.anchorConnectionId, preferredMovingConnectionId: request.candidateConnectionId, requirePreferredPair: true } : {}),
+        });
+        if (multipoint.status !== 'consistent') { multipointBlocked = true; rejections.push(...multipoint.issues.map(issue => ({ code: `multi-point-${issue.code}`, reason: `${existing.instanceId}: ${issue.reason}` }))); break; }
+        for (const match of multipoint.matches) {
+          const pairProblems = [...await this.eligibility(part, match.fixedConnectionId, match.compatibility.ruleId!), ...await this.eligibility(movingPart, match.movingConnectionId, match.compatibility.ruleId!)];
+          if (pairProblems.length) { multipointBlocked = true; rejections.push({ code: 'multi-point-interface-blocked', reason: `${existing.instanceId}: every physically engaged source interface must be admitted: ${[...new Set(pairProblems)].join(' ')}` }); break; }
+          const keys = [endpointKey(existing.instanceId, match.fixedConnectionId, part), endpointKey(instanceId, match.movingConnectionId, movingPart)];
+          if (keys.some(key => candidateOccupied.has(key))) { multipointBlocked = true; rejections.push({ code: 'endpoint-occupied', reason: 'An additional physical mating endpoint is already occupied; source aliases cannot bypass occupancy.' }); break; }
+          keys.forEach(key => candidateOccupied.add(key));
+          newEdges.push({ id: `edge-${graph.edges.length + newEdges.length + 1}`, fixedInstanceId: existing.instanceId, fixedConnectionId: match.fixedConnectionId,
+            movingInstanceId: instanceId, movingConnectionId: match.movingConnectionId, ruleId: match.compatibility.ruleId!, ruleVersion: CONNECTION_RULE_VERSION, twistDeg: match.candidate.twistDeg,
+            axis: [...match.candidate.axis], anchor: [...match.candidate.anchor], insertionDepthLdu: match.compatibility.insertionDepthLdu! });
+          if (!collisionZones.has(existing.instanceId)) collisionZones.set(existing.instanceId, match.candidate.penetrationZone);
+        }
+        if (multipointBlocked) break;
+      }
+      if (multipointBlocked) continue;
+      if (!newEdges.length || graph.edges.length + newEdges.length > 4096) { rejections.push({ code: 'multi-point-edge-limit', reason: 'The source-supported multi-point graph has no selected mate or exceeds its bounded edge budget.' }); continue; }
       let failed: PairCollision | undefined;
       let anchorCollision: PairCollision | undefined;
       for (const existing of graph.placements) {
         const part = await this.getPart(existing.partId);
         if (!part) return reject('source-unavailable', 'An existing source part is no longer available.');
-        const collision = await checkNativePairCollision(part, existing, movingPart, movingPlacement, existing.instanceId === fixedPlacement.instanceId ? candidate.penetrationZone : undefined);
+        const collision = await checkNativePairCollision(part, existing, movingPart, movingPlacement, collisionZones.get(existing.instanceId));
         if (existing.instanceId === fixedPlacement.instanceId) anchorCollision = collision;
         if (collision.status !== 'clear') { failed = collision; rejections.push({ code: collision.status === 'collision' ? 'native-plastic-collision' : 'collision-unresolved', reason: `${existing.instanceId}: ${collision.reason}` }); break; }
       }
       if (failed) continue;
       const next: NativeAssembly = structuredClone(graph);
       next.placements.push(movingPlacement); next.sourceHashes[movingPart.partId] = nativePartSourceHash(movingPart);
-      const edge: AssemblyGraphEdge = { id: `edge-${next.edges.length + 1}`, fixedInstanceId: fixedPlacement.instanceId, fixedConnectionId: request.anchorConnectionId,
-        movingInstanceId: instanceId, movingConnectionId: request.candidateConnectionId, ruleId, ruleVersion: CONNECTION_RULE_VERSION, twistDeg: candidate.twistDeg,
-        axis: [...candidate.axis], anchor: [...candidate.anchor], insertionDepthLdu: solved.compatibility.insertionDepthLdu! };
-      next.edges.push(edge);
+      next.edges.push(...newEdges);
       this.remember(next);
       return { accepted: true, graph: next, assembly: next, candidate, compatibility: solved.compatibility, collision: anchorCollision, rejections,
         debug: { ...structuredClone(candidate), coordinateSystem: 'ldraw-native', insertionPathVerification: 'source-axis-seating-path' } };

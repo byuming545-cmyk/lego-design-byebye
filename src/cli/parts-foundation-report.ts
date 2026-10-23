@@ -55,6 +55,7 @@ async function main() {
     schemaVersion: 1, ...versions, generatedAt: assembly.generatedAt, runtimeValidation: assembly.runtimeValidation,
     scope: assembly.scope, verificationScope: assembly.verificationScope, interfaceBudget: assembly.interfaceBudget,
     counts: assembly.counts, sourceCounts: assembly.sourceCounts, proxyReadiness, blockedReasons: assembly.blockedReasons,
+    interfaceCoverage: assembly.interfaceCoverage, deferredRun: assembly.deferredRun,
     batches: assembly.batches, fixtures: assembly.fixtures, representativePairs: assembly.representativePairs,
     runtimeReport: 'data/parts-foundation/assembly/migration.json', fullProofArtifact: 'artifacts/assembly-development/migration-full.json.gz',
     limitations: assembly.limitations,
@@ -62,6 +63,11 @@ async function main() {
   await writeFile(path.join(directory, 'assembly-migration.csv'), csv([
     ['partId', 'name', 'status', 'geometryReady', 'connectionSourceStatus', 'assemblyVerified', 'generatable', 'enabledSourceIds', 'disabledSourceIds', 'interfaceBudget', 'physicalInterfaces', 'testedPhysicalInterfaces', 'deferredPhysicalInterfaces', 'fixtureChecksPassed', 'fixtureChecksTotal', 'sourceDigest', 'reasonCodes', 'reasons'],
     ...assembly.entries.map(entry => [entry.partId, entry.name, entry.status, entry.geometryReady, entry.connectionSourceStatus, entry.assemblyVerified, entry.generatable, entry.allowedConnectionIds.length, entry.disabledConnectionIds.length, entry.interfaceBudget, entry.physicalInterfaceCount, entry.testedPhysicalInterfaceCount, entry.deferredPhysicalInterfaceCount, entry.fixtureTestsPassed, entry.fixtureTestsTotal, entry.source.digest, entry.reasonCodes, entry.reasons]),
+  ]));
+  await writeJson('interface-coverage.json', { schemaVersion: 1, ...versions, runtimeValidation: assembly.runtimeValidation, countBasis: 'Source-frame/profile physical-interface groups, distinct from conservative graph occupancy locations.', interfaceCoverage: assembly.interfaceCoverage, deferredRun: assembly.deferredRun, parts: assembly.entries.map(entry => ({ partId: entry.partId, assemblyVerified: entry.assemblyVerified, generatable: entry.generatable, interfaceCoverage: entry.interfaceCoverage })) });
+  await writeFile(path.join(directory, 'interface-coverage.csv'), csv([
+    ['partId', 'rawSourceConnectionRecords', 'logicalConnectionGroups', 'physicalInterfacesDiscovered', 'verifiedPass', 'verifiedBlocked', 'requiresAstraReview', 'pending', 'enabledRawConnectionIds', 'enabledPhysicalInterfaces', 'verifiedCoveragePercent', 'processedCoveragePercent', 'fullyAssemblyVerified', 'partiallyGeneratable', 'interfaceVerificationComplete'],
+    ...assembly.entries.map(entry => { const coverage = entry.interfaceCoverage; return [entry.partId, coverage?.rawSourceConnectionRecords, coverage?.logicalConnectionGroups, coverage?.physicalInterfacesDiscovered, coverage?.verifiedPass, coverage?.verifiedBlocked, coverage?.requiresAstraReview, coverage?.pending, coverage?.enabledRawConnectionIds, coverage?.enabledPhysicalInterfaces, coverage?.verifiedCoveragePercent, coverage?.processedCoveragePercent, coverage?.fullyAssemblyVerified, coverage?.partiallyGeneratable, coverage?.interfaceVerificationComplete]; }),
   ]));
   await writeJson('failed-part-recovery.json', recovery);
   await writeFile(path.join(directory, 'failed-part-recovery.csv'), csv([

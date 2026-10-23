@@ -1,8 +1,8 @@
 # LEGO Design → LDraw 交叉引用限定研究
 
-本次研究找到了一份明确记录 Design 与 LDraw 文件对应关系的公开候选表，但**没有把其中任何记录接入生产映射**。当前 531 个说明书 Element 的外部 Part / Design / 颜色映射，与它们能否定位到原生几何、通过装配验证，仍分别统计。
+本次研究找到了一份明确记录 Design 与 LDraw 文件对应关系的公开候选表，但**没有把其中任何记录接入已核定生产几何映射**。Phase 4 已将候选审查接入运行时：531 项完整身份链明确分为 `VERIFIED: 0`、`PROBABLE_BUT_UNVERIFIED: 14`、`CONFLICT: 88`、`UNRESOLVED: 429`。外部 Part / Design / 颜色映射成功，与正式几何准入及装配通过仍分别统计。
 
-逐项结果见 [cross-reference-candidates.json](../artifacts/assembly-development/cross-reference-candidates.json)。文件包含全部 531 个 Element 的候选目标、冲突或缺失原因、证据行号及 `adoptedInProduction: false`，不包含完整 XML 或 LeoCAD 程序代码。
+初始研究见 [cross-reference-candidates.json](../artifacts/assembly-development/cross-reference-candidates.json)。当前带哈希的运行时审查为 `data/parts-foundation/mappings/ldraw-mapping-review.json`，增加源表分区、相邻注释及转换行。文件不包含完整 XML 或 LeoCAD 程序代码；所有候选均未授予几何准入。
 
 ## 固定来源及字段语义
 
@@ -34,7 +34,9 @@
 
 源表 [第 31612 行](https://github.com/leozide/leocad/blob/306520badc87c00cc4afd29c2cb45496b5c286bd/resources/ldraw.xml#L31612) 明确列出 Design `35380` → `98138.dat`。本批来源映射中 Element `6514193` 的 Design 为 `35380`，因此这是一条全表目标唯一、且原生文件在当前库内的候选。
 
-但当前 `98138` 的装配迁移结果仍为 `blocked`：
+Phase 4 进一步核对发现，该源行在第 30683 行起的 **Custom Parts NOT in LDraw** 区；第 31610 行注释带 `[NOT]` 并标明透明 PC 材质变体，第 31613 行相邻 Transformation 却指向 `35380.dat`。普通 `98138.dat` 的 Transformation 在第 15930 行，另有 `ty=-0.32`。因此不能只凭唯一转换目标证明精确模具、材质及转换语义，状态保留 `PROBABLE_BUT_UNVERIFIED`。
+
+另外，当前 `98138` 的装配迁移结果仍为 `blocked`：
 
 - `assemblyVerified: false`，`generatable: false`；
 - 原因为 `no-verified-interface`、`compatibility-unknown`；
@@ -46,4 +48,6 @@
 
 LeoCAD 的 [README](https://github.com/leozide/leocad/blob/306520badc87c00cc4afd29c2cb45496b5c286bd/docs/README.md) 与 [COPYING](https://github.com/leozide/leocad/blob/306520badc87c00cc4afd29c2cb45496b5c286bd/docs/COPYING.txt) 说明程序采用 GPLv2。映射文件本身没有独立许可声明，并引用第三方社区维护来源，因此这里没有把程序许可直接断言为映射数据的独立许可。数据来源、许可与冲突语义是后续整合审查项，不是请求用户批准的流程。
 
-整合时仍需明确记录选用的源行、固定文件哈希、变体冲突处理及对应测试。身份映射通过后，几何、连接、闭合代理、装配夹具和生成烟测依然逐项执行；本研究没有提高任何生产准入标志。
+运行时按 `lego-design` 与 `rebrickable` 两个命名空间检索显式引用，不会把 Design 值放入外部 Part 键中。只有有完整精确变体审查、无其他目标冲突的 `VERIFIED` 链才返回正式 `ldrawPartId`；其余目标只在 `ldrawCandidatePartIds` 中保留，`geometryPipelineAllowed` 为 false。
+
+身份映射通过后，几何、连接、闭合代理、装配夹具和生成烟测依然逐项执行；本研究没有提高任何生产准入标志。31 个分组交接输入见 `artifacts/mapping-review/astra-handoff-input.json`，覆盖全部 88 个冲突 Element 与唯一在库 probable 候选。
