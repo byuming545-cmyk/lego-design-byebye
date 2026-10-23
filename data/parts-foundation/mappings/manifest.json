@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "id": "rebrickable-downloads-mirror-2026-10-22-13-13",
+    "kind": "rebrickable-downloads-mirror",
+    "repository": "https://github.com/ojuuji/rb.db",
+    "revision": "03547a1273f36f7ea7beb5ff7e67bc40830c15d8",
+    "releaseTag": "2026-10-22-13-13",
+    "url": "https://github.com/ojuuji/rb.db/releases/download/2026-10-22-13-13/rb.db.xz",
+    "publishedChecksumUrl": "https://github.com/ojuuji/rb.db/releases/download/2026-10-22-13-13/rb.db.sha256",
+    "databaseSha256": "7044cba72207698fb52e292638172cf5fb23e8c6b4197d6fd70eaf1e8e328d6d",
+    "databaseBytes": 205639680,
+    "dataTimestamp": 1792674802,
+    "databaseSchemaVersion": "8",
+    "trust": "source-observed",
+    "independentlyVerifiedOfficial": false,
+    "upstreamTables": {
+      "elements": "https://cdn.rebrickable.com/media/downloads/elements.csv.gz",
+      "parts": "https://cdn.rebrickable.com/media/downloads/parts.csv.gz",
+      "colors": "https://cdn.rebrickable.com/media/downloads/colors.csv.gz",
+      "part_categories": "https://cdn.rebrickable.com/media/downloads/part_categories.csv.gz"
+    },
+    "upstreamTablesFetchedDirectly": false,
+    "dataLicense": "not-independently-verified",
+    "codeLicense": "MIT; applies to mirror build code, not asserted for Rebrickable data",
+    "attribution": "Mapping facts: Rebrickable; public database mirror/build: Mikalai Ananenka (ojuuji/rb.db).",
+    "designIdBasis": "elements.csv design_id column copied by the reviewed importer; no local number-pattern or image inference"
+  },
+  "rawSnapshot": {
+    "path": "element-rows.json",
+    "sha256": "6afab811ed3d2566c1a32c2bd243afbfb7627095388494841c33d32e4efe71ba",
+    "bytes": 131285
+  },
+  "observationSnapshotSha256": "04effcf23eb617201b51a8cdcc86b2225a8a4498666a703c67f3ba64fb4b102f",
+  "counts": {
+    "requestedElements": 531,
+    "elementMappings": 531,
+    "parts": 290,
+    "colors": 30,
+    "categories": 34,
+    "unresolved": 0
+  },
+  "ldrawCrossReferences": [],
+  "limitations": [
+    "Mirror source observations are not direct official/API verification",
+    "Rebrickable part numbers and LEGO design IDs are kept separate",
+    "No same-number LDraw cross-reference inference",
+    "Image URLs can show similar parts and are not geometry identity evidence",
+    "No complete Rebrickable database or proprietary software library is redistributed"
+  ],
+  "sourceAuditFiles": [
+    {
+      "path": "source/ojuuji-rb-db/build.sh",
+      "sha256": "caa740fb294362edce65c6c49c34c49d9d4364241e492b9121ed9a325d3eb092",
+      "sourceUrl": "https://raw.githubusercontent.com/ojuuji/rb.db/03547a1273f36f7ea7beb5ff7e67bc40830c15d8/build.sh"
+    },
+    {
+      "path": "source/ojuuji-rb-db/build/import_rb_tables.py",
+      "sha256": "c8a6af760aaadd6eb31a20de93cd4b0226133e93eb8e37223de93ee026e46bcf",
+      "sourceUrl": "https://raw.githubusercontent.com/ojuuji/rb.db/03547a1273f36f7ea7beb5ff7e67bc40830c15d8/build/import_rb_tables.py"
+    },
+    {
+      "path": "source/ojuuji-rb-db/schema/rb_tables.sql",
+      "sha256": "7d254b6a06a5b9bb23d3c311d6bda2668b09a46c55f0fe6172f7ab328c8f3179",
+      "sourceUrl": "https://raw.githubusercontent.com/ojuuji/rb.db/03547a1273f36f7ea7beb5ff7e67bc40830c15d8/schema/rb_tables.sql"
+    },
+    {
+      "path": "source/ojuuji-rb-db/tests/test_rb_csv.py",
+      "sha256": "e3d0ec3e2427b7e5c128e82eece3f72d8518b1ce27ae712c604cdd21c4d9bf11",
+      "sourceUrl": "https://raw.githubusercontent.com/ojuuji/rb.db/03547a1273f36f7ea7beb5ff7e67bc40830c15d8/tests/test_rb_csv.py"
+    },
+    {
+      "path": "source/ojuuji-rb-db/LICENSE",
+      "sha256": "55549828347cd148acb8933e695512b2b8e1ef3685a099b167f8527a3f0de681",
+      "sourceUrl": "https://raw.githubusercontent.com/ojuuji/rb.db/03547a1273f36f7ea7beb5ff7e67bc40830c15d8/LICENSE"
+    }
+  ]
+}

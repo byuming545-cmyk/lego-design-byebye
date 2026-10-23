@@ -61,6 +61,7 @@ export default function NativePartViewer({
       geometries.forEach((geometry) => geometry.dispose());
       materials.forEach((material) => material.dispose());
       renderer?.dispose();
+      renderer?.forceContextLoss();
       renderer?.domElement.remove();
     };
     setError('');

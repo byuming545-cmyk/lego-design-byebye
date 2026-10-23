@@ -1,14 +1,16 @@
-# BRICKLAB · 真实 Speed 零件基础 V0.4
+# BRICKLAB · 真实 LEGO 装配基础 V0.5
 
-当前首页是 **Part Lab `/part-lab`**：查看有来源的原生 LEGO 零件网格、连接点、说明书零件表证据和验证状态。运行本页不需要 Rebrickable 密钥，也不需要在线下载几何。
+当前首页是 **Part Lab `/part-lab`**：查看有来源的原生 LEGO 网格、连接点、说明书证据，并在“装配模式”选择真实零件与已验证接口自动拼接。运行网站无需 Rebrickable 密钥或在线下载几何。
 
-已读取用户提供的 6 本 LEGO 品牌说明书：4 份附录共提取 667 行、531 个不同 Element ID；另两本附件超过传输上限，未读取。原生几何包包含 245 个 LDraw ID，195 个条目有完整解析的来源连接。**尚无已验证的 Element→Design/LDraw 映射，可生成与已验证数量均为 0。** 这些编号统计属于不同命名空间，不能相加当作真实设计零件种数。
+原生包的 **245 个 LDraw 根零件全部进入迁移队列：78 个通过限定接口的软件装配与生成准入，167 个保留明确阻塞原因**。开放 1,001 个源接口 ID，其余 3,693 个禁用。每件首轮最多测试 32 个不同物理接口，未测口不会随零件整体解锁。墙体、平台、简单车架、盒体、屋顶、侧向模块 6 项实际生成通过；轮组仍阻塞。
 
-**旧版通用、Speed、Automotive 生成、改造和导出默认暂停。** 旧库中的手写尺寸、曲面和连接不能冒充真实导入数据。历史算法保留供回归，网页入口保留只读资料；客户端参数和环境变量不能绕过真实性门禁。
+6 本可读说明书的 4 份附录提取了 667 行、531 个不同 Element ID；另两本超过传输上限。**531 个元素已取得 Part / Design / 颜色的明确镜像来源记录，信任标签为 `source-observed`；已核定的 LDraw 跨编号关系仍为 0。** 因此本批说明书元素的装配/生成覆盖仍为 0，不能套用原生包 78 个通过结果。不同编号空间和碰撞代理就绪数分别统计。
 
-详细来源、六套装覆盖、未完成事项与恢复生成条件见 [V0.4 交付与使用说明](docs/REAL_PARTS_V0.4.md)、[说明书证据报告](docs/PDF_REFERENCE_LEARNING.md)和[旧零件审计](docs/PART_AUTHENTICITY_AUDIT.md)。未训练神经网络，未实现 PDF 自动还原整车 3D，未做实物拼搭。
+**旧版通用、Speed、Automotive 的参数化生成、改造和导出继续暂停。** 新基础模块通过 `attachPart()` 求姿态、检查原生碰撞并更新连接图，仅使用当前报告授权的零件与接口。历史算法保留供回归，客户端参数和环境变量不能绕过生产门禁。
 
-历史版本文档：[V0.3](docs/AUTOMOTIVE_V0.3.md)、[V0.2.1](docs/V0.2.1交付报告.md)、[V0.2](docs/V0.2交付报告.md)。本文后部旧生成流程仅为历史说明，以本版真实性门禁为准。
+本轮 A–K 结果、来源、四版本号与未完成项见 [V0.5 装配报告](docs/REAL_PARTS_V0.5.md)、[Element 恢复报告](docs/PART_RECOVERY_REPORT.md)和[连接规则依据](docs/ASSEMBLY_CONNECTION_RULES.md)。软件装配资格只适用于白名单接口；没有实物拼搭认证、制造公差认证或整件插入轨迹扫掠认证。镜像数据许可未独立核定，与其构建代码的 MIT 许可分别记录。
+
+历史版本文档：[V0.4](docs/REAL_PARTS_V0.4.md)、[V0.3](docs/AUTOMOTIVE_V0.3.md)、[V0.2.1](docs/V0.2.1交付报告.md)、[V0.2](docs/V0.2交付报告.md)。本文后部旧生成流程仅为历史说明，以本版真实性门禁为准。
 
 本项目为独立创意原型，与 LEGO® 集团无关联。
 
@@ -18,7 +20,7 @@
 
 ### Windows：从 ZIP 启动
 
-本版工作分支为 `codex/speed-real-parts-foundation`，可下载 [V0.4 分支 ZIP](https://github.com/byuming545-cmyk/lego-design-byebye/archive/refs/heads/codex/speed-real-parts-foundation.zip)。
+本版工作分支为 `codex/real-lego-assembly-expansion`，可下载 [V0.5 分支 ZIP](https://github.com/byuming545-cmyk/lego-design-byebye/archive/refs/heads/codex/real-lego-assembly-expansion.zip)。
 
 先安装 Node.js 24.19.0 或更高的 24.x 版本，再解压下载的项目 ZIP。进入**能够看到 `package.json` 的文件夹**；如果第一层只有同名文件夹，继续进入一层。
 
@@ -30,7 +32,7 @@ npm run build
 npm start
 ```
 
-出现服务已启动的信息后，保持命令窗口开启，浏览器打开 **<http://localhost:3001/part-lab>**。可以搜索 `3001` 查看原生砖与连接点，搜索 `element:4666579` 查看未映射的说明书证据；点击“说明书与套装”查看资料状态。停止服务按 `Ctrl+C`。此页面无需 `.env`、API Key 或 Python。不要在 Windows 中复制下面云环境的 `/workspace` 路径或 Bash 环境变量前缀。
+出现服务已启动的信息后，保持命令窗口开启，浏览器打开 **<http://localhost:3001/part-lab>**。搜索 `3001` 查看原生砖与接口范围；搜索 `element:4666579` 查看来源映射及说明书页码。点击“装配模式”自动拼接或生成基础结构，点击“说明书与套装”查看覆盖状态。停止服务按 `Ctrl+C`。运行网站无需 `.env`、API Key 或 Python。不要在 Windows 中复制下面云环境的 `/workspace` 路径或 Bash 环境变量前缀。
 
 ### 当前云环境：开发模式
 
@@ -71,6 +73,12 @@ npm start
 ```
 
 打开 <http://localhost:3001>。Express 同时提供构建后的前端和 API，生产模式可以使用 `PORT` 更改监听端口。`build` 包含 TypeScript 类型检查、Vite 前端构建与服务端编译；`npm start` 需要先完成构建。服务端未指定 `NODE_ENV` 时默认 production；`npm run dev:api` 显式带 `--development`，开发 `auto` 缺 Key 时允许合成演示。
+
+## 装配与覆盖报告
+
+`npm run report:parts` 从实际原生注册表、当前生产接口准入、531 个元素的恢复队列和逐本说明书覆盖重建 `artifacts/parts-foundation/` 下的 JSON/CSV。它会区分原生装配数量、碰撞代理数量和说明书元素分母；已完成映射的元素不再列入“待映射”清单，另列需要核定 LDraw 对应的目标。返回 0 表示运行报告核定 ready，2 表示已输出报告但当前装配准入未 ready，1 表示命令错误。
+
+更换零件来源或装配引擎后，可运行 `npm run verify:assembly` 重新迁移全部 245 个原生根零件；默认每件最多测试 32 个不同物理接口，其余口保持禁用。此命令耗时较长，网站正常启动无需重跑。`npm run verify:assembly -- --all-interfaces` 用于后续逐步扩大测试范围，仍受真实来源与碰撞资源限制。重新生成迁移证据后，运行 `report:parts` 并重启服务。
 
 ## 历史 V0.1 使用流程（当前生成入口已暂停）
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ArrowUpRight, BookOpen, Box, Check, CircleHelp, Database, FileText, Layers3, LoaderCircle, Search, ShieldCheck } from 'lucide-react';
 import NativePartViewer, { type NativeConnectionPoint, type NativeMesh, type NativeVector } from '../components/NativePartViewer.js';
+import AssemblyLab from './AssemblyLab.js';
 import './part-lab.css';
 
 interface PartSummary {
@@ -12,14 +13,30 @@ interface PartSummary {
   collisionReady: boolean;
   generatable: boolean;
   verified: boolean;
+  assemblyVerified?: boolean;
   issues: string[];
   elementIds?: string[];
   identitySystem?: 'ldraw' | 'lego-element';
   elementId?: string | null;
   sourcePartId?: string | null;
+  designId?: string | null;
+  enabledConnectionIds?: string[];
+  mapping?: ElementMapping;
+  assemblyReport?: { scope?: string; fixtureTestsPassed: number; fixtureTestsTotal: number; verifiedConnectionIds?: string[]; disabledConnectionIds?: string[]; generatorSmokePassed?: boolean; reasons?: string[] };
   checks?: { id: string; outcome: string; description: string }[];
   evidence?: { sourceId?: string; documentId?: string; page?: number; pdfPage?: number; rawText?: string; reviewStatus?: string }[];
   selectionBasis?: string;
+}
+interface ElementMapping {
+  status: 'mapped' | 'unresolved' | 'conflict';
+  verificationStatus: string;
+  partId: string | null;
+  partIdSystem: string | null;
+  designId: string | null;
+  ldrawPartId: string | null;
+  color: { id: string; name: string; rgb: string; system: string } | null;
+  source: { id: string; url: string; revision: string; sha256: string; trust: string; dataLicense: string; independentlyVerifiedOfficial: boolean } | null;
+  reasons?: string[];
 }
 interface SourceFile {
   path: string;
@@ -59,6 +76,9 @@ interface ReferenceSet {
   inventoryComplete?: boolean;
   elementCount?: number;
   mappedPartCount?: number;
+  assemblyVerified?: number;
+  generatable?: number;
+  geometryReady?: number;
   notes?: string[] | string;
 }
 interface RankingItem {
@@ -79,7 +99,7 @@ interface FoundationStatus {
 }
 
 const stageLabels: Record<string, string> = {
-  catalogOnly: '仅目录', geometryReady: '几何已导入', connectionReady: '连接已导入', collisionReady: '碰撞数据就绪', generatable: '可用于生成', verified: '已验证', failed: '导入失败',
+  catalogOnly: '仅目录', geometryReady: '几何已导入', connectionReady: '连接已导入', collisionReady: '碰撞数据就绪', assemblyVerified: '数字装配已验证', generatable: '可用于生成', verified: '已验证', failed: '导入失败',
 };
 const instructionLabels: Record<string, string> = {
   imported: '已读取', read: '已读取', ready: '已读取', 'user-supplied': '用户提供', user_supplied: '用户提供', 'transfer-limit': '超过传输上限', transfer_limit: '超过传输上限', blocked: '访问受阻', missing: '待补充', pending: '待补充',
@@ -116,6 +136,16 @@ function SourceList({ title, source, files = [] }: { title: string; source?: Sou
   </section>;
 }
 
+function MappingEvidence({ mapping }: { mapping: ElementMapping }) {
+  const source = mapping.source;
+  return <section className="part-mapping-evidence" aria-label="Element 编号映射依据">
+    <div className="part-mapping-heading"><h3>Element 目录映射</h3><Badge>{mapping.status === 'mapped' ? '来源记录已映射' : mapping.status === 'conflict' ? '来源存在冲突' : '待取得可靠映射'}</Badge></div>
+    <p>目录记录与 LDraw 几何分别核对；这里的来源观测不代表已独立核验为 LEGO 官方数据。</p>
+    <dl><div><dt>外部 Part ID</dt><dd>{mapping.partId ?? '未确认'}{mapping.partIdSystem && <small>{mapping.partIdSystem}</small>}</dd></div><div><dt>源记录 Design ID</dt><dd>{mapping.designId ?? '源记录未提供'}</dd></div><div><dt>LDraw 交叉映射</dt><dd>{mapping.ldrawPartId ?? '待核对，未绑定几何'}</dd></div><div><dt>源记录颜色</dt><dd>{mapping.color ? <><span className="part-mapping-color" style={{ backgroundColor: /^[A-Fa-f0-9]{6}$/.test(mapping.color.rgb) ? `#${mapping.color.rgb}` : undefined }} />{mapping.color.name}<small>{mapping.color.system} · {mapping.color.id}</small></> : '未确认'}</dd></div></dl>
+    {source && <details><summary>查看映射来源与数据许可</summary><p>{safeUrl(source.url) ? <a href={safeUrl(source.url)} target="_blank" rel="noreferrer">{source.id}<ArrowUpRight size={12} /></a> : source.id}</p><p>可信标记：{source.trust === 'source-observed' ? '来源观测' : source.trust === 'user-reported' ? '用户提供' : source.trust}；独立官方核验：{source.independentlyVerifiedOfficial ? '已完成' : '未完成'}。</p><p>{source.dataLicense}</p><p className="part-mono part-wrap">版本 {source.revision}</p><p className="part-mono part-wrap">SHA-256 {source.sha256}</p></details>}
+  </section>;
+}
+
 export default function PartLab() {
   const [status, setStatus] = useState<FoundationStatus | null>(null);
   const [parts, setParts] = useState<PartSummary[]>([]);
@@ -131,7 +161,20 @@ export default function PartLab() {
   const [showBounds, setShowBounds] = useState(false);
   const [showConnections, setShowConnections] = useState(true);
   const [refresh, setRefresh] = useState(0);
-  const [tab, setTab] = useState<'parts' | 'references'>('parts');
+  const tabFromLocation = (): 'parts' | 'references' | 'assembly' => {
+    const value = new URLSearchParams(window.location.hash.split('?')[1] ?? window.location.search).get('mode');
+    return value === 'assembly' ? 'assembly' : value === 'references' ? 'references' : 'parts';
+  };
+  const [tab, setTab] = useState<'parts' | 'references' | 'assembly'>(tabFromLocation);
+  const navigateTab = (next: 'parts' | 'references' | 'assembly') => {
+    setTab(next);
+    window.location.hash = next === 'parts' ? '/part-lab' : `/part-lab?mode=${next}`;
+  };
+  useEffect(() => {
+    const navigate = () => setTab(tabFromLocation());
+    window.addEventListener('hashchange', navigate);
+    return () => window.removeEventListener('hashchange', navigate);
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -175,6 +218,7 @@ export default function PartLab() {
     { name: '真实几何', ready: detail.part.geometryReady },
     { name: '来源连接', ready: detail.part.connectionReady },
     { name: '碰撞数据', ready: detail.part.collisionReady },
+    { name: '数字装配', ready: detail.part.assemblyVerified === true },
     { name: '生成准入', ready: detail.part.generatable },
     { name: '完整验证', ready: detail.part.verified },
   ] : [];
@@ -189,19 +233,20 @@ export default function PartLab() {
 
     <div className="part-counts" aria-label="零件可信状态统计">
       {[
-        ['catalogOnly', '仅目录'], ['geometryReady', '已有真实几何'], ['connectionReady', '已有来源连接'], ['collisionReady', '已有碰撞数据'], ['generatable', '允许用于生成'], ['verified', '完成验证'],
-      ].map(([key, label]) => <div key={key}><strong>{status ? (status.counts[key] ?? 0) : '—'}</strong><span>{label}</span></div>)}
+        ['catalogOnly', '仅目录'], ['geometryReady', '已有真实几何'], ['connectionReady', '已有来源连接'], ['collisionReady', '已有碰撞数据'], ['assemblyVerified', '数字装配已验证'], ['generatable', '允许用于生成'], ['verified', '完成验证'],
+      ].map(([key, label]) => <div key={key}><strong>{status ? (status.counts[key] ?? '—') : '—'}</strong><span>{label}</span></div>)}
     </div>
     <p className="part-count-basis">状态统计可重叠。LDraw 编号与 Element ID 分开登记，数量相加不代表真实设计零件总数。</p>
-    <div className="part-context-note"><ShieldCheck size={16} /><p>说明书中的 Element ID 用于识别具体零件与颜色组合；它与 Design ID、LDraw 编号需要逐项映射。已有网格或连接数据，也不表示已完成装配验证。</p></div>
+    <div className="part-context-note"><ShieldCheck size={16} /><p>Element、Design 与 LDraw 编号分别核对。只有通过装配验证的具体连接口，才能参与真实拼搭与基础生成；旧版参数化生成仍暂停。</p></div>
 
     <div className="part-tabs" role="tablist" aria-label="零件工作台视图">
-      <button role="tab" aria-selected={tab === 'parts'} onClick={() => setTab('parts')}><Box size={16} />零件检查</button>
-      <button role="tab" aria-selected={tab === 'references'} onClick={() => setTab('references')}><BookOpen size={16} />说明书与套装</button>
+      <button role="tab" aria-selected={tab === 'parts'} onClick={() => navigateTab('parts')}><Box size={16} />零件检查</button>
+      <button role="tab" aria-selected={tab === 'assembly'} onClick={() => navigateTab('assembly')}><Layers3 size={16} />装配模式</button>
+      <button role="tab" aria-selected={tab === 'references'} onClick={() => navigateTab('references')}><BookOpen size={16} />说明书与套装</button>
       <button className="part-refresh" onClick={() => setRefresh((value) => value + 1)}>刷新资料</button>
     </div>
 
-    {tab === 'parts' ? <section className="part-workspace" aria-label="零件检查">
+    {tab === 'assembly' ? <AssemblyLab /> : tab === 'parts' ? <section className="part-workspace" aria-label="零件检查">
       <aside className="part-browser">
         <label className="part-search"><Search size={16} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索零件、Design / Element ID" aria-label="搜索真实零件" /></label>
         <label className="part-filter"><input type="checkbox" checked={onlyGeneratable} onChange={(event) => setOnlyGeneratable(event.target.checked)} />只看允许用于生成的零件</label>
@@ -215,22 +260,24 @@ export default function PartLab() {
         {detailLoading ? <div className="part-loading"><LoaderCircle size={22} className="part-spin" />读取原生网格与来源</div> : detailError ? <div className="part-list-error" role="alert">{detailError}<button onClick={() => setRefresh((value) => value + 1)}>重试</button></div> : !detail ? <Empty title="选择一个零件查看依据">可检查真实几何、连接位置和进入生成器所需的验证条件。</Empty> : <>
           <div className="part-detail-heading"><div><span className="part-overline">{detail.part.identitySystem === 'lego-element' ? 'LEGO Element ID' : 'LDraw ID'} · {detail.part.elementId ?? detail.part.id}</span><h2>{detail.part.name || `零件 ${detail.part.id}`}</h2></div><Badge ready={detail.part.generatable}>{stageLabels[detail.part.status] ?? detail.part.status}</Badge></div>
           <div className="part-stage-controls"><label><input type="checkbox" checked={showBounds} onChange={(event) => setShowBounds(event.target.checked)} />显示网格包围盒</label><label><input type="checkbox" checked={showConnections} onChange={(event) => setShowConnections(event.target.checked)} />显示来源连接点</label></div>
-          {detail.geometry?.mesh ? <NativePartViewer mesh={detail.geometry.mesh} points={points} showBounds={showBounds} showConnections={showConnections} /> : <div className="part-missing-mesh"><Empty title="暂无经过来源确认的原生几何">该条目保留在目录中，等待真实几何文件和编号映射。</Empty></div>}
+          {detail.geometry?.mesh ? <NativePartViewer mesh={detail.geometry.mesh} points={points} showBounds={showBounds} showConnections={showConnections} /> : <div className="part-missing-mesh"><Empty title="暂无经过来源确认的原生几何">{detail.part.mapping?.status === 'mapped' ? '已取得外部目录映射；仍需可靠的 LDraw 交叉映射与真实源几何，当前不能参与装配。' : '该条目保留在目录中，等待真实几何文件和可靠编号映射。'}</Empty></div>}
           <div className="part-view-legend"><span>网格采用统一展示色，实际颜色以清单为准</span><span><i className="male" />公连接<i className="female" />母连接<i className="other" />其他 / 未分类</span></div>
           <div className="part-checks">{checks.map((check) => <div key={check.name} className={check.ready ? 'ready' : ''}>{check.ready ? <Check size={15} /> : <span className="part-check-dot" />}<span>{check.name}</span><small>{check.ready ? '已就绪' : '待完成'}</small></div>)}</div>
           <div className="part-metrics"><div><span>网格三角形</span><strong>{detail.geometry?.mesh ? Math.floor(detail.geometry.mesh.indices.length / 3).toLocaleString() : '—'}</strong></div><div><span>来源连接点</span><strong>{points.length}</strong></div><div><span>网格尺寸 X × Y × Z</span><strong>{dimensions ? dimensions.map((value) => Number(value.toFixed(2))).join(' × ') : '—'}{dimensions && <small> LDU</small>}</strong></div></div>
           <p className="part-proxy-note">包围盒根据真实网格计算，用于保守碰撞检查；它不能证明空腔、孔洞或轮轴已经正确配合。</p>
           {!!detail.part.elementIds?.length && <p className="part-mapped-elements">已确认 Element ID：{detail.part.elementIds.join('、')}</p>}
-          {!!observationEvidence.length && <section className="part-observation-evidence"><h3>说明书观测证据</h3><p>保留原始文字与 PDF 页码，编号映射和实际颜色另行核对。</p><div className="part-table-wrap"><table className="part-table"><thead><tr><th>文件</th><th>PDF 页码</th><th>原始标签</th><th>复核范围</th></tr></thead><tbody>{observationEvidence.map((evidence, index) => <tr key={index}><td>{evidence.sourceId ?? evidence.documentId}.pdf</td><td>{evidence.page ?? evidence.pdfPage ?? '—'}</td><td className="part-mono">{evidence.rawText ?? '—'}</td><td>{evidence.reviewStatus === 'visual-spot-checked' ? '图像抽查' : '文本层抽取'}</td></tr>)}</tbody></table></div></section>}
+          {detail.part.mapping && <MappingEvidence mapping={detail.part.mapping} />}
+          {!!observationEvidence.length && <section className="part-observation-evidence"><h3>说明书观测证据</h3><p>保留原始标签与 PDF 页码；目录映射单独记录，备件属性与整套清单完整性仍需核对。</p><div className="part-table-wrap"><table className="part-table"><thead><tr><th>文件</th><th>PDF 页码</th><th>原始标签</th><th>复核范围</th></tr></thead><tbody>{observationEvidence.map((evidence, index) => <tr key={index}><td>{evidence.sourceId ?? evidence.documentId}.pdf</td><td>{evidence.page ?? evidence.pdfPage ?? '—'}</td><td className="part-mono">{evidence.rawText ?? '—'}</td><td>{evidence.reviewStatus === 'visual-spot-checked' ? '图像抽查' : '文本层抽取'}</td></tr>)}</tbody></table></div></section>}
+          {detail.part.assemblyReport && <section className="part-assembly-scope"><h3>数字装配验证范围</h3><p>适用检查 {detail.part.assemblyReport.fixtureTestsPassed} / {detail.part.assemblyReport.fixtureTestsTotal}；引擎生成路径检查：{detail.part.assemblyReport.generatorSmokePassed ? '通过' : '未通过 / 未完成'}。</p><p>只开放列出的已验证连接口，其他连接仍保持关闭。数字验证不表示完成实体实拼。</p><details><summary>{detail.part.enabledConnectionIds?.length ?? detail.part.assemblyReport.verifiedConnectionIds?.length ?? 0} 个已开放连接口</summary><ul>{(detail.part.enabledConnectionIds ?? detail.part.assemblyReport.verifiedConnectionIds ?? []).map((id) => <li key={id} className="part-mono part-wrap">{id}</li>)}</ul></details></section>}
           {!!detail.part.issues.length && <div className="part-issues"><h3><CircleHelp size={15} />尚待完成</h3><ul>{detail.part.issues.map((issue, index) => <li key={index}>{issue}</li>)}</ul></div>}
           {!!detail.part.checks?.length && <section className="part-tests"><h3>验证记录</h3>{detail.part.checks.map((test) => <div key={test.id}><span>{test.id}</span><Badge ready={test.outcome === 'passed'}>{test.outcome === 'passed' ? '通过' : test.outcome === 'failed' ? '未通过' : test.outcome === 'not-applicable' ? '不适用' : '未执行'}</Badge><small>{test.description}</small></div>)}</section>}
-          {!!points.length && <details className="part-connection-records"><summary>查看 {points.length} 个来源连接点</summary><p>连接方向与位置来自源指令；展示不构成配合成功的证明。</p><div className="part-table-wrap"><table className="part-table"><thead><tr><th>源类型</th><th>性别</th><th>位置 LDU</th><th>来源行</th></tr></thead><tbody>{points.slice(0, 100).map((point, index) => <tr key={point.id ?? index}><td>{point.family ?? point.type ?? '未分类'}</td><td>{point.gender === 'M' ? '公' : point.gender === 'F' ? '母' : '未指定'}</td><td className="part-mono">{point.position.map((value) => Number(value.toFixed(2))).join(', ')}</td><td><span title={point.source?.raw}>{point.source?.path ?? '—'}{point.source?.line ? `:${point.source.line}` : ''}</span></td></tr>)}</tbody></table></div>{points.length > 100 && <p>表格显示前 100 个连接点；三维视图保留全部点。</p>}</details>}
+          {!!points.length && <details className="part-connection-records"><summary>查看 {points.length} 个来源连接点</summary><p>连接方向与位置来自源指令；已导入连接点不自动获得装配准入，只有明确开放的接口可用于生成。</p><div className="part-table-wrap"><table className="part-table"><thead><tr><th>源类型</th><th>性别</th><th>位置 LDU</th><th>装配准入</th><th>来源行</th></tr></thead><tbody>{points.slice(0, 100).map((point, index) => <tr key={point.id ?? index}><td>{point.family ?? point.type ?? '未分类'}</td><td>{point.gender === 'M' ? '公' : point.gender === 'F' ? '母' : '未指定'}</td><td className="part-mono">{point.position.map((value) => Number(value.toFixed(2))).join(', ')}</td><td>{point.id && detail.part.enabledConnectionIds?.includes(point.id) ? '已开放' : '未开放'}</td><td><span title={point.source?.raw}>{point.source?.path ?? '—'}{point.source?.line ? `:${point.source.line}` : ''}</span></td></tr>)}</tbody></table></div>{points.length > 100 && <p>表格显示前 100 个连接点；三维视图保留全部点。</p>}</details>}
           <div className="part-sources"><SourceList title="原生几何来源" source={detail.geometry?.source} /><SourceList title="连接数据来源" source={connectionSource} /></div>
         </>}
       </div>
     </section> : <section className="part-reference-view" aria-label="说明书与套装">
       <div className="part-section-heading"><BookOpen size={19} /><div><h2>套装资料覆盖</h2><p>同一套装的不同册合并统计；缺册、缺零件表或未映射的编号会保留为待补充。</p></div></div>
-      {status?.referenceSets.length ? <div className="part-reference-grid">{status.referenceSets.map((set) => <article key={set.setId} className="part-reference-card"><div><span className="part-mono">{set.setId}</span><Badge ready={set.inventoryComplete}>{set.inventoryComplete ? '清单完整' : '资料待补全'}</Badge></div><h3>{set.name || set.requestedName || '名称待核对'}</h3>{(!set.name || set.nameBasis?.includes('user-requested')) && set.requestedName && <small className="part-muted">需求中的名称，官方名称待核对</small>}<dl><div><dt>已读取说明书</dt><dd>{set.instructionCount ?? 0} 册</dd></div><div><dt>清单 Element ID</dt><dd>{set.elementCount ?? 0}</dd></div><div><dt>已映射零件编号</dt><dd>{set.mappedPartCount ?? 0}</dd></div></dl>{(typeof set.notes === 'string' ? [set.notes] : set.notes)?.map((note, index) => <p key={index} className="part-reference-note">{note}</p>)}</article>)}</div> : <Empty title="套装资料尚未加载">资料会在实际读取、核对后加入。</Empty>}
+      {status?.referenceSets.length ? <div className="part-reference-grid">{status.referenceSets.map((set) => <article key={set.setId} className="part-reference-card"><div><span className="part-mono">{set.setId}</span><Badge ready={set.inventoryComplete}>{set.inventoryComplete ? '清单完整' : '资料待补全'}</Badge></div><h3>{set.name || set.requestedName || '名称待核对'}</h3>{(!set.name || set.nameBasis?.includes('user-requested')) && set.requestedName && <small className="part-muted">需求中的名称，官方名称待核对</small>}<dl><div><dt>已读取说明书</dt><dd>{set.instructionCount ?? 0} 册</dd></div><div><dt>清单 Element ID</dt><dd>{set.elementCount ?? 0}</dd></div><div><dt>已映射目录编号</dt><dd>{set.mappedPartCount ?? 0}</dd></div>{set.geometryReady != null && <div><dt>已有来源几何</dt><dd>{set.geometryReady}</dd></div>}{set.assemblyVerified != null && <div><dt>数字装配已验证</dt><dd>{set.assemblyVerified}</dd></div>}{set.generatable != null && <div><dt>允许用于生成</dt><dd>{set.generatable}</dd></div>}</dl>{(typeof set.notes === 'string' ? [set.notes] : set.notes)?.map((note, index) => <p key={index} className="part-reference-note">{note}</p>)}</article>)}</div> : <Empty title="套装资料尚未加载">资料会在实际读取、核对后加入。</Empty>}
       <div className="part-section-heading"><FileText size={19} /><div><h2>说明书来源</h2><p>记录文件哈希、PDF 页码和读取结果；原始说明书保持为本地参考资料。</p></div></div>
       {status?.instructions.length ? <div className="part-table-wrap"><table className="part-table"><thead><tr><th>文件</th><th>套装</th><th>页数</th><th>零件表 PDF 页码</th><th>状态</th></tr></thead><tbody>{status.instructions.map((instruction) => <tr key={instruction.fileName}><td><strong>{instruction.fileName}</strong>{instruction.sha256 && <details><summary>SHA-256</summary><span className="part-mono part-wrap">{instruction.sha256}</span></details>}</td><td>{instruction.setId || '待读取'}</td><td>{instruction.pageCount ?? '—'}</td><td>{instruction.inventoryPages?.join('、') || '未确认 / 本册无表'}</td><td><Badge ready={['imported', 'read', 'ready'].includes(instruction.status)}>{instructionLabels[instruction.status] ?? instruction.status}</Badge></td></tr>)}</tbody></table></div> : <Empty title="暂无已登记的说明书" />}
       <div className="part-section-heading"><Layers3 size={19} /><div><h2>基于真实清单的零件频次</h2><p>Element ID 与 Design / LDraw 编号分别统计。未确认备件属性的数量仅表示说明书观察数量。</p></div></div>

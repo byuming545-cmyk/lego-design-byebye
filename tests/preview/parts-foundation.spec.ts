@@ -1,13 +1,17 @@
 import { expect, test } from '@playwright/test';
 
+test.setTimeout(180_000);
+
 test('compiled preview serves Part Lab, bundled native geometry, fonts and API on one origin', async ({ page, request }) => {
   const badResponses: string[] = [];
   page.on('response', response => { if (response.status() >= 400) badResponses.push(`${response.status()} ${new URL(response.url()).pathname}`); });
   const health = await (await request.get('/api/health')).json();
-  expect(health).toMatchObject({ version: '0.4.0', primaryArea: '/part-lab', legacyGenerationEnabled: false });
+  expect(health).toMatchObject({ version: '0.5.0', primaryArea: '/part-lab', legacyGenerationEnabled: false });
+  const status = await (await request.get('/api/parts-foundation/status')).json();
   await page.goto('/part-lab');
   await expect(page.getByRole('heading', { name: '从真实零件，开始拼搭。' })).toBeVisible();
-  await expect(page.locator('.part-counts > div').filter({ hasText: '已有真实几何' })).toContainText('245');
+  await expect(page.locator('.part-counts > div').filter({ hasText: '已有真实几何' }).locator('strong')).toHaveText(String(status.counts.geometryReady));
+  await expect(page.locator('.part-counts > div').filter({ hasText: '数字装配已验证' }).locator('strong')).toHaveText(String(status.counts.assemblyVerified));
   const partResponse = page.waitForResponse(response => new URL(response.url()).pathname === '/api/parts-foundation/parts/3001');
   await page.getByRole('textbox', { name: '搜索真实零件' }).fill('3001');
   const detail = await (await partResponse).json();
@@ -29,7 +33,10 @@ test('compiled preview serves Part Lab, bundled native geometry, fonts and API o
 
 test('compiled routes preserve source evidence and generation restrictions', async ({ request }) => {
   const status = await (await request.get('/api/parts-foundation/status')).json();
-  expect(status.counts).toMatchObject({ geometryReady: 245, connectionReady: 195, generatable: 0, verified: 0 });
+  const assembly = await (await request.get('/api/parts-foundation/assembly/status')).json();
+  expect(status.counts).toMatchObject({ geometryReady: 245, connectionReady: 195, assemblyVerified: assembly.counts.assemblyVerified, generatable: assembly.counts.generatable });
+  expect(status.counts.generatable).toBeGreaterThan(0);
+  expect(status.elementMapping).toMatchObject({ mappedBySource: 531, resolvedLDraw: 0, sourceTrust: 'source-observed' });
   expect(status.instructions.filter((document: { status: string }) => document.status === 'ready')).toHaveLength(6);
   const windscreen = await (await request.get('/api/parts-foundation/parts/65633')).json();
   expect(windscreen.part.name).toContain('Windscreen');
@@ -37,8 +44,38 @@ test('compiled routes preserve source evidence and generation restrictions', asy
   expect(windscreen.part.generatable).toBe(false);
   const unmapped = await (await request.get('/api/parts-foundation/parts/element%3A4666579')).json();
   expect(unmapped.geometry).toBeNull();
+  expect(unmapped.part).toMatchObject({ generatable: false, mapping: { status: 'mapped', partId: '3749', designId: '6562', ldrawPartId: null } });
   expect((await request.get('/api/parts-foundation/parts/fake-windscreen')).status()).toBe(404);
   const blocked = await request.post('/api/automotive/design', { data: { legacyGenerationPolicy: 'test-fixture' } });
   expect(blocked.status()).toBe(409);
   expect(await blocked.json()).toMatchObject({ code: 'REAL_PARTS_FOUNDATION_REQUIRED' });
+});
+
+test('compiled assembly API attaches verified source interfaces and exports a versioned real wall', async ({ request }) => {
+  const statusResponse = await request.get('/api/parts-foundation/assembly/status');
+  expect(statusResponse.ok()).toBe(true);
+  const status = await statusResponse.json();
+  expect(status.defaultPair).toBeDefined();
+  const attachment = await request.post('/api/parts-foundation/assembly/attach', { data: status.defaultPair });
+  expect(attachment.ok(), await attachment.text()).toBe(true);
+  const attached = await attachment.json();
+  expect(attached.accepted).toBe(true);
+  expect(attached.assembly.placements).toHaveLength(2);
+  expect(attached.assembly.edges).toHaveLength(1);
+  const generated = await request.post('/api/parts-foundation/assembly/generate', { data: { kind: 'wall', partCount: 3 } });
+  expect(generated.ok(), await generated.text()).toBe(true);
+  const result = await generated.json();
+  expect(result.status).toBe('generated');
+  expect(result.model.placements).toHaveLength(3);
+  expect(result.model.edges).toHaveLength(2);
+  const exported = await request.get(`/api/parts-foundation/assembly/models/${encodeURIComponent(result.model.id)}/export?format=json`);
+  expect(exported.ok(), await exported.text()).toBe(true);
+  const model = await exported.json();
+  for (const key of ['partLibraryVersion', 'assemblyEngineVersion', 'connectionRuleVersion', 'collisionVersion']) {
+    expect(typeof model[key]).toBe('string');
+    expect(model[key]).toBe(result.model[key]);
+  }
+  expect(model.placements).toEqual(result.model.placements);
+  expect(model.sourceHashes).toEqual(result.model.sourceHashes);
+  expect(model.physicalBuildVerified).toBe(false);
 });

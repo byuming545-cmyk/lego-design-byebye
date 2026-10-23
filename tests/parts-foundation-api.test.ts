@@ -26,39 +26,52 @@ const get = (suffix: string) => fetch(`${base}${suffix}`);
 const post = (suffix: string, value: unknown) => fetch(`${base}${suffix}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(value) });
 
 describe('real source foundation HTTP API', () => {
-  it('reports actual source observations and keeps unknown design coverage unknown', async () => {
+  it('reports source observations, scoped assembly admission and evidence-backed mapping recovery', async () => {
     const response = await get('/status');
     expect(response.status).toBe(200);
     const status = await response.json();
-    expect(status.counts).toMatchObject({ readableDocuments: 6, ldrawPartIds: 245, observedElementIds: 531, geometryReady: 245, connectionReady: 195, catalogOnly: 531, generatable: 0, verified: 0 });
+    const migration = await (await get('/assembly/status')).json();
+    expect(status.counts).toMatchObject({ readableDocuments: 6, ldrawPartIds: 245, observedElementIds: 531, geometryReady: 245, connectionReady: 195, catalogOnly: 531 });
+    expect(status.counts.assemblyVerified).toBe(migration.counts.assemblyVerified);
+    expect(status.counts.generatable).toBe(migration.counts.generatable);
+    expect(status.counts.generatable).toBeGreaterThan(0);
+    expect(migration.counts.assemblyVerified + migration.counts.blocked).toBe(245);
     expect(status.instructions).toHaveLength(8);
     expect(status.instructions.filter((item: { status: string }) => item.status === 'transfer-limit')).toHaveLength(2);
     expect(status.referenceSets).toHaveLength(6);
-    expect(status.referenceSets.every((set: { supportedPercentage: unknown; pieceCount: unknown }) => set.supportedPercentage === null && set.pieceCount === null)).toBe(true);
+    expect(status.referenceSets.every((set: { pieceCount: unknown }) => set.pieceCount === null)).toBe(true);
+    expect(status.referenceSets.filter((set: { elementCount: number }) => set.elementCount > 0).every((set: { supportedPercentage: unknown }) => set.supportedPercentage === 0)).toBe(true);
+    expect(status.referenceSets.filter((set: { elementCount: number }) => set.elementCount === 0).every((set: { supportedPercentage: unknown }) => set.supportedPercentage === null)).toBe(true);
     expect(status.mining).toMatchObject({ actualSetDenominator: 4, expectedSetDenominator: 6, observedRowCount: 667, designRanking: [], partRanking: [] });
     expect(status.elementRanking).toHaveLength(531);
-    expect(status.nextPriority).toEqual([]);
+    expect(status.elementMapping).toMatchObject({ observedElements: 531, mappedBySource: 531, resolvedLDraw: 0, independentlyVerifiedOfficial: 0, sourceTrust: 'source-observed' });
+    expect(status.nextPriority).toHaveLength(50);
+    expect(status.nextPriority.every((row: { sourceTrust: string; partId: unknown }) => row.sourceTrust === 'source-observed' && typeof row.partId === 'string')).toBe(true);
   }, 30_000);
 
-  it('returns the actual native mesh and source connection evidence without blessing it', async () => {
+  it('returns authentic native mesh and only source-bound, fixture-verified assembly interfaces', async () => {
     const response = await get('/parts/3001');
     expect(response.status).toBe(200);
     const detail = await response.json() as FoundationPartDetail;
-    expect(detail.part).toMatchObject({ id: '3001', identitySystem: 'ldraw', designId: null, geometryReady: true, connectionReady: true, generatable: false, verified: false, physicalBuildVerified: false });
+    const migration = await (await get('/assembly/status')).json();
+    const entry = migration.queue.find((row: { partId: string }) => row.partId === '3001');
+    expect(detail.part).toMatchObject({ id: '3001', identitySystem: 'ldraw', designId: null, geometryReady: true, connectionReady: true, assemblyVerified: entry.assemblyVerified, generatable: entry.generatable, physicalBuildVerified: false });
+    expect(detail.part.enabledConnectionIds).toEqual(entry.allowedConnectionIds);
     expect(detail.geometry?.source).toMatchObject({ library: 'LDraw', integrity: 'verified', licenseStatus: 'complete' });
     expect(detail.geometry!.mesh!.indices.length).toBeGreaterThan(300);
     expect(detail.geometry!.source.files.some(file => file.path.startsWith('p/'))).toBe(true);
     expect(detail.connections?.points).toHaveLength(16);
     expect(detail.connections!.points.every(point => point.source.sha256.length === 64 && point.source.line > 0 && point.physicalVerified === false)).toBe(true);
     expect(detail.geometry!.collision).toMatchObject({ kind: 'aabb', derivedFrom: 'native-mesh', cavitiesResolved: false });
-    expect(detail.part.checks.find(check => check.id === 'attachment')?.outcome).toBe('not-run');
+    expect(detail.part.checks.find(check => check.id === 'attachment')?.outcome).toBe(entry.assemblyVerified ? 'passed' : 'not-run');
+    expect(detail.part.assemblyReport?.scope).toBe('source-backed-tested-interfaces-only');
   });
 
   it('keeps PDF element observations separate and never creates a replacement mesh', async () => {
     const response = await get('/parts/element%3A4666579');
     expect(response.status).toBe(200);
     const detail = await response.json() as FoundationPartDetail;
-    expect(detail).toMatchObject({ part: { id: 'element:4666579', elementId: '4666579', designId: null, identitySystem: 'lego-element', status: 'catalogOnly', geometryReady: false, generatable: false }, geometry: null, connections: null });
+    expect(detail).toMatchObject({ part: { id: 'element:4666579', elementId: '4666579', designId: '6562', identitySystem: 'lego-element', status: 'catalogOnly', geometryReady: false, assemblyVerified: false, generatable: false, mapping: { status: 'mapped', partId: '3749', partIdSystem: 'rebrickable', designId: '6562', ldrawPartId: null, independentlyVerifiedOfficial: false, source: { trust: 'source-observed' } } }, geometry: null, connections: null });
     expect(detail.part.observedSetNumbers).toHaveLength(4);
     const list = await (await get('/parts?query=4666579')).json();
     expect(list.parts).toHaveLength(1);
@@ -68,6 +81,7 @@ describe('real source foundation HTTP API', () => {
   });
 
   it('stores the same CSV for distinct sets without collisions, and duplicate imports are idempotent', async () => {
+    const previous = await (await get('/status')).json();
     const content = 'elementId,quantity,isSpare\n9999991,2,\n';
     const payload = (setNumber: string) => ({ format: 'csv', content, options: { id: `local-${setNumber}`, setNumber, sourceId: 'manual-observation', inventoryComplete: false } });
     const first = await post('/inventories/import', payload('77263'));
@@ -85,8 +99,8 @@ describe('real source foundation HTTP API', () => {
     expect(detail.geometry).toBeNull();
     const status = await (await get('/status')).json();
     expect(status.counts.observedElementIds).toBe(532);
-    expect(status.nextPriority).toEqual([]);
-    expect(status.referenceSets.find((set: { setId: string }) => set.setId === '77263').mappedPartCount).toBe(0);
+    expect(status.nextPriority).toEqual(previous.nextPriority);
+    expect(status.referenceSets.find((set: { setId: string }) => set.setId === '77263').mappedPartCount).toBe(previous.referenceSets.find((set: { setId: string }) => set.setId === '77263').mappedPartCount);
   });
 
   it('rejects invalid quantities and credential-bearing provenance without writing', async () => {
@@ -95,24 +109,28 @@ describe('real source foundation HTTP API', () => {
   });
 
   it('does not treat user-declared design identities as verified mappings or priorities', async () => {
+    const previous = await (await get('/status')).json();
     const result = await post('/inventories/import', { format: 'csv', content: 'partId,partIdSystem,designId,quantity,isSpare\n3001,ldraw,3001,1,false\n', options: { id: 'declared-mapping', setNumber: '77263', sourceId: 'local-declaration', inventoryComplete: true } });
     expect(result.status).toBe(201);
     const status = await (await get('/status')).json();
     expect(status.userReportedDesignRanking).toHaveLength(1);
     expect(status.userReportedPartRanking).toHaveLength(1);
     expect(status.partRanking).toEqual([]);
-    expect(status.nextPriority).toEqual([]);
-    expect(status.referenceSets.find((set: { setId: string }) => set.setId === '77263')).toMatchObject({ mappedPartCount: 0, supportedPercentage: null, generatable: 0 });
+    expect(status.nextPriority).toEqual(previous.nextPriority);
+    const sourceSet = previous.referenceSets.find((set: { setId: string }) => set.setId === '77263');
+    expect(status.referenceSets.find((set: { setId: string }) => set.setId === '77263')).toMatchObject({ mappedPartCount: sourceSet.mappedPartCount, supportedPercentage: sourceSet.supportedPercentage, generatable: sourceSet.generatable });
   });
 });
 
 describe('part readiness promotion', () => {
   it('requires actual attachment and clearance checks even for authentic imported geometry', () => {
     const checks: PartCheck[] = ['source-integrity', 'mesh-integrity', 'rotation'].map(id => ({ id, outcome: 'passed', description: id }));
-    expect(assessPartReadiness({ geometryReady: true, connectionReady: true, collisionReady: true, checks })).toMatchObject({ generatable: false, verified: false });
+    expect(assessPartReadiness({ geometryReady: true, connectionReady: true, collisionReady: true, assemblyVerified: true, generatorSmokePassed: true, checks })).toMatchObject({ generatable: false, verified: false });
     const complete: PartCheck[] = [...checks, ...['attachment', 'collision-clearance'].map(id => ({ id, outcome: 'passed' as const, description: id }))];
-    expect(assessPartReadiness({ geometryReady: true, connectionReady: true, collisionReady: true, checks: complete })).toMatchObject({ generatable: true, verified: false });
-    expect(assessPartReadiness({ geometryReady: true, connectionReady: false, collisionReady: true, checks: complete }).generatable).toBe(false);
-    expect(assessPartReadiness({ geometryReady: true, connectionReady: true, collisionReady: true, checks: [...complete, { id: 'axle-fit', outcome: 'failed', description: 'incompatible actual interface' }] }).generatable).toBe(false);
+    expect(assessPartReadiness({ geometryReady: true, connectionReady: true, collisionReady: true, assemblyVerified: true, generatorSmokePassed: true, checks: complete })).toMatchObject({ assemblyVerified: true, generatable: true, verified: false });
+    expect(assessPartReadiness({ geometryReady: true, connectionReady: true, collisionReady: true, checks: complete }).generatable).toBe(false);
+    expect(assessPartReadiness({ geometryReady: true, connectionReady: true, collisionReady: true, assemblyVerified: true, generatorSmokePassed: false, checks: complete })).toMatchObject({ assemblyVerified: true, generatable: false });
+    expect(assessPartReadiness({ geometryReady: true, connectionReady: false, collisionReady: true, assemblyVerified: true, generatorSmokePassed: true, checks: complete }).generatable).toBe(false);
+    expect(assessPartReadiness({ geometryReady: true, connectionReady: true, collisionReady: true, assemblyVerified: true, generatorSmokePassed: true, checks: [...complete, { id: 'axle-fit', outcome: 'failed', description: 'incompatible actual interface' }] }).generatable).toBe(false);
   });
 });

@@ -15,15 +15,27 @@ interface FoundationStatus {
     designRanking: unknown[];
     elementRanking: { identity: { id: string }; distinctSetCount: number; observedQuantity: number }[];
   };
+  partRanking?: { identity: { id: string; system: string }; distinctSetCount: number; observedQuantity: number }[];
 }
 interface NativePartDetail {
-  part: { id: string; status: string; geometryReady: boolean; catalogOnly: boolean; generatable: boolean; verified: boolean };
+  part: { id: string; status: string; geometryReady: boolean; catalogOnly: boolean; assemblyVerified: boolean; generatable: boolean; verified: boolean; mapping?: { status: string; partId: string | null; designId: string | null; ldrawPartId: string | null; color: { id: string; name: string } | null; source: { trust: string; independentlyVerifiedOfficial: boolean } | null } };
   geometry: null | {
     status: string;
     mesh: { positions: number[][]; indices: number[] };
     source: { revision: string; files: { path: string; sha256: string; license: string }[] };
   };
   connections: null | { points: { source: { sha256: string } }[] };
+}
+interface AssemblyStatus {
+  counts: { total: number; assemblyVerified: number; generatable: number; blocked: number };
+  queue?: { partId: string; assemblyVerified: boolean; generatable: boolean }[];
+  entries?: { partId: string; assemblyVerified: boolean; generatable: boolean }[];
+}
+
+async function assemblyStatus(page: Page): Promise<AssemblyStatus> {
+  const response = await page.request.get('/api/parts-foundation/assembly/status', { timeout: 180_000 });
+  expect(response.ok()).toBe(true);
+  return await response.json() as AssemblyStatus;
 }
 
 async function openLab(page: Page, url = '/part-lab'): Promise<FoundationStatus> {
@@ -108,13 +120,28 @@ test.describe('real parts foundation with actual bundled sources and WebGL', () 
       if (/\/api\/(?:generate|speed\/generate|automotive\/design)(?:[/?]|$)/.test(request.url())) generationRequests.push(request.url());
     });
     const status = await openLab(page, '/');
-    expect(status.counts).toMatchObject({ geometryReady: 245, ldrawPartIds: 245, observedElementIds: 531, generatable: 0, verified: 0, readableDocuments: 6 });
-    await expect(page.locator('.part-counts > div').filter({ hasText: '已有真实几何' })).toContainText('245');
-    await expect(page.locator('.part-counts > div').filter({ hasText: '仅目录' })).toContainText('531');
-    await expect(page.locator('.part-counts > div').filter({ hasText: '允许用于生成' })).toContainText('0');
+    const migration = await assemblyStatus(page);
+    const listResponse = await page.request.get('/api/parts-foundation/parts');
+    expect(listResponse.ok()).toBe(true);
+    const catalog = (await listResponse.json()).parts as { identitySystem: string; geometryReady: boolean; catalogOnly: boolean; assemblyVerified: boolean; generatable: boolean; verified: boolean }[];
+    expect(status.counts.geometryReady).toBe(catalog.filter(part => part.geometryReady).length);
+    expect(status.counts.ldrawPartIds).toBe(catalog.filter(part => part.identitySystem === 'ldraw').length);
+    expect(status.counts.assemblyVerified).toBe(migration.counts.assemblyVerified);
+    expect(status.counts.generatable).toBe(migration.counts.generatable);
+    expect(status.counts.generatable).toBeGreaterThan(0);
+    expect(status.counts.verified).toBe(catalog.filter(part => part.verified).length);
+    expect(migration.counts.assemblyVerified + migration.counts.blocked).toBe(migration.counts.total);
+    expect(status.counts).toMatchObject({ observedElementIds: 531, readableDocuments: 6 });
+    for (const [label, key] of [['已有真实几何', 'geometryReady'], ['仅目录', 'catalogOnly'], ['数字装配已验证', 'assemblyVerified'], ['允许用于生成', 'generatable'], ['完成验证', 'verified']]) {
+      await expect(page.locator('.part-counts > div').filter({ hasText: label }).locator('strong')).toHaveText(String(status.counts[key]));
+    }
 
     const detail = await searchPart(page, '3001');
-    expect(detail.part).toMatchObject({ id: '3001', geometryReady: true, generatable: false, verified: false });
+    expect(detail.part).toMatchObject({ id: '3001', geometryReady: true });
+    const migrationPart = (migration.queue ?? migration.entries ?? []).find(part => part.partId === '3001');
+    expect(migrationPart).toBeDefined();
+    expect(detail.part.assemblyVerified).toBe(migrationPart!.assemblyVerified);
+    expect(detail.part.generatable).toBe(migrationPart!.generatable);
     expect(detail.geometry?.status).toBe('geometryReady');
     expect(detail.geometry!.mesh.indices.length).toBeGreaterThan(300);
     expect(detail.geometry!.source.files.length).toBeGreaterThan(1);
@@ -134,16 +161,22 @@ test.describe('real parts foundation with actual bundled sources and WebGL', () 
     expect(generationRequests).toEqual([]);
   });
 
-  test('retains unmapped PDF element evidence without creating placeholder geometry or generation eligibility', async ({ page }) => {
+  test('retains source-observed external mapping without inventing an LDraw cross-reference or generation eligibility', async ({ page }) => {
     await openLab(page);
     const detail = await searchPart(page, 'element:4666579');
     expect(detail.part).toMatchObject({ id: 'element:4666579', status: 'catalogOnly', catalogOnly: true, geometryReady: false, generatable: false, verified: false });
     expect(detail.geometry).toBeNull();
     expect(detail.connections).toBeNull();
+    expect(detail.part.mapping?.status).toBe('mapped');
+    expect(typeof detail.part.mapping?.partId).toBe('string');
+    expect(detail.part.mapping?.color).not.toBeNull();
+    expect(detail.part.mapping?.source).toMatchObject({ trust: 'source-observed', independentlyVerifiedOfficial: false });
+    expect(detail.part.mapping?.ldrawPartId).toBeNull();
     await expect(page.locator('.part-native-canvas canvas')).toHaveCount(0);
     await expect(page.locator('.part-missing-mesh')).toContainText('暂无经过来源确认的原生几何');
-    await expect(page.locator('.part-issues')).toContainText('Element → Design / LDraw');
-    await page.screenshot({ path: path.join(artifactDirectory, 'element-unmapped-no-placeholder.png'), fullPage: true });
+    await expect(page.locator('.part-mapping-evidence')).toContainText('来源记录已映射');
+    await expect(page.locator('.part-mapping-evidence')).toContainText('待核对，未绑定几何');
+    await page.screenshot({ path: path.join(artifactDirectory, 'element-mapped-no-invented-geometry.png'), fullPage: true });
     await page.getByRole('checkbox', { name: '只看允许用于生成的零件' }).check();
     await expect(page.getByText('暂无通过生成准入的零件', { exact: true })).toBeVisible();
     await expect(page.locator('.part-native-canvas canvas')).toHaveCount(0);
@@ -158,7 +191,6 @@ test.describe('real parts foundation with actual bundled sources and WebGL', () 
     expect(status.referenceSets.find(set => set.setId === '77238')?.instructionCount).toBe(2);
     expect(status.referenceSets.every(set => set.inventoryComplete === false)).toBe(true);
     expect(status.mining.actualSetDenominator).toBe(4);
-    expect(status.mining.designRanking).toEqual([]);
     expect(status.mining.elementRanking).toHaveLength(531);
     expect(status.mining.elementRanking.find(row => row.identity.id === '4666579')).toMatchObject({ distinctSetCount: 4, observedQuantity: 20 });
 
@@ -171,7 +203,12 @@ test.describe('real parts foundation with actual bundled sources and WebGL', () 
     await expect(documents.filter({ hasText: '超过传输上限' })).toHaveCount(2);
     await expect(documents.filter({ hasText: '6662707.pdf' })).toContainText('77263');
     await expect(documents.filter({ hasText: '6662707.pdf' })).toContainText('113、114、115');
-    await expect(page.getByText('暂无完成来源映射的排名', { exact: true })).toBeVisible();
+    const partRanking = page.locator('.part-ranking').filter({ has: page.getByRole('heading', { name: '已确认编号映射的零件', exact: true }) });
+    if (status.partRanking?.length) {
+      await expect(partRanking.locator('tbody tr')).toHaveCount(Math.min(15, status.partRanking.length));
+      await expect(partRanking).toContainText(status.partRanking[0].identity.id);
+      await expect(partRanking).toContainText(status.partRanking[0].identity.system);
+    } else await expect(page.getByText('暂无完成来源映射的排名', { exact: true })).toBeVisible();
     const elementRanking = page.locator('.part-ranking').filter({ has: page.getByRole('heading', { name: '观测 Element ID', exact: true }) });
     await expect(elementRanking).toContainText('出现套装数 / 4');
     await expect(elementRanking).toContainText('4666579');

@@ -1,22 +1,78 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-23",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "checks": {
-    "unitAndApi": { "command": "npm test", "filesPassed": 24, "testsPassed": 414 },
-    "pdfLayout": { "command": "python scripts/test_instruction_pdf_import.py", "testsPassed": 5 },
-    "developmentBrowser": { "command": "npm run test:e2e", "scenariosPassed": 4, "realApi": true, "realWebglPixels": true, "mobileWidth": 390 },
-    "compiledPreview": { "command": "npm run test:preview", "scenariosPassed": 2, "realWebglPixels": true, "oneOriginAssetsAndApi": true },
-    "build": { "command": "npm run build", "passed": true, "includesTypecheck": true, "largeChunkWarningRemains": true },
-    "sourceBytesInGitIndex": { "nativeFilesVerifiedAgainstSha256": 968, "passed": true, "upstreamLineEndingsPreserved": true }
+    "unitAndApi": {
+      "command": "npm test -- --maxWorkers=2",
+      "filesPassed": 32,
+      "testsPassed": 496,
+      "passed": true
+    },
+    "pdfLayout": {
+      "lastVerifiedVersion": "0.4.0",
+      "testsPassed": 5,
+      "sourceUnchangedThisRelease": true
+    },
+    "developmentBrowser": {
+      "command": "npm run test:e2e",
+      "scenariosPassed": 8,
+      "realApi": true,
+      "realWebglPixels": true,
+      "mobileWidth": 390,
+      "outputDirectory": "test-results/e2e"
+    },
+    "compiledPreview": {
+      "command": "npm run test:preview",
+      "scenariosPassed": 3,
+      "realWebglPixels": true,
+      "oneOriginAssetsAndApi": true,
+      "sourceAttachAndRetainedExport": true,
+      "outputDirectory": "test-results/preview"
+    },
+    "build": {
+      "command": "npm run build",
+      "passed": true,
+      "includesTypecheck": true,
+      "largeChunkWarningRemains": true
+    },
+    "sourceBytesInGitIndex": {
+      "nativeFilesVerifiedAgainstSha256": 968,
+      "passed": true,
+      "upstreamLineEndingsPreserved": true
+    },
+    "productionGeneratorSmoke": {
+      "command": "npm run smoke:assembly",
+      "generated": 6,
+      "blocked": 1,
+      "failed": 0,
+      "report": "artifacts/assembly-development/generator-smoke.json"
+    },
+    "sourceAndRecoveryReport": {
+      "command": "npm run report:parts",
+      "exitCode": 0,
+      "runtimeValidation": "ready",
+      "runtimeIssues": 0
+    }
   },
   "scope": {
-    "currentBrowserTests": "Part Lab and generation authenticity gates",
-    "legacyBrowserGenerationFlows": "retained as historical files; excluded from current default Playwright scope because production generation is intentionally paused",
+    "currentBrowserTests": "Native Part Lab, source-backed assembly, generation and retained exports; legacy authenticity gates",
+    "legacyBrowserGenerationFlows": "retained historical files; production legacy generation stays blocked",
+    "migrationRoots": 245,
+    "assemblyVerifiedParts": 78,
+    "generatableParts": 78,
+    "blockedParts": 167,
+    "enabledSourceConnectionIds": 1001,
+    "disabledSourceConnectionIds": 3693,
+    "maxTestedPhysicalInterfacesPerPart": 32,
+    "testedPhysicalInterfaces": 1221,
+    "deferredPhysicalInterfaces": 978,
     "pdfTo3d": false,
-    "elementToDesignMappingsVerified": 0,
-    "generatableParts": 0,
-    "verifiedParts": 0,
-    "physicalBuildsVerified": 0
+    "elementMappingsObservedFromSource": 531,
+    "elementMappingsIndependentlyVerifiedOfficial": 0,
+    "elementToLDrawCrossReferencesVerified": 0,
+    "instructionElementsGeneratable": 0,
+    "physicalBuildsVerified": 0,
+    "sweptWholePartInsertionCertified": false
   }
 }

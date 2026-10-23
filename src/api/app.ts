@@ -65,7 +65,7 @@ export function createApp(options: AppOptions = {}) {
   app.use('/api/automotive', createAutomotiveRouter());
 
   app.get('/api/health', (_request, response) => {
-    response.json({ status: 'ok', version: '0.4.0', provider: provider.source, demo: provider.source === 'mock', dataMode: provider instanceof MissingRebrickableInventoryProvider ? 'unconfigured' : provider.source === 'mock' ? 'mock' : 'real', primaryArea: '/part-lab', legacyGenerationEnabled: options.legacyGenerationPolicy === 'test-fixture' });
+    response.json({ status: 'ok', version: '0.5.0', provider: provider.source, demo: provider.source === 'mock', dataMode: provider instanceof MissingRebrickableInventoryProvider ? 'unconfigured' : provider.source === 'mock' ? 'mock' : 'real', primaryArea: '/part-lab', nativeAssemblyArea: '/part-lab?mode=assembly', legacyGenerationEnabled: options.legacyGenerationPolicy === 'test-fixture' });
   });
 
   app.get('/api/sets/:setNumber', async (request, response) => {

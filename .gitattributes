@@ -4,3 +4,5 @@ artifacts/**/*.csv text eol=crlf
 data/parts-foundation/ldraw/files/** -text -whitespace
 data/parts-foundation/shadow/files/** -text -whitespace
 data/parts-foundation/ldraw/CA*.txt -text -whitespace
+# Generated LDraw documents use the format's intentional CRLF line endings.
+artifacts/assembly-development/models/**/model.ldr -text whitespace=cr-at-eol

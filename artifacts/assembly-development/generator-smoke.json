@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-23T07:16:36.393Z",
+  "scope": "production-engine-and-current-saved-per-interface-migration-evidence",
+  "summary": {
+    "requested": 7,
+    "generated": 6,
+    "blocked": 1,
+    "failed": 0,
+    "physicalBuildsVerified": 0
+  },
+  "modules": [
+    {
+      "module": "wall",
+      "status": "generated",
+      "reasons": [],
+      "search": {
+        "attempts": 4,
+        "acceptedAttachments": 4,
+        "rejectedAttachments": 0,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "rejectionCounts": {}
+      },
+      "elapsedMilliseconds": 137,
+      "modelId": "assembly-04520b2b-5391-4b4d-bff3-6833395d5cad",
+      "partCount": 5,
+      "graphEdges": 4,
+      "contentSha256": "3018f96256ff53d86c62d7ff3e38b2ad46bd8186b1324d08bf01fb0a800b7019",
+      "sourceHashes": {
+        "3005": "b329cda490473af074ba0c15b108932a559b6d3905226a9a7f98fce1b87376be",
+        "3023b": "6144589fa4595d6a32c39e98fbc2ee24989877410277973ba3620cbb56bfe899"
+      },
+      "artifacts": {
+        "json": "models/wall/model.json",
+        "ldraw": "models/wall/model.ldr",
+        "bom": "models/wall/bom.csv"
+      }
+    },
+    {
+      "module": "platform",
+      "status": "generated",
+      "reasons": [],
+      "search": {
+        "attempts": 4,
+        "acceptedAttachments": 4,
+        "rejectedAttachments": 0,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "rejectionCounts": {}
+      },
+      "elapsedMilliseconds": 175,
+      "modelId": "assembly-1669cb84-e12e-4e0d-a325-40d2ffef5da4",
+      "partCount": 5,
+      "graphEdges": 4,
+      "contentSha256": "8a889791784733ec79e0127d29e9e95bdb63bff9b7bf85f0ed09966015bb46ad",
+      "sourceHashes": {
+        "3022": "a3654457fddf627d72b521711ff2a0f0cc980db42dd6ecc76135f6a72df555c5",
+        "3024": "5833b25fb640850c1677ad7fa3e9536f999d30f68d63d382e1e369aa7d30a6c7"
+      },
+      "artifacts": {
+        "json": "models/platform/model.json",
+        "ldraw": "models/platform/model.ldr",
+        "bom": "models/platform/bom.csv"
+      }
+    },
+    {
+      "module": "simple-chassis",
+      "status": "generated",
+      "reasons": [],
+      "search": {
+        "attempts": 4,
+        "acceptedAttachments": 4,
+        "rejectedAttachments": 0,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "rejectionCounts": {}
+      },
+      "elapsedMilliseconds": 221,
+      "modelId": "assembly-755eb2e7-5376-4d66-84e6-652271cdd342",
+      "partCount": 5,
+      "graphEdges": 4,
+      "contentSha256": "0cb246ef655967e4029ff74d512d0cc1fc3613828c8ad71e5a19c9d9add0a6f5",
+      "sourceHashes": {
+        "3020": "89ecaeada4aa15d10b7abb403b76d9052c8c32255dffe2b3d492fc75fb396bdf",
+        "3024": "5833b25fb640850c1677ad7fa3e9536f999d30f68d63d382e1e369aa7d30a6c7"
+      },
+      "artifacts": {
+        "json": "models/simple-chassis/model.json",
+        "ldraw": "models/simple-chassis/model.ldr",
+        "bom": "models/simple-chassis/bom.csv"
+      }
+    },
+    {
+      "module": "simple-box",
+      "status": "generated",
+      "reasons": [],
+      "search": {
+        "attempts": 12,
+        "acceptedAttachments": 12,
+        "rejectedAttachments": 0,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "rejectionCounts": {}
+      },
+      "elapsedMilliseconds": 541,
+      "modelId": "assembly-5502175c-0c94-4f94-8986-687d3ad3fdb4",
+      "partCount": 13,
+      "graphEdges": 12,
+      "contentSha256": "2d23f0ff877549ff3d6cca709e59e56255edd59c4ae4dce4fd163522f15bcab3",
+      "sourceHashes": {
+        "3005": "b329cda490473af074ba0c15b108932a559b6d3905226a9a7f98fce1b87376be",
+        "3031": "1dac01d1a38adfdcfb71d9271acb1b315a251440d4dfed94e192051e10fa164f"
+      },
+      "artifacts": {
+        "json": "models/simple-box/model.json",
+        "ldraw": "models/simple-box/model.ldr",
+        "bom": "models/simple-box/bom.csv"
+      }
+    },
+    {
+      "module": "simple-roof",
+      "status": "generated",
+      "reasons": [],
+      "search": {
+        "attempts": 12,
+        "acceptedAttachments": 4,
+        "rejectedAttachments": 8,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "rejectionCounts": {
+          "design-goal": 8
+        }
+      },
+      "elapsedMilliseconds": 486,
+      "modelId": "assembly-bf48eedb-a9fd-4032-991c-114ce171d6fe",
+      "partCount": 5,
+      "graphEdges": 4,
+      "contentSha256": "ab061d150f9ecf348f7f3dcc51058b3b4616b627c0fdc2aefa03bc7a1d3c308b",
+      "sourceHashes": {
+        "3022": "a3654457fddf627d72b521711ff2a0f0cc980db42dd6ecc76135f6a72df555c5",
+        "54200": "77071af0df3a29b923a880a9c8d44df1982e819c31595c89b1542af30fdc7c77"
+      },
+      "artifacts": {
+        "json": "models/simple-roof/model.json",
+        "ldraw": "models/simple-roof/model.ldr",
+        "bom": "models/simple-roof/bom.csv"
+      }
+    },
+    {
+      "module": "basic-snot",
+      "status": "generated",
+      "reasons": [],
+      "search": {
+        "attempts": 2,
+        "acceptedAttachments": 2,
+        "rejectedAttachments": 0,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "rejectionCounts": {}
+      },
+      "elapsedMilliseconds": 186,
+      "modelId": "assembly-fe02dc88-52a9-4075-b2e8-7859936271d7",
+      "partCount": 3,
+      "graphEdges": 2,
+      "contentSha256": "fda83d8208512c61e4bf15f15b78a21a38256942c8364915d0a36fb10ff02fb6",
+      "sourceHashes": {
+        "4070": "257e6ffa61de77ab4b3f14428a0a36fafa3e51e5591706b08dec7e44172e244d",
+        "3023b": "6144589fa4595d6a32c39e98fbc2ee24989877410277973ba3620cbb56bfe899",
+        "3070b": "59d2c15f1ad73eb27f1801039a0b6b2f7447c4402dad1e32a0ffbadb5dc52088"
+      },
+      "artifacts": {
+        "json": "models/basic-snot/model.json",
+        "ldraw": "models/basic-snot/model.ldr",
+        "bom": "models/basic-snot/bom.csv"
+      }
+    },
+    {
+      "module": "wheel-module",
+      "status": "blocked",
+      "reasons": [
+        "轮毂／轮胎／轮架接口尚无通过装配验证的兼容规则，不能使用旧版近似轮组。"
+      ],
+      "search": {
+        "attempts": 0,
+        "acceptedAttachments": 0,
+        "rejectedAttachments": 0,
+        "backtracks": 0,
+        "testedRoots": 0,
+        "exhausted": false,
+        "rejectionCounts": {}
+      },
+      "elapsedMilliseconds": 0
+    }
+  ],
+  "limitations": [
+    "A passing result verifies source-backed virtual seating and final native mesh collision checks; it does not certify physical construction or swept insertion clearance.",
+    "LDraw current colour 16 is unspecified; official colour and owned inventory availability are unverified.",
+    "Wheel modules remain blocked until rim, tyre and axle interfaces have complete passing native assembly fixtures."
+  ],
+  "elapsedMilliseconds": 6082,
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb",
+    "assemblyEngineVersion": "native-assembly-0.5.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "runtime": {
+    "migrationVersion": "native-assembly-migration-1",
+    "migrationGeneratedAt": "2026-10-23T07:03:07.103Z",
+    "interfaceBudget": 32,
+    "validation": {
+      "status": "ready",
+      "issues": [],
+      "reportLoaded": true,
+      "checkedAt": "2026-10-23T07:16:30.312Z"
+    },
+    "counts": {
+      "total": 245,
+      "assemblyVerified": 78,
+      "generatable": 78,
+      "blocked": 167,
+      "verifiedInterfaces": 1001,
+      "disabledInterfaces": 3693,
+      "testedPhysicalInterfaces": 1221,
+      "deferredPhysicalInterfaces": 978,
+      "deferredRawConnectionIds": 978,
+      "wheelModulesVerified": 0,
+      "physicalBuildsVerified": 0
+    },
+    "sourceCounts": {
+      "totalRoots": 245,
+      "geometryReady": 245,
+      "connectionReady": 195,
+      "connectionPartial": 46,
+      "connectionMissing": 4
+    }
+  },
+  "sourceHashes": {
+    "3005": "b329cda490473af074ba0c15b108932a559b6d3905226a9a7f98fce1b87376be",
+    "3020": "89ecaeada4aa15d10b7abb403b76d9052c8c32255dffe2b3d492fc75fb396bdf",
+    "3022": "a3654457fddf627d72b521711ff2a0f0cc980db42dd6ecc76135f6a72df555c5",
+    "3024": "5833b25fb640850c1677ad7fa3e9536f999d30f68d63d382e1e369aa7d30a6c7",
+    "3031": "1dac01d1a38adfdcfb71d9271acb1b315a251440d4dfed94e192051e10fa164f",
+    "4070": "257e6ffa61de77ab4b3f14428a0a36fafa3e51e5591706b08dec7e44172e244d",
+    "54200": "77071af0df3a29b923a880a9c8d44df1982e819c31595c89b1542af30fdc7c77",
+    "3023b": "6144589fa4595d6a32c39e98fbc2ee24989877410277973ba3620cbb56bfe899",
+    "3070b": "59d2c15f1ad73eb27f1801039a0b6b2f7447c4402dad1e32a0ffbadb5dc52088"
+  },
+  "migrationReportSha256": "f9e7912a162a3f7e671e95bffb76e25efc1eb35191556cb8a27a858344a3e7b3"
+}

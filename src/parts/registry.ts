@@ -1,25 +1,31 @@
 import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createBundledLDrawImporter, createBundledLDrawResolver, loadBundledLDrawManifest } from './ldraw/index.js';
-import { createBundledConnectionImporter, loadBundledConnections } from './connections/index.js';
+import type { LDrawPartResult } from './ldraw/types.js';
+import type { ConnectionImportResult } from './connections/types.js';
 import { adaptPdfInventories, parseFoundationInventory, type FoundationInventory } from './inventory/index.js';
 import { mineFoundationInventories } from './miner.js';
 import { buildReferenceSetRecords, type InstructionDocument } from './referenceSets.js';
 import { assessPartReadiness, type PartCheck, type PartReadiness } from './trust.js';
+import { AssemblyService } from './assembly/service.js';
+import { NativePartRepository } from './assembly/source.js';
+import { buildNativeCollisionProxy } from './assembly/proxy.js';
+import { IDENTITY_TRANSFORM } from './assembly/math.js';
+import { createBundledElementDesignMapper, buildFailedPartRecoveryQueue, buildInstructionCoverage, type ElementDesignMapper, type ElementMappingResult } from './recovery/index.js';
+import type { AssemblyMigrationEntry } from './assembly/migration.js';
 
 export const FOUNDATION_BUNDLE_ROOT = fileURLToPath(new URL('../../data/parts-foundation/', import.meta.url));
 export const FOUNDATION_LIMITATIONS = [
-  'PDF 附录记录的是 Element ID。尚无可靠设计编号映射，不能把附录编号直接当作 LDraw 文件名。',
-  '当前附录清单为带页码的文本观测；颜色、设计编号、备用件标记及整套完整性尚未核定。',
-  'LDraw 几何与 LDCad Shadow 连接分别有来源。导入成功不等于已通过拼接、公差或实物验证。',
-  '碰撞外包框来自真实网格，但不能证明孔洞、轮胎嵌套或凸点插接的净空；未验证零件禁止进入生成器。',
+  'Element → Part / Design / 颜色映射来自固定版本的公开数据镜像，保留 source-observed；LDraw 跨编号关系仍需明确证据。',
+  '附录数量有页码依据；颜色映射尚未独立与 PDF 图像逐项核对，备用件属性及整套完整性仍未知。',
+  '装配通过仅适用于逐件报告白名单中的接口和规则；其余接口保持禁用，不代表已做实物或制造公差验证。',
+  '闭合原生代理用于实体碰撞检查；无法可靠闭合的几何、未知机械配合或未测接口均保留具体阻塞原因。',
   '6572269.pdf 与 6592544.pdf 超过当前附件传输上限，未读取其内容。Porsche 77239 暂无已读取的本地说明书。',
-  '没有训练神经网络，也没有将 PDF 自动还原为整车 3D 模型。旧版参数化生成与导出已暂停。',
+  '真实装配生成器先开放基础结构。旧版参数化生成与导出继续暂停；没有训练神经网络或将 PDF 自动还原为整车。',
 ] as const;
 
-type GeometryResult = Awaited<ReturnType<Awaited<ReturnType<typeof createBundledLDrawImporter>>['importPart']>>;
-type ConnectionsResult = Awaited<ReturnType<typeof loadBundledConnections>>;
+type GeometryResult = LDrawPartResult;
+type ConnectionsResult = ConnectionImportResult;
 export interface FoundationPart extends PartReadiness {
   id: string;
   identitySystem: 'ldraw' | 'lego-element';
@@ -33,6 +39,9 @@ export interface FoundationPart extends PartReadiness {
   issues: string[];
   observedSetNumbers: string[];
   evidence: unknown[];
+  mapping?: ElementMappingResult;
+  enabledConnectionIds?: string[];
+  assemblyReport?: AssemblyMigrationEntry;
 }
 export interface FoundationPartDetail {
   part: FoundationPart;
@@ -60,7 +69,7 @@ function missingChecks(): PartCheck[] {
     { id: 'part-verification', outcome: 'not-run', description: '尚未完成逐件适用测试或人工审核。' },
   ];
 }
-function nativeChecks(geometry: GeometryResult): PartCheck[] {
+function nativeChecks(geometry: GeometryResult, entry?: AssemblyMigrationEntry): PartCheck[] {
   const mesh = geometry.mesh, bounds = geometry.bounds;
   const hasMesh = geometry.status === 'geometryReady' && !!mesh && !!bounds;
   let finite = !!hasMesh && mesh!.indices.length >= 3 && mesh!.indices.length % 3 === 0 &&
@@ -68,11 +77,14 @@ function nativeChecks(geometry: GeometryResult): PartCheck[] {
     mesh!.indices.every(index => Number.isSafeInteger(index) && index >= 0 && index < mesh!.positions.length);
   if (hasMesh) finite &&= mesh!.positions.every(point => point.every((value, axis) => value >= bounds!.min[axis] - 1e-7 && value <= bounds!.max[axis] + 1e-7));
   const hashed = hasMesh && geometry.source.integrity === 'verified' && geometry.source.licenseStatus === 'complete' && geometry.source.files.length > 0 && geometry.source.files.every(file => /^[a-f0-9]{64}$/.test(file.sha256) && !!file.license);
+  const scopePassed = entry?.assemblyVerified === true && entry.generatable && entry.generatorSmokePassed && entry.allowedConnectionIds.length > 0;
   return [
     { id: 'source-integrity', outcome: hashed ? 'passed' : 'failed', description: '导入器核对固定源文件哈希，保留递归文件及许可。' },
     { id: 'mesh-integrity', outcome: finite ? 'passed' : 'failed', description: '检查有限顶点、三角形索引与由真实网格导出的外包框。' },
-    { id: 'rotation', outcome: 'not-run', description: '尚未完成该零件在所有适用装配姿态下的拼接与碰撞测试。' },
-    ...missingChecks(),
+    { id: 'rotation', outcome: scopePassed ? 'passed' : 'not-run', description: scopePassed ? '白名单接口已枚举合法离散旋转，并使用通过原生碰撞检查的姿态。' : '尚无通过完整夹具测试的装配姿态。' },
+    { id: 'attachment', outcome: scopePassed ? 'passed' : 'not-run', description: scopePassed ? '白名单接口通过真实夹具的正向与反向拼接、图占用和源变换检查。' : '尚无经过完整验证的接口。' },
+    { id: 'collision-clearance', outcome: scopePassed ? 'passed' : 'not-run', description: scopePassed ? '闭合原生代理验证接触与实体净空；同位重复实心穿模会被拒绝。' : '该零件尚无经过装配夹具验证的实体碰撞结果。' },
+    { id: 'part-verification', outcome: scopePassed ? 'passed' : 'not-run', description: scopePassed ? '软件验证限定在报告白名单接口；禁用口及实物验证不包含在此状态。' : '仍需完成适用接口与生成烟测。' },
   ];
 }
 
@@ -83,22 +95,22 @@ export class RealPartRegistry {
   private detailCache = new Map<string, FoundationPartDetail>();
   private documents: InstructionDocument[] = [];
   private bundledInventories: FoundationInventory[] = [];
-  private importer?: Awaited<ReturnType<typeof createBundledLDrawImporter>>;
-  private resolver?: Awaited<ReturnType<typeof createBundledLDrawResolver>>;
-  private connectionImporter?: ReturnType<typeof createBundledConnectionImporter>;
+  readonly repository: NativePartRepository;
+  readonly assemblyService: AssemblyService;
+  private mapper?: ElementDesignMapper;
   private sourceProblems = new Set<string>();
   readonly localInventoryDir: string;
-  constructor(options: { dataDir?: string } = {}) {
+  constructor(options: { dataDir?: string; repository?: NativePartRepository; assemblyService?: AssemblyService } = {}) {
+    this.repository = options.repository ?? new NativePartRepository();
+    this.assemblyService = options.assemblyService ?? new AssemblyService({ repository: this.repository });
     this.localInventoryDir = path.resolve(options.dataDir ?? process.env.BRICKLAB_DATA_DIR ?? 'data', 'parts-foundation', 'private', 'inventories');
   }
   private async initialize(): Promise<void> {
     const manifestValue = await readJson(path.join(FOUNDATION_BUNDLE_ROOT, 'instructions', 'manifest.json')) as { documents: InstructionDocument[] };
     this.documents = manifestValue.documents;
     this.bundledInventories = adaptPdfInventories(await readJson(path.join(FOUNDATION_BUNDLE_ROOT, 'instructions', 'inventories.json')), '2026-10-23T00:00:00.000Z');
-    this.importer = await createBundledLDrawImporter();
-    this.resolver = await createBundledLDrawResolver();
-    this.connectionImporter = createBundledConnectionImporter(this.resolver);
-    const source = await loadBundledLDrawManifest();
+    this.mapper = await createBundledElementDesignMapper();
+    const source = await this.repository.getManifest();
     // Parse sequentially to bound transient native mesh memory. Only summaries persist.
     for (const root of source.roots) {
       const detail = await this.importNative(root.partId, root.name, root.selectionBasis);
@@ -111,12 +123,13 @@ export class RealPartRegistry {
     const elements = mineFoundationInventories(inventories, { limit: 5000 }).elementRanking;
     for (const row of elements) {
       const id = `element:${row.identity.id}`;
+      const mapping = this.mapper!.resolve(row.identity.id);
       this.parts.set(id, {
-        id, identitySystem: 'lego-element', name: `Element ${row.identity.id}`, category: null,
-        sourcePartId: null, designId: null, elementId: row.identity.id,
-        selectionBasis: 'source-backed element observation; design mapping unverified', source: 'Uploaded instruction PDF or local inventory observation',
+        id, identitySystem: 'lego-element', name: mapping.partName ? `${mapping.partName} · Element ${row.identity.id}` : `Element ${row.identity.id}`, category: mapping.category,
+        sourcePartId: null, designId: mapping.designId, elementId: row.identity.id, mapping,
+        selectionBasis: 'source-backed element observation; external design mapping does not establish LDraw identity', source: 'Uploaded instruction PDF or local inventory observation',
         ...assessPartReadiness({ geometryReady: false, connectionReady: false, collisionReady: false, checks: missingChecks() }),
-        issues: ['缺少有来源的 Element → Design / LDraw 映射。', '颜色与备用件状态尚未核定。'],
+        issues: [mapping.status === 'mapped' ? '已有来源支持的 Part / Design / 颜色记录；尚无核定的 LDraw 跨编号对应。' : 'Element → Part / Design 映射未解决。', '备用件属性和完整套装库存尚未核定。'],
         observedSetNumbers: row.setNumbers, evidence: row.evidence,
       });
     }
@@ -126,14 +139,19 @@ export class RealPartRegistry {
     return this.initialized;
   }
   private async importNative(id: string, name: string, selectionBasis: string): Promise<FoundationPartDetail> {
-    const geometry = await this.importer!.importPart(id);
-    const connections = await this.connectionImporter!.importPart(id);
+    const native = await this.repository.getPart(id);
+    if (!native) throw new Error('The manifest references an unavailable native source part.');
+    const { geometry, connections } = native;
+    const entry = await this.assemblyService.getEntry(id);
     const geometryReady = geometry.status === 'geometryReady';
-    const checks = nativeChecks(geometry);
+    const checks = nativeChecks(geometry, entry);
+    const proxy = buildNativeCollisionProxy(native, { instanceId: `catalog-${id}`, partId: id, transform: structuredClone(IDENTITY_TRANSFORM) });
     const readiness = assessPartReadiness({
       geometryReady,
       connectionReady: geometryReady && connections.status === 'ready' && connections.points.length > 0 && connections.points.every(point => point.dimensionsResolved && !!point.source.sha256),
-      collisionReady: geometryReady && !!geometry.collision && checks.find(check => check.id === 'mesh-integrity')?.outcome === 'passed',
+      collisionReady: geometryReady && proxy.status === 'ready',
+      assemblyVerified: entry?.assemblyVerified === true,
+      generatorSmokePassed: entry?.generatorSmokePassed === true && entry.generatable,
       checks,
     });
     return {
@@ -141,8 +159,9 @@ export class RealPartRegistry {
         id, identitySystem: 'ldraw', name, category: categoryFromSourceHeader(name), sourcePartId: id,
         // Equal-looking numbers are not proof of an Element/Design/LDraw mapping.
         designId: null, elementId: null, selectionBasis, source: 'LDraw + LDCad Shadow Library', ...readiness,
-        issues: [...geometry.issues.map(issue => `${issue.code}: ${issue.message}`), ...connections.issues.map(issue => `${issue.code}: ${issue.message}`), ...(!readiness.generatable ? ['尚未通过逐件拼接与净空校验，禁止生成。'] : [])],
+        issues: [...geometry.issues.map(issue => `${issue.code}: ${issue.message}`), ...connections.issues.map(issue => `${issue.code}: ${issue.message}`), ...(proxy.status !== 'ready' ? [`${proxy.reasonCode}: ${proxy.reason}`] : []), ...(!readiness.generatable ? entry?.reasons ?? ['尚未通过逐件拼接与净空校验，禁止生成。'] : entry?.disabledConnectionIds.length ? [`${entry.disabledConnectionIds.length} 个来源接口未开放；仅可使用白名单接口。`] : [])],
         observedSetNumbers: [], evidence: geometry.source.files,
+        enabledConnectionIds: entry?.allowedConnectionIds ?? [], ...(entry ? { assemblyReport: entry } : {}),
       },
       geometry, connections,
     };
@@ -151,7 +170,7 @@ export class RealPartRegistry {
     await this.ready();
     this.refreshElements(await this.inventories());
     const normalized = query.trim().toLowerCase();
-    return [...this.parts.values()].filter(part => !normalized || [part.id, part.name, part.category, part.elementId, part.sourcePartId].some(value => value?.toLowerCase().includes(normalized))).map(part => structuredClone(part));
+    return [...this.parts.values()].filter(part => !normalized || [part.id, part.name, part.category, part.elementId, part.sourcePartId, part.designId, part.mapping?.partId].some(value => value?.toLowerCase().includes(normalized))).map(part => structuredClone(part));
   }
   async get(id: string): Promise<FoundationPartDetail | undefined> {
     await this.ready();
@@ -184,6 +203,19 @@ export class RealPartRegistry {
     return [...structuredClone(this.bundledInventories), ...local];
   }
   async localInventoryCapacity() { await this.ready(); return Math.max(0, 500 - this.bundledInventories.length); }
+  private recoveryState = (id: string) => {
+    const part = this.parts.get(id);
+    return part ? { geometryReady: part.geometryReady, connectionReady: part.connectionReady, collisionReady: part.collisionReady, assemblyVerified: part.assemblyVerified, generatable: part.generatable, blockedReasons: part.assemblyReport?.reasonCodes ?? part.issues } : undefined;
+  };
+  async elementMapping(id: string) { await this.ready(); return this.mapper!.resolve(id); }
+  async recovery() {
+    await this.ready();
+    return buildFailedPartRecoveryQueue(this.bundledInventories, this.mapper!, this.recoveryState);
+  }
+  async instructionCoverage() {
+    await this.ready();
+    return buildInstructionCoverage(this.documents, this.bundledInventories, this.mapper!, this.recoveryState);
+  }
   async status() {
     await this.ready();
     const inventories = await this.inventories();
@@ -191,34 +223,45 @@ export class RealPartRegistry {
     const parts = [...this.parts.values()];
     const ranking = mineFoundationInventories(inventories, { expectedSetNumbers: ['77263', '76924', '77239', '77238', '77254', '77257'], limit: 5000 });
     const trustedRanking = mineFoundationInventories(inventories.filter(inventory => inventory.provenance.trust === 'verified-upstream' || inventory.provenance.trust === 'verified-export'), { limit: 5000 });
+    const coverage = await this.instructionCoverage();
+    const recovery = await this.recovery();
+    const assembly = await this.assemblyService.status();
     const referenceSets = buildReferenceSetRecords(this.documents).map(set => {
       const setInventories = inventories.filter(inventory => inventory.setNumber.replace(/-1$/, '') === set.setNumber);
       const rows = setInventories.flatMap(inventory => inventory.items);
       const setRanking = mineFoundationInventories(setInventories, { limit: 5000 });
       const observedElements = new Set(rows.flatMap(row => row.elementId ? [row.elementId] : []));
+      const mapped = [...observedElements].map(id => this.mapper!.resolve(id)).filter(mapping => mapping.status === 'mapped');
+      const sourceCoverage = coverage.sets.find(row => row.setNumber === set.setNumber);
       return { ...set, elementCount: observedElements.size, observedRowCount: rows.length,
         observedQuantity: setRanking.elementRanking.reduce((sum, row) => sum + row.observedQuantity, 0), quantityBasis: 'deduplicated element observations; not whole-set piece count',
-        mappedPartCount: 0, declaredIdentityRowCount: rows.filter(row => row.designId !== null || row.partId !== null).length,
-        geometryReady: 0, connectionReady: 0, generatable: 0, verified: 0,
-        supportedPercentage: null, coverageBasis: 'Element-to-design mapping and inventory completeness unresolved',
-        missingCriticalParts: [], criticalPartStatus: '未映射设计编号前不推测关键零件编号。',
-        notes: [rows.length ? '清单仍未核定 Element → 设计零件映射，尚不能计算整套真实设计零件覆盖率。' : '尚无可用附录清单。'],
+        mappedPartCount: new Set(mapped.map(mapping => mapping.partId)).size, mappedElementCount: mapped.length,
+        mappingPercentage: observedElements.size ? Number((100 * mapped.length / observedElements.size).toFixed(2)) : null,
+        declaredIdentityRowCount: rows.filter(row => row.designId !== null || row.partId !== null).length,
+        geometryReady: sourceCoverage?.counts.geometryReady ?? 0, connectionReady: sourceCoverage?.counts.connectionReady ?? 0,
+        assemblyVerified: sourceCoverage?.counts.assemblyVerified ?? 0, generatable: sourceCoverage?.counts.generatable ?? 0, verified: 0,
+        supportedPercentage: sourceCoverage?.percentages.generatable ?? null, coverageBasis: sourceCoverage?.denominatorBasis ?? 'No observed appendix denominator',
+        missingCriticalParts: [], criticalPartStatus: '已保留来源设计编号；关键件仍需核定 LDraw 对应和相应装配测试。',
+        notes: [rows.length ? '来源映射与原生几何分开统计；仅统计已读附录，不代表完整套装。' : '尚无可用附录清单，覆盖率未知。'],
       };
     });
     const count = (key: keyof PartReadiness) => parts.filter(part => part[key] === true).length;
     return {
-      schemaVersion: 1, version: '0.4.0', mode: 'real-parts-foundation',
-      counts: { catalogOnly: count('catalogOnly'), geometryReady: count('geometryReady'), connectionReady: count('connectionReady'), collisionReady: count('collisionReady'), generatable: count('generatable'), verified: count('verified'),
+      schemaVersion: 1, version: '0.5.0', mode: 'real-parts-foundation',
+      counts: { catalogOnly: count('catalogOnly'), geometryReady: count('geometryReady'), connectionReady: count('connectionReady'), collisionReady: count('collisionReady'), assemblyVerified: count('assemblyVerified'), generatable: count('generatable'), verified: count('verified'),
         ldrawPartIds: parts.filter(part => part.identitySystem === 'ldraw').length, observedElementIds: parts.filter(part => part.identitySystem === 'lego-element').length,
         readableDocuments: this.documents.filter(document => document.status === 'ready').length, physicalBuildsVerified: 0 },
       countBasis: 'Readiness axes overlap. LDraw IDs and LEGO Element IDs are separate identities; their sum is not a unique LEGO design count.',
       referenceSets,
       instructions: this.documents.map(document => ({ ...document, setId: document.setNumber, pageCount: document.pages, inventoryPages: document.appendixPages ?? [] })),
       mining: ranking, partRanking: trustedRanking.partRanking, elementRanking: ranking.elementRanking,
-      nextPriority: trustedRanking.designRanking.slice(0, 50), nextPriorityStatus: trustedRanking.designRanking.length ? 'source-backed-design-frequency' : 'awaiting-source-backed-element-to-design-mapping',
+      nextPriority: recovery.entries.slice(0, 50).map(entry => ({ elementId: entry.elementId, designId: entry.mapping.designId, partId: entry.mapping.partId, observedQuantity: entry.observedQuantity, distinctObservedSets: entry.distinctObservedSets, blockedCategory: entry.blockedCategory, sourceTrust: entry.mapping.source?.trust })),
+      nextPriorityStatus: 'source-observed-recovery-frequency; LDraw cross-reference still required',
       userReportedDesignRanking: ranking.designRanking,
       userReportedPartRanking: ranking.partRanking,
-      capabilities: { neuralTraining: false, pdfTo3d: false, nativeLDrawGeometry: true, sourceConnections: true, inventoryElementExtraction: true, legacyGenerationEnabled: false },
+      assembly: { counts: assembly.counts, partLibraryVersion: assembly.partLibraryVersion, assemblyEngineVersion: assembly.assemblyEngineVersion, connectionRuleVersion: assembly.connectionRuleVersion, collisionVersion: assembly.collisionVersion, verificationScope: assembly.verificationScope, runtimeValidation: assembly.runtimeValidation },
+      elementMapping: this.mapper!.summary(), recovery: { counts: recovery.counts, blockedReasons: recovery.blockedReasons }, instructionCoverage: coverage,
+      capabilities: { neuralTraining: false, pdfTo3d: false, nativeLDrawGeometry: true, sourceConnections: true, inventoryElementExtraction: true, legacyGenerationEnabled: false, nativeAssemblyGeneration: assembly.counts.generatable > 0 },
       limitations: [...FOUNDATION_LIMITATIONS, ...new Set(this.sourceProblems)],
     };
   }
