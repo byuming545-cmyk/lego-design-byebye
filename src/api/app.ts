@@ -8,11 +8,16 @@ import type { GenerationOptions, GenerationResult, SetInventory } from '../types
 import { validateModel } from '../validators/index.js';
 import { createSpeedRouter } from '../speed/api.js';
 import { createAutomotiveRouter } from '../automotive/api.js';
+import { createPartsFoundationRouter } from '../parts/api.js';
+import { createLegacyAuthenticityGate, type LegacyGenerationPolicy } from '../parts/legacyPolicy.js';
 
 interface AppOptions {
   provider?: SetInventoryProvider;
+  /** Historical algorithm regression fixtures only. Runtime always defaults to blocked. */
+  legacyGenerationPolicy?: LegacyGenerationPolicy;
   /** Set false in tests; production defaults to the Vite dist directory. */
   staticDir?: string | false;
+  partsDataDir?: string;
 }
 
 function isObject(value: unknown): value is Record<string, unknown> {
@@ -53,12 +58,14 @@ export function createApp(options: AppOptions = {}) {
   const modelJson = express.json({ limit: '40mb', strict: true });
   const feedbackJson = express.json({ limit: '1mb', strict: true });
   const referenceJson = express.json({ limit: '10mb', strict: true });
-  app.use((request, response, next) => (request.path === '/api/speed/models/import' ? modelJson : request.path === '/api/automotive/references/import' ? referenceJson : /^\/api\/speed\/models\/[^/]+\/feedback$/.test(request.path) ? feedbackJson : defaultJson)(request, response, next));
+  app.use((request, response, next) => (request.path === '/api/speed/models/import' ? modelJson : request.path === '/api/automotive/references/import' || request.path === '/api/parts-foundation/inventories/import' ? referenceJson : /^\/api\/speed\/models\/[^/]+\/feedback$/.test(request.path) ? feedbackJson : defaultJson)(request, response, next));
+  app.use('/api/parts-foundation', createPartsFoundationRouter({ dataDir: options.partsDataDir }));
+  app.use(createLegacyAuthenticityGate(options.legacyGenerationPolicy));
   app.use('/api/speed', createSpeedRouter(provider));
   app.use('/api/automotive', createAutomotiveRouter());
 
   app.get('/api/health', (_request, response) => {
-    response.json({ status: 'ok', version: '0.3.0', provider: provider.source, demo: provider.source === 'mock', dataMode: provider instanceof MissingRebrickableInventoryProvider ? 'unconfigured' : provider.source === 'mock' ? 'mock' : 'real' });
+    response.json({ status: 'ok', version: '0.4.0', provider: provider.source, demo: provider.source === 'mock', dataMode: provider instanceof MissingRebrickableInventoryProvider ? 'unconfigured' : provider.source === 'mock' ? 'mock' : 'real', primaryArea: '/part-lab', legacyGenerationEnabled: options.legacyGenerationPolicy === 'test-fixture' });
   });
 
   app.get('/api/sets/:setNumber', async (request, response) => {

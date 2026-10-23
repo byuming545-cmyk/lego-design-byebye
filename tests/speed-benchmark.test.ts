@@ -123,11 +123,11 @@ describe('Speed benchmark evidence and execution states', () => {
     vi.stubEnv('REBRICKABLE_API_KEY', ''); vi.stubEnv('INVENTORY_PROVIDER', 'mock');
     const log = vi.spyOn(console, 'log').mockImplementation(() => undefined);
     const output = join(directory, 'real-pending.json');
-    expect(await speedBenchmarkMain(['--config', 'speed-benchmark.json', '--output', output])).toBe(2);
+    expect(await speedBenchmarkMain(['--legacy-fixture', '--config', 'speed-benchmark.json', '--output', output])).toBe(2);
     const report = JSON.parse(await readFile(output, 'utf8'));
     expect(report.summary).toMatchObject({ requested: 10, pending: 10, realPassed: 0 });
     expect(log.mock.calls.flat().join('\n')).toContain('Real online validation pending');
-    await expect(speedBenchmarkMain(['--sets', '76900', '--mock'])).rejects.toThrow('only DEMO-SPEED');
-    await expect(speedBenchmarkMain(['--sets', '76900', '--config', 'speed-benchmark.json'])).rejects.toThrow('either');
+    await expect(speedBenchmarkMain(['--legacy-fixture', '--sets', '76900', '--mock'])).rejects.toThrow('only DEMO-SPEED');
+    await expect(speedBenchmarkMain(['--legacy-fixture', '--sets', '76900', '--config', 'speed-benchmark.json'])).rejects.toThrow('either');
   });
 });

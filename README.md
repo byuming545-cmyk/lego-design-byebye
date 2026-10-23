@@ -1,14 +1,14 @@
-# BRICKLAB · LEGO Automotive Designer V0.3
+# BRICKLAB · 真实 Speed 零件基础 V0.4
 
-一个可运行的中文网页原型：读取套装零件库存，输入创意，生成受库存约束的积木模型，查看 3D 与分步拼搭，导出中文 PDF 说明书和结构化 JSON。
+当前首页是 **Part Lab `/part-lab`**：查看有来源的原生 LEGO 零件网格、连接点、说明书零件表证据和验证状态。运行本页不需要 Rebrickable 密钥，也不需要在线下载几何。
 
-项目保留通用创意 V0.1 和独立的 [Speed Creative](#speed-creative-v021)。V0.3 增加独立的 Free Automotive Designer：LDraw/MPD 参考导入、比例分析、局部拼搭模式、车型资料与 Design Brief、8/10/12 格宽模块重排、5–20 候选搜索及质量筛选。操作、来源与限制见 [V0.3 使用与开发说明](docs/AUTOMOTIVE_V0.3.md)。[V0.2.1 交付报告](docs/V0.2.1交付报告.md)和 [V0.2 交付报告](docs/V0.2交付报告.md)保留为历史记录。
+已读取用户提供的 6 本 LEGO 品牌说明书：4 份附录共提取 667 行、531 个不同 Element ID；另两本附件超过传输上限，未读取。原生几何包包含 245 个 LDraw ID，195 个条目有完整解析的来源连接。**尚无已验证的 Element→Design/LDraw 映射，可生成与已验证数量均为 0。** 这些编号统计属于不同命名空间，不能相加当作真实设计零件种数。
 
-**V0.3 是检索与规则生成基础版，尚未实现照片视觉理解或神经网络训练。** 当前未导入可确认许可的真实整车参考模型，官方车型网页在云环境中被网络策略阻止。目录车型尺寸保持未知；用户可填写有来源的技术参数，或明确选择工程估算概念稿。得分衡量规则与几何比例，不能证明已经复刻真实奔驰 S63 或达到官方 Speed Champions 设计水平。自由零件库仅含可靠建模零件，数量不受个人库存限制；具体零件颜色供应未核实。
+**旧版通用、Speed、Automotive 生成、改造和导出默认暂停。** 旧库中的手写尺寸、曲面和连接不能冒充真实导入数据。历史算法保留供回归，网页入口保留只读资料；客户端参数和环境变量不能绕过真实性门禁。
 
-**当前真实在线读取与验收为 0 套，实物拼搭为 0 次。** 已实际运行的 10 套 Benchmark 均标注 `Real online validation pending`；缺少 API Key 时不使用演示库存填充真实结果，也不据此新增零件支持。自动校验通过只说明符合当前软件规则。
+详细来源、六套装覆盖、未完成事项与恢复生成条件见 [V0.4 交付与使用说明](docs/REAL_PARTS_V0.4.md)、[说明书证据报告](docs/PDF_REFERENCE_LEARNING.md)和[旧零件审计](docs/PART_AUTHENTICITY_AUDIT.md)。未训练神经网络，未实现 PDF 自动还原整车 3D，未做实物拼搭。
 
-V0.1 使用**规则模板 + 库存约束搜索**，支持机器人、汽车、小屋、动物四类。它没有调用大语言模型，也不支持任意文字直接生成任意造型。显式演示模式无需真实数据源即可体验完整流程。
+历史版本文档：[V0.3](docs/AUTOMOTIVE_V0.3.md)、[V0.2.1](docs/V0.2.1交付报告.md)、[V0.2](docs/V0.2交付报告.md)。本文后部旧生成流程仅为历史说明，以本版真实性门禁为准。
 
 本项目为独立创意原型，与 LEGO® 集团无关联。
 
@@ -18,18 +18,11 @@ V0.1 使用**规则模板 + 库存约束搜索**，支持机器人、汽车、�
 
 ### Windows：从 ZIP 启动
 
-本版工作分支为 `codex/automotive-designer-v0.3`，可下载 [V0.3 分支 ZIP](https://github.com/byuming545-cmyk/lego-design-byebye/archive/refs/heads/codex/automotive-designer-v0.3.zip)。
+本版工作分支为 `codex/speed-real-parts-foundation`，可下载 [V0.4 分支 ZIP](https://github.com/byuming545-cmyk/lego-design-byebye/archive/refs/heads/codex/speed-real-parts-foundation.zip)。
 
 先安装 Node.js 24.19.0 或更高的 24.x 版本，再解压下载的项目 ZIP。进入**能够看到 `package.json` 的文件夹**；如果第一层只有同名文件夹，继续进入一层。
 
-在资源管理器地址栏输入 `cmd` 并回车，会在该目录打开命令窗口。先执行：
-
-```cmd
-copy .env.example .env
-notepad .env
-```
-
-体验合成演示时，将 `.env` 的 `INVENTORY_PROVIDER=auto` 改成 `INVENTORY_PROVIDER=mock` 并保存；`REBRICKABLE_API_KEY` 可留空。使用真实套装时保留 `auto`，或填 `rebrickable`，并填写自己的 API Key。然后逐行执行，**每一行成功结束后再输入下一行**：
+在资源管理器地址栏输入 `cmd` 并回车，会在该目录打开命令窗口。逐行执行，**每一行成功结束后再输入下一行**：
 
 ```cmd
 npm ci
@@ -37,7 +30,7 @@ npm run build
 npm start
 ```
 
-出现服务已启动的信息后，保持命令窗口开启，浏览器打开 **<http://localhost:3001/#/automotive>**；调试页为 <http://localhost:3001/#/automotive-lab>，旧版入口为 <http://localhost:3001/#/speed>。停止服务可在命令窗口按 `Ctrl+C`。自由汽车设计不需要 Rebrickable Key；库存模式在 production `auto` 缺 Key 时返回中文 `503 / MISSING_API_KEY`，演示请显式配置 `mock`。不要在 Windows 中复制下面云环境的 `/workspace` 路径或 Bash 环境变量前缀。
+出现服务已启动的信息后，保持命令窗口开启，浏览器打开 **<http://localhost:3001/part-lab>**。可以搜索 `3001` 查看原生砖与连接点，搜索 `element:4666579` 查看未映射的说明书证据；点击“说明书与套装”查看资料状态。停止服务按 `Ctrl+C`。此页面无需 `.env`、API Key 或 Python。不要在 Windows 中复制下面云环境的 `/workspace` 路径或 Bash 环境变量前缀。
 
 ### 当前云环境：开发模式
 
@@ -50,7 +43,7 @@ npm run dev
 
 上面的缓存路径适用于当前云环境；在自己的电脑上可直接使用 `npm ci`。
 
-打开 <http://localhost:5173>。开发模式同时启动 Vite 前端（`5173`）和 Express API（`3001`），Vite 将 `/api` 请求代理至后端。无需 API Key；默认自动读取 `10696` 合成演示库存，并生成一个机器人。
+打开 <http://localhost:5173/part-lab>。开发模式同时启动 Vite 前端（`5173`）和 Express API（`3001`），Vite 将 `/api` 请求代理至后端。默认进入真实零件工作台，不自动生成模型，不请求 Rebrickable。
 
 若已有环境变量配置了真实 API Key，`auto` 模式会使用真实数据。要明确使用演示模式，可运行：
 
@@ -66,7 +59,7 @@ INVENTORY_PROVIDER=mock npm run dev
 npm run preview
 ```
 
-这个命令先构建项目，再在 `0.0.0.0:3000` 启动统一预览服务；页面、字体、脚本和 `/api` 均从同一个端口提供。预览也默认使用 production：演示请在 `.env` 显式填 `INVENTORY_PROVIDER=mock`，真实模式请配置 Key。需要转发网页时选择 `3000` 端口，无需同时转发开发 API，也不会受到 Vite 开发服务的域名检查影响。可以通过 `.env` 中的 `PREVIEW_PORT` 更改预览端口；它独立于开发 API 的 `PORT`。
+这个命令先构建项目，再在 `0.0.0.0:3000` 启动统一预览服务；页面、字体、脚本和 `/api` 均从同一个端口提供。打开 <http://localhost:3000/part-lab>，不需要密钥。需要转发网页时选择 `3000` 端口，无需同时转发开发 API，也不会受到 Vite 开发服务的域名检查影响。可以通过 `.env` 中的 `PREVIEW_PORT` 更改预览端口；它独立于开发 API 的 `PORT`。
 
 预览加载失败时，先确认 `npm run preview` 仍在运行、预览指向相应端口，再检查该端口的 `/api/health`。单独的静态页面服务器无法提供本项目的库存和生成 API。若使用 Vite 开发模式通过自定义域名访问，需显式配置该域名的 `server.allowedHosts`，保留域名校验。
 
@@ -79,9 +72,9 @@ npm start
 
 打开 <http://localhost:3001>。Express 同时提供构建后的前端和 API，生产模式可以使用 `PORT` 更改监听端口。`build` 包含 TypeScript 类型检查、Vite 前端构建与服务端编译；`npm start` 需要先完成构建。服务端未指定 `NODE_ENV` 时默认 production；`npm run dev:api` 显式带 `--development`，开发 `auto` 缺 Key 时允许合成演示。
 
-## 实际使用流程
+## 历史 V0.1 使用流程（当前生成入口已暂停）
 
-以下为 V0.1 通用创意的演示流程，请使用显式 mock；Speed 的真实库存、模型恢复与实拼流程见后面的专节。
+以下保留旧版算法流程以便理解历史设计，当前网页不会开放生成或导出。使用 mock 不能绕过真实性门禁；Speed 和 Automotive 的旧生成说明同样属于历史行为。
 
 1. 输入 `10696` 或 `11013`，点击“读取套装”。省略后缀时自动补成 `-1`。
 2. 输入含有单一类别的描述，如“一个小机器人”“一辆小汽车”“一座小屋”“一只小狗”，也可点击四个模板按钮。

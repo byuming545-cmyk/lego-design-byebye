@@ -5,6 +5,9 @@ import { randomUUID } from 'node:crypto';
 
 export default defineConfig({
   testDir: './tests/preview',
+  // The compiled V0.4 preview serves the source-backed library. Archived
+  // generation specs cannot run against its intentional authenticity gate.
+  testMatch: 'parts-foundation.spec.ts',
   timeout: 60000,
   expect: { timeout: 15000 },
   workers: 1,

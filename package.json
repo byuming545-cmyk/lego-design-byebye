@@ -1,6 +1,6 @@
 {
   "name": "bricklab",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -18,7 +18,8 @@
     "test:e2e": "playwright test --config playwright.config.ts",
     "test:preview": "playwright test --config playwright.preview.config.ts",
     "benchmark:speed": "tsx src/cli/speed-benchmark.ts",
-    "benchmark:automotive": "tsx src/cli/automotive-benchmark.ts"
+    "benchmark:automotive": "tsx src/cli/automotive-benchmark.ts",
+    "report:parts": "tsx src/cli/parts-foundation-report.ts"
   },
   "dependencies": {
     "@fontsource/noto-sans-sc": "^5.2.9",

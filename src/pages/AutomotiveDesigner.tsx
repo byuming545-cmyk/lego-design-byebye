@@ -27,6 +27,7 @@ import {
   WandSparkles,
 } from 'lucide-react';
 import ModelViewer from '../components/ModelViewer.js';
+import { LEGACY_GENERATION_BLOCK, LEGACY_OPERATIONS_BLOCKED } from '../parts/legacyStatus.js';
 import { speedRenderingAdapter, toSpeedViewerParts } from '../speed/rendering.js';
 import { automotiveClient, automotiveFailure } from '../automotive/client.js';
 import type {
@@ -550,7 +551,7 @@ function Bom({ candidate }: { candidate: AutomotiveCandidateView | undefined }) 
           <h3>所需零件清单</h3>
           <p className="auto-small">
             {rows.length} 个零件 / 颜色组合 · {candidate.parts.length}{' '}
-            件。自由设计使用无限数量的可靠零件调色板。
+            件。此历史设计使用旧版参数化零件，零件与颜色组合尚未来源验证。
           </p>
         </div>
         <Badge>需求数量</Badge>
@@ -1324,6 +1325,7 @@ export default function AutomotiveDesigner({ lab = false }: { lab?: boolean }) {
     }
   }
   async function generate() {
+    if (LEGACY_OPERATIONS_BLOCKED) { setError(LEGACY_GENERATION_BLOCK.error); return; }
     if (!profile) return;
     setBusy('generate');
     setError('');
@@ -1355,6 +1357,7 @@ export default function AutomotiveDesigner({ lab = false }: { lab?: boolean }) {
     }
   }
   async function download(kind: 'bom.csv' | 'bom.json' | 'instructions.pdf' | 'model.json') {
+    if (LEGACY_OPERATIONS_BLOCKED) { setError(LEGACY_GENERATION_BLOCK.error); return; }
     if (!session || !candidate?.exportable) return;
     setBusy(`export-${kind}`);
     setError('');
@@ -1368,6 +1371,10 @@ export default function AutomotiveDesigner({ lab = false }: { lab?: boolean }) {
   }
   return (
     <div className="auto-page">
+      <div className="auto-notice" role="status">
+        <strong>历史参数化预览 · 零件未验证</strong>
+        <span>{LEGACY_GENERATION_BLOCK.error} <a href="#/part-lab">打开真实零件库</a></span>
+      </div>
       <header className="auto-header">
         <a className="auto-brand" href="#/general" aria-label="Bricklab 首页">
           <span className="auto-mark">
@@ -1419,7 +1426,7 @@ export default function AutomotiveDesigner({ lab = false }: { lab?: boolean }) {
           <div className="auto-intro-note">
             <CarFront size={25} strokeWidth={1.3} />
             <span>FREE DESIGN MODE</span>
-            <strong>可靠零件 · 数量不限</strong>
+            <strong>旧版参数化零件 · 仅供查看</strong>
             <small>材料清单记录设计所需数量</small>
           </div>
         </section>
@@ -1733,6 +1740,7 @@ export default function AutomotiveDesigner({ lab = false }: { lab?: boolean }) {
                 type="button"
                 onClick={generate}
                 disabled={
+                  LEGACY_OPERATIONS_BLOCKED ||
                   Boolean(busy) ||
                   (Object.keys(weights).length > 0 && weightsTotal === 0) ||
                   !profile ||
@@ -1820,7 +1828,7 @@ export default function AutomotiveDesigner({ lab = false }: { lab?: boolean }) {
                 )}
                 <div className="auto-viewer-caption">
                   <Box size={12} />
-                  {candidate ? '基于可靠目录几何的零件预览' : '生成后展示实际候选零件'}
+                  {candidate ? '旧版参数化示意图 · 不代表真实零件网格' : '旧版生成已暂停，请先完善真实零件库'}
                   <span>{candidate ? '拖动旋转 · 滚轮缩放' : '无库存限制'}</span>
                 </div>
                 {busy === 'generate' && (
@@ -2085,12 +2093,12 @@ export default function AutomotiveDesigner({ lab = false }: { lab?: boolean }) {
               <div>
                 <span className="auto-kicker">TAKE YOUR DESIGN</span>
                 <h3>开始下一步拼搭</h3>
-                <p>导出材料需求与逐步说明。实体稳定性仍需试拼验证。</p>
+                <p>此历史版本的零件未完成来源验证，材料需求和拼搭说明导出已暂停。</p>
               </div>
               <div className="auto-export-actions">
                 <button
                   className="auto-secondary"
-                  disabled={Boolean(busy) || !candidate?.exportable}
+                  disabled={LEGACY_OPERATIONS_BLOCKED || Boolean(busy) || !candidate?.exportable}
                   onClick={() => download('bom.csv')}
                 >
                   <ArrowDownToLine size={14} />
@@ -2098,7 +2106,7 @@ export default function AutomotiveDesigner({ lab = false }: { lab?: boolean }) {
                 </button>
                 <button
                   className="auto-secondary"
-                  disabled={Boolean(busy) || !candidate?.exportable}
+                  disabled={LEGACY_OPERATIONS_BLOCKED || Boolean(busy) || !candidate?.exportable}
                   onClick={() => download('bom.json')}
                 >
                   <FileJson size={14} />
@@ -2106,7 +2114,7 @@ export default function AutomotiveDesigner({ lab = false }: { lab?: boolean }) {
                 </button>
                 <button
                   className="auto-secondary"
-                  disabled={Boolean(busy) || !candidate?.exportable}
+                  disabled={LEGACY_OPERATIONS_BLOCKED || Boolean(busy) || !candidate?.exportable}
                   onClick={() => download('model.json')}
                 >
                   <Code2 size={14} />
@@ -2114,7 +2122,7 @@ export default function AutomotiveDesigner({ lab = false }: { lab?: boolean }) {
                 </button>
                 <button
                   className="auto-primary"
-                  disabled={Boolean(busy) || !candidate?.exportable}
+                  disabled={LEGACY_OPERATIONS_BLOCKED || Boolean(busy) || !candidate?.exportable}
                   onClick={() => download('instructions.pdf')}
                 >
                   {busy?.startsWith('export-') ? (
@@ -2293,9 +2301,9 @@ export default function AutomotiveDesigner({ lab = false }: { lab?: boolean }) {
                 </pre>
               </details>
               <details>
-                <summary>可靠零件调色板 · {status?.palette.length ?? 0} 种</summary>
+                <summary>旧版参数化目录 · {status?.palette.length ?? 0} 种</summary>
                 <p className="auto-small">
-                  仅使用可靠几何和连接点。数量不限，以下记录描述零件能力。
+                  以下为旧版手动参数化定义，不能作为真实几何、连接或可生成状态的证据。
                 </p>
                 <div className="auto-scroll">
                   <table className="auto-table">

@@ -27,6 +27,7 @@ import {
   X,
 } from "lucide-react";
 import ModelViewer from "../components/ModelViewer.js";
+import { LEGACY_GENERATION_BLOCK, LEGACY_OPERATIONS_BLOCKED } from "../parts/legacyStatus.js";
 import type { SpeedModelDocument, SpeedModelMetadata, SpeedModelSummary } from "../speed/documents.js";
 import type { PhysicalBuildFeedback, PhysicalBuildFeedbackInput } from "../speed/feedback.js";
 import {
@@ -581,6 +582,7 @@ export default function SpeedCreative() {
 
   async function generate(event: React.FormEvent) {
     event.preventDefault();
+    if (LEGACY_OPERATIONS_BLOCKED) { setError(LEGACY_GENERATION_BLOCK.error); return; }
     if (busy || !inventory || inventoryDirty) return;
     setBusy("generate");
     setError("");
@@ -656,6 +658,7 @@ export default function SpeedCreative() {
       }));
   }
   async function setLocked(moduleId: VehicleModuleId, locked: boolean) {
+    if (LEGACY_OPERATIONS_BLOCKED) { setError(LEGACY_GENERATION_BLOCK.error); return; }
     if (busy || !session || !candidate) return;
     setBusy("lock");
     setError("");
@@ -682,6 +685,7 @@ export default function SpeedCreative() {
   }
   async function redesign(event: React.FormEvent) {
     event.preventDefault();
+    if (LEGACY_OPERATIONS_BLOCKED) { setError(LEGACY_GENERATION_BLOCK.error); return; }
     if (busy || !session || !candidate || !editPrompt.trim()) return;
     setBusy("redesign");
     setError("");
@@ -725,6 +729,7 @@ export default function SpeedCreative() {
     }
   }
   async function undo() {
+    if (LEGACY_OPERATIONS_BLOCKED) { setError(LEGACY_GENERATION_BLOCK.error); return; }
     if (busy || !session || !candidate) return;
     setBusy("undo");
     setError("");
@@ -752,6 +757,7 @@ export default function SpeedCreative() {
     }
   }
   async function exportPdf() {
+    if (LEGACY_OPERATIONS_BLOCKED) { setError(LEGACY_GENERATION_BLOCK.error); return; }
     if (!candidate || !activeInventory) return;
     setBusy("pdf");
     setError("");
@@ -766,6 +772,7 @@ export default function SpeedCreative() {
     }
   }
   async function exportJson() {
+    if (LEGACY_OPERATIONS_BLOCKED) { setError(LEGACY_GENERATION_BLOCK.error); return; }
     if (busy || !candidate || !activeInventory) return;
     setBusy("json");
     setError("");
@@ -786,6 +793,10 @@ export default function SpeedCreative() {
 
   return (
     <main className="speed-page">
+      <div className="speed-source-hint" role="status">
+        <strong>历史参数化预览 · 零件未验证</strong>
+        <p>{LEGACY_GENERATION_BLOCK.error} <a href="#/part-lab">打开真实零件库</a></p>
+      </div>
       <section className="speed-hero">
         <div>
           <span className="speed-kicker">
@@ -1149,6 +1160,7 @@ export default function SpeedCreative() {
               <button
                 className="speed-generate-button"
                 disabled={
+                  LEGACY_OPERATIONS_BLOCKED ||
                   !!busy ||
                   !inventory?.analysis.canGenerate ||
                   inventoryDirty ||
@@ -1199,7 +1211,7 @@ export default function SpeedCreative() {
               </div>
               <button
                 className="speed-export-button"
-                disabled={!!busy || !candidate?.validation.valid}
+                disabled={LEGACY_OPERATIONS_BLOCKED || !!busy || !candidate?.validation.valid}
                 onClick={exportPdf}
               >
                 {busy === "pdf" ? (
@@ -1626,7 +1638,7 @@ export default function SpeedCreative() {
                   <button
                     className="speed-undo-button"
                     onClick={undo}
-                    disabled={!!busy || undoDepth < 1}
+                    disabled={LEGACY_OPERATIONS_BLOCKED || !!busy || undoDepth < 1}
                   >
                     <Undo2 size={14} />
                     撤销上一次修改
@@ -1645,7 +1657,7 @@ export default function SpeedCreative() {
                       aria-label={`${module.locked ? "解锁" : "锁定"}${moduleLabels[module.id]}`}
                       aria-pressed={module.locked}
                       className={module.locked ? "locked" : ""}
-                      disabled={!!busy}
+                      disabled={LEGACY_OPERATIONS_BLOCKED || !!busy}
                       onClick={() => void setLocked(module.id, !module.locked)}
                     >
                       {module.locked ? (
@@ -1675,7 +1687,7 @@ export default function SpeedCreative() {
                       maxLength={300}
                       placeholder="例如：车头太高了，驾驶舱保持不变。"
                     />
-                    <button disabled={!!busy || !editPrompt.trim()}>
+                    <button disabled={LEGACY_OPERATIONS_BLOCKED || !!busy || !editPrompt.trim()}>
                       {busy === "redesign" ? (
                         <LoaderCircle className="spin" size={15} />
                       ) : (
@@ -1707,7 +1719,7 @@ export default function SpeedCreative() {
                   </h2>
                   <button
                     className="speed-json-button"
-                    disabled={!!busy}
+                    disabled={LEGACY_OPERATIONS_BLOCKED || !!busy}
                     onClick={exportJson}
                   >
                     <FileJson size={13} />

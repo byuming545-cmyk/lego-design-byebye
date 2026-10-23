@@ -12,7 +12,7 @@ let base: string;
 let document: SpeedModelDocument;
 const previousDataDir = process.env.BRICKLAB_DATA_DIR;
 async function start() {
-  server = createApp({ provider: new MockInventoryProvider(), staticDir: false }).listen(0, '127.0.0.1');
+  server = createApp({ legacyGenerationPolicy: 'test-fixture', provider: new MockInventoryProvider(), staticDir: false }).listen(0, '127.0.0.1');
   await new Promise<void>(resolve => server.once('listening', resolve));
   const address = server.address();
   if (!address || typeof address === 'string') throw new Error('Missing server address');

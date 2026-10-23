@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-23T05:15:41.740534+00:00",
+  "scope": "Documentary element/quantity extraction only; not part certification",
+  "primaryEngine": {
+    "name": "PyMuPDF",
+    "version": "1.26.6"
+  },
+  "independentEngine": {
+    "name": "pypdf",
+    "version": "6.10.0"
+  },
+  "checks": [
+    {
+      "documentId": "6592556",
+      "sourceSha256": "19ced5bd6af1897527a6b74acb74ebca836734e697f956d22557180f8546d1e8",
+      "pages": [
+        108,
+        109,
+        110,
+        111
+      ],
+      "independentTextPairsMatch": true,
+      "rows": 242
+    },
+    {
+      "documentId": "6617271",
+      "sourceSha256": "22bc404a153284f8f8bea9894671582042574aae4300187639f27071b25ca67f",
+      "pages": [
+        122,
+        123
+      ],
+      "independentTextPairsMatch": true,
+      "rows": 133
+    },
+    {
+      "documentId": "6617283",
+      "sourceSha256": "f9f7f1e5a22385ce58ce589b35dc8b47fa86beaba57402ac37bf45c17b7e2d1d",
+      "pages": [
+        102,
+        103
+      ],
+      "independentTextPairsMatch": true,
+      "rows": 119
+    },
+    {
+      "documentId": "6662707",
+      "sourceSha256": "713cdd8dcec8d9d00d379b836d4510a43a0a5a909c3b2d8773f3fb7f9eb6cf37",
+      "pages": [
+        113,
+        114,
+        115
+      ],
+      "independentTextPairsMatch": true,
+      "rows": 173
+    }
+  ],
+  "independentParserNormalizations": [
+    {
+      "documentId": "6592556",
+      "pdfPage": 110,
+      "kind": "pypdf-final-element-id-joined-with-page-footer"
+    },
+    {
+      "documentId": "6617283",
+      "pdfPage": 102,
+      "kind": "pypdf-final-element-id-joined-with-page-footer"
+    }
+  ],
+  "readableSourceHashesVerified": 6,
+  "all667RowsCompared": true,
+  "unmappedFieldsRemainNull": true,
+  "allInventoriesRemainIncomplete": true,
+  "visualSpotCheckedRows": 54,
+  "humanApproved": false,
+  "negativeLayoutTests": {
+    "command": "python -m unittest discover -s scripts -p test_instruction_pdf_import.py -v",
+    "passed": 5,
+    "failed": 0,
+    "syntheticFixturesAreInventoryEvidence": false
+  }
+}

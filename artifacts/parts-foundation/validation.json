@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "version": "0.4.0",
+  "checks": {
+    "unitAndApi": { "command": "npm test", "filesPassed": 24, "testsPassed": 414 },
+    "pdfLayout": { "command": "python scripts/test_instruction_pdf_import.py", "testsPassed": 5 },
+    "developmentBrowser": { "command": "npm run test:e2e", "scenariosPassed": 4, "realApi": true, "realWebglPixels": true, "mobileWidth": 390 },
+    "compiledPreview": { "command": "npm run test:preview", "scenariosPassed": 2, "realWebglPixels": true, "oneOriginAssetsAndApi": true },
+    "build": { "command": "npm run build", "passed": true, "includesTypecheck": true, "largeChunkWarningRemains": true },
+    "sourceBytesInGitIndex": { "nativeFilesVerifiedAgainstSha256": 968, "passed": true, "upstreamLineEndingsPreserved": true }
+  },
+  "scope": {
+    "currentBrowserTests": "Part Lab and generation authenticity gates",
+    "legacyBrowserGenerationFlows": "retained as historical files; excluded from current default Playwright scope because production generation is intentionally paused",
+    "pdfTo3d": false,
+    "elementToDesignMappingsVerified": 0,
+    "generatableParts": 0,
+    "verifiedParts": 0,
+    "physicalBuildsVerified": 0
+  }
+}

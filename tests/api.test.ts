@@ -15,7 +15,7 @@ async function post(body: unknown) {
 }
 
 beforeAll(async () => {
-  server = createApp({ provider, staticDir: false }).listen(0, '127.0.0.1');
+  server = createApp({ legacyGenerationPolicy: 'test-fixture', provider, staticDir: false }).listen(0, '127.0.0.1');
   await new Promise<void>(resolve => server.once('listening', resolve));
   const address = server.address();
   if (!address || typeof address === 'string') throw new Error('Missing test address');
@@ -100,7 +100,7 @@ describe('HTTP API', () => {
 
   it('returns a safe error when a provider throws private internal details', async () => {
     const failing: SetInventoryProvider = { source: 'mock', getSetInventory: async () => { throw new Error('secret-key-private'); } };
-    const isolated = createApp({ provider: failing, staticDir: false }).listen(0, '127.0.0.1');
+    const isolated = createApp({ legacyGenerationPolicy: 'test-fixture', provider: failing, staticDir: false }).listen(0, '127.0.0.1');
     await new Promise<void>(resolve => isolated.once('listening', resolve));
     const address = isolated.address();
     if (!address || typeof address === 'string') throw new Error('Missing test address');

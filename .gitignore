@@ -8,4 +8,8 @@ coverage/
 test-results/
 playwright-report/
 *.log
-data/
+__pycache__/
+*.pyc
+data/*
+!data/parts-foundation/
+data/parts-foundation/private/

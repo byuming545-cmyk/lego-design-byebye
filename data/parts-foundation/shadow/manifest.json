@@ -1,0 +1,1664 @@
+{
+  "schemaVersion": 1,
+  "library": "LDCadShadowLibrary",
+  "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+  "sourceRoot": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/",
+  "license": "CC-BY-SA-4.0",
+  "attribution": "Roland Melkert and LDCad Shadow Library contributors",
+  "modified": false,
+  "selection": "Shadows matching the pinned LDraw geometry closure plus recursive SNAP_INCL references. Selection does not imply validation or PDF element-to-design mapping.",
+  "files": [
+    {
+      "path": "p/axl3hol8.dat",
+      "bytes": 652,
+      "sha256": "da9e3116a4a957e31957c38cf7e55084293fc49b36966d2420a1bb57a8ddeda3",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/axl3hol8.dat"
+    },
+    {
+      "path": "p/axl3hole.dat",
+      "bytes": 642,
+      "sha256": "8c95dd62bbd6a5e246a583919cf4e1a9766343445637ad013bf6ae48b08d9ccd",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/axl3hole.dat"
+    },
+    {
+      "path": "p/axlehol5.dat",
+      "bytes": 723,
+      "sha256": "8f1dcfd565e72baae18f27e3b7daf5d2e636219e038cc3c45bb717749ea13819",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/axlehol5.dat"
+    },
+    {
+      "path": "p/clip6.dat",
+      "bytes": 300,
+      "sha256": "a758eab7eccf9126ec377eb831e24a3bb04c5db6a84a35b1b5bfc0a75be7f643",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/clip6.dat"
+    },
+    {
+      "path": "p/connect.dat",
+      "bytes": 283,
+      "sha256": "d084361faf2441fca20c2148763a64884a065d20f7435d7ec9da3019ef22e30e",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connect.dat"
+    },
+    {
+      "path": "p/connect8.dat",
+      "bytes": 309,
+      "sha256": "b4d140f0fe8135dad7e1e798fe2b2211b52cddd8f9e09fb808d4dd6edf603ff8",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connect8.dat"
+    },
+    {
+      "path": "p/connhol2.dat",
+      "bytes": 321,
+      "sha256": "5a9b8fe861444088dec2c30a8b5851873c7a859fd451900dfff06b9efe552979",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhol2.dat"
+    },
+    {
+      "path": "p/connhol3.dat",
+      "bytes": 398,
+      "sha256": "e40afafb575f2f3d88f15536be8ae8a71ed81e4392367f7c28ad0f4e2987232a",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhol3.dat"
+    },
+    {
+      "path": "p/connhole.dat",
+      "bytes": 317,
+      "sha256": "1fe9a793ea6d0a60b7956536d616fac23ba5f2c778fa2eee15cf02001226f63e",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhole.dat"
+    },
+    {
+      "path": "p/stud.dat",
+      "bytes": 242,
+      "sha256": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat"
+    },
+    {
+      "path": "p/stud2.dat",
+      "bytes": 445,
+      "sha256": "62e2ba6afee204d3e4a457d026569e6114e99f1fe6a4c3524b5af93a573570eb",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud2.dat"
+    },
+    {
+      "path": "p/stud2a.dat",
+      "bytes": 582,
+      "sha256": "d316e281be1503e4b98cba6274f3974841851686d11c779da1397583bd0efb79",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud2a.dat"
+    },
+    {
+      "path": "p/stud3.dat",
+      "bytes": 268,
+      "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat"
+    },
+    {
+      "path": "p/stud4.dat",
+      "bytes": 493,
+      "sha256": "46ea6518da00e1da088ff71b86b326d435982b9f7ce39372fffd9ee99df38f2d",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud4.dat"
+    },
+    {
+      "path": "p/stud4o.dat",
+      "bytes": 289,
+      "sha256": "cd593dfee734bccf08b57db82799d477d429df18e17bee4785d692b25ed30210",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud4o.dat"
+    },
+    {
+      "path": "p/stud4od.dat",
+      "bytes": 306,
+      "sha256": "f6f68296cefa64a731eaeedcee5ad5493e970dd25b09e5b0da2969e97809d8aa",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud4od.dat"
+    },
+    {
+      "path": "p/wpin.dat",
+      "bytes": 257,
+      "sha256": "49309e3705533a082a59a54c6b5b0f49da792e28040bc66c302b6724f21ee334",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/wpin.dat"
+    },
+    {
+      "path": "p/wpin2.dat",
+      "bytes": 241,
+      "sha256": "abc51385fed65f2cdef629d0e06e6adc602897deeb0d021bdd7363c1d6d92b5f",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/wpin2.dat"
+    },
+    {
+      "path": "parts/11211.dat",
+      "bytes": 382,
+      "sha256": "80853cec6ebeb838d15e4ae585be762c835b06b07b0c00123fb2835e07b3bf5d",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/11211.dat"
+    },
+    {
+      "path": "parts/11212.dat",
+      "bytes": 274,
+      "sha256": "73d89ea5c3f9b92ddce71d5c230272e00da613e3148dd278bb282483e055a9d8",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/11212.dat"
+    },
+    {
+      "path": "parts/11289.dat",
+      "bytes": 314,
+      "sha256": "7bba709ad95550f8e4fcc0fa438a3c54ddd53f7c8bd3b52cb80ca3b40c02c321",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/11289.dat"
+    },
+    {
+      "path": "parts/11290.dat",
+      "bytes": 583,
+      "sha256": "4a621742f7f2d300d13d672e7646a07bfb2e3df8ee8f813bcccef162e173c846",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/11290.dat"
+    },
+    {
+      "path": "parts/11291.dat",
+      "bytes": 287,
+      "sha256": "98eeda033189f09ca564a6e88ebeb6c9d202c667fc5939d52ab795c1462d00ec",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/11291.dat"
+    },
+    {
+      "path": "parts/11301.dat",
+      "bytes": 468,
+      "sha256": "5fde36a9a046c86180baf27a8b1dbea139d4f63a5bf2dda77a1ebafdb81c2179",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/11301.dat"
+    },
+    {
+      "path": "parts/13252.dat",
+      "bytes": 364,
+      "sha256": "3af7007024ca9d863b60ab4474877fca843126fcbd3641c7ca8ff90a0e789dcb",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/13252.dat"
+    },
+    {
+      "path": "parts/13547.dat",
+      "bytes": 276,
+      "sha256": "fe5453270ab6651b638699b754d28ba6de7c532d8d03e3a2214816fd25bbb293",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/13547.dat"
+    },
+    {
+      "path": "parts/14520.dat",
+      "bytes": 317,
+      "sha256": "186a34c8205ae0659a4ea22a3c94842979b0adc98cbc89ce27f2abf76cad6870",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/14520.dat"
+    },
+    {
+      "path": "parts/15573.dat",
+      "bytes": 321,
+      "sha256": "050cce8f6e8228f29ce290cf11dd31fa950c9ca54cac8c6cf0c47bbc25bee46e",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/15573.dat"
+    },
+    {
+      "path": "parts/16477.dat",
+      "bytes": 584,
+      "sha256": "796d406ed1c45d7d48138072d3a4e2cd8d8c29d7eff4d2269ae014c40eec35b1",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/16477.dat"
+    },
+    {
+      "path": "parts/18671.dat",
+      "bytes": 456,
+      "sha256": "4ef932734ca7f102f4c08504cc5d1ee673baacd25cedb1a17c107ab61fa5cb1b",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/18671.dat"
+    },
+    {
+      "path": "parts/18972.dat",
+      "bytes": 295,
+      "sha256": "afaaca2987760d6181a7c8eb48be9f91fbe4f61c98310d8e6668431a072cee35",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/18972.dat"
+    },
+    {
+      "path": "parts/18973.dat",
+      "bytes": 296,
+      "sha256": "5aeadeaf58860edb8fd4ad037b9157abed49a5c9edd11f303fb6c4441816301a",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/18973.dat"
+    },
+    {
+      "path": "parts/18974.dat",
+      "bytes": 380,
+      "sha256": "51cb69de81465ae6a287a78fd40a2e1e09717bd49c2a7a547fd1d80b21df184e",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/18974.dat"
+    },
+    {
+      "path": "parts/18975.dat",
+      "bytes": 507,
+      "sha256": "0f6561c5682d32174bd8b5af9a61e4ad276d8d36521c8e7110e5caff75d48f21",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/18975.dat"
+    },
+    {
+      "path": "parts/18990.dat",
+      "bytes": 343,
+      "sha256": "66fddcdd27acdcac25efe118d921ef2e65a32ba1dac8d2116cf58220179ca091",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/18990.dat"
+    },
+    {
+      "path": "parts/20684.dat",
+      "bytes": 372,
+      "sha256": "10db9191b9cf68039bb885abafbfc322a83ee579e19f38836ec30c20429927ad",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/20684.dat"
+    },
+    {
+      "path": "parts/21.dat",
+      "bytes": 290,
+      "sha256": "c04e880b708d22e56730b60fe65e2ca246a74ae537a716563f4ff7ce480cb59d",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/21.dat"
+    },
+    {
+      "path": "parts/22391.dat",
+      "bytes": 538,
+      "sha256": "f5d2d0e249fbab26deb331f230a026cd247aaf7b9f8991fac8bbd5571cc28cef",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/22391.dat"
+    },
+    {
+      "path": "parts/22483.dat",
+      "bytes": 383,
+      "sha256": "a78886daf3a96111f550188550b604437e286b5763cd26dc7e184ff1a2377480",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/22483.dat"
+    },
+    {
+      "path": "parts/2337.dat",
+      "bytes": 420,
+      "sha256": "a38e8e46ef26ca00a3180eea5e1356414046acc3854f72460f968bb65eb2a5e1",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/2337.dat"
+    },
+    {
+      "path": "parts/23448.dat",
+      "bytes": 323,
+      "sha256": "6b3b8804d2bb879cea4afc00a99d757121b9ea1d3225d39dd0add48e7cc0b64e",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/23448.dat"
+    },
+    {
+      "path": "parts/2352.dat",
+      "bytes": 286,
+      "sha256": "e3e72d51f8c61a24c3b556673ae84cd8239579215a1cfcf662f66d7749c47800",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/2352.dat"
+    },
+    {
+      "path": "parts/2399.dat",
+      "bytes": 363,
+      "sha256": "67f538aa75a45524bd177b6df4ff431af98265174d936c13690738c91e8f3959",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/2399.dat"
+    },
+    {
+      "path": "parts/2412b.dat",
+      "bytes": 438,
+      "sha256": "7f009a5099f9f4f380f5fc46a3b469e40cdc2b9a179f4d865bef871c87160947",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/2412b.dat"
+    },
+    {
+      "path": "parts/24151.dat",
+      "bytes": 446,
+      "sha256": "240f208f69b673937d554ccdb47ecd3a506e62b949ab8a15c8cae13ca3502c2c",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/24151.dat"
+    },
+    {
+      "path": "parts/2422.dat",
+      "bytes": 457,
+      "sha256": "241a57296bb9bf30230d4020b87bbcc608fcc2658bff36fc53f5399bad94dc33",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/2422.dat"
+    },
+    {
+      "path": "parts/24299.dat",
+      "bytes": 277,
+      "sha256": "07e5942b0e4414cd7e3e3885407bef4fe52e808cdc3b20085376e14a69a4b9df",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/24299.dat"
+    },
+    {
+      "path": "parts/24307.dat",
+      "bytes": 277,
+      "sha256": "76d3b517e701d6f66034ceb3409be0d747279d5187420ef3f96b30e89aa5ad49",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/24307.dat"
+    },
+    {
+      "path": "parts/2436a.dat",
+      "bytes": 303,
+      "sha256": "3300fafdd830ce4b167c7b1e9e39834664d2e7d8898f63c83c3538718e35c99b",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/2436a.dat"
+    },
+    {
+      "path": "parts/2436b.dat",
+      "bytes": 256,
+      "sha256": "394489afe81dc7a8e679333e70c3bfd8ea6355a3a871554accccfa26a3f8b277",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/2436b.dat"
+    },
+    {
+      "path": "parts/2445.dat",
+      "bytes": 274,
+      "sha256": "0490e0a17a61f33f7b6c2c3da07c06c674adb02b853c7bf213bf2f94b41cdda8",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/2445.dat"
+    },
+    {
+      "path": "parts/2456.dat",
+      "bytes": 275,
+      "sha256": "a7f701c3a3de6043fd25b61d8d4ccfcb5775e3a7e5fac0b64caaef9473638069",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/2456.dat"
+    },
+    {
+      "path": "parts/28326.dat",
+      "bytes": 288,
+      "sha256": "fd351816310e529096a3d61d6da86bcfd9fd7dc38563d02b91429a8bbb088edf",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/28326.dat"
+    },
+    {
+      "path": "parts/28802.dat",
+      "bytes": 313,
+      "sha256": "a3f522f09fad2c20c63168fdb129d33c1c4da654bf08f5e3a112468e0c17b0fa",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/28802.dat"
+    },
+    {
+      "path": "parts/29115.dat",
+      "bytes": 310,
+      "sha256": "e4b476e1d81c3bb94aa23964bb1bc1034326573f15b33a9b813d42a0363efd72",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/29115.dat"
+    },
+    {
+      "path": "parts/29120.dat",
+      "bytes": 285,
+      "sha256": "fc585724734e6b76e34686bb8a3fa9f8505f476c33eda0db242490e73e217afe",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/29120.dat"
+    },
+    {
+      "path": "parts/2916.dat",
+      "bytes": 285,
+      "sha256": "2a4fff5e2ae86d3397ba6ac67e0bca3502378059c5968ef742db28cd94202cd0",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/2916.dat"
+    },
+    {
+      "path": "parts/3003.dat",
+      "bytes": 228,
+      "sha256": "0fa52e90b73dc74d42da6464778d62d0bdefd26f362ae78d9c97789ee8af29a0",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3003.dat"
+    },
+    {
+      "path": "parts/3004.dat",
+      "bytes": 226,
+      "sha256": "a5b07e7e5afd8ff0a3f8d6879ed3ad6c2ab20a0351817a6dab8c79fdac20786f",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3004.dat"
+    },
+    {
+      "path": "parts/3006.dat",
+      "bytes": 276,
+      "sha256": "fcadd74a617724b1317f05625f06a9bea7a69b84004dadf7cb82853147da83ad",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3006.dat"
+    },
+    {
+      "path": "parts/3020.dat",
+      "bytes": 273,
+      "sha256": "e9569f38da6293da60cf8f64691b157e0cb1be8acc65f4eb095e8a756d23fad5",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3020.dat"
+    },
+    {
+      "path": "parts/30209.dat",
+      "bytes": 439,
+      "sha256": "811ebf7405d654713985fff5b7d977ff3c549d1785849cb78fd474c14532b563",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/30209.dat"
+    },
+    {
+      "path": "parts/3021.dat",
+      "bytes": 273,
+      "sha256": "e3c06bdcccc0a053c4c35afa646356474f438bcbb5d183a450b84bea2027cb19",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3021.dat"
+    },
+    {
+      "path": "parts/3022.dat",
+      "bytes": 357,
+      "sha256": "cb5a1f279ce92fda0a739dabebfd4ca48c1d5cb4c2fd38383b14888ccc622793",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3022.dat"
+    },
+    {
+      "path": "parts/3024.dat",
+      "bytes": 252,
+      "sha256": "91df6bb9521e8b381ccc6555c3ae24fed4d65d9ea4641f272b4a74277f041db7",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3024.dat"
+    },
+    {
+      "path": "parts/30250.dat",
+      "bytes": 557,
+      "sha256": "ff87d5816fbc05dc6cb0d75f800464380a2eb45d3843d739258dce7e973c3b22",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/30250.dat"
+    },
+    {
+      "path": "parts/3026.dat",
+      "bytes": 274,
+      "sha256": "3d0d6997820ec0bd1f0403cc575d32e84d25f3257231de5dfdedf54023aa9813",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3026.dat"
+    },
+    {
+      "path": "parts/30263.dat",
+      "bytes": 1218,
+      "sha256": "e5428126768edcbbcc500146d0d408d2a28cbf71094065e87aba8a123f4ffd6b",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/30263.dat"
+    },
+    {
+      "path": "parts/3027.dat",
+      "bytes": 274,
+      "sha256": "692e55485bce5fc93ef959ba6442059e2b9e5e9e88b5ef54022798c4aa78a816",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3027.dat"
+    },
+    {
+      "path": "parts/3028.dat",
+      "bytes": 274,
+      "sha256": "4cbd1b9485f410d54a9348b651122aa6e92337a708231bcb23136bba73993d1f",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3028.dat"
+    },
+    {
+      "path": "parts/3029.dat",
+      "bytes": 274,
+      "sha256": "388b409caa4629e0be9636655375a78cc91785287eff98256e75ce41af75006f",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3029.dat"
+    },
+    {
+      "path": "parts/3030.dat",
+      "bytes": 274,
+      "sha256": "2f0206ab3389eaa85efb43f43d6a97b82b978bb656ba3992ecd8a7a2e32e3697",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3030.dat"
+    },
+    {
+      "path": "parts/3031.dat",
+      "bytes": 273,
+      "sha256": "986a74f80d093ca81d6cdc5781b88f5e119ec67cedaa64c6442224e9951e0c9b",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3031.dat"
+    },
+    {
+      "path": "parts/3032.dat",
+      "bytes": 273,
+      "sha256": "a476699f4d8520aa5ac7c8cfff874c5be6d15c67257c18d628070f7fe8e8ba1a",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3032.dat"
+    },
+    {
+      "path": "parts/3033.dat",
+      "bytes": 274,
+      "sha256": "102bee002ab5a1d6dd8e63b6de82e22ce3525cdcf41e3dc12665c43c610c1b91",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3033.dat"
+    },
+    {
+      "path": "parts/3034.dat",
+      "bytes": 273,
+      "sha256": "18d64739c97946bba60807d2906183498204aca5e4acef50175857d38f81d6f0",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3034.dat"
+    },
+    {
+      "path": "parts/3035.dat",
+      "bytes": 273,
+      "sha256": "b4ee746f0c46b9b9b0c2af13424142b2d67053eddbf1619cae8f01e952998e77",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3035.dat"
+    },
+    {
+      "path": "parts/3036.dat",
+      "bytes": 273,
+      "sha256": "67d94611c67c264606058ade504d30b024dea036b5f32c1e7ce411d88967a1c6",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3036.dat"
+    },
+    {
+      "path": "parts/30374.dat",
+      "bytes": 322,
+      "sha256": "ea72990127a54f62bc09430581e249151ff99d58c4f34e4bbcd53fcdcc6e640a",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/30374.dat"
+    },
+    {
+      "path": "parts/3038.dat",
+      "bytes": 235,
+      "sha256": "d569238de62cb46001dde67a398d1d17ee4694d02c44059df7ceda215586a04c",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3038.dat"
+    },
+    {
+      "path": "parts/30382.dat",
+      "bytes": 546,
+      "sha256": "58cf2fe316a14d32df7e4eec1f7c811a43899bcfdef7f8c679faa79cccf19bc4",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/30382.dat"
+    },
+    {
+      "path": "parts/3041.dat",
+      "bytes": 242,
+      "sha256": "01b066dec5e01364b8179a960831c82326d39fa0a7a64a30ccae3e8be88340f9",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3041.dat"
+    },
+    {
+      "path": "parts/30602.dat",
+      "bytes": 381,
+      "sha256": "97cdbf3f3a36be7c070d8a207d4dce23f65c299efdb96bc0efc03abb6c1f9698",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/30602.dat"
+    },
+    {
+      "path": "parts/3070b.dat",
+      "bytes": 264,
+      "sha256": "d297a685321e98e41716ae9077716c86b92da1478fcb253e8ca9294cd1774fd2",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3070b.dat"
+    },
+    {
+      "path": "parts/32084.dat",
+      "bytes": 305,
+      "sha256": "2b1151e18bfd31a5efa38533272fffa4e901ecbd7907049b991f39f025bd6b3c",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/32084.dat"
+    },
+    {
+      "path": "parts/3460.dat",
+      "bytes": 270,
+      "sha256": "9d8c861c6212b3f7096fbd0342bcd1dffaec7307d4365ab2cfa069cc322bdd4f",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3460.dat"
+    },
+    {
+      "path": "parts/35789.dat",
+      "bytes": 392,
+      "sha256": "2bdeceea7a9e8774f9b6bc4e60bdda51fb21d6f2f7ea5fa470e4fce9da0e1234",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/35789.dat"
+    },
+    {
+      "path": "parts/3641.dat",
+      "bytes": 282,
+      "sha256": "8bbebd0f48e54343e48a1b77951f8e52e4de3d0efb76c6df60bc3a3103b63fca",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3641.dat"
+    },
+    {
+      "path": "parts/3666.dat",
+      "bytes": 270,
+      "sha256": "d1f3f90f11dd065491b30b234b949ba8302ccfed262fb5cf41d6cc3bb4975be4",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3666.dat"
+    },
+    {
+      "path": "parts/3673.dat",
+      "bytes": 624,
+      "sha256": "d472351e53f08a54b291ec0a9b3c4e9527b6fa5acadc5e2ff234f28b97fc8832",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3673.dat"
+    },
+    {
+      "path": "parts/36840.dat",
+      "bytes": 268,
+      "sha256": "94baa4d642798a9f482d2c3746fa1a0785e4cf830cd7c062718d17225514f4dc",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/36840.dat"
+    },
+    {
+      "path": "parts/36841.dat",
+      "bytes": 270,
+      "sha256": "85bc2f7436c0cd4b2b3c0f03527b53c4baeed4a4da940bf34dc8206041f2cd26",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/36841.dat"
+    },
+    {
+      "path": "parts/3700.dat",
+      "bytes": 398,
+      "sha256": "c231b2c6a1de6972015c634b5cb71c4316e855b199b8686887e7ac062d7dd0be",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3700.dat"
+    },
+    {
+      "path": "parts/3710.dat",
+      "bytes": 270,
+      "sha256": "13ff795c4eedf37e4336c29ba7fd3c142439a1f76085459917e9b3b4afd56bfb",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3710.dat"
+    },
+    {
+      "path": "parts/3787.dat",
+      "bytes": 256,
+      "sha256": "09401090395cf63faf8461cf393594fb79fb7294e363ce789a8a2105f7fc2927",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3787.dat"
+    },
+    {
+      "path": "parts/3788.dat",
+      "bytes": 242,
+      "sha256": "773cc57b531e45835eefdb9f4ecb406852f1ba1fdc70e584f061b425ed86ca0a",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3788.dat"
+    },
+    {
+      "path": "parts/3794b.dat",
+      "bytes": 364,
+      "sha256": "c5885fd8ab3de97ba0c6c310639660939b23c3b08970fe102a78ea6bf81399fc",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3794b.dat"
+    },
+    {
+      "path": "parts/3795.dat",
+      "bytes": 273,
+      "sha256": "948c0fb37807be84371df8c359ef3bf4ff665e837cf5bb9dc39e7997321238f6",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3795.dat"
+    },
+    {
+      "path": "parts/3832.dat",
+      "bytes": 274,
+      "sha256": "01d0dcda74e951de914df357e36d18b7a6cd4fe0495c11a91a63a293ff83d121",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3832.dat"
+    },
+    {
+      "path": "parts/3956.dat",
+      "bytes": 875,
+      "sha256": "4ef964ebd9b1c1d3de9aafff5cb3018f81a902076646edfc50037a24cdc08fec",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3956.dat"
+    },
+    {
+      "path": "parts/3958.dat",
+      "bytes": 273,
+      "sha256": "0dd6699d35ddf4152d4a98e7840ad3acbc0088c5e772cbcb571777273ee32bef",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3958.dat"
+    },
+    {
+      "path": "parts/4070.dat",
+      "bytes": 397,
+      "sha256": "704b73bdc9d0256e0be5773b3c61ef2df0896b9217fab6d1b857460be6af34d3",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/4070.dat"
+    },
+    {
+      "path": "parts/4079.dat",
+      "bytes": 280,
+      "sha256": "ff81cefae973c84c546ce375142851bda969fc99586d5070df45cf154f81dfb5",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/4079.dat"
+    },
+    {
+      "path": "parts/41682.dat",
+      "bytes": 408,
+      "sha256": "630f05d22d08ff268fe528cec34f4f19b8af0dc9bdf1f2e8231e3c0b3f79b690",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/41682.dat"
+    },
+    {
+      "path": "parts/41766.dat",
+      "bytes": 821,
+      "sha256": "f930965b827bc6e253bc5346254a185507700b6dcdfc540d464ab5a0117f857a",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/41766.dat"
+    },
+    {
+      "path": "parts/42023.dat",
+      "bytes": 406,
+      "sha256": "7252f839bbc664be8a6f13114c8ed585c788a46cf2fccd699347c0742f143781",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/42023.dat"
+    },
+    {
+      "path": "parts/42446.dat",
+      "bytes": 287,
+      "sha256": "e7237f421936dcc772349ead79e918939413186448f533c927987b312e076562",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/42446.dat"
+    },
+    {
+      "path": "parts/4282.dat",
+      "bytes": 274,
+      "sha256": "1bb3894778fb3cf8667f582684b99214ea76fd277a06af790e3c48d369af8a7d",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/4282.dat"
+    },
+    {
+      "path": "parts/43712.dat",
+      "bytes": 649,
+      "sha256": "333bf5161e09d704103ba5681ae6e8e1d4ff944d6d801f7c784265d059e3841e",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/43712.dat"
+    },
+    {
+      "path": "parts/44126.dat",
+      "bytes": 643,
+      "sha256": "52afa2969c454a1b15c440249f7a4bc3d8e166a2eaec7e412944d8144ad5a2a8",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/44126.dat"
+    },
+    {
+      "path": "parts/44674.dat",
+      "bytes": 243,
+      "sha256": "f55464fa8a0365040e68b836f7ea2f174b9719bf94f425125007adaddce5a305",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/44674.dat"
+    },
+    {
+      "path": "parts/44675.dat",
+      "bytes": 396,
+      "sha256": "05c9691b522ac5fedd5bd2cffab4154df62b11f9301843861bd69452fe327acc",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/44675.dat"
+    },
+    {
+      "path": "parts/44728.dat",
+      "bytes": 288,
+      "sha256": "f44c00fb5d333dc179b722aa9b188df14ab367efc64c23baba3b941a62c59116",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/44728.dat"
+    },
+    {
+      "path": "parts/4477.dat",
+      "bytes": 271,
+      "sha256": "3b5abbd41f82ce1d56223ac7699517ff2865dd0d4e0631242a50b1bc88d6d8b6",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/4477.dat"
+    },
+    {
+      "path": "parts/45410.dat",
+      "bytes": 918,
+      "sha256": "817dae4e19af248b4481740c1f238ce731d67618105a1729bde71ed5ea3d6c66",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/45410.dat"
+    },
+    {
+      "path": "parts/45411.dat",
+      "bytes": 626,
+      "sha256": "5c0f07cfdd7c0fcee94016df6c27f41719a4a18256c9ad4c17de93403ac93bdb",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/45411.dat"
+    },
+    {
+      "path": "parts/4585.dat",
+      "bytes": 405,
+      "sha256": "99064581f2bb964e575d537c04eaf9ae90ae202e83813f62e0a3939649a6403f",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/4585.dat"
+    },
+    {
+      "path": "parts/4598.dat",
+      "bytes": 867,
+      "sha256": "150ae5764668587389717ec95e2465dd4cc28789e21c8be718326a322469cce2",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/4598.dat"
+    },
+    {
+      "path": "parts/4600.dat",
+      "bytes": 291,
+      "sha256": "b4f9b4d191be2aa9a95c90ef9648ef79c0c713368450220ffdfe1a1e77e24659",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/4600.dat"
+    },
+    {
+      "path": "parts/4624.dat",
+      "bytes": 441,
+      "sha256": "97060b1442d758038a03d3250589b63d5c62ea74c37b4ab157e2c5d9a7dfe5cd",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/4624.dat"
+    },
+    {
+      "path": "parts/4732.dat",
+      "bytes": 727,
+      "sha256": "3f12deaa027756bc0876f748b9e9d1566d867d169e47948e0b7450894eedae36",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/4732.dat"
+    },
+    {
+      "path": "parts/47456.dat",
+      "bytes": 409,
+      "sha256": "3e88774366610d44e95b8135557d423df3e585724240ec94c982f34463b1586d",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/47456.dat"
+    },
+    {
+      "path": "parts/47457.dat",
+      "bytes": 407,
+      "sha256": "7dce46555a0eb6e4734406dc07f121bd2bb8ab023cf7f0afb105c82cbeffe41c",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/47457.dat"
+    },
+    {
+      "path": "parts/47458.dat",
+      "bytes": 316,
+      "sha256": "42ee419058d252bd4aff4ba81b3682aff060005411249566d48aa3569acf0d6e",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/47458.dat"
+    },
+    {
+      "path": "parts/47905.dat",
+      "bytes": 396,
+      "sha256": "413838af76c9171d94dab2ab6d4b27eea825e0034999d861fd2300d4eed3a187",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/47905.dat"
+    },
+    {
+      "path": "parts/48724.dat",
+      "bytes": 276,
+      "sha256": "731e76b70ab57859195e186caebe44045278ed5fa5aa77805ee14ee92eb37b54",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/48724.dat"
+    },
+    {
+      "path": "parts/48729b.dat",
+      "bytes": 420,
+      "sha256": "4337ee7e407f822d3d60b17dcd5baf973a0adc5fa12569cfee0043f49d968dc0",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/48729b.dat"
+    },
+    {
+      "path": "parts/49097.dat",
+      "bytes": 286,
+      "sha256": "a748a0b2a354db349e6d3c56fc8d5f39c8b19ddedcdd94c21c93500ce8f18678",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/49097.dat"
+    },
+    {
+      "path": "parts/50745.dat",
+      "bytes": 290,
+      "sha256": "e77ae6813f71d51cefbad605e7f3dab71be84684fd177000d6cc86fa9d6514af",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/50745.dat"
+    },
+    {
+      "path": "parts/5090.dat",
+      "bytes": 307,
+      "sha256": "d666b2030c8daee3eedb8d310bf21b629f84434ca68306e9dc26a1774b268ece",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/5090.dat"
+    },
+    {
+      "path": "parts/50947.dat",
+      "bytes": 236,
+      "sha256": "cd596489cc27c533ea5068b4790352231494f6a156dc63074586db9b7b10a03d",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/50947.dat"
+    },
+    {
+      "path": "parts/50950.dat",
+      "bytes": 406,
+      "sha256": "0a08cee4dfd95cf7a18a83cf2386e585db57e920870872dd7e5ac5548d874ce3",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/50950.dat"
+    },
+    {
+      "path": "parts/50967.dat",
+      "bytes": 358,
+      "sha256": "d250bb067fca2b01138646c869081421a051ee71c9c12a011367c5b5ba40e22f",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/50967.dat"
+    },
+    {
+      "path": "parts/52038.dat",
+      "bytes": 320,
+      "sha256": "5d94059280e2935828f60eec3e1b40b1030e4f459b2d0250bdfd74458737be1e",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/52038.dat"
+    },
+    {
+      "path": "parts/52107.dat",
+      "bytes": 381,
+      "sha256": "52cd661f40f37bcf1226b59913b922b546b5ff54b3320a6bf3e03f89b08ee82b",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/52107.dat"
+    },
+    {
+      "path": "parts/54091.dat",
+      "bytes": 829,
+      "sha256": "c15ef5a8b7f36c8ad9ecd589f63b4e4425e8a93a01791ea6e9195054984cbd1c",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/54091.dat"
+    },
+    {
+      "path": "parts/5712.dat",
+      "bytes": 511,
+      "sha256": "adf973f7976c256fc49bfdf6c83330427f1dde44d6278509cc9b8603fb93bb87",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/5712.dat"
+    },
+    {
+      "path": "parts/60212.dat",
+      "bytes": 342,
+      "sha256": "3b611af5b7446ed5fe66556f3480c7b97bc31afd43a18867656135553f941b7b",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/60212.dat"
+    },
+    {
+      "path": "parts/60470b.dat",
+      "bytes": 375,
+      "sha256": "7c140769229ab16d8ce7343660f7c339b82b7a01a1de6f23f0b13c4f5d6134a4",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/60470b.dat"
+    },
+    {
+      "path": "parts/6111.dat",
+      "bytes": 273,
+      "sha256": "c2ee7aa91a9a9f1a85df51c927684931336f4abb9b4a0f8caf22d0699bca828a",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/6111.dat"
+    },
+    {
+      "path": "parts/61487.dat",
+      "bytes": 813,
+      "sha256": "eedaac6f0ff50ad56e87f0b905d79060e10a5043d4e7f9ca67d698a982569af6",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/61487.dat"
+    },
+    {
+      "path": "parts/61678.dat",
+      "bytes": 422,
+      "sha256": "e4303f6bf9fc43b9cdf2dff35f8c30c58c78773be2c01b0f72b575630c556da5",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/61678.dat"
+    },
+    {
+      "path": "parts/62360.dat",
+      "bytes": 379,
+      "sha256": "5def407a5c6ef6c33f7a3148fa1e61f98af0ebd740788a908d9ec3bff3446d94",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/62360.dat"
+    },
+    {
+      "path": "parts/62361.dat",
+      "bytes": 324,
+      "sha256": "6f20183f5bf876b2bfd66e99c522df77c65ddecc54be73310eb0319d2af80c3b",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/62361.dat"
+    },
+    {
+      "path": "parts/64570.dat",
+      "bytes": 310,
+      "sha256": "c01293eb9615a639a7b8296794f04e0798c97fb3b153fbad61889b51342b0b5e",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/64570.dat"
+    },
+    {
+      "path": "parts/70681.dat",
+      "bytes": 385,
+      "sha256": "a6a7bbc7cb6eac42a9875946a2b244c628518e07221257614ba259d5d239b7ab",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/70681.dat"
+    },
+    {
+      "path": "parts/73825.dat",
+      "bytes": 268,
+      "sha256": "9343cdba558c38cf5355d0ebf2107b075afb476c609b5bfb7097a9c28f1d107f",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/73825.dat"
+    },
+    {
+      "path": "parts/79389.dat",
+      "bytes": 270,
+      "sha256": "801441b84e3354939b37c69c2ba5d67312a386e0f023226c5fd541dd7694b20b",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/79389.dat"
+    },
+    {
+      "path": "parts/85970.dat",
+      "bytes": 481,
+      "sha256": "1b12d734860bc28d2f810982fa198dd78ee49b2f3cdec4800d23776030c50081",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/85970.dat"
+    },
+    {
+      "path": "parts/87087.dat",
+      "bytes": 370,
+      "sha256": "932289b346244f2d73b1b14653ef8adbb7254080cf01e07c3cf79051756dfd65",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/87087.dat"
+    },
+    {
+      "path": "parts/87580.dat",
+      "bytes": 253,
+      "sha256": "5a37cdb64d5e94d1435e504cc4e622f59c0f1901331d59bf4167be299887dfa7",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/87580.dat"
+    },
+    {
+      "path": "parts/91988.dat",
+      "bytes": 275,
+      "sha256": "d1659dd382bf0c3e2db1a12d948b8a1ac7dad7336a8568431616ee9fbc145448",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/91988.dat"
+    },
+    {
+      "path": "parts/93274.dat",
+      "bytes": 283,
+      "sha256": "54b68f0b89a49b267d70f760db55a62c17271e5dae93aa8f0aab67ac9ffd8d14",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/93274.dat"
+    },
+    {
+      "path": "parts/93590.dat",
+      "bytes": 292,
+      "sha256": "accc38b24804c03a9ea8203437d6b381fead1226be6e4450efdf99b99ba2b384",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/93590.dat"
+    },
+    {
+      "path": "parts/98282.dat",
+      "bytes": 256,
+      "sha256": "942538a43c20923fb3663119393772fa9e778558e5885bc75e8da3370e33a7ce",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/98282.dat"
+    },
+    {
+      "path": "parts/98287.dat",
+      "bytes": 405,
+      "sha256": "c5fe895514148c4ee5b6f7364d50f80c8fffc47ca679d8ef7c219d7e4c5860dc",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/98287.dat"
+    },
+    {
+      "path": "parts/99206.dat",
+      "bytes": 304,
+      "sha256": "0b6486eaa97213ab048b2a9692ebe6e49597bb7c6822aad5e283cee1431f008b",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/99206.dat"
+    },
+    {
+      "path": "parts/99207.dat",
+      "bytes": 286,
+      "sha256": "f26234e3824ca1f8794f952fb19a210641231f023e4cf01ea327d294970e358c",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/99207.dat"
+    },
+    {
+      "path": "parts/99780.dat",
+      "bytes": 286,
+      "sha256": "258b58535c1f8f959327591d8289ef6ee86538b38fe272a3f434e0c22bb889bf",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/99780.dat"
+    },
+    {
+      "path": "parts/99781.dat",
+      "bytes": 288,
+      "sha256": "9dedbe27266167f573659695b57eaf09b48da285fa13ff5c2486cd3f154ba6b3",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/99781.dat"
+    },
+    {
+      "path": "parts/s/10312s02.dat",
+      "bytes": 384,
+      "sha256": "2504811c13024779a57839466b36b473b6c8dbd46ed6ef1cae78f1f90ceef6dc",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/10312s02.dat"
+    },
+    {
+      "path": "parts/s/11291s01.dat",
+      "bytes": 374,
+      "sha256": "ad31170f99b32ee69b51882d571e7b2be1dcbb141f0d6f12356d601ffdc2e7d9",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/11291s01.dat"
+    },
+    {
+      "path": "parts/s/11477s01.dat",
+      "bytes": 362,
+      "sha256": "b604c88094ad1e25c1fb230ed4b241c80f7d18d623586f4a8f7711f3fb365fa7",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/11477s01.dat"
+    },
+    {
+      "path": "parts/s/14769s01.dat",
+      "bytes": 480,
+      "sha256": "78753e6e6b512c9842a0cd94d53fd3fb74095ffb43e29ac7d537fd2bce845ec9",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/14769s01.dat"
+    },
+    {
+      "path": "parts/s/15068s01.dat",
+      "bytes": 407,
+      "sha256": "25ffb2872600fa475c177dc1d140228cec124d3bb5eddc2d2c5b7ecd58fd0e5b",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/15068s01.dat"
+    },
+    {
+      "path": "parts/s/15625s01.dat",
+      "bytes": 409,
+      "sha256": "462ed49fbf0edec9506f99224600094ccafc92468147a2dc7fd587348b8f59fb",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/15625s01.dat"
+    },
+    {
+      "path": "parts/s/18671s01.dat",
+      "bytes": 466,
+      "sha256": "10afd3020d83623253f4984c9c7ff90dfde1a8a701f85cd51f33fd69360d2807",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/18671s01.dat"
+    },
+    {
+      "path": "parts/s/18973s01.dat",
+      "bytes": 309,
+      "sha256": "30e9c769d58075394813faa6d9e9051d460bf10fd71c19676b2c65a1be2c4676",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/18973s01.dat"
+    },
+    {
+      "path": "parts/s/19212s01.dat",
+      "bytes": 320,
+      "sha256": "39fddabd6581bb47cfb7636db2d9f585dcb363302999b7f331c11e88caa4a035",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/19212s01.dat"
+    },
+    {
+      "path": "parts/s/21849s01.dat",
+      "bytes": 359,
+      "sha256": "d00ec1154230ccf412706d47006a4d33fa161a69c9db3389bd3e7630ae2f4622",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/21849s01.dat"
+    },
+    {
+      "path": "parts/s/2336s01.dat",
+      "bytes": 1112,
+      "sha256": "966a17767a4a913490ae23216bcdd5254d0a4fc6c40f6676ece707cda7cc03b1",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/2336s01.dat"
+    },
+    {
+      "path": "parts/s/2418s01.dat",
+      "bytes": 360,
+      "sha256": "7f8e12f1b52d74ba0bcd84bc932160a6c711c544e1cfba670d2f12d3b8a77f13",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/2418s01.dat"
+    },
+    {
+      "path": "parts/s/24309s01.dat",
+      "bytes": 403,
+      "sha256": "d9e8370177b0038ed568717ad4657d5a859e67a023b7b97a11ae9dc47f221fff",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/24309s01.dat"
+    },
+    {
+      "path": "parts/s/2431s01.dat",
+      "bytes": 304,
+      "sha256": "7bb645d25082ca1e1cc8502a69a925f8252408097b416627638cb8cffa654d39",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/2431s01.dat"
+    },
+    {
+      "path": "parts/s/2513s01.dat",
+      "bytes": 395,
+      "sha256": "69ec0d6aba433e164a96d46f3dd079490ef6be2780790bdf194fa8c0ce539b4c",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/2513s01.dat"
+    },
+    {
+      "path": "parts/s/26603s01.dat",
+      "bytes": 291,
+      "sha256": "0d74079769dc0de2429045f6782861ec6f3126545f3a9ce460870c0f92176f4c",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/26603s01.dat"
+    },
+    {
+      "path": "parts/s/29115s01.dat",
+      "bytes": 702,
+      "sha256": "af92fefdf85d16b753097b7376119afc70520aee28e3d37595fac3945c4d57e1",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/29115s01.dat"
+    },
+    {
+      "path": "parts/s/3001s01.dat",
+      "bytes": 333,
+      "sha256": "a6ad960237eb80e563d3316d0f8e9af3b0a8220232af6d90997ebfe3c587a24f",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3001s01.dat"
+    },
+    {
+      "path": "parts/s/3002s01.dat",
+      "bytes": 325,
+      "sha256": "413826aec8d8df3a71490f19263fa571f115623a75d1aa04eefe27cf503d9964",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3002s01.dat"
+    },
+    {
+      "path": "parts/s/3003s01.dat",
+      "bytes": 388,
+      "sha256": "34e1c54b2fdf52053c8c46def9019254a6562f58a4ac18757e24174daba5ecaa",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3003s01.dat"
+    },
+    {
+      "path": "parts/s/3003s02.dat",
+      "bytes": 310,
+      "sha256": "736b15d90b9606a8f7fc50f1938817813bf16c464299a992d149c1a99e2714b3",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3003s02.dat"
+    },
+    {
+      "path": "parts/s/3004s01.dat",
+      "bytes": 297,
+      "sha256": "2a6763330e98a7e7c0d50d5c7465a966882ee76829939d70d089d789386fab9d",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3004s01.dat"
+    },
+    {
+      "path": "parts/s/3005s01.dat",
+      "bytes": 279,
+      "sha256": "a2b6ae111a59f79d1ceb4a39dc8be20eed308b9f4e4153bf17501bd70a0dad59",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3005s01.dat"
+    },
+    {
+      "path": "parts/s/3007s01.dat",
+      "bytes": 300,
+      "sha256": "81a128419a861e2d5573f459d5ea63ec1ffe91b73ea417e380fc184edfc21f0f",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3007s01.dat"
+    },
+    {
+      "path": "parts/s/3008s01.dat",
+      "bytes": 297,
+      "sha256": "c1b42817d35ed38616d8cc626cbfca5d6cf250ee40e21aeb319a203d474cc402",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3008s01.dat"
+    },
+    {
+      "path": "parts/s/3009s01.dat",
+      "bytes": 297,
+      "sha256": "fb5b8435b5e7444888a1eca5bde7296dfafd731a6c445f3c8e836a6294693604",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3009s01.dat"
+    },
+    {
+      "path": "parts/s/3010s01.dat",
+      "bytes": 322,
+      "sha256": "5b5c31f6e66c86d9c42236e63764ab17df585945208ba456c4601b8efaf99357",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3010s01.dat"
+    },
+    {
+      "path": "parts/s/3023bs01.dat",
+      "bytes": 354,
+      "sha256": "521206c3d02ef8c5005e80e5e78214417436441976dbc2d9ce598f935ec5b703",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3023bs01.dat"
+    },
+    {
+      "path": "parts/s/3024s01.dat",
+      "bytes": 277,
+      "sha256": "e8db69689a7decbf37f498bd7b6f1f7154ee7eaee662dced4c125816ddcd6d01",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3024s01.dat"
+    },
+    {
+      "path": "parts/s/30250s01.dat",
+      "bytes": 568,
+      "sha256": "fa3bc8d6c6a114374cb35bc2ed76cdf565291c753c2fb7b572d45bf8d8f3e223",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/30250s01.dat"
+    },
+    {
+      "path": "parts/s/3038s01.dat",
+      "bytes": 393,
+      "sha256": "3cd524e964b185821b33cfcdda3d6aedb3389584885ac64667aae1a7c4da62ae",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3038s01.dat"
+    },
+    {
+      "path": "parts/s/3039s01.dat",
+      "bytes": 393,
+      "sha256": "bbc8d0d73ffab4d239fcd600a3c3a6ab09e702f70eb520fb6c77a8c7367d2fc8",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3039s01.dat"
+    },
+    {
+      "path": "parts/s/3040s01.dat",
+      "bytes": 357,
+      "sha256": "54a7e6bf4dc95a2a9e14cf771dd117a4da44bf4b3232aacfef87b54fa8827458",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3040s01.dat"
+    },
+    {
+      "path": "parts/s/3041s01.dat",
+      "bytes": 314,
+      "sha256": "91e13d8c4cf1971ad4d94bcc7ed8920b013a6dff4738ea503891c563b5c2af43",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3041s01.dat"
+    },
+    {
+      "path": "parts/s/3068bs01.dat",
+      "bytes": 390,
+      "sha256": "5997ec47975d40ead5b786a02d1786031b93dbe7a8d8016b545f771e70d8ea1f",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3068bs01.dat"
+    },
+    {
+      "path": "parts/s/3069bs01.dat",
+      "bytes": 305,
+      "sha256": "5f4add909d77611a003815436be28418390055dcb37200f1d9d0e9c51299e42a",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3069bs01.dat"
+    },
+    {
+      "path": "parts/s/3070bs01.dat",
+      "bytes": 287,
+      "sha256": "6a96e1fecbcaa244bf6b3dda3d3a469a572b1ca67ae3f12e3aa27141ff8d621c",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3070bs01.dat"
+    },
+    {
+      "path": "parts/s/32084s01.dat",
+      "bytes": 585,
+      "sha256": "f17e0799ede495109ef8175cb23bc9ac67f26ed2dcc523d5e22065d4cab6ba79",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/32084s01.dat"
+    },
+    {
+      "path": "parts/s/3622s01.dat",
+      "bytes": 297,
+      "sha256": "e9da5630e966a2e41250d38e040baee00c00f76cab155a4218bb072a703fb0f4",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3622s01.dat"
+    },
+    {
+      "path": "parts/s/4162s01.dat",
+      "bytes": 292,
+      "sha256": "04e80a196a8c6c693aef8deaab83028fe6bf2688af9be004e2a6310b677d36c2",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4162s01.dat"
+    },
+    {
+      "path": "parts/s/41748s01.dat",
+      "bytes": 752,
+      "sha256": "44cdc4714b95f7892e019ebf7c29ce13df55beb4fceef61dc72ec1f8491e09cf",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/41748s01.dat"
+    },
+    {
+      "path": "parts/s/41765s01.dat",
+      "bytes": 514,
+      "sha256": "6832f29f70c0836dda578e8b2d1daffda16623ae2c6bceb88ac27d1afbe6e12d",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/41765s01.dat"
+    },
+    {
+      "path": "parts/s/41767s01.dat",
+      "bytes": 394,
+      "sha256": "f0e0baf07d6e5b37b8ed3242bbbdbb792b706ea37abd9dbe623dabc3774fde4d",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/41767s01.dat"
+    },
+    {
+      "path": "parts/s/41854s01.dat",
+      "bytes": 266,
+      "sha256": "60be0ef42a7ba626c3f8170201fbbedb27e50b9e21b0f421a9520eec5fd546ea",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/41854s01.dat"
+    },
+    {
+      "path": "parts/s/42021s01.dat",
+      "bytes": 635,
+      "sha256": "50c2b322e451ef1bf418cf7dbec29d8f4184c854d6bc4c22bf5110f5e45307f5",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/42021s01.dat"
+    },
+    {
+      "path": "parts/s/42022s01.dat",
+      "bytes": 656,
+      "sha256": "b23a095b5d22a03285b6bd7071e9b1a29a9dac47564e7a9e1f0cbd2cc7552109",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/42022s01.dat"
+    },
+    {
+      "path": "parts/s/42060s02.dat",
+      "bytes": 496,
+      "sha256": "4fb88dce5b4ea7f0b832bf3e11eccddf86e114c723bcccfefdd5c01b011f17d2",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/42060s02.dat"
+    },
+    {
+      "path": "parts/s/42862s01.dat",
+      "bytes": 388,
+      "sha256": "0602760f8cca86751a01cf3622db1bcb9c942a43614998137ff6b7f101da5ac7",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/42862s01.dat"
+    },
+    {
+      "path": "parts/s/42918s01.dat",
+      "bytes": 487,
+      "sha256": "1024f762df04f9eb8d60634840c12ae06d0a83e6032371e8c8f4df056ab712a3",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/42918s01.dat"
+    },
+    {
+      "path": "parts/s/43710s01.dat",
+      "bytes": 399,
+      "sha256": "f39951bb398ff7056958139c8c3be3c66bc5d544ce92932c30bf604d0e660234",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/43710s01.dat"
+    },
+    {
+      "path": "parts/s/43722s01.dat",
+      "bytes": 379,
+      "sha256": "713418c09f054b9500935d4f3ba8ae3fec67dd9e876455a78b696d6fbe4d3826",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/43722s01.dat"
+    },
+    {
+      "path": "parts/s/4855s01.dat",
+      "bytes": 306,
+      "sha256": "b82c941f89e5c54628095c423c1c8a750c5b2bd124188d7d02e08b1146079840",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4855s01.dat"
+    },
+    {
+      "path": "parts/s/50947s01.dat",
+      "bytes": 407,
+      "sha256": "31e202db476ab40288a0d8d19f24954585d915f63bc784e886eece67825dea44",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/50947s01.dat"
+    },
+    {
+      "path": "parts/s/54095s01.dat",
+      "bytes": 402,
+      "sha256": "7b7ae04ef63acd0056c423dcfe99e72f18bce33a0c9e005d5ca8d75a5521eada",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/54095s01.dat"
+    },
+    {
+      "path": "parts/s/54096s01.dat",
+      "bytes": 412,
+      "sha256": "8e3641d2bdc6bc5f5fd82f4667e32fe4939089ba5ffa9818a0137eccf0287d61",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/54096s01.dat"
+    },
+    {
+      "path": "parts/s/54200s01.dat",
+      "bytes": 285,
+      "sha256": "515ce0762d6b02f0c53e5a62bdbb2beb4959b345d2968392191278414cce6368",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/54200s01.dat"
+    },
+    {
+      "path": "parts/s/6087s01.dat",
+      "bytes": 813,
+      "sha256": "934970494230bbac4e2f8fbcf56dd6064de7f59dfd426b05b50c3dd0cb043f2e",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/6087s01.dat"
+    },
+    {
+      "path": "parts/s/61068s01.dat",
+      "bytes": 463,
+      "sha256": "9aa8b54bb5bfa1250f73b319ac49ff7c026e24b41f1002ccb972865f944fb172",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/61068s01.dat"
+    },
+    {
+      "path": "parts/s/61678s01.dat",
+      "bytes": 448,
+      "sha256": "c6d6d1a32d8a13665b750078547bc10240d3e5fd9c965ce9b4db3fdb9060435c",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/61678s01.dat"
+    },
+    {
+      "path": "parts/s/62360s01.dat",
+      "bytes": 385,
+      "sha256": "4f9d0fe1968d53add834616533ce903eb3a0b2b529fa2e4f3a2b386735d0e8dd",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/62360s01.dat"
+    },
+    {
+      "path": "parts/s/63864s01.dat",
+      "bytes": 293,
+      "sha256": "ea383e2c6d71c073e8ed4cab115cb2b32382f22fe57d328f5f86d31e8eb6c799",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/63864s01.dat"
+    },
+    {
+      "path": "parts/s/65632s01.dat",
+      "bytes": 321,
+      "sha256": "91c53626c323f9d19bdf8c1811401130f100d05d320fa5c9b89719d4c74a243c",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/65632s01.dat"
+    },
+    {
+      "path": "parts/s/65633s01.dat",
+      "bytes": 329,
+      "sha256": "53c6455390ae69df90103aeb296b1fe89c57da7d50d9a4ee5cb5176fae0da199",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/65633s01.dat"
+    },
+    {
+      "path": "parts/s/6567s02.dat",
+      "bytes": 412,
+      "sha256": "34c1c28a8bca4c2b58cbfbb4793c8f38ed052c8c9da1bd1f512b87b8f4cba852",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/6567s02.dat"
+    },
+    {
+      "path": "parts/s/6636s01.dat",
+      "bytes": 292,
+      "sha256": "d36e7e4ff02b5a0719c900fdd61a92ab4e6606124768755236126fa99be0e0c0",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/6636s01.dat"
+    },
+    {
+      "path": "parts/s/80177s01.dat",
+      "bytes": 518,
+      "sha256": "16a61b6e8b3be18dc04f3c1fd4929e196840e1724745331b7bd94e0028240d83",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/80177s01.dat"
+    },
+    {
+      "path": "parts/s/85984s01.dat",
+      "bytes": 303,
+      "sha256": "01fecb6c891232304c7aea038ecdee43f8e94b2ccf0f50f6a68050225e63379c",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/85984s01.dat"
+    },
+    {
+      "path": "parts/s/87079s01.dat",
+      "bytes": 299,
+      "sha256": "c4398281c9fbed9f56baa7c6c95e9369880d70e1254be883fee43b4ccf8f2a6a",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/87079s01.dat"
+    },
+    {
+      "path": "parts/s/87552s01.dat",
+      "bytes": 367,
+      "sha256": "e50a07b424862b60263f627d4c465261acde786707c51e780a34a10af4c4c2a7",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/87552s01.dat"
+    },
+    {
+      "path": "parts/s/93273s01.dat",
+      "bytes": 390,
+      "sha256": "fc81a1a5456bba100a778d57c8ce180931a0157733d83e86f1603661481e9283",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/93273s01.dat"
+    },
+    {
+      "path": "parts/s/93587s01.dat",
+      "bytes": 281,
+      "sha256": "631bb9011412863e022fcf95259f4b2c95edc710ee999575f3804e87a268871e",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/93587s01.dat"
+    },
+    {
+      "path": "parts/s/93589s01.dat",
+      "bytes": 601,
+      "sha256": "df85c89ec70408ce0c30c191125e9a0871e48982240213256642b5a1fc9e30aa",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/93589s01.dat"
+    },
+    {
+      "path": "parts/s/93597s01.dat",
+      "bytes": 417,
+      "sha256": "9ef9711d1b04c907c9800b7d38c7bbfb6c397b2246a4a541f367fd05df4a74f2",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/93597s01.dat"
+    },
+    {
+      "path": "parts/s/93604s01.dat",
+      "bytes": 332,
+      "sha256": "8f4520cef31ec336987448980f2ef659e9a778504f48318a66fc6aacefbddf3a",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/93604s01.dat"
+    },
+    {
+      "path": "parts/s/93606s01.dat",
+      "bytes": 487,
+      "sha256": "55596e78d0df9eb4058ae46505fd9a946a0bd26b9d471d41162a44c86aab4eeb",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/93606s01.dat"
+    },
+    {
+      "path": "parts/s/98835s01.dat",
+      "bytes": 432,
+      "sha256": "897abb24a41c2abc8d98a4907a08dc13e646c4f62410bd61a7aea5ae2b777596",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/98835s01.dat"
+    }
+  ]
+}

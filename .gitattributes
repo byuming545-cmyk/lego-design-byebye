@@ -1,2 +1,6 @@
 # Store generated CSV canonically while preserving Windows-friendly checkouts.
 artifacts/**/*.csv text eol=crlf
+# Native library checksums refer to the original bytes, including CRLF.
+data/parts-foundation/ldraw/files/** -text -whitespace
+data/parts-foundation/shadow/files/** -text -whitespace
+data/parts-foundation/ldraw/CA*.txt -text -whitespace

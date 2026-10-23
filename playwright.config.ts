@@ -5,6 +5,9 @@ import { randomUUID } from 'node:crypto';
 
 export default defineConfig({
   testDir: "./tests/e2e",
+  // Current production scope. Older generation workflows remain as historical
+  // fixtures; their HTTP/UI entry points are deliberately blocked in V0.4.
+  testMatch: 'parts-foundation.spec.ts',
   timeout: 60000,
   expect: { timeout: 15000 },
   fullyParallel: false,

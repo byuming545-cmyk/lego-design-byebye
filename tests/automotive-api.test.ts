@@ -30,7 +30,7 @@ const manual = {
   referenceImages: [{ angle: 'side', url: 'https://example.org/synthetic-side.jpg' }, { angle: 'front', url: 'https://example.org/synthetic-front.jpg' }],
 };
 async function start() {
-  server = createApp({ provider: new MissingRebrickableInventoryProvider(), staticDir: false }).listen(0, '127.0.0.1');
+  server = createApp({ legacyGenerationPolicy: 'test-fixture', provider: new MissingRebrickableInventoryProvider(), staticDir: false }).listen(0, '127.0.0.1');
   await new Promise<void>(resolve => server!.once('listening', resolve));
   const address = server.address();
   if (!address || typeof address === 'string') throw new Error('Missing automotive API test address');

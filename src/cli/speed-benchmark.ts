@@ -3,20 +3,20 @@ import { setGlobalProxyFromEnv } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { InventoryError, RebrickableInventoryProvider, enrichInventorySnapshot, type SetInventoryProvider } from '../inventory/index.js';
+import { InventoryError, RebrickableInventoryProvider, type SetInventoryProvider } from '../inventory/index.js';
 import { benchmarkExitCode, parseBenchmarkConfig, runSpeedBenchmark, writeBenchmarkReport, type BenchmarkSet } from '../speed/benchmark.js';
 import { createSpeedDemoInventory, SPEED_DEMO_SET_NUMBER } from '../speed/inventory.js';
-import { VERSION_METADATA } from '../speed/versions.js';
 
 export async function speedBenchmarkMain(args = process.argv.slice(2)): Promise<number> {
   setGlobalProxyFromEnv();
-  let setsInput: string | undefined, config: string | undefined, output: string | undefined, mock = false;
+  let setsInput: string | undefined, config: string | undefined, output: string | undefined, mock = false, legacyFixture = false;
   for (let index = 0; index < args.length; index++) {
     const option = args[index];
     if (option === '--help' || option === '-h') {
-      console.log('Usage: npm run benchmark:speed -- [--sets 76900,76901 | --config speed-benchmark.json] [--output directory-or-file.json] [--mock]\nReal mode requires REBRICKABLE_API_KEY from .env. Mock mode accepts only DEMO-SPEED. Exit codes: 0 all PASS, 1 failed/partial, 2 real online validation pending.');
+      console.log('Usage: npm run benchmark:speed -- --legacy-fixture [--sets 76900,76901 | --config speed-benchmark.json] [--output directory-or-file.json] [--mock]\nHistorical parametric algorithm fixture only; results never establish native geometry, source connections or generatable status. The explicit --legacy-fixture acknowledgement is required. Real inventory mode requires REBRICKABLE_API_KEY. Mock mode accepts only DEMO-SPEED. Exit codes: 0 fixture PASS, 1 failed/partial, 2 real online validation pending, 3 authenticity blocked.');
       return 0;
     }
+    if (option === '--legacy-fixture') { legacyFixture = true; continue; }
     if (option === '--mock') { mock = true; continue; }
     if (!['--sets', '--config', '--output'].includes(option)) throw new Error(`Unknown option: ${option}`);
     const value = args[++index];
@@ -24,6 +24,10 @@ export async function speedBenchmarkMain(args = process.argv.slice(2)): Promise<
     if (option === '--sets') { if (setsInput !== undefined) throw new Error('--sets may be provided once.'); setsInput = value; }
     if (option === '--config') { if (config !== undefined) throw new Error('--config may be provided once.'); config = value; }
     if (option === '--output') { if (output !== undefined) throw new Error('--output may be provided once.'); output = value; }
+  }
+  if (!legacyFixture) {
+    console.error('REAL_PARTS_FOUNDATION_REQUIRED: 旧版参数化 benchmark 已暂停。仅历史算法回归可显式使用 --legacy-fixture；结果不计入真实零件验证。');
+    return 3;
   }
   if (setsInput && config) throw new Error('Use either --sets or --config.');
   let sets: BenchmarkSet[];
@@ -37,18 +41,10 @@ export async function speedBenchmarkMain(args = process.argv.slice(2)): Promise<
   else if (!process.env.REBRICKABLE_API_KEY?.trim()) unavailableReason = new InventoryError('Rebrickable API Key 未配置。 Real online validation pending.', 'MISSING_API_KEY', 503);
   else provider = new RebrickableInventoryProvider(process.env.REBRICKABLE_API_KEY);
   const report = await runSpeedBenchmark({
+    // A legacy `supported` flag must not enrich real snapshots as `generatable`.
     sets, mode: mock ? 'mock' : 'real', provider, unavailableReason,
-    onInventoryAnalyzed: async (raw, inventory) => {
-      if (raw.source !== 'rebrickable' || !raw.snapshotId) return;
-      await enrichInventorySnapshot(raw.snapshotId, {
-        catalogVersion: VERSION_METADATA.partLibraryVersion,
-        totalQuantity: inventory.analysis.totalQuantity, supportedQuantity: inventory.analysis.supportedQuantity,
-        recognizedOnlyQuantity: inventory.analysis.partiallySupportedQuantity, unsupportedQuantity: inventory.analysis.unsupportedQuantity,
-        supportRatio: inventory.analysis.supportRate,
-        parts: inventory.items.map(item => ({ partId: item.partId, colorId: item.color.id, quantity: item.quantityAvailable, status: item.supported ? 'generatable' as const : item.support === 'partiallySupported' ? 'recognizedOnly' as const : 'unsupported' as const, category: item.category })),
-      });
-    },
   });
+  console.log('Historical parametric fixture: no native-geometry or physical verification is established.');
   const paths = await writeBenchmarkReport(report, output);
   console.log(report.onlineValidation);
   for (const set of report.sets) console.log(`${set.setNumber}\t${set.executionState}\t${set.result}\tsupport=${set.support ? `${set.support.quantityWeightedSupportedPercentage.toFixed(2)}%` : 'unrun'}\tgeneration=${set.generation.status}${set.errors.length ? `\t${set.errors.map(error => `${error.stage}:${error.code}: ${error.message}`).join(' | ')}` : ''}`);
