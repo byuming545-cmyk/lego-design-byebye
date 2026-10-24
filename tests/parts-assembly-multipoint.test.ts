@@ -37,13 +37,17 @@ describe('native multi-point consistency', () => {
     expect(disagreement.status).toBe('blocked'); expect(disagreement.issues.some((issue) => issue.code === 'rotation-disagreement')).toBe(true);
   });
 
-  it('does not turn the known large native collision limit into a multi-point production pass', async () => {
+  it('certifies the formerly partition-limited native pair with all eight mates and full solid proof', async () => {
     const geometryCheck = checkMultiPointConnection({ fixedPart: part('3001'), fixedPlacement: placement('3001'), movingPart: part('3020'), movingPlacement: placement('3020', 'plate', { rotation: IDENTITY_TRANSFORM.rotation, translation: [0, -8, 0] }) });
     expect(geometryCheck.matches).toHaveLength(8);
     const first = geometryCheck.matches[0], assemblyEngine = engine(), seed = await assemblyEngine.createAssembly('3001');
     const result = await assemblyEngine.attachPart(seed, { anchorInstanceId: 'root', anchorConnectionId: first.fixedConnectionId, partId: '3020', candidateConnectionId: first.movingConnectionId, twistDegrees: first.candidate.twistDeg });
-    expect(result.accepted).toBe(false); expect(result.graph.placements).toHaveLength(1); expect(result.graph.edges).toHaveLength(0);
-    expect(result.rejections.some((rejection) => rejection.code === 'collision-unresolved')).toBe(true);
+    expect(result.accepted).toBe(true); expect(result.graph.placements).toHaveLength(2); expect(result.graph.edges).toHaveLength(8);
+    expect(result.collision?.proof.completeSurfacePartition).toBe(true);
+    expect(result.collision?.proof.wholePairExempted).toBe(false);
+    expect((await assemblyEngine.validateGraph(result.graph)).valid).toBe(true);
+    const omitted = structuredClone(result.graph); omitted.edges.pop();
+    expect((await assemblyEngine.validateGraph(omitted)).valid).toBe(false);
   });
 
   it('records two actual physical mating edges in a clear native two-stud attachment, rejects omission and duplicate aliases', async () => {

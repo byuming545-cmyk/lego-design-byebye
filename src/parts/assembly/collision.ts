@@ -3,10 +3,10 @@ import type { ConnectionPenetrationZone } from './solver.js';
 import { createHash } from 'node:crypto';
 import { checkConnectionCompatibility, STANDARD_STUD_RULE_ID } from './compatibility.js';
 import { add, cross, distance, dot, isRigidTransform, length, normalize, rotate, scale, subtract, transformPoint } from './math.js';
-import { boundsOverlap, buildNativeCollisionProxy, polygonArea, splitConvexPolygon } from './proxy.js';
+import { boundsOverlap, buildNativeCollisionProxy, polygonArea, splitConvexPolygon, nativeBounds } from './proxy.js';
 import type { CollisionProxy, CollisionTriangle, MeshBounds, Plane, TriangleBvh } from './proxy.js';
 
-export const COLLISION_VERSION = 'native-closed-bvh-partition-1.0.0';
+export const COLLISION_VERSION = 'native-closed-bvh-local-partition-1.1.0';
 /** A numerical surface-comparison tolerance, not modified LEGO geometry. */
 export const COLLISION_TOLERANCE_LDU = 0.0001;
 const EPS = COLLISION_TOLERANCE_LDU;
@@ -24,6 +24,8 @@ export interface PairCollisionResult {
   toleranceLdu: number;
   triangleTests: number;
   checkedSurfacePatches: number;
+  spatialPartitionFallbacks: number;
+  classification: string;
   witness?: Vector3;
   proof: {
     broadPhaseOnly: boolean;
@@ -155,7 +157,7 @@ function intersectionPlanes(a: CollisionTriangle, b: CollisionTriangle): { a: Pl
   if (Math.min(Math.max(...valuesA), Math.max(...valuesB)) < Math.max(Math.min(...valuesA), Math.min(...valuesB)) - EPS) return null;
   return { a: [planeB], b: [planeA] };
 }
-function partitionFace(face: CollisionTriangle, planes: Plane[]): Vector3[][] | null {
+function partitionFace(face: CollisionTriangle, planes: Plane[], retainSlivers = false): Vector3[][] | null {
   let patches: Vector3[][] = [face.vertices];
   const used = new Set<string>();
   for (const plane of planes) {
@@ -168,14 +170,52 @@ function partitionFace(face: CollisionTriangle, planes: Plane[]): Vector3[][] | 
       const distances = patch.map(point => dot(point, plane.normal) - plane.offset);
       if (Math.min(...distances) >= -EPS || Math.max(...distances) <= EPS) { next.push(patch); continue; }
       const split = splitConvexPolygon(patch, plane, 1e-9);
-      if (split.positive.length >= 3 && polygonArea(split.positive, face.normal) > EPS * EPS) next.push(split.positive);
-      if (split.negative.length >= 3 && polygonArea(split.negative, face.normal) > EPS * EPS) next.push(split.negative);
+      if (split.positive.length >= 3 && polygonArea(split.positive, face.normal) > (retainSlivers ? 0 : EPS * EPS)) next.push(split.positive);
+      if (split.negative.length >= 3 && polygonArea(split.negative, face.normal) > (retainSlivers ? 0 : EPS * EPS)) next.push(split.negative);
     }
     patches = next;
     if (patches.length > MAX_PATCHES_PER_TRIANGLE) return null;
   }
   return patches;
 }
+/** Spatially local complete partitions of the unchanged source triangle. */
+function adaptivePartition(face: CollisionTriangle, other: CollisionProxy, deadline: number, consumeTest: () => boolean): Vector3[][] | null {
+  const pending = [{ face, depth: 0 }], output: Vector3[][] = [];
+  while (pending.length) {
+    if (performance.now() > deadline) return null;
+    const current = pending.pop()!;
+    const planes: Plane[] = [];
+    let exhausted = false;
+    const visit = (node: TriangleBvh) => {
+      if (exhausted || !boundsOverlap(current.face.bounds, node.bounds, EPS)) return;
+      if (node.triangles) for (const id of node.triangles) {
+        const opponent = other.triangles[id];
+        if (!boundsOverlap(current.face.bounds, opponent.bounds, EPS)) continue;
+        if (!consumeTest()) { exhausted = true; return; }
+        const intersection = intersectionPlanes(current.face, opponent);
+        if (intersection) planes.push(...intersection.a);
+      }
+      else { if (node.left) visit(node.left); if (node.right) visit(node.right); }
+    };
+    visit(other.bvh);
+    if (exhausted) return null;
+    const cells = partitionFace(current.face, planes, true);
+    if (cells) {
+      output.push(...cells);
+      if (output.length > MAX_TOTAL_PATCHES) return null;
+      continue;
+    }
+    if (current.depth >= 8) return null;
+    const [a, b, c] = current.face.vertices;
+    const ab = scale(add(a, b), 0.5), bc = scale(add(b, c), 0.5), ca = scale(add(c, a), 0.5);
+    for (const vertices of [[a, ab, ca], [ab, b, bc], [ca, bc, c], [ab, bc, ca]] as [Vector3, Vector3, Vector3][]) {
+      pending.push({ face: { ...current.face, vertices, bounds: nativeBounds(vertices) }, depth: current.depth + 1 });
+    }
+  }
+  const area = polygonArea(face.vertices, face.normal);
+  const delta = Math.abs(output.reduce((sum, cell) => sum + polygonArea(cell, face.normal), 0) - area); return delta <= EPS * EPS ? output : null;
+}
+
 function validateZone(zone: ConnectionPenetrationZone, parts: NativeAssemblyPart[], placements: NativePlacement[]): { source: boolean; spatial: boolean } {
   const invalid = { source: false, spatial: false };
   if (zone.kind !== 'cylinder' || zone.ruleId !== STANDARD_STUD_RULE_ID || !Array.isArray(zone.center) || zone.center.length !== 3 || !zone.center.every(Number.isFinite)
@@ -208,10 +248,10 @@ function validateZone(zone: ConnectionPenetrationZone, parts: NativeAssemblyPart
  * Penetration zones annotate a source interface; they never exempt solid volume.
  */
 function deriveNativePairCollision(fixedPart: NativeAssemblyPart, fixedPlacement: NativePlacement, movingPart: NativeAssemblyPart, movingPlacement: NativePlacement, penetrationZone?: ConnectionPenetrationZone): PairCollisionResult {
-  let triangleTests = 0, checkedSurfacePatches = 0;
+  let triangleTests = 0, checkedSurfacePatches = 0, spatialPartitionFallbacks = 0;
   const deadline = performance.now() + COLLISION_COMPUTATION_BUDGET_MS;
   const proof: PairCollisionResult['proof'] = { broadPhaseOnly: false, closedSourceProxies: false, completeSurfacePartition: false, containmentChecked: false, sourceEvidence: [], topology: [], penetrationZone: penetrationZone ?? null, penetrationZoneValidated: false, wholePairExempted: false };
-  const result = (status: PairCollisionResult['status'], reasonCode: string, reason: string, witness?: Vector3): PairCollisionResult => ({ status, reasonCode, reason, collisionVersion: COLLISION_VERSION, toleranceLdu: EPS, triangleTests, checkedSurfacePatches, proof, ...(witness ? { witness } : {}) });
+  const result = (status: PairCollisionResult['status'], reasonCode: string, reason: string, witness?: Vector3): PairCollisionResult => ({ status, reasonCode, reason, collisionVersion: COLLISION_VERSION, toleranceLdu: EPS, triangleTests, checkedSurfacePatches, spatialPartitionFallbacks, classification: status === 'collision' ? 'SOLID_SOLID_OVERLAP' : status === 'clear' ? (proof.broadPhaseOnly ? 'BROAD_PHASE_SEPARATED' : 'NATIVE_SOLID_CLEARANCE') : /limit|budget/.test(reasonCode) ? 'REQUIRES_HIGHER_RESOLUTION' : 'UNKNOWN_COMPLEX_GEOMETRY', proof, ...(witness ? { witness } : {}) });
   if (!isRigidTransform(fixedPlacement.transform) || !isRigidTransform(movingPlacement.transform)) return result('blocked', 'non-rigid-transform', 'Only finite proper rigid placements are accepted.');
   const zone = penetrationZone ? validateZone(penetrationZone, [fixedPart, movingPart], [fixedPlacement, movingPlacement]) : { source: true, spatial: true };
   if (!zone.source) return result('blocked', 'unverified-penetration-zone', 'The local penetration zone is not backed by a compatible source endpoint from each of the two parts.');
@@ -266,7 +306,11 @@ function deriveNativePairCollision(fixedPart: NativeAssemblyPart, fixedPlacement
       const face = own.triangles[index];
       if (performance.now() > deadline) return result('blocked', 'collision-computation-budget', 'The complete solid-surface computation exceeded its time budget; no clearance certificate is granted.');
       if (!boundsOverlap(face.bounds, other.bounds, EPS)) continue;
-      const patches = partitionFace(face, planes.get(index) ?? []);
+      let patches = partitionFace(face, planes.get(index) ?? []);
+      if (!patches) {
+        spatialPartitionFallbacks++;
+        patches = adaptivePartition(face, other, deadline, () => ++triangleTests <= MAX_TRIANGLE_TESTS && performance.now() <= deadline);
+      }
       if (!patches) return result('blocked', 'surface-partition-limit', 'A native surface requires more cells than the bounded complete partition can certify.');
       for (const patch of patches) {
         if (++checkedSurfacePatches > MAX_TOTAL_PATCHES) return result('blocked', 'surface-partition-limit', 'The complete surface-partition budget was exceeded.');

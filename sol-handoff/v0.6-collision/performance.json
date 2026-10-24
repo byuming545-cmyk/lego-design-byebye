@@ -1,0 +1,194 @@
+{
+  "baselineCommit": "2e60a8d",
+  "runs": 5,
+  "method": "same process, identical pinned geometry and poses; unique common translations avoid pair-certificate hits; proxy cache shared; no active test workers",
+  "physicalBuildVerified": false,
+  "results": [
+    {
+      "parts": [
+        "3020",
+        "3710"
+      ],
+      "samples": [
+        {
+          "iteration": 0,
+          "before": {
+            "ms": 81.519149,
+            "status": "blocked",
+            "reason": "surface-partition-limit",
+            "triangles": 1648,
+            "patches": 0
+          },
+          "after": {
+            "ms": 392.463607,
+            "status": "clear",
+            "reason": "native-solid-clearance",
+            "triangles": 3542,
+            "patches": 1789
+          }
+        },
+        {
+          "iteration": 1,
+          "before": {
+            "ms": 18.152070999999978,
+            "status": "blocked",
+            "reason": "surface-partition-limit",
+            "triangles": 1648,
+            "patches": 0
+          },
+          "after": {
+            "ms": 326.89649499999996,
+            "status": "clear",
+            "reason": "native-solid-clearance",
+            "triangles": 3542,
+            "patches": 1789
+          }
+        },
+        {
+          "iteration": 2,
+          "before": {
+            "ms": 13.92877800000008,
+            "status": "blocked",
+            "reason": "surface-partition-limit",
+            "triangles": 1648,
+            "patches": 0
+          },
+          "after": {
+            "ms": 318.530988,
+            "status": "clear",
+            "reason": "native-solid-clearance",
+            "triangles": 3542,
+            "patches": 1789
+          }
+        },
+        {
+          "iteration": 3,
+          "before": {
+            "ms": 12.990097999999989,
+            "status": "blocked",
+            "reason": "surface-partition-limit",
+            "triangles": 1648,
+            "patches": 0
+          },
+          "after": {
+            "ms": 295.09501899999987,
+            "status": "clear",
+            "reason": "native-solid-clearance",
+            "triangles": 3542,
+            "patches": 1789
+          }
+        },
+        {
+          "iteration": 4,
+          "before": {
+            "ms": 13.257524999999987,
+            "status": "blocked",
+            "reason": "surface-partition-limit",
+            "triangles": 1648,
+            "patches": 0
+          },
+          "after": {
+            "ms": 299.67883699999993,
+            "status": "clear",
+            "reason": "native-solid-clearance",
+            "triangles": 3542,
+            "patches": 1789
+          }
+        }
+      ]
+    },
+    {
+      "parts": [
+        "3005",
+        "3024"
+      ],
+      "samples": [
+        {
+          "iteration": 0,
+          "before": {
+            "ms": 36.35190499999999,
+            "status": "clear",
+            "reason": "native-solid-clearance",
+            "triangles": 392,
+            "patches": 206
+          },
+          "after": {
+            "ms": 24.5826790000001,
+            "status": "clear",
+            "reason": "native-solid-clearance",
+            "triangles": 392,
+            "patches": 206
+          }
+        },
+        {
+          "iteration": 1,
+          "before": {
+            "ms": 26.86603100000025,
+            "status": "clear",
+            "reason": "native-solid-clearance",
+            "triangles": 392,
+            "patches": 206
+          },
+          "after": {
+            "ms": 24.650131999999758,
+            "status": "clear",
+            "reason": "native-solid-clearance",
+            "triangles": 392,
+            "patches": 206
+          }
+        },
+        {
+          "iteration": 2,
+          "before": {
+            "ms": 26.11148000000003,
+            "status": "clear",
+            "reason": "native-solid-clearance",
+            "triangles": 392,
+            "patches": 206
+          },
+          "after": {
+            "ms": 26.18758600000001,
+            "status": "clear",
+            "reason": "native-solid-clearance",
+            "triangles": 392,
+            "patches": 206
+          }
+        },
+        {
+          "iteration": 3,
+          "before": {
+            "ms": 26.09668799999963,
+            "status": "clear",
+            "reason": "native-solid-clearance",
+            "triangles": 392,
+            "patches": 206
+          },
+          "after": {
+            "ms": 24.70550400000002,
+            "status": "clear",
+            "reason": "native-solid-clearance",
+            "triangles": 392,
+            "patches": 206
+          }
+        },
+        {
+          "iteration": 4,
+          "before": {
+            "ms": 32.254173000000264,
+            "status": "clear",
+            "reason": "native-solid-clearance",
+            "triangles": 392,
+            "patches": 206
+          },
+          "after": {
+            "ms": 30.04654699999992,
+            "status": "clear",
+            "reason": "native-solid-clearance",
+            "triangles": 392,
+            "patches": 206
+          }
+        }
+      ]
+    }
+  ]
+}

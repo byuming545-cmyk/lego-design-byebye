@@ -25,6 +25,8 @@
     "astra:case": "tsx src/cli/astra-case.ts",
     "astra:pack": "tsx src/cli/astra-pack.ts",
     "astra:check": "tsx src/cli/astra-check.ts",
+    "collision:review": "tsx src/cli/collision-review.ts",
+    "collision:diff": "tsx src/cli/collision-diff.ts",
     "audit:connections": "tsx src/cli/connection-parse-audit.ts",
     "verify:interfaces": "tsx src/cli/assembly-deferred.ts"
   },

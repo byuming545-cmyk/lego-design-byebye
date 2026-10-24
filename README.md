@@ -1,4 +1,6 @@
-# BRICKLAB · 真实 LEGO 装配验证 V0.6
+# BRICKLAB · V0.6 碰撞架构专项
+
+当前分支已将碰撞引擎升级为 `native-closed-bvh-local-partition-1.1.0`：4,632 个物理接口中 1,765 PASS、786 BLOCKED、2,081 转审、0 Pending；原 1,248 个 PASS 全部保留。完整通过零件为 33 件，部分可生成 46 件。专项结论、回归和下一轮任务见 [Sol Handoff](sol-handoff/v0.6-collision/README.md)。下面的 V0.6 A–H 报告与原 `astra-handoff/` 是修改前基线；当前跨版本复现用 `npm run collision:review -- MULTI-3020-3710`。
 
 当前首页是 **Part Lab `/part-lab`**：查看有来源的原生 LEGO 网格、连接点、说明书证据，并在“装配模式”选择真实零件与已验证接口自动拼接。运行网站无需 Rebrickable 密钥或在线下载几何。
 
@@ -20,7 +22,7 @@
 
 ### Windows：从 ZIP 启动
 
-本版工作分支为 `codex/sol-assembly-verification`，可下载 [V0.6 分支 ZIP](https://github.com/byuming545-cmyk/lego-design-byebye/archive/refs/heads/codex/sol-assembly-verification.zip)。
+本版工作分支为 `codex/astra-collision-architecture`，可下载 [V0.6 分支 ZIP](https://github.com/byuming545-cmyk/lego-design-byebye/archive/refs/heads/codex/astra-collision-architecture.zip)。
 
 先安装 Node.js 24.19.0 或更高的 24.x 版本，再解压下载的项目 ZIP。进入**能够看到 `package.json` 的文件夹**；如果第一层只有同名文件夹，继续进入一层。
 

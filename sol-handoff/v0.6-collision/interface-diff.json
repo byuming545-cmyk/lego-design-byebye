@@ -1,0 +1,6253 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-24T01:45:24.422Z",
+  "beforeSha256": "ff5daa419f01ad48c0489992b204d9445d75cbdce3fd31a382d7f4c030a466f8",
+  "afterSha256": "c7d6aeb319f1f04aaf4c4ab4529694e85ac9e15028a24566ebcb08f903200380",
+  "beforeVersion": "native-closed-bvh-partition-1.0.0",
+  "afterVersion": "native-closed-bvh-local-partition-1.1.0",
+  "before": {
+    "rawSourceConnectionRecords": 4694,
+    "logicalConnectionGroups": 2862,
+    "physicalInterfacesDiscovered": 4632,
+    "verifiedPass": 1248,
+    "verifiedBlocked": 786,
+    "requiresAstraReview": 2598,
+    "pending": 0,
+    "verifiedPhysicalInterfaces": 1248,
+    "enabledPhysicalInterfaces": 1248,
+    "enabledRawConnectionIds": 1262,
+    "verifiedCoveragePercent": 26.943,
+    "processedCoveragePercent": 100,
+    "fullyAssemblyVerified": 23,
+    "interfaceVerificationComplete": 241,
+    "partiallyGeneratable": 56,
+    "blockedParts": 162,
+    "unresolvedParts": 4
+  },
+  "after": {
+    "rawSourceConnectionRecords": 4694,
+    "logicalConnectionGroups": 2862,
+    "physicalInterfacesDiscovered": 4632,
+    "verifiedPass": 1765,
+    "verifiedBlocked": 786,
+    "requiresAstraReview": 2081,
+    "pending": 0,
+    "verifiedPhysicalInterfaces": 1765,
+    "enabledPhysicalInterfaces": 1765,
+    "enabledRawConnectionIds": 1779,
+    "verifiedCoveragePercent": 38.1045,
+    "processedCoveragePercent": 100,
+    "fullyAssemblyVerified": 33,
+    "interfaceVerificationComplete": 241,
+    "partiallyGeneratable": 46,
+    "blockedParts": 162,
+    "unresolvedParts": 4
+  },
+  "oldPassRegressions": [],
+  "changes": [
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "43586d7e2d7941b07b8ceb747327aff6a33c3c1e68d55802b0b94ed6a796cdbf",
+      "rawConnectionIds": [
+        "p/stud.dat:8:0"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "17bec5f12a5f338bac4c1f7cbcf8085ca2229cd7c3a48386fa08bd4a639848d3",
+      "rawConnectionIds": [
+        "p/stud.dat:8:13"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "b20b4e1ee37d6b55248f8405c7006e338050aa2282c5a02b5ae55d70db056e21",
+      "rawConnectionIds": [
+        "p/stud.dat:8:23"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "f96c56d871ee8334b1a8154611879ce0ef2ef756eab051a9a7fb525fc2d72b1a",
+      "rawConnectionIds": [
+        "p/stud.dat:8:29"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "9adc5c922ad8a6f71f3cfa15fd7eb76ad2b404e3935477c43f5dcb5ec55555c0",
+      "rawConnectionIds": [
+        "p/stud.dat:8:41"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "910a31376e2ff027bbf9cb0157a56b9db414ba9fec2d2bd3efb460fc15a4d024",
+      "rawConnectionIds": [
+        "p/stud.dat:8:69"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "179e4a5e1080b69932ff01a94912ee24196a6db8430de097c753df6d9b1b87cf",
+      "rawConnectionIds": [
+        "p/stud.dat:8:74"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "ac4599577dc6e7498311c335dae304c4e6dcd7356b2b999c37faed713e14c2d6",
+      "rawConnectionIds": [
+        "p/stud.dat:8:88"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "8963acddc8aa8918783c2b6586eae4acdc87507d484f8f365018f35afc38190f",
+      "rawConnectionIds": [
+        "p/stud.dat:8:94"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "f0471ea20c74d3a4fe784976eab29e91f43347b742d05abe498042ffb6b0f860",
+      "rawConnectionIds": [
+        "p/stud.dat:8:103"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "c8b7a0edb42c28712e17a0ab7abd68fc981363c8d8c9af1151777c76623a13ff",
+      "rawConnectionIds": [
+        "p/stud.dat:8:110"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "1fcf52b55f1e7e304393960ae40c022feb455581bb97ff0b3fa8a461f97f5650",
+      "rawConnectionIds": [
+        "p/stud.dat:8:119"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "328958741d4a61e4a5fc03fbca8c26dfcd088fb76b1e78ef5a3031a1dc4b2e9b",
+      "rawConnectionIds": [
+        "p/stud.dat:8:120"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "973a452a062eba895d8ea07b2b6a039c9a5dcddf54f777e78a98906e99c215ac",
+      "rawConnectionIds": [
+        "p/stud.dat:8:132"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "47018a2f10950f004bf962009c99c866b9e65746e5c41597c86cca46d9e05da5",
+      "rawConnectionIds": [
+        "p/stud.dat:8:139"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "198b2c9ab00bc409412d5dee786cae93efbdbb192a46c4c187c29ce727c384b4",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:144"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "d5b851b6dec7f7606acf86213d0c5d1d3f8923e9e2e5ee955ed0b65c2e166c63",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:145"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "74d764391202b4ac7872eb1aa61ac99841d44875c66cddcf4eefe7e37bc88070",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:146"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "b3c833a5c51bc98d75bcdf69233afe3e55538cf36d2429626b1d4a513c4af775",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:147"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "06fa5202e0102956cef88433818aa836b6a7c7a59e9d9c607e28509abe7b1a38",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:148"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "f0d2c16303e098583734af9134fe2033977e4788c09c0d570d50971ccdf850a2",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:149"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "6a168df3623bf2bf030223987cdcaaf72fc0dcbfc3ac13eda6510712581d06f3",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:150"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "da2a12684020582a224efb8a32c2acc30838f35894d15225b64c9e9701fdea67",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:152"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "dd1b7c5c460f20bb0855435fc7c3e3c61749b5146852fbeb609b147829ee536f",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:155"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "7d6a1fff385d2be7c28b21e37a392eeb105844f88ada80ef5f3d8e667128898a",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:156"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "cc6101605937b21b5bfbf709cdec6c5de40225c831218f45911fb78bbf2d7c80",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:159"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "39719ef2f6129da6c818bf6ad5307e0f660dea0a64321be5f7e92b282da324cc",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:161"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "0bc603e603712c94bd0ec3b789f49297aa23b12830a8ce64aa86530dd2774108",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:175"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "5ce3411ff0ff15265275f7b0027e11acbc3ad2a4f15b23b3ab6e1bce8eccbbe8",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:176"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "1c03bf0339c49d72fc6073e1fffa94f145faa0ecf6e4f758487dcf43840c2007",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:178"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "d66cc6c0af1bf678e9ca039c6444ec2a8c2f056b67f16b8b6c59eedd1374939e",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:184"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "d542d6265615011ae5da54dde6c94587ece5c2487e9677baec0f02358f7a0bf6",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:186"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "721bd683f42208551e90f78ae69e3c5611f51dfe2797858380e91ac37925345e",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:193"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "e796487197ac19d02176f921171df3f627cf12032a3428728e959d46e0d8abe9",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:212"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "ba4e83c0393a19de260c7dc3bd406a24097e35f0010b409d5207fa4c97a7fd2d",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:213"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "507c89cded61c110e95bed80e8869e63a74ccccf43fbe280241e28ebc976e501",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:215"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "a62c547996b9828dbacbae9261289f4b1dd08d15c7d58b57f15f37e9c397fa5a",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:216"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "034ebb2b59a097878e5f70c393086829bbfd18c2b86ff33a1d12ed3eabc35a4e",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:218"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "f8a85a1bea7dccb1bd944f92adf426cef236ed24d3248f6648b5ea6307f4d730",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:221"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "f76f205ace5c205c69f4f268e181db5651783d3ebdc3c8f1035beb52553b387f",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:222"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "1946acafa64709372aa9e6ff998b5da5d36be355ba32b819d50b77e62b672953",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:238"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "0f05138d1d3c0a831b196d3b1a0def0fef83ed9a5ef7a9fa58b8a5e818ded3ac",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:239"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "c036730402b342f630c1f62372ea99fa05dd538b7061dd69f305ab0c907b459e",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:242"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "9614aa44b0728118530c798782a1742ded0a96bb22b66fbd4aebc9deafcd64fd",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:244"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "d0c8d329029ddd04295d894cd1dc40fc6bef09a1040501257c0d183f5131e5a9",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:253"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "1b773d93599f55960a554202793e78c1b754d5c1495fd2059c670cc50217a8f2",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:258"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "a2629d4f2f1308e67ee4f420f90af3f09cc41c304e0da3393c6c76229f989a6c",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:267"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "d6cbab3b25a3cd1d5b2a95b7b2a6c297b33d16980a81549a9d9ee9791cff080a",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:273"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "bc611cab98fed8eefb0240b07bc4aa6184c71863173c9f01738452693827ea13",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:276"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "ff522476570c312a1dd4ec298a2228d282e291914500b5616758d44ecaddef81",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:281"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "dbfd367d4c8a4c179702097d63270bef00bd34415bf6d707457d207c518b28ff",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:282"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "61dd00c551012020005ef85695c3f3d316474fd4f4818ce14f40d90bcd1977b7",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:283"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "2399ce5285eb49bcf8904e381a459128b0fdc4f0a7ad6b2fac76c9dceabffbd7",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:284"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "b3776263a1ff809a6d86c7a34375fbd7cb7e8114e5bffad1f31ef2488893a015",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:285"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3026",
+      "physicalInterfaceId": "7eb91d4f942c2bc73c066af16a873442b1496c794f987bf18bf28b1ddc43549f",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:287"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "a0fd4f58a7bded75167d64237b84ac2aca36e20c0130374ec4a529fcbafe516d",
+      "rawConnectionIds": [
+        "p/stud.dat:8:1"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "da4d150cb581892a544e820ca74f50c3dd412ba9c581cba45eede71757277b9f",
+      "rawConnectionIds": [
+        "p/stud.dat:8:2"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "7d47e619a331d4fdc58acbecc73171ea462d7a9c8a05d8bf453ea57183a5d7a9",
+      "rawConnectionIds": [
+        "p/stud.dat:8:5"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "4cdf73a12bc4bb5e5a0b8c4a301ab64ebe19d8b254ed78ec2e972e22df876562",
+      "rawConnectionIds": [
+        "p/stud.dat:8:9"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "2bbe0e922c49e10a8ba9070f6ce4770ea0f893c5de625b28d80c57ce448d22de",
+      "rawConnectionIds": [
+        "p/stud.dat:8:10"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "4d5f3fc3278242dc14aacc4851246b520f60b0e0f21c3aa8522d66ef6b987589",
+      "rawConnectionIds": [
+        "p/stud.dat:8:11"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "ea42a575724fd14b11d669134b6e16e9c54cb2caf3364121fb98afc10c2e67a1",
+      "rawConnectionIds": [
+        "p/stud.dat:8:13"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "86d97f51005d8212fed8a8d9d6b0027740f8964f8fd061a535f21e69f14ba898",
+      "rawConnectionIds": [
+        "p/stud.dat:8:16"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "f1146a9207510be24d4d4ec8464356a7826a6c571b8b7a8dc66bdc338e9da141",
+      "rawConnectionIds": [
+        "p/stud.dat:8:17"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "5e7935704e99fe804490131a130bdaf46491eccb3ee9c9a083e84da9f346444e",
+      "rawConnectionIds": [
+        "p/stud.dat:8:18"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "6f6c9fb1e90a2d2756c8a5de475d688c237b93be200acc45b975b0d12706b401",
+      "rawConnectionIds": [
+        "p/stud.dat:8:21"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "8f027d407cf60bd6654ff645e145276ef31a3904a4d8295b4ed0cd34d8ec03cd",
+      "rawConnectionIds": [
+        "p/stud.dat:8:22"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "1090848aac35244e6142f27901973c71ca2d8e3a682595cd9ee986f7e89a9d5e",
+      "rawConnectionIds": [
+        "p/stud.dat:8:23"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "0b81a524c4bed3775b147d1b3d2903357091390073ce2c1f0554fb63b1a6598b",
+      "rawConnectionIds": [
+        "p/stud.dat:8:30"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "0b06f245d1e159a5c910b5be005f86f3dcb3b4ed90a11d0356a28f3b01228f38",
+      "rawConnectionIds": [
+        "p/stud.dat:8:31"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "e346e19e191dbf059dd9464a7d504afda30e7e2f1e702285a795f81d97668d45",
+      "rawConnectionIds": [
+        "p/stud.dat:8:35"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "36132a861980a6a8f04cada26dd81984e52e0142985ceb02a0b2ea9b8b7c6148",
+      "rawConnectionIds": [
+        "p/stud.dat:8:37"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "5b70ba2ee7d404a6d673df13eb1367269ab7bfb0e895a7c784d246a4927339a2",
+      "rawConnectionIds": [
+        "p/stud.dat:8:40"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "164c375910ec728ad2518aebc63f17e76c3ec854c568065b922fd94c744e9a0f",
+      "rawConnectionIds": [
+        "p/stud.dat:8:42"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "5f88fde86f5f8ed6236a637444185f96e1aeb5418cdc5021d03b5ef7a3190f29",
+      "rawConnectionIds": [
+        "p/stud.dat:8:44"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "13f7db059a7e6b291a296153dd09d609fe5294774fea97ae04f79bf61e62d873",
+      "rawConnectionIds": [
+        "p/stud.dat:8:46"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "35a4915ecf1fdfc5da936878d63761ec343659e743447face77695dc609bfbd4",
+      "rawConnectionIds": [
+        "p/stud.dat:8:48"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "ec7ca375f22492259fb11409ff97cacf3a55a6612174f58c660e124e9bd62ab9",
+      "rawConnectionIds": [
+        "p/stud.dat:8:50"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "a3312ed2ebae3dbaf6665bd1967c458479515247b028656d5d97af955dd6fb8e",
+      "rawConnectionIds": [
+        "p/stud.dat:8:51"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "7c77fef7f92be48f72458642b7bc79aeda6604b5cc80852046e10178109ba33c",
+      "rawConnectionIds": [
+        "p/stud.dat:8:54"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "c6b999e6a53f4163322e6ee923575f62b3b3a8989121ee7bfe2ee2a7768c24e2",
+      "rawConnectionIds": [
+        "p/stud.dat:8:55"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "5fb9a911a1c542acd10db84b18d7cb618a1333b2874f5b1d67ce4b2ed8f251df",
+      "rawConnectionIds": [
+        "p/stud.dat:8:56"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "edf833beb5b3b07997ab0564a5f3db44288bb353e40e95f0f5bfb8e8911eafdb",
+      "rawConnectionIds": [
+        "p/stud.dat:8:58"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "104b8119438a7e5af99780af76140d43275ca8349d459413064ce09df167fa82",
+      "rawConnectionIds": [
+        "p/stud.dat:8:59"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "ee381d8fe014ce1eba455fda7d98b54f69ec603c8dd053c58c178cba62c0888a",
+      "rawConnectionIds": [
+        "p/stud.dat:8:62"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "d0d0a64bbd63a80b631fd6b8b1f5a0067097d870d1c21d77e88aacd6a8f55cf7",
+      "rawConnectionIds": [
+        "p/stud.dat:8:63"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "71d6f61d77b14b918c50f04fa69f4d7b21d6ea037e3408d72e31cb582f44284f",
+      "rawConnectionIds": [
+        "p/stud.dat:8:64"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "e3e5ee87b78cc2dcfd479f4896e68b71fb1376eee6e5368436e4dbbcf505234d",
+      "rawConnectionIds": [
+        "p/stud.dat:8:72"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "1761af2cda39b9f11ac970473e83cacef0c3517611f339fb34e20d34b2e1f303",
+      "rawConnectionIds": [
+        "p/stud.dat:8:73"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "1a1fa5f41237bba470f6ae4670ea814a3ba6efe78b8011b016f2273c23873a2d",
+      "rawConnectionIds": [
+        "p/stud.dat:8:77"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "a3638d0d16b9f9e6123d7a77f192277f4dd48c6e5dd1403bd3f9e976485e1f2f",
+      "rawConnectionIds": [
+        "p/stud.dat:8:79"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "9ee90c58a72d18f8f159c8035fa97981f460fc5b692850272923567dd38f1215",
+      "rawConnectionIds": [
+        "p/stud.dat:8:81"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "9094bfd442295773557bbe5513621a4aab6cfe09472f1d98c51faef7fd2bf3a8",
+      "rawConnectionIds": [
+        "p/stud.dat:8:82"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "e4ef695faa996c0dd5814efdd3954103a172d530fd81511e6b460adb4fe55c7a",
+      "rawConnectionIds": [
+        "p/stud.dat:8:83"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "65bd4c24ec578c64db5362f20bedd478396301fd2fb6d43229d76b36a8823a1e",
+      "rawConnectionIds": [
+        "p/stud.dat:8:85"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "f97d4ed136a62b8602b4f5c68aad16d0bade9aa38c2e71e6bd72605ef24b404b",
+      "rawConnectionIds": [
+        "p/stud.dat:8:86"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "f7980e76b06eff1c2ba02d46562a90ef0d09727ae687cb1f61e1889f26eb15f8",
+      "rawConnectionIds": [
+        "p/stud.dat:8:89"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "371857433bdf3b539689cb648aadb3e8bf235d780a2b68126300c0c925d36edf",
+      "rawConnectionIds": [
+        "p/stud.dat:8:91"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "f541e29588ceab59b3d66832f15f137442791c4b4dd6e0b7e0e7140168191073",
+      "rawConnectionIds": [
+        "p/stud.dat:8:94"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "f5d5290eeb491a5d3f95c829d18d4af34f6cce57721bc124903dbe2500edb799",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:96"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "9a5b6e3277de5fc885800d0705ad65558f67a0b861da634041540a5a32463e9e",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:97"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "ebcd754afa33590dcb4f142c878527272200b36884236ad946fab78f56a6f82a",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:98"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "5a1be5d17843f385c0d77f475ec4b8b55ec68ea7e6c36b5725988375632befa0",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:99"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "566e2d1ce7e77d89b21a76bd255a02a2a4c5aa8d6fd554e26df48d0b31d71d6f",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:103"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "a1953eab6b1f4126d68ff9459b9bc1d9da03d37214fc0c7a8cf286c31ed5c3dc",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:104"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "7113827c42da19b0108c84ed44ac9f47f6d874229d061902e164e4ab745895dc",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:105"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "96fd1ef87c1a2a09c54ab51c5d16053d4c29d42aab9a49f50e82089c5064ffdf",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:106"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "c3079cb24d0efdc399be371a06faf30ec030056d63cb293239e7f3b42545b122",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:107"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "ae81730adade5893fc19f61029d67c745738ae7be3115b27a426c29c216446ba",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:108"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "f871851fbc39bf59bf3f87c03c5c0ea8a0a2c5fe886a05388c28320c10f3d6fc",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:109"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "100fafebfa058f83802b611869d6263c857eb5c37979f163664b56b74fd541ed",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:113"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "c04eac1a49f61c74980ee8ccf84187a062b5db65ad00bbfc4d2a3db05ba90f30",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:114"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "ab960b48c865b6745b45fb3d36ce0942e6f4410f812a7086b647600d9a434820",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:116"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "983f145919e549a16ae2176725f48a413b6c2e02736f7636a22536576fc5ec7e",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:119"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "c2a64a5d50056e4d0bbe2bb11c04cb31a066563a7624c21a21d4875264d0b423",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:120"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "bef41e09b1d2f112b20d837f57757e19f6ae5e488746fbb94445542590eb9d70",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:121"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "d4e55f0f505d3e9bba4cdeaba42220866e15c7f1b0a3c9be88ad2ca5e2c5cbaa",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:122"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "19973c779f922105c684cc68710af63e3b6ef8fa24588808c731db26c20fde8f",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:123"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "a5a86aeb17cf6c2e64e0fecae0dd2ea4e962cc75fd3731efe7c5ae5599c024c9",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:124"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "f781cebefd85201e201d5ffe31f7c1b1ea9a69ef30d8da92dfb970f9972ceb1e",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:127"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "2ee0a2ec363337a92962a70be76d577df2fb08195a899aeec42f52066ae3dcce",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:128"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "c6a5ba3945119b3b480bea0f35ae67f1a026d120aa52a311437c062adae79162",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:130"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "3ff5c8b49a405f45a7fb8c3ed2f657ac2af233377411448380528d6c43d50cf9",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:133"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "e1604c679c7a3ba951f71a80910afab2923219737ff2de613acb9b8fb02d4ee6",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:136"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "a47e868ef1bd37b92e1a977bce83dffb7dc25f0d58e94c59c33fb99ebf9380d3",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:138"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "c86fd9879e106e170cc8474c0364735df007e18d6d85cdb78f18c46b860e513a",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:140"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "1bc496a615eee9ded1bcf18b13598e47e63061f929616fce417f1e6642f05625",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:141"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "b4cce28ad2d73bd2ee35ab591413e9041c23709020d2c03c7da8a94aedb0750e",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:145"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "a69177b535c51fb086504d59327cddb27eef920a7bcaec6bb94cf50f44880579",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:146"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "55db3ad27e7a0a0adc94516c8cd9cde11ea1ace077bcfc83cd7ea006a6f8cce4",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:147"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "adcc7138a8102be70e5b138a521844f83f5eee38600b85a7477ffc551525fa8d",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:149"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "215ad14d545995d998aad44497d37c8c2c902069a80b4e1b33869b1ea629b2c0",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:150"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "cf1dc05f3e9c3c0f28151afc4abce624f817d1c76328774e824b0dc67d6adbb7",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:155"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "55e85dccc28706f036309ad1cd2c8ef34d8baf4e23cfac7c7e1c7ad4ead57ecb",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:157"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "36273a37fe729e43c8ac938e4ab9877499445101021ed9784ab4aa380c161112",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:158"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "bb2003d11ce39f037a90aa54f04add4f124ff3a590a5b8bc1a4ff3c1a9c0a908",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:160"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "98a26c3d4101e934cef604327fcc3f5020fb221bf22609fe788ecdca092eb166",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:161"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "86031bb3120cac3aaa20cc60af7175a7cba7f45d2f1333e6726f153da1ca5093",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:163"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "008f18d9841b4faa2b5a0cbc3be4b5a1e25dfdaec0f2b5dc9a9bc7aaf3a8e831",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:165"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "3602a1c3c7fba4510907b1083eab2d4f5a4b17e72da6df73960d77d94a28dc70",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:166"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "6ffdc4c091d5388c1eba0d57251d3096e777c00d0984c6490af19496994e2e48",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:174"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "e295eeef45db79fc07ffeac3d6925454e1bb10b08e69084ec89dc954400b593f",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:176"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "48c756bf8c28f0b00dcafb0f209f6b4ef5d916a386ce2b6f18f1fcefaa12eea5",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:177"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "e67b856c770664b233e6d20a93428380a155724b493b5aea685eb20ba3c93cc0",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:178"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "0def47aebb30885846947e0aa20d39b95900cdb973cfb74b402d86333bfe5301",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:180"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "885b2dac4834d409e3dc1a86ccfc667d54ac03542df3a12a8a15612ffb370c77",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:182"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "3ec84a432c526572a97941b03e8b5f19dcdd9df4188c5d12e7277eb3e3ea92af",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:183"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "20aa1078875604c00cf7ba4e73adc938ac65e269df7d01e322d98e86ed35bc5e",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:185"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "f3d1abfef1359dac0bdc3fd4ec62a7ae35625e7f38ff3d9c5b4e196006d52b23",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:187"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "94d2279900ea81e45e530a29827035ecf6cd0c25d0d2cbd328cc54f5b790ffc3",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:189"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3027",
+      "physicalInterfaceId": "8f219baac05ceb341f64999f7b35460b0c5ff56993462ac25b21b921127904da",
+      "rawConnectionIds": [
+        "parts/3027.dat:8:190"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "c4a26045f6bfe5d7a3a10f5e170943b31d9ac84f2badec6120209027928b2b09",
+      "rawConnectionIds": [
+        "p/stud.dat:8:2"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "d2bb5c291976a53c828a1fd9e4cafd1098d5ecdb07adf537ab5673207bdacb73",
+      "rawConnectionIds": [
+        "p/stud.dat:8:4"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "55c04ad286c194cefc5636199988c00e25889df8496ecb0078deda30bc249257",
+      "rawConnectionIds": [
+        "p/stud.dat:8:5"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "cec144831238989109412ddf0d7cbb0c30434e031b1223cdafc9c5008e44c35d",
+      "rawConnectionIds": [
+        "p/stud.dat:8:7"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "71c149b79d181b990bd91c1c32b73869f9518d119b1660e74182812cf62b517a",
+      "rawConnectionIds": [
+        "p/stud.dat:8:8"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "6de4e5fd07920a381ba20b41a94e8a7fb50911429d644914644b242a5d1de63a",
+      "rawConnectionIds": [
+        "p/stud.dat:8:9"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "9b56e36e14c7131d397c29ea44acff70979ba05fce1a514e4848f90396622af1",
+      "rawConnectionIds": [
+        "p/stud.dat:8:10"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "7d177cfb959470288d42ae64b34f9ee3d5bf9083b3dba31bbe83a11a728f4a76",
+      "rawConnectionIds": [
+        "p/stud.dat:8:14"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "d6f40898ace1b682612cf86477a5a844f907e7d063018709998cd9bbd93a8244",
+      "rawConnectionIds": [
+        "p/stud.dat:8:15"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "a830e936c47443f51a459553e235fb23a20a2c52a31ab7020ec680bcd27c89aa",
+      "rawConnectionIds": [
+        "p/stud.dat:8:17"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "418538b7faf21a93e3304b635f45d47cb9e74a1d069752c22ac4ec2bf62fcaa6",
+      "rawConnectionIds": [
+        "p/stud.dat:8:18"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "bf3e743669ee6f575e4b9d986974332bbdfb98d4dda117758ed9d9b37dab70a9",
+      "rawConnectionIds": [
+        "p/stud.dat:8:19"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "23234d0a3ac765a2a63cc0d1a426ba31d3adc7549fe2d0fb72100dbd824a70af",
+      "rawConnectionIds": [
+        "p/stud.dat:8:21"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "cbbcf69d228aee3f3e8a7dec46ae56bd02a7fb29e135d9edffbea871b1ce1254",
+      "rawConnectionIds": [
+        "p/stud.dat:8:22"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "39e9958fee4382de626957335563a2d7661d150fc2f103bd557fe8ccc4ed2635",
+      "rawConnectionIds": [
+        "p/stud.dat:8:24"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "8893188b7cceee2e579e9ec5fda41f93da78da4844f03ef07ea0c15085455951",
+      "rawConnectionIds": [
+        "p/stud.dat:8:25"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "a0bb21f242ea3789913cae6ed2e4561c8abfa2daa97a430b21184f54bea9d8d9",
+      "rawConnectionIds": [
+        "p/stud.dat:8:26"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "4852bb12112b9e45f75c17bb7bdc97563dc6be92ead433a52c23e9234a63a9ac",
+      "rawConnectionIds": [
+        "p/stud.dat:8:27"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "78f591464b5f72b644a5f9d3cafa94aaed9cc4ba165ae3f7549b6267764f4617",
+      "rawConnectionIds": [
+        "p/stud.dat:8:28"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "ca4b068a66d96bda667fc3504fa2ed8b68ee68697ba58ff22a643090f80f7fb8",
+      "rawConnectionIds": [
+        "p/stud.dat:8:31"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "9fecb3476f69f7aac331e976d9492af141c38d5a807a38ea2d42c89f648c3ad7",
+      "rawConnectionIds": [
+        "p/stud.dat:8:32"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "9d42b5dd701cae9abd1398f14667dcf46c5b98402db6a1c8a5431b277ce40af6",
+      "rawConnectionIds": [
+        "p/stud.dat:8:33"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "7deb01cfcefa05abcb6afce244fed0b6d3dad4dc35c86254032ee35fbf8bc607",
+      "rawConnectionIds": [
+        "p/stud.dat:8:34"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "09e778e3a7366be44f0295abbea308835ca667dbc768a1984beae36c0225ef4e",
+      "rawConnectionIds": [
+        "p/stud.dat:8:36"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "8888420050041545a98f1477193d3ab7ffaf12178c4e8c1ae60970526efc2e59",
+      "rawConnectionIds": [
+        "p/stud.dat:8:38"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "b077acbf0197655d60aaa205bdf99539292c49c5f3df3020df7cd02c6ddae1ca",
+      "rawConnectionIds": [
+        "p/stud.dat:8:39"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "7d89f9a25bc94033878f0c67434900a24c74aa85e448b8bd27abc2dd9d6e0d2f",
+      "rawConnectionIds": [
+        "p/stud.dat:8:40"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "95ea487ec404199db25d227031ca0e914e12f7cd07d9d012953b739255efdc32",
+      "rawConnectionIds": [
+        "p/stud.dat:8:41"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "4673094fc40a38adfebfa817a3ac21b93863502b953afcfad0788dc4504d1a77",
+      "rawConnectionIds": [
+        "p/stud.dat:8:42"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "60000522f87dbb6b33b7b3dd9db11f7bf31a89d59881237b3038e0e6aeb1f79a",
+      "rawConnectionIds": [
+        "p/stud.dat:8:43"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "6ab70722e64d922cef37018ffc46928c58521bfd93db4f49bc7ecef82ff77b0f",
+      "rawConnectionIds": [
+        "p/stud.dat:8:44"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "71679eb20e72fc4efd89ae338f3f5a40787d0d5c4050292af34d620fe2aaad88",
+      "rawConnectionIds": [
+        "p/stud.dat:8:46"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "2214bde84741c18de675c71e86ffc5302f69c02e49a807f5549d20b4240c243d",
+      "rawConnectionIds": [
+        "p/stud.dat:8:47"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "ec7ee9272cae636534afa686fcd85b5c84e1f19d9a076f39fa03b0d45b85b4ed",
+      "rawConnectionIds": [
+        "p/stud.dat:8:48"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "fd07947d593dd778a0e5669780c188fd5eaf812a0f491cc078fc00f83cee91a0",
+      "rawConnectionIds": [
+        "p/stud.dat:8:49"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "b1b4c330540194c13160e7815e19d2007aa4b00660fb8a75d7eb18fca702c878",
+      "rawConnectionIds": [
+        "p/stud.dat:8:50"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "d18add1dc5acccdafd5cdb3714d8f60b370ca5dbc8d51037a732de95a6366002",
+      "rawConnectionIds": [
+        "p/stud.dat:8:52"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "81e30ba78b1ed6755aa1095c23d723eb4f2c293b9159c6adca445ce5b6e6495d",
+      "rawConnectionIds": [
+        "p/stud.dat:8:53"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "b4af87bc3b0ace9cf377e1d0fb23b6f03847fc495eaee4c1f75ac511d09424fa",
+      "rawConnectionIds": [
+        "p/stud.dat:8:54"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "3f8bc05fa37c31fb18703e327e9d02dcd3d794aa7e1d8f4fa62436c27cf3866f",
+      "rawConnectionIds": [
+        "p/stud.dat:8:55"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "16fe12e727b1e2a56b64a31c3ed4dfe704ee0b10834a88722cabcb50662a3301",
+      "rawConnectionIds": [
+        "p/stud.dat:8:56"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "08319f6eacc6c57419706d79b298c6d244c17af09e4b9f0645b0703bc9234edf",
+      "rawConnectionIds": [
+        "p/stud.dat:8:57"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "cd3c530c4bd169bd9773d5115ae673c8ffef8da4332493e96c36bfa15e7610c9",
+      "rawConnectionIds": [
+        "p/stud.dat:8:58"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "be7214eda03e01dfca8eb6112dab6800b5debfef2c0a36fe378165b32e8cae8d",
+      "rawConnectionIds": [
+        "p/stud.dat:8:59"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "223c823acabf4c6d7d62448777c7e8e53223adc0e32e2896cef81b241b0d4925",
+      "rawConnectionIds": [
+        "p/stud.dat:8:61"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "9b73e26b2a4dade22021f25c93cacd4273d4579a2c43364552b51f1ead0564c3",
+      "rawConnectionIds": [
+        "p/stud.dat:8:62"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "2d1edacff9c0295179ea4e5d30911bafa9e9fef0d631c22f6dd40ed059549a11",
+      "rawConnectionIds": [
+        "p/stud.dat:8:63"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "847983762d870afd65a4b7cdd320f3be0d614af2b75f6732a69a0a25984dacda",
+      "rawConnectionIds": [
+        "p/stud.dat:8:64"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "5baedc615b2306825ee45d79c7851a5461a62e2705b6dadb227b1fd83be40ae7",
+      "rawConnectionIds": [
+        "p/stud.dat:8:66"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "234d4fc2a3fe825041169beb1c28228f8505c0881ed6aa3e7d8f6f2e6371de36",
+      "rawConnectionIds": [
+        "p/stud.dat:8:67"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "8bdcaa28f6a6fb2b75f701afd30b0d5b7deb583b68126d0155c2d394ded30530",
+      "rawConnectionIds": [
+        "p/stud.dat:8:69"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "136999fcbf9dded7b727fdec85d49b8c1745d97c7cdaafb02dec87b937b2cb9f",
+      "rawConnectionIds": [
+        "p/stud.dat:8:70"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "0c7c81e838dae534c6a0bf22fc0784ac1d2c356b1cf1c5fd7ec1e28f4c6d936c",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:74"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "8d062019525bef10b1dd453215c9cd81a87c8fb6cda6b66be82a0d5604e0e27e",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:76"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "19dce4256dd554d6f04c00f3dd87037d8096fd0c52fef131bba92de272dd2a07",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:78"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "c7b0a22be704e63b78632df56428591c3347522f47321a3e9f252dea06c304b2",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:79"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "e2fccaaae6dc4e66fcabc7de8070043e5feeafb9a26f71b658f85f661ff60fdc",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:80"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "22cd72e8aed7e269c486385547fe59502d9249e553ca491db319ac5e90820045",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:81"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "ec44bd18b314daa7574fd02bd9b62199fbcda0261631927908bcfd37d215596b",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:82"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "00d0e7b198ba30806fe7cf1d8f272e72a79fe6eb4008c44d73d4af098fdcdd44",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:83"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "f81d22e47733f0d708f375bae333591efbf1528866f9fd1d3d20768ed6cf63b4",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:84"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "eecebc661b88bfcafbe3649050e9c5028d6e105899dcd1dbb952cc482970154b",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:85"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "4ea08c729e01aa197f0f30387955accbe07a6fb49965ae3e9b9b82eb0ed726b0",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:86"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "4d1066bb5b667c9080c96724567c3a2050aa85557422735ccbd87f2ef24feba0",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:87"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "3d9dd5c77f2b793067db4a94409b6f744654d0deb4f96c65677b21eaa4c9c4c3",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:88"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "abc62e1651c866220068980f8b8c803dc132ad33cfcb993aca08d88f40b4721a",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:89"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "bd154111b811d0f5fd7c72b816a734d7141b96e2fe0bbd5561b830ed266b042e",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:90"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "48ac7347ac966fde9321abf894eec607a167ce0f862f69a5d11b9cc77a7c039d",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:91"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "235242dfd12d0ccae6dcfbe334a47f65e505af7341e860272e19483b1663769d",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:92"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "ecd0b1d5d19aad36d4fa47eca844fdc58978fe8241dca7d38ea81e93f16fdd60",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:93"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "b1e40951344d750dc1bddde99d10d885b58e8de8c39b5d6faf1061aae033e80e",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:94"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "0b3b243b68e6a63d3bdfa4b1f15eb16208c563c15fb668de25629a64c6b6e046",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:95"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "cabef959cefed13515cd87a7dc98c117daf6715c94489b2bb133084a96939daa",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:96"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "dcec12c94aa8af95107165ac9c0265a6d69add721692fe5723b784aa4b7405e3",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:97"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "c32f068ce833e1adfd6310d7c51436a272304b4f62b815e30afd11582e7ca3f6",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:98"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "5c739b200723884a3ec60674938c8dee9469e9020e671c0c14604a62b7db561f",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:99"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "305e4b00d0519b794707bdee9333b7a78ecbe7620201cc690eaf2a2e7c1e5402",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:100"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "894eb11952ad807c3c0e9093c7b40a63c5cfd0bc99ffb3508d0ef7c174822e82",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:103"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "66bfcd27cdd58a9654627d38e7732da2f5c5268ee234e647ede4bcad2e086518",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:104"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "4c2972897a5d5d60542ae54001b7d43af02d56a3b2d57652bee5d23ea34dbcde",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:105"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "8dde61d4226dacb109756d0c1cf5e3b22020ef837e097962a379e68a8be7c117",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:106"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "8d6b743b39d47abfc415fb05b9a06cad13751c6de2a83b96dabf4aeffde54fa7",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:107"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "9f5963f9270cc580eee6cec6bedb18861aa4ff450725d892f838d5da3ddf8537",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:108"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "2da1b0c77f239997c3fe1a37af6bab2e8bbc01405d5579cc91fed2d841d1ed9d",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:109"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "640b78a8ef6d0cf68ed49f5147ffd2f90219d0fe18af2a28cdc5d83de701ed5a",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:110"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "da9c408c8f1e738f6d5f01456a9859704314f39dbc0be08661c88b2b8a8a6c1a",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:111"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "0ac72533063028ba6b3037cced61eb6d5a3a2c42ac16a8bc93dac784717d8477",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:112"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "4413831f64622cffc552fa310fcceb64d86adb3c15f6a16fc5ce187038f38837",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:113"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "c07a9721853022f11e31e83f345e2662e5a689fb3d3bc8fc136d8fa195ea4966",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:114"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "bff718528e41fc4d25ab5c644b1a7a27736aadc7af9945ee5146809e4c3121c3",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:115"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "c9a562653d018e3d3468b743e978f82d5be76774b756e69e01cde5018e9eab77",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:116"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "831b57258a8bb3157cbf5406fc7475eda853e58a1cf8b90010d695c2d382da59",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:117"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "f8efa0c7cba0c4e566088062a6afd148e6adf07a251142e00e369f8741b39154",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:118"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "05c695d39209c1f95166b8a457a36c0b023004060676dbc9eafcb2a7071bba26",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:119"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "d30648452fea1deabb946aec4524f85e0db7cc842892cd19f57e274068f0a378",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:121"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "d3095182650bd5171af0ad7c78951f7d1dc5168c6a95265621d132aa242489aa",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:122"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "58a828719cb56ad169b03e9c729c7a7a3c51dd72533089cd1a928961a9271ceb",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:123"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "a1536458d23d2a444a60443072c4ad133009e66495845762db25df23a4532577",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:124"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "88fe4f65bb2c6763560c998220f90dc5d9c564415e977a45bcd8702a2381a6b2",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:126"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "6e8e032255855f840b5c7edcb6a4e74fae6f69539d100f35e17743cbb3af5161",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:127"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "23dc8967d4dae478c2348e19459b3a7746b1dc973e7ef22eb9e68116178def7e",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:128"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "ab75e0a402888bdef04f9cdc93156480282ff980a6b5aec7151ddc290b7a736f",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:129"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "b5ea441debdcefe3abadb8286801f5d1c81945ffec990d5a3ba0616c376ef031",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:130"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "830ca3bc77cee967993bac7b579549d5b616d9bd41b7522a4545a59d5b60d806",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:131"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "3c7ced044af574cc8036b2426fdede9641382964526139a4c03daba38ebe4932",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:132"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "7c9298c8c8095edddb0711243f05707f2dec217c96a01aa3d17ea28885ff2840",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:133"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "53f8d1da82d57e72dcebe08eb35f7fa18d9328b299288c9bc86a31854729468b",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:134"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "8e7d1994a86244a2c4b0f773a950fcc4093f9153491f5267e895ffcad6985a1a",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:135"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "acf03fcd544c8e5cbcece5d884b443e99b44c128df363e311c19020b58542f2c",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:136"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "563fbf7a38022fab7cdc9138a3fc3b48fec92b847aa0337ed7a559d6fa9d7d35",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:137"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "8f0a63177eb1734d32c29a6dd530c5db243e1dcb1fe5168710266a6fa368780d",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:140"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "d5c75a2fe563045e06c999178a5b488e705cdf1b6cb99f57639b3eec940e4ea5",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:141"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3028",
+      "physicalInterfaceId": "fc6499f1acde8ef65812628ff09cac92a3f3a30f642e3626e1d8c510e8c9a483",
+      "rawConnectionIds": [
+        "parts/3028.dat:8:143"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "091bef813fa5a0e91e319d8317a29b7aaad4a46ccfcc35521071c3e649f31a3a",
+      "rawConnectionIds": [
+        "p/stud.dat:8:2"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "f276768852e2e69ff07f07d059087d1adf74f6718d7cc566d606476297149667",
+      "rawConnectionIds": [
+        "p/stud.dat:8:5"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "ac8176bffb58255c7a7d429a142d6a1617399e8b6c3ace1f2798ca4d97982e87",
+      "rawConnectionIds": [
+        "p/stud.dat:8:6"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "a7bc07c15654748bc0bbdec2dd362be75986d8a1685f3930add7f0fb3ad4c25d",
+      "rawConnectionIds": [
+        "p/stud.dat:8:9"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "17b0728dc19f71c557dd45c05877f8061024d6c027926e26f92bce2e83d66e6b",
+      "rawConnectionIds": [
+        "p/stud.dat:8:19"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "abeade7e6fce325ab7b8490240e3dbf48f856eac9d02eaaaeebc962a6652e2fa",
+      "rawConnectionIds": [
+        "p/stud.dat:8:20"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "cc32da47e0e917f6eb7fface17febdb8b2c09b1e6f0b1139dce17f0c300253c2",
+      "rawConnectionIds": [
+        "p/stud.dat:8:22"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "1863c451e50d4529c492cfd3445e80db20998ef97d2868b04458ac23ecf8aeec",
+      "rawConnectionIds": [
+        "p/stud.dat:8:25"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "e2c2b89e91d04af4f6f8b9e1594745f0abaf6eec592347222a3f29dafe4bfe02",
+      "rawConnectionIds": [
+        "p/stud.dat:8:28"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "a27229fcc39d24677c6f1c4ff731f5cefcea83a6864276603efe530babdffb1f",
+      "rawConnectionIds": [
+        "p/stud.dat:8:30"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "680076a0750269cd9d139d863308432b80ecf54ab72f4991249ed0133aadbde0",
+      "rawConnectionIds": [
+        "p/stud.dat:8:33"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "21b1fe537fe86b62700268ee0827a3ef13896022155ba05bb10b438b18d28b25",
+      "rawConnectionIds": [
+        "p/stud.dat:8:38"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "1fe179addf97299b631293481cf3ee152b211dfaa4948a6ed81d4316d888fe23",
+      "rawConnectionIds": [
+        "p/stud.dat:8:39"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "8938d9ee263696ee9116cf33de0488e6e2d795442de00f1f9e42add03d8d227b",
+      "rawConnectionIds": [
+        "p/stud.dat:8:42"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "038f7b22714005920918e6384ece3c1c0c7bcbcc71e3400b754d3849cdc55efc",
+      "rawConnectionIds": [
+        "p/stud.dat:8:43"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "36cd66a2ac614b5df523e7b00b5e1b572beccb47f814eefc4f2190c2e0bd5744",
+      "rawConnectionIds": [
+        "p/stud.dat:8:46"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "553c1fd4e2be76a41e049006b81f06afd9485aa405d90de2b780759f03671432",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:53"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "9d4b25aee5f7f76c17903267427fbe97c6417d40d7bea54869b2b2792decb6c5",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:54"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "f0dddd48422018579afd20d243e721c2d0c723062ced8bc66fe75ff4f884ea90",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:56"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "332d346316a8b1022045d59c4cce031e9f9913809d56fb13ec45fd2b22257931",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:57"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "bf47ccd1dc254df0ff412dcf40791ae33b4ae08331a69c042d7e5125be45b127",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:58"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "485b4e39d9efe018081c4914a8e94fb227ce1226be2bcb67d235fe0ba9b3c66e",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:59"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "4ed00757f34d96d0efe523ca379426a003ee5464148438321b78784b8d6c8048",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:61"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "60435f89d91bb009ccc7c26f6397466eb3ccb19b3d46546ddb3889642ac99b19",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:62"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "1b9d6308aa4fe6fde77f0ea812e48346a097450ebc70ba65aa910f76321e29fa",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:63"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "432c0bde5837adf93f2cb6f08fb88a5ee7f47cb573ba2a007e6bc00aa033d762",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:65"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "6a577ef90d0c3da5048ca69bfe966841b56d454a9d3ffff183f1f50dbf5e9e85",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:66"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "6e021e6ad4f1fd24b4067f7702fcf39e5cbed12707cfda38e960893d16152e0c",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:68"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "13acc6b69ae2a05229f5f0f24a314d0ff0f002ac6f7030c23bb5601b398dd7a8",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:69"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "a6e8439808620d2bdf51b1088eb7973e132f830d4bff7e0129ab60a594f07355",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:70"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "88c68d69296b3ef2ab0e42c53c7ac9aa67a4475c46c74fd3d57eca8e27ba4828",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:73"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "13935cf5b1dcb33b0aabf5442249cb135f94cfc9cc722a0fb0917b814b294f08",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:74"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "b67f5aa31c08ec54324e877427f3f21a9bfae31ed56426b0529d9aed8fe66602",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:77"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "097f0b04f5247881cf66621d188b7f20b5fcd46110ae4176b29a0c93dea32544",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:78"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "6ea89568982f9efeff16693f7ae782736048d9176b8c9e0c2610d58a50f6c5bf",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:79"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "8e1e8e668ac91cf913981a3130bd5cc6dc8e5f6dddf7c7d652f8cc7a83be52a0",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:81"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "fe84df2c1747a6df3bdc5379b73bc035447228847ea6151e5a82527a2c71974d",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:82"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "975a5769165ea965f01aaec9cca8c60c19b16a61bbaa4fae2f04dcc2c5d44f9f",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:84"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "ff0e664b73a6b1b12d9140bc534bcaaa6554b446a269c86381f8a139f5b8bdd5",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:85"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "fa5ecd858117dfcec496152f5b4596d7f2ea539772b851231a2e3fdfa12621d4",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:86"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "60547cfa3d7e409f27fedb78db642a5e6e22489ef3757d7eea5920f80d0ce836",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:88"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "63e41cde9f798740802747b1a186566c01f7adc6c9c6aa5e14ed78bd46651838",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:89"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "bb0629fce1ef9c18be6e4f2e2db52076ec27cf03bad328395638a11f96dc97d0",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:90"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3029",
+      "physicalInterfaceId": "28217dbfd06acd50019370b3ff774cd3fd3bf0a1a4a615f694c982240773ab0b",
+      "rawConnectionIds": [
+        "parts/3029.dat:8:91"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "b991a5dd3c292dc80d90106593b64fcc6f1dc65dbe6c422f260e734078c44142",
+      "rawConnectionIds": [
+        "p/stud.dat:8:5"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "df6de951fe83f4a9d7928cfd62961109edd0773f06b6f59d3ce8aa2900ddb192",
+      "rawConnectionIds": [
+        "p/stud.dat:8:7"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "68231bd4cd97bc51a0f9f85f54e0219fb305f9eb726a8e66fe94c6b3d3e8c981",
+      "rawConnectionIds": [
+        "p/stud.dat:8:24"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "dc739b6c48e8b9044317ceb8d319e0d47b400167e369e9a299e9d5663f642c7d",
+      "rawConnectionIds": [
+        "p/stud.dat:8:28"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "fe68a5a934647c907eba766921fcacf35dafe7c06021d214a1d07e1fb85f4dc9",
+      "rawConnectionIds": [
+        "p/stud.dat:8:32"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "10208968c41a9e361596f69690b394a911f74be8129b8e62855547ae6832602a",
+      "rawConnectionIds": [
+        "p/stud.dat:8:34"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "be2fda874232bd34bf7185a34777a66016f79b0a27c82f914e020393a8184369",
+      "rawConnectionIds": [
+        "p/stud.dat:8:36"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "1d7ad75faa59e941bcb0aae67ad29cb23b8b53022fe084ab51ef75dc37d04fea",
+      "rawConnectionIds": [
+        "p/stud.dat:8:38"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "e698a440451dcd92f9c35949b60e1ba9d6e15ba59429dd3aac848a2e3e9f1fdf",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:45"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "34891751eeac055c215066f5b08b984711b966e0eb349c42ee23679133e5dc17",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:46"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "4726b7b7a5f91ea8468d967fbcb8b9d124a851fe5c1e3759bfb13832e82a5131",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:49"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "14e4244927d549a963d5ed08067a500c74f10e6c1292ce8306e1be4d64e6e086",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:50"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "1c47a15161c42f2c779aea61232ca1adc6d57073df96ab9a33b55228bf36f805",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:52"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "b97b4be4c55b6eb318d64d2e18fb383bcb165a448091347c0119af109b0dbc6b",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:53"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "e5265b40451915eca8c93707743045a491480ef7b155bf10f80c0de7852600bf",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:54"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "e3649ff0b079b6dcece6b5f8fa7cf04b699e3e7158972727e1e42fec97a02763",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:57"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "615d2ac0aebae9db294ac094389161383c1560a22792f1a511d1f83070308b7b",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:58"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "d744b24d426a96f0e2ac8eb438e2dc689f7d9296bfa99b02abbb3fc5a1e9db00",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:61"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "336baf7ca04bad2d92414d459ec09b93271e556770d125ce8dcfbe0979bedf6f",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:62"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "1f736f173476d04416275b019dd798536e5832aebd5f8126468c022124b640f9",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:64"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "161f0c9d0319fc08b594da3c630e0d5166b53b25668bfbbf2dd701d3b8843c1b",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:65"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "efe511c0aaa9880b98850b6cf9a9b0c28899da5307ab8672a9eb13668e668d2c",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:66"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "375e647a3e5a4b8a4d0151f41e87a51a352cca1781b42faa102876c628395436",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:67"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "958367fa7939654c5df0d758805589837e96bcbf1f40b33d5fee01f9cf0f6692",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:69"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "960a9c07de55d7f8bbeec4d5a80adb0941d3378e25558cba338119b1463241cb",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:70"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "99c4d067fb71f2883684d1b8dc67c71b3504b335e86fec788de56fe1e7759f93",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:72"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "82f1b00bde0b90460873762b6edffbe1a7acceecb7523569e5cbceeac8141102",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:73"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "54f2db8f59f67b4cc4eda2a373a84da88f91c2445d21e2ea834b1b70407827ac",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:74"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3030",
+      "physicalInterfaceId": "7c77cff2288db34c2045bb80f39f5b48ff070fc8c8205ec10d51fd4b2950a875",
+      "rawConnectionIds": [
+        "parts/3030.dat:8:75"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3031",
+      "physicalInterfaceId": "3513aaa5ae34fccc0858bf372e8a2a1f46c09d87f7af422926d44ee48f910019",
+      "rawConnectionIds": [
+        "parts/3031.dat:8:21"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3031",
+      "physicalInterfaceId": "47c59c10a6601ab6c8b44fc87600695f6f32283f0a1b5d9d15b17177ed8222bf",
+      "rawConnectionIds": [
+        "parts/3031.dat:8:22"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3031",
+      "physicalInterfaceId": "aa64c1e147a316db057c801a0bf4c266112bae13b2138956fc81f4f3e21c936d",
+      "rawConnectionIds": [
+        "parts/3031.dat:8:25"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3031",
+      "physicalInterfaceId": "ce4055094f377d86a7a1f1d957a3ef96cfa935ffa55bd96e1e3c2278fe57eb88",
+      "rawConnectionIds": [
+        "parts/3031.dat:8:26"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3032",
+      "physicalInterfaceId": "a2772b989f8285d6aebfb43f9c5cb9fc441ea2e993d4bbd74c47b2e8754e44a8",
+      "rawConnectionIds": [
+        "parts/3032.dat:8:29"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3032",
+      "physicalInterfaceId": "2d34b2d29dedbe00453800e58ae31cd29448b63cf5ae2272735f6f8bddbf0c21",
+      "rawConnectionIds": [
+        "parts/3032.dat:8:30"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3032",
+      "physicalInterfaceId": "e7340a313d013e64d9ac8f64fa31d33fa1bbe6d3ea7eb002984922e9ce926258",
+      "rawConnectionIds": [
+        "parts/3032.dat:8:33"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3032",
+      "physicalInterfaceId": "d6c28a405bb5f99bed4af1293eb61692bac2352f95219890acb5db9130251ba1",
+      "rawConnectionIds": [
+        "parts/3032.dat:8:34"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3032",
+      "physicalInterfaceId": "ed40455031539aa1808a7c43572edf34712e6b563489c4f7fab01e5c28540365",
+      "rawConnectionIds": [
+        "parts/3032.dat:8:37"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3032",
+      "physicalInterfaceId": "28cce0af0e378296aac3ee21a254ca105aed165a726bc4a3b7116834fcb61086",
+      "rawConnectionIds": [
+        "parts/3032.dat:8:38"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3032",
+      "physicalInterfaceId": "6bc66c16cd891a000e7f2d3b6322a45fbc5e7a3bbe28aabefadc396f001a254c",
+      "rawConnectionIds": [
+        "parts/3032.dat:8:41"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3032",
+      "physicalInterfaceId": "58ca9102e11325f78c3a75adaffa878b19a9be21a1d3b5f784bce03779127c3e",
+      "rawConnectionIds": [
+        "parts/3032.dat:8:42"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "b287c44fd940fe2ead804455529d57a442d5af32c771912c51790b62a705675e",
+      "rawConnectionIds": [
+        "p/stud.dat:8:2"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "75e1d255dd3126e745663d5db1e9a27028f19ffc48394602429421d437072bf2",
+      "rawConnectionIds": [
+        "p/stud.dat:8:3"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "3e657cfcdff87519c19ac1779470d9b943693006c281b002282507989bbad00f",
+      "rawConnectionIds": [
+        "p/stud.dat:8:4"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "fba1e5024213114884f0c8a60855e67b978690a008e0ce561b651b17e1122a66",
+      "rawConnectionIds": [
+        "p/stud.dat:8:6"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "393aed8fbd5d8ee3457aa37937c106d568f4310b1cf21c861719f131908018d8",
+      "rawConnectionIds": [
+        "p/stud.dat:8:8"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "c7c10a7a740604862f39faf436562ac123f8492f35c2e7f0bc1d41bd4a46862b",
+      "rawConnectionIds": [
+        "p/stud.dat:8:9"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "350700f986df1d9d832ec7d09e1dca80427adeaab068ec5ce5075bcf2452c2a7",
+      "rawConnectionIds": [
+        "p/stud.dat:8:11"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "3f6b9e724585530cbbedf3c9873feef5110234c65a41c16a9f13d5be745edf46",
+      "rawConnectionIds": [
+        "p/stud.dat:8:13"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "934617ad5371196916f87a4c9dd33f3ffc76085beba2325741215f8977d0ae3f",
+      "rawConnectionIds": [
+        "p/stud.dat:8:14"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "bc945cece69f8096711707e1fe1a3c673b1282dceaa1c38e44ff163d145e1f40",
+      "rawConnectionIds": [
+        "p/stud.dat:8:15"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "9f5e57d2ced94ac113bacbdb0ab4eab8c7c69dcfcb3ebbfd9fb9306663d690db",
+      "rawConnectionIds": [
+        "p/stud.dat:8:17"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "b2b2686ab9b567f1e5ae549867d9b4b368c5ef25d306624256df4a9673bc5789",
+      "rawConnectionIds": [
+        "p/stud.dat:8:18"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "97527f8366210b1164e80341e62977ea447f4f84a5583979f6e5e1d4ed444537",
+      "rawConnectionIds": [
+        "p/stud.dat:8:21"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "1e69903e59e82d6bd23fa63f589671575c96e55de0d60f159ca25be9d12e890d",
+      "rawConnectionIds": [
+        "p/stud.dat:8:22"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "4499dfcaea33966ebf5d28b9960a25244af42f7e10a21442f6a1d58249f3aa1f",
+      "rawConnectionIds": [
+        "p/stud.dat:8:23"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "4710ec61c38e75ba278a28456cb8e0867a6ee829990369fd460c246bfc396a96",
+      "rawConnectionIds": [
+        "p/stud.dat:8:26"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "36073f925d910740d9b229c914cfd1961acd103b87ccf50c2e563960baca4be0",
+      "rawConnectionIds": [
+        "p/stud.dat:8:28"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "c9362a127c3c82c34bf00c61f8cc4393d1edbfc87598dd07e13ea711249e6b06",
+      "rawConnectionIds": [
+        "p/stud.dat:8:31"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "c6112aca91f91f753f09ba3a0e430b6075355da9a776a315f8492a1d78ebbc34",
+      "rawConnectionIds": [
+        "p/stud.dat:8:33"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "9d66a9f061b0e58fc6bd9d9dc2656d1f2b12d73c9e1cad0954e95449ff7ac623",
+      "rawConnectionIds": [
+        "p/stud.dat:8:34"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "31101d6532c4c22dcc4b9d9759ecf025502db8ce1adfa247beeb805729db3c5b",
+      "rawConnectionIds": [
+        "p/stud.dat:8:36"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "934734b5cc68389307215223a7fc4680b28e50a01e3b52341da5a3bac5e723a2",
+      "rawConnectionIds": [
+        "p/stud.dat:8:37"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "da74e5a7991961b1c50b231e0df38f093fc7bf046d538148ec9981cac7a76ea2",
+      "rawConnectionIds": [
+        "p/stud.dat:8:39"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "b28669f88c40d8cf9573ad8afa7f0dd6729fd013a214866ea3e56e8d31ac6875",
+      "rawConnectionIds": [
+        "p/stud.dat:8:40"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "cc877c51ca62a46e369c1e8d26c4de3f2ca7b1300ebbb69cd4072dc66a40ad69",
+      "rawConnectionIds": [
+        "p/stud.dat:8:42"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "dccc1bde84a005d79025c6bbaba9b318a236105806e263131adcd91f1a8c6b23",
+      "rawConnectionIds": [
+        "p/stud.dat:8:43"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "4e19240815408016150e672bf1601d3964eab5f83223f21b27ce73fa0fba77ef",
+      "rawConnectionIds": [
+        "p/stud.dat:8:44"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "7d871638a2fa53c46d3155130f5b4b2d8ba5c2055b71752a721eb42ff9cf60f0",
+      "rawConnectionIds": [
+        "p/stud.dat:8:45"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "a7a07cff953d8952af804c1e0e8c0646d1f081df85f031297f68265c1daa2819",
+      "rawConnectionIds": [
+        "p/stud.dat:8:47"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "7de8698c0ef9db88c2f502aa99b328f1f7cfb779b88367f249a8233721054d69",
+      "rawConnectionIds": [
+        "p/stud.dat:8:48"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "d716662cec43b37069ca690c9b96e433fd8abacf1dce40adaa5427c286d93289",
+      "rawConnectionIds": [
+        "p/stud.dat:8:49"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "27977b24ea605e61fc755d2b8894276be0daa923da28462dde370de1bf66694b",
+      "rawConnectionIds": [
+        "p/stud.dat:8:52"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "d60d25b5670cb3bb521b2fdea2f16bf2c59e5777991dc33ce822c98ce08f6f4d",
+      "rawConnectionIds": [
+        "p/stud.dat:8:53"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "6bed506301f5c7d0f8a6e75c4a31bf890b73c2c389ea4e95e618c2aa21116b37",
+      "rawConnectionIds": [
+        "p/stud.dat:8:55"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "231b890988b1cecbbe7d5d820a7e761976b607398bc4f40096ab331d47dab2f0",
+      "rawConnectionIds": [
+        "p/stud.dat:8:56"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "dbfa2cefa46d9558fb34e382edff6a454e6057b71c567477bb435ac001c7544e",
+      "rawConnectionIds": [
+        "p/stud.dat:8:58"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "48208f8f3f83e17b51a203a860098caf59a7c3b9dfded5c7b8f7a5aa9c38712f",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:63"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "04a9f43eaeac58ae29305401b9ea851d1b23447c6a7cd7dc72517c6639e7d27d",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:64"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "12a1b8a8da988ae6574f74517d26d26cfa46af2ccbb38c21631c5d7c5dd8f3c4",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:66"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "33377f4b71037917dd9a437babc2dd52bef5975bd673e19a80640f74badebb4d",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:67"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "bd0a6bbbdf424927746194952b425f0f7064a953f0b0c383c36b541eb31a8aba",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:68"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "a765a5291ac592111eae4f2f74c0a500e34f946c5db7e159fcadf1dcbd15a124",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:69"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "cd89c5a14d2e1a6abd971573144982a94f36713b2fdd52ba66d2dddbaad618e1",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:70"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "7bd5d3207cfc09e9beeb89db29ddd7edb26eec8f5ed328cf0eedb12457600b41",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:72"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "9637ca6943a4c249d31d586966321f3d5d596b9be4a347e90e582fb926be38f4",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:73"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "1a38c8d90f111bee562ef0453094123488f26453a163b2d58a0b3389c57172a7",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:74"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "3cb05cdd0d293c2d85154bbf19b8af689f470df90067d8d4fc5d917397545c32",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:75"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "b4b9f06e075c592c6ed936aae588fac131beaf97e51a751804358eb4ea18424a",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:76"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "3a5a1b03aa920bd8756b7c49c81fc218fb29df95c52ba4cdb007b4ea153e0312",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:77"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "2f1d601ef9ea3a2dae4ef0ec604d11be40242294945d9484870fb1d64d1df46f",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:79"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "665afcfd022709d41043b8430c2a6b5d587695406141cbe16801c80f1a9bdfd9",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:80"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "c3b81f4544a9ab9064afee925d4c4bfc052e72cbbd9dff1be815657ff2f5e82a",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:81"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "33d3331ebdf8e3355ecf799a3d92dd5cf259455ad9cc11e9a6d155707f888e72",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:82"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "1a76c7fef086edfa8db20c9a95d118b28707184dcfa3ab80f1fe3774105401e6",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:83"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "2e3f2e60ff1460eafc918720534b2f2b527d42723fa6a435d02dbe343d6c839e",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:84"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "b041f41c762d9a6ea6e058285b994c73d04201c72351064d6160388d27317236",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:85"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "73e35be061c398d7bc8115a6ee4a7e5d40107e83c8f5a74dd94ff173e231f22a",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:86"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "74ba2bbf49d5019b8faaf6fa4aa69c6867c3c3e5b538a0e32a3ad7032bacfe6b",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:87"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "d1d2b70ce26f6a56db57a0a45d4765dfb9ffcf461c7da8763f4db2d23abe6ca8",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:88"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "756916b35892c5c94b2f3f841376ca862b547217625da0d14e23c9410551c55d",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:89"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "fc41e6076ddfbae08aae18d110f46513fb2c756090625f8c970e5d188bb9adef",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:90"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "a5728abe451f3bfaa7381754568900305a8890f189ddbb44ac84acdf51e35e3b",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:91"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "2bf538d893a7a33b42db967dfbba0fb67aa8cb1800de2903f16ed4563f2b38cf",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:92"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "c62f3e77d214057efa11818d513cc89a3568ffba0dcf28654efe3ba358a21fa4",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:93"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "bde8b0cc2fc5e4fad36e43d53116bed7d0b260f0a66004abbd20af70748e481e",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:94"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "1c50aad1ad0fe4cdaf2c9afd2ec91b43f619921a57b032abcd42337e98317ad3",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:95"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "c4659a37b209df0219a5a06c9da6cc7faf0d002f0b02e3fecb9f94c1e8097c87",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:96"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "e8db1790076118cbe2083e8bdc97844d5e04e1b3ef4ee470aed081355c72b75d",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:97"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "0689ea87e0843c986db1af7a06c4332a610a21b9af7e37f77cb77721cce244e0",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:98"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "79cc391019bb61133fecea5b292ce61288ce41a7c7b7d4bc8acf927215d44081",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:99"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "4744e1d8f776d6b69c6ad83a12f65b1ae80d35520d85d99f652551b6f4b0cd6f",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:100"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "20cde1e20b2bc6b9af2df89f90ef0564bab2fe41d49f36f412fe87166a621511",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:103"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "049531c39ecd4fd9b58725fb5af6260694c4e926ce139578e1b0c556fce1adf5",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:104"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "8f07e63d753e76f7fb21b6ebc71fa243bbbbce0d67cf3ef5dfb17a8a14927e9b",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:105"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "74acd69a96b340b01963bb25a0a09339ebbe14f900f4f33e8f10f24605479c94",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:106"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "5065b80cba7de504ec22be61da0720316f33a50360805a3a5172b1d22d7c32c1",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:109"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "10abe7baa144d5dcb7415fcae0b1701e25f68df40777a8878a1e24f231430ceb",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:110"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "e35725bffb2733b98146c3bf1191e391f143122e4ec20c34d1f0481a98696552",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:111"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "a769b733add97535a62f56f53b1592c200fbc261b3d44f2f310e60f3c50cb9f5",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:112"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "a102be764b965ba4ad2563c26b4880657b3ab8be01c3350867448421542736a0",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:113"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "a709a3e57160d1baf77156c1e64d96cb778b35db2b082b9b526f76de38141cd9",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:116"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "ad807874fab75f8f4d2a3cfa5ad5eab744331219d02d53b73892af6a62f43d29",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:117"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3033",
+      "physicalInterfaceId": "391000e2780df0713631d5c20240332216c6fd1e30839487218e9e98b8924e45",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:119"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3035",
+      "physicalInterfaceId": "8f833db19dbde55159a1afc591047f7d01991fd0370b13adab1576948d8982af",
+      "rawConnectionIds": [
+        "parts/3035.dat:8:37"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3035",
+      "physicalInterfaceId": "50702bf1a0233665cdc65fbc9d5a176b90c1ffc46789456912e50f9579897d82",
+      "rawConnectionIds": [
+        "parts/3035.dat:8:38"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3035",
+      "physicalInterfaceId": "23848723138ffe929199c33cc91d2d4e05a7b105b37ebe4cf9ba72206f2745e7",
+      "rawConnectionIds": [
+        "parts/3035.dat:8:41"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3035",
+      "physicalInterfaceId": "51fa25481b690f0d7dcae90d62f5926bced3659a6dcc8aeed96aa7b4e8384e5b",
+      "rawConnectionIds": [
+        "parts/3035.dat:8:42"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3035",
+      "physicalInterfaceId": "57df3134d6cc9498d823ed5e66f55eea7aeba2ea386f62afd6f4f46ec4a9002d",
+      "rawConnectionIds": [
+        "parts/3035.dat:8:45"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3035",
+      "physicalInterfaceId": "0742f0c489505008ae2799e7337379b77658e3999e0a3fdf581f8cc0b4bd411c",
+      "rawConnectionIds": [
+        "parts/3035.dat:8:46"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3035",
+      "physicalInterfaceId": "4d205bb019ad4c29febdd5257cd510a104f64a35ca02688dbfb2ccf2273f7fcf",
+      "rawConnectionIds": [
+        "parts/3035.dat:8:49"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3035",
+      "physicalInterfaceId": "565eadd3091a2a57ef8191066f652afe73703a7e902fd9044138101492041cf6",
+      "rawConnectionIds": [
+        "parts/3035.dat:8:50"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3035",
+      "physicalInterfaceId": "73ad38109839d2bc989a858b1f7bf608c6ee994d199357b88d1138dfba3e7819",
+      "rawConnectionIds": [
+        "parts/3035.dat:8:53"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3035",
+      "physicalInterfaceId": "bda345a224f0acbcd85964d207a9227fe42b8fc2160e36ac3f6e300712ad26ca",
+      "rawConnectionIds": [
+        "parts/3035.dat:8:54"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3035",
+      "physicalInterfaceId": "effbdc361651fae071f28d9aa9f6bf468cde758f0f690a2156d5a9f60a4c2988",
+      "rawConnectionIds": [
+        "parts/3035.dat:8:57"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3035",
+      "physicalInterfaceId": "bc63e079487bec8d4cb84f781d5253c837bccda584e092b124ec92940c0c2378",
+      "rawConnectionIds": [
+        "parts/3035.dat:8:58"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "39f52dc4b03dc5bde1c55ac3ca53694fbf721947f92adbb5ae9c52c89447c3b0",
+      "rawConnectionIds": [
+        "p/stud.dat:8:8"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "35ab8f4a7307f46c737be71de6de3649a79eefa8fa1c891e27f51f3824ac5282",
+      "rawConnectionIds": [
+        "p/stud.dat:8:9"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "51c81f9a76680a815f23ae9acf872a33e3f979c72bdd203e1af7e7f3a681f6d5",
+      "rawConnectionIds": [
+        "p/stud.dat:8:10"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "12fec41e4de7aebbc0850bbb37f8e973f73ca3f59a8103e29a605c703376fdf2",
+      "rawConnectionIds": [
+        "p/stud.dat:8:11"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "84724768221fd9242e77b6eb9313dcb76cf20634cf7d34d956cd4b722a949859",
+      "rawConnectionIds": [
+        "p/stud.dat:8:12"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "4319002dad5c897ce4fd5fecd557db99c7fcf0d0e5c347d3f926f1534bbd8fe5",
+      "rawConnectionIds": [
+        "p/stud.dat:8:17"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "1c4fb4b203c1617dc586e873806ea8a6319aeb1a4454c5caaa0bdbc6938e703d",
+      "rawConnectionIds": [
+        "p/stud.dat:8:21"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "a285b881c87b932db675739703d68f410f2e627308d46aad3019793291345025",
+      "rawConnectionIds": [
+        "p/stud.dat:8:22"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "c847682022708751f14521788777195bf80619e30d0f6a3d2679fffae2eaf6af",
+      "rawConnectionIds": [
+        "p/stud.dat:8:26"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "b51fb9d76639baca9ff72a792be9ddfbdc80c84b2e7bcc030e16a64270946553",
+      "rawConnectionIds": [
+        "p/stud.dat:8:27"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "25e85d717ae6863c2b207a820b07672586d6e4a9835667bba295a47eda4870c4",
+      "rawConnectionIds": [
+        "p/stud.dat:8:29"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "fb8b4e0bde6d8ecb6878a82af815789fe21322cc31c080ce4d6565111c055a9e",
+      "rawConnectionIds": [
+        "p/stud.dat:8:31"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "9d269d591ca5b94941263749f083409d5ffe73f161f88c8517796ed005cbce40",
+      "rawConnectionIds": [
+        "p/stud.dat:8:32"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "1b462ce8d203e230f7588747f25bc524ba7e2ce2c3771a3a2ef3d6fae90f89e0",
+      "rawConnectionIds": [
+        "p/stud.dat:8:33"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "7dcdc913c876547c9633652c6a845f3014862294a1422215886e42d607f13707",
+      "rawConnectionIds": [
+        "p/stud.dat:8:36"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "89e4d8530665bcac2cb62e668eebdb9a18f4a7b44706b8b8e0ca4c35b908f086",
+      "rawConnectionIds": [
+        "p/stud.dat:8:37"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "919cdcf56493b795da3930cff3e6b0b1a58a6a6d49d605bf58e9054b36496c99",
+      "rawConnectionIds": [
+        "p/stud.dat:8:38"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "44491e58a164a9c454a8fd922fd6fed1b21b23886ced4dc22d5dedecd5b167c0",
+      "rawConnectionIds": [
+        "p/stud.dat:8:39"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "cd3805e2daae4908c848d73cc9952ec7ba3bc000670cce49586f796f29e32e34",
+      "rawConnectionIds": [
+        "p/stud.dat:8:42"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "0b8cc5b548bbedfbf9613becea04e008411da2c9eb2f3c2b94c246be47e5df93",
+      "rawConnectionIds": [
+        "p/stud.dat:8:44"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "a55c6a955df365b37f59777d714142a0e8a27d7dc61e4cc11fb7906078a97255",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:52"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "2ffd315663d60b070a5b2e3bccae4622de80ba7cf8377f098213b3220f8d1438",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:55"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "44fe7935e75cdad3dcb0f5621c28af9036e1fae3171864a75288f9e3e0f8842b",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:56"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "f79a31593abda3ba21e0afb2fff3d80dbdf7c40e30e860cf602e4c8ae105dfb4",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:57"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "e6076a43f2e533bff38ab8e32fe7ca21d8e68b62dc56e15225a597231df9a7e7",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:58"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "72c34745123a49fd4647b9963c843075fd96dd947146f0fb9ea2f23dfefef5a8",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:61"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "890ccc28dc136d0b1c44aa5d1a0948208430878fddcbda4c3bc6dac7cbcbe5db",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:62"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "0b393c5ae96ca621559777c02dc2efc23d81ae5d0723e9b768b6478b8b1891bf",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:63"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "99b009d882651c0a9631a12a18c378e29281493daf8fe78dae5870f4f41713d7",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:64"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "b1d7f6f7ec51f944b7571ed6be55c16f9e46a06a80703564d3944f5a1ae4a62c",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:65"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "c9a7c4521ce5616ccd8792e5f20f6e7d79d10a4d602cede6ce2eea142a8a0282",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:66"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "25cdf2e1cbb48804c962d1ee9c7803c34f5a169bfc37d2ac375c3950975be68b",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:67"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "83c3aecbbbb032434a46f0eab6c469e1095ad681f52eefff4f01bc3c28c07124",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:68"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "d2c31ec8b28620993248c2b0566706e9ec6d697687ce2b8847d39bd702a3652c",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:69"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "9f3d4cdf8da9583fe0a347dde96e84e4dca8e52c91b8f1c794262f5996b9cde1",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:70"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "a9754a18c0a3667548cc1561acfc87bfeea724966e518722b8e920e79fac055f",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:73"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "3858b96e2fdea4914eb31bfec537dde782776b614c3cf470809fa2710bc97109",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:74"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "89bc224a4a143f692d86aba8b815b1b793487cc9f084c4f611d8d52d5dbdb0ac",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:75"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "2813e23b8a38d30494de74351dee0b535301c8afea32c3ffc56a8856326e8cda",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:76"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "de3ad088310f59f45aa795375738977778c98e37b43775ca7feff0c1f63b8c09",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:78"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "237ec09d76c010cae072eaf21e69a78bf2b4310c24d76fff15bb0bc7cdfff391",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:79"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "8912ab40eec82145b5aa7d3c5eec3a8f6a838b4aa4fb53772967a50ebd9300fa",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:80"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "e288729f481046c29a754b1108a912a3919fca473a0a979422335ec08ed3bf17",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:81"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "71f42ff302984c3370d0f936402e7d34f9c5489ac94f465a9a0109c5f6f378e4",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:82"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "d1cba65a9d70956379344ab4b85397c8938362a81d1ed462d7c62a763e632855",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:83"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "3402c6ae8d8d547325a95308153de554543258c5719facc53248effdde840709",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:84"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "a993ad27cf9c3e19b32f1f55ade67e5978b87c10a220c0f348bf11e62fc059a0",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:85"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "758f625d744dc08519d8fb0e4ce9a767d4558ff62b4931d977682c745efc2176",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:86"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "5e116afdd3093411f9ea2a92c5a9fa77c1a084e011b7e7e165793a6f3cff19cb",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:87"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "c370d05e8ed8bfb5269b1659f43647feab2c1f7aadc8b4dc977acb46055cc4c1",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:88"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "8840bb772e0e0ff63ddbda89a3427db1b71ee2d659748979b568d71f1a676e52",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:89"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "ec0d36596e59d5b86ed2dfd0773eb01264f0763fdc98ef71c8bc5bb063cd5d9f",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:92"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3036",
+      "physicalInterfaceId": "8e42b07f61237b90ad088f4c1a245301cfd8d0669ba2d363c2f091eb24d3b312",
+      "rawConnectionIds": [
+        "parts/3036.dat:8:93"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3958",
+      "physicalInterfaceId": "e139036a5c76a4beaaed2632ed3d2bb59a6a94aaede6e05e04c6111d36632a57",
+      "rawConnectionIds": [
+        "parts/3958.dat:8:43"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3958",
+      "physicalInterfaceId": "ebf921632a404a6f2931cbac18f0734651aeff85c4eec2b100fec89c50ac50ca",
+      "rawConnectionIds": [
+        "parts/3958.dat:8:44"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3958",
+      "physicalInterfaceId": "b93866cac454d4485d6490cbd1d0467f3982e07e84cbb035c74c680737e553d0",
+      "rawConnectionIds": [
+        "parts/3958.dat:8:45"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3958",
+      "physicalInterfaceId": "9b18e38ab10583bdd038504a17de0cfc48a798d15e00851dd58a9d654ade268a",
+      "rawConnectionIds": [
+        "parts/3958.dat:8:46"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3958",
+      "physicalInterfaceId": "85bef455f79eca1c5227a89f4a6166964cc245ace14ae06cb0fab6869a36679d",
+      "rawConnectionIds": [
+        "parts/3958.dat:8:49"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3958",
+      "physicalInterfaceId": "abb1f1524d4e20561aa8cfd50932419bb6c239f3b2d7bd8d0ce7520c4255d1a5",
+      "rawConnectionIds": [
+        "parts/3958.dat:8:50"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3958",
+      "physicalInterfaceId": "4295b69dd96906578ee590a42b4b6cc595c7185d4665e6fa606dd000e0aaa107",
+      "rawConnectionIds": [
+        "parts/3958.dat:8:51"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3958",
+      "physicalInterfaceId": "5f2808d4ef66fb7470e650e946c05baf06ad12ee3b3127dfe831bf1c35229248",
+      "rawConnectionIds": [
+        "parts/3958.dat:8:52"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3958",
+      "physicalInterfaceId": "cc9f965beca9c44ab002bf94113af7b21e53746d6cb1fd8a39236f9e2218cb05",
+      "rawConnectionIds": [
+        "parts/3958.dat:8:55"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3958",
+      "physicalInterfaceId": "a37c632ea8e42cb63dec0e831cc63a87d62660b3b575358284318b98e3b2a55f",
+      "rawConnectionIds": [
+        "parts/3958.dat:8:56"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3958",
+      "physicalInterfaceId": "d92ee4fe333e5a1a991c68c74eaafee287b8994cdf885fa4426ce49b34dffadf",
+      "rawConnectionIds": [
+        "parts/3958.dat:8:57"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3958",
+      "physicalInterfaceId": "ed480dcb1547beb847626511c245298bacec45fa3e98931fcd56620bbd3f838e",
+      "rawConnectionIds": [
+        "parts/3958.dat:8:58"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3958",
+      "physicalInterfaceId": "234ecee0955f325d439046c747f6790cb9569347ee464b51021a879974f573ce",
+      "rawConnectionIds": [
+        "parts/3958.dat:8:61"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3958",
+      "physicalInterfaceId": "0ad2bbca116260a2ee67a1fa7b77e1d534aa86e527ff5dd1e3191a4bbeb85a04",
+      "rawConnectionIds": [
+        "parts/3958.dat:8:62"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3958",
+      "physicalInterfaceId": "23f0bae06127581fa9b2f171a0874709775a81736c7af302ee31b2185503a5eb",
+      "rawConnectionIds": [
+        "parts/3958.dat:8:63"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "3958",
+      "physicalInterfaceId": "71ff94abded025512f38f22e281a6bfa762291ec8d0aeb693817be31303e100e",
+      "rawConnectionIds": [
+        "parts/3958.dat:8:64"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "11212",
+      "physicalInterfaceId": "b934d6fd0aab82f88c006c11e6cf4cbbb8d1986e268f3cbc21c4d417344d2039",
+      "rawConnectionIds": [
+        "parts/11212.dat:8:13"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "4598",
+      "physicalInterfaceId": "4cc43fe004d4f242e270cb7917d0dc8cf996b189e8240c3abe1dd8e084994eb6",
+      "rawConnectionIds": [
+        "parts/4598.dat:15:19"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "98287",
+      "physicalInterfaceId": "fef9cdeffcc750c6ee6eaf76b81aa0ef7d9e54c8c68316cd777f6a1d62ae5b04",
+      "rawConnectionIds": [
+        "parts/98287.dat:8:28"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    },
+    {
+      "partId": "98287",
+      "physicalInterfaceId": "355f5f1be4b7c1770df6a060ef930e840377481c09a321f9f33f3e87088015b6",
+      "rawConnectionIds": [
+        "parts/98287.dat:8:31"
+      ],
+      "before": "REQUIRES_ASTRA_REVIEW",
+      "after": "PASS",
+      "reasons": [],
+      "reasonCodes": [],
+      "execution": "direct-test"
+    }
+  ]
+}

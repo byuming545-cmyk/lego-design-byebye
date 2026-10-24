@@ -46,7 +46,7 @@ Run:
 npx vitest run tests/parts-assembly-multipoint.test.ts
 ```
 
-The tests use unchanged bundled native parts:
+The tests use unchanged bundled native parts. This table records the original V0.6 baseline, before the collision 1.1 spatial fallback:
 
 | Case | Coordinate consistency | Complete native attachment |
 | --- | --- | --- |
@@ -58,7 +58,10 @@ The tests use unchanged bundled native parts:
 | Coincident anchor with 45° unsupported source-frame twist | Rotation disagreement | Rejected before collision |
 | Extra engaged port outside the production allowlist | Geometrically coincident | Rejected before collision |
 
-The blocked large-plate example is retained as a real algorithm limit. The engine
-does not raise collision budgets, ignore neighboring studs, exempt penetration
-zones, or invent clearance to make it pass. It is suitable for the Astra complex
-collision handoff.
+The collision 1.1 regression now certifies the centered 3001/3020 attachment with
+all eight graph mates and complete native solid proof, and rejects a graph with
+one mate omitted. The former blocked assertion was replaced by those stronger
+proof/graph assertions. Separate tests cover 3020/3710, reversed/common-frame
+queries, all four 3020/3020 source quarter turns and actual plastic intrusion.
+See [the collision architecture handoff](../sol-handoff/v0.6-collision/README.md)
+for current results. No penetration exemption or native geometry change is used.
