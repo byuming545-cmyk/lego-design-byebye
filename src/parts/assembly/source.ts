@@ -3,6 +3,7 @@ import { createBundledLDrawImporter, createBundledLDrawResolver, loadBundledLDra
 import { createBundledConnectionImporter } from '../connections/index.js';
 import type { NativeAssemblyPart } from './types.js';
 import { CONNECTION_PARSER_VERSION } from '../connections/importer.js';
+import { assertDigitalPartOrigin } from '../provenance.js';
 
 export const PART_LIBRARY_VERSION = 'ldraw-c43ed06a-shadow-9b1131fb-parser-2';
 const sourceHashes = new WeakMap<NativeAssemblyPart, string>();
@@ -52,11 +53,12 @@ export class NativePartRepository {
   async getPart(partId: string): Promise<NativeAssemblyPart | undefined> {
     await this.initialize();
     if (!this.manifest!.roots.some(root => root.partId === partId)) return undefined;
-    if (!this.cache.has(partId)) this.cache.set(partId, (async () => freezeSource({
-      partId,
-      geometry: await this.importer!.importPart(partId),
-      connections: await this.connections!.importPart(partId),
-    }))());
+    if (!this.cache.has(partId)) this.cache.set(partId, (async () => {
+      const part = { partId, geometry: await this.importer!.importPart(partId), connections: await this.connections!.importPart(partId) };
+      // Failed imports retain their diagnostics; no placeholder or legacy fallback is substituted.
+      if (part.geometry.status === 'geometryReady') assertDigitalPartOrigin(part);
+      return freezeSource(part);
+    })());
     return this.cache.get(partId)!;
   }
 }

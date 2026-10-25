@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-25T11:37:06.765206+00:00",
+  "baselineCommit": "d001aad09472cbf541d3048666089659c5e87796",
+  "branch": "codex/legacy-isolation",
+  "scope": "Legacy source governance and production native import isolation",
+  "status": "passed",
+  "runs": [
+    {
+      "name": "unit-api",
+      "command": "npm test -- --maxWorkers=2",
+      "exitCode": 0,
+      "summary": {
+        "filesPassed": 42,
+        "testsPassed": 590,
+        "failed": 0,
+        "durationSeconds": 93.1
+      },
+      "logSha256": "42d42ed2d796a6d337b8c977c4ac34dfaace9f7327af68a81f0bc8c8d99242dc",
+      "output": "\n> bricklab@0.6.0 test\n> vitest run --maxWorkers=2\n\n\n RUN  v5.0.5 /workspace/lego-design-byebye\n\n\n Test Files  42 passed (42)\n      Tests  590 passed (590)\n   Start at  11:30:25\n   Duration  93.10s (tests 98%, import 1%)\n\n"
+    },
+    {
+      "name": "browser",
+      "command": "npm run test:e2e",
+      "exitCode": 0,
+      "summary": {
+        "testsPassed": 10,
+        "failed": 0,
+        "reportedDuration": "1.1m"
+      },
+      "logSha256": "92a81e04182aecffc457ea60ef8128c189d5c696fc016edf94231e5c36a5b87a",
+      "output": "\n> bricklab@0.6.0 test:e2e\n> playwright test --config playwright.config.ts\n\n[WebServer] (node:178384) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)\n\nRunning 10 tests using 1 worker\n\n(node:178458) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n  ✓   1 [chromium] › tests/e2e/assembly.spec.ts:64:1 › reports every real source part as passed or blocked with an explicit scope (29.7s)\n  ✓   2 [chromium] › tests/e2e/assembly.spec.ts:100:1 › attaches a source-verified pair and rejects the same mating gender (5.7s)\n  ✓   3 [chromium] › tests/e2e/assembly.spec.ts:125:1 › generates source-bound wall and chassis modules and preserves unsupported wheel reasons (4.7s)\n  ✓   4 [chromium] › tests/e2e/assembly.spec.ts:155:1 › imports exported real models through current validation and prevents export after version or occupancy invalidation (5.1s)\n  ✓   5 [chromium] › tests/e2e/assembly.spec.ts:204:1 › mobile assembly mode keeps source controls, accepted rendering and debug data within the viewport (2.9s)\n  ✓   6 [chromium] › tests/e2e/parts-foundation.spec.ts:120:3 › real parts foundation with actual bundled sources and WebGL › opens the real library by default and renders native 3001 mesh plus source markers (4.8s)\n  ✓   7 [chromium] › tests/e2e/parts-foundation.spec.ts:169:3 › real parts foundation with actual bundled sources and WebGL › retains source-observed external mapping without inventing an LDraw cross-reference or generation eligibility (3.1s)\n  ✓   8 [chromium] › tests/e2e/parts-foundation.spec.ts:194:3 › real parts foundation with actual bundled sources and WebGL › shows six readable PDFs, two transfer failures and evidence-based element frequency without invented design coverage (2.7s)\n  ✓   9 [chromium] › tests/e2e/parts-foundation.spec.ts:231:3 › real parts foundation with actual bundled sources and WebGL › supports mobile inspection and keeps legacy UI and actual HTTP generation/export blocked (3.8s)\n  ✓  10 [chromium] › tests/e2e/parts-foundation.spec.ts:262:3 › real parts foundation with actual bundled sources and WebGL › does not restore quarantined browser history or enable legacy file import (900ms)\n\n  10 passed (1.1m)\n"
+    },
+    {
+      "name": "compiled-preview",
+      "command": "npm run test:preview",
+      "exitCode": 0,
+      "summary": {
+        "testsPassed": 3,
+        "failed": 0,
+        "durationSeconds": 32.1,
+        "includesBuildAndTypecheck": true
+      },
+      "logSha256": "17978f829baea99a2f1a3661739df78da44758f63d18e8516e43fb1e10fa47f7",
+      "output": "\n> bricklab@0.6.0 test:preview\n> playwright test --config playwright.preview.config.ts\n\n[WebServer] (node:179164) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)\n[WebServer] \n[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:\n[WebServer] - Using dynamic import() to code-split the application\n[WebServer] - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks\n[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.\n[WebServer] (node:179192) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)\n\nRunning 3 tests using 1 worker\n\n(node:179200) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n  ✓  1 [preview-chromium] › tests/preview/parts-foundation.spec.ts:7:1 › compiled preview serves Part Lab, bundled native geometry, fonts and API on one origin (13.6s)\n  ✓  2 [preview-chromium] › tests/preview/parts-foundation.spec.ts:37:1 › compiled routes preserve source evidence and generation restrictions (340ms)\n  ✓  3 [preview-chromium] › tests/preview/parts-foundation.spec.ts:59:1 › compiled assembly API attaches verified source interfaces and exports a versioned real wall (429ms)\n\n  3 passed (32.1s)\n"
+    },
+    {
+      "name": "preservation-audit",
+      "command": "python scripts/audit-legacy-isolation.py --check",
+      "exitCode": 0,
+      "summary": {
+        "baselineFilesCovered": 1896,
+        "protectedTrackedHashesVerified": 996,
+        "mappingRecordsChecked": 531,
+        "physicalMovesChecked": 2
+      },
+      "logSha256": "62a1e5e2c78c1c39ee8510a8dcc8cc898ad47af956ea282622399a33fecc6850",
+      "output": "{\"written\": [\"legacy-inventory.json\", \"quarantine-manifest.json\", \"preserved-assets.json\"], \"baselineFileCount\": 1896}\n{\"status\": \"passed\", \"baselineFilesCovered\": 1896, \"protectedTrackedHashesVerified\": 996, \"mappingRecordsChecked\": 531, \"physicalMovesChecked\": 2, \"privateDataReadOrPublished\": false}\n"
+    }
+  ],
+  "addedTests": {
+    "unitApi": 17,
+    "browser": 1,
+    "files": [
+      "tests/parts-digital-import-boundary.test.ts",
+      "tests/legacy-isolation-routes.test.ts",
+      "tests/parts-governance-boundary.test.ts"
+    ]
+  },
+  "modifiedTests": [
+    "tests/parts-ldraw.test.ts (synthetic manifest metadata fixture)",
+    "tests/e2e/parts-foundation.spec.ts (legacy import/open and cache isolation)"
+  ],
+  "developmentFinding": {
+    "initialBrowserRun": {
+      "passed": 9,
+      "failed": 1
+    },
+    "cause": "Existing inventory-loading reset cleared the remembered legacy model ID; new preservation assertion detected it.",
+    "fix": "rememberModel is read-only while legacy operations are quarantined; entire 10-test browser suite rerun passed."
+  },
+  "independentReview": {
+    "blockingFindings": 0,
+    "limits": [
+      "Trusted test-fixture construction remains available to tools, not HTTP/env input",
+      "Historical reference modules remain; native production runtime dependency closure excludes them"
+    ]
+  },
+  "unchangedAlgorithmAndQualificationChecks": [
+    {
+      "path": "src/parts/assembly/collision.ts",
+      "sha256": "9ac1d5f23fc2f07fd48b7aa7946c049f4990459d4a36e3690d276d66fb8d9c86",
+      "unchangedFromBaseline": true
+    },
+    {
+      "path": "src/parts/assembly/proxy.ts",
+      "sha256": "b67175e795861cce2ce193192b5963b7fdbc7ee3ea6a40411c0f8b04eeb7e233",
+      "unchangedFromBaseline": true
+    },
+    {
+      "path": "src/parts/assembly/compatibility.ts",
+      "sha256": "a9528d1dc3ff0678d575644e4e6d4faab8ac24e916beb2e9e76929391891f2e4",
+      "unchangedFromBaseline": true
+    },
+    {
+      "path": "src/parts/assembly/solver.ts",
+      "sha256": "a5730eb68d2f3d3db8c3c78a25fee81f8b4a5f1e788e2571ecefb0f55e33afe8",
+      "unchangedFromBaseline": true
+    },
+    {
+      "path": "src/parts/assembly/engine.ts",
+      "sha256": "7b41723eee0b4644e1c12bd030fe758de475ffc94d33dfc33491d60d8c647b8e",
+      "unchangedFromBaseline": true
+    },
+    {
+      "path": "src/parts/assembly/generator.ts",
+      "sha256": "7869c5c2a44159944fc3f4e3def71403c8d5e5fdf055c93a19c5555db9638b2a",
+      "unchangedFromBaseline": true
+    },
+    {
+      "path": "data/parts-foundation/assembly/migration.json",
+      "sha256": "c7d6aeb319f1f04aaf4c4ab4529694e85ac9e15028a24566ebcb08f903200380",
+      "unchangedFromBaseline": true
+    }
+  ],
+  "nativeRoots": 245,
+  "nativeSourceFilesUnchanged": 968,
+  "physicalInterfaceCounts": {
+    "PASS": 1765,
+    "BLOCKED": 786,
+    "REQUIRES_ASTRA_REVIEW": 2081,
+    "PENDING": 0
+  },
+  "qualifiedParts": 79,
+  "fullInterfaceSweepRerun": false,
+  "physicalBuildVerified": false,
+  "remainingWarnings": [
+    "Existing Vite chunk >500 kB warning; bundle split is outside this governance task."
+  ],
+  "coverage": [
+    "A legacy geometry rejected",
+    "B handwritten connectors rejected",
+    "C legacy collision exemptions ignored",
+    "D frozen native source wins",
+    "E source ID/file conflicts rejected",
+    "F reference assets preserved",
+    "G transitive native production dependency boundary",
+    "H API/browser cache/import isolation"
+  ]
+}

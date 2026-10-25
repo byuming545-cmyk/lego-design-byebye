@@ -14,6 +14,7 @@ import { IDENTITY_TRANSFORM } from './assembly/math.js';
 import { createBundledElementDesignMapper, buildFailedPartRecoveryQueue, buildInstructionCoverage, type ElementDesignMapper, type ElementMappingResult } from './recovery/index.js';
 import type { AssemblyMigrationEntry } from './assembly/migration.js';
 import type { PhysicalInterfaceCoverage } from './assembly/coverage.js';
+import { inventoryReferenceMetadata, nativePartMetadata, type PartSourceMetadata } from './provenance.js';
 
 export const FOUNDATION_BUNDLE_ROOT = fileURLToPath(new URL('../../data/parts-foundation/', import.meta.url));
 export const FOUNDATION_LIMITATIONS = [
@@ -29,6 +30,7 @@ type GeometryResult = LDrawPartResult;
 type ConnectionsResult = ConnectionImportResult;
 export interface FoundationPart extends PartReadiness {
   id: string;
+  sourceMetadata: PartSourceMetadata;
   identitySystem: 'ldraw' | 'lego-element';
   name: string;
   category: string | null;
@@ -128,6 +130,7 @@ export class RealPartRegistry {
       const mapping = this.mapper!.resolve(row.identity.id);
       this.parts.set(id, {
         id, identitySystem: 'lego-element', name: mapping.partName ? `${mapping.partName} · Element ${row.identity.id}` : `Element ${row.identity.id}`, category: mapping.category,
+        sourceMetadata: inventoryReferenceMetadata(row.identity.id),
         sourcePartId: null, designId: mapping.designId, elementId: row.identity.id, mapping,
         selectionBasis: 'source-backed element observation; external design mapping does not establish LDraw identity', source: 'Uploaded instruction PDF or local inventory observation',
         ...assessPartReadiness({ geometryReady: false, connectionReady: false, collisionReady: false, checks: missingChecks() }),
@@ -159,6 +162,7 @@ export class RealPartRegistry {
     return {
       part: {
         id, identitySystem: 'ldraw', name, category: categoryFromSourceHeader(name), sourcePartId: id,
+        sourceMetadata: nativePartMetadata(native, readiness),
         // Equal-looking numbers are not proof of an Element/Design/LDraw mapping.
         designId: null, elementId: null, selectionBasis, source: 'LDraw + LDCad Shadow Library', ...readiness,
         issues: [...geometry.issues.map(issue => `${issue.code}: ${issue.message}`), ...connections.issues.map(issue => `${issue.code}: ${issue.message}`), ...(proxy.status !== 'ready' ? [`${proxy.reasonCode}: ${proxy.reason}`] : []), ...(!readiness.generatable ? entry?.reasons ?? ['尚未通过逐件拼接与净空校验，禁止生成。'] : entry?.disabledConnectionIds.length ? [`${entry.disabledConnectionIds.length} 个来源接口未开放；仅可使用白名单接口。`] : [])],
@@ -177,6 +181,7 @@ export class RealPartRegistry {
       const summary = structuredClone(part);
       delete summary.assemblyReport;
       summary.evidence = [];
+      summary.sourceMetadata.verificationEvidence = [];
       if (summary.interfaceCoverage) summary.interfaceCoverage.decisions = [];
       return summary;
     });

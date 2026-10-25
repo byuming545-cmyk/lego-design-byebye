@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { InventoryError } from '../inventory/index.js';
+import { InventoryError } from '../inventory/provider.js';
 import { FoundationInventoryError, importFoundationInventoryCsv, importFoundationInventoryJson, type LocalInventoryOptions } from './inventory/index.js';
 import { RealPartRegistry } from './registry.js';
 import { storeLocalInventory } from './inventoryStore.js';

@@ -154,9 +154,11 @@ describe('pinned native source snapshot', () => {
     try {
       await mkdir(path.join(directory, 'files', 'parts'), { recursive: true });
       await writeFile(path.join(directory, 'manifest.json'), JSON.stringify({
-        schemaVersion: 1, library: 'LDraw', revision: 'a'.repeat(40), sourceRoot: 'https://example.invalid/pinned/',
+        schemaVersion: 1, library: 'LDraw', revision: 'a'.repeat(40), sourceRoot: `https://example.invalid/${'a'.repeat(40)}/`,
+        archive: { sourceUrl: 'https://example.invalid/archive.tar.gz', sha256: 'b'.repeat(64) },
         roots: [{ partId: 'root', path: 'parts/root.dat', name: 'Fixture', selectionBasis: 'test' }],
-        files: [{ path: 'parts/root.dat', sha256: createHash('sha256').update(original).digest('hex') }],
+        files: [{ path: 'parts/root.dat', sha256: createHash('sha256').update(original).digest('hex'), bytes: Buffer.byteLength(original),
+          license: 'Licensed under CC BY 4.0 : see CAreadme.txt', sourceUrl: `https://example.invalid/${'a'.repeat(40)}/parts/root.dat` }],
       }));
       await writeFile(path.join(directory, 'files', 'parts', 'root.dat'), original.replace('1 0 0', '2 0 0'));
       const imported = await (await createBundledLDrawImporter(directory)).importPart('root');

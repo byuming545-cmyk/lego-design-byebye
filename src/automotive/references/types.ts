@@ -87,6 +87,14 @@ export interface ReferenceConnection {
   connectionType: 'stud' | 'side-stud' | 'wheel-axle' | 'tyre-fit';
 }
 export interface ReferenceAnalysis {
+  /** Historical catalog analysis is reference-only, never native assembly evidence. */
+  sourceGovernance: {
+    status: 'LEGACY_UNVERIFIED';
+    geometrySource: 'legacy-parametric-catalog';
+    connectionSource: 'legacy-hand-authored';
+    nativeAdmissionAllowed: false;
+    revalidationRequired: true;
+  };
   referenceId: string;
   metadata: ReferenceMetadata;
   coordinateSystem: string;

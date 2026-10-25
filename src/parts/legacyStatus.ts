@@ -1,7 +1,16 @@
+/** Historical definitions remain inspectable; this metadata can never grant admission. */
+export const LEGACY_QUARANTINE = Object.freeze({
+  legacyStatus: 'LEGACY_QUARANTINED' as const,
+  sourceSystem: 'LegacyParametric' as const,
+  nativeGeometryVerified: false as const,
+  automaticPromotionAllowed: false as const,
+});
+
 /** Shared browser/server presentation policy. No Express or filesystem imports. */
 export const LEGACY_OPERATIONS_BLOCKED: boolean = true;
 
 export const LEGACY_PART_AUTHENTICITY = Object.freeze({
+  ...LEGACY_QUARANTINE,
   source: 'legacy-parametric' as const,
   status: 'unverified' as const,
   nativeMeshImported: false,

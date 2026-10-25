@@ -1,4 +1,6 @@
-# BRICKLAB · V0.6 碰撞架构专项
+# BRICKLAB · V0.6 数字零件来源治理与旧体系隔离
+
+本轮已完成旧数据分类与生产隔离：旧手写目录移至 `src/legacy/`；生产模式阻止旧模型导入、恢复、生成和导出；原生导入检查来源、许可、文件哈希及编号冲突。说明书与库存保留为参考，不能创建真实几何。完整 A–I 验收、隔离清单、来源边界及回滚说明见 [本轮审计报告](docs/legacy-isolation/README.md)。本轮不增加零件或修改碰撞算法，以下碰撞版本和接口资格保持不变。
 
 当前分支已将碰撞引擎升级为 `native-closed-bvh-local-partition-1.1.0`：4,632 个物理接口中 1,765 PASS、786 BLOCKED、2,081 转审、0 Pending；原 1,248 个 PASS 全部保留。完整通过零件为 33 件，部分可生成 46 件。专项结论、回归和下一轮任务见 [Sol Handoff](sol-handoff/v0.6-collision/README.md)。下面的 V0.6 A–H 报告与原 `astra-handoff/` 是修改前基线；当前跨版本复现用 `npm run collision:review -- MULTI-3020-3710`。
 
@@ -22,7 +24,7 @@
 
 ### Windows：从 ZIP 启动
 
-本版工作分支为 `codex/astra-collision-architecture`，可下载 [V0.6 分支 ZIP](https://github.com/byuming545-cmyk/lego-design-byebye/archive/refs/heads/codex/astra-collision-architecture.zip)。
+本版工作分支为 `codex/legacy-isolation`，可下载 [本轮分支 ZIP](https://github.com/byuming545-cmyk/lego-design-byebye/archive/refs/heads/codex/legacy-isolation.zip)。
 
 先安装 Node.js 24.19.0 或更高的 24.x 版本，再解压下载的项目 ZIP。进入**能够看到 `package.json` 的文件夹**；如果第一层只有同名文件夹，继续进入一层。
 

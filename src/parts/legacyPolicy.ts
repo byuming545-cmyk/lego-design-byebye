@@ -19,6 +19,7 @@ export function createLegacyAuthenticityGate(policy: LegacyGenerationPolicy = 'b
   gate.use((request, response, next) => {
     if (/^\/api\/(?:generate(?:\/|$)|sets(?:\/|$)|speed(?:\/|$)|automotive(?:\/|$))/i.test(request.path)) {
       response.setHeader('X-Bricklab-Part-Authenticity', 'legacy-parametric-unverified');
+      response.setHeader('X-Bricklab-Legacy-Status', 'LEGACY_QUARANTINED');
       if (policy === 'test-fixture') response.setHeader('X-Bricklab-Legacy-Fixture', 'true');
     }
     next();
@@ -27,7 +28,7 @@ export function createLegacyAuthenticityGate(policy: LegacyGenerationPolicy = 'b
   const deny = (_request: unknown, response: { status: (status: number) => { json: (body: unknown) => unknown } }) => {
     response.status(409).json(LEGACY_GENERATION_BLOCK);
   };
-  gate.post(['/api/generate', '/api/speed/generate', '/api/automotive/design'], deny);
+  gate.post(['/api/generate', '/api/speed/generate', '/api/automotive/design', '/api/speed/models/import', '/api/speed/models/:modelId/open'], deny);
   gate.patch('/api/speed/designs/:sessionId/modules/:moduleId', deny);
   gate.post(['/api/speed/designs/:sessionId/redesign', '/api/speed/designs/:sessionId/undo'], deny);
   gate.get('/api/speed/models/:modelId/export', deny);

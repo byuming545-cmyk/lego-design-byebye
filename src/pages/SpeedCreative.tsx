@@ -80,6 +80,8 @@ const problemLabels: Record<BuildProblemType, string> = {
 };
 const LAST_MODEL_KEY = "bricklab-speed-last-model-id";
 function rememberModel(id: string | null) {
+  // Quarantine must neither restore nor rewrite the user's historical pointer.
+  if (LEGACY_OPERATIONS_BLOCKED) return;
   try {
     if (id) localStorage.setItem(LAST_MODEL_KEY, id);
     else localStorage.removeItem(LAST_MODEL_KEY);
@@ -421,6 +423,7 @@ export default function SpeedCreative() {
     rememberModel(first.model.id);
   }
   async function openSavedModel(id = savedSelection) {
+    if (LEGACY_OPERATIONS_BLOCKED) { setError(LEGACY_GENERATION_BLOCK.error); return; }
     if (busy || !id) return;
     setBusy("open");
     setError("");
@@ -435,6 +438,7 @@ export default function SpeedCreative() {
     } finally { setBusy(null); }
   }
   async function importJson(event: React.ChangeEvent<HTMLInputElement>) {
+    if (LEGACY_OPERATIONS_BLOCKED) { event.target.value = ""; setError(LEGACY_GENERATION_BLOCK.error); return; }
     const file = event.target.files?.[0];
     event.target.value = "";
     if (busy || !file) return;
@@ -495,7 +499,7 @@ export default function SpeedCreative() {
     }
   }
   useEffect(() => {
-    const rememberedId = lastModelId();
+    const rememberedId = LEGACY_OPERATIONS_BLOCKED ? null : lastModelId();
     let cancelled = false;
     void (async () => {
       const [statusResult, modelsResult] = await Promise.allSettled([
@@ -1050,21 +1054,21 @@ export default function SpeedCreative() {
 
           <details className="speed-card speed-saved-models">
             <summary>保存的模型与 JSON <ChevronDown size={13} /></summary>
-            <p>生成与修改会自动保存。打开保存模型可继续查看或拼搭。</p>
+            <p>历史参数化模型仅保留存档索引；导入、恢复与导出已隔离，不能成为真实零件装配证明。</p>
             <label htmlFor="speed-saved-model">保存的模型</label>
             <select id="speed-saved-model" value={savedSelection} disabled={!!busy || !savedModels.length} onChange={event => setSavedSelection(event.target.value)}>
               <option value="">{savedModels.length ? "选择一个模型" : "尚无保存的模型"}</option>
               {savedModels.map(model => <option key={model.id} value={model.id}>{model.name} · {model.partCount} 件 · {model.id}</option>)}
             </select>
             <div className="speed-saved-actions">
-              <button disabled={!!busy || !savedSelection} onClick={() => void openSavedModel()}>打开模型</button>
+              <button disabled={LEGACY_OPERATIONS_BLOCKED || !!busy || !savedSelection} onClick={() => void openSavedModel()}>打开模型</button>
               <button disabled={!!busy} onClick={() => void refreshSavedModels()}>刷新列表</button>
-              <label className={busy ? "speed-import-button disabled" : "speed-import-button"}>
+              <label className={LEGACY_OPERATIONS_BLOCKED || busy ? "speed-import-button disabled" : "speed-import-button"}>
                 导入模型 JSON
-                <input aria-label="导入模型 JSON" type="file" accept=".json,application/json" disabled={!!busy} onChange={event => void importJson(event)} />
+                <input aria-label="导入模型 JSON" type="file" accept=".json,application/json" disabled={LEGACY_OPERATIONS_BLOCKED || !!busy} onChange={event => void importJson(event)} />
               </label>
             </div>
-            <small>JSON 最多 40 MB；导入会重新校验并生成新模型 ID。</small>
+            <small>旧存档已标记 LEGACY_QUARANTINED；原文件保留，不会自动迁入真实零件库。</small>
           </details>
 
           <section className="speed-card speed-design-card">

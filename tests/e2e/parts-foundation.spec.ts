@@ -245,6 +245,7 @@ test.describe('real parts foundation with actual bundled sources and WebGL', () 
     for (const [method, url] of [
       ['POST', '/api/generate'], ['POST', '/api/speed/generate'], ['POST', '/api/automotive/design'],
       ['POST', '/api/speed/designs/nonexistent/redesign'],
+      ['POST', '/api/speed/models/import'], ['POST', '/api/speed/models/nonexistent/open'],
       ['GET', '/api/speed/models/nonexistent/export'],
       ['GET', '/api/automotive/sessions/nonexistent/candidates/nonexistent/bom'],
     ]) {
@@ -256,5 +257,22 @@ test.describe('real parts foundation with actual bundled sources and WebGL', () 
     await expect(page.getByRole('button', { name: '生成我的拼搭方案', exact: true })).toBeDisabled();
     await expect(page.getByRole('button', { name: '导出 PDF', exact: true })).toBeDisabled();
     await expect(page.locator('.legacy-foundation-banner')).toContainText('历史版本 · 参数化零件尚未验证');
+  });
+
+  test('does not restore quarantined browser history or enable legacy file import', async ({ page }) => {
+    const restoreRequests: string[] = [];
+    await page.addInitScript(() => localStorage.setItem('bricklab-speed-last-model-id', 'quarantined-history'));
+    page.on('request', request => {
+      if (/\/api\/speed\/models\/[^/]+\/open/.test(request.url())) restoreRequests.push(request.url());
+    });
+    await page.goto('/#/speed');
+    const archive = page.locator('.speed-saved-models');
+    await archive.locator('summary').click();
+    await expect(archive.getByRole('button', { name: '打开模型', exact: true })).toBeDisabled();
+    await expect(page.getByLabel('导入模型 JSON', { exact: true })).toBeDisabled();
+    await expect(archive).toContainText('LEGACY_QUARANTINED');
+    await expect(page.getByRole('button', { name: '刷新列表', exact: true })).toBeEnabled();
+    expect(restoreRequests).toEqual([]);
+    expect(await page.evaluate(() => localStorage.getItem('bricklab-speed-last-model-id'))).toBe('quarantined-history');
   });
 });

@@ -1,12 +1,22 @@
 # 第三方资料声明
 
+## 当前数字零件来源与历史改编的区别
+
+正式原生几何来自固定版本的 LDraw 文件包：245 个根零件、732 个递归源文件，来源、SHA、作者及逐文件许可见 [LDraw 清单](data/parts-foundation/ldraw/manifest.json)。689 个文件声明 CC BY 4.0，43 个声明 CC BY 2.0 / CC BY 4.0 双许可；原许可文本随包保留。
+
+原生连接资料来自 236 个 LDCad Shadow 文件，固定版本、逐文件来源和 SHA 见 [Shadow 清单](data/parts-foundation/shadow/manifest.json)，许可为 CC BY-SA 4.0。连接资料解析不等于该连接已经通过装配验证。
+
+Rebrickable 镜像只用于有状态的编号、颜色和库存线索。镜像数据许可尚未独立确认；构建工具的 MIT 许可不能代替数据许可。BrickLink Studio 的可复用数据及许可尚未提供，当前没有 Studio 导入适配器，不将其专有数据复制进正式库。用户上传说明书与车型链接保留原有来源状态，不视作几何许可或官方认证。
+
+下面记载的是历史 Speed 参数化目录的参考和改编范围。手写目录已移至 `src/legacy/` 并标为 `LEGACY_QUARANTINED`；其外形和连接点不能作为正式原生来源。完整处置见 [隔离审计](docs/legacy-isolation/README.md)。
+
 ## LDraw Parts Library
 
 Speed Creative 的零件名称、标称尺寸、部分连接位置及轮组装配参考来自 [LDraw Parts Library](https://www.ldraw.org/)。本项目查阅的是 [Pybricks 维护的镜像](https://github.com/pybricks/ldraw/tree/c43ed06a128a10ed65675166bf42eb6fd608b9b0)，固定修订为 `c43ed06a128a10ed65675166bf42eb6fd608b9b0`。
 
 所引用 `.dat` 文件头部声明：`Licensed under CC BY 4.0 : see CAreadme.txt`。原始资料采用 [Creative Commons Attribution 4.0 International（CC BY 4.0）](https://creativecommons.org/licenses/by/4.0/)；[完整许可文本](https://creativecommons.org/licenses/by/4.0/legalcode)。原始作者与后续贡献者以各文件的 `Author`、`!HISTORY` 及其依赖子文件声明为准；以下作者名称按实际查阅的文件头部记录，不表示其认可或担保本项目。
 
-每个目录条目在 [src/speed/catalog.ts](src/speed/catalog.ts) 中保留 `ldrawFile` 和固定版本的 `sourceUrl`。普通零件文件的完整来源格式为：
+每个历史目录条目在 [src/legacy/speed/catalog.ts](src/legacy/speed/catalog.ts) 中保留 `ldrawFile` 和固定版本的 `sourceUrl`。普通零件文件的完整来源格式为：
 
 ```text
 https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/<partId>.dat
@@ -52,4 +62,4 @@ https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6
 
 本项目将查阅到的尺寸和接口数据转换为 stud/plate 坐标，并编写参数化简化外形、保守碰撞包络及连接规则。曲面、斜面、轮毂、轮胎等展示与验证几何属于近似表达；未保留原始零件的全部细节，也未模拟材料弹性与扣合力。这些改编与原始资料存在差异，不是 LDraw 官方验证结果。
 
-本仓库**没有捆绑完整 LDraw 库或原始零件网格**；运行时不下载该库。原始 `.dat` 文件、子文件和 primitives 的作者与修订历史可沿上述固定来源继续追溯。本声明不改变其他应用代码、字体或 npm 依赖各自的许可。
+本仓库没有捆绑完整 LDraw 库，但已捆绑上述 245 个根零件所需的原始文件与递归依赖；运行时不下载该库。原始 `.dat` 文件、子文件和 primitives 的作者与修订历史可沿固定来源及本地清单继续追溯。本声明不改变其他应用代码、字体或 npm 依赖各自的许可。

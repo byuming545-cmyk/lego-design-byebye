@@ -10,6 +10,7 @@ import { createSpeedRouter } from '../speed/api.js';
 import { createAutomotiveRouter } from '../automotive/api.js';
 import { createPartsFoundationRouter } from '../parts/api.js';
 import { createLegacyAuthenticityGate, type LegacyGenerationPolicy } from '../parts/legacyPolicy.js';
+import { LEGACY_QUARANTINE } from '../parts/legacyStatus.js';
 
 interface AppOptions {
   provider?: SetInventoryProvider;
@@ -65,7 +66,7 @@ export function createApp(options: AppOptions = {}) {
   app.use('/api/automotive', createAutomotiveRouter());
 
   app.get('/api/health', (_request, response) => {
-    response.json({ status: 'ok', version: '0.6.0', provider: provider.source, demo: provider.source === 'mock', dataMode: provider instanceof MissingRebrickableInventoryProvider ? 'unconfigured' : provider.source === 'mock' ? 'mock' : 'real', primaryArea: '/part-lab', nativeAssemblyArea: '/part-lab?mode=assembly', legacyGenerationEnabled: options.legacyGenerationPolicy === 'test-fixture' });
+    response.json({ status: 'ok', version: '0.6.0', provider: provider.source, demo: provider.source === 'mock', dataMode: provider instanceof MissingRebrickableInventoryProvider ? 'unconfigured' : provider.source === 'mock' ? 'mock' : 'real', primaryArea: '/part-lab', nativeAssemblyArea: '/part-lab?mode=assembly', legacyGenerationEnabled: options.legacyGenerationPolicy === 'test-fixture', legacyData: LEGACY_QUARANTINE });
   });
 
   app.get('/api/sets/:setNumber', async (request, response) => {

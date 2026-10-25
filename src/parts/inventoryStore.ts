@@ -1,7 +1,7 @@
 import { createHash, randomUUID } from 'node:crypto';
 import { mkdir, readFile, readdir, rename, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { InventoryError } from '../inventory/index.js';
+import { InventoryError } from '../inventory/provider.js';
 import { parseFoundationInventory, type FoundationInventory } from './inventory/index.js';
 
 // Serialize writes per directory so document-limit checks and idempotency also hold concurrently.
