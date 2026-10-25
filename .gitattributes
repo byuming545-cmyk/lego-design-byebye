@@ -8,3 +8,6 @@ data/parts-foundation/shadow/files/** -text -whitespace
 data/parts-foundation/ldraw/CA*.txt -text -whitespace
 # Generated LDraw documents use the format's intentional CRLF line endings.
 artifacts/assembly-development/models/**/model.ldr -text whitespace=cr-at-eol
+artifacts/generation-expansion/models/**/model.ldr -text whitespace=cr-at-eol
+# Preserve the exact captured test output and its recorded digest.
+artifacts/generation-expansion/logs/*.txt -text -whitespace

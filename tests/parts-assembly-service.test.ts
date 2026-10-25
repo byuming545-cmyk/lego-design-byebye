@@ -7,6 +7,7 @@ import { AssemblyService } from '../src/parts/assembly/service.js';
 import { AttachmentEngine } from '../src/parts/assembly/engine.js';
 import { runAssemblyMigration, type AssemblyMigrationReport } from '../src/parts/assembly/migration.js';
 import { groupPhysicalInterfaces } from '../src/parts/assembly/interfaces.js';
+import { INTERFACE_TEST_VERSION } from '../src/parts/assembly/deferredTypes.js';
 
 const repository = new NativePartRepository();
 const directories: string[] = [];
@@ -29,6 +30,7 @@ beforeAll(async () => {
     sourceLoader: { roots, partLibraryVersion: PART_LIBRARY_VERSION, geometryRevision: manifest.revision, async loadPart(id) { const part = await repository.getPart(id); if (!part) throw new Error('Missing actual native fixture.'); return part; } },
   });
   expect(actualReport.entries).toHaveLength(2);
+  expect(actualReport.testVersion).toBe(INTERFACE_TEST_VERSION);
   expect(actualReport.entries.every((entry) => entry.assemblyVerified && entry.generatable)).toBe(true);
 }, 30000);
 afterAll(async () => { await Promise.all(directories.map((filename) => rm(filename, { recursive: true, force: true }))); });
@@ -54,6 +56,7 @@ describe('runtime assembly service admission', () => {
     const service = await serviceFor(actualReport), status = await service.status();
     expect(status.counts.assemblyVerified).toBe(2);
     expect(status.counts.generatable).toBe(2);
+    expect(status.testVersion).toBe(INTERFACE_TEST_VERSION);
     // The remainder of the real library is explicitly absent/blocked in this
     // deliberately small test report, rather than disappearing from its queue.
     expect(status.queue).toHaveLength((await repository.listIds()).length);
@@ -71,13 +74,38 @@ describe('runtime assembly service admission', () => {
     expect((await service.getEntry('3005'))!.generatable).toBe(true);
   }, 20000);
 
-  it('revokes a report with changed engine versions even when it contains passing flags', async () => {
-    const report = structuredClone(actualReport); report.collisionVersion = 'old-collision-engine';
+  it.each(['partLibraryVersion', 'assemblyEngineVersion', 'connectionRuleVersion', 'collisionVersion'] as const)('revokes a report with changed %s even when it contains passing flags', async (version) => {
+    const report = structuredClone(actualReport); report[version] = `old-${version}`;
     const service = await serviceFor(report), status = await service.status();
     expect(status.counts.generatable).toBe(0);
     expect(status.runtimeValidation.status).toBe('blocked');
     expect(status.runtimeValidation.issues.join(' ')).toContain('versions');
     expect(status.interfaceCoverage).toMatchObject({ verifiedPass: 0, enabledPhysicalInterfaces: 0, enabledRawConnectionIds: 0 });
+  }, 20000);
+
+  it.each(['missing', 'stale'] as const)('revokes %s verification suite evidence instead of inheriting passing flags', async (mode) => {
+    const report = structuredClone(actualReport);
+    if (mode === 'missing') delete (report as Partial<AssemblyMigrationReport>).testVersion;
+    else report.testVersion = 'old-interface-suite';
+    expect(report.entries.every(entry => entry.assemblyVerified && entry.generatable)).toBe(true);
+    const service = await serviceFor(report), status = await service.status();
+    expect(status.counts.generatable).toBe(0);
+    expect(status.runtimeValidation.status).toBe('blocked');
+    expect(status.runtimeValidation.issues.join(' ')).toContain('verification suite versions');
+    expect(status.interfaceCoverage).toMatchObject({ verifiedPass: 0, enabledPhysicalInterfaces: 0 });
+    await expect(service.engine.createAssembly('3005')).rejects.toThrow();
+  }, 20000);
+
+  it.each(['stale-deferred', 'missing-deferred-version', 'stale-top-current-deferred'] as const)('revokes contradictory verification evidence: %s', async (mode) => {
+    const report = structuredClone(actualReport);
+    report.deferredRun = { targetCount: 0, pass: 0, blocked: 0, requiresAstraReview: 0, pending: 0, directTests: 0, sharedPrecondition: 0, reviewDependency: 0, interrupted: false, checkpointDirectory: 'test-report-metadata-only', testVersion: INTERFACE_TEST_VERSION };
+    if (mode === 'stale-deferred') report.deferredRun.testVersion = 'old-interface-suite';
+    else if (mode === 'missing-deferred-version') delete (report.deferredRun as Partial<NonNullable<AssemblyMigrationReport['deferredRun']>>).testVersion;
+    else report.testVersion = 'old-interface-suite';
+    const status = await (await serviceFor(report)).status();
+    expect(status.counts.generatable).toBe(0);
+    expect(status.runtimeValidation.status).toBe('blocked');
+    expect(status.runtimeValidation.issues.join(' ')).toContain('verification suite versions');
   }, 20000);
 
   it('revokes only the source-mismatched entry without granting its old interfaces', async () => {
@@ -88,6 +116,56 @@ describe('runtime assembly service admission', () => {
     const status = await service.status();
     expect(status.counts.generatable).toBe(1);
     expect((await service.getEntry('3005'))!.interfaceCoverage).toMatchObject({ verifiedPass: 0, enabledPhysicalInterfaces: 0, enabledRawConnectionIds: 0 });
+  }, 20000);
+
+  it('revokes source evidence produced under an older connector parser even when its native bytes are unchanged', async () => {
+    const part = (await repository.getPart('3005'))!;
+    let olderParserDigest: string;
+    // Exercise the real digest function under a different parser dependency,
+    // rather than replacing source bytes or fabricating a physical PASS.
+    vi.resetModules();
+    vi.doMock('../src/parts/connections/importer.js', async (importOriginal) => ({
+      ...await importOriginal<typeof import('../src/parts/connections/importer.js')>(),
+      CONNECTION_PARSER_VERSION: 'older-connector-parser',
+    }));
+    try {
+      const oldSource = await import('../src/parts/assembly/source.js');
+      olderParserDigest = oldSource.nativePartSourceHash(part);
+    } finally {
+      vi.doUnmock('../src/parts/connections/importer.js');
+      vi.resetModules();
+    }
+    const report = structuredClone(actualReport), entry = report.entries.find(value => value.partId === '3005')!;
+    expect(olderParserDigest).not.toBe(entry.source.digest);
+    entry.source.digest = olderParserDigest;
+    expect(entry.assemblyVerified && entry.generatable).toBe(true);
+    const service = await serviceFor(report);
+    expect(await service.getCapability('3005')).toMatchObject({ assemblyVerified: false, generatable: false, allowedConnectionIds: [], reasonCodes: ['runtime-source-mismatch'] });
+    expect((await service.getCapability('3024'))!.generatable).toBe(true);
+  }, 20000);
+
+  it('revokes source evidence produced under an older geometry parser even when its native bytes are unchanged', async () => {
+    const part = (await repository.getPart('3005'))!;
+    let olderParserDigest: string;
+    vi.resetModules();
+    vi.doMock('../src/parts/ldraw/importer.js', async (importOriginal) => ({
+      ...await importOriginal<typeof import('../src/parts/ldraw/importer.js')>(),
+      LDRAW_GEOMETRY_PARSER_VERSION: 'older-geometry-parser',
+    }));
+    try {
+      const oldSource = await import('../src/parts/assembly/source.js');
+      olderParserDigest = oldSource.nativePartSourceHash(part);
+    } finally {
+      vi.doUnmock('../src/parts/ldraw/importer.js');
+      vi.resetModules();
+    }
+    const report = structuredClone(actualReport), entry = report.entries.find(value => value.partId === '3005')!;
+    expect(olderParserDigest).not.toBe(entry.source.digest);
+    entry.source.digest = olderParserDigest;
+    expect(entry.assemblyVerified && entry.generatable).toBe(true);
+    const service = await serviceFor(report);
+    expect(await service.getCapability('3005')).toMatchObject({ assemblyVerified: false, generatable: false, allowedConnectionIds: [], reasonCodes: ['runtime-source-mismatch'] });
+    expect((await service.getCapability('3024'))!.generatable).toBe(true);
   }, 20000);
 
   it('refuses unproved allowlists while retaining other independently proved parts', async () => {

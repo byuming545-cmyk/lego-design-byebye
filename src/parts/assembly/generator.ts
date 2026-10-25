@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { loadBundledLDrawManifest } from '../ldraw/index.js';
 import { physicalConnectionKey, physicalEndpointKey } from './multipoint.js';
 import { solveAttachment } from './solver.js';
+import { assessWheelAssemblySources } from './wheelAssessment.js';
 import type { ImportedConnectionPoint } from '../connections/types.js';
 import type {
   AssemblyAttachRequest, AssemblyInterfaceCapability, NativeAssembly, NativeAssemblyPart,
@@ -10,7 +11,12 @@ import type {
 
 export const NATIVE_MODULE_TYPES = ['wall', 'platform', 'simple-chassis', 'simple-box', 'simple-roof', 'basic-snot', 'wheel-module'] as const;
 export type NativeModuleType = typeof NATIVE_MODULE_TYPES[number];
-export interface NativeModuleRequest { module: NativeModuleType; partCount?: number }
+export interface NativeModuleRequest {
+  module: NativeModuleType;
+  partCount?: number;
+  /** Generic structural goal; never a permission, placement or source override. */
+  requiredPartIds?: string[];
+}
 
 /** A structural port keeps generation independent of filesystem/registry initialization.
  * The production AttachmentEngine enforces its own source/capability checks as well. */
@@ -100,12 +106,31 @@ function up(direction: Vector3) { return direction[1] < -0.99 && Math.abs(direct
 function horizontal(direction: Vector3) { return Math.abs(direction[1]) < 1e-5 && Math.hypot(direction[0], direction[2]) > 0.99; }
 function stud(point: ImportedConnectionPoint) { return point.gender === 'M' && point.family === 'stud'; }
 function receiving(point: ImportedConnectionPoint) { return point.gender === 'F'; }
-function plainBrick(part: CatalogPart) { return /^Brick\s+\d+\s+x\s+\d+\s*$/i.test(part.name); }
-function flat(part: CatalogPart) { return /^(?:Plate|Tile)\s+\d+\s+x\s+\d+(?:\s+with Groove)?\s*$/i.test(part.name); }
-function plate(part: CatalogPart) { return /^Plate\s+\d+\s+x\s+\d+\s*$/i.test(part.name); }
-function slope(part: CatalogPart) { return /^Slope\b/i.test(part.name); }
-function unitBrick(part: CatalogPart) { return /^Brick\s+1\s+x\s+1\s*$/i.test(part.name); }
-function tile(part: CatalogPart) { return /^Tile\s+\d+\s+x\s+\d+(?:\s+with Groove)?\s*$/i.test(part.name); }
+// These thresholds describe module design goals in native LDU. They do not
+// reconstruct a part from its title, infer a connector or grant permission.
+function flat(part: CatalogPart) { return part.y <= 12.00001; }
+function plate(part: CatalogPart) { return flat(part) && topStudPoints(part).length > 0; }
+function upright(part: CatalogPart) { return part.y > 12.00001 && topStudPoints(part).length > 0; }
+function unitSupport(part: CatalogPart) { return upright(part) && part.x <= 20.00001 && part.z <= 20.00001; }
+function tile(part: CatalogPart) { return flat(part) && !part.points.some(stud); }
+function structuralOverlay(part: CatalogPart) { return part.y <= Math.max(part.x, part.z) + 1e-5; }
+const inclineCache = new WeakMap<NativeAssemblyPart, boolean>();
+function slope(part: CatalogPart) {
+  const cached = inclineCache.get(part.native);
+  if (cached !== undefined) return cached;
+  const mesh = part.native.geometry.mesh!;
+  let projectedInclineArea = 0;
+  for (let index = 0; index < mesh.indices.length; index += 3) {
+    const a = mesh.positions[mesh.indices[index]], b = mesh.positions[mesh.indices[index + 1]], c = mesh.positions[mesh.indices[index + 2]];
+    const ab = b.map((value, axis) => value - a[axis]), ac = c.map((value, axis) => value - a[axis]);
+    const normal = [ab[1] * ac[2] - ab[2] * ac[1], ab[2] * ac[0] - ab[0] * ac[2], ab[0] * ac[1] - ab[1] * ac[0]];
+    const length = Math.hypot(...normal), verticalRatio = length ? Math.abs(normal[1]) / length : 0;
+    if (verticalRatio > 0.15 && verticalRatio < 0.97) projectedInclineArea += Math.abs(normal[1]) / 2;
+  }
+  const result = projectedInclineArea >= part.area * 0.2;
+  inclineCache.set(part.native, result);
+  return result;
+}
 function sideStud(part: CatalogPart) { return part.points.some(point => stud(point) && horizontal(point.direction)); }
 function sortedNumbers(input: number[]) { return [...new Set(input.map(value => Math.round(value * 1e6) / 1e6))].sort((a, b) => a - b); }
 function distinctPhysicalPoints(points: readonly ImportedConnectionPoint[]) {
@@ -159,11 +184,16 @@ function footprintContained(candidate: CatalogPart, placement: NativePlacement, 
   const a = transformedBounds(candidate, placement.transform), b = transformedBounds(root, rootPlacement.transform);
   return [0, 2].every(axis => a.min[axis] >= b.min[axis] - 1e-5 && a.max[axis] <= b.max[axis] + 1e-5);
 }
-function requestValid(request: NativeModuleRequest) {
+export function validateNativeModuleRequest(request: NativeModuleRequest) {
   if (!request || !NATIVE_MODULE_TYPES.includes(request.module) || request.partCount !== undefined && (!Number.isSafeInteger(request.partCount) || request.partCount < 3 || request.partCount > 32)) {
     throw new Error('请选择支持的基础结构；零件目标数量应为 3–32 的整数。');
   }
   if (request.module === 'basic-snot' && request.partCount !== undefined && request.partCount !== 3) throw new Error('当前基础侧向模块固定由 3 个真实零件组成。');
+  if (request.requiredPartIds !== undefined && (!Array.isArray(request.requiredPartIds) || request.requiredPartIds.length > 8 ||
+      request.requiredPartIds.length > (request.partCount ?? DEFAULT_COUNTS[request.module]) || new Set(request.requiredPartIds).size !== request.requiredPartIds.length ||
+      request.requiredPartIds.some(id => typeof id !== 'string' || !/^[a-z0-9][a-z0-9_-]{0,79}$/.test(id)))) {
+    throw new Error('所需零件应为不重复的原生编号，最多 8 种且不能超过模型零件数量。');
+  }
 }
 
 /** Scores express a design goal only. They never write a part position or modify geometry. */
@@ -198,7 +228,7 @@ export class NativeAssemblyGenerator {
     return this.catalogPromise;
   }
   async generate(request: NativeModuleRequest): Promise<NativeGenerationResult> {
-    requestValid(request);
+    validateNativeModuleRequest(request);
     const started = performance.now();
     const search: NativeGeneratorSearch = { attempts: 0, attachmentApiCalls: 0, acceptedAttachments: 0, rejectedAttachments: 0, transformFailures: 0, compatibilityFailures: 0, collisionFailures: 0, occupancyFailures: 0, designGoalFailures: 0, backtracks: 0, testedRoots: 0, exhausted: false, timeBudgetExceeded: false, catalogTimeMs: 0, searchTimeMs: 0, budget: { maxAttempts: this.maxAttempts, maxBacktracks: this.maxBacktracks, maxSearchTimeMs: this.maxSearchTimeMs }, finalPlacements: 0, finalConnectionEdges: 0, rejectionCounts: {}, rejectionReasons: [] };
     const reasons = new Set<string>();
@@ -230,12 +260,23 @@ export class NativeAssemblyGenerator {
       return search.attempts >= this.maxAttempts || search.backtracks >= this.maxBacktracks || search.timeBudgetExceeded;
     };
     const target = request.partCount ?? DEFAULT_COUNTS[request.module];
+    const required = new Set(request.requiredPartIds ?? []);
     const block = (reason: string): NativeGenerationResult => { finish(); return { status: 'blocked', module: request.module, model: null, reasons: [...new Set([reason, ...reasons])].slice(0, 20), search }; };
     if (!catalog.length) return block('当前没有同时通过装配验证、批次准入和来源校验的真实零件。');
+    const unavailableRequired = [...required].filter(id => !byId.has(id));
+    if (unavailableRequired.length) return block(`required-source-unavailable: 所需零件没有当前来源与接口生成资格：${unavailableRequired.join(', ')}。`);
     if (request.module === 'wheel-module') {
-      const wheelReady = catalog.some(part => part.capability.ruleIds.some(rule => /wheel|tyre|rim/i.test(rule)));
-      if (!wheelReady) return block('轮毂／轮胎／轮架接口尚无通过装配验证的兼容规则，不能使用旧版近似轮组。');
-      return block('轮组接口虽已具备候选数据，但当前真实生成模板尚未通过整组轮架、轮毂与轮胎的连续装配检查。');
+      const assessment = await assessWheelAssemblySources(id => this.engine.getPart(id));
+      for (const code of assessment.reasonCodes) {
+        const partReasons = assessment.parts.flatMap(part => {
+          if (code === `wheel-connections-${part.connectionStatus}`) return [`${part.partId}: source connections are ${part.connectionStatus}.`];
+          if (code === `wheel-proxy-${part.collisionProxy.reasonCode}`) return [`${part.partId}: ${part.collisionProxy.reason}`];
+          return [];
+        });
+        const stageReason = assessment.stages.find(stage => stage.reasonCodes.includes(code))?.reason;
+        recordRejection(code, partReasons.join('; ') || stageReason || `The source review has not established prerequisite ${code}.`);
+      }
+      return block('轮毂／轮胎／轮架的原生来源、机械规则或实体证据尚不完整；当前来源审查结果保留具体阻塞原因，未生成轮组。');
     }
     const roots = catalog.filter(part => plate(part) && part.points.filter(point => stud(point) && up(point.direction)).length >= 2)
       .filter(part => request.module !== 'wall' || wallRootPoints(part, target - 1).length >= 2)
@@ -243,20 +284,32 @@ export class NativeAssemblyGenerator {
       .filter(part => request.module !== 'simple-chassis' || hasTwoDimensionalStudGrid(part) && topStudPoints(part).length >= target - 1 && Math.max(part.x, part.z) / Math.min(part.x, part.z) >= 2)
       .filter(part => request.module !== 'simple-box' || borderPoints(part).length + 1 === target)
       .filter(part => request.module !== 'simple-roof' || catalog.some(piece => slope(piece) && piece.points.some(receiving) && Math.abs(piece.area * (target - 1) - part.area) < 1e-5))
-      .sort((a, b) => a.area - b.area || Math.abs(a.x - a.z) - Math.abs(b.x - b.z)).slice(0, 6);
+      .filter(part => request.module === 'basic-snot' || [...required].every(id => {
+        const piece = byId.get(id)!;
+        return id === part.native.partId || piece.x <= part.x + 1e-5 && piece.z <= part.z + 1e-5 || piece.z <= part.x + 1e-5 && piece.x <= part.z + 1e-5;
+      }))
+      .sort((a, b) => Number(!required.has(a.native.partId)) - Number(!required.has(b.native.partId)) || a.area - b.area || Math.abs(a.x - a.z) - Math.abs(b.x - b.z)).slice(0, 12);
     if (!roots.length) return block(request.module === 'simple-box' ? '当前可生成底板中，没有边界凸点数量与所需闭合盒体一致的真实底板。' : '当前没有满足该结构目标的已验证真实底板。');
 
-    const choicesAt = (depth: number, root?: CatalogPart) => catalog.filter(part => {
+    const choicesAt = (depth: number, root?: CatalogPart, preferred: ReadonlySet<string> = required) => catalog.filter(part => {
       if (!part.points.some(receiving)) return false;
-      if (request.module === 'wall') return unitBrick(part);
-      if (request.module === 'platform' || request.module === 'simple-chassis') return flat(part) && (!root || part.area <= root.area / (target - 1) + 1e-5);
-      if (request.module === 'simple-box') return unitBrick(part);
+      if (request.module === 'wall') return upright(part);
+      if (request.module === 'platform' || request.module === 'simple-chassis') {
+        // Default filler search prefers bounded pieces. An explicit, still
+        // missing source-part goal may use a larger mixed-size overlay; its
+        // solved footprint, collisions and free ports are still fully checked.
+        const areaBudget = !root ? Infinity : preferred.has(part.native.partId) ? root.area : root.area / (target - 1);
+        return (request.module === 'platform' ? flat(part) : structuralOverlay(part)) && part.area <= areaBudget + 1e-5;
+      }
+      if (request.module === 'simple-box') return unitSupport(part);
       if (request.module === 'simple-roof') return slope(part) && (!root || Math.abs(part.area * (target - 1) - root.area) < 1e-5);
       if (request.module === 'basic-snot') return depth === 1 ? sideStud(part) : tile(part);
       return false;
     }).sort((a, b) => {
-      if (request.module === 'wall') return a.y - b.y || a.native.partId.localeCompare(b.native.partId);
-      if (request.module === 'simple-chassis') return Number(!plate(a)) - Number(!plate(b)) || a.area - b.area || a.native.partId.localeCompare(b.native.partId);
+      const requiredOrder = Number(!preferred.has(a.native.partId)) - Number(!preferred.has(b.native.partId));
+      if (requiredOrder) return requiredOrder;
+      if (request.module === 'wall') return a.area - b.area || a.y - b.y || a.native.partId.localeCompare(b.native.partId);
+      if (request.module === 'simple-chassis') return Number(!plate(a)) - Number(!plate(b)) || a.y - b.y || a.area - b.area || a.native.partId.localeCompare(b.native.partId);
       return a.area - b.area || a.native.partId.localeCompare(b.native.partId);
     }).slice(0, 12);
     if (!choicesAt(1).length || request.module === 'basic-snot' && !choicesAt(2).length) return block('该结构所需类别没有通过当前装配与接口准入的真实零件。');
@@ -314,6 +367,7 @@ export class NativeAssemblyGenerator {
     };
     const goalComplete = (graph: NativeAssembly, root: CatalogPart) => {
       if (graph.placements.length !== target || graph.edges.length < target - 1) return false;
+      if ([...required].some(id => !graph.placements.some(placement => placement.partId === id))) return false;
       if (request.module === 'basic-snot') return graph.placements.some(placement => horizontal(rotate(placement.transform.rotation, [0, -1, 0])));
       if (request.module === 'wall') {
         const usedRoot = new Set(usedRootPoints(graph, root).map(physicalConnectionKey));
@@ -334,7 +388,12 @@ export class NativeAssemblyGenerator {
     const visit = async (graph: NativeAssembly, root: CatalogPart): Promise<NativeAssembly | null> => {
       if (goalComplete(graph, root)) return graph;
       if (graph.placements.length >= target || budgetReached()) return null;
-      const choices = choicesAt(graph.placements.length, root), anchors = anchorsAt(graph, root);
+      const missingRequired = new Set([...required].filter(id => !graph.placements.some(placement => placement.partId === id)));
+      const remaining = target - graph.placements.length;
+      if (missingRequired.size > remaining) return null;
+      const choices = choicesAt(graph.placements.length, root, missingRequired).filter(part => missingRequired.size < remaining || missingRequired.has(part.native.partId))
+        .sort((a, b) => Number(!missingRequired.has(a.native.partId)) - Number(!missingRequired.has(b.native.partId)));
+      const anchors = anchorsAt(graph, root);
       for (const anchor of anchors) for (const candidate of choices) {
         const connections = candidate.points.filter(point => receiving(point) && up(point.direction)).slice(0, 32);
         for (const connection of connections) for (const twistDegrees of [0, 90, 180, 270]) {

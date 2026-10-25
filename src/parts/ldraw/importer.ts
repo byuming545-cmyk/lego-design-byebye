@@ -4,6 +4,9 @@ import type {
   LDrawResolver, LDrawSourceFile, LDrawVector,
 } from './types.js';
 
+/** Bump when native parsing/transform semantics change; qualifications bind it. */
+export const LDRAW_GEOMETRY_PARSER_VERSION = 'ldraw-native-parser-1';
+
 type Matrix = [number, number, number, number, number, number, number, number, number];
 type Affine = { matrix: Matrix; translation: LDrawVector };
 type ParsedFile = { text: string; lines: string[]; source: LDrawSourceFile; name: string | null };

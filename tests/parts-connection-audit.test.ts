@@ -16,9 +16,9 @@ const report = () => reportPromise ??= loadAudit();
 describe('complete pinned Connection Parse Audit', () => {
   it('accounts for all roots and every remaining issue with literal source evidence or an explicit missing-evidence outcome', async () => {
     const audit = await report();
-    expect(audit.counts).toMatchObject({ roots: 245, ready: 197, partial: 44, missing: 4, retainedRawConnectionRecords: 4694, activeFailureInstances: 114, discardedDimensionWarnings: 3 });
+    expect(audit.counts).toMatchObject({ roots: 253, ready: 205, partial: 44, missing: 4, retainedRawConnectionRecords: 5084, activeFailureInstances: 114, discardedDimensionWarnings: 3 });
     expect(audit.failures).toHaveLength(114);
-    expect(new Set(audit.parts.map(part => part.partId)).size).toBe(245);
+    expect(new Set(audit.parts.map(part => part.partId)).size).toBe(253);
     for (const failure of audit.failures) {
       expect(failure.expectedInterpretation.status).toBe('EXPECTED_UNKNOWN');
       expect(failure.sourceClosureSha256).toMatch(/^[a-f0-9]{64}$/);
@@ -39,10 +39,21 @@ describe('complete pinned Connection Parse Audit', () => {
   it('preserves every pre-fix point/source record and retires only the three explicit CLEAR warnings', async () => {
     const audit = await report();
     const before = JSON.parse(await readFile(new URL('../artifacts/connection-parse-audit/before.json', import.meta.url), 'utf8')) as { parts: { partId: string; pointSha256: string; sourceClosureSha256: string }[] };
-    for (const part of audit.parts) {
-      const previous = before.parts.find(row => row.partId === part.partId)!;
+    const currentById = new Map(audit.parts.map(part => [part.partId, part]));
+    for (const previous of before.parts) {
+      const part = currentById.get(previous.partId)!;
+      expect(part, previous.partId).toBeDefined();
       expect(part.pointSha256, part.partId).toBe(previous.pointSha256);
       expect(part.sourceClosureSha256, part.partId).toBe(previous.sourceClosureSha256);
+    }
+    const oldIds = new Set(before.parts.map(part => part.partId));
+    const added = audit.parts.filter(part => !oldIds.has(part.partId));
+    expect(new Set(added.map(part => part.partId))).toEqual(new Set(['32000', '3623', '60479', '78329', '3456', '69729', '6934', '41539']));
+    for (const part of added) {
+      expect(part.status).toBe('ready');
+      expect(part.pointCount).toBeGreaterThan(0);
+      expect(part.pointSha256).toMatch(/^[a-f0-9]{64}$/);
+      expect(part.sourceClosureSha256).toMatch(/^[a-f0-9]{64}$/);
     }
     expect(new Set(audit.discarded.map(issue => issue.partId))).toEqual(new Set(['30209', '29115']));
     expect(audit.discarded.every(issue => issue.code === 'unsupported-scaling' && issue.discardedBy.directive.startsWith('0 !LDCAD SNAP_CLEAR') && issue.affectedConnectionIds.length > 0)).toBe(true);

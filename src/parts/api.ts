@@ -3,7 +3,7 @@ import { InventoryError } from '../inventory/provider.js';
 import { FoundationInventoryError, importFoundationInventoryCsv, importFoundationInventoryJson, type LocalInventoryOptions } from './inventory/index.js';
 import { RealPartRegistry } from './registry.js';
 import { storeLocalInventory } from './inventoryStore.js';
-import { NATIVE_MODULE_TYPES, type NativeModuleType } from './assembly/generator.js';
+import { NATIVE_MODULE_TYPES, validateNativeModuleRequest, type NativeModuleType, type NativeModuleRequest } from './assembly/generator.js';
 import { exportNativeAssemblyBomCsv, exportNativeAssemblyJson, exportNativeAssemblyLDraw } from './assembly/documents.js';
 import { buildNativeCollisionProxy } from './assembly/proxy.js';
 import { IDENTITY_TRANSFORM } from './assembly/math.js';
@@ -43,12 +43,15 @@ export function createPartsFoundationRouter(options: { dataDir?: string; registr
   });
   router.post('/assembly/generate', async (request, response) => {
     const body = request.body;
-    if (!object(body) || Object.keys(body).some(key => !['kind', 'module', 'partCount'].includes(key)) ||
+    if (!object(body) || Object.keys(body).some(key => !['kind', 'module', 'partCount', 'requiredPartIds'].includes(key)) ||
         body.kind !== undefined && body.module !== undefined ||
         !NATIVE_MODULE_TYPES.includes((body.kind ?? body.module) as NativeModuleType) ||
         body.partCount !== undefined && (!Number.isInteger(body.partCount) || (body.partCount as number) < 3 || (body.partCount as number) > 32)) bad('请选择受支持的基础结构，零件数量应为 3–32。');
     if ((body.kind ?? body.module) === 'basic-snot' && body.partCount !== undefined && body.partCount !== 3) bad('当前基础侧向模块固定由 3 个真实零件组成。');
-    response.json(await assembly.generate({ module: (body.kind ?? body.module) as NativeModuleType, ...(body.partCount === undefined ? {} : { partCount: body.partCount as number }) }));
+    const generationRequest: NativeModuleRequest = { module: (body.kind ?? body.module) as NativeModuleType, ...(body.partCount === undefined ? {} : { partCount: body.partCount as number }), ...(body.requiredPartIds === undefined ? {} : { requiredPartIds: body.requiredPartIds as string[] }) };
+    try { validateNativeModuleRequest(generationRequest); }
+    catch (error) { bad(error instanceof Error ? error.message : '生成目标无效。'); }
+    response.json(await assembly.generate(generationRequest));
   });
   router.get('/assembly/models/:modelId/export', async (request, response) => {
     const format = request.query.format ?? 'json';

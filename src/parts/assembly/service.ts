@@ -16,6 +16,7 @@ import type { BundledLDrawManifest } from '../ldraw/types.js';
 import { inspectNativeModelImport } from './modelImport.js';
 import { physicalConnectionSignature, groupPhysicalInterfaces } from './interfaces.js';
 import { aggregatePhysicalInterfaceCoverage, buildPhysicalInterfaceCoverage, type PhysicalInterfaceDecision } from './coverage.js';
+import { INTERFACE_TEST_VERSION } from './deferredTypes.js';
 
 export const ASSEMBLY_REPORT_DIRECTORY = fileURLToPath(new URL('../../../data/parts-foundation/assembly/', import.meta.url));
 const MAX_REPORT_BYTES = 48 * 1024 * 1024;
@@ -129,6 +130,7 @@ export class AssemblyService {
       const expected = { partLibraryVersion: PART_LIBRARY_VERSION, assemblyEngineVersion: ASSEMBLY_ENGINE_VERSION, connectionRuleVersion: CONNECTION_RULE_VERSION, collisionVersion: COLLISION_VERSION };
       if (report.schemaVersion !== 1 || report.migrationVersion !== ASSEMBLY_MIGRATION_VERSION || report.scope !== 'every-pinned-native-root' || report.verificationScope !== 'only-listed-connection-ids; no physical-build claim' || !Array.isArray(report.entries) || report.entries.length > 10000) this.runtimeIssues.push('Assembly report schema, scope or bounded entries are invalid.');
       else if (Object.entries(expected).some(([key, version]) => report[key as keyof typeof expected] !== version)) this.runtimeIssues.push('Assembly report versions differ from the active source, compatibility, transform or collision engine. Re-run migration with the current versions.');
+      else if (report.testVersion !== INTERFACE_TEST_VERSION || report.deferredRun !== undefined && (!report.deferredRun || report.deferredRun.testVersion !== INTERFACE_TEST_VERSION)) this.runtimeIssues.push('Assembly report verification suite versions are missing, stale or contradictory. Re-run verification with the current test suite; retained success flags cannot renew old qualifications.');
       else { this.report = report; this.envelopeValid = true; }
     }
     const byId = new Map<string, AssemblyMigrationEntry>(), duplicates = new Set<string>();
@@ -281,7 +283,7 @@ export class AssemblyService {
     const batches = [...new Set(entries.map((entry) => entry.batch))].sort().map((batch) => { const rows = entries.filter((entry) => entry.batch === batch); return { batch, total: rows.length, assemblyVerified: rows.filter((entry) => entry.assemblyVerified).length, generatable: rows.filter((entry) => entry.generatable).length, blocked: rows.filter((entry) => !entry.assemblyVerified).length }; });
     const capabilities = await Promise.all(entries.map((entry) => this.getCapability(entry.partId)));
     return structuredClone({
-      schemaVersion: 1, migrationVersion: ASSEMBLY_MIGRATION_VERSION, partLibraryVersion: PART_LIBRARY_VERSION, assemblyEngineVersion: ASSEMBLY_ENGINE_VERSION, connectionRuleVersion: CONNECTION_RULE_VERSION, collisionVersion: COLLISION_VERSION,
+      schemaVersion: 1, migrationVersion: ASSEMBLY_MIGRATION_VERSION, testVersion: INTERFACE_TEST_VERSION, partLibraryVersion: PART_LIBRARY_VERSION, assemblyEngineVersion: ASSEMBLY_ENGINE_VERSION, connectionRuleVersion: CONNECTION_RULE_VERSION, collisionVersion: COLLISION_VERSION,
       generatedAt: this.report?.generatedAt ?? null, scope: 'every-pinned-native-root', verificationScope: 'only-listed-connection-ids; no physical-build claim',
       interfaceBudget: this.report?.interfaceBudget ?? null,
       ...(this.report?.deferredRun ? { deferredRun: this.report.deferredRun } : {}),

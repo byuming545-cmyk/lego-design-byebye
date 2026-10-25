@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "id": "assembly-9bd3f9ce-4373-4278-a730-f5c96b389f95",
-  "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+  "id": "assembly-745710b6-f578-498d-a872-29b414c49a36",
+  "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
   "assemblyEngineVersion": "native-assembly-0.6.0",
   "connectionRuleVersion": "source-stud-1.0.0",
   "collisionVersion": "native-closed-bvh-local-partition-1.1.0",
   "placements": [
     {
       "instanceId": "root",
-      "partId": "3023b",
+      "partId": "3023",
       "transform": {
         "rotation": [
           1,
@@ -204,8 +204,8 @@
     }
   ],
   "sourceHashes": {
-    "3005": "e0e841bff7bb8c42b13088878880800bc7231f06a2b0774369fec3e7c0608bb8",
-    "3023b": "a8a6933891c2d7761b1b57ad2e29d8bd6102e192d40515769308385b85801f53"
+    "3005": "fe5888c2f25ab7ef2f0797af3023c2a5021fd27814173ae98c5821c33b58197a",
+    "3023": "1b86b4b1ea715f804317d4e3dafd3d4196c228acbe11aed49c89d94a7c591b47"
   },
   "physicalBuildVerified": false,
   "module": "wall",
@@ -219,8 +219,8 @@
       "colorAvailability": "not-verified"
     },
     {
-      "partId": "3023b",
-      "name": "Plate  1 x  2",
+      "partId": "3023",
+      "name": "~Moved To 3023b",
       "quantity": 1,
       "ldrawColor": 16,
       "colorAvailability": "not-verified"
@@ -230,7 +230,7 @@
     {
       "step": 1,
       "addedInstanceId": "root",
-      "partId": "3023b",
+      "partId": "3023",
       "connectionEdgeIds": []
     },
     {
@@ -373,6 +373,14 @@
     },
     {
       "library": "LDraw",
+      "path": "parts/3023.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "8a5b45c78531f18c6cfeeb6a818cf13e51664112251a3b06f2295cd8b3399f13",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3023.dat"
+    },
+    {
+      "library": "LDraw",
       "path": "parts/3023b.dat",
       "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
       "sha256": "2eae37fb7bc308b3f051e7ea1fa3825cd3dea0676c6953c4f0b96068c438871f",
@@ -407,5 +415,5 @@
     "模型只使用通过当前软件装配验证的真实源零件；未做实物承重或制造公差认证。",
     "零件颜色使用 LDraw 当前色 16；具体零件颜色供应与个人库存尚未核实。"
   ],
-  "contentSha256": "1d3eb8150d5c7d40a5ec1a5d8543cd4f17738980770d6ee168ba9a4af5bff678"
+  "contentSha256": "269d7482e8969fd21182a600482f49b73530576b089d81357f06aa99a65df331"
 }

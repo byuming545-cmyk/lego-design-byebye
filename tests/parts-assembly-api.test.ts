@@ -1,5 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import type { Server } from 'node:http';
+import { createHash } from 'node:crypto';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -87,22 +88,22 @@ afterAll(async () => {
 
 describe('native assembly production HTTP boundaries', () => {
   it('reports every actual source root and only counts runtime-validated admission decisions', async () => {
-    expect(status.counts.total).toBe(245);
-    expect(status.queue).toHaveLength(245);
-    expect(new Set(status.queue.map(entry => entry.partId)).size).toBe(245);
+    expect(status.counts.total).toBe(253);
+    expect(status.queue).toHaveLength(253);
+    expect(new Set(status.queue.map(entry => entry.partId)).size).toBe(253);
     expect(status.counts).toEqual(report.counts);
     expect(status.sourceCounts).toEqual(report.sourceCounts);
-    expect(status.sourceCounts).toEqual({ totalRoots: 245, geometryReady: 245, connectionReady: 197, connectionPartial: 44, connectionMissing: 4 });
+    expect(status.sourceCounts).toEqual({ totalRoots: 253, geometryReady: 253, connectionReady: 205, connectionPartial: 44, connectionMissing: 4 });
     expect(status.counts.assemblyVerified).toBe(status.queue.filter((entry) => entry.assemblyVerified).length);
     expect(status.counts.generatable).toBe(status.queue.filter((entry) => entry.generatable).length);
-    expect(status.counts.blocked + status.counts.assemblyVerified).toBe(245);
+    expect(status.counts.blocked + status.counts.assemblyVerified).toBe(253);
     expect(status.counts.generatable).toBeGreaterThan(0);
     expect(status.counts.verifiedInterfaces).toBe(status.queue.reduce((sum, entry) => sum + entry.allowedConnectionIds.length, 0));
     expect(status.runtimeValidation.issues).toEqual([]);
     const coverage = status.interfaceCoverage!;
     expect(coverage).toBeDefined();
     expect(coverage).toEqual(report.interfaceCoverage);
-    expect(coverage.physicalInterfacesDiscovered).toBe(4632);
+    expect(coverage.physicalInterfacesDiscovered).toBe(5019);
     expect(coverage.physicalInterfacesDiscovered).toBe(coverage.verifiedPass + coverage.verifiedBlocked + coverage.requiresAstraReview + coverage.pending);
     expect(coverage.verifiedPhysicalInterfaces).toBe(coverage.verifiedPass);
     expect(coverage.enabledPhysicalInterfaces).toBeLessThanOrEqual(coverage.verifiedPass);
@@ -110,7 +111,7 @@ describe('native assembly production HTTP boundaries', () => {
     expect(coverage.pending).toBe(0);
     expect(coverage.processedCoveragePercent).toBe(100);
     expect(coverage.verifiedCoveragePercent).toBe(Number((100 * coverage.verifiedPass / coverage.physicalInterfacesDiscovered).toFixed(4)));
-    expect(coverage.fullyAssemblyVerified + coverage.partiallyGeneratable + coverage.blockedParts + coverage.unresolvedParts).toBe(245);
+    expect(coverage.fullyAssemblyVerified + coverage.partiallyGeneratable + coverage.blockedParts + coverage.unresolvedParts).toBe(253);
     expect(status.deferredRun).toMatchObject({ pending: 0, interrupted: false });
     const byId = new Map(report.entries.map(entry => [entry.partId, entry]));
     for (const entry of status.entries) {
@@ -235,6 +236,52 @@ describe('native assembly production HTTP boundaries', () => {
     expect(coverage.overall.mappingStatusCounts).toEqual(mappingStatusCounts);
     for (const row of [coverage.overall, ...coverage.documents, ...coverage.sets]) expect(Object.values(row.mappingStatusCounts).reduce<number>((sum, count) => sum + Number(count), 0)).toBe(row.denominator);
     expect(coverage.overall.inventoryComplete).toBe(false);
+  }, 30000);
+
+  it('uses production-qualified 32000 through the public generation API and revalidates its exported model', async () => {
+    const response = await post(`${prefix}/assembly/generate`, { module: 'wall', partCount: 3, requiredPartIds: ['32000'] });
+    expect(response.status).toBe(200);
+    const generated = await response.json() as NativeGenerationResult;
+    expect(generated.status, generated.reasons.join('; ')).toBe('generated');
+    const model = generated.model!;
+    await expectConnectedSourceGraph(model);
+    expect(model.placements.some(placement => placement.partId === '32000')).toBe(true);
+    expect(model.bom.some(row => row.partId === '32000' && row.quantity > 0)).toBe(true);
+    expect(model.steps.some(step => step.partId === '32000')).toBe(true);
+    expect(model.sources.some(source => source.library === 'LDraw' && source.path === 'parts/32000.dat')).toBe(true);
+    const exported = await fetch(`${base}${prefix}/assembly/models/${model.id}/export?format=json`);
+    expect(exported.status).toBe(200);
+    const content = await exported.text();
+    const imported = await post(`${prefix}/assembly/models/import`, { content });
+    expect(imported.status).toBe(200);
+    const adopted = await imported.json();
+    expect(adopted.status, adopted.reasons.join('; ')).toBe('VALID');
+    expect(adopted.model.placements.some((placement: NativeAssembly['placements'][number]) => placement.partId === '32000')).toBe(true);
+    const source = (await sourceRepository.getPart('32000'))!;
+    const holes = source.connections.points.filter(point => point.family === 'pinHole');
+    const capability = status.capabilities.find(entry => entry.partId === '32000')!;
+    expect(holes.length).toBeGreaterThan(0);
+    expect(holes.every(point => !capability.allowedConnectionIds.includes(point.id))).toBe(true);
+    const tampered = structuredClone(model);
+    const node = tampered.placements.find(placement => placement.partId === '32000')!;
+    const edge = tampered.edges.find(edge => edge.fixedInstanceId === node.instanceId || edge.movingInstanceId === node.instanceId)!;
+    if (edge.fixedInstanceId === node.instanceId) edge.fixedConnectionId = holes[0].id; else edge.movingConnectionId = holes[0].id;
+    const { contentSha256: _old, ...body } = tampered;
+    const sealed = { ...body, contentSha256: createHash('sha256').update(JSON.stringify(body)).digest('hex') };
+    const denied = await post(`${prefix}/assembly/models/import`, { content: JSON.stringify(sealed) });
+    expect(await denied.json()).toMatchObject({ status: 'NEEDS_REVALIDATION', model: null });
+  }, 45000);
+
+  it('rejects malformed required-part goals and never substitutes unknown or blocked native IDs', async () => {
+    for (const requiredPartIds of ['32000', null, ['32000', '32000'], ['../32000'], ['element:32000'], ['3001', '3005', '3024', '3020']]) {
+      const response = await post(`${prefix}/assembly/generate`, { module: 'wall', partCount: 3, requiredPartIds });
+      expect(response.status).toBe(400);
+    }
+    for (const id of ['unknown-native-source', '18977']) {
+      const response = await post(`${prefix}/assembly/generate`, { module: 'wall', partCount: 3, requiredPartIds: [id] });
+      expect(response.status).toBe(200);
+      expect(await response.json()).toMatchObject({ status: 'blocked', model: null });
+    }
   }, 30000);
 
   it('preserves production rejection of legacy parametric generation and export', async () => {

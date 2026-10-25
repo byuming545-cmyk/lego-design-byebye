@@ -3,9 +3,10 @@ import { createBundledLDrawImporter, createBundledLDrawResolver, loadBundledLDra
 import { createBundledConnectionImporter } from '../connections/index.js';
 import type { NativeAssemblyPart } from './types.js';
 import { CONNECTION_PARSER_VERSION } from '../connections/importer.js';
+import { LDRAW_GEOMETRY_PARSER_VERSION } from '../ldraw/importer.js';
 import { assertDigitalPartOrigin } from '../provenance.js';
 
-export const PART_LIBRARY_VERSION = 'ldraw-c43ed06a-shadow-9b1131fb-parser-2';
+export const PART_LIBRARY_VERSION = 'ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1';
 const sourceHashes = new WeakMap<NativeAssemblyPart, string>();
 
 function freezeSource<T>(value: T, seen = new WeakSet<object>()): T {
@@ -22,6 +23,7 @@ export function nativePartSourceHash(part: NativeAssemblyPart): string {
   const existing = Object.isFrozen(part) ? sourceHashes.get(part) : undefined;
   if (existing) return existing;
   const hash = createHash('sha256').update(JSON.stringify({
+    geometryParserVersion: LDRAW_GEOMETRY_PARSER_VERSION,
     connectionParserVersion: CONNECTION_PARSER_VERSION,
     partId: part.partId,
     geometryRevision: part.geometry.source.revision,

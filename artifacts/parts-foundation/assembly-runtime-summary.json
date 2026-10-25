@@ -1,42 +1,42 @@
 {
   "schemaVersion": 1,
-  "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+  "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
   "assemblyEngineVersion": "native-assembly-0.6.0",
   "connectionRuleVersion": "source-stud-1.0.0",
   "collisionVersion": "native-closed-bvh-local-partition-1.1.0",
-  "generatedAt": "2026-10-24T01:45:15.056Z",
+  "generatedAt": "2026-10-25T15:33:07.397Z",
   "runtimeValidation": {
     "status": "ready",
     "issues": [],
     "reportLoaded": true,
-    "checkedAt": "2026-10-24T01:51:48.970Z"
+    "checkedAt": "2026-10-25T15:34:46.067Z"
   },
   "scope": "every-pinned-native-root",
   "verificationScope": "only-listed-connection-ids; no physical-build claim",
   "interfaceBudget": null,
   "counts": {
-    "total": 245,
-    "assemblyVerified": 79,
-    "generatable": 79,
+    "total": 253,
+    "assemblyVerified": 87,
+    "generatable": 87,
     "blocked": 166,
-    "verifiedInterfaces": 1779,
-    "disabledInterfaces": 2915,
-    "testedPhysicalInterfaces": 1919,
+    "verifiedInterfaces": 2268,
+    "disabledInterfaces": 2816,
+    "testedPhysicalInterfaces": 2426,
     "deferredPhysicalInterfaces": 0,
     "deferredRawConnectionIds": 0,
     "wheelModulesVerified": 0,
     "physicalBuildsVerified": 0
   },
   "sourceCounts": {
-    "totalRoots": 245,
-    "geometryReady": 245,
-    "connectionReady": 197,
+    "totalRoots": 253,
+    "geometryReady": 253,
+    "connectionReady": 205,
     "connectionPartial": 44,
     "connectionMissing": 4
   },
   "proxyReadiness": {
-    "nativeRoots": 245,
-    "ready": 98,
+    "nativeRoots": 253,
+    "ready": 106,
     "blocked": 147,
     "basis": "source-derived native collision proxy; not assembly or generator approval"
   },
@@ -48,43 +48,43 @@
     "other": 3
   },
   "interfaceCoverage": {
-    "rawSourceConnectionRecords": 4694,
-    "logicalConnectionGroups": 2862,
-    "physicalInterfacesDiscovered": 4632,
-    "verifiedPass": 1765,
+    "rawSourceConnectionRecords": 5084,
+    "logicalConnectionGroups": 3063,
+    "physicalInterfacesDiscovered": 5019,
+    "verifiedPass": 2251,
     "verifiedBlocked": 786,
-    "requiresAstraReview": 2081,
+    "requiresAstraReview": 1982,
     "pending": 0,
-    "verifiedPhysicalInterfaces": 1765,
-    "enabledPhysicalInterfaces": 1765,
-    "enabledRawConnectionIds": 1779,
-    "verifiedCoveragePercent": 38.1045,
+    "verifiedPhysicalInterfaces": 2251,
+    "enabledPhysicalInterfaces": 2251,
+    "enabledRawConnectionIds": 2268,
+    "verifiedCoveragePercent": 44.8496,
     "processedCoveragePercent": 100,
-    "fullyAssemblyVerified": 33,
-    "interfaceVerificationComplete": 241,
-    "partiallyGeneratable": 46,
+    "fullyAssemblyVerified": 38,
+    "interfaceVerificationComplete": 249,
+    "partiallyGeneratable": 49,
     "blockedParts": 162,
     "unresolvedParts": 4
   },
   "deferredRun": {
     "targetCount": 978,
-    "pass": 696,
+    "pass": 816,
     "blocked": 0,
-    "requiresAstraReview": 282,
+    "requiresAstraReview": 162,
     "pending": 0,
-    "directTests": 698,
+    "directTests": 818,
     "sharedPrecondition": 0,
-    "reviewDependency": 280,
+    "reviewDependency": 160,
     "interrupted": false,
-    "checkpointDirectory": "/tmp/astra-collision-interface-checkpoints",
+    "checkpointDirectory": "/tmp/generation-expansion-geometry1-final",
     "testVersion": "native-interface-suite-0.6.0-worker-2"
   },
   "batches": [
     {
       "batch": "1-basic-brick-plate-tile",
-      "total": 52,
-      "assemblyVerified": 43,
-      "generatable": 43,
+      "total": 59,
+      "assemblyVerified": 50,
+      "generatable": 50,
       "blocked": 9
     },
     {
@@ -110,9 +110,9 @@
     },
     {
       "batch": "5-wheel-tyre-axle",
-      "total": 10,
-      "assemblyVerified": 0,
-      "generatable": 0,
+      "total": 11,
+      "assemblyVerified": 1,
+      "generatable": 1,
       "blocked": 10
     },
     {
@@ -243,8 +243,8 @@
       "requiredInterface": "standard-stud",
       "status": "verified",
       "reason": "The required actual pair interface passed compatibility, transform, reverse, collision, rotation, graph and attachment smoke checks.",
-      "fixedSourceDigest": "a9a28749dd931839197b75a6a32c7ed31bd98855c0932ac24c7ce50f99017898",
-      "movingSourceDigest": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+      "fixedSourceDigest": "262a459a9c33ad5fbac552fad98ff26be4ed9dbf19aaacdc34e17f8ffcbc1455",
+      "movingSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
       "result": {
         "connectionId": "p/stud.dat:8:1",
         "connectionFamily": "stud",
@@ -255,7 +255,7 @@
         "fixturePartId": "3024",
         "fixtureRole": "representative-pair",
         "fixtureConnectionId": "parts/s/3024s01.dat:8:1",
-        "fixtureSourceDigest": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+        "fixtureSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
         "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
         "compatibleTwistsDeg": [
           0,
@@ -332,7 +332,7 @@
         "lastAttempt": {
           "fixturePartId": "3024",
           "fixtureConnectionId": "parts/s/3024s01.dat:8:1",
-          "fixtureSourceDigest": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+          "fixtureSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
           "twistDeg": 0,
           "transform": {
             "rotation": [
@@ -367,8 +367,8 @@
       "requiredInterface": "side-stud",
       "status": "verified",
       "reason": "The required actual pair interface passed compatibility, transform, reverse, collision, rotation, graph and attachment smoke checks.",
-      "fixedSourceDigest": "c81a3585a7bf37b2e040056175df0d4a0ea381f47b5cc0d1e3858e739a2cebc3",
-      "movingSourceDigest": "d3f492650fe439f738028056baa657c7ccaf559a7093acbbb11a59bff8dfdd15",
+      "fixedSourceDigest": "1917d6ea8c8524f7b5f01058baa9ada5544ec9e68fb6828bc920a1ee71ec78d1",
+      "movingSourceDigest": "d9dcde894e36ef701c6df34dc55f2bb3e6234f37576ed1c590714820037e340d",
       "result": {
         "connectionId": "p/stud2a.dat:11:1",
         "connectionFamily": "stud",
@@ -379,7 +379,7 @@
         "fixturePartId": "3070b",
         "fixtureRole": "representative-pair",
         "fixtureConnectionId": "parts/s/3070bs01.dat:8:0",
-        "fixtureSourceDigest": "d3f492650fe439f738028056baa657c7ccaf559a7093acbbb11a59bff8dfdd15",
+        "fixtureSourceDigest": "d9dcde894e36ef701c6df34dc55f2bb3e6234f37576ed1c590714820037e340d",
         "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
         "compatibleTwistsDeg": [
           0,
@@ -456,7 +456,7 @@
         "lastAttempt": {
           "fixturePartId": "3070b",
           "fixtureConnectionId": "parts/s/3070bs01.dat:8:0",
-          "fixtureSourceDigest": "d3f492650fe439f738028056baa657c7ccaf559a7093acbbb11a59bff8dfdd15",
+          "fixtureSourceDigest": "d9dcde894e36ef701c6df34dc55f2bb3e6234f37576ed1c590714820037e340d",
           "twistDeg": 0,
           "transform": {
             "rotation": [
@@ -491,8 +491,8 @@
       "requiredInterface": "standard-stud",
       "status": "blocked",
       "reason": "The source mesh has open/branched boundary chains.",
-      "fixedSourceDigest": "7d82f9a37fc98e2ab822396104f4b691c7c3c79c9c630ebb9bec9b15ab0d39d3",
-      "movingSourceDigest": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+      "fixedSourceDigest": "ffdf623fabd29425eb489650715525bf1ee49208cb9966669d418e0e417fcd93",
+      "movingSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
       "result": {
         "connectionId": "parts/18974.dat:9:13",
         "connectionFamily": "cylinder",
@@ -527,7 +527,7 @@
         "lastAttempt": {
           "fixturePartId": "3024",
           "fixtureConnectionId": "p/stud.dat:8:0",
-          "fixtureSourceDigest": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+          "fixtureSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
           "twistDeg": 270,
           "transform": {
             "rotation": [
@@ -562,8 +562,8 @@
       "requiredInterface": "standard-stud",
       "status": "blocked",
       "reason": "The source mesh has open/branched boundary chains.",
-      "fixedSourceDigest": "ef9b3dafd750bb906aac49017e12364b06f279647d22f19a5fc8e630e7bc39e6",
-      "movingSourceDigest": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+      "fixedSourceDigest": "47dbd3f226a2858e80a60cba45b027c2dbd8428ca6d433d045d439c539be89dd",
+      "movingSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
       "result": {
         "connectionId": "parts/18973.dat:8:5",
         "connectionFamily": "cylinder",
@@ -598,7 +598,7 @@
         "lastAttempt": {
           "fixturePartId": "3024",
           "fixtureConnectionId": "p/stud.dat:8:0",
-          "fixtureSourceDigest": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+          "fixtureSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
           "twistDeg": 270,
           "transform": {
             "rotation": [
@@ -633,8 +633,8 @@
       "requiredInterface": "wheel-rim",
       "status": "blocked",
       "reason": "Profile, insertion depth, retention or interface-specific mating semantics are not supported by the current rule set.",
-      "fixedSourceDigest": "8ca8bd482f59516e1bc7689bdb77abce1b7362cc58e7234bc6cb2016948b926f",
-      "movingSourceDigest": "bba6f88f177eadb2899ff5e321a52120de0dd9e523ca1ef1e73a9df4610bc1f5",
+      "fixedSourceDigest": "7e0b8057ec53eecfc25f6528a257b53de68e7926df1b1deae2cb44fcba973837",
+      "movingSourceDigest": "1e5c3cdf7f6ada58aa78c9f31af3a9510f1ea18cb0fd1bb4fe766257391ec9f0",
       "result": {
         "connectionId": "parts/4624.dat:10:1",
         "connectionFamily": "wheelMount",
@@ -676,8 +676,8 @@
       "requiredInterface": "wheel-pin",
       "status": "blocked",
       "reason": "Profile, insertion depth, retention or interface-specific mating semantics are not supported by the current rule set.",
-      "fixedSourceDigest": "5fb7923473b0e1e8eed210ad7b53844763a0875844b16c9bf95d65570b1c7b8c",
-      "movingSourceDigest": "8ca8bd482f59516e1bc7689bdb77abce1b7362cc58e7234bc6cb2016948b926f",
+      "fixedSourceDigest": "efc40479aac437ab82b2ed915d690876667edaf4df688688df307952d669b6a1",
+      "movingSourceDigest": "7e0b8057ec53eecfc25f6528a257b53de68e7926df1b1deae2cb44fcba973837",
       "result": {
         "connectionId": "p/wpin.dat:8:3",
         "connectionFamily": "cylinder",
@@ -731,8 +731,8 @@
       "requiredInterface": "standard-stud",
       "status": "blocked",
       "reason": "An open native boundary is not fully covered by original coplanar source faces. No missing plastic is invented.",
-      "fixedSourceDigest": "4952541fade4975200ed8c3e71dcb81519f7245dabb8023af82856f7b7b8a55b",
-      "movingSourceDigest": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+      "fixedSourceDigest": "76e4f75447b3f042268b1febb7a79c7f57a823512994358e288165ce44594e03",
+      "movingSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
       "result": {
         "connectionId": "parts/s/11477s01.dat:9:1",
         "connectionFamily": "cylinder",
@@ -767,7 +767,7 @@
         "lastAttempt": {
           "fixturePartId": "3024",
           "fixtureConnectionId": "p/stud.dat:8:0",
-          "fixtureSourceDigest": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+          "fixtureSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
           "twistDeg": 270,
           "transform": {
             "rotation": [
@@ -802,8 +802,8 @@
       "requiredInterface": "standard-stud",
       "status": "verified",
       "reason": "The required actual pair interface passed compatibility, transform, reverse, collision, rotation, graph and attachment smoke checks.",
-      "fixedSourceDigest": "a266ad3a389e0cc21819f6a18ed0457d93206780ebfcb7d6b01e8914b3cd1643",
-      "movingSourceDigest": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+      "fixedSourceDigest": "7489332069717daf927f83dc666550ba6da380274633adbf5f2e46d7b8b8eb18",
+      "movingSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
       "result": {
         "connectionId": "p/stud2.dat:9:0",
         "connectionFamily": "stud",
@@ -814,7 +814,7 @@
         "fixturePartId": "3024",
         "fixtureRole": "representative-pair",
         "fixtureConnectionId": "parts/s/3024s01.dat:8:1",
-        "fixtureSourceDigest": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+        "fixtureSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
         "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
         "compatibleTwistsDeg": [
           0,
@@ -891,7 +891,7 @@
         "lastAttempt": {
           "fixturePartId": "3024",
           "fixtureConnectionId": "parts/s/3024s01.dat:8:1",
-          "fixtureSourceDigest": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+          "fixtureSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
           "twistDeg": 0,
           "transform": {
             "rotation": [
@@ -926,8 +926,8 @@
       "requiredInterface": "bar-clip",
       "status": "blocked",
       "reason": "Profile, insertion depth, retention or interface-specific mating semantics are not supported by the current rule set.",
-      "fixedSourceDigest": "bbfb99b27cfcff264aa112fd267a588e96cad1ce2e4899f0bb7a2066e0200ee1",
-      "movingSourceDigest": "b9f2f3b8049913f2cffdeacaa97be916298480949eb74197329b2cc2e4c0fca5",
+      "fixedSourceDigest": "36e44e7ce246380323135cebce7be711621a3f3909d0f578e66eba63b0a3ea42",
+      "movingSourceDigest": "aa66d7f6acd683b65fc800280bea377c83680192ded7b905335eba1dab6b7388",
       "result": {
         "connectionId": "parts/48729b.dat:8:0",
         "connectionFamily": "clip",
@@ -969,8 +969,8 @@
       "requiredInterface": "pin",
       "status": "blocked",
       "reason": "Source connection data remains incomplete: fixed=ready, moving=partial.",
-      "fixedSourceDigest": "9eba35d0f453804ceeb4a7177c6e9ed5f5f58007f0c98f08b684e7aabe8bd7b9",
-      "movingSourceDigest": "13a3105f483a738c9bc6eea03ce01c550111ca61f9e46c8d5baed913322fc25a",
+      "fixedSourceDigest": "82ddaf33d5886e6b932eecb4254136cff7a8d4259dd95a23101c6936657a972f",
+      "movingSourceDigest": "f29f619520c7c275e381cd7a537900be330e0298a893b78f2e7710c7584776ee",
       "result": null
     }
   ],

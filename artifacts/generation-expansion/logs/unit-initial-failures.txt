@@ -1,0 +1,75 @@
+
+> bricklab@0.6.0 test
+> vitest run --maxWorkers=2
+
+
+ RUN  v5.0.5 /workspace/lego-design-byebye
+
+ ❯ tests/parts-assembly-api.test.ts (11 tests | 1 failed) 20419ms
+   ❯ native assembly production HTTP boundaries (11)
+     × reports every actual source root and only counts runtime-validated admission decisions 9ms
+ ❯ tests/parts-foundation-api.test.ts (7 tests | 1 failed) 15518ms
+   ❯ real source foundation HTTP API (6)
+     × reports source observations, scoped assembly admission and evidence-backed mapping recovery 14542ms
+ ❯ tests/parts-connection-audit.test.ts (2 tests | 1 failed) 1549ms
+   ❯ complete pinned Connection Parse Audit (2)
+     × preserves every pre-fix point/source record and retires only the three explicit CLEAR warnings 11ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/parts-assembly-api.test.ts > native assembly production HTTP boundaries > reports every actual source root and only counts runtime-validated admission decisions
+AssertionError: expected 5019 to be 4632 // Object.is equality
+
+- Expected
++ Received
+
+- 4632
++ 5019
+
+ ❯ tests/parts-assembly-api.test.ts:106:51
+    104|     expect(coverage).toBeDefined();
+    105|     expect(coverage).toEqual(report.interfaceCoverage);
+    106|     expect(coverage.physicalInterfacesDiscovered).toBe(5019);
+       |                                                   ^
+    107|     expect(coverage.physicalInterfacesDiscovered).toBe(coverage.verifi…
+    108|     expect(coverage.verifiedPhysicalInterfaces).toBe(coverage.verified…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/parts-connection-audit.test.ts > complete pinned Connection Parse Audit > preserves every pre-fix point/source record and retires only the three explicit CLEAR warnings
+TypeError: Cannot read properties of undefined (reading 'pointSha256')
+ ❯ tests/parts-connection-audit.test.ts:44:59
+     42|     for (const part of audit.parts) {
+     43|       const previous = before.parts.find(row => row.partId === part.pa…
+     44|       expect(part.pointSha256, part.partId).toBe(previous.pointSha256);
+       |                                                           ^
+     45|       expect(part.sourceClosureSha256, part.partId).toBe(previous.sour…
+     46|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/parts-foundation-api.test.ts > real source foundation HTTP API > reports source observations, scoped assembly admission and evidence-backed mapping recovery
+AssertionError: expected 5019 to be 4632 // Object.is equality
+
+- Expected
++ Received
+
+- 4632
++ 5019
+
+ ❯ tests/parts-foundation-api.test.ts:45:71
+     43|     expect(status.assembly.counts).toEqual(migration.counts);
+     44|     expect(status.assembly.interfaceCoverage).toEqual(migration.interf…
+     45|     expect(migration.interfaceCoverage?.physicalInterfacesDiscovered).…
+       |                                                                       ^
+     46|     expect(migration.interfaceCoverage).toEqual(report.interfaceCovera…
+     47|     const nativeCatalog = (await (await get('/parts')).json()).parts.f…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  3 failed | 44 passed (47)
+      Tests  3 failed | 642 passed (645)
+   Start at  15:37:08
+   Duration  104.04s (tests 98%, import 1%)
+

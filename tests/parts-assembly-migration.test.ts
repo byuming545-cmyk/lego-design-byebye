@@ -32,11 +32,11 @@ describe('all-native-root assembly migration', () => {
 
   it('includes every pinned root with an explicit source-bound verified or blocked result', async () => {
     const ids = await repository.listIds();
-    expect(ids).toHaveLength(245);
+    expect(ids).toHaveLength(253);
     expect(report.entries.map(entry => entry.partId).sort()).toEqual([...ids].sort());
-    expect(report.sourceCounts).toEqual({ totalRoots: 245, geometryReady: 245, connectionReady: 197, connectionPartial: 44, connectionMissing: 4 });
-    expect(report.counts.total).toBe(245);
-    expect(report.counts.assemblyVerified + report.counts.blocked).toBe(245);
+    expect(report.sourceCounts).toEqual({ totalRoots: 253, geometryReady: 253, connectionReady: 205, connectionPartial: 44, connectionMissing: 4 });
+    expect(report.counts.total).toBe(253);
+    expect(report.counts.assemblyVerified + report.counts.blocked).toBe(253);
     expect(report.counts.assemblyVerified).toBeGreaterThan(0);
     expect(report.counts.generatable).toBe(report.counts.assemblyVerified);
     expect(Object.values(report.blockedReasons).reduce((sum, count) => sum + count, 0)).toBe(report.counts.blocked);

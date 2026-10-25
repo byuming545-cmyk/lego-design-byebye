@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-25T15:52:52.325751+00:00",
+  "reviewer": "independent expansion_review agent",
+  "status": "PASS",
+  "scope": "Read-only ZIP integrity, exact distribution whitelist, current repository byte identity, qualification/model/source binding, and key report counts; no source or model changes and no re-execution of physical assembly or full test suites.",
+  "zip": {
+    "path": "artifacts/generation-expansion/native-generation-sources.zip",
+    "bytes": 2495341,
+    "sha256": "8904831be0f5994e3f816afc73f4e7dd5106474ebbd3b0a3ef0c1eec0aa15a29",
+    "members": 1100,
+    "manifestListedMembers": 1099,
+    "manifestSha256": "8151a604061c6259501d0514e0e34dd5857aaa4185a264a8348e59342b7439b6",
+    "crcCheck": "PASS",
+    "duplicateMembers": 0,
+    "unsafePaths": 0
+  },
+  "checks": {
+    "exactWhitelist": true,
+    "allManifestHashesAndSizesMatch": true,
+    "allPackagedFilesEqualCurrentRepository": true,
+    "sourceManifestFileHashesMatch": true,
+    "excludedHistoricalMappingPrivatePDFStudioLegacyFiles": 0,
+    "currentSourceVersionQualificationBindings": true,
+    "allEdgeEndpointsAllowed": true,
+    "standaloneStepsSourcesAndReimportMatchModel": true,
+    "bomQuantitiesAndStepsComplete": true,
+    "disabled32000PinHolesRemainDisabled": true,
+    "wheelNotCountedAsSuccess": true,
+    "validationCommandLogHashesMatch": 9
+  },
+  "counts": {
+    "sourceRoots": 253,
+    "ldrawFiles": 743,
+    "shadowFiles": 245,
+    "qualifiedParts": 87,
+    "interfaceRecords": 5019,
+    "passInterfaces": 2251,
+    "blockedInterfaces": 786,
+    "reviewInterfaces": 1982,
+    "pendingInterfaces": 0,
+    "generatedWitnesses": 13,
+    "distinctGeneratedPartIds": 21,
+    "newQualifiedAndGenerated": 8,
+    "newSourceQualifiedAndGenerated": 7,
+    "stagedQualifiedAndGenerated": 1,
+    "existingQualifiedNewUses": 3
+  },
+  "models": [
+    {
+      "directory": "artifacts/generation-expansion/models/32000-wall",
+      "placements": 3,
+      "edges": 3,
+      "actualPartIds": [
+        "3005",
+        "3023",
+        "32000"
+      ],
+      "exportSha256": "8e5cbca5515b425a888e6a8ebe5ed856138c597a635f411ad1159a01813125a3",
+      "reimportStatus": "VALID"
+    },
+    {
+      "directory": "artifacts/generation-expansion/models/3623-platform",
+      "placements": 3,
+      "edges": 2,
+      "actualPartIds": [
+        "3024",
+        "3623"
+      ],
+      "exportSha256": "74648fe56b170925eb13e04f790ff734e01e1c436711c952b2a04e8c437198c0",
+      "reimportStatus": "VALID"
+    },
+    {
+      "directory": "artifacts/generation-expansion/models/60479-platform",
+      "placements": 3,
+      "edges": 2,
+      "actualPartIds": [
+        "3024",
+        "60479"
+      ],
+      "exportSha256": "2e8b107093e99e833b8a2e85e06352f49ac6095b24274ec2084412ae2b27e448",
+      "reimportStatus": "VALID"
+    },
+    {
+      "directory": "artifacts/generation-expansion/models/78329-platform",
+      "placements": 3,
+      "edges": 2,
+      "actualPartIds": [
+        "3024",
+        "78329"
+      ],
+      "exportSha256": "2b13f5656d17dfc6cf9dca869996debf8253966e6feaebc4de7566036b156b9e",
+      "reimportStatus": "VALID"
+    },
+    {
+      "directory": "artifacts/generation-expansion/models/3456-platform",
+      "placements": 3,
+      "edges": 2,
+      "actualPartIds": [
+        "3024",
+        "3456"
+      ],
+      "exportSha256": "1cb8cf1c3c3d4a0dba076850a25b695334a515383beb28816292ecb698ca3abe",
+      "reimportStatus": "VALID"
+    },
+    {
+      "directory": "artifacts/generation-expansion/models/69729-basic-snot",
+      "placements": 3,
+      "edges": 2,
+      "actualPartIds": [
+        "3023",
+        "4070",
+        "69729"
+      ],
+      "exportSha256": "d45ae17385c79cfe841426ec9401e1b96b3fd97af31407154b15d0aff9f98e11",
+      "reimportStatus": "VALID"
+    },
+    {
+      "directory": "artifacts/generation-expansion/models/6934-platform",
+      "placements": 3,
+      "edges": 15,
+      "actualPartIds": [
+        "3024",
+        "3032",
+        "6934"
+      ],
+      "exportSha256": "3b777baf38f26494a2452d2d9bb435fa022e6e90951dbefe86fc3cafff9724f3",
+      "reimportStatus": "VALID"
+    },
+    {
+      "directory": "artifacts/generation-expansion/models/41539-platform",
+      "placements": 3,
+      "edges": 2,
+      "actualPartIds": [
+        "3024",
+        "41539"
+      ],
+      "exportSha256": "fee54f4ab5b04bcd07794eea6740776b034c214523c83b9f18127c9a628d2d32",
+      "reimportStatus": "VALID"
+    },
+    {
+      "directory": "artifacts/generation-expansion/models/21-wall",
+      "placements": 3,
+      "edges": 9,
+      "actualPartIds": [
+        "21",
+        "3005",
+        "3020"
+      ],
+      "exportSha256": "2a1487ed92354cb8f781a47b1772aa4b0c7fc3c5f3d47f683b3afbbdb91d0e3b",
+      "reimportStatus": "VALID"
+    },
+    {
+      "directory": "artifacts/generation-expansion/models/28326-wall",
+      "placements": 3,
+      "edges": 3,
+      "actualPartIds": [
+        "28326",
+        "3031",
+        "32000"
+      ],
+      "exportSha256": "8712469ff0cdf74d7403b71f3ae7932817d3fa4cc20673c2c67e1f2208be3c1e",
+      "reimportStatus": "VALID"
+    },
+    {
+      "directory": "artifacts/generation-expansion/models/50967-wall",
+      "placements": 3,
+      "edges": 3,
+      "actualPartIds": [
+        "32000",
+        "4477",
+        "50967"
+      ],
+      "exportSha256": "28a5e593be4725cbe170d883aac88cc3c1d75dfa6d6b5184c090422521c681ca",
+      "reimportStatus": "VALID"
+    },
+    {
+      "directory": "artifacts/generation-expansion/models/reinforced-native-chassis",
+      "placements": 5,
+      "edges": 16,
+      "actualPartIds": [
+        "3024",
+        "32000",
+        "3456",
+        "69729"
+      ],
+      "exportSha256": "555480a646fe320cddc7551eaa7871bceeece5e9f44138ddf00bdff55aa96e61",
+      "reimportStatus": "VALID"
+    },
+    {
+      "directory": "artifacts/generation-expansion/models/native-side-structure",
+      "placements": 3,
+      "edges": 2,
+      "actualPartIds": [
+        "3023",
+        "3070b",
+        "87087"
+      ],
+      "exportSha256": "b54cf5958faaa01eddfbe3bd9b7f5baf5aa0146a5c4a42f12178fe10e6c1e9cf",
+      "reimportStatus": "VALID"
+    }
+  ],
+  "limitations": [
+    "Recorded VALID results were inspected and bound to current evidence; the assembly solver and full test suites were not independently rerun in this package review.",
+    "Verification covers source-interface final-pose graphs; physical builds, manufacturing tolerance, rotation clearance and installation trajectories remain outside the verified scope."
+  ]
+}

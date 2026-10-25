@@ -21,6 +21,8 @@
     "benchmark:automotive": "tsx src/cli/automotive-benchmark.ts",
     "report:parts": "tsx src/cli/parts-foundation-report.ts",
     "import:pilot": "tsx src/cli/digital-import-pilot.ts",
+    "coverage:expansion": "tsx src/cli/generation-expansion.ts",
+    "audit:wheel": "tsx src/cli/wheel-assessment.ts --output artifacts/wheel-assembly/source-assessment.json",
     "verify:assembly": "tsx src/cli/assembly-verify.ts",
     "smoke:assembly": "tsx src/cli/assembly-smoke.ts",
     "astra:case": "tsx src/cli/astra-case.ts",

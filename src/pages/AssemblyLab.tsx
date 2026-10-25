@@ -124,6 +124,8 @@ export default function AssemblyLab() {
   const [initialPair, setInitialPair] = useState<AssemblyStatus['defaultPair']>(null);
   const [importFile, setImportFile] = useState<File | null>(null);
   const [importResult, setImportResult] = useState<ImportedModelResult | null>(null);
+  const [requiredPartId, setRequiredPartId] = useState('');
+  const [generationPartCount, setGenerationPartCount] = useState('');
   const userSelected = useRef(false);
   const defaultApplied = useRef(false);
 
@@ -218,7 +220,7 @@ export default function AssemblyLab() {
   async function generate(kind: string) {
     setBusy(kind); setError(''); setResponse(null); setModel(null); setImportResult(null);
     try {
-      const result = await post<AssemblyResponse>('/assembly/generate', { kind });
+      const result = await post<AssemblyResponse>('/assembly/generate', { kind, ...(requiredPartId ? { requiredPartIds: [requiredPartId] } : {}), ...(generationPartCount ? { partCount: Number(generationPartCount) } : {}) });
       setResponse(result);
       await loadModel(result);
     } catch (reason) { setError(message(reason)); }
@@ -297,7 +299,7 @@ export default function AssemblyLab() {
       {!response && !!selectedPoints.filter(Boolean).length && <div className="assembly-selected-connections">{selectedPoints.map((point, index) => point && <p key={index}><strong>{index === 0 ? 'A' : 'B'} 来源连接</strong><span>{point.family} · {point.gender ?? '未指定'} · 位置 [{point.position.join(', ')}]</span>{point.source?.path && <small>{point.source.path}:{point.source.line}</small>}</p>)}</div>}
     </div>
 
-    <section className="assembly-smoke-tests"><div className="part-section-heading"><Layers3 size={18} /><div><h2>真实基础结构生成</h2><p>只使用当前获得生成准入的零件与连接；信息不足时返回具体阻塞原因。</p></div></div><div className="assembly-module-buttons">{modules.map((module) => <button key={module.id} onClick={() => void generate(module.id)} disabled={!!busy || loading}>{busy === module.id ? <LoaderCircle size={14} className="part-spin" /> : <Play size={13} />}{module.label}</button>)}</div></section>
+    <section className="assembly-smoke-tests"><div className="part-section-heading"><Layers3 size={18} /><div><h2>真实基础结构生成</h2><p>只使用当前获得生成准入的零件与连接；信息不足时返回具体阻塞原因。</p></div></div><label className="assembly-field"><span>生成时包含的零件（可选）</span><select aria-label="生成时包含的零件" value={requiredPartId} disabled={!!busy || loading} onChange={event => setRequiredPartId(event.target.value)}><option value="">自动选件</option>{parts.filter(part => part.identitySystem === 'ldraw' && part.generatable).map(part => <option key={part.id} value={part.id}>{part.id} · {part.name}</option>)}</select></label><label className="assembly-field"><span>零件数量（可选，3–32）</span><input aria-label="生成零件数量" type="number" min="3" max="32" placeholder="按结构默认数量" value={generationPartCount} disabled={!!busy || loading} onChange={event => setGenerationPartCount(event.target.value)} /></label><div className="assembly-module-buttons">{modules.map((module) => <button key={module.id} onClick={() => void generate(module.id)} disabled={!!busy || loading}>{busy === module.id ? <LoaderCircle size={14} className="part-spin" /> : <Play size={13} />}{module.label}</button>)}</div></section>
 
     <section className="assembly-model-import"><div className="part-section-heading"><Upload size={18} /><div><h2>重新导入真实装配模型</h2><p>检查当前来源、规则版本、连接口与连接图。旧资格失效时返回 NEEDS_REVALIDATION。</p></div></div><form onSubmit={importModel}><label className="assembly-import-file"><span>已导出的模型 JSON（最多 5 MiB）</span><input type="file" accept="application/json,.json" aria-label="选择真实装配模型 JSON" disabled={!!busy} onChange={(event) => { setImportFile(event.target.files?.[0] ?? null); setImportResult(null); }} /></label><button className="assembly-secondary" type="submit" disabled={!importFile || !!busy}>{busy === 'import' ? <LoaderCircle size={13} className="part-spin" /> : <Upload size={13} />}验证导入模型</button></form>{importResult && <div className={`assembly-import-status ${importResult.status === 'VALID' ? 'passed' : 'blocked'}`} role="status"><strong>{importResult.status}</strong><p>{importResult.status === 'VALID' ? '已按当前来源与接口规则重新核验，可查看并导出。' : '模型依赖的来源、版本或接口资格需要重新验证；当前不可导出。'}</p>{importResult.reasons.length > 0 && <ul>{importResult.reasons.map((reason, index) => <li key={index}>{reason}</li>)}</ul>}</div>}</section>
 

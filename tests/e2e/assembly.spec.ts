@@ -1,8 +1,40 @@
 import { test, expect, type Page } from '@playwright/test';
 import { createHash } from 'node:crypto';
-import { readFile } from 'node:fs/promises';
+import { mkdir, readFile } from 'node:fs/promises';
 import { expectConnectedAssembly, expectCoverageMatches } from './assemblyChecks.js';
 import type { AggregateInterfaceCoverageData, InterfaceCoverageData } from '../../src/components/InterfaceCoverage.js';
+
+test('uses an admitted 32000 through normal UI generation, exports it and validates the uploaded model', async ({ page }) => {
+  await open(page);
+  await page.getByLabel('生成时包含的零件', { exact: true }).selectOption('32000');
+  await page.getByLabel('生成零件数量', { exact: true }).fill('3');
+  const generatedResponse = page.waitForResponse(response => response.url().endsWith('/api/parts-foundation/assembly/generate') && response.request().method() === 'POST');
+  await page.locator('.assembly-smoke-tests').getByRole('button', { name: '墙体', exact: true }).click();
+  const response = await generatedResponse;
+  expect(response.ok()).toBe(true);
+  expect(response.request().postDataJSON()).toMatchObject({ kind: 'wall', partCount: 3, requiredPartIds: ['32000'] });
+  const result = await response.json();
+  expect(result.status, result.reasons?.join('; ')).toBe('generated');
+  expect(result.model.placements.some((part: { partId: string }) => part.partId === '32000')).toBe(true);
+  expect(result.model.bom.some((row: { partId: string; quantity: number }) => row.partId === '32000' && row.quantity > 0)).toBe(true);
+  expect(result.model.steps.some((step: { partId: string }) => step.partId === '32000')).toBe(true);
+  await expectRealCanvas(page);
+  const download = page.waitForEvent('download');
+  await page.getByRole('button', { name: '模型 JSON', exact: true }).click();
+  const exported = await download;
+  const file = await exported.path();
+  expect(file).not.toBeNull();
+  const bytes = await readFile(file!);
+  await page.getByLabel('选择真实装配模型 JSON', { exact: true }).setInputFiles({ name: 'native-32000.json', mimeType: 'application/json', buffer: bytes });
+  const importResponse = page.waitForResponse(response => response.url().endsWith('/api/parts-foundation/assembly/models/import') && response.request().method() === 'POST');
+  await page.getByRole('button', { name: '验证导入模型', exact: true }).click();
+  const imported = await (await importResponse).json();
+  expect(imported.status, imported.reasons?.join('; ')).toBe('VALID');
+  expect(imported.model.placements.some((part: { partId: string }) => part.partId === '32000')).toBe(true);
+  await expect(page.locator('.assembly-import-status')).toContainText('VALID');
+  await mkdir('artifacts/generation-expansion/screenshots', { recursive: true });
+  await page.locator('.assembly-native-stage').screenshot({ path: 'artifacts/generation-expansion/screenshots/32000-production-and-reimport.png' });
+});
 
 interface DefaultPair { partA: string; connectionA: string; partB: string; connectionB: string; twistDegrees?: number }
 interface Status {

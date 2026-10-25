@@ -10,6 +10,7 @@ import { exportNativeAssemblyBomCsv, exportNativeAssemblyJson, exportNativeAssem
 import { isRigidTransform, rotate } from '../src/parts/assembly/math.js';
 import { solveAttachment } from '../src/parts/assembly/solver.js';
 import { checkMultiPointConnection } from '../src/parts/assembly/multipoint.js';
+import { fileURLToPath } from 'node:url';
 
 const repository = new NativePartRepository();
 let plate: NativeAssemblyPart;
@@ -58,8 +59,18 @@ describe('real native generator eligibility', () => {
     await expect(new NativeAssemblyGenerator(engine).generate({ module: 'invent-a-car' as 'wall' })).rejects.toThrow('支持的基础结构');
     await expect(new NativeAssemblyGenerator(engine).generate({ module: 'wall', partCount: 33 })).rejects.toThrow('3–32');
     await expect(new NativeAssemblyGenerator(engine).generate({ module: 'basic-snot', partCount: 4 })).rejects.toThrow('固定');
+    await expect(new NativeAssemblyGenerator(engine).generate({ module: 'wall', requiredPartIds: ['3001', '3001'] })).rejects.toThrow('不重复');
+    await expect(new NativeAssemblyGenerator(engine).generate({ module: 'wall', requiredPartIds: ['../3001'] })).rejects.toThrow('原生编号');
     expect(engine.getCapability).not.toHaveBeenCalled();
     expect(() => new NativeAssemblyGenerator(engine, { maxAttempts: Number.MAX_SAFE_INTEGER })).toThrow('预算');
+  });
+
+  it('does not grant a required source part eligibility merely because it was requested', async () => {
+    const engine = deniedEngine({ assemblyVerified: false, generatable: false });
+    const result = await new NativeAssemblyGenerator(engine, { partIds: ['3031'] }).generate({ module: 'wall', requiredPartIds: ['3031'] });
+    expect(result.status).toBe('blocked');
+    expect(engine.createAssembly).not.toHaveBeenCalled();
+    expect(engine.attachPart).not.toHaveBeenCalled();
   });
 });
 
@@ -208,4 +219,92 @@ describe('real source assembly generation and exports', () => {
     expect(result.model!.edges[0].fixedConnectionId).not.toBe(reservedFirstPort);
     expect(await production.validateGraph(result.model!)).toEqual({ valid: true, issues: [] });
   }, 60_000);
+
+  it('selects geometry and qualified ports independently of source display titles', async () => {
+    const renamed: NativeGeneratorEngine = {
+      createAssembly: id => production.createAssembly(id), attachPart: (graph, request) => production.attachPart(graph, request),
+      getCapability: id => production.getCapability(id), validateGraph: graph => production.validateGraph(graph),
+      async getPart(id) {
+        const source = await production.getPart(id); if (!source) return undefined;
+        // A presentation-only label change leaves all original source bytes,
+        // native vertices, connectors and permissions intact.
+        const copy = structuredClone(source); copy.geometry.name = '原始数据的本地显示名称'; return copy;
+      },
+    };
+    const renamedGenerator = new NativeAssemblyGenerator(renamed, { partIds: sourceIds });
+    for (const module of ['wall', 'platform', 'simple-chassis', 'simple-box', 'simple-roof', 'basic-snot'] as const) {
+      const result = await renamedGenerator.generate({ module });
+      expect(result.status, `${module}: ${result.reasons.join('\n')}`).toBe('generated');
+      expect(await production.validateGraph(result.model!)).toEqual({ valid: true, issues: [] });
+    }
+  }, 60_000);
+
+  it('fulfils a generic requested source-part goal in real generation and blocks an unknown requested ID', async () => {
+    const result = await generator.generate({ module: 'wall', partCount: 3, requiredPartIds: ['3001'] });
+    expect(result.status, result.reasons.join('\n')).toBe('generated');
+    expect(result.model!.placements.some(placement => placement.partId === '3001')).toBe(true);
+    expect(result.model!.bom.some(row => row.partId === '3001')).toBe(true);
+    expect(result.model!.steps.some(row => row.partId === '3001')).toBe(true);
+    expect(await production.validateGraph(result.model!)).toEqual({ valid: true, issues: [] });
+    const missing = await generator.generate({ module: 'wall', requiredPartIds: ['unknown-native-part'] });
+    expect(missing).toMatchObject({ status: 'blocked', model: null, search: { attempts: 0 } });
+    expect(missing.reasons.join(' ')).toContain('required-source-unavailable');
+  }, 60_000);
+
+  it('uses a required large native plate as the normal foundation without repeatedly preferring already-covered copies', async () => {
+    const result = await generator.generate({ module: 'platform', partCount: 3, requiredPartIds: ['3031'] });
+    expect(result.status, result.reasons.join('\n')).toBe('generated');
+    expect(result.model!.placements[0].partId).toBe('3031');
+    expect(result.model!.placements.slice(1).every(part => part.partId !== '3031')).toBe(true);
+    expect(result.search.attachmentApiCalls).toBeLessThanOrEqual(4);
+    expect(await production.validateGraph(result.model!)).toEqual({ valid: true, issues: [] });
+  }, 60_000);
+});
+
+describe('source-verified multi-stud Technic brick selection', () => {
+  let production: AttachmentEngine, requiredGenerator: NativeAssemblyGenerator;
+  const capabilities = new Map<string, AssemblyInterfaceCapability>();
+  const sources = ['3024', '3023b', '3005', '3031', '32000'];
+  // The fixture consumes the actual reviewed source bundle before or after its
+  // formal root migration, never a synthetic shape or hand-authored capability.
+  const staged = new NativePartRepository({
+    geometryDirectory: fileURLToPath(new URL('../data/parts-foundation/pilots/speed-26/ldraw/', import.meta.url)),
+    shadowDirectory: fileURLToPath(new URL('../data/parts-foundation/pilots/speed-26/shadow/', import.meta.url)),
+  });
+  const load = async (id: string) => await repository.getPart(id) ?? await staged.getPart(id);
+  beforeAll(async () => {
+    const fixtures = await loadStandardAssemblyFixtures(await createAssemblySourceLoader(repository));
+    const verifier = new AttachmentEngine({ mode: 'verification', loadPart: load });
+    for (const id of sources) {
+      const part = (await load(id))!;
+      capabilities.set(id, await verifyNativePartAssembly(part, part.geometry.name ?? id, fixtures, verifier, { maxInterfacesPerPart: null }));
+    }
+    production = new AttachmentEngine({ loadPart: load, getCapability: id => capabilities.get(id) });
+    requiredGenerator = new NativeAssemblyGenerator(production, { partIds: sources });
+  }, 60_000);
+
+  it('actually generates a complete structure using required 32000 and current native source interfaces', async () => {
+    const result = await requiredGenerator.generate({ module: 'wall', partCount: 3, requiredPartIds: ['32000'] });
+    expect(result.status, result.reasons.join('\n')).toBe('generated');
+    const model = result.model!;
+    expect(model.placements.some(part => part.partId === '32000')).toBe(true);
+    expect(model.bom.some(row => row.partId === '32000')).toBe(true);
+    expect(model.steps.some(row => row.partId === '32000')).toBe(true);
+    expect(model.sources.some(row => row.library === 'LDraw' && row.path === 'parts/32000.dat')).toBe(true);
+    expect(await production.validateGraph(model)).toEqual({ valid: true, issues: [] });
+    expect(result.search.attachmentApiCalls).toBeGreaterThan(0);
+  }, 60_000);
+
+  it('does not authorize an unverified pin-hole merely because its brick has ordinary stud qualifications', async () => {
+    const part = (await load('32000'))!, hole = part.connections.points.find(point => point.family === 'pinHole')!;
+    expect(hole).toBeDefined();
+    expect(capabilities.get('32000')!.allowedConnectionIds).not.toContain(hole.id);
+    const plate = (await load('3024'))!;
+    const receiver = plate.connections.points.find(point => point.gender === 'F' && capabilities.get('3024')!.allowedConnectionIds.includes(point.id))!;
+    const seed = await production.createAssembly('32000');
+    const result = await production.attachPart(seed, { anchorInstanceId: 'root', anchorConnectionId: hole.id, partId: '3024', candidateConnectionId: receiver.id });
+    expect(result.accepted).toBe(false);
+    expect(result.rejections.some(reason => reason.code === 'part-or-interface-blocked')).toBe(true);
+    expect(result.graph).toEqual(seed);
+  });
 });

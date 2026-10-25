@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "executedAt": "2026-10-25T15:51:08.905642+00:00",
+  "branch": "codex/native-generation-expansion",
+  "baselineCommit": "8b88b30b5483d0a06e2b91506f217c64c5806f89",
+  "historicalResultsReusedAsCurrent": false,
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-local-partition-1.1.0",
+    "testVersion": "native-interface-suite-0.6.0-worker-2"
+  },
+  "commands": [
+    {
+      "command": "npm run verify:interfaces -- --checkpoint-dir /tmp/generation-expansion-geometry1-final --concurrency 3 --batch-size 8 --timeout-ms 10000 --part-budget-ms 120000 --max-retries 1",
+      "exitCode": 0,
+      "result": {
+        "terminalGroups": 5019,
+        "pass": 2251,
+        "blocked": 786,
+        "requiresReview": 1982,
+        "pending": 0,
+        "resumedRecords": 0,
+        "elapsedSeconds": 361
+      },
+      "log": "artifacts/generation-expansion/logs/interfaces-final.txt",
+      "logSha256": "444f3380b68d8a60adca0594dc2c038d5c8f40e3769b3e1c0257100273b9b840"
+    },
+    {
+      "command": "npm run coverage:expansion",
+      "exitCode": 0,
+      "result": {
+        "candidateCount": 15,
+        "qualifiedCandidates": 11,
+        "actualCandidateGenerationCoverage": 11,
+        "newlyQualifiedAndGenerated": 8,
+        "newSourcesQualifiedAndGenerated": 7,
+        "stagedPartsQualifiedAndGenerated": 1,
+        "existingSourcesRecoveredAndGenerated": 0,
+        "existingQualifiedNewUses": 3,
+        "allActualGeneratedPartIds": [
+          "21",
+          "28326",
+          "3005",
+          "3020",
+          "3023",
+          "3024",
+          "3031",
+          "3032",
+          "3070b",
+          "32000",
+          "3456",
+          "3623",
+          "4070",
+          "41539",
+          "4477",
+          "50967",
+          "60479",
+          "6934",
+          "69729",
+          "78329",
+          "87087"
+        ],
+        "allActualGeneratedPartCount": 21,
+        "structuralExamplesPassed": 2,
+        "wheelCountedAsSuccess": false,
+        "negativeChecksPassed": 8
+      },
+      "log": "artifacts/generation-expansion/logs/coverage-final.txt",
+      "logSha256": "a1e386f0b55ad5b514660df3076b8c8c2541c5e86baced97ebb850725cc73002"
+    },
+    {
+      "command": "npm run smoke:assembly",
+      "exitCode": 0,
+      "result": {
+        "generated": 6,
+        "wheelBlocked": 1,
+        "failed": 0,
+        "bridgePlacements": 4,
+        "bridgeEdges": 4
+      },
+      "log": "artifacts/generation-expansion/logs/smoke-final.txt",
+      "logSha256": "1aaabcb42013eee6af0d51400dbdbef562c1fab2cdf944b926b8d37ad459dfb8"
+    },
+    {
+      "command": "npm run audit:wheel",
+      "exitCode": 0,
+      "result": {
+        "status": "blocked",
+        "wheelCountedAsSuccess": false
+      },
+      "log": "artifacts/generation-expansion/logs/wheel-final.txt",
+      "logSha256": "975811fe6f589928d4e76f5f9f31fc6465bdb8a08926e0ec206592c321777f8b"
+    },
+    {
+      "command": "npm run audit:connections -- --output artifacts/generation-expansion/connection-audit",
+      "exitCode": 0,
+      "result": {
+        "roots": 253,
+        "ready": 205,
+        "partial": 44,
+        "missing": 4,
+        "activeFailures": 114,
+        "discardedDimensionWarnings": 3
+      },
+      "log": "artifacts/generation-expansion/logs/connection-audit.txt",
+      "logSha256": "762b82efec86f712d7cbbd5435ce23c3aaae98f769a8b344716c5da1afb65178"
+    },
+    {
+      "command": "npm run report:parts",
+      "exitCode": 0,
+      "result": {
+        "sourceRoots": 253,
+        "qualified": 87
+      },
+      "log": "artifacts/generation-expansion/logs/parts-report-final.txt",
+      "logSha256": "eda184b07028f00e523c29bf78e0e94400022f41cdd6b87bba071d2c7428c34f"
+    },
+    {
+      "command": "npm test -- --maxWorkers=2",
+      "exitCode": 0,
+      "result": {
+        "filesPassed": 47,
+        "passed": 645,
+        "failed": 0,
+        "durationSeconds": 99.16
+      },
+      "log": "artifacts/generation-expansion/logs/unit-final.txt",
+      "logSha256": "cda9fe76586180a5102473ec968b0389981d856785307bb6680e6831ebc428e3"
+    },
+    {
+      "command": "npm run test:e2e",
+      "exitCode": 0,
+      "result": {
+        "passed": 11,
+        "failed": 0,
+        "durationApproximateSeconds": 90
+      },
+      "log": "artifacts/generation-expansion/logs/e2e-final.txt",
+      "logSha256": "929b2fa89f66d54fedbc19fcb19a76f90d3dcd2714e56d0df90145b0e745224f"
+    },
+    {
+      "command": "npm run test:preview",
+      "exitCode": 0,
+      "result": {
+        "passed": 3,
+        "failed": 0,
+        "durationSeconds": 34.8,
+        "buildIncludes": [
+          "tsc --noEmit",
+          "vite build",
+          "tsc -p tsconfig.server.json"
+        ]
+      },
+      "log": "artifacts/generation-expansion/logs/preview-final.txt",
+      "logSha256": "3e235170d63534f3fd8fdbdc477d5671fccf9fddcff733d1d6a89d114510bf7c"
+    }
+  ],
+  "productionSourceCounts": {
+    "totalRoots": 253,
+    "geometryReady": 253,
+    "connectionReady": 205,
+    "connectionPartial": 44,
+    "connectionMissing": 4
+  },
+  "productionQualificationCounts": {
+    "total": 253,
+    "assemblyVerified": 87,
+    "generatable": 87,
+    "blocked": 166,
+    "verifiedInterfaces": 2268,
+    "disabledInterfaces": 2816,
+    "testedPhysicalInterfaces": 2426,
+    "deferredPhysicalInterfaces": 0,
+    "deferredRawConnectionIds": 0,
+    "wheelModulesVerified": 0,
+    "physicalBuildsVerified": 0
+  },
+  "physicalInterfaceCoverage": {
+    "rawSourceConnectionRecords": 5084,
+    "logicalConnectionGroups": 3063,
+    "physicalInterfacesDiscovered": 5019,
+    "verifiedPass": 2251,
+    "verifiedBlocked": 786,
+    "requiresAstraReview": 1982,
+    "pending": 0,
+    "verifiedPhysicalInterfaces": 2251,
+    "enabledPhysicalInterfaces": 2251,
+    "enabledRawConnectionIds": 2268,
+    "verifiedCoveragePercent": 44.8496,
+    "processedCoveragePercent": 100,
+    "fullyAssemblyVerified": 38,
+    "interfaceVerificationComplete": 249,
+    "partiallyGeneratable": 49,
+    "blockedParts": 162,
+    "unresolvedParts": 4
+  },
+  "sourcePreservation": {
+    "method": "Compare original bytes with baseline Git objects and original manifest SHA; no source normalisation",
+    "unchangedFiles": {
+      "ldraw": 732,
+      "shadow": 236
+    },
+    "totalUnchanged": 968
+  },
+  "interfaceRegression": {
+    "baselinePass": 1765,
+    "regressions": 0,
+    "existingInterfacesFreshlyPassed": 120,
+    "newSourcePhysicalGroups": 387
+  },
+  "sourcePackageEvidenceMutationProbes": [
+    {
+      "field": "steps",
+      "rejected": true,
+      "reason": "Exported steps.json differs from the actual generated model"
+    },
+    {
+      "field": "sources",
+      "rejected": true,
+      "reason": "Exported sources.json differs from the actual generated model"
+    },
+    {
+      "field": "placements",
+      "rejected": true,
+      "reason": "Reimported placements differs from the actual exported model"
+    },
+    {
+      "field": "edges",
+      "rejected": true,
+      "reason": "Reimported edges differs from the actual exported model"
+    },
+    {
+      "field": "sourceHashes",
+      "rejected": true,
+      "reason": "Reimported sourceHashes differs from the actual exported model"
+    }
+  ],
+  "developmentFailures": [
+    {
+      "command": "npm test -- --maxWorkers=2",
+      "result": {
+        "passed": 642,
+        "failed": 3
+      },
+      "reason": "Two stale physical-group counts plus baseline connection-audit set did not cover eight explicitly appended roots. Updated exact expected counts, retained per-baseline-root hashes, and asserted exact new root set; no assertion deletion or skip.",
+      "log": "artifacts/generation-expansion/logs/unit-initial-failures.txt",
+      "resolvedBy": "unit-final 645/645"
+    },
+    {
+      "reason": "Wider default filler candidates exhausted existing bounded generator search in a retained regression. Corrected default candidate ranking while retaining assertions and budgets.",
+      "resolvedBy": "19 generator tests and complete 645-test suite passed"
+    },
+    {
+      "reason": "Earlier full migration and generated models preceded explicit geometry-parser digest binding and are superseded.",
+      "log": "artifacts/generation-expansion/logs/interfaces-before-parser-binding.txt",
+      "resolvedBy": "Fresh current-version 5019-terminal-group run with zero resumed records plus regenerated 13 witnesses"
+    }
+  ],
+  "unresolvedTestFailures": [],
+  "notExecuted": [
+    "Physical LEGO build or tolerance/retention tests",
+    "Verified wheel final pose, chassis installation, rotation or swept installation path",
+    "Complete car generation",
+    "Closing unknown external shells for four blocked candidates",
+    "Online inventory acquisition or 531 Element cross-ID validation",
+    "Deployment or merging main"
+  ],
+  "warnings": [
+    "Vite bundle size above 500 kB; runtime preview passed; performance optimisation not included"
+  ],
+  "independentReview": {
+    "sourceBytesChecked": 968,
+    "currentModelWitnessesChecked": 13,
+    "currentInterfaceRecordsBoundToVersionsAndSource": 5019,
+    "blockingFindings": 0,
+    "scope": "Read-only inspection plus exporter evidence consistency hardening; no physical build certification"
+  }
+}

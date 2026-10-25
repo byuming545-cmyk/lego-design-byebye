@@ -6,6 +6,7 @@ import { ASSEMBLY_ENGINE_VERSION } from './engine.js';
 import { CONNECTION_RULE_VERSION } from './compatibility.js';
 import { COLLISION_VERSION } from './collision.js';
 import type { aggregatePhysicalInterfaceCoverage } from './coverage.js';
+import { INTERFACE_TEST_VERSION } from './deferredTypes.js';
 
 export const ASSEMBLY_MIGRATION_VERSION = 'native-assembly-migration-1';
 export type AssemblyMigrationBatch = '1-basic-brick-plate-tile' | '2-modified-bracket-snot' | '3-slope-curved-wedge' | '4-body-windscreen-mudguard' | '5-wheel-tyre-axle' | '6-bar-clip-detail' | 'other-source-part';
@@ -19,6 +20,8 @@ export interface AssemblyMigrationReport {
   deferredRun?: { targetCount: number; pass: number; blocked: number; requiresAstraReview: number; pending: number; directTests: number; sharedPrecondition: number; reviewDependency: number; interrupted: boolean; checkpointDirectory: string; testVersion: string };
   schemaVersion: 1;
   migrationVersion: string;
+  /** Qualifications are valid only for the verification suite which produced them. */
+  testVersion: string;
   partLibraryVersion: string;
   assemblyEngineVersion: string;
   connectionRuleVersion: string;
@@ -145,7 +148,7 @@ export async function runAssemblyMigration(options: { engine: AssemblyVerificati
     return { batch, total: rows.length, assemblyVerified: rows.filter(entry => entry.assemblyVerified).length, generatable: rows.filter(entry => entry.generatable).length, blocked: rows.filter(entry => !entry.assemblyVerified).length };
   });
   return {
-    schemaVersion: 1, migrationVersion: ASSEMBLY_MIGRATION_VERSION, partLibraryVersion: loader.partLibraryVersion, assemblyEngineVersion: ASSEMBLY_ENGINE_VERSION, connectionRuleVersion: CONNECTION_RULE_VERSION, collisionVersion: COLLISION_VERSION, generatedAt: new Date().toISOString(), scope: 'every-pinned-native-root', verificationScope: 'only-listed-connection-ids; no physical-build claim',
+    schemaVersion: 1, migrationVersion: ASSEMBLY_MIGRATION_VERSION, testVersion: INTERFACE_TEST_VERSION, partLibraryVersion: loader.partLibraryVersion, assemblyEngineVersion: ASSEMBLY_ENGINE_VERSION, connectionRuleVersion: CONNECTION_RULE_VERSION, collisionVersion: COLLISION_VERSION, generatedAt: new Date().toISOString(), scope: 'every-pinned-native-root', verificationScope: 'only-listed-connection-ids; no physical-build claim',
     interfaceBudget: options.maxInterfacesPerPart === undefined ? 32 : options.maxInterfacesPerPart,
     sourceCounts: { totalRoots: loader.roots.length, geometryReady: entries.filter(entry => entry.geometryReady).length, connectionReady: entries.filter(entry => entry.connectionSourceStatus === 'ready').length, connectionPartial: entries.filter(entry => entry.connectionSourceStatus === 'partial').length, connectionMissing: entries.filter(entry => entry.connectionSourceStatus === 'missing').length },
     counts: { total: entries.length, assemblyVerified: entries.filter(entry => entry.assemblyVerified).length, generatable: entries.filter(entry => entry.generatable).length, blocked: entries.filter(entry => !entry.assemblyVerified).length, verifiedInterfaces: entries.reduce((sum, entry) => sum + entry.verifiedConnectionIds.length, 0), disabledInterfaces: entries.reduce((sum, entry) => sum + entry.disabledConnectionIds.length, 0), testedPhysicalInterfaces: entries.reduce((sum, entry) => sum + entry.testedPhysicalInterfaceCount, 0), deferredPhysicalInterfaces: entries.reduce((sum, entry) => sum + entry.deferredPhysicalInterfaceCount, 0), deferredRawConnectionIds: entries.reduce((sum, entry) => sum + entry.deferredConnectionIds.length, 0), wheelModulesVerified: 0, physicalBuildsVerified: 0 },
