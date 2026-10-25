@@ -20,6 +20,7 @@
     "benchmark:speed": "tsx src/cli/speed-benchmark.ts",
     "benchmark:automotive": "tsx src/cli/automotive-benchmark.ts",
     "report:parts": "tsx src/cli/parts-foundation-report.ts",
+    "import:pilot": "tsx src/cli/digital-import-pilot.ts",
     "verify:assembly": "tsx src/cli/assembly-verify.ts",
     "smoke:assembly": "tsx src/cli/assembly-smoke.ts",
     "astra:case": "tsx src/cli/astra-case.ts",

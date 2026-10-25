@@ -35,9 +35,10 @@ export function validateBundledShadowManifest(value: unknown): ShadowManifest {
   return manifest;
 }
 
-export function createBundledShadowLibrary(geometryResolver: GeometryTextResolver, root = fileURLToPath(new URL('../../..', import.meta.url))): ConnectionLibrary {
+export function createBundledShadowLibrary(geometryResolver: GeometryTextResolver, root = fileURLToPath(new URL('../../..', import.meta.url)), options: { directory?: string } = {}): ConnectionLibrary {
   // From both src/parts/connections and dist-server/parts/connections, three parents reach repository root.
-  const directory = path.join(root, 'data', 'parts-foundation', 'shadow');
+  // Explicit tool-only source bundle; HTTP callers never choose this directory.
+  const directory = options.directory ?? path.join(root, 'data', 'parts-foundation', 'shadow');
   let manifestPromise: Promise<ShadowManifest> | undefined;
   const cache = new Map<string, Promise<string | undefined>>();
   async function manifest() {
@@ -69,8 +70,8 @@ export function createBundledShadowLibrary(geometryResolver: GeometryTextResolve
 }
 
 /** Reuse a factory to share source-file cache across the Part Lab catalogue scan. */
-export function createBundledConnectionImporter(geometryResolver: GeometryTextResolver, root?: string) {
-  const library = createBundledShadowLibrary(geometryResolver, root);
+export function createBundledConnectionImporter(geometryResolver: GeometryTextResolver, root?: string, options: { directory?: string } = {}) {
+  const library = createBundledShadowLibrary(geometryResolver, root, options);
   return { library, importPart: (partId: string, options?: ConnectionImportOptions) => importLdcadShadow(partId, library, options) };
 }
 

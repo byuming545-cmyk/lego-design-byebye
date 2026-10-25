@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "ldraw-pinned",
+      "name": "LDraw Parts Library — pinned Pybricks mirror",
+      "roles": [
+        "geometry"
+      ],
+      "publicDigitalImport": true,
+      "licenseStatus": "reviewed-per-file",
+      "allowedOperations": [
+        "Import unchanged source geometry and recursive dependencies under each file licence",
+        "Retain authors, history, attribution and the applicable licence texts"
+      ],
+      "forbiddenOperations": [
+        "Assume unreviewed third-party resources share this licence",
+        "Replace missing or mismatched geometry with an approximate model",
+        "Treat import as assembly or physical-build certification"
+      ],
+      "evidencePaths": [
+        "data/parts-foundation/ldraw/manifest.json",
+        "data/parts-foundation/ldraw/CAreadme.txt",
+        "data/parts-foundation/ldraw/CAlicense.txt",
+        "data/parts-foundation/ldraw/CAlicense4.txt"
+      ],
+      "access": {
+        "state": "local-snapshot-available",
+        "reason": "Existing pinned files and licence texts are locally readable. Official ldraw.org hosts are absent from the configured network allowlist; no official website request was attempted."
+      }
+    },
+    {
+      "id": "ldcad-shadow-pinned",
+      "name": "LDCad Shadow Library — pinned contributor repository",
+      "roles": [
+        "connections"
+      ],
+      "publicDigitalImport": true,
+      "licenseStatus": "reviewed-CC-BY-SA-4.0",
+      "allowedOperations": [
+        "Import unchanged licensed Shadow source records",
+        "Preserve attribution and CC-BY-SA-4.0 terms for source and derived connection data"
+      ],
+      "forbiddenOperations": [
+        "Apply data licence automatically to unrelated application code or third-party data",
+        "Invent connectors for unsupported syntax",
+        "Use parsed connection records as assembly qualification"
+      ],
+      "evidencePaths": [
+        "data/parts-foundation/shadow/manifest.json",
+        "data/parts-foundation/shadow/LICENSE.md",
+        "data/parts-foundation/shadow/IMPORT_NOTES.md"
+      ],
+      "access": {
+        "state": "local-snapshot-available",
+        "reason": "Existing pinned Shadow source bytes and licence are locally readable; this policy review did not request upstream files."
+      }
+    },
+    {
+      "id": "rebrickable-official-api",
+      "name": "Rebrickable official API",
+      "roles": [
+        "inventory",
+        "identity",
+        "color"
+      ],
+      "publicDigitalImport": false,
+      "licenseStatus": "permission-not-established",
+      "allowedOperations": [
+        "After authorisation and terms review, use the official API with the configured key and documented rate limits"
+      ],
+      "forbiddenOperations": [
+        "Bypass denied access",
+        "Publish upstream data before its permitted use and redistribution are established",
+        "Use an inventory observation as geometry identity proof"
+      ],
+      "evidencePaths": [
+        "src/inventory/rebrickable.ts"
+      ],
+      "access": {
+        "state": "not-attempted-network-policy",
+        "reason": "No configured API key was observed; official host is absent from the configured network allowlist. No unauthorised API request was sent."
+      }
+    },
+    {
+      "id": "rebrickable-official-downloads",
+      "name": "Rebrickable official bulk downloads",
+      "roles": [
+        "inventory",
+        "identity",
+        "color"
+      ],
+      "publicDigitalImport": false,
+      "licenseStatus": "permission-not-established",
+      "allowedOperations": [
+        "Prefer official bulk tables for large data needs after checking current download and redistribution terms"
+      ],
+      "forbiddenOperations": [
+        "Substitute an unreviewed mirror for an inaccessible official source and call it officially verified",
+        "Infer data rights from downloader code licence"
+      ],
+      "evidencePaths": [
+        "data/parts-foundation/mappings/manifest.json"
+      ],
+      "access": {
+        "state": "not-attempted-network-policy",
+        "reason": "rebrickable.com and cdn.rebrickable.com are absent from the configured network allowlist. No official download request was attempted in this review."
+      }
+    },
+    {
+      "id": "rebrickable-historical-mirror",
+      "name": "Historical Rebrickable table mirror observations",
+      "roles": [
+        "reference"
+      ],
+      "publicDigitalImport": false,
+      "licenseStatus": "permission-not-established",
+      "allowedOperations": [
+        "Retain existing historical source and conflict records for local review",
+        "Use unverified identifiers only as explicitly labelled research leads"
+      ],
+      "forbiddenOperations": [
+        "Fetch or copy more unreviewed mirror data into a public deployment",
+        "Promote source-observed records to exact official identity",
+        "Treat the mirror builder MIT licence as a licence for its data"
+      ],
+      "evidencePaths": [
+        "data/parts-foundation/mappings/manifest.json",
+        "data/parts-foundation/mappings/ldraw-mapping-review.json"
+      ],
+      "access": {
+        "state": "reference-only",
+        "reason": "Previously stored observations exist, but independent data permission and exact Element-to-LDraw mappings remain unresolved. No new mirror download is authorised by this policy."
+      }
+    },
+    {
+      "id": "bricklink-web",
+      "name": "BrickLink public webpages",
+      "roles": [
+        "reference"
+      ],
+      "publicDigitalImport": false,
+      "licenseStatus": "permission-not-established",
+      "allowedOperations": [
+        "Record permission requirements and seek explicit authorisation outside this importer"
+      ],
+      "forbiddenOperations": [
+        "Automated webpage copying or monitoring without written permission",
+        "Circumvent robots policy, access controls, CAPTCHA or network restrictions",
+        "Reverse engineer internal interfaces"
+      ],
+      "evidencePaths": [
+        "docs/digital-import/SOURCES.md"
+      ],
+      "access": {
+        "state": "not-attempted-permission",
+        "reason": "The user requires prior written permission for webpage monitoring/copying. No permission was supplied and no BrickLink webpage request was attempted."
+      }
+    },
+    {
+      "id": "bricklink-authorized-api",
+      "name": "BrickLink authorised public API",
+      "roles": [
+        "inventory",
+        "identity",
+        "color"
+      ],
+      "publicDigitalImport": false,
+      "licenseStatus": "permission-not-established",
+      "allowedOperations": [
+        "Implement only after API authorisation, scopes and permitted data use are verified"
+      ],
+      "forbiddenOperations": [
+        "Use website or internal interfaces as a replacement for unavailable API authorisation",
+        "Assume API access permits redistribution"
+      ],
+      "evidencePaths": [
+        "docs/digital-import/SOURCES.md"
+      ],
+      "access": {
+        "state": "not-attempted-permission",
+        "reason": "No API authorisation or permitted redistribution evidence supplied; no request attempted."
+      }
+    },
+    {
+      "id": "studio-unreviewed",
+      "name": "BrickLink Studio bundled resources and .conn data",
+      "roles": [
+        "reference"
+      ],
+      "publicDigitalImport": false,
+      "licenseStatus": "permission-not-established",
+      "allowedOperations": [
+        "Investigate official format documentation and supported workflows when access permits"
+      ],
+      "forbiddenOperations": [
+        "Automatically copy Studio installation files into this project",
+        "Redistribute geometry or .conn files without verified resource-specific permission",
+        "Assume software availability implies data reuse rights"
+      ],
+      "evidencePaths": [
+        "docs/digital-import/SOURCES.md"
+      ],
+      "access": {
+        "state": "not-attempted-permission",
+        "reason": "No reviewed resource licence or approved source package; no Studio installation resources were accessed or copied."
+      }
+    },
+    {
+      "id": "uploaded-instructions",
+      "name": "User supplied instruction references and appendix observations",
+      "roles": [
+        "reference"
+      ],
+      "publicDigitalImport": false,
+      "licenseStatus": "reference-only",
+      "allowedOperations": [
+        "Identify demand, source page and observed Element quantities",
+        "Keep source identity and completeness limitations"
+      ],
+      "forbiddenOperations": [
+        "Reconstruct existing digital geometry from pictures",
+        "Treat appendix membership as geometry or connection proof",
+        "Automatically republish original PDFs without establishing permission"
+      ],
+      "evidencePaths": [
+        "data/parts-foundation/instructions/manifest.json",
+        "data/parts-foundation/instructions/inventories.json"
+      ],
+      "access": {
+        "state": "reference-only",
+        "reason": "Six uploaded originals are locally preserved and two remain unread; reference observations do not authorise digital geometry or PDF redistribution."
+      }
+    }
+  ],
+  "acquisition": [
+    {
+      "sourceUrl": "https://codeload.github.com/pybricks/ldraw/tar.gz/c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "cbdd578181a13ca0406211206da8bf3852cd6bb4f01b981ecbd8e40444368292"
+    },
+    {
+      "sourceUrl": "https://codeload.github.com/RolandMelkert/LDCadShadowLibrary/tar.gz/9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+      "sha256": "a91dbdb5487a5796bdb76de64966e11e9c25ee1de56121000d7d943d3cfa1b3a"
+    }
+  ],
+  "acquisitionMethod": "Explicit pinned public repository archive downloads through inherited HTTPS proxy; exact archive hashes checked before selection",
+  "brickLinkRequests": 0,
+  "studioFilesCopied": 0,
+  "newMirrorRowsFetched": 0,
+  "officialWebsiteDeniedRequestsAttempted": 0
+}

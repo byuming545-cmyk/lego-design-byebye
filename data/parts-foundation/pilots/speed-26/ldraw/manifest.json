@@ -1,0 +1,1538 @@
+{
+  "schemaVersion": 1,
+  "library": "LDraw",
+  "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+  "sourceRoot": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/",
+  "archive": {
+    "sourceUrl": "https://codeload.github.com/pybricks/ldraw/tar.gz/c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+    "sha256": "cbdd578181a13ca0406211206da8bf3852cd6bb4f01b981ecbd8e40444368292"
+  },
+  "roots": [
+    {
+      "partId": "3001",
+      "path": "parts/3001.dat",
+      "name": "Brick  2 x  4",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "3005",
+      "path": "parts/3005.dat",
+      "name": "Brick  1 x  1",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "3020",
+      "path": "parts/3020.dat",
+      "name": "Plate  2 x  4",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "3024",
+      "path": "parts/3024.dat",
+      "name": "Plate  1 x  1",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "3710",
+      "path": "parts/3710.dat",
+      "name": "Plate  1 x  4",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "3023b",
+      "path": "parts/3023b.dat",
+      "name": "Plate  1 x  2",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "91988",
+      "path": "parts/91988.dat",
+      "name": "Plate  2 x 14",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "3068b",
+      "path": "parts/3068b.dat",
+      "name": "Tile  2 x  2 with Groove",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "3070b",
+      "path": "parts/3070b.dat",
+      "name": "Tile  1 x  1 with Groove",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "3069b",
+      "path": "parts/3069b.dat",
+      "name": "Tile  1 x  2 with Groove",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "99780",
+      "path": "parts/99780.dat",
+      "name": "Bracket  1 x  2 -  1 x  2 Up",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "99207",
+      "path": "parts/99207.dat",
+      "name": "Bracket  1 x  2 -  2 x  2 Up",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "15573",
+      "path": "parts/15573.dat",
+      "name": "Plate  1 x  2 with Groove with 1 Centre Stud, without Understud",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "87087",
+      "path": "parts/87087.dat",
+      "name": "Brick  1 x  1 with Stud on 1 Side",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "11477",
+      "path": "parts/11477.dat",
+      "name": "Slope Brick Curved  2 x  1",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "15068",
+      "path": "parts/15068.dat",
+      "name": "Slope Brick Curved  2 x  2 x  0.667",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "18973",
+      "path": "parts/18973.dat",
+      "name": "Windscreen  6 x  4 x  1.333 Curved",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "18974",
+      "path": "parts/18974.dat",
+      "name": "Car Mudguard  4 x  2.5 x  2.333",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "18976",
+      "path": "parts/18976.dat",
+      "name": "Wheel Rim 11 x 18 with Vented Disc Brake",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "4624",
+      "path": "parts/4624.dat",
+      "name": "Wheel Rim  6.4 x  8",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "3641",
+      "path": "parts/3641.dat",
+      "name": "Tyre  6/ 50 x  8 Offset Tread",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "3700",
+      "path": "parts/3700.dat",
+      "name": "Technic Brick  1 x  2 with Hole",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "3705",
+      "path": "parts/3705.dat",
+      "name": "Technic Axle  4",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "2780",
+      "path": "parts/2780.dat",
+      "name": "Technic Pin with Friction and Slots",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "32000",
+      "path": "parts/32000.dat",
+      "name": "Technic Brick  1 x  2 with Holes",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    },
+    {
+      "partId": "32054",
+      "path": "parts/32054.dat",
+      "name": "Technic Pin Long with Stop Bush",
+      "selectionBasis": "Reviewed native-ID pilot: category coverage plus separately unverified instruction demand hints; no exact set membership claim."
+    }
+  ],
+  "files": [
+    {
+      "path": "p/1-16chrd.dat",
+      "sha256": "e429dd760eb6f0cf460a74e6ebf52c023bedbdea82de7801efa1694b5a1a82e8",
+      "bytes": 701,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Philippe Hurbain [Philo]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-16chrd.dat"
+    },
+    {
+      "path": "p/1-16con16.dat",
+      "sha256": "3aec42ae1d93fab7f7b5ad282183ab478bdc285bf7c112275d3f36de110f133c",
+      "bytes": 494,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Vincent Messenet [Cheenzo]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-16con16.dat"
+    },
+    {
+      "path": "p/1-16con3.dat",
+      "sha256": "67461a5a2eb3a3025c063f72941a13d5c509fc7e07850fd4466adea1f5d1ca29",
+      "bytes": 479,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Magnus Forsberg [MagFors]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-16con3.dat"
+    },
+    {
+      "path": "p/1-16cyli.dat",
+      "sha256": "b60f031d9dfd0995c1741992a5695ee3789419886e8189dead961d05f75f7bfc",
+      "bytes": 693,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Marc Klein [marckl]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-16cyli.dat"
+    },
+    {
+      "path": "p/1-16cylo.dat",
+      "sha256": "6cef884c4f96ec15f5bd1428264af2efba4443cb1e47ead116a8a094febefc67",
+      "bytes": 394,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Max Martin Richter [MMR1988]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-16cylo.dat"
+    },
+    {
+      "path": "p/1-16edge.dat",
+      "sha256": "42fc4d69af1281b71cb2eb9546e99e8bca2fc231d05a0379e71d4e1c9a60c95c",
+      "bytes": 506,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Marc Klein [marckl]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-16edge.dat"
+    },
+    {
+      "path": "p/1-16ring2.dat",
+      "sha256": "c8fd7bff229ffc832496ae5e7e1bcbb0c246629abbf72a660699772ab87d91a6",
+      "bytes": 419,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Steve Bliss [sbliss]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-16ring2.dat"
+    },
+    {
+      "path": "p/1-4chrd.dat",
+      "sha256": "ccba3a97b5cc358754e476b78b4ce61cce5f404cd15e37471b73df3e81784aec",
+      "bytes": 743,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Max Martin Richter [MMR1988]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4chrd.dat"
+    },
+    {
+      "path": "p/1-4cylc.dat",
+      "sha256": "fdcb54ba2e2731cbb86ea6b2fddb25c7dda060a7780629a72003e0278805dd30",
+      "bytes": 430,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Mark Kennedy [mkennedy]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4cylc.dat"
+    },
+    {
+      "path": "p/1-4cyli.dat",
+      "sha256": "5a7168952a5a3570327873b9a5802fa7b3be40967ab78c03b6a2bfd4419a1f10",
+      "bytes": 1044,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4cyli.dat"
+    },
+    {
+      "path": "p/1-4cylo.dat",
+      "sha256": "792a01362608c3f385dd7f01a1bd7d19cf9ed8a40f793266345cc86d1d98f3af",
+      "bytes": 388,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Max Martin Richter [MMR1988]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4cylo.dat"
+    },
+    {
+      "path": "p/1-4cyls2.dat",
+      "sha256": "77a3bf3859fa972a5d047721ef18603694f1a6f83543f955240990be9c9ee9bd",
+      "bytes": 1189,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Chris Dee [cwdee]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4cyls2.dat"
+    },
+    {
+      "path": "p/1-4disc.dat",
+      "sha256": "3b8faa77185c576085c38f37b13c6a04e2e889eea6a7dc8c4db2d1699a33bcda",
+      "bytes": 584,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4disc.dat"
+    },
+    {
+      "path": "p/1-4edge.dat",
+      "sha256": "9ce2de7e67bbac575d52cfdc771b9d00856efc9b88002d97db8e665e50f4d467",
+      "bytes": 545,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4edge.dat"
+    },
+    {
+      "path": "p/1-4ndis.dat",
+      "sha256": "ff6685838636e7ab6152356d8f09e4f00a38af0d878b0881423f5c45fb868f0c",
+      "bytes": 692,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4ndis.dat"
+    },
+    {
+      "path": "p/1-4ring3.dat",
+      "sha256": "4048b121d53509363cfaa7422648dd29b2eeb93074279feb0bcc7a45bbb7c2e1",
+      "bytes": 1198,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4ring3.dat"
+    },
+    {
+      "path": "p/1-8chrd.dat",
+      "sha256": "7694157b725563188a6efd69b3f558b00533b375b8a4e82f469497a03e471e74",
+      "bytes": 561,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Orion Pobursky [OrionP]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-8chrd.dat"
+    },
+    {
+      "path": "p/1-8con4.dat",
+      "sha256": "169eaed7e94bd3b6e835015e56d097336bbcc97adb8f75660396fed98d1fa4f5",
+      "bytes": 613,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Vincent Messenet [Cheenzo]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-8con4.dat"
+    },
+    {
+      "path": "p/1-8cyli.dat",
+      "sha256": "46def63dc8293ad9a2dd1d1a5cb720b9ba883850e65d3280d2093c664a6140c4",
+      "bytes": 806,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-8cyli.dat"
+    },
+    {
+      "path": "p/1-8cylo.dat",
+      "sha256": "870bbbf6052e075598de7dce7efe7a139ea5189820e7a296442fe2b3318c18bf",
+      "bytes": 381,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Tim Gould [timgould]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-8cylo.dat"
+    },
+    {
+      "path": "p/1-8disc.dat",
+      "sha256": "cbf50bb291076da998dd1b11eb39ab9d1896d646281fd1b6a10911e13c3198ae",
+      "bytes": 636,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-8disc.dat"
+    },
+    {
+      "path": "p/1-8edge.dat",
+      "sha256": "50436a0bce461198c342dccbccb658a1bffae13e44b7c48689b158c946c2c2ab",
+      "bytes": 480,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-8edge.dat"
+    },
+    {
+      "path": "p/1-8ring17.dat",
+      "sha256": "07d3c626928ebca51e5d1db9c13a9b5657a1a87f89d1a87b70006959ea629714",
+      "bytes": 566,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-8ring17.dat"
+    },
+    {
+      "path": "p/1-8ring3.dat",
+      "sha256": "641f3ae7395e7d38e57ab918928ac19209ed72e8474fd1646e2d70f223c4a0ce",
+      "bytes": 610,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Paul Easter [pneaster]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-8ring3.dat"
+    },
+    {
+      "path": "p/1-8ring4.dat",
+      "sha256": "08954a02988b658890a539ae61db3e6225a587bd52b2e160c4f292d37629cc3d",
+      "bytes": 688,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-8ring4.dat"
+    },
+    {
+      "path": "p/1-8ring9.dat",
+      "sha256": "315a78ca5138394333b62197ed7552aa4acd69d470f054b59a5ac06cb04427f9",
+      "bytes": 600,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Steffen [Steffen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-8ring9.dat"
+    },
+    {
+      "path": "p/2-4chrd.dat",
+      "sha256": "3b0dfcf2cb881fae0acfe1e53b703104768878636477e540d0c893fc3fd87f8f",
+      "bytes": 490,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Philippe Hurbain [Philo]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/2-4chrd.dat"
+    },
+    {
+      "path": "p/2-4cyli.dat",
+      "sha256": "d486780f0f84893899d9eadcd13150f13a42e15e77a3cda38cdf24ded98862c6",
+      "bytes": 1543,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/2-4cyli.dat"
+    },
+    {
+      "path": "p/2-4cylo.dat",
+      "sha256": "4fa9f597d775c7f15e3fc66f60e20d914134d13004b485488b7dbff684776232",
+      "bytes": 387,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Max Martin Richter [MMR1988]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/2-4cylo.dat"
+    },
+    {
+      "path": "p/2-4edge.dat",
+      "sha256": "665400f76566b161c28303cdadce40d17d979a8ff9a8a133675af2d17fbe6763",
+      "bytes": 683,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/2-4edge.dat"
+    },
+    {
+      "path": "p/2-4ndis.dat",
+      "sha256": "7557eae598be3f530b840471535198e6b07b03486ffbcc18a00e862c3d25d925",
+      "bytes": 874,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/2-4ndis.dat"
+    },
+    {
+      "path": "p/3-16chrd.dat",
+      "sha256": "2bb493e8b5b56a5d63bfa7356a0ed5d6403a68e5e9a983e13a57541783ad19c1",
+      "bytes": 317,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Niels Karsdorp [nielsk]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/3-16chrd.dat"
+    },
+    {
+      "path": "p/3-16cyli.dat",
+      "sha256": "f50d12a37a22ae4a5f37a017b8e39d1e729577b0a4aa376ca685b210806b49c8",
+      "bytes": 942,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Mark Kennedy [mkennedy]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/3-16cyli.dat"
+    },
+    {
+      "path": "p/3-16cylo.dat",
+      "sha256": "a5c8370842299035a9cc14308301614c6fb169fb873a7950c888928cd8d9181c",
+      "bytes": 386,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "J.C. Tchang [tchang]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/3-16cylo.dat"
+    },
+    {
+      "path": "p/3-16cys2.dat",
+      "sha256": "705ec7384e735a8e7a864403831e55cb1e62f88ec09126a8b379b7e27288607a",
+      "bytes": 702,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Donald Sutter [technog]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/3-16cys2.dat"
+    },
+    {
+      "path": "p/3-16edge.dat",
+      "sha256": "c08dd83bb7fe90b61f7cd0b10ebef0d9a9ba33b497676dedd2e2e968cb8248f9",
+      "bytes": 586,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Donald Sutter [technog]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/3-16edge.dat"
+    },
+    {
+      "path": "p/3-16ndis.dat",
+      "sha256": "abb7da370e72fe9e75faf5d10c637b476202dbd8ced9cb5b0f96433e1f72f529",
+      "bytes": 557,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Magnus Forsberg [MagFors]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/3-16ndis.dat"
+    },
+    {
+      "path": "p/3-16ring3.dat",
+      "sha256": "3e0d8f9325ef96db0fa0a471240f810181a235736554c040a303f20d03294136",
+      "bytes": 580,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Philippe Hurbain [Philo]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/3-16ring3.dat"
+    },
+    {
+      "path": "p/3-8cyli.dat",
+      "sha256": "9224d4e5edc6f5b0f75f6fa358fd1368a4fd65f676b74fe1bb6e3bbb05046206",
+      "bytes": 1303,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/3-8cyli.dat"
+    },
+    {
+      "path": "p/3-8cylo.dat",
+      "sha256": "f5e90ea29201b4cea569e2effe32eee5fe95146e3eadcddc054a881ef4f839bd",
+      "bytes": 381,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "J.C. Tchang [tchang]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/3-8cylo.dat"
+    },
+    {
+      "path": "p/3-8edge.dat",
+      "sha256": "a590f230678d592d514a9c5e307c6a30945e50e4c529fc06accf37530d0e0ed5",
+      "bytes": 615,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/3-8edge.dat"
+    },
+    {
+      "path": "p/4-4con10.dat",
+      "sha256": "2969069d935f59bfb22dfcd16d4391b315f4cbe5bcdac4fabdefca654e101ba3",
+      "bytes": 2348,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Niels Karsdorp [nielsk]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4con10.dat"
+    },
+    {
+      "path": "p/4-4con19.dat",
+      "sha256": "2288ad723eb420d6e4a55b4e9e49aab16201167b2b33efaad17e9eee5cf5e1a5",
+      "bytes": 2585,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Niels Karsdorp [nielsk]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4con19.dat"
+    },
+    {
+      "path": "p/4-4con7.dat",
+      "sha256": "a1041c95280f6b9551e6171d8090cb4e0f0dbec7a9a85fa5bb71d0a613827696",
+      "bytes": 2426,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Niels Karsdorp [nielsk]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4con7.dat"
+    },
+    {
+      "path": "p/4-4con8.dat",
+      "sha256": "9c5ccecc4d79097dc58c4c67d095bcddd0c307a40239dac29e8bf780f46709df",
+      "bytes": 2626,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Steve Bliss [sbliss]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4con8.dat"
+    },
+    {
+      "path": "p/4-4cyli.dat",
+      "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+      "bytes": 2687,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+    },
+    {
+      "path": "p/4-4cylo.dat",
+      "sha256": "d6ca97ee2e75918b3309a5c88aafcd2455b3a316f7cef8963517c19f1d86b38f",
+      "bytes": 383,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Mark Kennedy [mkennedy]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cylo.dat"
+    },
+    {
+      "path": "p/4-4cyls.dat",
+      "sha256": "eb26a554261899f82fda150ee70827a010b7d29206b5b577b2ee5831851d8f29",
+      "bytes": 2643,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Donald Sutter [technog]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyls.dat"
+    },
+    {
+      "path": "p/4-4cylse.dat",
+      "sha256": "3c2c53a4ffd03dba04d3410b11763a020c603eefaf5ab425c282fb18744692c8",
+      "bytes": 638,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cylse.dat"
+    },
+    {
+      "path": "p/4-4disc.dat",
+      "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+      "bytes": 1137,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4disc.dat"
+    },
+    {
+      "path": "p/4-4edge.dat",
+      "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+      "bytes": 1084,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+    },
+    {
+      "path": "p/4-4ering.dat",
+      "sha256": "115b0158afebc9307ba47cb35673b26d97a1fa1a2d362f9b389d89aea703b72d",
+      "bytes": 1591,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Philippe Hurbain [Philo]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ering.dat"
+    },
+    {
+      "path": "p/4-4ndis.dat",
+      "sha256": "21202dc15823f4336bc2544244d0b539b76745c89f7a59ad18cdd03ad45cc543",
+      "bytes": 1219,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ndis.dat"
+    },
+    {
+      "path": "p/4-4ring1.dat",
+      "sha256": "4ae21061a6d0c9c80c608decb750f16fe1d113d84e08ef2f6082bcbb0f55194c",
+      "bytes": 1641,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring1.dat"
+    },
+    {
+      "path": "p/4-4ring10.dat",
+      "sha256": "878ba35f655e8a90bf05283e9f7ee0840c19c559cf02b1d113d83dd6e793789f",
+      "bytes": 1662,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Paul Easter [pneaster]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring10.dat"
+    },
+    {
+      "path": "p/4-4ring15.dat",
+      "sha256": "d0eafd1cabc3eaf0d254f590d1ab5dfa9eaafed9719f6257d1ab3fb181f2bd8f",
+      "bytes": 1696,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Mark Kennedy [mkennedy]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring15.dat"
+    },
+    {
+      "path": "p/4-4ring2.dat",
+      "sha256": "6fb38804b1f5e9bee8c0b80caf1397b09454fc58b048dc19045b6f37c8762ab0",
+      "bytes": 1628,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring2.dat"
+    },
+    {
+      "path": "p/4-4ring24.dat",
+      "sha256": "ae2f30a8f47037256869e6c82e3b73301344641ff5fc2af78dd2f0da0f0b422b",
+      "bytes": 1563,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Niels Karsdorp [nielsk]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring24.dat"
+    },
+    {
+      "path": "p/4-4ring3.dat",
+      "sha256": "1f2835ac308154edc2d6f479d8e742a55be981f6167b20bfa100c195bc0731dd",
+      "bytes": 1628,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring3.dat"
+    },
+    {
+      "path": "p/4-4ring36.dat",
+      "sha256": "86fe27c8823dcff95cad9eda13526dbdbd6a578e5b71fe86ba9898b39644a994",
+      "bytes": 1494,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Alex Taylor [anathema]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring36.dat"
+    },
+    {
+      "path": "p/4-4ring4.dat",
+      "sha256": "e046737f05ca843c7fc32bbfe9f5b26f3409c5b42b786d8809aa789faf761154",
+      "bytes": 1640,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring4.dat"
+    },
+    {
+      "path": "p/4-4ring8.dat",
+      "sha256": "4d7ae146c56385df78fb08391c29f72a106355ffe4b7be472461899ebff840ca",
+      "bytes": 1499,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Steffen [Steffen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring8.dat"
+    },
+    {
+      "path": "p/48/1-12chrd.dat",
+      "sha256": "fe2a0252d971dc65126755c4fdb7db900e229dfdce712b42ce9510c7b0390e26",
+      "bytes": 539,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/1-12chrd.dat"
+    },
+    {
+      "path": "p/48/1-12cyli.dat",
+      "sha256": "a645a42a5ed912a059a9336ab1449d02efd067008f034549cc8c5ae488159fd3",
+      "bytes": 1027,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/1-12cyli.dat"
+    },
+    {
+      "path": "p/48/1-12edge.dat",
+      "sha256": "c1320fa098058f1bb4bb73a4bd02a9533bdcc4f22ac4a0f0a1dcd5cdf85deaed",
+      "bytes": 584,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/1-12edge.dat"
+    },
+    {
+      "path": "p/48/1-24edge.dat",
+      "sha256": "0946112b54d72f44d95d9f48b652bec53468f05eaacb2503ca09f58bee518e04",
+      "bytes": 630,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/1-24edge.dat"
+    },
+    {
+      "path": "p/48/1-24ring9.dat",
+      "sha256": "0dbb3edd96075459dae747884802c6bb9280a716531e104b53c2f3a64090014d",
+      "bytes": 563,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/1-24ring9.dat"
+    },
+    {
+      "path": "p/48/1-4cyli.dat",
+      "sha256": "e2ed297feaf608b7319c2e54cd81dcb653fbb3d87b5a8e48ab2f54b32953fc6b",
+      "bytes": 2413,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Magnus Forsberg [MagFors]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/1-4cyli.dat"
+    },
+    {
+      "path": "p/48/1-4edge.dat",
+      "sha256": "e4ebabd21711f16411b3c8b8b278995a56c5f25919cd424976357da5b19943c6",
+      "bytes": 1196,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Magnus Forsberg [MagFors]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/1-4edge.dat"
+    },
+    {
+      "path": "p/48/1-6cyli.dat",
+      "sha256": "e6acc0794a9b5e6bd2a0e59fa408903077d97179e8bb5dbd7f57c2dc30042e9c",
+      "bytes": 1758,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Mark Kennedy [mkennedy]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/1-6cyli.dat"
+    },
+    {
+      "path": "p/48/1-6edge.dat",
+      "sha256": "91d8e78d97ae0ae1e0a21d7b1c7d2e50ee931d9eee798b3f9d0cff5034369ab9",
+      "bytes": 809,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Mark Kennedy [mkennedy]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/1-6edge.dat"
+    },
+    {
+      "path": "p/48/1-6ndis.dat",
+      "sha256": "9d486320bd1468df80c1d5564049ffa08e167419945577dfc4c3b6195e4edf8c",
+      "bytes": 604,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Alex Taylor [anathema]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/1-6ndis.dat"
+    },
+    {
+      "path": "p/48/1-8chrd.dat",
+      "sha256": "282b0d7dd4e73d273b9cbcce88e30889cce3b44aa8574a25382fe526248d5426",
+      "bytes": 611,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/1-8chrd.dat"
+    },
+    {
+      "path": "p/48/1-8cyli.dat",
+      "sha256": "494069ca353e41885bf8f5b6b3ddc9b62aabeca3eedfe6aa5597ac8f12ca12b9",
+      "bytes": 1361,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Steve Bliss [sbliss]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/1-8cyli.dat"
+    },
+    {
+      "path": "p/48/1-8cylo.dat",
+      "sha256": "bc5df94184d568c4b032959d7ec8fb138adc17acf14d8f9b4d41b69e96bc9f5f",
+      "bytes": 411,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Max Martin Richter [MMR1988]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/1-8cylo.dat"
+    },
+    {
+      "path": "p/48/1-8edge.dat",
+      "sha256": "eec30153f06bac336ca71ae16b31c5d0c7ae432acb5e91befe37fdb7b6bb1c8e",
+      "bytes": 711,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "[PTadmin]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/1-8edge.dat"
+    },
+    {
+      "path": "p/48/2-4cyli.dat",
+      "sha256": "685652b02ba31d357cb53ab845f0256a3d1580f530d28e57e9a34fe00e82111b",
+      "bytes": 3676,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/2-4cyli.dat"
+    },
+    {
+      "path": "p/48/2-4cylo.dat",
+      "sha256": "8664bb8070cc7b44b3f60c6dde9c3a96b2ef5f20e6585d340d543441d356e50c",
+      "bytes": 405,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Philippe Hurbain [Philo]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/2-4cylo.dat"
+    },
+    {
+      "path": "p/48/2-4edge.dat",
+      "sha256": "e059b74394567300989a6189e8db33f885334455c20137f27b4739bf424042f5",
+      "bytes": 619,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Paul Easter [pneaster]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/2-4edge.dat"
+    },
+    {
+      "path": "p/48/2-4ring16.dat",
+      "sha256": "1376a693433d879b2c892089f09db0a3f15c8e81f5612ed465addf1d2078b65c",
+      "bytes": 2117,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/2-4ring16.dat"
+    },
+    {
+      "path": "p/48/4-4con4.dat",
+      "sha256": "a28e99bbe1f9d7f7a776d7fdcb2382fd7e5e8325b34429188e39473feb3473cf",
+      "bytes": 6741,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/4-4con4.dat"
+    },
+    {
+      "path": "p/48/4-4cyli.dat",
+      "sha256": "6c466cd94f69ecdb3a5a83faee52ad2e5ecd9d1560975feaf854c3433de6e6a2",
+      "bytes": 683,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Paul Easter [pneaster]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/4-4cyli.dat"
+    },
+    {
+      "path": "p/48/4-4edge.dat",
+      "sha256": "db8fd751c8c6b1f72211903adbff3aa90be6808cc4fcff391f1c320adced5da7",
+      "bytes": 712,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Paul Easter [pneaster]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/4-4edge.dat"
+    },
+    {
+      "path": "p/48/7-48cyli.dat",
+      "sha256": "3831e1dc5dc2424a03be0af4ba8776993cbb796d27beb1e52abf7558ad3ef1b5",
+      "bytes": 1294,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Philippe Hurbain [Philo]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/7-48cyli.dat"
+    },
+    {
+      "path": "p/48/7-48edge.dat",
+      "sha256": "9e55997b6fd34c8534c044519bee7e53775a4cc20d3d2ce12ca6a1f63ca4c927",
+      "bytes": 552,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Philippe Hurbain [Philo]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/48/7-48edge.dat"
+    },
+    {
+      "path": "p/axl3hole.dat",
+      "sha256": "eb2369c61af0f2e3c2bf85f0f23ca92d5d313719941f0f8ff4eabde4b131ba7e",
+      "bytes": 4789,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "J.C. Tchang [tchang]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/axl3hole.dat"
+    },
+    {
+      "path": "p/axl5ho10.dat",
+      "sha256": "5658b3df4183184a5d5104624ff85b3048a658972991b1dfc489dc05728278ba",
+      "bytes": 1173,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Magnus Forsberg [MagFors]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/axl5ho10.dat"
+    },
+    {
+      "path": "p/axl5hol9.dat",
+      "sha256": "d46a457be819e6b46b7fc85f8610b8850e0d0a40556c65b74dbda04179b68a20",
+      "bytes": 677,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Magnus Forsberg [MagFors]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/axl5hol9.dat"
+    },
+    {
+      "path": "p/axle.dat",
+      "sha256": "b80b9c23788080b58962c7cca4a641d584957afaf71a4031b1d3616721516f8e",
+      "bytes": 3195,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/axle.dat"
+    },
+    {
+      "path": "p/axlehol5.dat",
+      "sha256": "5977860888c76d8170d9ec33c93f6c431133bfdc79435e7eac9c32bb15c0a83d",
+      "bytes": 3125,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/axlehol5.dat"
+    },
+    {
+      "path": "p/box2-11.dat",
+      "sha256": "7f29fb8601b419207b5c855af8fad8abb55a967ec73f3d8be841d370c360b97c",
+      "bytes": 489,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Steffen [Steffen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box2-11.dat"
+    },
+    {
+      "path": "p/box2-5.dat",
+      "sha256": "8f297b754f87da1dbe19eec8704a5ce03a23b794ccd7cd015508e3758a206174",
+      "bytes": 609,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Steffen [Steffen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box2-5.dat"
+    },
+    {
+      "path": "p/box2-7.dat",
+      "sha256": "e0474c5ad7fb9ff77b67883a5b1e327d028e3eb4e59921a626b4215632dd9f00",
+      "bytes": 577,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box2-7.dat"
+    },
+    {
+      "path": "p/box2-9.dat",
+      "sha256": "4ebaa1a0a59a2e219b61d376e86cad06dbd36845a3c15bcde3e3d44cd3be473d",
+      "bytes": 398,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Mark Kennedy [mkennedy]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box2-9.dat"
+    },
+    {
+      "path": "p/box3u2p.dat",
+      "sha256": "df73118b95f23d693c3b7d25c57c483db3bf61ae017d757848119955d28d59e0",
+      "bytes": 818,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Niels Karsdorp [nielsk]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box3u2p.dat"
+    },
+    {
+      "path": "p/box3u4a.dat",
+      "sha256": "15463f41f9947dd75486dc7af3231b1037704f1b654c2555e3ba705817a2db75",
+      "bytes": 545,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Niels Karsdorp [nielsk]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box3u4a.dat"
+    },
+    {
+      "path": "p/box3u6.dat",
+      "sha256": "362b5deba42781b7ec9b0616c62c242fc46a051edb3ad3e9c7d800d1929bc22c",
+      "bytes": 630,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box3u6.dat"
+    },
+    {
+      "path": "p/box4-1.dat",
+      "sha256": "2ed58df5da841827dfc5f9ac11c0bd7ffd8a455e46f166638e635f61a014b44d",
+      "bytes": 973,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Tore Eriksson [Tore_Eriksson]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box4-1.dat"
+    },
+    {
+      "path": "p/box4-2p.dat",
+      "sha256": "a4cb5395b3ec8bba18d81e36c32f43cb9349a55fe97729c367afaa5e1e8b7f0f",
+      "bytes": 756,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box4-2p.dat"
+    },
+    {
+      "path": "p/box4-4a.dat",
+      "sha256": "58c69e00462c0a74c1bd6d75d757d826ae13e98bd3928b0e685209003bfbee54",
+      "bytes": 1067,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box4-4a.dat"
+    },
+    {
+      "path": "p/box4.dat",
+      "sha256": "2cbfcf075ef5c87c6a5f543f837972a78d43274ac7771b92229b5fe5da797c1e",
+      "bytes": 948,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box4.dat"
+    },
+    {
+      "path": "p/box4t.dat",
+      "sha256": "72c7629db2b741e680ad548b2cbec631e44f75cdde206001b423ccb0f3b60c1f",
+      "bytes": 960,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Tore Eriksson [Tore_Eriksson]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box4t.dat"
+    },
+    {
+      "path": "p/box5.dat",
+      "sha256": "ccb7b8a1d36692335b10ea6aa196849afcad4b15331683ed8112a10b50977318",
+      "bytes": 963,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box5.dat"
+    },
+    {
+      "path": "p/bush0.dat",
+      "sha256": "8f88836565c33393b76ff00c658aef26d16608db3a8eac5e4302b17978a0bc51",
+      "bytes": 4989,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/bush0.dat"
+    },
+    {
+      "path": "p/confric5.dat",
+      "sha256": "7dcf4e82e28f67d134051c1757206397ccdfa94d8660413a06a3baa9e4eb08dc",
+      "bytes": 16964,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Donald Sutter [technog]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/confric5.dat"
+    },
+    {
+      "path": "p/confric6.dat",
+      "sha256": "fb020354feadb142f6372912867e691547b5b5742ec467478bfd7f8c8d08ecff",
+      "bytes": 18683,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Donald Sutter [technog]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/confric6.dat"
+    },
+    {
+      "path": "p/confric9.dat",
+      "sha256": "b8ac6a70729477a8dc57b3051e56161ed0e563f65cf40018634645d3ba9898de",
+      "bytes": 15855,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Donald Sutter [technog]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/confric9.dat"
+    },
+    {
+      "path": "p/cylj4x8.dat",
+      "sha256": "9cbf5025a81af8a9cb07f56b43ec46a587256995c14aadd934b6f70262f523aa",
+      "bytes": 4035,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/cylj4x8.dat"
+    },
+    {
+      "path": "p/empty.dat",
+      "sha256": "50597412f6b00dbc6efa83cee6fe51e14e3fa9effb17611476a7fac176b7549a",
+      "bytes": 722,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Steffen [Steffen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/empty.dat"
+    },
+    {
+      "path": "p/peghole.dat",
+      "sha256": "90c6dba9e5bcdd63955b9a5208f377761850863be9ed26cac7cd2be61ab85c92",
+      "bytes": 814,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/peghole.dat"
+    },
+    {
+      "path": "p/rect.dat",
+      "sha256": "ffeb2dd3d9b83c38841f18f1f74800fbba9e90c5fb6badfff2a795f08a96cb71",
+      "bytes": 654,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect.dat"
+    },
+    {
+      "path": "p/rect1.dat",
+      "sha256": "48fdcd3181587b4bdc89d356a5aee21268688f3f2fcdd4d6f5c1a3d49b1a1ceb",
+      "bytes": 556,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Chris Dee [cwdee]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect1.dat"
+    },
+    {
+      "path": "p/rect2a.dat",
+      "sha256": "6d75ffb88e705a35f34e095ec0848a7bb70b577a376fdae05804da214b0d6369",
+      "bytes": 586,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Chris Dee [cwdee]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect2a.dat"
+    },
+    {
+      "path": "p/rect2p.dat",
+      "sha256": "faac2b36241a9de0c0108471e59c45734df6c79813332d9cacf97f6391886acc",
+      "bytes": 594,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Donald Sutter [technog]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect2p.dat"
+    },
+    {
+      "path": "p/rect3.dat",
+      "sha256": "07ac46908b6668d993b6de0fb001a34cd996542106b80ebc7de63317d8dde865",
+      "bytes": 605,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Mark Kennedy [mkennedy]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect3.dat"
+    },
+    {
+      "path": "p/recte3.dat",
+      "sha256": "e7f5ccbb040191aaa4cd469a25b086299cba4a3eaa8d3b0fbf71240e3de0359a",
+      "bytes": 319,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Steffen [Steffen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/recte3.dat"
+    },
+    {
+      "path": "p/recte4.dat",
+      "sha256": "183b28b7586ffce3049e9248301668b4e16a84671b0f423efd792fb84a969dfe",
+      "bytes": 340,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Steffen [Steffen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/recte4.dat"
+    },
+    {
+      "path": "p/stud.dat",
+      "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4",
+      "bytes": 698,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud.dat"
+    },
+    {
+      "path": "p/stud2.dat",
+      "sha256": "5ed3702c7d7000bfac2906f12b74ae312c59194a8e3b504952820c826b51c810",
+      "bytes": 930,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud2.dat"
+    },
+    {
+      "path": "p/stud2a.dat",
+      "sha256": "61fbed54b085a30490045309778d1e2a6d95485e6558996b12674f848028d557",
+      "bytes": 866,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud2a.dat"
+    },
+    {
+      "path": "p/stud3.dat",
+      "sha256": "d29e9160faeaf85b2b72a098e89a81f41e0082517a82065d7b1f149b5fd2addd",
+      "bytes": 710,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud3.dat"
+    },
+    {
+      "path": "p/stud3a.dat",
+      "sha256": "91b1f54ed55b2f57dd73225da3198b5198e31f7587a5e8b7d3351b1478c8881c",
+      "bytes": 603,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud3a.dat"
+    },
+    {
+      "path": "p/stud4.dat",
+      "sha256": "871cdcab26e7f5113488a24c453d6fabda75b275b06de592e0bfaad4292c12a3",
+      "bytes": 935,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud4.dat"
+    },
+    {
+      "path": "p/stug-1x2.dat",
+      "sha256": "5842fa1baf6ea7f18fe4e355238cd733ff9bdbdc3d722be5cf8988f1c5fce414",
+      "bytes": 333,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Steffen [Steffen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug-1x2.dat"
+    },
+    {
+      "path": "p/stug-1x4.dat",
+      "sha256": "e88852b15ca37121e12f7052a234e4a90dc99a8c6d22d45e041f47103c2fb71c",
+      "bytes": 414,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Steffen [Steffen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug-1x4.dat"
+    },
+    {
+      "path": "p/stug-1x7.dat",
+      "sha256": "56d3a20fd99045f45521dcf3f30914b174d81f7db148187f6701a0a3199b50e5",
+      "bytes": 534,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Steffen [Steffen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug-1x7.dat"
+    },
+    {
+      "path": "p/stug-2x1.dat",
+      "sha256": "03d08cea230e892e1b6cbfe523c19b568a834c5888aac5c789d1fb8d6ee93d96",
+      "bytes": 341,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Magnus Forsberg [MagFors]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug-2x1.dat"
+    },
+    {
+      "path": "p/stug-2x2.dat",
+      "sha256": "16114159ea25719341a852d5403dc9982a6211f2fcb23f5c4c3eac05a2ad43f7",
+      "bytes": 765,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Steffen [Steffen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug-2x2.dat"
+    },
+    {
+      "path": "p/stug2-1x2.dat",
+      "sha256": "9cd034fe99c6efd6e158c73a8a95d7b0e6ff4f1671a7ee22e2323c74a43b7f1e",
+      "bytes": 341,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Steffen [Steffen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug2-1x2.dat"
+    },
+    {
+      "path": "p/stug3-1x3.dat",
+      "sha256": "80f86a2ea87dfabc79c3daf963a14c7757caceea6b402ac4f2178a6088de08ac",
+      "bytes": 387,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Steffen [Steffen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug3-1x3.dat"
+    },
+    {
+      "path": "p/stug4-1x6.dat",
+      "sha256": "edd68f6fb00f00ae9becee2942097280e5d5744481c2b8ae624942b8ba817ce6",
+      "bytes": 512,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Steffen [Steffen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug4-1x6.dat"
+    },
+    {
+      "path": "p/tri3a1.dat",
+      "sha256": "f4c045989b96a7ba22ba7f7f9414f2bdfad8d89aa280778f49f1d789ef6acbe4",
+      "bytes": 520,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Mark Kennedy [mkennedy]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/tri3a1.dat"
+    },
+    {
+      "path": "parts/11477.dat",
+      "sha256": "fed74af9f56bcb149a7f67af4b427c261b41d24d15ed7a3466e24170377a0ba6",
+      "bytes": 374,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Owen Burgoyne [C3POwen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/11477.dat"
+    },
+    {
+      "path": "parts/15068.dat",
+      "sha256": "511c620c73d116a9564248a4adb0f564b90f12f1428a4a9276b4bae4f9bd7e4c",
+      "bytes": 383,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Owen Burgoyne [C3POwen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/15068.dat"
+    },
+    {
+      "path": "parts/15573.dat",
+      "sha256": "c6946965875a8275996c4559cd355ea13a20197e96f33585cd750bb1da89b56d",
+      "bytes": 2327,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Magnus Forsberg [MagFors]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/15573.dat"
+    },
+    {
+      "path": "parts/18973.dat",
+      "sha256": "ef55e90c1ae708d9c31553a260243beda109bc8a0af7d79c8a0076bc14b83499",
+      "bytes": 9972,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Magnus Forsberg [MagFors]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/18973.dat"
+    },
+    {
+      "path": "parts/18974.dat",
+      "sha256": "1f2eff256a97f3ea47012baca3ac4b4bd9d89dfba1acd3b5a08a243eb11be190",
+      "bytes": 22342,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Magnus Forsberg [MagFors]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/18974.dat"
+    },
+    {
+      "path": "parts/18976.dat",
+      "sha256": "cfaf2137c0e3046c212b711b6a744fcd3b3555224081eba03dd1d0f6b5be98b2",
+      "bytes": 2191,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Magnus Forsberg [MagFors]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/18976.dat"
+    },
+    {
+      "path": "parts/2780.dat",
+      "sha256": "2628d30bcfa42b3a616da38b8020cbc2b1edb98b055329cfac56425cdc9a8277",
+      "bytes": 451,
+      "license": "Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt",
+      "author": "Guy Vivan [guyvivan]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/2780.dat"
+    },
+    {
+      "path": "parts/3001.dat",
+      "sha256": "70968cb5e4baa92dc6a1939aca7526b8566a17dbea49da9b91182aa864e412c4",
+      "bytes": 663,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3001.dat"
+    },
+    {
+      "path": "parts/3005.dat",
+      "sha256": "f86e5f3aed432cab8f5dffcf2e41a9f2ee8c3bd4dcad1732da9630837849a4f8",
+      "bytes": 670,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3005.dat"
+    },
+    {
+      "path": "parts/3020.dat",
+      "sha256": "d0613b566eea4c8ce5ece5c910cb065db75197b6f04a05b421fea03bacbda8d0",
+      "bytes": 1335,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3020.dat"
+    },
+    {
+      "path": "parts/3023b.dat",
+      "sha256": "2eae37fb7bc308b3f051e7ea1fa3825cd3dea0676c6953c4f0b96068c438871f",
+      "bytes": 772,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3023b.dat"
+    },
+    {
+      "path": "parts/3024.dat",
+      "sha256": "e053af4f232374b0c8da2dc0f9620bedf0576ca43d7c3ceebc6676050ae61da8",
+      "bytes": 668,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3024.dat"
+    },
+    {
+      "path": "parts/3068b.dat",
+      "sha256": "38fb0405d499d8174e9e0ee2c20f3db5f4a32d1da2bff4ee2b478bb45c03b6c2",
+      "bytes": 611,
+      "license": "Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt",
+      "author": "Damien Guichard [BrickCaster]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3068b.dat"
+    },
+    {
+      "path": "parts/3069b.dat",
+      "sha256": "3c85297efc2e4e24c321061d66fec8f176bb37c6273b8a85b27235daf92610b0",
+      "bytes": 349,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Santeri Piippo [arezey]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3069b.dat"
+    },
+    {
+      "path": "parts/3070b.dat",
+      "sha256": "a01342446c2ae762a9feb45687f3fb336f5391dc6f11d9f854a4d831ed0a16d9",
+      "bytes": 339,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Chris Dee [cwdee]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3070b.dat"
+    },
+    {
+      "path": "parts/32000.dat",
+      "sha256": "d5c344e273a7df7bbbd49e5696c973d9f31359e2b658acf620d5c23302c06811",
+      "bytes": 4285,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/32000.dat"
+    },
+    {
+      "path": "parts/32054.dat",
+      "sha256": "98b9257f8d3b5ed07f2a0ffcec03ffc38a9b55e3ac0b965623a0a101105fa3bd",
+      "bytes": 1718,
+      "license": "Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt",
+      "author": "Guy Vivan [guyvivan]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/32054.dat"
+    },
+    {
+      "path": "parts/3641.dat",
+      "sha256": "c530418ec85c5d2479591c56e7edd25b860ac071c416340546f65526a09f5928",
+      "bytes": 29288,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3641.dat"
+    },
+    {
+      "path": "parts/3700.dat",
+      "sha256": "6cb6522c580754cf970dad0fae688bb78cb3253a7237038dad83965fe47cfec6",
+      "bytes": 2367,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3700.dat"
+    },
+    {
+      "path": "parts/3705.dat",
+      "sha256": "85c035f0a97f4b9211bfa55ff9ece0de5d3507c7c336fc222bb22ec39b129840",
+      "bytes": 458,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3705.dat"
+    },
+    {
+      "path": "parts/3710.dat",
+      "sha256": "1a2d17e3e35750ccf02a54c7aee0cf7485c1c8596492746fc798d341399a3a6e",
+      "bytes": 622,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3710.dat"
+    },
+    {
+      "path": "parts/4624.dat",
+      "sha256": "bc24b27ad846b27401e4126cc45d06428c16199b1530faeb8d9082955b7150f0",
+      "bytes": 1289,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/4624.dat"
+    },
+    {
+      "path": "parts/87087.dat",
+      "sha256": "711d8315cad0bf86df84ded5b1b3232218d74bcda3144c3c0fb6cd187a18134c",
+      "bytes": 1277,
+      "license": "Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt",
+      "author": "James Shields [lostcarpark]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/87087.dat"
+    },
+    {
+      "path": "parts/91988.dat",
+      "sha256": "873411a516fab0f053bbbf77cfd8d9babc64647d6432400a42a0026635debb42",
+      "bytes": 859,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Owen Burgoyne [C3POwen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/91988.dat"
+    },
+    {
+      "path": "parts/99207.dat",
+      "sha256": "fa15d4d820a874ab370cde738955e56094d3aec22b9d23d3987209edc3dc8432",
+      "bytes": 1854,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Magnus Forsberg [MagFors]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/99207.dat"
+    },
+    {
+      "path": "parts/99780.dat",
+      "sha256": "68108030d27c159a11ae1a53728b67e1091ac9406c8bb770ae38a6f1c29c031e",
+      "bytes": 1803,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Magnus Forsberg [MagFors]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/99780.dat"
+    },
+    {
+      "path": "parts/s/11477s01.dat",
+      "sha256": "bc00e46f3d79f0569d3952eb20b91ae2402121d483945fce7e51f3322fdaea21",
+      "bytes": 3191,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Owen Burgoyne [C3POwen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/11477s01.dat"
+    },
+    {
+      "path": "parts/s/15068s01.dat",
+      "sha256": "41456734d1b26b9b448eb2fde7f0d4df463c1e2085b79ca9731a0a35554b3c58",
+      "bytes": 4952,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Owen Burgoyne [C3POwen]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/15068s01.dat"
+    },
+    {
+      "path": "parts/s/18973s01.dat",
+      "sha256": "bdc35c677c18fae382b46018979f3494bb38240e726febfb3eaf8078625c1887",
+      "bytes": 69718,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Magnus Forsberg [MagFors]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/18973s01.dat"
+    },
+    {
+      "path": "parts/s/18976s01.dat",
+      "sha256": "311486e70128d415ff6df300bb27c0b611b9119d09398d8b9b850e57b14536c8",
+      "bytes": 4740,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Magnus Forsberg [MagFors]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/18976s01.dat"
+    },
+    {
+      "path": "parts/s/3001s01.dat",
+      "sha256": "bee662925490666aa5956d301b7abc46df88b3cc35737326765441585c720047",
+      "bytes": 1456,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "James Jessiman",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3001s01.dat"
+    },
+    {
+      "path": "parts/s/3005s01.dat",
+      "sha256": "ed6218c566690622fed39b8fb3dac9ae9a36df66cac106e2e1d4b5862567841a",
+      "bytes": 903,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3005s01.dat"
+    },
+    {
+      "path": "parts/s/3023bs01.dat",
+      "sha256": "d5d511e8fce3653ea9c0c8662952006394725f4f7a2234842946c417a737ecad",
+      "bytes": 757,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Massimo Maso [Sirio]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3023bs01.dat"
+    },
+    {
+      "path": "parts/s/3024s01.dat",
+      "sha256": "a706692e2c838f20f3b3e4bd5ff03c4ab6c5c0d5816b0944ac39d6100fd85275",
+      "bytes": 572,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Tore Eriksson [Tore_Eriksson]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3024s01.dat"
+    },
+    {
+      "path": "parts/s/3068bs01.dat",
+      "sha256": "b49ecb2e8e57d8ae4a64aa5e71713d769c2a5dc91f4611fbd3157fbc30a4c6c3",
+      "bytes": 1370,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Willy Tschager [Holly-Wood]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3068bs01.dat"
+    },
+    {
+      "path": "parts/s/3069bs01.dat",
+      "sha256": "e910d77b65118a7fc941e846f05b46d8c5a7aa3cf5706d5479533a35423c9498",
+      "bytes": 740,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Santeri Piippo [arezey]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3069bs01.dat"
+    },
+    {
+      "path": "parts/s/3070bs01.dat",
+      "sha256": "34d2f42bf42b1c22a184fbbfea6f51412a0f49def10157b2d472f3f6faf1a304",
+      "bytes": 709,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Chris Dee [cwdee]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3070bs01.dat"
+    },
+    {
+      "path": "parts/s/3710s01.dat",
+      "sha256": "57df307f7e3843f4c702311b82e93988bab6d688cbb8ab82bb4338184696780e",
+      "bytes": 618,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Massimo Maso [Sirio]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3710s01.dat"
+    },
+    {
+      "path": "parts/s/4624s01.dat",
+      "sha256": "103b9a6c4a9d58993f262c6780f55e3c1b0f437795dd4b58f28788a440718ed8",
+      "bytes": 2888,
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "author": "Vincent Messenet [Cheenzo]",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/4624s01.dat"
+    }
+  ]
+}

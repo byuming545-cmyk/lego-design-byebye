@@ -35,6 +35,8 @@ export function nativePartSourceHash(part: NativeAssemblyPart): string {
 
 /** One immutable source repository is shared by verification, generation and rendering. */
 export class NativePartRepository {
+  /** Explicit source-bundle selection for reviewed offline imports. Not request/env controlled. */
+  constructor(private readonly sourceBundle: { geometryDirectory?: string; shadowDirectory?: string } = {}) {}
   private prepared?: Promise<void>;
   private manifest?: BundledLDrawManifest;
   private importer?: Awaited<ReturnType<typeof createBundledLDrawImporter>>;
@@ -42,9 +44,9 @@ export class NativePartRepository {
   private readonly cache = new Map<string, Promise<NativeAssemblyPart | undefined>>();
   private initialize() {
     this.prepared ??= (async () => {
-      this.manifest = await loadBundledLDrawManifest();
-      this.importer = await createBundledLDrawImporter();
-      this.connections = createBundledConnectionImporter(await createBundledLDrawResolver());
+      this.manifest = await loadBundledLDrawManifest(this.sourceBundle.geometryDirectory);
+      this.importer = await createBundledLDrawImporter(this.sourceBundle.geometryDirectory);
+      this.connections = createBundledConnectionImporter(await createBundledLDrawResolver(this.sourceBundle.geometryDirectory), undefined, { directory: this.sourceBundle.shadowDirectory });
     })();
     return this.prepared;
   }

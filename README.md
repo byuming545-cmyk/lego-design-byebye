@@ -1,4 +1,6 @@
-# BRICKLAB · V0.6 数字零件来源治理与旧体系隔离
+# BRICKLAB · V0.6 合规数字零件导入试点
+
+本轮已实现独立、可追溯的离线导入流水线：26 种精确 LDraw 编号、171 个原生几何文件、39 个 Shadow 连接文件。26 种几何均成功导入；23 种连接完整、3 种部分解析；15 种至少有一组接口通过本轮装配验证。4 种新增根件保留在独立试点库，生产库仍为 245 种，资格不自动提升。运行 `npm run import:pilot` 可重现结果，无需联网或 API 密钥。完整结果、编号口径、许可源分发和下一步建议见 [数字导入报告](docs/digital-import/README.md)。
 
 本轮已完成旧数据分类与生产隔离：旧手写目录移至 `src/legacy/`；生产模式阻止旧模型导入、恢复、生成和导出；原生导入检查来源、许可、文件哈希及编号冲突。说明书与库存保留为参考，不能创建真实几何。完整 A–I 验收、隔离清单、来源边界及回滚说明见 [本轮审计报告](docs/legacy-isolation/README.md)。本轮不增加零件或修改碰撞算法，以下碰撞版本和接口资格保持不变。
 
@@ -24,7 +26,7 @@
 
 ### Windows：从 ZIP 启动
 
-本版工作分支为 `codex/legacy-isolation`，可下载 [本轮分支 ZIP](https://github.com/byuming545-cmyk/lego-design-byebye/archive/refs/heads/codex/legacy-isolation.zip)。
+本版工作分支为 `codex/compliant-parts-pilot`，可下载 [开发仓库 ZIP](https://github.com/byuming545-cmyk/lego-design-byebye/archive/refs/heads/codex/compliant-parts-pilot.zip)。开发仓库保留历史映射审计资料，其数据许可仍未核定；本轮可单独分发的许可源数据包只包含获准源文件、许可及公开试点报告，见[分发说明](docs/digital-import/README.md)。
 
 先安装 Node.js 24.19.0 或更高的 24.x 版本，再解压下载的项目 ZIP。进入**能够看到 `package.json` 的文件夹**；如果第一层只有同名文件夹，继续进入一层。
 
