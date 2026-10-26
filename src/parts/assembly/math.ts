@@ -49,7 +49,12 @@ export const invertRigidTransform = inverseTransform;
 export function axisRotation(axis: Vector3, degrees: number): Matrix3 {
   const unit = normalize(axis);
   if (!unit || !Number.isFinite(degrees)) throw new Error('Invalid rotation axis or angle.');
-  const [x, y, z] = unit, radians = degrees * Math.PI / 180, cosine = Math.cos(radians), sine = Math.sin(radians), t = 1 - cosine;
+  const [x, y, z] = unit, radians = degrees * Math.PI / 180;
+  const quarter = degrees / 90;
+  const index = ((quarter % 4) + 4) % 4;
+  // Exact symbolic quarter turns, never rounding a near-quarter input angle.
+  const cosine = Number.isInteger(quarter) ? [1, 0, -1, 0][index] : Math.cos(radians);
+  const sine = Number.isInteger(quarter) ? [0, 1, 0, -1][index] : Math.sin(radians), t = 1 - cosine;
   return [cosine + x * x * t, x * y * t - z * sine, x * z * t + y * sine, y * x * t + z * sine, cosine + y * y * t, y * z * t - x * sine, z * x * t - y * sine, z * y * t + x * sine, cosine + z * z * t];
 }
 

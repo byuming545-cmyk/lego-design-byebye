@@ -53,7 +53,8 @@ describe('source-backed compatibility rule', () => {
     expect(rim.group).toBe(tyre.group);
     expect(checkConnectionCompatibility(rim, tyre)).toMatchObject({ status: 'unknown', reasonCode: 'grouped-interface-seating-unresolved' });
     const hole = endpoint('3700', 'F', (point) => point.sourceId === 'connhole');
-    expect(checkConnectionCompatibility(standardMale('3001'), hole).status).toBe('unknown');
+    expect(checkConnectionCompatibility(standardMale('3001'), hole)).toMatchObject({ status: 'incompatible', reasonCode: 'stud-to-technic-pin-hole-forbidden' });
+    expect(checkConnectionCompatibility(hole, standardMale('3001'))).toMatchObject({ status: 'incompatible', reasonCode: 'stud-to-technic-pin-hole-forbidden' });
     // This source pin's L_ shoulder is not parsed; no imaginary male endpoint is added.
     expect(part('3673').connections.points.some((point) => point.gender === 'M')).toBe(false);
     expect(part('3673').connections.issues.some((issue) => issue.code === 'invalid-directive')).toBe(true);

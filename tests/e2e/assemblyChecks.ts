@@ -6,6 +6,27 @@ interface Graph {
   edges: { id: string; fixedInstanceId: string; fixedConnectionId: string; movingInstanceId: string; movingConnectionId: string }[];
 }
 
+interface ModelGrammarAssessment {
+  grammarVersion: string;
+  constraints: { edgeId: string; connectability: string; placement: string; collision: { status: string }; stress: { status: string }; legal: string; stable: string; physicalBuildVerified: boolean }[];
+  materialStress: string;
+  physicalBuildVerified: boolean;
+}
+
+/** A validated software layout does not claim material stress or physical stability. */
+export function expectGrammarAssessment(model: Graph & { connectorAssessment?: ModelGrammarAssessment }) {
+  const assessment = model.connectorAssessment;
+  expect(assessment).toBeDefined();
+  expect(typeof assessment!.grammarVersion).toBe('string');
+  expect(assessment!.constraints).toHaveLength(model.edges.length);
+  expect(new Set(assessment!.constraints.map(row => row.edgeId))).toEqual(new Set(model.edges.map(edge => edge.id)));
+  for (const constraint of assessment!.constraints) expect(constraint).toMatchObject({
+    connectability: 'COMPATIBLE', placement: 'SOLVED', collision: { status: 'CLEAR' },
+    stress: { status: 'UNKNOWN' }, legal: 'UNKNOWN', stable: 'UNKNOWN', physicalBuildVerified: false,
+  });
+  expect(assessment).toMatchObject({ materialStress: 'UNKNOWN', physicalBuildVerified: false });
+}
+
 /** Multiple physical connections can join the same two parts; connected does not mean a tree. */
 export function expectConnectedAssembly(graph: Graph) {
   const nodes = new Set(graph.placements.map((placement) => placement.instanceId));

@@ -8,6 +8,10 @@ import { exportNativeAssemblyBomCsv, exportNativeAssemblyJson, exportNativeAssem
 import { buildNativeCollisionProxy } from './assembly/proxy.js';
 import { IDENTITY_TRANSFORM } from './assembly/math.js';
 import { NativeModelImportError } from './assembly/modelImport.js';
+import { isGeneratableCapability } from './assembly/types.js';
+import { CONNECTOR_FAMILIES, CONNECTOR_GRAMMAR_VERSION } from './grammar/schema.js';
+import { CONNECTOR_GRAMMAR_RULES } from './grammar/rules.js';
+import { describeGrammarPart } from './grammar/library.js';
 
 const object = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value);
 function bad(message: string): never { throw new InventoryError(message, 'INVALID_FOUNDATION_REQUEST', 400); }
@@ -16,6 +20,14 @@ export function createPartsFoundationRouter(options: { dataDir?: string; registr
   const router = Router();
   const registry = options.registry ?? new RealPartRegistry(options);
   const assembly = registry.assemblyService;
+  router.get('/grammar', (_request, response) => { response.json({ version: CONNECTOR_GRAMMAR_VERSION, units: 'LDU', families: CONNECTOR_FAMILIES, rules: CONNECTOR_GRAMMAR_RULES, nativeGraphRulesEnabled: ['C01'], physicalBuildVerified: false }); });
+  router.get('/parts/:partId/connectors', async (request, response) => {
+    if (!/^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,79}$/.test(request.params.partId)) bad('零件编号格式无效。');
+    const part = await assembly.getPart(request.params.partId);
+    if (!part) throw new InventoryError('没有该编号的原生来源。', 'FOUNDATION_PART_NOT_FOUND', 404);
+    const { geometry, ...descriptor } = describeGrammarPart(part);
+    response.json({ ...descriptor, geometry: { status: geometry.status, source: geometry.source }, generationCapability: await assembly.getCapability(part.partId) });
+  });
   router.get('/assembly/status', async (_request, response) => { response.json(await assembly.status()); });
   router.post('/assembly/models/import', async (request, response) => {
     const body = request.body;
@@ -38,7 +50,7 @@ export function createPartsFoundationRouter(options: { dataDir?: string; registr
     const capability = await assembly.getCapability(body.partA as string);
     if (!capability) throw new InventoryError('没有该原生零件来源。', 'FOUNDATION_PART_NOT_FOUND', 404);
     if (!await assembly.getCapability(body.partB as string)) throw new InventoryError('没有该候选原生零件来源。', 'FOUNDATION_PART_NOT_FOUND', 404);
-    if (!capability.assemblyVerified || !capability.generatable) throw new InventoryError(`该起始件尚未获得装配准入：${capability.reasons.join(' ')}`, 'ASSEMBLY_PART_BLOCKED', 409);
+    if (!isGeneratableCapability(capability)) throw new InventoryError(`该起始件尚未获得装配准入：${capability.reasons.join(' ')}`, 'ASSEMBLY_PART_BLOCKED', 409);
     response.json(await assembly.attach({ partA: body.partA as string, connectionA: body.connectionA as string, partB: body.partB as string, connectionB: body.connectionB as string, ...(body.twistDegrees === undefined ? {} : { twistDegrees: body.twistDegrees as number }) }));
   });
   router.post('/assembly/generate', async (request, response) => {

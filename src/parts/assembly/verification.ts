@@ -47,12 +47,12 @@ export interface NativePartAssemblyVerification extends AssemblyInterfaceCapabil
   fullyAssemblyVerified?: boolean;
   interfaceVerificationComplete?: boolean;
   partiallyGeneratable?: boolean;
-  status: 'assemblyVerified' | 'blocked';
+  status: 'assemblyVerified' | 'grammarEligible' | 'blocked';
   name: string;
   geometryReady: boolean;
   connectionSourceStatus: 'ready' | 'partial' | 'missing';
   source: AssemblySourceFingerprint;
-  scope: 'source-backed-tested-interfaces-only';
+  scope: 'source-backed-tested-interfaces-only' | 'source-backed-grammar-interfaces-only';
   verifiedConnectionIds: string[];
   disabledConnectionIds: string[];
   capabilities: string[];

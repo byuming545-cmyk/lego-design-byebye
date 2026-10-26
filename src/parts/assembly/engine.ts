@@ -6,8 +6,9 @@ import { distance, finiteVector, IDENTITY_TRANSFORM, isRigidTransform } from './
 import { nativePartSourceHash, PART_LIBRARY_VERSION } from './source.js';
 import { checkMultiPointConnection, physicalMatingPairKey, sourceEndpointKey, validateConnectionOccupancy } from './multipoint.js';
 import type { AssemblyAttachRequest, AssemblyGraphEdge, AssemblyInterfaceCapability, NativeAssembly, NativeAssemblyPart, NativePlacement } from './types.js';
+import { hasIsolatedUnknownDimensions, isGeneratableCapability } from './types.js';
 
-export const ASSEMBLY_ENGINE_VERSION = 'native-assembly-0.6.0';
+export const ASSEMBLY_ENGINE_VERSION = 'native-assembly-0.7.0-grammar';
 type PairCollision = Awaited<ReturnType<typeof checkNativePairCollision>>;
 export interface AttachResult {
   accepted: boolean;
@@ -33,11 +34,11 @@ function endpointKey(instanceId: string, connectionId: string, part?: NativeAsse
 function sameTransform(a: NativePlacement['transform'], b: NativePlacement['transform']) {
   return distance(a.translation, b.translation) < 1e-5 && a.rotation.every((value, index) => Math.abs(value - b.rotation[index]) < 1e-6);
 }
-function sourceProblems(part: NativeAssemblyPart): string[] {
+function sourceProblems(part: NativeAssemblyPart, isolatedDimensions = false): string[] {
   const problems: string[] = [];
   if (part.geometry.partId !== part.partId || part.connections.partId !== part.partId) problems.push('Source part identifiers do not agree.');
   if (part.geometry.status !== 'geometryReady' || !part.geometry.mesh || !part.geometry.bounds || part.geometry.source.integrity !== 'verified' || part.geometry.source.licenseStatus !== 'complete') problems.push('Native hash-verified licensed geometry is required.');
-  if (part.connections.status !== 'ready' || !part.connections.points.length) problems.push('Complete source connection interpretation is required.');
+  if ((part.connections.status !== 'ready' && !(isolatedDimensions && hasIsolatedUnknownDimensions(part))) || !part.connections.points.length) problems.push('Complete source connection interpretation, or explicitly isolated unknown dimensions, is required.');
   return problems;
 }
 
@@ -59,11 +60,11 @@ export class AttachmentEngine {
     if (this.acceptedGraphs.size > 2048) this.acceptedGraphs.delete(this.acceptedGraphs.values().next().value!);
   }
   private async eligibility(part: NativeAssemblyPart, connectionId?: string, ruleId?: string): Promise<string[]> {
-    const problems = sourceProblems(part);
-    if (this.mode === 'verification') return problems;
+    if (this.mode === 'verification') return sourceProblems(part);
     const capability = await this.getCapability(part.partId);
+    const problems = sourceProblems(part, capability?.admissionBasis === 'interface-grammar' && isGeneratableCapability(capability));
     if (capability && capability.partId !== part.partId) problems.push('The capability record belongs to a different source part.');
-    if (!capability?.assemblyVerified || !capability.generatable) problems.push('The part has not passed assembly verification and generator smoke tests.');
+    if (!isGeneratableCapability(capability)) problems.push('The part has no current source-backed grammar eligibility or retained interface verification.');
     if (!capability?.allowedConnectionIds.length) problems.push('No tested assembly interface is enabled for this part.');
     if (connectionId && !capability?.allowedConnectionIds.includes(connectionId)) problems.push('This particular source interface is disabled or untested.');
     if (ruleId && !capability?.ruleIds.includes(ruleId)) problems.push('This connection rule is not in the verified part scope.');

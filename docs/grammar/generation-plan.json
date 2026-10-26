@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "35eec2067b4e9a711b65bd0199ac3bb5f89db636",
+  "scope": "Twelve existing source parts newly eligible via grammar plus retained 32000 negative/regression witness; not new source acquisitions.",
+  "candidates": [
+    {
+      "partId": "3004",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "e1caee3b32175393c9d6ea176a47f8869173a01d03a451e1cfe10d09167c0203",
+        "path": "parts/3004.dat",
+        "name": "Brick  1 x  2"
+      }
+    },
+    {
+      "partId": "3008",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "961b645476d8ae0a68c7c9a12be0521510737ad2b1eecd690302912a8dc81828",
+        "path": "parts/3008.dat",
+        "name": "Brick  1 x  8"
+      }
+    },
+    {
+      "partId": "3009",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "950a186800b17a778e6c4b91420b1846df98c2bdbac8a551cfe7f74ddc831a3e",
+        "path": "parts/3009.dat",
+        "name": "Brick  1 x  6"
+      }
+    },
+    {
+      "partId": "3010",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "7871b27a3a1184031a2e162d3324f9ded39a0fe10fc43ad0daf6060a4b1ec4fd",
+        "path": "parts/3010.dat",
+        "name": "Brick  1 x  4"
+      }
+    },
+    {
+      "partId": "3622",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "9317bcec4fbcddbd38ed3972d25ea95d685101904f3ed86c7e769a9f356245d8",
+        "path": "parts/3622.dat",
+        "name": "Brick  1 x  3"
+      }
+    },
+    {
+      "partId": "6111",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "47beeadaec767df2caa76362bdd3d6a46e7439b822e3548cc75f638a76b7ec8c",
+        "path": "parts/6111.dat",
+        "name": "Brick  1 x 10"
+      }
+    },
+    {
+      "partId": "11211",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "a88c76a8936395abe5554aa2273c92271cc3c595e800a6ecfb479d2a9670f532",
+        "path": "parts/11211.dat",
+        "name": "Brick  1 x  2 with Two Studs on One Side"
+      }
+    },
+    {
+      "partId": "24299",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "86bdbd27d7908a3fdef8a226a0a1f6911d7637a0aec8d0e5ea8f2449c39390cf",
+        "path": "parts/24299.dat",
+        "name": "Wing  2 x  2 Left"
+      }
+    },
+    {
+      "partId": "24307",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "7b02403981b161c31a70115b9aa5622745520e6995ac974572663229bf9a72db",
+        "path": "parts/24307.dat",
+        "name": "Wing  2 x  2 Right"
+      }
+    },
+    {
+      "partId": "85984",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "4ec471415207722114f48abb384626d3dbda59796803cafc7feaf824ed88d426",
+        "path": "parts/85984.dat",
+        "name": "Slope Brick 31  1 x  2 x  0.667"
+      }
+    },
+    {
+      "partId": "17454",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "edc6319e09794aa06c75e60479545674e233e715f9f4c96b19f2d16cf8fccf57",
+        "path": "parts/17454.dat",
+        "name": "Windscreen  2 x  6 x  2 Vertical Frame"
+      }
+    },
+    {
+      "partId": "52038",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "eda971181efe2daa6e2ef85b515b8568dc13da73d7a305d300aeaaf0857232cd",
+        "path": "parts/52038.dat",
+        "name": "Bracket  2 x  4 x  0.667 with Front Studs and Shallow Arches"
+      }
+    },
+    {
+      "partId": "32000",
+      "candidateKind": "existing-qualified-regression",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "d5c344e273a7df7bbbd49e5696c973d9f31359e2b658acf620d5c23302c06811",
+        "path": "parts/32000.dat",
+        "name": "Technic Brick  1 x  2 with Holes"
+      }
+    }
+  ]
+}

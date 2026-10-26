@@ -3,10 +3,11 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { exportNativeAssemblyBomCsv, exportNativeAssemblyJson, exportNativeAssemblyLDraw } from '../parts/assembly/documents.js';
 import { NATIVE_MODULE_TYPES, type NativeGeneratorSearch, type NativeModuleType } from '../parts/assembly/generator.js';
-import { AssemblyService } from '../parts/assembly/service.js';
+import { GrammarAssemblyService as AssemblyService } from '../parts/grammar/service.js';
 import { checkMultiPointConnection, physicalConnectionKey } from '../parts/assembly/multipoint.js';
 import { solveAttachment } from '../parts/assembly/solver.js';
 import type { AssemblyInterfaceCapability, NativeAssembly, NativeAssemblyPart } from '../parts/assembly/types.js';
+import { isGeneratableCapability } from '../parts/assembly/types.js';
 import type { ImportedConnectionPoint } from '../parts/connections/types.js';
 
 /** A separate production witness; it does not change the seven module results. */
@@ -22,14 +23,14 @@ async function productionBridgeProbe(service: AssemblyService, cacheReady: boole
     nodes: graph?.placements.length ?? 0, edges: graph?.edges.length ?? 0, attachmentApiCalls,
     sourceHashes: graph?.sourceHashes ?? {}, reasons: [...new Set(reasons)].slice(0, 16), graph, ...extra,
   });
-  if (!cacheReady) { reasons.push('A current production migration cache is required; the probe did not use provisional capabilities.'); return result('blocked'); }
+  if (!cacheReady) { reasons.push('Current source-derived production grammar admission is required; no provisional capabilities are used.'); return result('blocked'); }
   try {
     const parts = new Map<string, NativeAssemblyPart>(), byCapability = new Map<string, AssemblyInterfaceCapability>();
     for (const id of partIds) {
       const part = await service.engine.getPart(id), capability = await service.engine.getCapability(id);
       if (part) { parts.set(id, part); sources.push({ partId: id, geometry: part.geometry.source, connections: part.connections.sourceFiles }); }
       if (capability) { capabilities.push(capability); byCapability.set(id, capability); }
-      if (!part || !capability?.assemblyVerified || !capability.generatable || !capability.allowedConnectionIds.length || part.connections.status !== 'ready') reasons.push(`${id}: current native source and production interface admission are required.`);
+      if (!part || !isGeneratableCapability(capability) || part.connections.status !== 'ready') reasons.push(`${id}: current native source and production interface admission are required.`);
     }
     if (reasons.length) return result('blocked');
     const points = (id: string, gender: 'M' | 'F') => {
@@ -131,7 +132,7 @@ let reportSha256: string | null = null;
 if (runtime.runtimeValidation.reportLoaded) {
   reportSha256 = createHash('sha256').update(await readFile(path.join(service.reportDirectory, 'migration.json'))).digest('hex');
 }
-const ready = runtime.runtimeValidation.reportLoaded && runtime.runtimeValidation.status !== 'blocked' && runtime.generatedAt !== null && runtime.counts.generatable > 0;
+const ready = runtime.admissionBasis === 'interface-grammar' && runtime.runtimeValidation.status !== 'blocked' && runtime.generatedAt !== null && runtime.counts.generatable > 0;
 await mkdir(outputDirectory, { recursive: true });
 for (const module of NATIVE_MODULE_TYPES) {
   const moduleStarted = Date.now();

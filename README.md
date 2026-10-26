@@ -1,28 +1,25 @@
-# BRICKLAB · V0.6 真实零件正式生成扩充
+# BRICKLAB · Interface-first Connector Grammar
 
-本轮新增 **8 种真正参与正式生成的真实零件**：待准入件 `32000`，以及新取得来源的 `3623、60479、78329、3456、69729、6934、41539`。来源库 **245→253**、限定接口资格 **79→87**；全部8件都有普通生产API生成、模型/BOM/步骤、正式导出和当前规则重新导入证据。另有3件既有资格零件获得生成用途。完整结果与样例见[正式生成扩充报告](docs/generation-expansion/README.md)。
+当前默认生产链路已切换到接口语法准入：真实来源 → canonical Connector → 通用规则与拓扑 → 接口帧求姿态 → 多点精确闭合 → 原生实体碰撞 → 模型、BOM、步骤 → 导出后重新导入。新件不再依赖每件保留一份与指定夹具试拼成功的记录。
 
-装配模式新增“生成时包含的零件”和数量目标。选择 `32000`、数量 `3`、点击“墙体”即可走正常生成流程；销孔保持禁用。离线复现本轮15候选覆盖可运行 `npm run coverage:expansion`，无需套装库存、联网或API密钥。
+当前真实来源仍为 **253种、743个LDraw文件、245个Shadow文件**，源文件与清单均未改。canonical连接覆盖为 **98 COMPLETE / 151 PARTIAL / 4 NONE**；这与旧解析器205 ready / 44 partial / 4 missing不同，均不代表实物装配通过。
 
-上一轮[26件数字源试点](docs/digital-import/README.md)保留为历史基准；本轮只迁移其中的32000。3705、2780和32054仍没有正式生成资格，不能借普通凸点规则绕过其解析或几何问题。
+**99种零件具有语法可选资格**，旧87种全部保留。新增12种资格中，3004、3008、3009、3010、3622、6111、11211、24299、24307这9种已通过正常生成、导出及重新导入；85984、17454、52038在当前结构任务中仍阻止，未算作新增实际生成成果。新专项12个模型覆盖22个编号；另有6类基础模块烟测成功，轮组仍禁止。
 
-旧手写目录仍隔离在 `src/legacy/`；旧参数化生成保持暂停。说明书与库存只提供参考，不能创建真实几何或接口。历史分类及恢复证据见[隔离报告](docs/legacy-isolation/README.md)。
+schema包含25个family与15条规则定义。真实生产原生图当前启用C01 Stud/Anti-stud；Bar/Clip、Pin、Axle、轮组等已有条件式算法内核，但尚无充分真实配合证据，不能把数学fixture通过当作真实套装支持。接口兼容、姿态、碰撞、应力、合法性和稳定性分别记录，实物及材料应力仍未知。
 
-碰撞算法仍为 `native-closed-bvh-local-partition-1.1.0`。最终版本全量重验5,019组接口：**2,251 PASS、786 BLOCKED、1,982待审、0 Pending**；基线1,765个PASS无回退。几何和连接解析器版本、来源与验证套件均纳入资格有效性检查。历史碰撞专项及原Astra包见[Sol Handoff](sol-handoff/v0.6-collision/README.md)，不得把旧版本证明直接改标签后用于当前准入。
+- [架构说明与扩展方法](docs/CONNECTOR_GRAMMAR.md)
+- [基线审计](docs/grammar/ARCHITECTURE_AUDIT.md)
+- [本轮交付、测试与逐件证据](docs/grammar/DELIVERY.md)
+- [当前真实库覆盖报告](artifacts/connector-grammar/REPORT.md)
 
-当前首页是 **Part Lab `/part-lab`**：查看有来源的原生 LEGO 网格、连接点、说明书证据，并在“装配模式”选择真实零件与已验证接口自动拼接。运行网站无需 Rebrickable 密钥或在线下载几何。
+运行网站无需API密钥或在线下载几何。首页仍为Part Lab；装配模式选择32000、数量3、墙体可生成并重新导入。开放接口是可尝试的来源规则范围，实际布局必须经过完整检查，32000销孔和未知机械配合仍禁用。
 
-原生包 **253个根编号、743个LDraw文件和245个Shadow文件**均保留来源、作者、许可和SHA。工作台分别显示完整接口通过38件、部分接口准入49件；它们合计87件，不等于全库均可生成。本轮13个生成并重新导入的专项样例实际覆盖21个编号，轮组仍明确阻止。原有[V0.6 A–H报告](docs/SOL_ENGINEERING_V0.6.md)属于先前基准。
+旧参数化生成、手工猜测几何、历史碰撞例外继续隔离。说明书、库存和531个Element映射保留为参考，不成为几何或连接真值。没有训练神经网络，也没有重新猜画PDF里的现成零件。
 
-6 本可读说明书的 4 份附录提取了 667 行、531 个不同 Element ID；另两本超过传输上限。**531 个元素已有 `source-observed` 的 Part / Design / 颜色记录，精确 LDraw 身份链为 0 VERIFIED、14 PROBABLE、88 CONFLICT、429 UNRESOLVED。** 正式几何查询仅接纳 VERIFIED，本批说明书元素的装配/生成恢复仍为 0。外部目录查询、精确几何身份与原生装配资格分别统计。
+此前[26件试点](docs/digital-import/README.md)、[8件扩充报告](docs/generation-expansion/README.md)、[V0.6接口报告](docs/SOL_ENGINEERING_V0.6.md)均保留为历史。旧资格记录的版本不会自动继承为新语法证明。
 
-**旧版通用、Speed、Automotive 的参数化生成、改造和导出继续暂停。** 新基础模块通过 `attachPart()` 求姿态、检查原生碰撞并更新连接图，仅使用当前报告授权的零件与接口。历史算法保留供回归，客户端参数和环境变量不能绕过生产门禁。
-
-本轮实际测试与逐件证据见[正式生成扩充报告](docs/generation-expansion/README.md)；[轮组专项](docs/wheel-assembly/REPORT.md)列出来源缺口、分段轮廓、边界及配合阻塞。软件装配资格只适用于白名单接口，没有实物、制造公差或整件安装轨迹认证。历史镜像数据许可仍未独立核定，未纳入本轮来源分发包。
-
-历史版本文档：[V0.5](docs/REAL_PARTS_V0.5.md)、[V0.4](docs/REAL_PARTS_V0.4.md)、[V0.3](docs/AUTOMOTIVE_V0.3.md)、[V0.2.1](docs/V0.2.1交付报告.md)、[V0.2](docs/V0.2交付报告.md)。本文后部旧生成流程仅为历史说明，以本版真实性门禁为准。
-
-本项目为独立创意原型，与 LEGO® 集团无关联。
+本项目为独立创意原型，与LEGO®集团无关联。
 
 ## 快速运行
 
@@ -30,7 +27,7 @@
 
 ### Windows：从 ZIP 启动
 
-本版工作分支为 `codex/native-generation-expansion`，可下载[开发仓库ZIP](https://github.com/byuming545-cmyk/lego-design-byebye/archive/refs/heads/codex/native-generation-expansion.zip)。开发仓库保留历史映射审计资料，其数据许可仍未核定；本轮许可来源包只含获准源文件及必要的当前模型/报告，见[分发说明](docs/generation-expansion/README.md)。
+本版工作分支为 `codex/interface-first-grammar`，可下载[开发仓库ZIP](https://github.com/byuming545-cmyk/lego-design-byebye/archive/refs/heads/codex/interface-first-grammar.zip)。开发仓库保留历史映射审计资料，其数据许可仍未独立核定；本轮没有扩大数据分发许可，见[本轮交付说明](docs/grammar/DELIVERY.md)。
 
 先安装 Node.js 24.19.0 或更高的 24.x 版本，再解压下载的项目 ZIP。进入**能够看到 `package.json` 的文件夹**；如果第一层只有同名文件夹，继续进入一层。
 

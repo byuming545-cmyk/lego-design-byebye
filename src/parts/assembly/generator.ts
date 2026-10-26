@@ -3,6 +3,10 @@ import { loadBundledLDrawManifest } from '../ldraw/index.js';
 import { physicalConnectionKey, physicalEndpointKey } from './multipoint.js';
 import { solveAttachment } from './solver.js';
 import { assessWheelAssemblySources } from './wheelAssessment.js';
+import { hasIsolatedUnknownDimensions, isGeneratableCapability } from './types.js';
+import { ConnectorRegistry } from '../grammar/library.js';
+import { adaptImportedConnection } from '../grammar/sources.js';
+import { describeValidatedNativeModel } from '../grammar/modelAssessment.js';
 import type { ImportedConnectionPoint } from '../connections/types.js';
 import type {
   AssemblyAttachRequest, AssemblyInterfaceCapability, NativeAssembly, NativeAssemblyPart,
@@ -46,6 +50,7 @@ export interface NativeGeneratedAssembly extends NativeAssembly {
   colorAvailability: 'not-verified';
   warnings: string[];
   assemblyValidation: { checked: true; valid: true; issues: [] };
+  connectorAssessment?: ReturnType<typeof describeValidatedNativeModel>;
 }
 export interface NativeGeneratorSearch {
   /** Candidate endpoint / quarter-turn attempts, including source-solver prechecks. */
@@ -198,6 +203,7 @@ export function validateNativeModuleRequest(request: NativeModuleRequest) {
 
 /** Scores express a design goal only. They never write a part position or modify geometry. */
 export class NativeAssemblyGenerator {
+  private readonly connectorIndex = new ConnectorRegistry();
   private catalogPromise?: Promise<CatalogPart[]>;
   private readonly maxAttempts: number;
   private readonly maxBacktracks: number;
@@ -214,11 +220,12 @@ export class NativeAssemblyGenerator {
       const catalog: CatalogPart[] = [];
       for (const id of ids) {
         const capability = await this.engine.getCapability(id);
-        if (!capability?.assemblyVerified || !capability.generatable || !capability.allowedConnectionIds.length) continue;
+        if (!capability || !isGeneratableCapability(capability)) continue;
         const native = await this.engine.getPart(id), geometry = native?.geometry;
-        if (!native || geometry?.status !== 'geometryReady' || !geometry.bounds || !geometry.mesh || geometry.source.integrity !== 'verified' || geometry.source.licenseStatus !== 'complete' || native.connections.status !== 'ready') continue;
-        const points = distinctPhysicalPoints(native.connections.points.filter(point => capability.allowedConnectionIds.includes(point.id) && point.dimensionsResolved));
+        if (!native || geometry?.status !== 'geometryReady' || !geometry.bounds || !geometry.mesh || geometry.source.integrity !== 'verified' || geometry.source.licenseStatus !== 'complete' || (native.connections.status !== 'ready' && !(capability?.admissionBasis === 'interface-grammar' && hasIsolatedUnknownDimensions(native)))) continue;
+        const points = distinctPhysicalPoints(native.connections.points.filter(point => capability!.allowedConnectionIds.includes(point.id) && point.dimensionsResolved));
         if (!points.length) continue;
+        this.connectorIndex.register(id, points.map(adaptImportedConnection));
         const [x, y, z] = geometry.bounds.max.map((value, axis) => value - geometry.bounds!.min[axis]);
         if (!finite([x, y, z]) || [x, y, z].some(value => value <= 0)) continue;
         catalog.push({ native, capability, name: geometry.name ?? native.partId, x, y, z, area: x * z, points });
@@ -394,8 +401,11 @@ export class NativeAssemblyGenerator {
       const choices = choicesAt(graph.placements.length, root, missingRequired).filter(part => missingRequired.size < remaining || missingRequired.has(part.native.partId))
         .sort((a, b) => Number(!missingRequired.has(a.native.partId)) - Number(!missingRequired.has(b.native.partId)));
       const anchors = anchorsAt(graph, root);
-      for (const anchor of anchors) for (const candidate of choices) {
-        const connections = candidate.points.filter(point => receiving(point) && up(point.direction)).slice(0, 32);
+      for (const anchor of anchors) {
+        const familyCandidates = this.connectorIndex.findCompatible(adaptImportedConnection(anchor.point), new Set(choices.map(part => part.native.partId)));
+        const compatibleEndpoints = new Set(familyCandidates.map(entry => JSON.stringify([entry.partId, entry.connector.sourceConnectionId])));
+        for (const candidate of choices) {
+        const connections = candidate.points.filter(point => receiving(point) && up(point.direction) && compatibleEndpoints.has(JSON.stringify([candidate.native.partId, point.id]))).slice(0, 32);
         for (const connection of connections) for (const twistDegrees of [0, 90, 180, 270]) {
           if (budgetReached()) return null;
           search.attempts++;
@@ -422,6 +432,7 @@ export class NativeAssemblyGenerator {
           if (complete) return complete;
           search.backtracks++;
         }
+      }
       }
       return null;
     };
@@ -452,7 +463,7 @@ function createNativeAssemblyDocument(graph: NativeAssembly, module: NativeModul
   const lookup = new Map(catalog.map(part => [part.native.partId, part])), bom = new Map<string, NativeAssemblyBomRow>(), sources = new Map<string, NativeSourceReference>();
   for (const placement of graph.placements) {
     const part = lookup.get(placement.partId);
-    if (!part?.capability.assemblyVerified || !part.capability.generatable) throw new Error('生成结果包含未通过准入的零件，拒绝导出。');
+    if (!part || !isGeneratableCapability(part.capability)) throw new Error('生成结果包含未通过准入的零件，拒绝导出。');
     const previous = bom.get(placement.partId);
     if (previous) previous.quantity++;
     else bom.set(placement.partId, { partId: placement.partId, name: part.name, quantity: 1, ldrawColor: 16, colorAvailability: 'not-verified' });
@@ -465,7 +476,8 @@ function createNativeAssemblyDocument(graph: NativeAssembly, module: NativeModul
     sources: [...sources.values()].sort((a, b) => `${a.library}:${a.path}`.localeCompare(`${b.library}:${b.path}`)),
     ownership: 'virtual-design-not-owned' as const, colorAvailability: 'not-verified' as const,
     assemblyValidation: { checked: true as const, valid: true as const, issues: [] as [] },
-    warnings: ['模型只使用通过当前软件装配验证的真实源零件；未做实物承重或制造公差认证。', '零件颜色使用 LDraw 当前色 16；具体零件颜色供应与个人库存尚未核实。'],
+    connectorAssessment: describeValidatedNativeModel(graph, new Map(catalog.map(part => [part.native.partId, part.native]))),
+    warnings: ['布局已通过当前真实源接口、刚体闭合和实体碰撞检查；材料应力、制造公差及实物承重仍未认证。', '零件颜色使用 LDraw 当前色 16；具体零件颜色供应与个人库存尚未核实。'],
   };
   return { ...model, contentSha256: createHash('sha256').update(JSON.stringify(model)).digest('hex') };
 }

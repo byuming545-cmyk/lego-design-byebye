@@ -1,8 +1,11 @@
 import type { ImportedConnectionPoint } from '../connections/types.js';
 import { SHADOW_REVISION, SHADOW_SOURCE_ROOT } from '../connections/importer.js';
 import { connectionFrame } from './math.js';
+import { adaptImportedConnection } from '../grammar/sources.js';
+import { evaluateConnectorCompatibility } from '../grammar/rules.js';
+import { CONNECTOR_GRAMMAR_VERSION } from '../grammar/schema.js';
 
-export const CONNECTION_RULE_VERSION = 'source-stud-1.0.0';
+export const CONNECTION_RULE_VERSION = `source-stud-2.0.0-${CONNECTOR_GRAMMAR_VERSION}`;
 export const STANDARD_STUD_RULE_ID = 'ldcad-standard-stud-to-capped-underside-v1';
 
 export interface CompatibilitySourceEvidence {
@@ -57,7 +60,7 @@ function sectionsAgreeWithSource(point: ImportedConnectionPoint): boolean {
  * male cylinders of the same radius. Other families need their own sourced
  * seating/deformation rules and currently return compatibilityUnknown.
  */
-export function checkConnectionCompatibility(fixed: ImportedConnectionPoint, moving: ImportedConnectionPoint): CompatibilityResult {
+function sourceCompatibilityDiagnostics(fixed: ImportedConnectionPoint, moving: ImportedConnectionPoint): CompatibilityResult {
   const points = [fixed, moving];
   if (points.some((point) => !hasPinnedEvidence(point))) return result('unknown', 'source-unverified', 'compatibilityUnknown: connection source is not the pinned, hashed Shadow input.', points);
   if (points.some((point) => !point.dimensionsResolved || !connectionFrame(point))) return result('unknown', 'unresolved-connection-frame', 'compatibilityUnknown: connection frame or inherited section scaling is unresolved.', points);
@@ -86,6 +89,18 @@ export function checkConnectionCompatibility(fixed: ImportedConnectionPoint, mov
       { kind: 'implementation-policy', url: 'docs/ASSEMBLY_CONNECTION_RULES.md', revision: CONNECTION_RULE_VERSION, file: 'docs/ASSEMBLY_CONNECTION_RULES.md', line: null, sha256: null, note: 'Quarter-turn candidates are a conservative grid-preserving subset. No continuous rotation, sliding, deformation allowance or manufactured clearance is granted.' },
     ],
   };
+}
+
+/** Bridge the existing native graph format to the family grammar. Historical
+ * diagnostics remain useful, but can never promote an UNKNOWN grammar result.
+ * Other joint families need a native graph/document adapter before production. */
+export function checkConnectionCompatibility(fixed: ImportedConnectionPoint, moving: ImportedConnectionPoint): CompatibilityResult {
+  const grammar = evaluateConnectorCompatibility(adaptImportedConnection(fixed), adaptImportedConnection(moving));
+  if (grammar.status === 'ILLEGAL') return result('incompatible', grammar.reasonCodes[0], grammar.reasons.join(' '), [fixed, moving]);
+  const diagnostic = sourceCompatibilityDiagnostics(fixed, moving);
+  if (grammar.status === 'COMPATIBLE' && grammar.ruleId === 'C01') return diagnostic;
+  if (diagnostic.status !== 'compatible') return diagnostic;
+  return result(grammar.status === 'INCOMPATIBLE' ? 'incompatible' : 'unknown', grammar.reasonCodes[0] ?? 'grammar-unknown', grammar.reasons.join(' '), [fixed, moving]);
 }
 
 export class ConnectionCompatibilityEngine {

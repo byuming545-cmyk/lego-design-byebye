@@ -11,6 +11,7 @@ import type { LoadedAssemblyFixture } from '../src/parts/assembly/fixtures.js';
 import type { AssemblyMigrationReport } from '../src/parts/assembly/migration.js';
 import { CONNECTION_RULE_VERSION } from '../src/parts/assembly/compatibility.js';
 import { COLLISION_VERSION } from '../src/parts/assembly/collision.js';
+import { AssemblyService } from '../src/parts/assembly/service.js';
 
 describe('all-native-root assembly migration', () => {
   let repository: NativePartRepository;
@@ -44,8 +45,15 @@ describe('all-native-root assembly migration', () => {
     expect(report.entries.filter(entry => !entry.assemblyVerified).every(entry => entry.reasonCodes.length > 0 && entry.reasons.length > 0 && !entry.allowedConnectionIds.length)).toBe(true);
   });
 
-  it('binds the snapshot to current engine versions and every actual geometry / connector closure', async () => {
-    expect(report).toMatchObject({ partLibraryVersion: PART_LIBRARY_VERSION, assemblyEngineVersion: ASSEMBLY_ENGINE_VERSION, connectionRuleVersion: CONNECTION_RULE_VERSION, collisionVersion: COLLISION_VERSION });
+  it('retains source-bound historical proof but revokes its obsolete engine/rule versions', async () => {
+    expect(report).toMatchObject({ partLibraryVersion: PART_LIBRARY_VERSION, collisionVersion: COLLISION_VERSION });
+    expect(report.assemblyEngineVersion).not.toBe(ASSEMBLY_ENGINE_VERSION);
+    expect(report.connectionRuleVersion).not.toBe(CONNECTION_RULE_VERSION);
+    expect(fullReport.assemblyEngineVersion).toBe(report.assemblyEngineVersion);
+    expect(fullReport.connectionRuleVersion).toBe(report.connectionRuleVersion);
+    const stale = await new AssemblyService({ repository }).status();
+    expect(stale.runtimeValidation.status).toBe('blocked');
+    expect(stale.counts.generatable).toBe(0);
     for (const entry of report.entries) {
       const part = await repository.getPart(entry.partId);
       expect(part).toBeDefined();

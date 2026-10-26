@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { createHash } from 'node:crypto';
-import { expectConnectedAssembly, expectCoverageMatches } from '../e2e/assemblyChecks.js';
+import { expectConnectedAssembly, expectCoverageMatches, expectGrammarAssessment } from '../e2e/assemblyChecks.js';
 
 test.setTimeout(180_000);
 
@@ -13,7 +13,8 @@ test('compiled preview serves Part Lab, bundled native geometry, fonts and API o
   await page.goto('/part-lab');
   await expect(page.getByRole('heading', { name: '从真实零件，开始拼搭。' })).toBeVisible();
   await expect(page.locator('.part-counts > div').filter({ hasText: '已有真实几何' }).locator('strong')).toHaveText(String(status.counts.geometryReady));
-  await expect(page.locator('.part-counts > div').filter({ hasText: '有已验证接口' }).locator('strong')).toHaveText(String(status.counts.assemblyVerified));
+  await expect(page.locator('.part-counts > div').filter({ hasText: '有已保存装配证明' }).locator('strong')).toHaveText(String(status.counts.assemblyVerified));
+  await expect(page.locator('.part-counts > div').filter({ hasText: '语法可选零件' }).locator('strong')).toHaveText(String(status.counts.generatable));
   const partResponse = page.waitForResponse(response => new URL(response.url()).pathname === '/api/parts-foundation/parts/3001');
   await page.getByRole('textbox', { name: '搜索真实零件' }).fill('3001');
   const detail = await (await partResponse).json();
@@ -37,6 +38,11 @@ test('compiled preview serves Part Lab, bundled native geometry, fonts and API o
 test('compiled routes preserve source evidence and generation restrictions', async ({ request }) => {
   const status = await (await request.get('/api/parts-foundation/status')).json();
   const assembly = await (await request.get('/api/parts-foundation/assembly/status')).json();
+  expect(assembly.admissionBasis).toBe('interface-grammar');
+  expect(assembly.counts.generatable + assembly.counts.blocked).toBe(assembly.counts.total);
+  expect(assembly.counts.assemblyVerified).toBe(0);
+  expect(assembly.interfaceCoverage.verifiedPass).toBe(0);
+  expect(assembly.grammar.counts).toMatchObject({ historicalFixtureProofsRequired: 0, executedPartFixtureTests: 0 });
   expect(status.counts).toMatchObject({ geometryReady: assembly.sourceCounts.geometryReady, connectionReady: assembly.sourceCounts.connectionReady, assemblyVerified: assembly.counts.assemblyVerified, generatable: assembly.counts.generatable });
   expect(status.counts.generatable).toBeGreaterThan(0);
   expect(status.elementMapping).toMatchObject({ mappedBySource: 531, resolvedLDraw: 0, sourceTrust: 'source-observed' });
@@ -56,7 +62,7 @@ test('compiled routes preserve source evidence and generation restrictions', asy
   expect(await blocked.json()).toMatchObject({ code: 'REAL_PARTS_FOUNDATION_REQUIRED' });
 });
 
-test('compiled assembly API attaches verified source interfaces and exports a versioned real wall', async ({ request }) => {
+test('compiled assembly API derives source grammar attachment and exports a currently validated real wall', async ({ request }) => {
   const statusResponse = await request.get('/api/parts-foundation/assembly/status');
   expect(statusResponse.ok()).toBe(true);
   const status = await statusResponse.json();
@@ -73,6 +79,7 @@ test('compiled assembly API attaches verified source interfaces and exports a ve
   expect(result.status).toBe('generated');
   expect(result.model.placements).toHaveLength(3);
   expectConnectedAssembly(result.model);
+  expectGrammarAssessment(result.model);
   const exported = await request.get(`/api/parts-foundation/assembly/models/${encodeURIComponent(result.model.id)}/export?format=json`);
   expect(exported.ok(), await exported.text()).toBe(true);
   const model = await exported.json();
@@ -89,6 +96,7 @@ test('compiled assembly API attaches verified source interfaces and exports a ve
   expect(reimported.status).toBe('VALID');
   expect(reimported.model.id).not.toBe(model.id);
   expectConnectedAssembly(reimported.model);
+  expectGrammarAssessment(reimported.model);
   const { contentSha256: _checksum, ...old } = model;
   old.assemblyEngineVersion = 'outdated-preview-revalidation-test';
   const invalidated = await request.post('/api/parts-foundation/assembly/models/import', { data: { content: JSON.stringify({ ...old, contentSha256: createHash('sha256').update(JSON.stringify(old)).digest('hex') }) } });

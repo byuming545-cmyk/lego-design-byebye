@@ -11,6 +11,7 @@ import { ASSEMBLY_ENGINE_VERSION } from '../src/parts/assembly/engine.js';
 import { CONNECTION_RULE_VERSION } from '../src/parts/assembly/compatibility.js';
 import { COLLISION_VERSION } from '../src/parts/assembly/collision.js';
 import type { RuntimeAssemblyStatus } from '../src/parts/assembly/service.js';
+import type { GrammarRuntimeStatus } from '../src/parts/grammar/service.js';
 import type { NativeGenerationResult, NativeGeneratedAssembly } from '../src/parts/assembly/generator.js';
 import type { AssemblyMigrationReport } from '../src/parts/assembly/migration.js';
 import type { NativeAssembly, NativeAssemblyPart } from '../src/parts/assembly/types.js';
@@ -19,7 +20,7 @@ import { validateConnectionOccupancy } from '../src/parts/assembly/multipoint.js
 let server: Server;
 let base: string;
 let directory: string;
-let status: RuntimeAssemblyStatus;
+let status: GrammarRuntimeStatus;
 let report: AssemblyMigrationReport;
 const sourceRepository = new NativePartRepository();
 const prefix = '/api/parts-foundation';
@@ -41,7 +42,7 @@ async function expectConnectedSourceGraph(graph: NativeAssembly) {
     parts.set(placement.instanceId, native!);
     expect(graph.sourceHashes[placement.partId]).toBe(nativePartSourceHash(native!));
     const capability = status.capabilities.find(entry => entry.partId === placement.partId);
-    expect(capability).toMatchObject({ assemblyVerified: true, generatable: true });
+    expect(capability).toMatchObject({ admissionBasis: 'interface-grammar', assemblyVerified: false, generatable: true, sourceReady: true, collisionGeometryReady: true, connectable: true });
   }
   const adjacency = new Map(graph.placements.map(placement => [placement.instanceId, new Set<string>()]));
   for (const edge of graph.edges) {
@@ -77,7 +78,7 @@ beforeAll(async () => {
   base = `http://127.0.0.1:${address.port}`;
   const response = await fetch(`${base}${prefix}/assembly/status`);
   expect(response.status).toBe(200);
-  status = await response.json() as RuntimeAssemblyStatus;
+  status = await response.json() as GrammarRuntimeStatus;
   expect(status.runtimeValidation.status).toBe('ready');
   report = JSON.parse(await readFile(new URL('../data/parts-foundation/assembly/migration.json', import.meta.url), 'utf8')) as AssemblyMigrationReport;
 }, 45000);
@@ -91,35 +92,40 @@ describe('native assembly production HTTP boundaries', () => {
     expect(status.counts.total).toBe(253);
     expect(status.queue).toHaveLength(253);
     expect(new Set(status.queue.map(entry => entry.partId)).size).toBe(253);
-    expect(status.counts).toEqual(report.counts);
+    expect(status.admissionBasis).toBe('interface-grammar');
+    expect(status.counts).toMatchObject({ assemblyVerified: 0, generatable: 99, blocked: 154, verifiedInterfaces: 0, testedPhysicalInterfaces: 0 });
+    expect(report.counts.generatable).toBe(87); // Retained historical evidence, not current admission authority.
     expect(status.sourceCounts).toEqual(report.sourceCounts);
     expect(status.sourceCounts).toEqual({ totalRoots: 253, geometryReady: 253, connectionReady: 205, connectionPartial: 44, connectionMissing: 4 });
     expect(status.counts.assemblyVerified).toBe(status.queue.filter((entry) => entry.assemblyVerified).length);
     expect(status.counts.generatable).toBe(status.queue.filter((entry) => entry.generatable).length);
-    expect(status.counts.blocked + status.counts.assemblyVerified).toBe(253);
+    expect(status.counts.blocked + status.counts.generatable).toBe(253);
     expect(status.counts.generatable).toBeGreaterThan(0);
-    expect(status.counts.verifiedInterfaces).toBe(status.queue.reduce((sum, entry) => sum + entry.allowedConnectionIds.length, 0));
+    expect(status.grammar.counts.enabledNativeEndpoints).toBe(status.queue.reduce((sum, entry) => sum + entry.allowedConnectionIds.length, 0));
     expect(status.runtimeValidation.issues).toEqual([]);
     const coverage = status.interfaceCoverage!;
     expect(coverage).toBeDefined();
-    expect(coverage).toEqual(report.interfaceCoverage);
+    expect(coverage).toMatchObject({ verifiedPass: 0, verifiedBlocked: 0, requiresAstraReview: 0 });
     expect(coverage.physicalInterfacesDiscovered).toBe(5019);
     expect(coverage.physicalInterfacesDiscovered).toBe(coverage.verifiedPass + coverage.verifiedBlocked + coverage.requiresAstraReview + coverage.pending);
     expect(coverage.verifiedPhysicalInterfaces).toBe(coverage.verifiedPass);
     expect(coverage.enabledPhysicalInterfaces).toBeLessThanOrEqual(coverage.verifiedPass);
     expect(coverage.enabledRawConnectionIds).toBe(status.counts.verifiedInterfaces);
-    expect(coverage.pending).toBe(0);
-    expect(coverage.processedCoveragePercent).toBe(100);
+    expect(coverage.pending).toBe(5019);
+    expect(coverage.processedCoveragePercent).toBe(0);
     expect(coverage.verifiedCoveragePercent).toBe(Number((100 * coverage.verifiedPass / coverage.physicalInterfacesDiscovered).toFixed(4)));
     expect(coverage.fullyAssemblyVerified + coverage.partiallyGeneratable + coverage.blockedParts + coverage.unresolvedParts).toBe(253);
-    expect(status.deferredRun).toMatchObject({ pending: 0, interrupted: false });
+    expect(status.deferredRun).toBeUndefined();
+    expect(status.grammar.counts).toMatchObject({ historicalFixtureProofsRequired: 0, executedPartFixtureTests: 0 });
+    expect(status.runtimeValidation.reportLoaded).toBe(false);
     const byId = new Map(report.entries.map(entry => [entry.partId, entry]));
     for (const entry of status.entries) {
       const saved = byId.get(entry.partId)!;
       expect(entry.source.digest).toBe(saved.source.digest);
-      expect([...entry.allowedConnectionIds].sort()).toEqual([...saved.allowedConnectionIds].sort());
-      expect(entry.interfaceCoverage).toEqual(saved.interfaceCoverage);
-      expect(entry.interfaceCoverage?.decisions.every(decision => decision.status !== 'PENDING')).toBe(true);
+      expect(saved.allowedConnectionIds.every(id => entry.allowedConnectionIds.includes(id))).toBe(true);
+      expect(entry.assemblyVerified).toBe(false);
+      expect(entry.fixtureTestsTotal).toBe(0);
+      expect(entry.interfaceCoverage?.decisions.every(decision => decision.status === 'PENDING')).toBe(true);
     }
     expect(status).toMatchObject({ ...versions, physicalBuildVerified: false, counts: { wheelModulesVerified: 0, physicalBuildsVerified: 0 } });
   });
@@ -197,7 +203,7 @@ describe('native assembly production HTTP boundaries', () => {
       for (const rejection of generated.search.rejectionReasons) expect(generated.search.rejectionCounts[rejection.code]).toBeGreaterThanOrEqual(rejection.count);
       for (const placement of model.placements) {
         const capability = status.capabilities.find((entry) => entry.partId === placement.partId);
-        expect(capability?.assemblyVerified && capability?.generatable).toBe(true);
+        expect(capability).toMatchObject({ admissionBasis: 'interface-grammar', assemblyVerified: false, generatable: true });
       }
       const jsonResponse = await fetch(`${base}${prefix}/assembly/models/${model.id}/export?format=json`);
       expect(jsonResponse.status).toBe(200);

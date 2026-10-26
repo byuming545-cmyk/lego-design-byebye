@@ -1,7 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { createHash } from 'node:crypto';
 import { mkdir, readFile } from 'node:fs/promises';
-import { expectConnectedAssembly, expectCoverageMatches } from './assemblyChecks.js';
+import { expectConnectedAssembly, expectCoverageMatches, expectGrammarAssessment } from './assemblyChecks.js';
 import type { AggregateInterfaceCoverageData, InterfaceCoverageData } from '../../src/components/InterfaceCoverage.js';
 
 test('uses an admitted 32000 through normal UI generation, exports it and validates the uploaded model', async ({ page }) => {
@@ -18,11 +18,17 @@ test('uses an admitted 32000 through normal UI generation, exports it and valida
   expect(result.model.placements.some((part: { partId: string }) => part.partId === '32000')).toBe(true);
   expect(result.model.bom.some((row: { partId: string; quantity: number }) => row.partId === '32000' && row.quantity > 0)).toBe(true);
   expect(result.model.steps.some((step: { partId: string }) => step.partId === '32000')).toBe(true);
+  expectGrammarAssessment(result.model);
   await expectRealCanvas(page);
-  const download = page.waitForEvent('download');
+  await expect(page.locator('.assembly-result')).toContainText('应力、实际稳定性及实体实拼尚未验证');
+  const download = page.waitForEvent('download', { timeout: 30_000 }).catch(() => null);
+  const exportResponse = page.waitForResponse(response => response.url().includes('/assembly/models/') && response.url().endsWith('/export?format=json'));
   await page.getByRole('button', { name: '模型 JSON', exact: true }).click();
+  const exportResult = await exportResponse;
+  expect(exportResult.ok(), `${exportResult.status()} ${await exportResult.text()}`).toBe(true);
   const exported = await download;
-  const file = await exported.path();
+  expect(exported).not.toBeNull();
+  const file = await exported!.path();
   expect(file).not.toBeNull();
   const bytes = await readFile(file!);
   await page.getByLabel('选择真实装配模型 JSON', { exact: true }).setInputFiles({ name: 'native-32000.json', mimeType: 'application/json', buffer: bytes });
@@ -31,13 +37,16 @@ test('uses an admitted 32000 through normal UI generation, exports it and valida
   const imported = await (await importResponse).json();
   expect(imported.status, imported.reasons?.join('; ')).toBe('VALID');
   expect(imported.model.placements.some((part: { partId: string }) => part.partId === '32000')).toBe(true);
+  expectGrammarAssessment(imported.model);
   await expect(page.locator('.assembly-import-status')).toContainText('VALID');
-  await mkdir('artifacts/generation-expansion/screenshots', { recursive: true });
-  await page.locator('.assembly-native-stage').screenshot({ path: 'artifacts/generation-expansion/screenshots/32000-production-and-reimport.png' });
+  await mkdir('artifacts/connector-grammar/screenshots', { recursive: true });
+  await page.locator('.assembly-native-stage').screenshot({ path: 'artifacts/connector-grammar/screenshots/32000-production-and-reimport.png' });
 });
 
 interface DefaultPair { partA: string; connectionA: string; partB: string; connectionB: string; twistDegrees?: number }
 interface Status {
+  admissionBasis: 'interface-grammar';
+  grammar: { counts: { generationEligible: number; supportedFeatures: number; enabledNativeEndpoints: number; historicalFixtureProofsRequired: number; executedPartFixtureTests: number } };
   counts: { total: number; assemblyVerified: number; generatable: number; blocked: number; wheelModulesVerified?: number };
   queue?: { partId: string; assemblyVerified: boolean; generatable: boolean; reasons: string[]; interfaceCoverage: InterfaceCoverageData }[];
   entries?: { partId: string; assemblyVerified: boolean; generatable: boolean; reasons: string[]; interfaceCoverage: InterfaceCoverageData }[];
@@ -93,32 +102,43 @@ async function expectRealCanvas(page: Page) {
   }), { timeout: 15_000 }).toBeGreaterThan(100);
 }
 
-test('reports every real source part as passed or blocked with an explicit scope', async ({ page }) => {
+test('separates source grammar eligibility from actual assembly evidence for every real part', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   const report = await open(page);
   const entries = report.queue ?? report.entries ?? [];
   expect(report.counts.total).toBeGreaterThan(0);
   expect(entries.length).toBe(report.counts.total);
-  expect(report.counts.assemblyVerified + report.counts.blocked).toBe(report.counts.total);
+  expect(report.admissionBasis).toBe('interface-grammar');
+  expect(report.counts.generatable + report.counts.blocked).toBe(report.counts.total);
+  expect(report.counts.assemblyVerified).toBe(0);
+  expect(report.grammar.counts.historicalFixtureProofsRequired).toBe(0);
+  expect(report.grammar.counts.executedPartFixtureTests).toBe(0);
   expect(report.counts.generatable).toBeGreaterThan(0);
-  expect(entries.every((entry) => entry.assemblyVerified || entry.reasons.length > 0)).toBe(true);
+  expect(entries.filter(entry => entry.generatable)).toHaveLength(report.counts.generatable);
+  expect(entries.every((entry) => !entry.assemblyVerified && (entry.generatable || entry.reasons.length > 0))).toBe(true);
   await expect(page.locator('.assembly-counts > div').first().locator('strong')).toHaveText(String(report.counts.total));
+  await expect(page.locator('.assembly-counts > div').filter({ hasText: '语法可选零件' }).locator('strong')).toHaveText(String(report.counts.generatable));
+  await expect(page.locator('.assembly-counts > div').filter({ hasText: '有已保存装配证明' }).locator('strong')).toHaveText('0');
   await expectCoverageMatches(page.getByRole('region', { name: '物理接口验证覆盖', exact: true }), report.interfaceCoverage);
   expect(report.interfaceCoverage.fullyAssemblyVerified).toBe(entries.filter((entry) => entry.interfaceCoverage.fullyAssemblyVerified).length);
   expect(report.interfaceCoverage.partiallyGeneratable).toBe(entries.filter((entry) => entry.interfaceCoverage.partiallyGeneratable).length);
-  for (const [label, key] of [['fullyAssemblyVerified 零件', 'fullyAssemblyVerified'], ['partiallyGeneratable 零件', 'partiallyGeneratable'], ['接口已全部处理的零件', 'interfaceVerificationComplete']] as const) {
-    await expect(page.locator('.assembly-part-qualifications > div').filter({ has: page.getByText(label, { exact: true }) }).locator('dd')).toHaveText(String(report.interfaceCoverage[key]));
+  expect(report.interfaceCoverage.verifiedPass).toBe(0);
+  for (const [label, expected] of [['语法开放原始接口', report.grammar.counts.enabledNativeEndpoints], ['符合规则的接口特征', report.grammar.counts.supportedFeatures], ['有已保存装配证明的零件', report.counts.assemblyVerified]] as const) {
+    await expect(page.locator('.assembly-part-qualifications > div').filter({ has: page.getByText(label, { exact: true }) }).locator('dd')).toHaveText(String(expected));
   }
   if (entries.length > 20) await page.getByRole('button', { name: `查看全部 ${entries.length} 个结果`, exact: true }).click();
   await expect(page.locator('.assembly-migration tbody tr')).toHaveCount(entries.length);
   for (const entry of entries) {
     const row = page.locator('.assembly-migration tbody tr').filter({ has: page.getByRole('cell', { name: entry.partId, exact: true }) });
     await expect(row).toContainText(`${entry.interfaceCoverage.verifiedPass} / ${entry.interfaceCoverage.physicalInterfacesDiscovered}`);
-    if (entry.interfaceCoverage.fullyAssemblyVerified) await expect(row).toContainText('fullyAssemblyVerified');
-    else if (entry.interfaceCoverage.partiallyGeneratable) await expect(row).toContainText('partiallyGeneratable');
+    expect(entry.interfaceCoverage.fullyAssemblyVerified).toBe(false);
+    expect(entry.interfaceCoverage.partiallyGeneratable).toBe(false);
+    await expect(row).toContainText(entry.generatable ? 'GRAMMAR_ELIGIBLE' : 'BLOCKED');
   }
-  const blocked = entries.find((entry) => !entry.assemblyVerified);
+  await page.getByLabel('筛选装配验证状态', { exact: true }).selectOption('eligible');
+  await expect(page.locator('.assembly-migration tbody tr')).toHaveCount(report.counts.generatable);
+  const blocked = entries.find((entry) => !entry.generatable);
   if (blocked) {
     await page.getByLabel('搜索装配迁移零件', { exact: true }).fill(blocked.partId);
     await page.getByLabel('筛选装配验证状态', { exact: true }).selectOption('blocked');
@@ -129,9 +149,9 @@ test('reports every real source part as passed or blocked with an explicit scope
   expect(errors).toEqual([]);
 });
 
-test('attaches a source-verified pair and rejects the same mating gender', async ({ page }, testInfo) => {
+test('attaches a source-backed grammar pair and rejects the same mating gender', async ({ page }, testInfo) => {
   const report = await open(page);
-  expect(report.defaultPair, 'The migration report must provide one actual eligible fixture pair.').not.toBeNull();
+  expect(report.defaultPair, 'The source grammar must provide an eligible connector pair without remembered fixture results.').not.toBeNull();
   const pair = report.defaultPair!;
   await selectPair(page, pair);
   const accepted = await attach(page);
@@ -157,7 +177,7 @@ test('attaches a source-verified pair and rejects the same mating gender', async
 test('generates source-bound wall and chassis modules and preserves unsupported wheel reasons', async ({ page }, testInfo) => {
   const report = await open(page);
   const entries = report.queue ?? report.entries ?? [];
-  const allowed = new Set(entries.filter((entry) => entry.assemblyVerified && entry.generatable).map((entry) => entry.partId));
+  const allowed = new Set(entries.filter((entry) => entry.generatable).map((entry) => entry.partId));
   for (const label of ['墙体', '简单车架']) {
     const response = page.waitForResponse((item) => item.url().endsWith('/api/parts-foundation/assembly/generate') && item.request().method() === 'POST', { timeout: 120_000 });
     await page.getByRole('button', { name: label, exact: true }).click();
@@ -167,6 +187,7 @@ test('generates source-bound wall and chassis modules and preserves unsupported 
     expect(result.status).toBe('generated');
     expect(result.model.placements.length).toBeGreaterThan(1);
     expectConnectedAssembly(result.model);
+    expectGrammarAssessment(result.model);
     expect(result.model.placements.every((placement: { partId: string }) => allowed.has(placement.partId))).toBe(true);
     for (const key of ['partLibraryVersion', 'assemblyEngineVersion', 'connectionRuleVersion', 'collisionVersion']) expect(typeof result.model[key]).toBe('string');
     await expectRealCanvas(page);

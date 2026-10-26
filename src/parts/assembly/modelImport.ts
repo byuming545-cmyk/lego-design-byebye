@@ -2,6 +2,9 @@ import { createHash, randomUUID } from 'node:crypto';
 import type { AttachmentEngine } from './engine.js';
 import { NATIVE_MODULE_TYPES, type NativeGeneratedAssembly, type NativeSourceReference } from './generator.js';
 import { isRigidTransform } from './math.js';
+import { isGeneratableCapability } from './types.js';
+import { describeValidatedNativeModel } from '../grammar/modelAssessment.js';
+import type { NativeAssemblyPart } from './types.js';
 
 const object = (value: unknown): value is Record<string, unknown> => !!value && typeof value === 'object' && !Array.isArray(value);
 const id = (value: unknown): value is string => typeof value === 'string' && /^[a-zA-Z0-9][a-zA-Z0-9_.:-]{0,999}$/.test(value);
@@ -42,7 +45,7 @@ export async function inspectNativeModelImport(value: unknown, engine: Attachmen
   for (const placement of model.placements) {
     const part = await engine.getPart(placement.partId), capability = await engine.getCapability(placement.partId);
     if (!part) reasons.push(`原生零件 ${placement.partId} 已不存在。`);
-    if (!capability?.generatable || !capability.assemblyVerified) reasons.push(`零件 ${placement.partId} 当前没有生成准入。`);
+    if (!isGeneratableCapability(capability)) reasons.push(`零件 ${placement.partId} 当前没有生成准入。`);
   }
   const placements = new Map(model.placements.map(placement => [placement.instanceId, placement]));
   for (const edge of model.edges) for (const [instanceId, connectionId] of [[edge.fixedInstanceId, edge.fixedConnectionId], [edge.movingInstanceId, edge.movingConnectionId]]) {
@@ -58,8 +61,10 @@ export async function inspectNativeModelImport(value: unknown, engine: Attachmen
 
   // Rebuild all presentation/export claims from current server sources, including BOM and steps.
   const sources = new Map<string, NativeSourceReference>(), bom = new Map<string, NativeGeneratedAssembly['bom'][number]>();
+  const nativeParts = new Map<string, NativeAssemblyPart>();
   for (const placement of model.placements) {
     const part = (await engine.getPart(placement.partId))!;
+    nativeParts.set(part.partId, part);
     const previous = bom.get(part.partId);
     if (previous) previous.quantity++;
     else bom.set(part.partId, { partId: part.partId, name: part.geometry.name ?? part.partId, quantity: 1, ldrawColor: 16, colorAvailability: 'not-verified' });
@@ -79,6 +84,7 @@ export async function inspectNativeModelImport(value: unknown, engine: Attachmen
     sources: [...sources.values()].sort((a, b) => `${a.library}:${a.path}`.localeCompare(`${b.library}:${b.path}`)),
     ownership: 'virtual-design-not-owned' as const, colorAvailability: 'not-verified' as const,
     assemblyValidation: { checked: true as const, valid: true as const, issues: [] as [] },
+    connectorAssessment: describeValidatedNativeModel(model, nativeParts),
     warnings: ['导入后已核对当前原生来源、接口权限与完整连接图；未认证实物拼搭、颜色库存或连续插入轨迹。', '导入模块名称仅为文件标签；本次校验不认证墙体、车架或轮组等结构设计目标。'],
   };
   return { status: 'VALID', reasons: [], originalModelId: model.id, model: { ...trusted, contentSha256: createHash('sha256').update(JSON.stringify(trusted)).digest('hex') }, physicalBuildVerified: false, validationScope: 'source-interfaces-final-pose-graph-only' };

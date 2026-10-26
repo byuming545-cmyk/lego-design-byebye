@@ -19,11 +19,17 @@ interface Attempt { request: { module: NativeModuleType; partCount: number; requ
  * and upload revalidation. No capability injection, verification mode or poses. */
 export async function generationExpansionMain(args = process.argv.slice(2)) {
   let output = path.join(ROOT, 'artifacts/generation-expansion');
+  let planFile = path.join(ROOT, 'docs/generation-expansion/candidates.json');
   if (args.length) {
-    if (args.length !== 2 || args[0] !== '--output') throw new Error('Usage: npm run coverage:expansion -- [--output directory]');
-    output = path.resolve(args[1]);
+    const seen = new Set<string>();
+    for (let index = 0; index < args.length; index += 2) {
+      const option = args[index], value = args[index + 1];
+      if (!['--output', '--plan'].includes(option) || !value || seen.has(option)) throw new Error('Usage: npm run coverage:expansion -- [--output directory] [--plan source-backed-plan.json]');
+      seen.add(option);
+      if (option === '--output') output = path.resolve(value); else planFile = path.resolve(value);
+    }
   }
-  const plan = JSON.parse(await readFile(path.join(ROOT, 'docs/generation-expansion/candidates.json'), 'utf8')) as { baselineCommit: string; candidates: Candidate[]; [key: string]: unknown };
+  const plan = JSON.parse(await readFile(planFile, 'utf8')) as { baselineCommit: string; candidates: Candidate[]; [key: string]: unknown };
   const server = createApp({ staticDir: false, provider: { source: 'rebrickable', async getSetInventory() { throw new Error('This native coverage run must not request online inventory.'); } } }).listen(0, '127.0.0.1');
   await new Promise<void>(resolve => server.once('listening', resolve));
   const address = server.address(); if (!address || typeof address === 'string') throw new Error('Missing native coverage address.');
@@ -80,6 +86,7 @@ export async function generationExpansionMain(args = process.argv.slice(2)) {
     for (const candidate of plan.candidates) {
       const entry = status.entries.find(entry => entry.partId === candidate.partId);
       const detail = await call<FoundationPartDetail>(`/parts/${candidate.partId}`);
+      requireTrue(detail.geometry?.source.files.some(file => file.path === candidate.source.path && file.sha256 === candidate.source.sha256), 'Coverage plan identity/hash differs from the actual native source.');
       const attempts: Attempt[] = [];
       const result: Record<string, unknown> = { ...candidate, source: { ...candidate.source, currentFiles: detail.geometry?.source.files, sourceHash: entry?.source.digest },
         geometryReady: detail.part.geometryReady, connectionStatus: detail.connections?.status, qualified: entry?.generatable === true,
@@ -145,13 +152,14 @@ export async function generationExpansionMain(args = process.argv.slice(2)) {
     const successful = results.filter(result => result.actualGenerationCoverage);
     const countKind = (kind: string) => successful.filter(result => result.candidateKind === kind).length;
     const summary = { candidateCount: results.length, qualifiedCandidates: results.filter(result => result.qualified).length, actualCandidateGenerationCoverage: successful.length,
-      newlyQualifiedAndGenerated: countKind('new-source-root-and-qualification') + countKind('staged-source-to-production-qualification') + countKind('existing-source-blocked-topology-assessment'),
+      newlyQualifiedAndGenerated: countKind('new-source-root-and-qualification') + countKind('staged-source-to-production-qualification') + countKind('existing-source-blocked-topology-assessment') + countKind('existing-source-grammar-qualification'),
       newSourcesQualifiedAndGenerated: countKind('new-source-root-and-qualification'), stagedPartsQualifiedAndGenerated: countKind('staged-source-to-production-qualification'),
       existingSourcesRecoveredAndGenerated: countKind('existing-source-blocked-topology-assessment'), existingQualifiedNewUses: countKind('existing-qualified-new-generator-use'),
+      grammarQualifiedAndGenerated: countKind('existing-source-grammar-qualification'),
       allActualGeneratedPartIds: [...allCovered].sort(), allActualGeneratedPartCount: allCovered.size, structuralExamplesPassed: structures.filter(result => result.status === 'generated').length,
       wheelCountedAsSuccess: false, negativeChecksPassed: negative.length };
     await mkdir(output, { recursive: true });
-    await writeFile(path.join(output, 'generation-coverage.json'), JSON.stringify({ schemaVersion: 1, baselineCommit: plan.baselineCommit, generatedAt: new Date().toISOString(),
+    await writeFile(path.join(output, planFile === path.join(ROOT, 'docs/generation-expansion/candidates.json') ? 'generation-coverage.json' : 'generation-report.json'), JSON.stringify({ schemaVersion: 1, baselineCommit: plan.baselineCommit, generatedAt: new Date().toISOString(),
       api: 'ordinary production /api/parts-foundation/assembly endpoints; no synthetic capabilities or hand-authored placements',
       versions: { partLibraryVersion: status.partLibraryVersion, assemblyEngineVersion: status.assemblyEngineVersion, connectionRuleVersion: status.connectionRuleVersion, collisionVersion: status.collisionVersion, testVersion: status.testVersion },
       productionCounts: status.counts, productionInterfaceCoverage: status.interfaceCoverage, summary, candidates: results, structures, physicalBuildVerified: false }, null, 2) + '\n');

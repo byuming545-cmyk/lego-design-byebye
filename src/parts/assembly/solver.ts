@@ -3,6 +3,8 @@ import type { Matrix3, NativeAssemblyPart, NativePlacement, RigidTransform, Vect
 import { checkConnectionCompatibility, CONNECTION_RULE_VERSION } from './compatibility.js';
 import type { CompatibilityResult, CompatibilitySourceEvidence } from './compatibility.js';
 import { add, axisRotation, connectionFrame, distance, isRigidTransform, isRotation, multiply, normalize, normalizedTwist, rotate, scale, subtract, transformPoint, transpose } from './math.js';
+import { adaptImportedConnection } from '../grammar/sources.js';
+import { solveConnectorPlacement } from '../grammar/solver.js';
 
 export interface ConnectionPenetrationZone {
   kind: 'cylinder';
@@ -76,9 +78,10 @@ export function solveAttachment(request: AttachmentSolveRequest): AttachmentSolv
     if (!twists.includes(twist)) twists.push(twist);
   }
   const candidates: AttachmentCandidate[] = [];
-  for (const twist of twists) {
-    const rotation: Matrix3 = multiply(multiply(axisRotation(axis, twist), fixedWorldFrame), transpose(movingFrame));
-    const translation = subtract(anchor, rotate(rotation, moving.position)), transform = { rotation, translation };
+  const grammar = solveConnectorPlacement({ fixed: adaptImportedConnection(fixed), moving: adaptImportedConnection(moving), fixedTransform: fixedPlacement.transform, anglesDeg: twists });
+  for (const pose of grammar.candidates) {
+    const twist = pose.twistDeg, transform = pose.transform;
+    const rotation = transform.rotation;
     if (!isRigidTransform(transform) || !isRotation(rotation)) continue;
     const movingAnchor = transformPoint(transform, moving.position), movingAxis = normalize(rotate(rotation, moving.direction));
     if (!movingAxis || distance(movingAnchor, anchor) > compatibility.toleranceLdu || distance(movingAxis, axis) > 1e-6) continue;

@@ -38,18 +38,19 @@ describe('real source foundation HTTP API', () => {
     expect(status.counts).toMatchObject({ readableDocuments: 6, ldrawPartIds: 253, observedElementIds: 531, geometryReady: 253, connectionReady: 205, catalogOnly: 531 });
     expect(migration.sourceCounts).toEqual({ totalRoots: 253, geometryReady: 253, connectionReady: 205, connectionPartial: 44, connectionMissing: 4 });
     expect(migration.sourceCounts).toEqual(report.sourceCounts);
-    expect(migration.counts).toEqual(report.counts);
-    expect(migration.runtimeValidation).toMatchObject({ status: 'ready', reportLoaded: true, issues: [] });
+    expect(migration.counts).toMatchObject({ total: 253, assemblyVerified: 0, generatable: 99, blocked: 154, testedPhysicalInterfaces: 0 });
+    expect(report.counts.generatable).toBe(87);
+    expect(migration.runtimeValidation).toMatchObject({ status: 'ready', reportLoaded: false, issues: [] });
     expect(status.assembly.counts).toEqual(migration.counts);
     expect(status.assembly.interfaceCoverage).toEqual(migration.interfaceCoverage);
     expect(migration.interfaceCoverage?.physicalInterfacesDiscovered).toBe(5019);
-    expect(migration.interfaceCoverage).toEqual(report.interfaceCoverage);
+    expect(migration.interfaceCoverage).toMatchObject({ verifiedPass: 0, pending: 5019, enabledRawConnectionIds: 0 });
     const nativeCatalog = (await (await get('/parts')).json()).parts.filter((part: { identitySystem: string }) => part.identitySystem === 'ldraw');
     expect(status.counts.collisionReady).toBe(nativeCatalog.filter((part: { collisionReady: boolean }) => part.collisionReady).length);
     expect(status.counts.assemblyVerified).toBe(migration.counts.assemblyVerified);
     expect(status.counts.generatable).toBe(migration.counts.generatable);
     expect(status.counts.generatable).toBeGreaterThan(0);
-    expect(migration.counts.assemblyVerified + migration.counts.blocked).toBe(253);
+    expect(migration.counts.generatable + migration.counts.blocked).toBe(253);
     expect(status.instructions).toHaveLength(8);
     expect(status.instructions.filter((item: { status: string }) => item.status === 'transfer-limit')).toHaveLength(2);
     expect(status.referenceSets).toHaveLength(6);
@@ -64,7 +65,7 @@ describe('real source foundation HTTP API', () => {
     expect(status.nextPriority.every((row: { sourceTrust: string; partId: unknown }) => row.sourceTrust === 'source-observed' && typeof row.partId === 'string')).toBe(true);
   }, 45_000);
 
-  it('returns authentic native mesh and only source-bound, fixture-verified assembly interfaces', async () => {
+  it('returns authentic native mesh and source-derived grammar scope without claiming executed assembly proof', async () => {
     const response = await get('/parts/3001');
     expect(response.status).toBe(200);
     const detail = await response.json() as FoundationPartDetail;
@@ -79,7 +80,7 @@ describe('real source foundation HTTP API', () => {
     expect(detail.connections!.points.every(point => point.source.sha256.length === 64 && point.source.line > 0 && point.physicalVerified === false)).toBe(true);
     expect(detail.geometry!.collision).toMatchObject({ kind: 'aabb', derivedFrom: 'native-mesh', cavitiesResolved: false });
     expect(detail.part.checks.find(check => check.id === 'attachment')?.outcome).toBe(entry.assemblyVerified ? 'passed' : 'not-run');
-    expect(detail.part.assemblyReport?.scope).toBe('source-backed-tested-interfaces-only');
+    expect(detail.part.assemblyReport?.scope).toBe('source-backed-grammar-interfaces-only');
     expect(detail.part.interfaceCoverage).toEqual(migration.entries.find((row: { partId: string }) => row.partId === '3001').interfaceCoverage);
   });
 

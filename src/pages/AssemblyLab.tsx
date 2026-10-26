@@ -13,6 +13,7 @@ interface PartSourceDetail {
 }
 interface MigrationEntry {
   partId: string;
+  admissionBasis?: 'interface-grammar';
   status?: string;
   assemblyVerified: boolean;
   generatable: boolean;
@@ -24,6 +25,8 @@ interface MigrationEntry {
   interfaceVerificationComplete?: boolean;
 }
 interface AssemblyStatus {
+  admissionBasis?: 'interface-grammar';
+  grammar?: { counts: { supportedFeatures: number; enabledNativeEndpoints: number; generationEligible: number }; coverage: { COMPLETE: number; PARTIAL: number; NONE: number }; interpretation?: string[] };
   counts: Record<string, number>;
   queue?: MigrationEntry[];
   entries?: MigrationEntry[];
@@ -90,7 +93,8 @@ function ResultData({ title, value }: { title: string; value: unknown }) {
 function ConnectionSelect({ label, points, selected, enabledIds, onChange, disabled }: { label: string; points: NativeConnectionPoint[]; selected: string; enabledIds?: string[]; onChange: (value: string) => void; disabled: boolean }) {
   return <label className="assembly-field"><span>{label}</span><select aria-label={label} value={selected} disabled={disabled || !points.length} onChange={(event) => onChange(event.target.value)}>{!points.length && <option value="">暂无来源连接点</option>}{points.map((point, index) => <option key={point.id ?? index} value={point.id ?? ''}>{point.id && enabledIds?.includes(point.id) ? '已开放' : '未开放'} · {point.id} · {point.family ?? '未分类'} · {point.gender ?? '未指定'} · ({point.position.map((value) => Number(value.toFixed(1))).join(', ')})</option>)}</select></label>;
 }
-function partQualification(row: MigrationEntry) {
+function partQualification(row: MigrationEntry, grammarMode = false) {
+  if (grammarMode || row.admissionBasis === 'interface-grammar') return row.generatable ? 'GRAMMAR_ELIGIBLE' : 'BLOCKED';
   if (row.fullyAssemblyVerified ?? row.interfaceCoverage?.fullyAssemblyVerified) return 'fullyAssemblyVerified';
   if (row.partiallyGeneratable ?? row.interfaceCoverage?.partiallyGeneratable) return 'partiallyGeneratable';
   return row.assemblyVerified ? '限定接口已验证' : 'BLOCKED';
@@ -161,10 +165,11 @@ export default function AssemblyLab() {
       if (controller.signal.aborted) return;
       setDetailA(a); setDetailB(b);
       const ap = a.connections?.points ?? [], bp = b.connections?.points ?? [];
+      const allowedA = new Set(a.part.enabledConnectionIds ?? []), allowedB = new Set(b.part.enabledConnectionIds ?? []);
       const preferredA = initialPair?.partA === partA ? ap.find((point) => point.id === initialPair.connectionA)?.id : undefined;
       const preferredB = initialPair?.partB === partB ? bp.find((point) => point.id === initialPair.connectionB)?.id : undefined;
-      setConnectionA(preferredA ?? ap.find((point) => point.family === 'stud' && point.gender === 'M')?.id ?? ap[0]?.id ?? '');
-      setConnectionB(preferredB ?? bp.find((point) => point.family === 'antiStud' && point.gender === 'F')?.id ?? bp.find((point) => point.gender === 'F')?.id ?? bp[0]?.id ?? '');
+      setConnectionA(preferredA ?? ap.find((point) => !!point.id && allowedA.has(point.id) && point.gender === 'M')?.id ?? ap.find((point) => !!point.id && allowedA.has(point.id))?.id ?? ap[0]?.id ?? '');
+      setConnectionB(preferredB ?? bp.find((point) => !!point.id && allowedB.has(point.id) && point.gender === 'F')?.id ?? bp.find((point) => !!point.id && allowedB.has(point.id))?.id ?? bp[0]?.id ?? '');
     }).catch((reason) => { if (!controller.signal.aborted) setError(message(reason)); }).finally(() => { if (!controller.signal.aborted) setPartsLoading(false); });
     return () => controller.abort();
   }, [partA, partB, initialPair]);
@@ -253,7 +258,8 @@ export default function AssemblyLab() {
   }
 
   const queue = status?.queue ?? status?.entries ?? [];
-  const filteredQueue = queue.filter((row) => (!queueQuery.trim() || row.partId.toLowerCase().includes(queueQuery.trim().toLowerCase())) && (queueFilter === 'all' || queueFilter === 'verified' && row.assemblyVerified || queueFilter === 'blocked' && !row.assemblyVerified || queueFilter === 'full' && partQualification(row) === 'fullyAssemblyVerified' || queueFilter === 'partial' && partQualification(row) === 'partiallyGeneratable' || queueFilter === 'astra' && (row.interfaceCoverage?.requiresAstraReview ?? 0) > 0 || queueFilter === 'pending' && (row.interfaceCoverage?.pending ?? 0) > 0));
+  const grammarMode = status?.admissionBasis === 'interface-grammar';
+  const filteredQueue = queue.filter((row) => (!queueQuery.trim() || row.partId.toLowerCase().includes(queueQuery.trim().toLowerCase())) && (queueFilter === 'all' || queueFilter === 'eligible' && row.generatable || queueFilter === 'verified' && row.assemblyVerified || queueFilter === 'blocked' && !row.generatable || queueFilter === 'full' && partQualification(row, grammarMode) === 'fullyAssemblyVerified' || queueFilter === 'partial' && partQualification(row, grammarMode) === 'partiallyGeneratable' || queueFilter === 'astra' && (row.interfaceCoverage?.requiresAstraReview ?? 0) > 0 || queueFilter === 'pending' && (row.interfaceCoverage?.pending ?? 0) > 0));
   const displayedQueue = queueExpanded ? filteredQueue : filteredQueue.slice(0, 20);
   const accepted = response?.accepted === true || response?.status === 'generated' || response?.status === 'VALID';
   const resultTransform = response?.transform ?? response?.candidate?.transform ?? response?.debug?.transform;
@@ -263,14 +269,14 @@ export default function AssemblyLab() {
   const proxyFailures = model ? Object.entries(model.assets).filter(([, asset]) => asset.collisionProxy?.status !== 'ready').map(([id, asset]) => `${id}: ${asset.collisionProxy?.reason ?? '尚未取得实际碰撞代理。'}`) : [];
 
   return <section className="assembly-lab" aria-label="真实零件装配模式">
-    <div className="assembly-intro"><div><h2><Link2 size={20} />真实装配验证</h2><p>选择真实来源连接，由兼容规则、变换求解和碰撞检查决定拼接结果。</p></div><button className="assembly-secondary" onClick={() => setRevision((value) => value + 1)} disabled={loading || !!busy}>刷新验证报告</button></div>
+    <div className="assembly-intro"><div><h2><Link2 size={20} />真实装配验证</h2><p>按有来源的接口语法求连接姿态，再检查实际组合的接口占用、闭合与碰撞。</p></div><button className="assembly-secondary" onClick={() => setRevision((value) => value + 1)} disabled={loading || !!busy}>刷新来源与语法</button></div>
     {statusError && <div className="part-alert" role="alert"><CircleHelp size={16} /><span>{statusError}</span><button onClick={() => setRevision((value) => value + 1)}>重试</button></div>}
-    <div className="assembly-counts" aria-label="装配迁移统计">{[
-      ['total', '纳入迁移队列'], ['assemblyVerified', '有已验证接口'], ['generatable', '可用于真实生成'], ['blocked', '有明确阻塞原因'],
+    <div className="assembly-counts" aria-label="接口语法与装配统计">{[
+      ['total', '原生来源零件'], ['generatable', '语法可选零件'], ['assemblyVerified', '有已保存装配证明'], ['blocked', '当前不可选零件'],
     ].map(([key, label]) => <div key={key}><strong>{status ? (status.counts[key] ?? (key === 'total' ? queue.length : '—')) : '—'}</strong><span>{label}</span></div>)}</div>
-    <p className="assembly-scope-note">数字装配验证与实体实拼分别记录。未解决的连接、公差和碰撞问题会保留为阻塞，不能用猜测提高通过数。</p>
-    <InterfaceCoverage value={status?.interfaceCoverage} />
-    <dl className="assembly-part-qualifications"><div><dt>fullyAssemblyVerified 零件</dt><dd>{status?.interfaceCoverage?.fullyAssemblyVerified ?? '—'}</dd></div><div><dt>partiallyGeneratable 零件</dt><dd>{status?.interfaceCoverage?.partiallyGeneratable ?? '—'}</dd></div><div><dt>接口已全部处理的零件</dt><dd>{status?.interfaceCoverage?.interfaceVerificationComplete ?? '—'}</dd></div></dl>
+    <p className="assembly-scope-note">语法可选表示已有接口符合受支持规则。每个实际生成或导入的模型仍单独检查；未知配合与实体实拼不会自动计为通过。</p>
+    <InterfaceCoverage value={status?.interfaceCoverage} description={grammarMode ? '这里统计逐接口装配测试记录，历史试拼 PASS 不会自动继承。语法可选数量单独统计，实际装配结果在下方显示。' : undefined} />
+    {grammarMode ? <dl className="assembly-part-qualifications"><div><dt>语法开放原始接口</dt><dd>{status?.grammar?.counts.enabledNativeEndpoints ?? '—'}</dd></div><div><dt>符合规则的接口特征</dt><dd>{status?.grammar?.counts.supportedFeatures ?? '—'}</dd></div><div><dt>有已保存装配证明的零件</dt><dd>{status?.counts.assemblyVerified ?? '—'}</dd></div></dl> : <dl className="assembly-part-qualifications"><div><dt>fullyAssemblyVerified 零件</dt><dd>{status?.interfaceCoverage?.fullyAssemblyVerified ?? '—'}</dd></div><div><dt>partiallyGeneratable 零件</dt><dd>{status?.interfaceCoverage?.partiallyGeneratable ?? '—'}</dd></div><div><dt>接口已全部处理的零件</dt><dd>{status?.interfaceCoverage?.interfaceVerificationComplete ?? '—'}</dd></div></dl>}
 
     <form className="assembly-controls" onSubmit={autoAttach}>
       <div className="assembly-part-column"><label className="assembly-field"><span>Part A · 固定零件</span><select aria-label="选择固定零件 A" value={partA} onChange={(event) => { userSelected.current = true; setPartA(event.target.value); }} disabled={!!busy || !parts.length}>{parts.map((part) => <option key={part.id} value={part.id}>{part.id} · {part.name}</option>)}</select></label><ConnectionSelect label="Connection A" selected={connectionA} points={detailA?.connections?.points ?? []} enabledIds={detailA?.part.enabledConnectionIds} onChange={setConnectionA} disabled={partsLoading || !!busy} /></div>
@@ -278,11 +284,12 @@ export default function AssemblyLab() {
       <div className="assembly-part-column"><label className="assembly-field"><span>Part B · 待装配零件</span><select aria-label="选择待装配零件 B" value={partB} onChange={(event) => { userSelected.current = true; setPartB(event.target.value); }} disabled={!!busy || !parts.length}>{parts.map((part) => <option key={part.id} value={part.id}>{part.id} · {part.name}</option>)}</select></label><ConnectionSelect label="Connection B" selected={connectionB} points={detailB?.connections?.points ?? []} enabledIds={detailB?.part.enabledConnectionIds} onChange={setConnectionB} disabled={partsLoading || !!busy} /></div>
       <div className="assembly-attach-column"><label className="assembly-field"><span>连接轴上的离散旋转</span><select value={twist} onChange={(event) => setTwist(event.target.value)} disabled={!!busy} aria-label="选择装配旋转"><option value="0">0°</option><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select></label><button className="assembly-primary" type="submit" disabled={loading || !!busy || partsLoading || !connectionA || !connectionB}>{busy === 'attach' ? <LoaderCircle size={16} className="part-spin" /> : <Link2 size={16} />}Auto Attach</button></div>
     </form>
-    {(partsLoading || loading) && <div className="assembly-loading" role="status"><LoaderCircle size={17} className="part-spin" />{partsLoading ? '读取真实网格与来源连接…' : '执行并读取逐件装配验证…'}</div>}
+    {(partsLoading || loading) && <div className="assembly-loading" role="status"><LoaderCircle size={17} className="part-spin" />{partsLoading ? '读取真实网格与来源连接…' : '读取来源接口与语法可选状态…'}</div>}
     {error && <div className="part-alert" role="alert"><CircleHelp size={16} /><span>{error}</span></div>}
 
     <div className="assembly-result">
-      <div className="assembly-result-heading"><h3>{model ? accepted ? '装配结果' : '装配检查视图' : '待装配零件'}</h3>{response && <span className={`assembly-result-badge ${accepted ? 'passed' : 'blocked'}`}>{accepted ? <Check size={13} /> : <CircleHelp size={13} />}{accepted ? '通过当前装配检查' : '本次未通过'}</span>}</div>
+      <div className="assembly-result-heading"><h3>{model ? accepted ? '实际装配结果' : '装配检查视图' : '待装配零件'}</h3>{response && <span className={`assembly-result-badge ${accepted ? 'passed' : 'blocked'}`}>{accepted ? <Check size={13} /> : <CircleHelp size={13} />}{accepted ? '通过当前装配检查' : '本次未通过'}</span>}</div>
+      {accepted && <p className="assembly-scope-note">当前接口、连接图和布局检查通过。应力、实际稳定性及实体实拼尚未验证。</p>}
       <div className="assembly-view-options"><label><input type="checkbox" checked={showConnections} onChange={(event) => setShowConnections(event.target.checked)} />连接点与法线</label><label title={proxiesReady ? '显示后端闭合源网格碰撞代理的实际三角线框。' : '取得装配结果及实际碰撞代理后可显示。'}><input type="checkbox" checked={showProxies} onChange={(event) => setShowProxies(event.target.checked)} disabled={!proxiesReady} />碰撞代理</label><label><input type="checkbox" checked={showPath} onChange={(event) => setShowPath(event.target.checked)} />连接轴与插入路径</label><label><input type="checkbox" checked={showZones} onChange={(event) => setShowZones(event.target.checked)} />合法插入区</label></div>
       {model ? <NativeAssemblyViewer placements={model.assembly.placements} assets={model.assets} debug={model.debug} showConnections={showConnections} showProxies={showProxies && proxiesReady} showPath={showPath} showZones={showZones} /> : <div className="assembly-source-previews">{[{ label: 'A · 固定零件原始坐标', detail: detailA }, { label: 'B · 待装配零件原始坐标', detail: detailB }].map(({ label, detail }) => <div key={label}><span>{label}</span>{detail?.geometry?.mesh ? <NativePartViewer mesh={detail.geometry.mesh} points={detail.connections?.points ?? []} showBounds={false} showConnections={showConnections} /> : <div className="assembly-source-empty"><Box size={24} /><span>等待真实源几何</span></div>}</div>)}</div>}
       <p className="assembly-view-note">展示颜色用于区分实例。装配前分别以原始坐标预览；橙色线框来自后端实际闭合碰撞代理。插入路径显示求解器给出的方向，具体验证范围以检查记录为准。</p>
@@ -303,7 +310,12 @@ export default function AssemblyLab() {
 
     <section className="assembly-model-import"><div className="part-section-heading"><Upload size={18} /><div><h2>重新导入真实装配模型</h2><p>检查当前来源、规则版本、连接口与连接图。旧资格失效时返回 NEEDS_REVALIDATION。</p></div></div><form onSubmit={importModel}><label className="assembly-import-file"><span>已导出的模型 JSON（最多 5 MiB）</span><input type="file" accept="application/json,.json" aria-label="选择真实装配模型 JSON" disabled={!!busy} onChange={(event) => { setImportFile(event.target.files?.[0] ?? null); setImportResult(null); }} /></label><button className="assembly-secondary" type="submit" disabled={!importFile || !!busy}>{busy === 'import' ? <LoaderCircle size={13} className="part-spin" /> : <Upload size={13} />}验证导入模型</button></form>{importResult && <div className={`assembly-import-status ${importResult.status === 'VALID' ? 'passed' : 'blocked'}`} role="status"><strong>{importResult.status}</strong><p>{importResult.status === 'VALID' ? '已按当前来源与接口规则重新核验，可查看并导出。' : '模型依赖的来源、版本或接口资格需要重新验证；当前不可导出。'}</p>{importResult.reasons.length > 0 && <ul>{importResult.reasons.map((reason, index) => <li key={index}>{reason}</li>)}</ul>}</div>}</section>
 
-    <section className="assembly-migration"><div className="part-section-heading"><Check size={18} /><div><h2>逐件迁移结果</h2><p>完整装配验证、部分接口可生成与队列处理完成分别记录。</p></div></div><div className="assembly-queue-filters"><input aria-label="搜索装配迁移零件" placeholder="按零件编号筛选" value={queueQuery} onChange={(event) => setQueueQuery(event.target.value)} /><select aria-label="筛选装配验证状态" value={queueFilter} onChange={(event) => setQueueFilter(event.target.value)}><option value="all">全部结果</option><option value="verified">有已验证接口</option><option value="full">fullyAssemblyVerified</option><option value="partial">partiallyGeneratable</option><option value="blocked">有阻塞原因</option><option value="astra">需要 Astra 审阅</option><option value="pending">存在 Pending 接口</option></select><span>{filteredQueue.length} 个零件</span></div><div className="part-table-wrap"><table className="part-table"><thead><tr><th>零件编号</th><th>零件资格</th><th>物理接口 PASS / 已发现</th><th>接口队列处理</th><th>生成准入</th><th>原因 / 当前范围</th></tr></thead><tbody>{displayedQueue.map((row) => <tr key={row.partId}><td className="part-mono">{row.partId}</td><td><span className={`assembly-result-badge ${row.assemblyVerified ? 'passed' : 'blocked'}`}>{partQualification(row)}</span></td><td>{row.interfaceCoverage ? `${row.interfaceCoverage.verifiedPass} / ${row.interfaceCoverage.physicalInterfacesDiscovered}` : '—'}{row.interfaceCoverage && <small className="assembly-interface-breakdown">BLOCKED {row.interfaceCoverage.verifiedBlocked} · Astra {row.interfaceCoverage.requiresAstraReview} · PENDING {row.interfaceCoverage.pending}</small>}</td><td>{(row.interfaceVerificationComplete ?? row.interfaceCoverage?.interfaceVerificationComplete) === true ? '已处理（含阻塞 / 待审）' : (row.interfaceVerificationComplete ?? row.interfaceCoverage?.interfaceVerificationComplete) === false ? '尚有待处理' : '—'}</td><td>{row.generatable ? '已开放' : '未开放'}</td><td>{row.reasons?.join('；') || (row.assemblyVerified ? '仅限已验证的连接与测试范围' : '等待后端具体原因')}</td></tr>)}{!displayedQueue.length && <tr><td colSpan={6}>{loading ? '正在读取逐件验证结果…' : '没有匹配的迁移记录。'}</td></tr>}</tbody></table></div>{filteredQueue.length > 20 && <button className="part-show-more" onClick={() => setQueueExpanded((value) => !value)}>{queueExpanded ? '收起结果' : `查看全部 ${filteredQueue.length} 个结果`}</button>}</section>
+    <section className="assembly-migration">
+      <div className="part-section-heading"><Check size={18} /><div><h2>零件接口与可选状态</h2><p>语法可选、实际接口测试与完整模型装配结果分别记录。</p></div></div>
+      <div className="assembly-queue-filters"><input aria-label="搜索装配迁移零件" placeholder="按零件编号筛选" value={queueQuery} onChange={(event) => setQueueQuery(event.target.value)} /><select aria-label="筛选装配验证状态" value={queueFilter} onChange={(event) => setQueueFilter(event.target.value)}><option value="all">全部结果</option><option value="eligible">语法可选零件</option><option value="verified">有已保存装配证明</option>{!grammarMode && <><option value="full">fullyAssemblyVerified</option><option value="partial">partiallyGeneratable</option></>}<option value="blocked">当前不可选零件</option><option value="astra">需要进一步核验</option><option value="pending">尚无逐接口测试记录</option></select><span>{filteredQueue.length} 个零件</span></div>
+      <div className="part-table-wrap"><table className="part-table"><thead><tr><th>零件编号</th><th>可选状态</th><th>实际接口测试 PASS / 已发现</th><th>逐接口测试记录</th><th>语法候选</th><th>原因 / 当前范围</th></tr></thead><tbody>{displayedQueue.map((row) => <tr key={row.partId}><td className="part-mono">{row.partId}</td><td><span className={`assembly-result-badge ${row.generatable ? 'passed' : 'blocked'}`}>{partQualification(row, grammarMode)}</span></td><td>{row.interfaceCoverage ? `${row.interfaceCoverage.verifiedPass} / ${row.interfaceCoverage.physicalInterfacesDiscovered}` : '—'}{row.interfaceCoverage && <small className="assembly-interface-breakdown">BLOCKED {row.interfaceCoverage.verifiedBlocked} · 待核验 {row.interfaceCoverage.requiresAstraReview} · PENDING {row.interfaceCoverage.pending}</small>}</td><td>{(row.interfaceVerificationComplete ?? row.interfaceCoverage?.interfaceVerificationComplete) === true ? '已处理（含阻塞 / 待审）' : (row.interfaceVerificationComplete ?? row.interfaceCoverage?.interfaceVerificationComplete) === false ? '尚无完整记录' : '—'}</td><td>{row.generatable ? '可选' : '不可选'}</td><td>{row.reasons?.join('；') || (row.generatable ? '已有接口符合受支持规则，实际组合仍需装配检查。' : '等待来源或配合规则的具体依据。')}</td></tr>)}{!displayedQueue.length && <tr><td colSpan={6}>{loading ? '正在读取接口状态…' : '没有匹配的零件。'}</td></tr>}</tbody></table></div>
+      {filteredQueue.length > 20 && <button className="part-show-more" onClick={() => setQueueExpanded((value) => !value)}>{queueExpanded ? '收起结果' : `查看全部 ${filteredQueue.length} 个结果`}</button>}
+    </section>
     <ResultData title="当前连接能力与限制" value={status?.capabilities} />
     {!!status?.limitations?.length && <div className="assembly-reasons"><strong>当前限制</strong><ul>{status.limitations.map((limitation, index) => <li key={index}>{limitation}</li>)}</ul></div>}
   </section>;

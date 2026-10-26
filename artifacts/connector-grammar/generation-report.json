@@ -1,0 +1,3681 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "35eec2067b4e9a711b65bd0199ac3bb5f89db636",
+  "generatedAt": "2026-10-26T07:32:00.662Z",
+  "api": "ordinary production /api/parts-foundation/assembly endpoints; no synthetic capabilities or hand-authored placements",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+    "assemblyEngineVersion": "native-assembly-0.7.0-grammar",
+    "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-1",
+    "collisionVersion": "native-closed-bvh-local-partition-1.1.0",
+    "testVersion": "not-applicable-source-derived-admission"
+  },
+  "productionCounts": {
+    "total": 253,
+    "assemblyVerified": 0,
+    "generatable": 99,
+    "blocked": 154,
+    "verifiedInterfaces": 0,
+    "disabledInterfaces": 2553,
+    "testedPhysicalInterfaces": 0,
+    "deferredPhysicalInterfaces": 5019,
+    "deferredRawConnectionIds": 5084,
+    "wheelModulesVerified": 0,
+    "physicalBuildsVerified": 0
+  },
+  "productionInterfaceCoverage": {
+    "rawSourceConnectionRecords": 5084,
+    "logicalConnectionGroups": 3063,
+    "physicalInterfacesDiscovered": 5019,
+    "verifiedPass": 0,
+    "verifiedBlocked": 0,
+    "requiresAstraReview": 0,
+    "pending": 5019,
+    "verifiedPhysicalInterfaces": 0,
+    "enabledPhysicalInterfaces": 0,
+    "enabledRawConnectionIds": 0,
+    "verifiedCoveragePercent": 0,
+    "processedCoveragePercent": 0,
+    "fullyAssemblyVerified": 0,
+    "interfaceVerificationComplete": 0,
+    "partiallyGeneratable": 0,
+    "blockedParts": 0,
+    "unresolvedParts": 253
+  },
+  "summary": {
+    "candidateCount": 13,
+    "qualifiedCandidates": 13,
+    "actualCandidateGenerationCoverage": 10,
+    "newlyQualifiedAndGenerated": 9,
+    "newSourcesQualifiedAndGenerated": 0,
+    "stagedPartsQualifiedAndGenerated": 0,
+    "existingSourcesRecoveredAndGenerated": 0,
+    "existingQualifiedNewUses": 0,
+    "grammarQualifiedAndGenerated": 9,
+    "allActualGeneratedPartIds": [
+      "11211",
+      "24299",
+      "24307",
+      "3004",
+      "3005",
+      "3008",
+      "3009",
+      "3010",
+      "3023",
+      "3024",
+      "3070b",
+      "32000",
+      "3456",
+      "3460",
+      "3622",
+      "3623",
+      "3666",
+      "3710",
+      "4477",
+      "6111",
+      "69729",
+      "87087"
+    ],
+    "allActualGeneratedPartCount": 22,
+    "structuralExamplesPassed": 2,
+    "wheelCountedAsSuccess": false,
+    "negativeChecksPassed": 8
+  },
+  "candidates": [
+    {
+      "partId": "3004",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "e1caee3b32175393c9d6ea176a47f8869173a01d03a451e1cfe10d09167c0203",
+        "path": "parts/3004.dat",
+        "name": "Brick  1 x  2",
+        "currentFiles": [
+          {
+            "path": "p/4-4cyli.dat",
+            "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+            "bytes": 2687,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+          },
+          {
+            "path": "p/4-4disc.dat",
+            "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+            "bytes": 1137,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4disc.dat"
+          },
+          {
+            "path": "p/4-4edge.dat",
+            "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+            "bytes": 1084,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+          },
+          {
+            "path": "p/box4t.dat",
+            "sha256": "72c7629db2b741e680ad548b2cbec631e44f75cdde206001b423ccb0f3b60c1f",
+            "bytes": 960,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Tore Eriksson [Tore_Eriksson]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box4t.dat"
+          },
+          {
+            "path": "p/box5.dat",
+            "sha256": "ccb7b8a1d36692335b10ea6aa196849afcad4b15331683ed8112a10b50977318",
+            "bytes": 963,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box5.dat"
+          },
+          {
+            "path": "p/stud.dat",
+            "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4",
+            "bytes": 698,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud.dat"
+          },
+          {
+            "path": "p/stud3.dat",
+            "sha256": "d29e9160faeaf85b2b72a098e89a81f41e0082517a82065d7b1f149b5fd2addd",
+            "bytes": 710,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud3.dat"
+          },
+          {
+            "path": "parts/3004.dat",
+            "sha256": "e1caee3b32175393c9d6ea176a47f8869173a01d03a451e1cfe10d09167c0203",
+            "bytes": 670,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3004.dat"
+          },
+          {
+            "path": "parts/s/3004s01.dat",
+            "sha256": "e05db7f7baead09713c4296b4e4e215b3fa5ccbf526e3431cb66a3ce19e321b5",
+            "bytes": 850,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3004s01.dat"
+          }
+        ],
+        "sourceHash": "7f96f478018e99b9a5dc4e97d336ac3471054a64bc9a4631feb64d230c1943ee"
+      },
+      "geometryReady": true,
+      "connectionStatus": "partial",
+      "qualified": true,
+      "allowedConnectionIds": [
+        "p/stud.dat:8:1",
+        "p/stud.dat:8:2",
+        "parts/s/3004s01.dat:8:3",
+        "parts/s/3004s01.dat:8:4",
+        "parts/s/3004s01.dat:8:5",
+        "parts/s/3004s01.dat:8:6"
+      ],
+      "disabledConnectionIds": [
+        "p/stud3.dat:8:0"
+      ],
+      "actualGenerationCoverage": true,
+      "attempts": [
+        {
+          "request": {
+            "module": "wall",
+            "partCount": 3,
+            "requiredPartIds": [
+              "3004"
+            ]
+          },
+          "status": "generated",
+          "reasons": [],
+          "search": {
+            "attempts": 2,
+            "attachmentApiCalls": 2,
+            "acceptedAttachments": 2,
+            "rejectedAttachments": 0,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 0,
+            "occupancyFailures": 0,
+            "designGoalFailures": 0,
+            "backtracks": 0,
+            "testedRoots": 1,
+            "exhausted": false,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 72.177,
+            "searchTimeMs": 163.547,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 3,
+            "finalConnectionEdges": 3,
+            "rejectionCounts": {},
+            "rejectionReasons": []
+          }
+        }
+      ],
+      "reasonCodes": [],
+      "reasons": [],
+      "witness": {
+        "status": "passed",
+        "requestRequiredPartIds": [
+          "3004"
+        ],
+        "modelId": "assembly-f8ba56e6-2aed-4539-b2dd-effabd37ff09",
+        "placements": 3,
+        "edges": 3,
+        "actualPartIds": [
+          "3004",
+          "3005",
+          "3023"
+        ],
+        "bomMatches": true,
+        "stepsMatch": true,
+        "currentSourceEvidencePresent": true,
+        "sourceHashes": {
+          "3004": "7f96f478018e99b9a5dc4e97d336ac3471054a64bc9a4631feb64d230c1943ee",
+          "3005": "fe5888c2f25ab7ef2f0797af3023c2a5021fd27814173ae98c5821c33b58197a",
+          "3023": "1b86b4b1ea715f804317d4e3dafd3d4196c228acbe11aed49c89d94a7c591b47"
+        },
+        "finalModelValidation": {
+          "checked": true,
+          "valid": true,
+          "issues": []
+        },
+        "exportReimportStatus": "VALID",
+        "validationScope": "source-interfaces-final-pose-graph-only",
+        "physicalBuildVerified": false,
+        "files": [
+          "model.json",
+          "model.ldr",
+          "bom.csv",
+          "steps.json",
+          "sources.json",
+          "reimported.json"
+        ],
+        "exportedJsonSha256": "c4dc1d13c5e59ca09f30b98d2f20021aacf95ae2acb440487bef28dca9c7fdbd",
+        "directory": "artifacts/connector-grammar/models/3004-wall"
+      }
+    },
+    {
+      "partId": "3008",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "961b645476d8ae0a68c7c9a12be0521510737ad2b1eecd690302912a8dc81828",
+        "path": "parts/3008.dat",
+        "name": "Brick  1 x  8",
+        "currentFiles": [
+          {
+            "path": "p/4-4cyli.dat",
+            "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+            "bytes": 2687,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+          },
+          {
+            "path": "p/4-4disc.dat",
+            "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+            "bytes": 1137,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4disc.dat"
+          },
+          {
+            "path": "p/4-4edge.dat",
+            "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+            "bytes": 1084,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+          },
+          {
+            "path": "p/box4t.dat",
+            "sha256": "72c7629db2b741e680ad548b2cbec631e44f75cdde206001b423ccb0f3b60c1f",
+            "bytes": 960,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Tore Eriksson [Tore_Eriksson]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box4t.dat"
+          },
+          {
+            "path": "p/box5.dat",
+            "sha256": "ccb7b8a1d36692335b10ea6aa196849afcad4b15331683ed8112a10b50977318",
+            "bytes": 963,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box5.dat"
+          },
+          {
+            "path": "p/stud.dat",
+            "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4",
+            "bytes": 698,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud.dat"
+          },
+          {
+            "path": "p/stud3.dat",
+            "sha256": "d29e9160faeaf85b2b72a098e89a81f41e0082517a82065d7b1f149b5fd2addd",
+            "bytes": 710,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud3.dat"
+          },
+          {
+            "path": "p/stug-1x8.dat",
+            "sha256": "e592fd59bdd7333f0430cdd7bebb0d25bfdb3f244af03a17b0be2861c62205b7",
+            "bytes": 576,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Steffen [Steffen]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug-1x8.dat"
+          },
+          {
+            "path": "p/stug3-1x7.dat",
+            "sha256": "381169c4592a6ed096c0011e06e6000c65200492fe6126b3aa9e6a51ae2ba244",
+            "bytes": 553,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Steffen [Steffen]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug3-1x7.dat"
+          },
+          {
+            "path": "parts/3008.dat",
+            "sha256": "961b645476d8ae0a68c7c9a12be0521510737ad2b1eecd690302912a8dc81828",
+            "bytes": 673,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3008.dat"
+          },
+          {
+            "path": "parts/s/3008s01.dat",
+            "sha256": "47df1b6873e973963a7409f22314445cace6216ca5eb76c1e0b0a9d8492eb07c",
+            "bytes": 1035,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Takeshi Takahashi [RainbowDolphin]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3008s01.dat"
+          }
+        ],
+        "sourceHash": "0b0bf10403f2096c94ae7b1ad570591806999c2f92200174699950e267bc5ab2"
+      },
+      "geometryReady": true,
+      "connectionStatus": "partial",
+      "qualified": true,
+      "allowedConnectionIds": [
+        "p/stud.dat:8:7",
+        "p/stud.dat:8:8",
+        "p/stud.dat:8:9",
+        "p/stud.dat:8:10",
+        "p/stud.dat:8:11",
+        "p/stud.dat:8:12",
+        "p/stud.dat:8:13",
+        "p/stud.dat:8:14",
+        "parts/s/3008s01.dat:8:15",
+        "parts/s/3008s01.dat:8:16",
+        "parts/s/3008s01.dat:8:17",
+        "parts/s/3008s01.dat:8:18",
+        "parts/s/3008s01.dat:8:19",
+        "parts/s/3008s01.dat:8:20",
+        "parts/s/3008s01.dat:8:21",
+        "parts/s/3008s01.dat:8:22"
+      ],
+      "disabledConnectionIds": [
+        "p/stud3.dat:8:0",
+        "p/stud3.dat:8:1",
+        "p/stud3.dat:8:2",
+        "p/stud3.dat:8:3",
+        "p/stud3.dat:8:4",
+        "p/stud3.dat:8:5",
+        "p/stud3.dat:8:6"
+      ],
+      "actualGenerationCoverage": true,
+      "attempts": [
+        {
+          "request": {
+            "module": "wall",
+            "partCount": 3,
+            "requiredPartIds": [
+              "3008"
+            ]
+          },
+          "status": "generated",
+          "reasons": [],
+          "search": {
+            "attempts": 2,
+            "attachmentApiCalls": 2,
+            "acceptedAttachments": 2,
+            "rejectedAttachments": 0,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 0,
+            "occupancyFailures": 0,
+            "designGoalFailures": 0,
+            "backtracks": 0,
+            "testedRoots": 1,
+            "exhausted": false,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.105,
+            "searchTimeMs": 497.615,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 3,
+            "finalConnectionEdges": 9,
+            "rejectionCounts": {},
+            "rejectionReasons": []
+          }
+        }
+      ],
+      "reasonCodes": [],
+      "reasons": [],
+      "witness": {
+        "status": "passed",
+        "requestRequiredPartIds": [
+          "3008"
+        ],
+        "modelId": "assembly-35c93b51-e79b-420e-bb1b-39438a0162e7",
+        "placements": 3,
+        "edges": 9,
+        "actualPartIds": [
+          "3005",
+          "3008",
+          "3460"
+        ],
+        "bomMatches": true,
+        "stepsMatch": true,
+        "currentSourceEvidencePresent": true,
+        "sourceHashes": {
+          "3005": "fe5888c2f25ab7ef2f0797af3023c2a5021fd27814173ae98c5821c33b58197a",
+          "3008": "0b0bf10403f2096c94ae7b1ad570591806999c2f92200174699950e267bc5ab2",
+          "3460": "3d17beaacd08659a7993323e68b688a777278a8e00124f4a4b3aacef751667dc"
+        },
+        "finalModelValidation": {
+          "checked": true,
+          "valid": true,
+          "issues": []
+        },
+        "exportReimportStatus": "VALID",
+        "validationScope": "source-interfaces-final-pose-graph-only",
+        "physicalBuildVerified": false,
+        "files": [
+          "model.json",
+          "model.ldr",
+          "bom.csv",
+          "steps.json",
+          "sources.json",
+          "reimported.json"
+        ],
+        "exportedJsonSha256": "e1b07757be1025aa19b75803a1e4214b377ef5960c67d4de4d6082cc213a2733",
+        "directory": "artifacts/connector-grammar/models/3008-wall"
+      }
+    },
+    {
+      "partId": "3009",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "950a186800b17a778e6c4b91420b1846df98c2bdbac8a551cfe7f74ddc831a3e",
+        "path": "parts/3009.dat",
+        "name": "Brick  1 x  6",
+        "currentFiles": [
+          {
+            "path": "p/4-4cyli.dat",
+            "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+            "bytes": 2687,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+          },
+          {
+            "path": "p/4-4disc.dat",
+            "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+            "bytes": 1137,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4disc.dat"
+          },
+          {
+            "path": "p/4-4edge.dat",
+            "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+            "bytes": 1084,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+          },
+          {
+            "path": "p/box5.dat",
+            "sha256": "ccb7b8a1d36692335b10ea6aa196849afcad4b15331683ed8112a10b50977318",
+            "bytes": 963,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box5.dat"
+          },
+          {
+            "path": "p/stud.dat",
+            "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4",
+            "bytes": 698,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud.dat"
+          },
+          {
+            "path": "p/stud3.dat",
+            "sha256": "d29e9160faeaf85b2b72a098e89a81f41e0082517a82065d7b1f149b5fd2addd",
+            "bytes": 710,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud3.dat"
+          },
+          {
+            "path": "parts/3009.dat",
+            "sha256": "950a186800b17a778e6c4b91420b1846df98c2bdbac8a551cfe7f74ddc831a3e",
+            "bytes": 683,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3009.dat"
+          },
+          {
+            "path": "parts/s/3009s01.dat",
+            "sha256": "889704b3896146872fdfd6b0f759ec00c90495d94cdd4bb1bed07875024efc47",
+            "bytes": 1670,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3009s01.dat"
+          }
+        ],
+        "sourceHash": "b28278014ce5d128147bfd1bc16a115a50b3232390e285e85488c1a349e93e9e"
+      },
+      "geometryReady": true,
+      "connectionStatus": "partial",
+      "qualified": true,
+      "allowedConnectionIds": [
+        "p/stud.dat:8:5",
+        "p/stud.dat:8:6",
+        "p/stud.dat:8:7",
+        "p/stud.dat:8:8",
+        "p/stud.dat:8:9",
+        "p/stud.dat:8:10",
+        "parts/s/3009s01.dat:8:11",
+        "parts/s/3009s01.dat:8:12",
+        "parts/s/3009s01.dat:8:13",
+        "parts/s/3009s01.dat:8:14",
+        "parts/s/3009s01.dat:8:15",
+        "parts/s/3009s01.dat:8:16"
+      ],
+      "disabledConnectionIds": [
+        "p/stud3.dat:8:0",
+        "p/stud3.dat:8:1",
+        "p/stud3.dat:8:2",
+        "p/stud3.dat:8:3",
+        "p/stud3.dat:8:4"
+      ],
+      "actualGenerationCoverage": true,
+      "attempts": [
+        {
+          "request": {
+            "module": "wall",
+            "partCount": 3,
+            "requiredPartIds": [
+              "3009"
+            ]
+          },
+          "status": "generated",
+          "reasons": [],
+          "search": {
+            "attempts": 2,
+            "attachmentApiCalls": 2,
+            "acceptedAttachments": 2,
+            "rejectedAttachments": 0,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 0,
+            "occupancyFailures": 0,
+            "designGoalFailures": 0,
+            "backtracks": 0,
+            "testedRoots": 1,
+            "exhausted": false,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.102,
+            "searchTimeMs": 317.553,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 3,
+            "finalConnectionEdges": 7,
+            "rejectionCounts": {},
+            "rejectionReasons": []
+          }
+        }
+      ],
+      "reasonCodes": [],
+      "reasons": [],
+      "witness": {
+        "status": "passed",
+        "requestRequiredPartIds": [
+          "3009"
+        ],
+        "modelId": "assembly-852c6fc1-d91c-4f61-a347-f2b5ae1c74a3",
+        "placements": 3,
+        "edges": 7,
+        "actualPartIds": [
+          "3005",
+          "3009",
+          "3666"
+        ],
+        "bomMatches": true,
+        "stepsMatch": true,
+        "currentSourceEvidencePresent": true,
+        "sourceHashes": {
+          "3005": "fe5888c2f25ab7ef2f0797af3023c2a5021fd27814173ae98c5821c33b58197a",
+          "3009": "b28278014ce5d128147bfd1bc16a115a50b3232390e285e85488c1a349e93e9e",
+          "3666": "ab49814bf016f0f507fe242a21a166d43e4bbcf6f1aff6ed2e7552d4a494534a"
+        },
+        "finalModelValidation": {
+          "checked": true,
+          "valid": true,
+          "issues": []
+        },
+        "exportReimportStatus": "VALID",
+        "validationScope": "source-interfaces-final-pose-graph-only",
+        "physicalBuildVerified": false,
+        "files": [
+          "model.json",
+          "model.ldr",
+          "bom.csv",
+          "steps.json",
+          "sources.json",
+          "reimported.json"
+        ],
+        "exportedJsonSha256": "d204dd42cecad52d1d8f849d21b04e367501b2aed8c8ced57b85fdc2d54a6906",
+        "directory": "artifacts/connector-grammar/models/3009-wall"
+      }
+    },
+    {
+      "partId": "3010",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "7871b27a3a1184031a2e162d3324f9ded39a0fe10fc43ad0daf6060a4b1ec4fd",
+        "path": "parts/3010.dat",
+        "name": "Brick  1 x  4",
+        "currentFiles": [
+          {
+            "path": "p/4-4cyli.dat",
+            "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+            "bytes": 2687,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+          },
+          {
+            "path": "p/4-4disc.dat",
+            "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+            "bytes": 1137,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4disc.dat"
+          },
+          {
+            "path": "p/4-4edge.dat",
+            "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+            "bytes": 1084,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+          },
+          {
+            "path": "p/box4t.dat",
+            "sha256": "72c7629db2b741e680ad548b2cbec631e44f75cdde206001b423ccb0f3b60c1f",
+            "bytes": 960,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Tore Eriksson [Tore_Eriksson]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box4t.dat"
+          },
+          {
+            "path": "p/box5.dat",
+            "sha256": "ccb7b8a1d36692335b10ea6aa196849afcad4b15331683ed8112a10b50977318",
+            "bytes": 963,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box5.dat"
+          },
+          {
+            "path": "p/stud.dat",
+            "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4",
+            "bytes": 698,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud.dat"
+          },
+          {
+            "path": "p/stud3.dat",
+            "sha256": "d29e9160faeaf85b2b72a098e89a81f41e0082517a82065d7b1f149b5fd2addd",
+            "bytes": 710,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud3.dat"
+          },
+          {
+            "path": "p/stug-1x4.dat",
+            "sha256": "e88852b15ca37121e12f7052a234e4a90dc99a8c6d22d45e041f47103c2fb71c",
+            "bytes": 414,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Steffen [Steffen]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug-1x4.dat"
+          },
+          {
+            "path": "p/stug3-1x3.dat",
+            "sha256": "80f86a2ea87dfabc79c3daf963a14c7757caceea6b402ac4f2178a6088de08ac",
+            "bytes": 387,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Steffen [Steffen]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug3-1x3.dat"
+          },
+          {
+            "path": "parts/3010.dat",
+            "sha256": "7871b27a3a1184031a2e162d3324f9ded39a0fe10fc43ad0daf6060a4b1ec4fd",
+            "bytes": 680,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3010.dat"
+          },
+          {
+            "path": "parts/s/3010s01.dat",
+            "sha256": "f4616eee36d2474da47fae07a5e1ca59888e580854be17a1a9220d0f88c75333",
+            "bytes": 914,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Willy Tschager [Holly-Wood]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3010s01.dat"
+          }
+        ],
+        "sourceHash": "82e67fee22b9d4b63e7b3ee556b05f9ba42bc95c80225265146efdb31c57390c"
+      },
+      "geometryReady": true,
+      "connectionStatus": "partial",
+      "qualified": true,
+      "allowedConnectionIds": [
+        "p/stud.dat:8:0",
+        "p/stud.dat:8:1",
+        "p/stud.dat:8:2",
+        "p/stud.dat:8:3",
+        "parts/s/3010s01.dat:9:7",
+        "parts/s/3010s01.dat:9:8",
+        "parts/s/3010s01.dat:9:9",
+        "parts/s/3010s01.dat:9:10"
+      ],
+      "disabledConnectionIds": [
+        "p/stud3.dat:8:4",
+        "p/stud3.dat:8:5",
+        "p/stud3.dat:8:6"
+      ],
+      "actualGenerationCoverage": true,
+      "attempts": [
+        {
+          "request": {
+            "module": "wall",
+            "partCount": 3,
+            "requiredPartIds": [
+              "3010"
+            ]
+          },
+          "status": "generated",
+          "reasons": [],
+          "search": {
+            "attempts": 2,
+            "attachmentApiCalls": 2,
+            "acceptedAttachments": 2,
+            "rejectedAttachments": 0,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 0,
+            "occupancyFailures": 0,
+            "designGoalFailures": 0,
+            "backtracks": 0,
+            "testedRoots": 1,
+            "exhausted": false,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.1,
+            "searchTimeMs": 218.201,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 3,
+            "finalConnectionEdges": 5,
+            "rejectionCounts": {},
+            "rejectionReasons": []
+          }
+        }
+      ],
+      "reasonCodes": [],
+      "reasons": [],
+      "witness": {
+        "status": "passed",
+        "requestRequiredPartIds": [
+          "3010"
+        ],
+        "modelId": "assembly-b92a501b-2e5a-4c98-94a3-517c3a0c6b54",
+        "placements": 3,
+        "edges": 5,
+        "actualPartIds": [
+          "3005",
+          "3010",
+          "3710"
+        ],
+        "bomMatches": true,
+        "stepsMatch": true,
+        "currentSourceEvidencePresent": true,
+        "sourceHashes": {
+          "3005": "fe5888c2f25ab7ef2f0797af3023c2a5021fd27814173ae98c5821c33b58197a",
+          "3010": "82e67fee22b9d4b63e7b3ee556b05f9ba42bc95c80225265146efdb31c57390c",
+          "3710": "edee320a20de764856f0321e730bff336b1c05cbf3ff8c9f2a8d4572ef6420a8"
+        },
+        "finalModelValidation": {
+          "checked": true,
+          "valid": true,
+          "issues": []
+        },
+        "exportReimportStatus": "VALID",
+        "validationScope": "source-interfaces-final-pose-graph-only",
+        "physicalBuildVerified": false,
+        "files": [
+          "model.json",
+          "model.ldr",
+          "bom.csv",
+          "steps.json",
+          "sources.json",
+          "reimported.json"
+        ],
+        "exportedJsonSha256": "b3634959045bd8f84a9f17df489dadf8cb88c3e9856effe438779bbe350e433d",
+        "directory": "artifacts/connector-grammar/models/3010-wall"
+      }
+    },
+    {
+      "partId": "3622",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "9317bcec4fbcddbd38ed3972d25ea95d685101904f3ed86c7e769a9f356245d8",
+        "path": "parts/3622.dat",
+        "name": "Brick  1 x  3",
+        "currentFiles": [
+          {
+            "path": "p/4-4cyli.dat",
+            "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+            "bytes": 2687,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+          },
+          {
+            "path": "p/4-4disc.dat",
+            "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+            "bytes": 1137,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4disc.dat"
+          },
+          {
+            "path": "p/4-4edge.dat",
+            "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+            "bytes": 1084,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+          },
+          {
+            "path": "p/box4t.dat",
+            "sha256": "72c7629db2b741e680ad548b2cbec631e44f75cdde206001b423ccb0f3b60c1f",
+            "bytes": 960,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Tore Eriksson [Tore_Eriksson]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box4t.dat"
+          },
+          {
+            "path": "p/box5.dat",
+            "sha256": "ccb7b8a1d36692335b10ea6aa196849afcad4b15331683ed8112a10b50977318",
+            "bytes": 963,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box5.dat"
+          },
+          {
+            "path": "p/stud.dat",
+            "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4",
+            "bytes": 698,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud.dat"
+          },
+          {
+            "path": "p/stud3.dat",
+            "sha256": "d29e9160faeaf85b2b72a098e89a81f41e0082517a82065d7b1f149b5fd2addd",
+            "bytes": 710,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud3.dat"
+          },
+          {
+            "path": "p/stug-1x3.dat",
+            "sha256": "f24de368545aa96580b811daa6c25e18f5bfdbaca1d4b11addcfa7cbb625f4c9",
+            "bytes": 372,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Steffen [Steffen]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug-1x3.dat"
+          },
+          {
+            "path": "p/stug3-1x2.dat",
+            "sha256": "e78926d1494fa67b984f390aa1c05d01c35eff99030209e9bbee4e15bfcc0ecb",
+            "bytes": 347,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Steffen [Steffen]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug3-1x2.dat"
+          },
+          {
+            "path": "parts/3622.dat",
+            "sha256": "9317bcec4fbcddbd38ed3972d25ea95d685101904f3ed86c7e769a9f356245d8",
+            "bytes": 511,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3622.dat"
+          },
+          {
+            "path": "parts/s/3622s01.dat",
+            "sha256": "bb4e34ea6d2c7b7f7591b6051d69fd09f18a52486c2495b27c5baed67ea616f7",
+            "bytes": 984,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Takeshi Takahashi [RainbowDolphin]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3622s01.dat"
+          }
+        ],
+        "sourceHash": "dc6961ecddbbac4341527405747cff36ce7d9d2a528da3c95808764b39312976"
+      },
+      "geometryReady": true,
+      "connectionStatus": "partial",
+      "qualified": true,
+      "allowedConnectionIds": [
+        "p/stud.dat:8:0",
+        "p/stud.dat:8:1",
+        "p/stud.dat:8:2",
+        "parts/s/3622s01.dat:8:5",
+        "parts/s/3622s01.dat:8:6",
+        "parts/s/3622s01.dat:8:7"
+      ],
+      "disabledConnectionIds": [
+        "p/stud3.dat:8:3",
+        "p/stud3.dat:8:4"
+      ],
+      "actualGenerationCoverage": true,
+      "attempts": [
+        {
+          "request": {
+            "module": "wall",
+            "partCount": 3,
+            "requiredPartIds": [
+              "3622"
+            ]
+          },
+          "status": "generated",
+          "reasons": [],
+          "search": {
+            "attempts": 2,
+            "attachmentApiCalls": 2,
+            "acceptedAttachments": 2,
+            "rejectedAttachments": 0,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 0,
+            "occupancyFailures": 0,
+            "designGoalFailures": 0,
+            "backtracks": 0,
+            "testedRoots": 1,
+            "exhausted": false,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.11,
+            "searchTimeMs": 173.498,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 3,
+            "finalConnectionEdges": 4,
+            "rejectionCounts": {},
+            "rejectionReasons": []
+          }
+        }
+      ],
+      "reasonCodes": [],
+      "reasons": [],
+      "witness": {
+        "status": "passed",
+        "requestRequiredPartIds": [
+          "3622"
+        ],
+        "modelId": "assembly-e74611c3-0228-47b8-bded-b286a4762afa",
+        "placements": 3,
+        "edges": 4,
+        "actualPartIds": [
+          "3005",
+          "3622",
+          "3623"
+        ],
+        "bomMatches": true,
+        "stepsMatch": true,
+        "currentSourceEvidencePresent": true,
+        "sourceHashes": {
+          "3005": "fe5888c2f25ab7ef2f0797af3023c2a5021fd27814173ae98c5821c33b58197a",
+          "3622": "dc6961ecddbbac4341527405747cff36ce7d9d2a528da3c95808764b39312976",
+          "3623": "d3b8c721c1f03886f766abf90831fc5f92c66fd2a045b64fefa53edda3958bd6"
+        },
+        "finalModelValidation": {
+          "checked": true,
+          "valid": true,
+          "issues": []
+        },
+        "exportReimportStatus": "VALID",
+        "validationScope": "source-interfaces-final-pose-graph-only",
+        "physicalBuildVerified": false,
+        "files": [
+          "model.json",
+          "model.ldr",
+          "bom.csv",
+          "steps.json",
+          "sources.json",
+          "reimported.json"
+        ],
+        "exportedJsonSha256": "5a0bf52485fa5fa967ead3659207eba2980bac9b400cfbeea2d6fea98adc9378",
+        "directory": "artifacts/connector-grammar/models/3622-wall"
+      }
+    },
+    {
+      "partId": "6111",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "47beeadaec767df2caa76362bdd3d6a46e7439b822e3548cc75f638a76b7ec8c",
+        "path": "parts/6111.dat",
+        "name": "Brick  1 x 10",
+        "currentFiles": [
+          {
+            "path": "p/4-4cyli.dat",
+            "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+            "bytes": 2687,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+          },
+          {
+            "path": "p/4-4disc.dat",
+            "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+            "bytes": 1137,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4disc.dat"
+          },
+          {
+            "path": "p/4-4edge.dat",
+            "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+            "bytes": 1084,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+          },
+          {
+            "path": "p/box5.dat",
+            "sha256": "ccb7b8a1d36692335b10ea6aa196849afcad4b15331683ed8112a10b50977318",
+            "bytes": 963,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box5.dat"
+          },
+          {
+            "path": "p/stud.dat",
+            "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4",
+            "bytes": 698,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud.dat"
+          },
+          {
+            "path": "p/stud3.dat",
+            "sha256": "d29e9160faeaf85b2b72a098e89a81f41e0082517a82065d7b1f149b5fd2addd",
+            "bytes": 710,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud3.dat"
+          },
+          {
+            "path": "parts/6111.dat",
+            "sha256": "47beeadaec767df2caa76362bdd3d6a46e7439b822e3548cc75f638a76b7ec8c",
+            "bytes": 1510,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/6111.dat"
+          }
+        ],
+        "sourceHash": "37a10cf670b3eef73bedd349cd6641595cb5f88e152a07691e70f8d62be8c3be"
+      },
+      "geometryReady": true,
+      "connectionStatus": "partial",
+      "qualified": true,
+      "allowedConnectionIds": [
+        "p/stud.dat:8:9",
+        "p/stud.dat:8:10",
+        "p/stud.dat:8:11",
+        "p/stud.dat:8:12",
+        "p/stud.dat:8:13",
+        "p/stud.dat:8:14",
+        "p/stud.dat:8:15",
+        "p/stud.dat:8:16",
+        "p/stud.dat:8:17",
+        "p/stud.dat:8:18",
+        "parts/6111.dat:8:19",
+        "parts/6111.dat:8:20",
+        "parts/6111.dat:8:21",
+        "parts/6111.dat:8:22",
+        "parts/6111.dat:8:23",
+        "parts/6111.dat:8:24",
+        "parts/6111.dat:8:25",
+        "parts/6111.dat:8:26",
+        "parts/6111.dat:8:27",
+        "parts/6111.dat:8:28"
+      ],
+      "disabledConnectionIds": [
+        "p/stud3.dat:8:0",
+        "p/stud3.dat:8:1",
+        "p/stud3.dat:8:2",
+        "p/stud3.dat:8:3",
+        "p/stud3.dat:8:4",
+        "p/stud3.dat:8:5",
+        "p/stud3.dat:8:6",
+        "p/stud3.dat:8:7",
+        "p/stud3.dat:8:8"
+      ],
+      "actualGenerationCoverage": true,
+      "attempts": [
+        {
+          "request": {
+            "module": "wall",
+            "partCount": 3,
+            "requiredPartIds": [
+              "6111"
+            ]
+          },
+          "status": "generated",
+          "reasons": [],
+          "search": {
+            "attempts": 2,
+            "attachmentApiCalls": 2,
+            "acceptedAttachments": 2,
+            "rejectedAttachments": 0,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 0,
+            "occupancyFailures": 0,
+            "designGoalFailures": 0,
+            "backtracks": 0,
+            "testedRoots": 1,
+            "exhausted": false,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.139,
+            "searchTimeMs": 501.766,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 3,
+            "finalConnectionEdges": 11,
+            "rejectionCounts": {},
+            "rejectionReasons": []
+          }
+        }
+      ],
+      "reasonCodes": [],
+      "reasons": [],
+      "witness": {
+        "status": "passed",
+        "requestRequiredPartIds": [
+          "6111"
+        ],
+        "modelId": "assembly-0c11f57e-eeed-4df0-8858-5b0695d9e1a7",
+        "placements": 3,
+        "edges": 11,
+        "actualPartIds": [
+          "3005",
+          "4477",
+          "6111"
+        ],
+        "bomMatches": true,
+        "stepsMatch": true,
+        "currentSourceEvidencePresent": true,
+        "sourceHashes": {
+          "3005": "fe5888c2f25ab7ef2f0797af3023c2a5021fd27814173ae98c5821c33b58197a",
+          "4477": "0c67ab2a1d811d091085273ea5ffc81cbe56a7ccfca6075096444a2a8a361261",
+          "6111": "37a10cf670b3eef73bedd349cd6641595cb5f88e152a07691e70f8d62be8c3be"
+        },
+        "finalModelValidation": {
+          "checked": true,
+          "valid": true,
+          "issues": []
+        },
+        "exportReimportStatus": "VALID",
+        "validationScope": "source-interfaces-final-pose-graph-only",
+        "physicalBuildVerified": false,
+        "files": [
+          "model.json",
+          "model.ldr",
+          "bom.csv",
+          "steps.json",
+          "sources.json",
+          "reimported.json"
+        ],
+        "exportedJsonSha256": "d5cfc41e74328b0bd10adc3c661b48dc202c5ea27c1a56453eb68ea9b9c42767",
+        "directory": "artifacts/connector-grammar/models/6111-wall"
+      }
+    },
+    {
+      "partId": "11211",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "a88c76a8936395abe5554aa2273c92271cc3c595e800a6ecfb479d2a9670f532",
+        "path": "parts/11211.dat",
+        "name": "Brick  1 x  2 with Two Studs on One Side",
+        "currentFiles": [
+          {
+            "path": "p/4-4cyli.dat",
+            "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+            "bytes": 2687,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+          },
+          {
+            "path": "p/4-4disc.dat",
+            "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+            "bytes": 1137,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4disc.dat"
+          },
+          {
+            "path": "p/4-4edge.dat",
+            "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+            "bytes": 1084,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+          },
+          {
+            "path": "p/4-4ndis.dat",
+            "sha256": "21202dc15823f4336bc2544244d0b539b76745c89f7a59ad18cdd03ad45cc543",
+            "bytes": 1219,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ndis.dat"
+          },
+          {
+            "path": "p/4-4ring2.dat",
+            "sha256": "6fb38804b1f5e9bee8c0b80caf1397b09454fc58b048dc19045b6f37c8762ab0",
+            "bytes": 1628,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring2.dat"
+          },
+          {
+            "path": "p/box4t.dat",
+            "sha256": "72c7629db2b741e680ad548b2cbec631e44f75cdde206001b423ccb0f3b60c1f",
+            "bytes": 960,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Tore Eriksson [Tore_Eriksson]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box4t.dat"
+          },
+          {
+            "path": "p/stud.dat",
+            "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4",
+            "bytes": 698,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud.dat"
+          },
+          {
+            "path": "p/stud2a.dat",
+            "sha256": "61fbed54b085a30490045309778d1e2a6d95485e6558996b12674f848028d557",
+            "bytes": 866,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud2a.dat"
+          },
+          {
+            "path": "p/stud3.dat",
+            "sha256": "d29e9160faeaf85b2b72a098e89a81f41e0082517a82065d7b1f149b5fd2addd",
+            "bytes": 710,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud3.dat"
+          },
+          {
+            "path": "p/stug-1x2.dat",
+            "sha256": "5842fa1baf6ea7f18fe4e355238cd733ff9bdbdc3d722be5cf8988f1c5fce414",
+            "bytes": 333,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Steffen [Steffen]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug-1x2.dat"
+          },
+          {
+            "path": "parts/11211.dat",
+            "sha256": "a88c76a8936395abe5554aa2273c92271cc3c595e800a6ecfb479d2a9670f532",
+            "bytes": 2443,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Magnus Forsberg [MagFors]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/11211.dat"
+          }
+        ],
+        "sourceHash": "c579a92dd057469086e00fa48eae2c21d5f6620eb118d68554a010323ce1f4c7"
+      },
+      "geometryReady": true,
+      "connectionStatus": "partial",
+      "qualified": true,
+      "allowedConnectionIds": [
+        "p/stud2a.dat:11:1",
+        "p/stud2a.dat:11:2",
+        "p/stud.dat:8:3",
+        "p/stud.dat:8:4",
+        "parts/s/3004s01.dat:8:5",
+        "parts/s/3004s01.dat:8:6"
+      ],
+      "disabledConnectionIds": [
+        "p/stud3.dat:8:0",
+        "parts/11211.dat:9:7",
+        "parts/11211.dat:9:8"
+      ],
+      "actualGenerationCoverage": true,
+      "attempts": [
+        {
+          "request": {
+            "module": "wall",
+            "partCount": 3,
+            "requiredPartIds": [
+              "11211"
+            ]
+          },
+          "status": "generated",
+          "reasons": [],
+          "search": {
+            "attempts": 2,
+            "attachmentApiCalls": 2,
+            "acceptedAttachments": 2,
+            "rejectedAttachments": 0,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 0,
+            "occupancyFailures": 0,
+            "designGoalFailures": 0,
+            "backtracks": 0,
+            "testedRoots": 1,
+            "exhausted": false,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.163,
+            "searchTimeMs": 131.463,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 3,
+            "finalConnectionEdges": 3,
+            "rejectionCounts": {},
+            "rejectionReasons": []
+          }
+        }
+      ],
+      "reasonCodes": [],
+      "reasons": [],
+      "witness": {
+        "status": "passed",
+        "requestRequiredPartIds": [
+          "11211"
+        ],
+        "modelId": "assembly-15a185e3-b755-48ab-8567-b9f60a40c5d3",
+        "placements": 3,
+        "edges": 3,
+        "actualPartIds": [
+          "11211",
+          "24299",
+          "3005"
+        ],
+        "bomMatches": true,
+        "stepsMatch": true,
+        "currentSourceEvidencePresent": true,
+        "sourceHashes": {
+          "3005": "fe5888c2f25ab7ef2f0797af3023c2a5021fd27814173ae98c5821c33b58197a",
+          "11211": "c579a92dd057469086e00fa48eae2c21d5f6620eb118d68554a010323ce1f4c7",
+          "24299": "5432b8921d1df847054c2cef2a72a7ceefe2466d55d5ab005c21d9ebf807e15d"
+        },
+        "finalModelValidation": {
+          "checked": true,
+          "valid": true,
+          "issues": []
+        },
+        "exportReimportStatus": "VALID",
+        "validationScope": "source-interfaces-final-pose-graph-only",
+        "physicalBuildVerified": false,
+        "files": [
+          "model.json",
+          "model.ldr",
+          "bom.csv",
+          "steps.json",
+          "sources.json",
+          "reimported.json"
+        ],
+        "exportedJsonSha256": "97c7b030a8314591bd04056bf267844c96b6c3f72b12122dc8252c0db01104e6",
+        "directory": "artifacts/connector-grammar/models/11211-wall"
+      }
+    },
+    {
+      "partId": "24299",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "86bdbd27d7908a3fdef8a226a0a1f6911d7637a0aec8d0e5ea8f2449c39390cf",
+        "path": "parts/24299.dat",
+        "name": "Wing  2 x  2 Left",
+        "currentFiles": [
+          {
+            "path": "p/4-4cyli.dat",
+            "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+            "bytes": 2687,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+          },
+          {
+            "path": "p/4-4disc.dat",
+            "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+            "bytes": 1137,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4disc.dat"
+          },
+          {
+            "path": "p/4-4edge.dat",
+            "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+            "bytes": 1084,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+          },
+          {
+            "path": "p/box2-5.dat",
+            "sha256": "8f297b754f87da1dbe19eec8704a5ce03a23b794ccd7cd015508e3758a206174",
+            "bytes": 609,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Steffen [Steffen]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box2-5.dat"
+          },
+          {
+            "path": "p/box2-7.dat",
+            "sha256": "e0474c5ad7fb9ff77b67883a5b1e327d028e3eb4e59921a626b4215632dd9f00",
+            "bytes": 577,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Willy Tschager [Holly-Wood]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box2-7.dat"
+          },
+          {
+            "path": "p/box5.dat",
+            "sha256": "ccb7b8a1d36692335b10ea6aa196849afcad4b15331683ed8112a10b50977318",
+            "bytes": 963,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box5.dat"
+          },
+          {
+            "path": "p/rect.dat",
+            "sha256": "ffeb2dd3d9b83c38841f18f1f74800fbba9e90c5fb6badfff2a795f08a96cb71",
+            "bytes": 654,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect.dat"
+          },
+          {
+            "path": "p/rect2p.dat",
+            "sha256": "faac2b36241a9de0c0108471e59c45734df6c79813332d9cacf97f6391886acc",
+            "bytes": 594,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Donald Sutter [technog]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect2p.dat"
+          },
+          {
+            "path": "p/rect3.dat",
+            "sha256": "07ac46908b6668d993b6de0fb001a34cd996542106b80ebc7de63317d8dde865",
+            "bytes": 605,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Mark Kennedy [mkennedy]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect3.dat"
+          },
+          {
+            "path": "p/stud.dat",
+            "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4",
+            "bytes": 698,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud.dat"
+          },
+          {
+            "path": "p/stud3.dat",
+            "sha256": "d29e9160faeaf85b2b72a098e89a81f41e0082517a82065d7b1f149b5fd2addd",
+            "bytes": 710,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud3.dat"
+          },
+          {
+            "path": "p/stug-1x2.dat",
+            "sha256": "5842fa1baf6ea7f18fe4e355238cd733ff9bdbdc3d722be5cf8988f1c5fce414",
+            "bytes": 333,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Steffen [Steffen]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug-1x2.dat"
+          },
+          {
+            "path": "parts/24299.dat",
+            "sha256": "86bdbd27d7908a3fdef8a226a0a1f6911d7637a0aec8d0e5ea8f2449c39390cf",
+            "bytes": 342,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Magnus Forsberg [MagFors]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/24299.dat"
+          },
+          {
+            "path": "parts/s/24299s01.dat",
+            "sha256": "cb11e6a99e655c47c73cd82153f7e666de0a7d43f9a8435ae54056aadcbc3621",
+            "bytes": 705,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Magnus Forsberg [MagFors]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/24299s01.dat"
+          },
+          {
+            "path": "parts/s/51739s01.dat",
+            "sha256": "8831f104c82a44011c1c74bc479f26e13ac558026d1f73df600824a9e555902a",
+            "bytes": 2422,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Magnus Forsberg [MagFors]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/51739s01.dat"
+          }
+        ],
+        "sourceHash": "5432b8921d1df847054c2cef2a72a7ceefe2466d55d5ab005c21d9ebf807e15d"
+      },
+      "geometryReady": true,
+      "connectionStatus": "partial",
+      "qualified": true,
+      "allowedConnectionIds": [
+        "p/stud.dat:8:0",
+        "p/stud.dat:8:1",
+        "parts/24299.dat:8:3",
+        "parts/24299.dat:8:4"
+      ],
+      "disabledConnectionIds": [
+        "p/stud3.dat:8:2"
+      ],
+      "actualGenerationCoverage": true,
+      "attempts": [
+        {
+          "request": {
+            "module": "platform",
+            "partCount": 3,
+            "requiredPartIds": [
+              "24299"
+            ]
+          },
+          "status": "generated",
+          "reasons": [],
+          "search": {
+            "attempts": 2,
+            "attachmentApiCalls": 2,
+            "acceptedAttachments": 2,
+            "rejectedAttachments": 0,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 0,
+            "occupancyFailures": 0,
+            "designGoalFailures": 0,
+            "backtracks": 0,
+            "testedRoots": 1,
+            "exhausted": false,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.068,
+            "searchTimeMs": 92.579,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 3,
+            "finalConnectionEdges": 2,
+            "rejectionCounts": {},
+            "rejectionReasons": []
+          }
+        }
+      ],
+      "reasonCodes": [],
+      "reasons": [],
+      "witness": {
+        "status": "passed",
+        "requestRequiredPartIds": [
+          "24299"
+        ],
+        "modelId": "assembly-5fa16b97-a2e9-4dce-87a1-cef10b16d9dc",
+        "placements": 3,
+        "edges": 2,
+        "actualPartIds": [
+          "24299",
+          "3024"
+        ],
+        "bomMatches": true,
+        "stepsMatch": true,
+        "currentSourceEvidencePresent": true,
+        "sourceHashes": {
+          "3024": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+          "24299": "5432b8921d1df847054c2cef2a72a7ceefe2466d55d5ab005c21d9ebf807e15d"
+        },
+        "finalModelValidation": {
+          "checked": true,
+          "valid": true,
+          "issues": []
+        },
+        "exportReimportStatus": "VALID",
+        "validationScope": "source-interfaces-final-pose-graph-only",
+        "physicalBuildVerified": false,
+        "files": [
+          "model.json",
+          "model.ldr",
+          "bom.csv",
+          "steps.json",
+          "sources.json",
+          "reimported.json"
+        ],
+        "exportedJsonSha256": "cc275aa6b9800df0a4ab64c619dfab7eed2a7ae52b1f15014ce126c26f55ad81",
+        "directory": "artifacts/connector-grammar/models/24299-platform"
+      }
+    },
+    {
+      "partId": "24307",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "7b02403981b161c31a70115b9aa5622745520e6995ac974572663229bf9a72db",
+        "path": "parts/24307.dat",
+        "name": "Wing  2 x  2 Right",
+        "currentFiles": [
+          {
+            "path": "p/4-4cyli.dat",
+            "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+            "bytes": 2687,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+          },
+          {
+            "path": "p/4-4disc.dat",
+            "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+            "bytes": 1137,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4disc.dat"
+          },
+          {
+            "path": "p/4-4edge.dat",
+            "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+            "bytes": 1084,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+          },
+          {
+            "path": "p/box2-5.dat",
+            "sha256": "8f297b754f87da1dbe19eec8704a5ce03a23b794ccd7cd015508e3758a206174",
+            "bytes": 609,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Steffen [Steffen]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box2-5.dat"
+          },
+          {
+            "path": "p/box2-7.dat",
+            "sha256": "e0474c5ad7fb9ff77b67883a5b1e327d028e3eb4e59921a626b4215632dd9f00",
+            "bytes": 577,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Willy Tschager [Holly-Wood]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box2-7.dat"
+          },
+          {
+            "path": "p/box5.dat",
+            "sha256": "ccb7b8a1d36692335b10ea6aa196849afcad4b15331683ed8112a10b50977318",
+            "bytes": 963,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box5.dat"
+          },
+          {
+            "path": "p/rect.dat",
+            "sha256": "ffeb2dd3d9b83c38841f18f1f74800fbba9e90c5fb6badfff2a795f08a96cb71",
+            "bytes": 654,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect.dat"
+          },
+          {
+            "path": "p/rect2p.dat",
+            "sha256": "faac2b36241a9de0c0108471e59c45734df6c79813332d9cacf97f6391886acc",
+            "bytes": 594,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Donald Sutter [technog]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect2p.dat"
+          },
+          {
+            "path": "p/rect3.dat",
+            "sha256": "07ac46908b6668d993b6de0fb001a34cd996542106b80ebc7de63317d8dde865",
+            "bytes": 605,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Mark Kennedy [mkennedy]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect3.dat"
+          },
+          {
+            "path": "p/stud.dat",
+            "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4",
+            "bytes": 698,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud.dat"
+          },
+          {
+            "path": "p/stud3.dat",
+            "sha256": "d29e9160faeaf85b2b72a098e89a81f41e0082517a82065d7b1f149b5fd2addd",
+            "bytes": 710,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud3.dat"
+          },
+          {
+            "path": "p/stug-1x2.dat",
+            "sha256": "5842fa1baf6ea7f18fe4e355238cd733ff9bdbdc3d722be5cf8988f1c5fce414",
+            "bytes": 333,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Steffen [Steffen]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug-1x2.dat"
+          },
+          {
+            "path": "parts/24307.dat",
+            "sha256": "7b02403981b161c31a70115b9aa5622745520e6995ac974572663229bf9a72db",
+            "bytes": 343,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Magnus Forsberg [MagFors]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/24307.dat"
+          },
+          {
+            "path": "parts/s/24299s01.dat",
+            "sha256": "cb11e6a99e655c47c73cd82153f7e666de0a7d43f9a8435ae54056aadcbc3621",
+            "bytes": 705,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Magnus Forsberg [MagFors]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/24299s01.dat"
+          },
+          {
+            "path": "parts/s/51739s01.dat",
+            "sha256": "8831f104c82a44011c1c74bc479f26e13ac558026d1f73df600824a9e555902a",
+            "bytes": 2422,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Magnus Forsberg [MagFors]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/51739s01.dat"
+          }
+        ],
+        "sourceHash": "4ea48a0d4fa8ff327fd42608fafe8206ec33f972ebc71b3a7aa0ba214ffcbad4"
+      },
+      "geometryReady": true,
+      "connectionStatus": "partial",
+      "qualified": true,
+      "allowedConnectionIds": [
+        "p/stud.dat:8:0",
+        "p/stud.dat:8:1",
+        "parts/24307.dat:8:3",
+        "parts/24307.dat:8:4"
+      ],
+      "disabledConnectionIds": [
+        "p/stud3.dat:8:2"
+      ],
+      "actualGenerationCoverage": true,
+      "attempts": [
+        {
+          "request": {
+            "module": "platform",
+            "partCount": 3,
+            "requiredPartIds": [
+              "24307"
+            ]
+          },
+          "status": "generated",
+          "reasons": [],
+          "search": {
+            "attempts": 2,
+            "attachmentApiCalls": 2,
+            "acceptedAttachments": 2,
+            "rejectedAttachments": 0,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 0,
+            "occupancyFailures": 0,
+            "designGoalFailures": 0,
+            "backtracks": 0,
+            "testedRoots": 1,
+            "exhausted": false,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.094,
+            "searchTimeMs": 88.2,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 3,
+            "finalConnectionEdges": 2,
+            "rejectionCounts": {},
+            "rejectionReasons": []
+          }
+        }
+      ],
+      "reasonCodes": [],
+      "reasons": [],
+      "witness": {
+        "status": "passed",
+        "requestRequiredPartIds": [
+          "24307"
+        ],
+        "modelId": "assembly-7b6ae57e-2ce2-4e63-9ea4-21966f5259e7",
+        "placements": 3,
+        "edges": 2,
+        "actualPartIds": [
+          "24307",
+          "3024"
+        ],
+        "bomMatches": true,
+        "stepsMatch": true,
+        "currentSourceEvidencePresent": true,
+        "sourceHashes": {
+          "3024": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+          "24307": "4ea48a0d4fa8ff327fd42608fafe8206ec33f972ebc71b3a7aa0ba214ffcbad4"
+        },
+        "finalModelValidation": {
+          "checked": true,
+          "valid": true,
+          "issues": []
+        },
+        "exportReimportStatus": "VALID",
+        "validationScope": "source-interfaces-final-pose-graph-only",
+        "physicalBuildVerified": false,
+        "files": [
+          "model.json",
+          "model.ldr",
+          "bom.csv",
+          "steps.json",
+          "sources.json",
+          "reimported.json"
+        ],
+        "exportedJsonSha256": "de38b01db1e849198fc66c98fb1f3a265293a0c93d5bdf0f8642bf93e1c309e2",
+        "directory": "artifacts/connector-grammar/models/24307-platform"
+      }
+    },
+    {
+      "partId": "85984",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "4ec471415207722114f48abb384626d3dbda59796803cafc7feaf824ed88d426",
+        "path": "parts/85984.dat",
+        "name": "Slope Brick 31  1 x  2 x  0.667",
+        "currentFiles": [
+          {
+            "path": "p/4-4cyli.dat",
+            "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+            "bytes": 2687,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+          },
+          {
+            "path": "p/4-4cyls.dat",
+            "sha256": "eb26a554261899f82fda150ee70827a010b7d29206b5b577b2ee5831851d8f29",
+            "bytes": 2643,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Donald Sutter [technog]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyls.dat"
+          },
+          {
+            "path": "p/4-4disc.dat",
+            "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+            "bytes": 1137,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4disc.dat"
+          },
+          {
+            "path": "p/4-4edge.dat",
+            "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+            "bytes": 1084,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+          },
+          {
+            "path": "p/box4.dat",
+            "sha256": "2cbfcf075ef5c87c6a5f543f837972a78d43274ac7771b92229b5fe5da797c1e",
+            "bytes": 948,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box4.dat"
+          },
+          {
+            "path": "p/rect.dat",
+            "sha256": "ffeb2dd3d9b83c38841f18f1f74800fbba9e90c5fb6badfff2a795f08a96cb71",
+            "bytes": 654,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect.dat"
+          },
+          {
+            "path": "p/rect3.dat",
+            "sha256": "07ac46908b6668d993b6de0fb001a34cd996542106b80ebc7de63317d8dde865",
+            "bytes": 605,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Mark Kennedy [mkennedy]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect3.dat"
+          },
+          {
+            "path": "p/stud3a.dat",
+            "sha256": "91b1f54ed55b2f57dd73225da3198b5198e31f7587a5e8b7d3351b1478c8881c",
+            "bytes": 603,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud3a.dat"
+          },
+          {
+            "path": "parts/85984.dat",
+            "sha256": "4ec471415207722114f48abb384626d3dbda59796803cafc7feaf824ed88d426",
+            "bytes": 890,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Magnus Forsberg [MagFors]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/85984.dat"
+          },
+          {
+            "path": "parts/s/85984s01.dat",
+            "sha256": "be8c8a230e87f02663d9a985895d1342fe5246523609296e3d64862895bb8721",
+            "bytes": 5162,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Magnus Forsberg [MagFors]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/85984s01.dat"
+          }
+        ],
+        "sourceHash": "dc1a6e803e5ddf15e7df46f15951cc2b271cd92c146d6d2beb2f8313049e2157"
+      },
+      "geometryReady": true,
+      "connectionStatus": "ready",
+      "qualified": true,
+      "allowedConnectionIds": [
+        "parts/s/85984s01.dat:8:0",
+        "parts/s/85984s01.dat:8:1"
+      ],
+      "disabledConnectionIds": [],
+      "actualGenerationCoverage": false,
+      "attempts": [
+        {
+          "request": {
+            "module": "wall",
+            "partCount": 3,
+            "requiredPartIds": [
+              "85984"
+            ]
+          },
+          "status": "blocked",
+          "reasons": [
+            "合法装配搜索已达到预算，未移动或改造真实零件强行完成。",
+            "design-goal: The source-solved pose does not satisfy the requested module footprint/orientation."
+          ],
+          "search": {
+            "attempts": 439,
+            "attachmentApiCalls": 120,
+            "acceptedAttachments": 120,
+            "rejectedAttachments": 319,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 0,
+            "occupancyFailures": 0,
+            "designGoalFailures": 319,
+            "backtracks": 120,
+            "testedRoots": 4,
+            "exhausted": true,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.073,
+            "searchTimeMs": 5538.51,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 0,
+            "finalConnectionEdges": 0,
+            "rejectionCounts": {
+              "design-goal": 319
+            },
+            "rejectionReasons": [
+              {
+                "code": "design-goal",
+                "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+                "count": 319
+              }
+            ]
+          }
+        },
+        {
+          "request": {
+            "module": "simple-chassis",
+            "partCount": 3,
+            "requiredPartIds": [
+              "85984"
+            ]
+          },
+          "status": "blocked",
+          "reasons": [
+            "合法装配搜索已达到预算，未移动或改造真实零件强行完成。",
+            "native-plastic-collision: root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+            "no-collision-free-transform: Every permitted source-derived placement was rejected by native collision checks.",
+            "design-goal: The source-solved pose does not satisfy the requested module footprint/orientation.",
+            "endpoint-occupied: An additional physical mating endpoint is already occupied; source aliases cannot bypass occupancy."
+          ],
+          "search": {
+            "attempts": 1339,
+            "attachmentApiCalls": 824,
+            "acceptedAttachments": 28,
+            "rejectedAttachments": 1311,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 796,
+            "occupancyFailures": 136,
+            "designGoalFailures": 515,
+            "backtracks": 28,
+            "testedRoots": 1,
+            "exhausted": true,
+            "timeBudgetExceeded": true,
+            "catalogTimeMs": 0.051,
+            "searchTimeMs": 10241.566,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 0,
+            "finalConnectionEdges": 0,
+            "rejectionCounts": {
+              "native-plastic-collision": 660,
+              "no-collision-free-transform": 796,
+              "design-goal": 515,
+              "endpoint-occupied": 136
+            },
+            "rejectionReasons": [
+              {
+                "code": "native-plastic-collision",
+                "reason": "root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+                "count": 660
+              },
+              {
+                "code": "no-collision-free-transform",
+                "reason": "Every permitted source-derived placement was rejected by native collision checks.",
+                "count": 796
+              },
+              {
+                "code": "design-goal",
+                "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+                "count": 515
+              },
+              {
+                "code": "endpoint-occupied",
+                "reason": "An additional physical mating endpoint is already occupied; source aliases cannot bypass occupancy.",
+                "count": 136
+              }
+            ]
+          }
+        },
+        {
+          "request": {
+            "module": "basic-snot",
+            "partCount": 3,
+            "requiredPartIds": [
+              "85984"
+            ]
+          },
+          "status": "blocked",
+          "reasons": [
+            "合法装配搜索已达到预算，未移动或改造真实零件强行完成。",
+            "design-goal: The source-solved pose does not satisfy the requested module footprint/orientation.",
+            "native-plastic-collision: root: Source-derived closed solids overlap beyond the numerical surface tolerance, including inside any connection zone.",
+            "no-collision-free-transform: Every permitted source-derived placement was rejected by native collision checks.",
+            "native-plastic-collision: root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption."
+          ],
+          "search": {
+            "attempts": 967,
+            "attachmentApiCalls": 130,
+            "acceptedAttachments": 120,
+            "rejectedAttachments": 847,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 10,
+            "occupancyFailures": 0,
+            "designGoalFailures": 837,
+            "backtracks": 120,
+            "testedRoots": 6,
+            "exhausted": true,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.094,
+            "searchTimeMs": 5048.875,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 0,
+            "finalConnectionEdges": 0,
+            "rejectionCounts": {
+              "design-goal": 837,
+              "native-plastic-collision": 10,
+              "no-collision-free-transform": 10
+            },
+            "rejectionReasons": [
+              {
+                "code": "design-goal",
+                "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+                "count": 837
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "root: Source-derived closed solids overlap beyond the numerical surface tolerance, including inside any connection zone.",
+                "count": 8
+              },
+              {
+                "code": "no-collision-free-transform",
+                "reason": "Every permitted source-derived placement was rejected by native collision checks.",
+                "count": 10
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+                "count": 2
+              }
+            ]
+          }
+        },
+        {
+          "request": {
+            "module": "simple-roof",
+            "partCount": 3,
+            "requiredPartIds": [
+              "85984"
+            ]
+          },
+          "status": "blocked",
+          "reasons": [
+            "合法装配搜索已达到预算，未移动或改造真实零件强行完成。",
+            "design-goal: The source-solved pose does not satisfy the requested module footprint/orientation.",
+            "native-plastic-collision: root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+            "no-collision-free-transform: Every permitted source-derived placement was rejected by native collision checks."
+          ],
+          "search": {
+            "attempts": 1800,
+            "attachmentApiCalls": 42,
+            "acceptedAttachments": 38,
+            "rejectedAttachments": 1762,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 4,
+            "occupancyFailures": 0,
+            "designGoalFailures": 1758,
+            "backtracks": 38,
+            "testedRoots": 8,
+            "exhausted": true,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.074,
+            "searchTimeMs": 3543.458,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 0,
+            "finalConnectionEdges": 0,
+            "rejectionCounts": {
+              "design-goal": 1758,
+              "native-plastic-collision": 4,
+              "no-collision-free-transform": 4
+            },
+            "rejectionReasons": [
+              {
+                "code": "design-goal",
+                "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+                "count": 1758
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+                "count": 4
+              },
+              {
+                "code": "no-collision-free-transform",
+                "reason": "Every permitted source-derived placement was rejected by native collision checks.",
+                "count": 4
+              }
+            ]
+          }
+        },
+        {
+          "request": {
+            "module": "platform",
+            "partCount": 3,
+            "requiredPartIds": [
+              "85984"
+            ]
+          },
+          "status": "blocked",
+          "reasons": [
+            "合法装配搜索已达到预算，未移动或改造真实零件强行完成。",
+            "design-goal: The source-solved pose does not satisfy the requested module footprint/orientation."
+          ],
+          "search": {
+            "attempts": 148,
+            "attachmentApiCalls": 120,
+            "acceptedAttachments": 120,
+            "rejectedAttachments": 28,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 0,
+            "occupancyFailures": 0,
+            "designGoalFailures": 28,
+            "backtracks": 120,
+            "testedRoots": 6,
+            "exhausted": true,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.071,
+            "searchTimeMs": 7341.108,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 0,
+            "finalConnectionEdges": 0,
+            "rejectionCounts": {
+              "design-goal": 28
+            },
+            "rejectionReasons": [
+              {
+                "code": "design-goal",
+                "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+                "count": 28
+              }
+            ]
+          }
+        }
+      ],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    {
+      "partId": "17454",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "edc6319e09794aa06c75e60479545674e233e715f9f4c96b19f2d16cf8fccf57",
+        "path": "parts/17454.dat",
+        "name": "Windscreen  2 x  6 x  2 Vertical Frame",
+        "currentFiles": [
+          {
+            "path": "p/1-4chrd.dat",
+            "sha256": "ccba3a97b5cc358754e476b78b4ce61cce5f404cd15e37471b73df3e81784aec",
+            "bytes": 743,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Max Martin Richter [MMR1988]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4chrd.dat"
+          },
+          {
+            "path": "p/1-4cyli.dat",
+            "sha256": "5a7168952a5a3570327873b9a5802fa7b3be40967ab78c03b6a2bfd4419a1f10",
+            "bytes": 1044,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4cyli.dat"
+          },
+          {
+            "path": "p/1-4cylo.dat",
+            "sha256": "792a01362608c3f385dd7f01a1bd7d19cf9ed8a40f793266345cc86d1d98f3af",
+            "bytes": 388,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Max Martin Richter [MMR1988]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4cylo.dat"
+          },
+          {
+            "path": "p/1-4edge.dat",
+            "sha256": "9ce2de7e67bbac575d52cfdc771b9d00856efc9b88002d97db8e665e50f4d467",
+            "bytes": 545,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4edge.dat"
+          },
+          {
+            "path": "p/1-4ndis.dat",
+            "sha256": "ff6685838636e7ab6152356d8f09e4f00a38af0d878b0881423f5c45fb868f0c",
+            "bytes": 692,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4ndis.dat"
+          },
+          {
+            "path": "p/4-4cyli.dat",
+            "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+            "bytes": 2687,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+          },
+          {
+            "path": "p/4-4disc.dat",
+            "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+            "bytes": 1137,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4disc.dat"
+          },
+          {
+            "path": "p/4-4edge.dat",
+            "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+            "bytes": 1084,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+          },
+          {
+            "path": "p/4-4ring2.dat",
+            "sha256": "6fb38804b1f5e9bee8c0b80caf1397b09454fc58b048dc19045b6f37c8762ab0",
+            "bytes": 1628,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring2.dat"
+          },
+          {
+            "path": "p/rect.dat",
+            "sha256": "ffeb2dd3d9b83c38841f18f1f74800fbba9e90c5fb6badfff2a795f08a96cb71",
+            "bytes": 654,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect.dat"
+          },
+          {
+            "path": "p/rect1.dat",
+            "sha256": "48fdcd3181587b4bdc89d356a5aee21268688f3f2fcdd4d6f5c1a3d49b1a1ceb",
+            "bytes": 556,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Chris Dee [cwdee]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect1.dat"
+          },
+          {
+            "path": "p/rect2a.dat",
+            "sha256": "6d75ffb88e705a35f34e095ec0848a7bb70b577a376fdae05804da214b0d6369",
+            "bytes": 586,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Chris Dee [cwdee]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect2a.dat"
+          },
+          {
+            "path": "p/rect2p.dat",
+            "sha256": "faac2b36241a9de0c0108471e59c45734df6c79813332d9cacf97f6391886acc",
+            "bytes": 594,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Donald Sutter [technog]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect2p.dat"
+          },
+          {
+            "path": "p/rect3.dat",
+            "sha256": "07ac46908b6668d993b6de0fb001a34cd996542106b80ebc7de63317d8dde865",
+            "bytes": 605,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Mark Kennedy [mkennedy]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect3.dat"
+          },
+          {
+            "path": "p/stud2.dat",
+            "sha256": "5ed3702c7d7000bfac2906f12b74ae312c59194a8e3b504952820c826b51c810",
+            "bytes": 930,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud2.dat"
+          },
+          {
+            "path": "p/stud3.dat",
+            "sha256": "d29e9160faeaf85b2b72a098e89a81f41e0082517a82065d7b1f149b5fd2addd",
+            "bytes": 710,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud3.dat"
+          },
+          {
+            "path": "p/stug2-4x1.dat",
+            "sha256": "179d252971d76f12196c7c2c3b6f89bb6c7eab21d9df9625f44a8064e49e4996",
+            "bytes": 424,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Steffen [Steffen]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug2-4x1.dat"
+          },
+          {
+            "path": "p/stug3-1x3.dat",
+            "sha256": "80f86a2ea87dfabc79c3daf963a14c7757caceea6b402ac4f2178a6088de08ac",
+            "bytes": 387,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Steffen [Steffen]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug3-1x3.dat"
+          },
+          {
+            "path": "parts/17454.dat",
+            "sha256": "edc6319e09794aa06c75e60479545674e233e715f9f4c96b19f2d16cf8fccf57",
+            "bytes": 2601,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Philippe Hurbain [Philo]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/17454.dat"
+          },
+          {
+            "path": "parts/s/17454s01.dat",
+            "sha256": "99f314df7c1c757e80a30ef5f842c6fdc4f82ed9299142dd778e5ec193cd2f2e",
+            "bytes": 14483,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Philippe Hurbain [Philo]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/17454s01.dat"
+          }
+        ],
+        "sourceHash": "9d5af558e7c31f79d86181a5d8c8c9578dca1e704a672acd8f40b681492408c4"
+      },
+      "geometryReady": true,
+      "connectionStatus": "partial",
+      "qualified": true,
+      "allowedConnectionIds": [
+        "p/stud2.dat:9:0",
+        "p/stud2.dat:9:2",
+        "p/stud2.dat:9:4",
+        "p/stud2.dat:9:6",
+        "p/stud2.dat:9:8",
+        "p/stud2.dat:9:10"
+      ],
+      "disabledConnectionIds": [
+        "p/stud2.dat:10:1",
+        "p/stud2.dat:10:3",
+        "p/stud2.dat:10:5",
+        "p/stud2.dat:10:7",
+        "p/stud2.dat:10:9",
+        "p/stud2.dat:10:11",
+        "p/stud3.dat:8:12",
+        "p/stud3.dat:8:13",
+        "p/stud3.dat:8:14"
+      ],
+      "actualGenerationCoverage": false,
+      "attempts": [
+        {
+          "request": {
+            "module": "wall",
+            "partCount": 3,
+            "requiredPartIds": [
+              "17454"
+            ]
+          },
+          "status": "blocked",
+          "reasons": [
+            "合法装配搜索已达到预算，未移动或改造真实零件强行完成。",
+            "design-goal: The source-solved pose does not satisfy the requested module footprint/orientation.",
+            "native-plastic-collision: root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+            "no-collision-free-transform: Every permitted source-derived placement was rejected by native collision checks."
+          ],
+          "search": {
+            "attempts": 226,
+            "attachmentApiCalls": 122,
+            "acceptedAttachments": 114,
+            "rejectedAttachments": 112,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 8,
+            "occupancyFailures": 0,
+            "designGoalFailures": 104,
+            "backtracks": 114,
+            "testedRoots": 2,
+            "exhausted": true,
+            "timeBudgetExceeded": true,
+            "catalogTimeMs": 0.094,
+            "searchTimeMs": 10032.865,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 0,
+            "finalConnectionEdges": 0,
+            "rejectionCounts": {
+              "design-goal": 104,
+              "native-plastic-collision": 8,
+              "no-collision-free-transform": 8
+            },
+            "rejectionReasons": [
+              {
+                "code": "design-goal",
+                "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+                "count": 104
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+                "count": 8
+              },
+              {
+                "code": "no-collision-free-transform",
+                "reason": "Every permitted source-derived placement was rejected by native collision checks.",
+                "count": 8
+              }
+            ]
+          }
+        },
+        {
+          "request": {
+            "module": "simple-chassis",
+            "partCount": 3,
+            "requiredPartIds": [
+              "17454"
+            ]
+          },
+          "status": "blocked",
+          "reasons": [
+            "合法装配搜索已达到预算，未移动或改造真实零件强行完成。",
+            "design-goal: The source-solved pose does not satisfy the requested module footprint/orientation.",
+            "native-plastic-collision: root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+            "no-collision-free-transform: Every permitted source-derived placement was rejected by native collision checks."
+          ],
+          "search": {
+            "attempts": 169,
+            "attachmentApiCalls": 55,
+            "acceptedAttachments": 51,
+            "rejectedAttachments": 118,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 4,
+            "occupancyFailures": 0,
+            "designGoalFailures": 114,
+            "backtracks": 51,
+            "testedRoots": 1,
+            "exhausted": true,
+            "timeBudgetExceeded": true,
+            "catalogTimeMs": 0.091,
+            "searchTimeMs": 10116.42,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 0,
+            "finalConnectionEdges": 0,
+            "rejectionCounts": {
+              "design-goal": 114,
+              "native-plastic-collision": 4,
+              "no-collision-free-transform": 4
+            },
+            "rejectionReasons": [
+              {
+                "code": "design-goal",
+                "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+                "count": 114
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+                "count": 4
+              },
+              {
+                "code": "no-collision-free-transform",
+                "reason": "Every permitted source-derived placement was rejected by native collision checks.",
+                "count": 4
+              }
+            ]
+          }
+        },
+        {
+          "request": {
+            "module": "basic-snot",
+            "partCount": 3,
+            "requiredPartIds": [
+              "17454"
+            ]
+          },
+          "status": "blocked",
+          "reasons": [
+            "合法装配搜索已达到预算，未移动或改造真实零件强行完成。",
+            "design-goal: The source-solved pose does not satisfy the requested module footprint/orientation.",
+            "native-plastic-collision: root: Source-derived closed solids overlap beyond the numerical surface tolerance, including inside any connection zone.",
+            "no-collision-free-transform: Every permitted source-derived placement was rejected by native collision checks.",
+            "native-plastic-collision: root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption."
+          ],
+          "search": {
+            "attempts": 967,
+            "attachmentApiCalls": 130,
+            "acceptedAttachments": 120,
+            "rejectedAttachments": 847,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 10,
+            "occupancyFailures": 0,
+            "designGoalFailures": 837,
+            "backtracks": 120,
+            "testedRoots": 6,
+            "exhausted": true,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.091,
+            "searchTimeMs": 374.982,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 0,
+            "finalConnectionEdges": 0,
+            "rejectionCounts": {
+              "design-goal": 837,
+              "native-plastic-collision": 10,
+              "no-collision-free-transform": 10
+            },
+            "rejectionReasons": [
+              {
+                "code": "design-goal",
+                "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+                "count": 837
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "root: Source-derived closed solids overlap beyond the numerical surface tolerance, including inside any connection zone.",
+                "count": 8
+              },
+              {
+                "code": "no-collision-free-transform",
+                "reason": "Every permitted source-derived placement was rejected by native collision checks.",
+                "count": 10
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+                "count": 2
+              }
+            ]
+          }
+        },
+        {
+          "request": {
+            "module": "simple-roof",
+            "partCount": 3,
+            "requiredPartIds": [
+              "17454"
+            ]
+          },
+          "status": "blocked",
+          "reasons": [
+            "合法装配搜索已达到预算，未移动或改造真实零件强行完成。",
+            "design-goal: The source-solved pose does not satisfy the requested module footprint/orientation.",
+            "native-plastic-collision: root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+            "no-collision-free-transform: Every permitted source-derived placement was rejected by native collision checks."
+          ],
+          "search": {
+            "attempts": 1800,
+            "attachmentApiCalls": 10,
+            "acceptedAttachments": 5,
+            "rejectedAttachments": 1795,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 5,
+            "occupancyFailures": 0,
+            "designGoalFailures": 1790,
+            "backtracks": 5,
+            "testedRoots": 2,
+            "exhausted": true,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.074,
+            "searchTimeMs": 2326.44,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 0,
+            "finalConnectionEdges": 0,
+            "rejectionCounts": {
+              "design-goal": 1790,
+              "native-plastic-collision": 5,
+              "no-collision-free-transform": 5
+            },
+            "rejectionReasons": [
+              {
+                "code": "design-goal",
+                "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+                "count": 1790
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+                "count": 5
+              },
+              {
+                "code": "no-collision-free-transform",
+                "reason": "Every permitted source-derived placement was rejected by native collision checks.",
+                "count": 5
+              }
+            ]
+          }
+        },
+        {
+          "request": {
+            "module": "platform",
+            "partCount": 3,
+            "requiredPartIds": [
+              "17454"
+            ]
+          },
+          "status": "blocked",
+          "reasons": [
+            "合法装配搜索已达到预算，未移动或改造真实零件强行完成。",
+            "design-goal: The source-solved pose does not satisfy the requested module footprint/orientation.",
+            "native-plastic-collision: root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+            "no-collision-free-transform: Every permitted source-derived placement was rejected by native collision checks.",
+            "native-plastic-collision: root: Source-derived closed solids overlap beyond the numerical surface tolerance, including inside any connection zone."
+          ],
+          "search": {
+            "attempts": 271,
+            "attachmentApiCalls": 130,
+            "acceptedAttachments": 120,
+            "rejectedAttachments": 151,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 10,
+            "occupancyFailures": 0,
+            "designGoalFailures": 141,
+            "backtracks": 120,
+            "testedRoots": 1,
+            "exhausted": true,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.118,
+            "searchTimeMs": 9225.529,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 0,
+            "finalConnectionEdges": 0,
+            "rejectionCounts": {
+              "design-goal": 141,
+              "native-plastic-collision": 10,
+              "no-collision-free-transform": 10
+            },
+            "rejectionReasons": [
+              {
+                "code": "design-goal",
+                "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+                "count": 141
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+                "count": 8
+              },
+              {
+                "code": "no-collision-free-transform",
+                "reason": "Every permitted source-derived placement was rejected by native collision checks.",
+                "count": 10
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "root: Source-derived closed solids overlap beyond the numerical surface tolerance, including inside any connection zone.",
+                "count": 2
+              }
+            ]
+          }
+        }
+      ],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    {
+      "partId": "52038",
+      "candidateKind": "existing-source-grammar-qualification",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "eda971181efe2daa6e2ef85b515b8568dc13da73d7a305d300aeaaf0857232cd",
+        "path": "parts/52038.dat",
+        "name": "Bracket  2 x  4 x  0.667 with Front Studs and Shallow Arches",
+        "currentFiles": [
+          {
+            "path": "p/4-4cyli.dat",
+            "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+            "bytes": 2687,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+          },
+          {
+            "path": "p/4-4disc.dat",
+            "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+            "bytes": 1137,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4disc.dat"
+          },
+          {
+            "path": "p/4-4edge.dat",
+            "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+            "bytes": 1084,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+          },
+          {
+            "path": "p/4-4ring2.dat",
+            "sha256": "6fb38804b1f5e9bee8c0b80caf1397b09454fc58b048dc19045b6f37c8762ab0",
+            "bytes": 1628,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring2.dat"
+          },
+          {
+            "path": "p/box3-3.dat",
+            "sha256": "41b7873e9102a898c6d89c22fc2b7e733ca1afb6bd0a4b5b5a9497b13a5a86e1",
+            "bytes": 709,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Mark Kennedy [mkennedy]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box3-3.dat"
+          },
+          {
+            "path": "p/box5.dat",
+            "sha256": "ccb7b8a1d36692335b10ea6aa196849afcad4b15331683ed8112a10b50977318",
+            "bytes": 963,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box5.dat"
+          },
+          {
+            "path": "p/rect.dat",
+            "sha256": "ffeb2dd3d9b83c38841f18f1f74800fbba9e90c5fb6badfff2a795f08a96cb71",
+            "bytes": 654,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect.dat"
+          },
+          {
+            "path": "p/rect1.dat",
+            "sha256": "48fdcd3181587b4bdc89d356a5aee21268688f3f2fcdd4d6f5c1a3d49b1a1ceb",
+            "bytes": 556,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Chris Dee [cwdee]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect1.dat"
+          },
+          {
+            "path": "p/rect2a.dat",
+            "sha256": "6d75ffb88e705a35f34e095ec0848a7bb70b577a376fdae05804da214b0d6369",
+            "bytes": 586,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Chris Dee [cwdee]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect2a.dat"
+          },
+          {
+            "path": "p/rect3.dat",
+            "sha256": "07ac46908b6668d993b6de0fb001a34cd996542106b80ebc7de63317d8dde865",
+            "bytes": 605,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Mark Kennedy [mkennedy]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect3.dat"
+          },
+          {
+            "path": "p/stud.dat",
+            "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4",
+            "bytes": 698,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud.dat"
+          },
+          {
+            "path": "p/stud2.dat",
+            "sha256": "5ed3702c7d7000bfac2906f12b74ae312c59194a8e3b504952820c826b51c810",
+            "bytes": 930,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud2.dat"
+          },
+          {
+            "path": "p/stud3.dat",
+            "sha256": "d29e9160faeaf85b2b72a098e89a81f41e0082517a82065d7b1f149b5fd2addd",
+            "bytes": 710,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud3.dat"
+          },
+          {
+            "path": "p/stug-1x2.dat",
+            "sha256": "5842fa1baf6ea7f18fe4e355238cd733ff9bdbdc3d722be5cf8988f1c5fce414",
+            "bytes": 333,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Steffen [Steffen]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug-1x2.dat"
+          },
+          {
+            "path": "p/stug2-1x2.dat",
+            "sha256": "9cd034fe99c6efd6e158c73a8a95d7b0e6ff4f1671a7ee22e2323c74a43b7f1e",
+            "bytes": 341,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "Steffen [Steffen]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug2-1x2.dat"
+          },
+          {
+            "path": "parts/52038.dat",
+            "sha256": "eda971181efe2daa6e2ef85b515b8568dc13da73d7a305d300aeaaf0857232cd",
+            "bytes": 6379,
+            "license": "Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt",
+            "author": "Thomas Burger [grapeape]",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/52038.dat"
+          }
+        ],
+        "sourceHash": "3b2cfdda11b7ec73a8cbf36441690f278cc47f331466e6ecd065314159be7ea0"
+      },
+      "geometryReady": true,
+      "connectionStatus": "partial",
+      "qualified": true,
+      "allowedConnectionIds": [
+        "p/stud.dat:8:1",
+        "p/stud.dat:8:2",
+        "p/stud2.dat:9:3",
+        "p/stud2.dat:9:5",
+        "p/stud2.dat:9:7",
+        "p/stud2.dat:9:9",
+        "p/stud2.dat:9:11",
+        "p/stud2.dat:9:13",
+        "parts/52038.dat:8:15",
+        "parts/52038.dat:8:16"
+      ],
+      "disabledConnectionIds": [
+        "p/stud3.dat:8:0",
+        "p/stud2.dat:10:4",
+        "p/stud2.dat:10:6",
+        "p/stud2.dat:10:8",
+        "p/stud2.dat:10:10",
+        "p/stud2.dat:10:12",
+        "p/stud2.dat:10:14"
+      ],
+      "actualGenerationCoverage": false,
+      "attempts": [
+        {
+          "request": {
+            "module": "wall",
+            "partCount": 3,
+            "requiredPartIds": [
+              "52038"
+            ]
+          },
+          "status": "blocked",
+          "reasons": [
+            "合法装配搜索已达到预算，未移动或改造真实零件强行完成。",
+            "design-goal: The source-solved pose does not satisfy the requested module footprint/orientation.",
+            "native-plastic-collision: root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+            "no-collision-free-transform: Every permitted source-derived placement was rejected by native collision checks.",
+            "native-plastic-collision: p-1: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+            "native-plastic-collision: p-1: Source-derived closed solids overlap beyond the numerical surface tolerance, including inside any connection zone."
+          ],
+          "search": {
+            "attempts": 1311,
+            "attachmentApiCalls": 148,
+            "acceptedAttachments": 98,
+            "rejectedAttachments": 1213,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 50,
+            "occupancyFailures": 0,
+            "designGoalFailures": 1163,
+            "backtracks": 98,
+            "testedRoots": 1,
+            "exhausted": true,
+            "timeBudgetExceeded": true,
+            "catalogTimeMs": 0.093,
+            "searchTimeMs": 10042.39,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 0,
+            "finalConnectionEdges": 0,
+            "rejectionCounts": {
+              "design-goal": 1163,
+              "native-plastic-collision": 50,
+              "no-collision-free-transform": 50
+            },
+            "rejectionReasons": [
+              {
+                "code": "design-goal",
+                "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+                "count": 1163
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+                "count": 32
+              },
+              {
+                "code": "no-collision-free-transform",
+                "reason": "Every permitted source-derived placement was rejected by native collision checks.",
+                "count": 50
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "p-1: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+                "count": 16
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "p-1: Source-derived closed solids overlap beyond the numerical surface tolerance, including inside any connection zone.",
+                "count": 2
+              }
+            ]
+          }
+        },
+        {
+          "request": {
+            "module": "simple-chassis",
+            "partCount": 3,
+            "requiredPartIds": [
+              "52038"
+            ]
+          },
+          "status": "blocked",
+          "reasons": [
+            "合法装配搜索已达到预算，未移动或改造真实零件强行完成。",
+            "design-goal: The source-solved pose does not satisfy the requested module footprint/orientation.",
+            "native-plastic-collision: root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+            "no-collision-free-transform: Every permitted source-derived placement was rejected by native collision checks.",
+            "endpoint-occupied: An additional physical mating endpoint is already occupied; source aliases cannot bypass occupancy."
+          ],
+          "search": {
+            "attempts": 1800,
+            "attachmentApiCalls": 156,
+            "acceptedAttachments": 37,
+            "rejectedAttachments": 1763,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 119,
+            "occupancyFailures": 25,
+            "designGoalFailures": 1644,
+            "backtracks": 37,
+            "testedRoots": 1,
+            "exhausted": true,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 5.607,
+            "searchTimeMs": 9205.639,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 0,
+            "finalConnectionEdges": 0,
+            "rejectionCounts": {
+              "design-goal": 1644,
+              "native-plastic-collision": 94,
+              "no-collision-free-transform": 119,
+              "endpoint-occupied": 25
+            },
+            "rejectionReasons": [
+              {
+                "code": "design-goal",
+                "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+                "count": 1644
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+                "count": 94
+              },
+              {
+                "code": "no-collision-free-transform",
+                "reason": "Every permitted source-derived placement was rejected by native collision checks.",
+                "count": 119
+              },
+              {
+                "code": "endpoint-occupied",
+                "reason": "An additional physical mating endpoint is already occupied; source aliases cannot bypass occupancy.",
+                "count": 25
+              }
+            ]
+          }
+        },
+        {
+          "request": {
+            "module": "basic-snot",
+            "partCount": 3,
+            "requiredPartIds": [
+              "52038"
+            ]
+          },
+          "status": "blocked",
+          "reasons": [
+            "合法装配搜索已达到预算，未移动或改造真实零件强行完成。",
+            "design-goal: The source-solved pose does not satisfy the requested module footprint/orientation.",
+            "native-plastic-collision: root: Source-derived closed solids overlap beyond the numerical surface tolerance, including inside any connection zone.",
+            "no-collision-free-transform: Every permitted source-derived placement was rejected by native collision checks.",
+            "native-plastic-collision: root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption."
+          ],
+          "search": {
+            "attempts": 975,
+            "attachmentApiCalls": 130,
+            "acceptedAttachments": 120,
+            "rejectedAttachments": 855,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 10,
+            "occupancyFailures": 0,
+            "designGoalFailures": 845,
+            "backtracks": 120,
+            "testedRoots": 6,
+            "exhausted": true,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.127,
+            "searchTimeMs": 390.852,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 0,
+            "finalConnectionEdges": 0,
+            "rejectionCounts": {
+              "design-goal": 845,
+              "native-plastic-collision": 10,
+              "no-collision-free-transform": 10
+            },
+            "rejectionReasons": [
+              {
+                "code": "design-goal",
+                "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+                "count": 845
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "root: Source-derived closed solids overlap beyond the numerical surface tolerance, including inside any connection zone.",
+                "count": 8
+              },
+              {
+                "code": "no-collision-free-transform",
+                "reason": "Every permitted source-derived placement was rejected by native collision checks.",
+                "count": 10
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+                "count": 2
+              }
+            ]
+          }
+        },
+        {
+          "request": {
+            "module": "simple-roof",
+            "partCount": 3,
+            "requiredPartIds": [
+              "52038"
+            ]
+          },
+          "status": "blocked",
+          "reasons": [
+            "合法装配搜索已达到预算，未移动或改造真实零件强行完成。",
+            "design-goal: The source-solved pose does not satisfy the requested module footprint/orientation."
+          ],
+          "search": {
+            "attempts": 1800,
+            "attachmentApiCalls": 40,
+            "acceptedAttachments": 40,
+            "rejectedAttachments": 1760,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 0,
+            "occupancyFailures": 0,
+            "designGoalFailures": 1760,
+            "backtracks": 40,
+            "testedRoots": 3,
+            "exhausted": true,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.073,
+            "searchTimeMs": 3571.55,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 0,
+            "finalConnectionEdges": 0,
+            "rejectionCounts": {
+              "design-goal": 1760
+            },
+            "rejectionReasons": [
+              {
+                "code": "design-goal",
+                "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+                "count": 1760
+              }
+            ]
+          }
+        },
+        {
+          "request": {
+            "module": "platform",
+            "partCount": 3,
+            "requiredPartIds": [
+              "52038"
+            ]
+          },
+          "status": "blocked",
+          "reasons": [
+            "合法装配搜索已达到预算，未移动或改造真实零件强行完成。",
+            "design-goal: The source-solved pose does not satisfy the requested module footprint/orientation.",
+            "native-plastic-collision: root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+            "no-collision-free-transform: Every permitted source-derived placement was rejected by native collision checks.",
+            "native-plastic-collision: root: Source-derived closed solids overlap beyond the numerical surface tolerance, including inside any connection zone."
+          ],
+          "search": {
+            "attempts": 261,
+            "attachmentApiCalls": 127,
+            "acceptedAttachments": 117,
+            "rejectedAttachments": 144,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 10,
+            "occupancyFailures": 0,
+            "designGoalFailures": 134,
+            "backtracks": 117,
+            "testedRoots": 1,
+            "exhausted": true,
+            "timeBudgetExceeded": true,
+            "catalogTimeMs": 0.116,
+            "searchTimeMs": 10267.642,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 0,
+            "finalConnectionEdges": 0,
+            "rejectionCounts": {
+              "design-goal": 134,
+              "native-plastic-collision": 10,
+              "no-collision-free-transform": 10
+            },
+            "rejectionReasons": [
+              {
+                "code": "design-goal",
+                "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+                "count": 134
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+                "count": 8
+              },
+              {
+                "code": "no-collision-free-transform",
+                "reason": "Every permitted source-derived placement was rejected by native collision checks.",
+                "count": 10
+              },
+              {
+                "code": "native-plastic-collision",
+                "reason": "root: Source-derived closed solids overlap beyond the numerical surface tolerance, including inside any connection zone.",
+                "count": 2
+              }
+            ]
+          }
+        }
+      ],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    {
+      "partId": "32000",
+      "candidateKind": "existing-qualified-regression",
+      "purpose": "Source-derived interface grammar inheritance; actual normal generation and export/reimport coverage required.",
+      "source": {
+        "sha256": "d5c344e273a7df7bbbd49e5696c973d9f31359e2b658acf620d5c23302c06811",
+        "path": "parts/32000.dat",
+        "name": "Technic Brick  1 x  2 with Holes",
+        "currentFiles": [
+          {
+            "path": "p/4-4cyli.dat",
+            "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+            "bytes": 2687,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+          },
+          {
+            "path": "p/4-4edge.dat",
+            "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+            "bytes": 1084,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+          },
+          {
+            "path": "p/4-4ndis.dat",
+            "sha256": "21202dc15823f4336bc2544244d0b539b76745c89f7a59ad18cdd03ad45cc543",
+            "bytes": 1219,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ndis.dat"
+          },
+          {
+            "path": "p/4-4ring2.dat",
+            "sha256": "6fb38804b1f5e9bee8c0b80caf1397b09454fc58b048dc19045b6f37c8762ab0",
+            "bytes": 1628,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring2.dat"
+          },
+          {
+            "path": "p/4-4ring3.dat",
+            "sha256": "1f2835ac308154edc2d6f479d8e742a55be981f6167b20bfa100c195bc0731dd",
+            "bytes": 1628,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring3.dat"
+          },
+          {
+            "path": "p/peghole.dat",
+            "sha256": "90c6dba9e5bcdd63955b9a5208f377761850863be9ed26cac7cd2be61ab85c92",
+            "bytes": 814,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/peghole.dat"
+          },
+          {
+            "path": "p/rect.dat",
+            "sha256": "ffeb2dd3d9b83c38841f18f1f74800fbba9e90c5fb6badfff2a795f08a96cb71",
+            "bytes": 654,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect.dat"
+          },
+          {
+            "path": "p/stud2.dat",
+            "sha256": "5ed3702c7d7000bfac2906f12b74ae312c59194a8e3b504952820c826b51c810",
+            "bytes": 930,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud2.dat"
+          },
+          {
+            "path": "parts/32000.dat",
+            "sha256": "d5c344e273a7df7bbbd49e5696c973d9f31359e2b658acf620d5c23302c06811",
+            "bytes": 4285,
+            "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+            "author": "James Jessiman",
+            "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/32000.dat"
+          }
+        ],
+        "sourceHash": "107dcbe5d9aab1638f01acba2a634fe452cae9dfcb398ed7b5f1f31165adb857"
+      },
+      "geometryReady": true,
+      "connectionStatus": "ready",
+      "qualified": true,
+      "allowedConnectionIds": [
+        "p/stud2.dat:9:0",
+        "p/stud2.dat:9:2",
+        "parts/32000.dat:12:6",
+        "parts/32000.dat:12:7"
+      ],
+      "disabledConnectionIds": [
+        "p/stud2.dat:10:1",
+        "p/stud2.dat:10:3",
+        "p/connhole.dat:8:4",
+        "p/connhole.dat:8:5"
+      ],
+      "actualGenerationCoverage": true,
+      "attempts": [
+        {
+          "request": {
+            "module": "wall",
+            "partCount": 3,
+            "requiredPartIds": [
+              "32000"
+            ]
+          },
+          "status": "generated",
+          "reasons": [],
+          "search": {
+            "attempts": 2,
+            "attachmentApiCalls": 2,
+            "acceptedAttachments": 2,
+            "rejectedAttachments": 0,
+            "transformFailures": 0,
+            "compatibilityFailures": 0,
+            "collisionFailures": 0,
+            "occupancyFailures": 0,
+            "designGoalFailures": 0,
+            "backtracks": 0,
+            "testedRoots": 1,
+            "exhausted": false,
+            "timeBudgetExceeded": false,
+            "catalogTimeMs": 0.098,
+            "searchTimeMs": 122.842,
+            "budget": {
+              "maxAttempts": 1800,
+              "maxBacktracks": 120,
+              "maxSearchTimeMs": 10000
+            },
+            "finalPlacements": 3,
+            "finalConnectionEdges": 3,
+            "rejectionCounts": {},
+            "rejectionReasons": []
+          }
+        }
+      ],
+      "reasonCodes": [],
+      "reasons": [],
+      "witness": {
+        "status": "passed",
+        "requestRequiredPartIds": [
+          "32000"
+        ],
+        "modelId": "assembly-f2d5868a-ba77-4f81-8f66-993445e8e78f",
+        "placements": 3,
+        "edges": 3,
+        "actualPartIds": [
+          "3005",
+          "3023",
+          "32000"
+        ],
+        "bomMatches": true,
+        "stepsMatch": true,
+        "currentSourceEvidencePresent": true,
+        "sourceHashes": {
+          "3005": "fe5888c2f25ab7ef2f0797af3023c2a5021fd27814173ae98c5821c33b58197a",
+          "3023": "1b86b4b1ea715f804317d4e3dafd3d4196c228acbe11aed49c89d94a7c591b47",
+          "32000": "107dcbe5d9aab1638f01acba2a634fe452cae9dfcb398ed7b5f1f31165adb857"
+        },
+        "finalModelValidation": {
+          "checked": true,
+          "valid": true,
+          "issues": []
+        },
+        "exportReimportStatus": "VALID",
+        "validationScope": "source-interfaces-final-pose-graph-only",
+        "physicalBuildVerified": false,
+        "files": [
+          "model.json",
+          "model.ldr",
+          "bom.csv",
+          "steps.json",
+          "sources.json",
+          "reimported.json"
+        ],
+        "exportedJsonSha256": "e930f0edb327702756b1203db0b7982aaaa418ebe6a16020bd082e31551a55aa",
+        "directory": "artifacts/connector-grammar/models/32000-wall"
+      }
+    }
+  ],
+  "structures": [
+    {
+      "goal": {
+        "name": "reinforced-native-chassis",
+        "module": "simple-chassis",
+        "partCount": 5,
+        "requiredPartIds": [
+          "3456",
+          "32000",
+          "69729"
+        ]
+      },
+      "status": "generated",
+      "reasons": [],
+      "search": {
+        "attempts": 6,
+        "attachmentApiCalls": 4,
+        "acceptedAttachments": 4,
+        "rejectedAttachments": 2,
+        "transformFailures": 0,
+        "compatibilityFailures": 0,
+        "collisionFailures": 0,
+        "occupancyFailures": 0,
+        "designGoalFailures": 2,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "timeBudgetExceeded": false,
+        "catalogTimeMs": 0.092,
+        "searchTimeMs": 2530.889,
+        "budget": {
+          "maxAttempts": 1800,
+          "maxBacktracks": 120,
+          "maxSearchTimeMs": 10000
+        },
+        "finalPlacements": 5,
+        "finalConnectionEdges": 16,
+        "rejectionCounts": {
+          "design-goal": 2
+        },
+        "rejectionReasons": [
+          {
+            "code": "design-goal",
+            "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+            "count": 2
+          }
+        ]
+      },
+      "witness": {
+        "status": "passed",
+        "requestRequiredPartIds": [
+          "3456",
+          "32000",
+          "69729"
+        ],
+        "modelId": "assembly-7663b595-9cc4-419d-8923-f5a4bfb8c2b7",
+        "placements": 5,
+        "edges": 16,
+        "actualPartIds": [
+          "3024",
+          "32000",
+          "3456",
+          "69729"
+        ],
+        "bomMatches": true,
+        "stepsMatch": true,
+        "currentSourceEvidencePresent": true,
+        "sourceHashes": {
+          "3024": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+          "3456": "4aa9831a7e16886b16d80bbb7bfc524d065fb8463bd7319507eb045781ce7349",
+          "32000": "107dcbe5d9aab1638f01acba2a634fe452cae9dfcb398ed7b5f1f31165adb857",
+          "69729": "e94fa0ff18766d901824f63d22a3b2f945fe04092a56a8ce12eccb3ada64431f"
+        },
+        "finalModelValidation": {
+          "checked": true,
+          "valid": true,
+          "issues": []
+        },
+        "exportReimportStatus": "VALID",
+        "validationScope": "source-interfaces-final-pose-graph-only",
+        "physicalBuildVerified": false,
+        "files": [
+          "model.json",
+          "model.ldr",
+          "bom.csv",
+          "steps.json",
+          "sources.json",
+          "reimported.json"
+        ],
+        "exportedJsonSha256": "472b9879caa271596bfe221925f3dfb29e544a4f460424bef5077aba32f8008e",
+        "directory": "artifacts/connector-grammar/models/reinforced-native-chassis"
+      }
+    },
+    {
+      "goal": {
+        "name": "native-side-structure",
+        "module": "basic-snot",
+        "partCount": 3,
+        "requiredPartIds": [
+          "87087"
+        ]
+      },
+      "status": "generated",
+      "reasons": [],
+      "search": {
+        "attempts": 3,
+        "attachmentApiCalls": 2,
+        "acceptedAttachments": 2,
+        "rejectedAttachments": 1,
+        "transformFailures": 0,
+        "compatibilityFailures": 0,
+        "collisionFailures": 0,
+        "occupancyFailures": 0,
+        "designGoalFailures": 1,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "timeBudgetExceeded": false,
+        "catalogTimeMs": 0.099,
+        "searchTimeMs": 117.289,
+        "budget": {
+          "maxAttempts": 1800,
+          "maxBacktracks": 120,
+          "maxSearchTimeMs": 10000
+        },
+        "finalPlacements": 3,
+        "finalConnectionEdges": 2,
+        "rejectionCounts": {
+          "design-goal": 1
+        },
+        "rejectionReasons": [
+          {
+            "code": "design-goal",
+            "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+            "count": 1
+          }
+        ]
+      },
+      "witness": {
+        "status": "passed",
+        "requestRequiredPartIds": [
+          "87087"
+        ],
+        "modelId": "assembly-169ef78f-b347-4e9e-982b-fbf447642b44",
+        "placements": 3,
+        "edges": 2,
+        "actualPartIds": [
+          "3023",
+          "3070b",
+          "87087"
+        ],
+        "bomMatches": true,
+        "stepsMatch": true,
+        "currentSourceEvidencePresent": true,
+        "sourceHashes": {
+          "3023": "1b86b4b1ea715f804317d4e3dafd3d4196c228acbe11aed49c89d94a7c591b47",
+          "87087": "1917d6ea8c8524f7b5f01058baa9ada5544ec9e68fb6828bc920a1ee71ec78d1",
+          "3070b": "d9dcde894e36ef701c6df34dc55f2bb3e6234f37576ed1c590714820037e340d"
+        },
+        "finalModelValidation": {
+          "checked": true,
+          "valid": true,
+          "issues": []
+        },
+        "exportReimportStatus": "VALID",
+        "validationScope": "source-interfaces-final-pose-graph-only",
+        "physicalBuildVerified": false,
+        "files": [
+          "model.json",
+          "model.ldr",
+          "bom.csv",
+          "steps.json",
+          "sources.json",
+          "reimported.json"
+        ],
+        "exportedJsonSha256": "775a9e3d161721a641986b2976e928db9abd24cb66fa5eff6c566cbe1e66daf3",
+        "directory": "artifacts/connector-grammar/models/native-side-structure"
+      }
+    }
+  ],
+  "physicalBuildVerified": false
+}

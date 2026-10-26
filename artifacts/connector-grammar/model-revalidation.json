@@ -1,0 +1,158 @@
+{
+  "verifiedAt": "2026-10-26T07:38:17.797Z",
+  "method": "Ordinary HTTP model import using the final current source, grammar and graph engine; original export SHA checked.",
+  "versions": {
+    "library": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+    "assembly": "native-assembly-0.7.0-grammar",
+    "rule": "source-stud-2.0.0-connector-grammar-1",
+    "grammar": "connector-grammar-1"
+  },
+  "passed": 12,
+  "failed": 0,
+  "checks": [
+    {
+      "directory": "artifacts/connector-grammar/models/3004-wall",
+      "exportedJsonSha256": "c4dc1d13c5e59ca09f30b98d2f20021aacf95ae2acb440487bef28dca9c7fdbd",
+      "currentImportStatus": "VALID",
+      "graphUnchanged": true,
+      "stageSeparationVerified": true,
+      "actualPartIds": [
+        "3004",
+        "3005",
+        "3023"
+      ]
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/3008-wall",
+      "exportedJsonSha256": "e1b07757be1025aa19b75803a1e4214b377ef5960c67d4de4d6082cc213a2733",
+      "currentImportStatus": "VALID",
+      "graphUnchanged": true,
+      "stageSeparationVerified": true,
+      "actualPartIds": [
+        "3005",
+        "3008",
+        "3460"
+      ]
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/3009-wall",
+      "exportedJsonSha256": "d204dd42cecad52d1d8f849d21b04e367501b2aed8c8ced57b85fdc2d54a6906",
+      "currentImportStatus": "VALID",
+      "graphUnchanged": true,
+      "stageSeparationVerified": true,
+      "actualPartIds": [
+        "3005",
+        "3009",
+        "3666"
+      ]
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/3010-wall",
+      "exportedJsonSha256": "b3634959045bd8f84a9f17df489dadf8cb88c3e9856effe438779bbe350e433d",
+      "currentImportStatus": "VALID",
+      "graphUnchanged": true,
+      "stageSeparationVerified": true,
+      "actualPartIds": [
+        "3005",
+        "3010",
+        "3710"
+      ]
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/3622-wall",
+      "exportedJsonSha256": "5a0bf52485fa5fa967ead3659207eba2980bac9b400cfbeea2d6fea98adc9378",
+      "currentImportStatus": "VALID",
+      "graphUnchanged": true,
+      "stageSeparationVerified": true,
+      "actualPartIds": [
+        "3005",
+        "3622",
+        "3623"
+      ]
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/6111-wall",
+      "exportedJsonSha256": "d5cfc41e74328b0bd10adc3c661b48dc202c5ea27c1a56453eb68ea9b9c42767",
+      "currentImportStatus": "VALID",
+      "graphUnchanged": true,
+      "stageSeparationVerified": true,
+      "actualPartIds": [
+        "3005",
+        "4477",
+        "6111"
+      ]
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/11211-wall",
+      "exportedJsonSha256": "97c7b030a8314591bd04056bf267844c96b6c3f72b12122dc8252c0db01104e6",
+      "currentImportStatus": "VALID",
+      "graphUnchanged": true,
+      "stageSeparationVerified": true,
+      "actualPartIds": [
+        "11211",
+        "24299",
+        "3005"
+      ]
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/24299-platform",
+      "exportedJsonSha256": "cc275aa6b9800df0a4ab64c619dfab7eed2a7ae52b1f15014ce126c26f55ad81",
+      "currentImportStatus": "VALID",
+      "graphUnchanged": true,
+      "stageSeparationVerified": true,
+      "actualPartIds": [
+        "24299",
+        "3024"
+      ]
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/24307-platform",
+      "exportedJsonSha256": "de38b01db1e849198fc66c98fb1f3a265293a0c93d5bdf0f8642bf93e1c309e2",
+      "currentImportStatus": "VALID",
+      "graphUnchanged": true,
+      "stageSeparationVerified": true,
+      "actualPartIds": [
+        "24307",
+        "3024"
+      ]
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/32000-wall",
+      "exportedJsonSha256": "e930f0edb327702756b1203db0b7982aaaa418ebe6a16020bd082e31551a55aa",
+      "currentImportStatus": "VALID",
+      "graphUnchanged": true,
+      "stageSeparationVerified": true,
+      "actualPartIds": [
+        "3005",
+        "3023",
+        "32000"
+      ]
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/reinforced-native-chassis",
+      "exportedJsonSha256": "472b9879caa271596bfe221925f3dfb29e544a4f460424bef5077aba32f8008e",
+      "currentImportStatus": "VALID",
+      "graphUnchanged": true,
+      "stageSeparationVerified": true,
+      "actualPartIds": [
+        "3024",
+        "32000",
+        "3456",
+        "69729"
+      ]
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/native-side-structure",
+      "exportedJsonSha256": "775a9e3d161721a641986b2976e928db9abd24cb66fa5eff6c566cbe1e66daf3",
+      "currentImportStatus": "VALID",
+      "graphUnchanged": true,
+      "stageSeparationVerified": true,
+      "actualPartIds": [
+        "3023",
+        "3070b",
+        "87087"
+      ]
+    }
+  ],
+  "physicalBuildVerified": false
+}

@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "checks": [
+    {
+      "name": "32000-pin-hole-direct-attachment",
+      "passed": true,
+      "result": {
+        "accepted": false,
+        "graph": {
+          "schemaVersion": 1,
+          "id": "assembly-3fd52bb0-f111-41a4-bebf-7dbea25c398f",
+          "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+          "assemblyEngineVersion": "native-assembly-0.7.0-grammar",
+          "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-1",
+          "collisionVersion": "native-closed-bvh-local-partition-1.1.0",
+          "placements": [
+            {
+              "instanceId": "root",
+              "partId": "32000",
+              "transform": {
+                "rotation": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "translation": [
+                  0,
+                  0,
+                  0
+                ]
+              }
+            }
+          ],
+          "edges": [],
+          "sourceHashes": {
+            "32000": "107dcbe5d9aab1638f01acba2a634fe452cae9dfcb398ed7b5f1f31165adb857"
+          },
+          "physicalBuildVerified": false
+        },
+        "assembly": {
+          "schemaVersion": 1,
+          "id": "assembly-3fd52bb0-f111-41a4-bebf-7dbea25c398f",
+          "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+          "assemblyEngineVersion": "native-assembly-0.7.0-grammar",
+          "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-1",
+          "collisionVersion": "native-closed-bvh-local-partition-1.1.0",
+          "placements": [
+            {
+              "instanceId": "root",
+              "partId": "32000",
+              "transform": {
+                "rotation": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "translation": [
+                  0,
+                  0,
+                  0
+                ]
+              }
+            }
+          ],
+          "edges": [],
+          "sourceHashes": {
+            "32000": "107dcbe5d9aab1638f01acba2a634fe452cae9dfcb398ed7b5f1f31165adb857"
+          },
+          "physicalBuildVerified": false
+        },
+        "rejections": [
+          {
+            "code": "part-or-interface-blocked",
+            "reason": "This particular source interface is disabled or untested."
+          }
+        ]
+      }
+    },
+    {
+      "name": "32000-disabled-hole-resealed-upload",
+      "recomputedChecksum": true,
+      "passed": true,
+      "status": "NEEDS_REVALIDATION",
+      "reasons": [
+        "接口 p-1/p/connhole.dat:8:4 当前未开放。",
+        "This particular source interface is disabled or untested.",
+        "Graph edge is inconsistent with the source compatibility and transform solution."
+      ]
+    },
+    {
+      "name": "forged-extra-edge-and-duplicate-port",
+      "recomputedChecksum": true,
+      "passed": true,
+      "status": "NEEDS_REVALIDATION",
+      "reasons": [
+        "A connection endpoint is occupied more than once.",
+        "A physical mating pair is recorded more than once, including source aliases or reversed edges.",
+        "A physical connection endpoint is occupied more than once."
+      ]
+    },
+    {
+      "name": "floating-placement",
+      "recomputedChecksum": true,
+      "passed": true,
+      "status": "NEEDS_REVALIDATION",
+      "reasons": [
+        "Graph edge is inconsistent with the source compatibility and transform solution.",
+        "Floating/disconnected source parts are forbidden."
+      ]
+    },
+    {
+      "name": "source-hash-change",
+      "recomputedChecksum": true,
+      "passed": true,
+      "status": "NEEDS_REVALIDATION",
+      "reasons": [
+        "Source hash changed for 32000."
+      ]
+    },
+    {
+      "name": "stale-library-version",
+      "recomputedChecksum": true,
+      "passed": true,
+      "status": "NEEDS_REVALIDATION",
+      "reasons": [
+        "partLibraryVersion 已变化，旧装配证明需重新验证。",
+        "Assembly version dependencies do not match the active engine."
+      ]
+    },
+    {
+      "name": "unknown-source-part",
+      "recomputedChecksum": true,
+      "passed": true,
+      "status": "NEEDS_REVALIDATION",
+      "reasons": [
+        "原生零件 unknown-native-source 已不存在。",
+        "零件 unknown-native-source 当前没有生成准入。",
+        "来源连接 p-2/parts/s/3005s01.dat:8:1 已不存在。",
+        "Unknown source part: unknown-native-source"
+      ]
+    },
+    {
+      "name": "uncertified-wheel-module",
+      "passed": true,
+      "status": "blocked",
+      "reasons": [
+        "轮毂／轮胎／轮架的原生来源、机械规则或实体证据尚不完整；当前来源审查结果保留具体阻塞原因，未生成轮组。",
+        "wheel-connections-missing: 18977: source connections are missing.",
+        "wheel-connections-partial: 18975: source connections are partial.; 3673: source connections are partial.",
+        "wheel-installation-path-not-verified: A final pose cannot establish a swept whole-part insertion path or an elastic assembly process.",
+        "wheel-mechanical-rule-not-verified: No implemented source-backed wheel rule provides the required seating transform, insertion depth and occupancy semantics.",
+        "wheel-proxy-branched-native-boundary: 3673: The source mesh has open/branched boundary chains.; 66727: The source mesh has open/branched boundary chains.; 18977: The source mesh has open/branched boundary chains.",
+        "wheel-proxy-unresolved-boundary-cap: 18975: A nonconvex native boundary needs a more capable source-backed proxy.",
+        "wheel-retention-tolerance-not-evidenced: The source review has not established prerequisite wheel-retention-tolerance-not-evidenced.",
+        "wheel-rotation-clearance-not-verified: Static source geometry or a displayed wheel does not certify clearance over a rotation range."
+      ]
+    }
+  ],
+  "status": "passed"
+}

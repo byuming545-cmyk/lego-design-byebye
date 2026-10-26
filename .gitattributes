@@ -11,3 +11,5 @@ artifacts/assembly-development/models/**/model.ldr -text whitespace=cr-at-eol
 artifacts/generation-expansion/models/**/model.ldr -text whitespace=cr-at-eol
 # Preserve the exact captured test output and its recorded digest.
 artifacts/generation-expansion/logs/*.txt -text -whitespace
+artifacts/connector-grammar/logs/*.txt -text -whitespace
+artifacts/connector-grammar/**/model.ldr -text whitespace=cr-at-eol

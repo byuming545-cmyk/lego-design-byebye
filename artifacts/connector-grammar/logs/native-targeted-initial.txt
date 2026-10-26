@@ -1,0 +1,50 @@
+
+ RUN  v5.0.5 /workspace/lego-design-byebye
+
+ ❯ tests/parts-assembly-engine.test.ts (11 tests | 1 failed) 304ms
+   ❯ native attachment graph and production admission (11)
+     × requires production admission and an explicit port/rule whitelist 8ms
+ ❯ tests/parts-assembly-connections.test.ts (11 tests | 1 failed) 201ms
+   ❯ source-backed compatibility rule (5)
+     × does not enable clips, pin interfaces or wheel/tyre groups from names alone 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/parts-assembly-connections.test.ts > source-backed compatibility rule > does not enable clips, pin interfaces or wheel/tyre groups from names alone
+AssertionError: expected 'incompatible' to be 'unknown' // Object.is equality
+
+Expected: "unknown"
+Received: "incompatible"
+
+ ❯ tests/parts-assembly-connections.test.ts:56:77
+     54|     expect(checkConnectionCompatibility(rim, tyre)).toMatchObject({ st…
+     55|     const hole = endpoint('3700', 'F', (point) => point.sourceId === '…
+     56|     expect(checkConnectionCompatibility(standardMale('3001'), hole).st…
+       |                                                                             ^
+     57|     // This source pin's L_ shoulder is not parsed; no imaginary male …
+     58|     expect(part('3673').connections.points.some((point) => point.gende…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/parts-assembly-engine.test.ts > native attachment graph and production admission > requires production admission and an explicit port/rule whitelist
+AssertionError: expected [Function] to throw error including 'verification' but got 'The part has no current source-backed…'
+
+Expected: "verification"
+Received: "The part has no current source-backed grammar eligibility or retained validated interface qualification."
+
+ ❯ tests/parts-assembly-engine.test.ts:71:49
+     69|       const { engine, capabilities } = provisionalProduction();
+     70|       Object.assign(capabilities.get('3001')!, flags);
+     71|       await expect(engine.createAssembly('3001')).rejects.toThrow('ver…
+       |                                                 ^
+     72|     }
+     73|     const { engine, capabilities } = provisionalProduction(), seed = a…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed | 2 passed (4)
+      Tests  2 failed | 46 passed (48)
+   Start at  07:19:08
+   Duration  12.55s (tests 98%, transform 1%, import 1%)
+

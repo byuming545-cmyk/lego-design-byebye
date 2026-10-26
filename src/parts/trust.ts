@@ -26,6 +26,9 @@ export function assessPartReadiness(input: {
   collisionReady: boolean;
   assemblyVerified?: boolean;
   generatorSmokePassed?: boolean;
+  /** A schema/rule-qualified feature is eligible for placement, not an already
+   * validated assembly. Every generated arrangement still needs full checking. */
+  grammarEligible?: boolean;
   checks: PartCheck[];
 }): PartReadiness {
   const checks = input.checks.map(check => ({ ...check }));
@@ -34,7 +37,8 @@ export function assessPartReadiness(input: {
   // Mesh/connector parsing tests alone cannot establish legal attachment or clearance.
   const assemblyVerified = input.assemblyVerified === true && input.geometryReady && input.connectionReady && input.collisionReady && applicablePassed &&
     ['source-integrity', 'mesh-integrity', 'rotation', 'attachment', 'collision-clearance'].every(passed);
-  const generatable = assemblyVerified && input.generatorSmokePassed === true;
+  const generatable = assemblyVerified && input.generatorSmokePassed === true ||
+    input.grammarEligible === true && input.geometryReady && input.collisionReady && passed('source-integrity') && passed('mesh-integrity');
   const verified = assemblyVerified && passed('part-verification');
   return {
     catalogOnly: !input.geometryReady,

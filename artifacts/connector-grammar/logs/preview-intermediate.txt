@@ -1,0 +1,23 @@
+
+> bricklab@0.6.0 test:preview
+> playwright test --config playwright.preview.config.ts
+
+[WebServer] (node:245738) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[WebServer] (node:245766) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:245774) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [preview-chromium] › tests/preview/parts-foundation.spec.ts:7:1 › compiled preview serves Part Lab, bundled native geometry, fonts and API on one origin (14.4s)
+  ✓  2 [preview-chromium] › tests/preview/parts-foundation.spec.ts:38:1 › compiled routes preserve source evidence and generation restrictions (220ms)
+  ✓  3 [preview-chromium] › tests/preview/parts-foundation.spec.ts:65:1 › compiled assembly API derives source grammar attachment and exports a currently validated real wall (350ms)
+
+  3 passed (33.8s)

@@ -4,6 +4,8 @@ import { checkConnectionCompatibility } from './compatibility.js';
 import type { CompatibilityResult } from './compatibility.js';
 import { solveAttachment, type AttachmentCandidate } from './solver.js';
 import { distance, normalize, rotate, transformPoint } from './math.js';
+import { adaptImportedConnection } from '../grammar/sources.js';
+import { validateGrammarMultiPoint } from '../grammar/validation.js';
 
 const ANCHOR_TOLERANCE = 1e-5;
 const AXIS_TOLERANCE = 1e-6;
@@ -21,13 +23,18 @@ export interface MultiPointConnectionMatch {
 export interface MultiPointResult {
   status: 'consistent' | 'blocked';
   matches: MultiPointConnectionMatch[];
-  issues: { code: 'rotation-disagreement' | 'ambiguous-physical-mate' | 'missing-requested-mate'; reason: string }[];
+  issues: { code: 'rotation-disagreement' | 'ambiguous-physical-mate' | 'missing-requested-mate' | 'exact-closure-mismatch'; reason: string }[];
 }
 
 /** Native physical identity intentionally excludes raw source-line aliases. */
 export function physicalConnectionKey(point: ImportedConnectionPoint): string {
   const direction = normalize(point.direction) ?? point.direction;
-  return JSON.stringify([point.gender, point.position.map((value) => Math.round(value * PHYSICAL_KEY_SCALE)), direction.map((value) => Math.round(value * PHYSICAL_KEY_SCALE))]);
+  const connector = adaptImportedConnection(point);
+  // A stud's exterior and a coaxial bar/axle receptacle are separate features.
+  // Ordinary R/S underside aliases still reserve the same System socket.
+  const feature = connector.matchingPolicy?.ruleId === 'C01' ? ['C01', connector.role] :
+    [connector.family, connector.profile, connector.dimensions.radiusLdu, connector.dimensions.lengthLdu, connector.compatibilityGroup];
+  return JSON.stringify([point.gender, feature, point.position.map((value) => Math.round(value * PHYSICAL_KEY_SCALE)), direction.map((value) => Math.round(value * PHYSICAL_KEY_SCALE))]);
 }
 export function physicalEndpointKey(instanceId: string, point: ImportedConnectionPoint): string { return JSON.stringify([instanceId, physicalConnectionKey(point)]); }
 export function sourceEndpointKey(instanceId: string, connectionId: string, part?: NativeAssemblyPart): string {
@@ -111,6 +118,15 @@ export function checkMultiPointConnection(input: {
     const a = fixedPart.connections.points.find((point) => point.id === input.preferredFixedConnectionId), b = movingPart.connections.points.find((point) => point.id === input.preferredMovingConnectionId);
     return !!a && !!b && match.fixedPhysicalKey === physicalConnectionKey(a) && match.movingPhysicalKey === physicalConnectionKey(b);
   })) issues.push({ code: 'missing-requested-mate', reason: 'The selected source mating endpoints do not share the candidate placement.' });
+  if (matches.length) {
+    const closure = validateGrammarMultiPoint({ movingTransform: movingPlacement.transform, pairs: matches.map(match => ({
+      fixedInstanceId: fixedPlacement.instanceId, movingInstanceId: movingPlacement.instanceId,
+      fixed: adaptImportedConnection(fixedPart.connections.points.find(point => point.id === match.fixedConnectionId)!),
+      moving: adaptImportedConnection(movingPart.connections.points.find(point => point.id === match.movingConnectionId)!),
+      fixedTransform: fixedPlacement.transform, angleDeg: match.candidate.twistDeg,
+    })) });
+    if (closure.status !== 'CONSISTENT') issues.push({ code: 'exact-closure-mismatch', reason: closure.issues.map(issue => issue.reason).join(' ') || closure.closure.reason });
+  }
   return { status: issues.length ? 'blocked' : 'consistent', matches, issues };
 }
 

@@ -15,6 +15,7 @@ interface PartSummary {
   generatable: boolean;
   verified: boolean;
   assemblyVerified?: boolean;
+  admissionBasis?: 'interface-grammar';
   interfaceCoverage?: InterfaceCoverageData;
   issues: string[];
   elementIds?: string[];
@@ -24,7 +25,7 @@ interface PartSummary {
   designId?: string | null;
   enabledConnectionIds?: string[];
   mapping?: ElementMapping;
-  assemblyReport?: { scope?: string; fixtureTestsPassed: number; fixtureTestsTotal: number; verifiedConnectionIds?: string[]; disabledConnectionIds?: string[]; generatorSmokePassed?: boolean; reasons?: string[] };
+  assemblyReport?: { scope?: string; admissionBasis?: 'interface-grammar'; fixtureTestsPassed: number; fixtureTestsTotal: number; verifiedConnectionIds?: string[]; disabledConnectionIds?: string[]; generatorSmokePassed?: boolean; reasons?: string[] };
   checks?: { id: string; outcome: string; description: string }[];
   evidence?: { sourceId?: string; documentId?: string; page?: number; pdfPage?: number; rawText?: string; reviewStatus?: string }[];
   selectionBasis?: string;
@@ -106,7 +107,7 @@ interface FoundationStatus {
 }
 
 const stageLabels: Record<string, string> = {
-  catalogOnly: '仅目录', geometryReady: '几何已导入', connectionReady: '连接已导入', collisionReady: '碰撞数据就绪', assemblyVerified: '限定接口已验证', generatable: '可用于生成', verified: '限定范围验证', failed: '导入失败',
+  catalogOnly: '仅目录', geometryReady: '几何已导入', connectionReady: '连接已导入', collisionReady: '碰撞数据就绪', grammarEligible: '语法可选', assemblyVerified: '有装配证明', generatable: '语法可选', verified: '限定范围验证', failed: '导入失败',
 };
 const instructionLabels: Record<string, string> = {
   imported: '已读取', read: '已读取', ready: '已读取', 'user-supplied': '用户提供', user_supplied: '用户提供', 'transfer-limit': '超过传输上限', transfer_limit: '超过传输上限', blocked: '访问受阻', missing: '待补充', pending: '待补充',
@@ -223,12 +224,13 @@ export default function PartLab() {
   const observationEvidence = detail?.part.evidence?.filter((item) => item.sourceId || item.documentId) ?? [];
   const bounds = detail?.geometry?.bounds;
   const dimensions = bounds ? bounds.max.map((value, axis) => value - bounds.min[axis]) : null;
+  const grammarMode = detail?.part.admissionBasis === 'interface-grammar' || detail?.part.assemblyReport?.admissionBasis === 'interface-grammar';
   const checks = detail ? [
     { name: '真实几何', ready: detail.part.geometryReady },
     { name: '来源连接', ready: detail.part.connectionReady },
     { name: '碰撞数据', ready: detail.part.collisionReady },
-    { name: '数字装配', ready: detail.part.assemblyVerified === true },
-    { name: '生成准入', ready: detail.part.generatable },
+    { name: '已保存装配证明', ready: detail.part.assemblyVerified === true },
+    { name: '接口语法可选', ready: detail.part.generatable },
     { name: '限定范围复核', ready: detail.part.verified },
   ] : [];
 
@@ -242,11 +244,11 @@ export default function PartLab() {
 
     <div className="part-counts" aria-label="零件可信状态统计">
       {[
-        ['catalogOnly', '仅目录'], ['geometryReady', '已有真实几何'], ['connectionReady', '已有来源连接'], ['collisionReady', '已有碰撞数据'], ['assemblyVerified', '有已验证接口'], ['generatable', '允许用于生成'], ['verified', '限定范围复核'],
+        ['catalogOnly', '仅目录'], ['geometryReady', '已有真实几何'], ['connectionReady', '已有来源连接'], ['collisionReady', '已有碰撞数据'], ['assemblyVerified', '有已保存装配证明'], ['generatable', '语法可选零件'], ['verified', '限定范围复核'],
       ].map(([key, label]) => <div key={key}><strong>{status ? (status.counts[key] ?? '—') : '—'}</strong><span>{label}</span></div>)}
     </div>
     <p className="part-count-basis">状态统计可重叠。LDraw 编号与 Element ID 分开登记，数量相加不代表真实设计零件总数。</p>
-    <div className="part-context-note"><ShieldCheck size={16} /><p>Element、Design 与 LDraw 编号分别核对。只有通过装配验证的具体连接口，才能参与真实拼搭与基础生成；旧版参数化生成仍暂停。</p></div>
+    <div className="part-context-note"><ShieldCheck size={16} /><p>Element、Design 与 LDraw 编号分别核对。已有来源的接口经语法识别进入候选，实际组合仍需单独通过装配检查；旧版参数化生成仍暂停。</p></div>
 
     <div className="part-tabs" role="tablist" aria-label="零件工作台视图">
       <button role="tab" aria-selected={tab === 'parts'} onClick={() => navigateTab('parts')}><Box size={16} />零件检查</button>
@@ -258,11 +260,11 @@ export default function PartLab() {
     {tab === 'assembly' ? <AssemblyLab /> : tab === 'parts' ? <section className="part-workspace" aria-label="零件检查">
       <aside className="part-browser">
         <label className="part-search"><Search size={16} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索零件、Design / Element ID" aria-label="搜索真实零件" /></label>
-        <label className="part-filter"><input type="checkbox" checked={onlyGeneratable} onChange={(event) => setOnlyGeneratable(event.target.checked)} />只看允许用于生成的零件</label>
+        <label className="part-filter"><input type="checkbox" checked={onlyGeneratable} onChange={(event) => setOnlyGeneratable(event.target.checked)} />只看语法可选零件</label>
         <div className="part-list-caption"><span>{listLoading ? '正在检索…' : `${visibleParts.length} 个条目`}</span><span>按来源检查</span></div>
         {listLoading ? <div className="part-loading" role="status"><LoaderCircle size={20} className="part-spin" />加载零件目录</div> : listError ? <div className="part-list-error" role="alert">{listError}<button onClick={() => setRefresh((value) => value + 1)}>重试</button></div> : visibleParts.length ? <div className="part-list">{visibleParts.map((part) => <button key={part.id} aria-pressed={selectedId === part.id} onClick={() => setSelectedId(part.id)}>
           <span className="part-list-icon"><Box size={20} strokeWidth={1.4} /></span><span className="part-list-text"><strong>{part.id}</strong><small>{part.name || '名称待核对'}</small><Badge ready={part.generatable}>{stageLabels[part.status] ?? part.status}</Badge></span>
-        </button>)}</div> : <Empty title={onlyGeneratable ? '暂无通过生成准入的零件' : '没有匹配的零件'}>{onlyGeneratable ? '完成真实来源与装配验证后，零件才会出现在这里。' : '尝试完整编号；尚未完成编号映射的 Element ID 会保留在说明书清单中。'}</Empty>}
+        </button>)}</div> : <Empty title={onlyGeneratable ? '暂无语法可选零件' : '没有匹配的零件'}>{onlyGeneratable ? '需要真实来源、可识别的接口规则和可用的碰撞几何；实际组合另行检查。' : '尝试完整编号；尚未完成编号映射的 Element ID 会保留在说明书清单中。'}</Empty>}
       </aside>
 
       <div className="part-detail" aria-busy={detailLoading}>
@@ -272,16 +274,16 @@ export default function PartLab() {
           {detail.geometry?.mesh ? <NativePartViewer mesh={detail.geometry.mesh} points={points} showBounds={showBounds} showConnections={showConnections} /> : <div className="part-missing-mesh"><Empty title="暂无经过来源确认的原生几何">{detail.part.mapping?.status === 'mapped' ? '已取得外部目录映射；仍需可靠的 LDraw 交叉映射与真实源几何，当前不能参与装配。' : '该条目保留在目录中，等待真实几何文件和可靠编号映射。'}</Empty></div>}
           <div className="part-view-legend"><span>网格采用统一展示色，实际颜色以清单为准</span><span><i className="male" />公连接<i className="female" />母连接<i className="other" />其他 / 未分类</span></div>
           <div className="part-checks">{checks.map((check) => <div key={check.name} className={check.ready ? 'ready' : ''}>{check.ready ? <Check size={15} /> : <span className="part-check-dot" />}<span>{check.name}</span><small>{check.ready ? '已就绪' : '待完成'}</small></div>)}</div>
-          <InterfaceCoverage value={detail.part.interfaceCoverage} title="本零件物理接口验证覆盖" />
-          <dl className="part-interface-qualification"><div><dt>fullyAssemblyVerified</dt><dd>{detail.part.interfaceCoverage ? detail.part.interfaceCoverage.fullyAssemblyVerified ? '全部已发现接口通过' : '未全部通过' : '—'}</dd></div><div><dt>partiallyGeneratable</dt><dd>{detail.part.interfaceCoverage ? detail.part.interfaceCoverage.partiallyGeneratable ? '部分接口已开放' : '否' : '—'}</dd></div><div><dt>interfaceVerificationComplete</dt><dd>{detail.part.interfaceCoverage ? detail.part.interfaceCoverage.interfaceVerificationComplete ? '已处理（含阻塞 / 待审）' : '尚有待处理接口' : '—'}</dd></div></dl>
+          <InterfaceCoverage value={detail.part.interfaceCoverage} title="本零件物理接口验证覆盖" description={grammarMode ? '以下为逐接口装配测试记录，不以语法可选状态填充 PASS，也不自动继承历史试拼结果。' : undefined} />
+          {grammarMode ? <dl className="part-interface-qualification"><div><dt>接口语法可选</dt><dd>{detail.part.generatable ? '有可选接口' : '暂无可选接口'}</dd></div><div><dt>已保存装配证明</dt><dd>{detail.part.assemblyVerified ? '有明确范围的证明' : '尚无逐件装配证明'}</dd></div><div><dt>实际模型检查</dt><dd>生成、拼接或导入时执行</dd></div></dl> : <dl className="part-interface-qualification"><div><dt>fullyAssemblyVerified</dt><dd>{detail.part.interfaceCoverage ? detail.part.interfaceCoverage.fullyAssemblyVerified ? '全部已发现接口通过' : '未全部通过' : '—'}</dd></div><div><dt>partiallyGeneratable</dt><dd>{detail.part.interfaceCoverage ? detail.part.interfaceCoverage.partiallyGeneratable ? '部分接口已开放' : '否' : '—'}</dd></div><div><dt>interfaceVerificationComplete</dt><dd>{detail.part.interfaceCoverage ? detail.part.interfaceCoverage.interfaceVerificationComplete ? '已处理（含阻塞 / 待审）' : '尚有待处理接口' : '—'}</dd></div></dl>}
           <div className="part-metrics"><div><span>网格三角形</span><strong>{detail.geometry?.mesh ? Math.floor(detail.geometry.mesh.indices.length / 3).toLocaleString() : '—'}</strong></div><div><span>来源连接点</span><strong>{points.length}</strong></div><div><span>网格尺寸 X × Y × Z</span><strong>{dimensions ? dimensions.map((value) => Number(value.toFixed(2))).join(' × ') : '—'}{dimensions && <small> LDU</small>}</strong></div></div>
-          <p className="part-proxy-note">包围盒根据真实网格计算，用于保守碰撞检查；它不能证明空腔、孔洞或轮轴已经正确配合。</p>
+          <p className="part-proxy-note">包围盒展示真实网格的范围。实际装配还会检查实体碰撞；网格展示或接口可对齐不能证明整组配合合法。</p>
           {!!detail.part.elementIds?.length && <p className="part-mapped-elements">已确认 Element ID：{detail.part.elementIds.join('、')}</p>}
           {detail.part.mapping && <MappingEvidence mapping={detail.part.mapping} />}
           {!!observationEvidence.length && <section className="part-observation-evidence"><h3>说明书观测证据</h3><p>保留原始标签与 PDF 页码；目录映射单独记录，备件属性与整套清单完整性仍需核对。</p><div className="part-table-wrap"><table className="part-table"><thead><tr><th>文件</th><th>PDF 页码</th><th>原始标签</th><th>复核范围</th></tr></thead><tbody>{observationEvidence.map((evidence, index) => <tr key={index}><td>{evidence.sourceId ?? evidence.documentId}.pdf</td><td>{evidence.page ?? evidence.pdfPage ?? '—'}</td><td className="part-mono">{evidence.rawText ?? '—'}</td><td>{evidence.reviewStatus === 'visual-spot-checked' ? '图像抽查' : '文本层抽取'}</td></tr>)}</tbody></table></div></section>}
-          {detail.part.assemblyReport && <section className="part-assembly-scope"><h3>数字装配验证范围</h3><p>适用检查 {detail.part.assemblyReport.fixtureTestsPassed} / {detail.part.assemblyReport.fixtureTestsTotal}；引擎生成路径检查：{detail.part.assemblyReport.generatorSmokePassed ? '通过' : '未通过 / 未完成'}。</p><p>只开放列出的已验证连接口，其他连接仍保持关闭。数字验证不表示完成实体实拼。</p><details><summary>{detail.part.enabledConnectionIds?.length ?? detail.part.assemblyReport.verifiedConnectionIds?.length ?? 0} 个已开放原始连接 ID</summary><ul>{(detail.part.enabledConnectionIds ?? detail.part.assemblyReport.verifiedConnectionIds ?? []).map((id) => <li key={id} className="part-mono part-wrap">{id}</li>)}</ul></details></section>}
+          {detail.part.assemblyReport && <section className="part-assembly-scope"><h3>{grammarMode ? '接口语法可选范围' : '数字装配验证范围'}</h3>{grammarMode ? <p>仅列出当前来源中符合受支持规则的接口。每次生成、拼接和重新导入都要检查实际组合；此处不表示已完成逐件试拼或实体实拼。</p> : <><p>适用检查 {detail.part.assemblyReport.fixtureTestsPassed} / {detail.part.assemblyReport.fixtureTestsTotal}；引擎生成路径检查：{detail.part.assemblyReport.generatorSmokePassed ? '通过' : '未通过 / 未完成'}。</p><p>只开放列出的已验证连接口，其他连接仍保持关闭。数字验证不表示完成实体实拼。</p></>}<details><summary>{detail.part.enabledConnectionIds?.length ?? detail.part.assemblyReport.verifiedConnectionIds?.length ?? 0} 个已开放原始连接 ID</summary><ul>{(detail.part.enabledConnectionIds ?? detail.part.assemblyReport.verifiedConnectionIds ?? []).map((id) => <li key={id} className="part-mono part-wrap">{id}</li>)}</ul></details></section>}
           {!!detail.part.issues.length && <div className="part-issues"><h3><CircleHelp size={15} />尚待完成</h3><ul>{detail.part.issues.map((issue, index) => <li key={index}>{issue}</li>)}</ul></div>}
-          {!!detail.part.checks?.length && <section className="part-tests"><h3>验证记录</h3>{detail.part.checks.map((test) => <div key={test.id}><span>{test.id}</span><Badge ready={test.outcome === 'passed'}>{test.outcome === 'passed' ? '通过' : test.outcome === 'failed' ? '未通过' : test.outcome === 'not-applicable' ? '不适用' : '未执行'}</Badge><small>{test.description}</small></div>)}</section>}
+          {!!detail.part.checks?.length && <section className="part-tests"><h3>验证记录</h3>{detail.part.checks.map((test) => <div key={test.id}><span>{test.id}</span><Badge ready={test.outcome === 'passed'}>{test.outcome === 'passed' ? '通过' : test.outcome === 'failed' ? '未通过' : test.outcome === 'not-applicable' ? '不适用' : '未执行'}</Badge><small>{grammarMode && test.outcome === 'not-run' ? '在生成、拼接或重新导入模型时检查；当前无本件独立装配记录。' : test.description}</small></div>)}</section>}
           {!!points.length && <details className="part-connection-records"><summary>查看 {points.length} 条原始来源连接记录</summary><p>连接方向与位置来自源指令；已导入连接点不自动获得装配准入，只有明确开放的接口可用于生成。</p><div className="part-table-wrap"><table className="part-table"><thead><tr><th>源类型</th><th>性别</th><th>位置 LDU</th><th>装配准入</th><th>来源行</th></tr></thead><tbody>{points.slice(0, 100).map((point, index) => <tr key={point.id ?? index}><td>{point.family ?? point.type ?? '未分类'}</td><td>{point.gender === 'M' ? '公' : point.gender === 'F' ? '母' : '未指定'}</td><td className="part-mono">{point.position.map((value) => Number(value.toFixed(2))).join(', ')}</td><td>{point.id && detail.part.enabledConnectionIds?.includes(point.id) ? '已开放' : '未开放'}</td><td><span title={point.source?.raw}>{point.source?.path ?? '—'}{point.source?.line ? `:${point.source.line}` : ''}</span></td></tr>)}</tbody></table></div>{points.length > 100 && <p>表格显示前 100 个连接点；三维视图保留全部点。</p>}</details>}
           <div className="part-sources"><SourceList title="原生几何来源" source={detail.geometry?.source} /><SourceList title="连接数据来源" source={connectionSource} /></div>
         </>}

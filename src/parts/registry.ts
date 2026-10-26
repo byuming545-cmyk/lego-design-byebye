@@ -8,6 +8,7 @@ import { mineFoundationInventories } from './miner.js';
 import { buildReferenceSetRecords, type InstructionDocument } from './referenceSets.js';
 import { assessPartReadiness, type PartCheck, type PartReadiness } from './trust.js';
 import { AssemblyService } from './assembly/service.js';
+import { GrammarAssemblyService } from './grammar/service.js';
 import { NativePartRepository } from './assembly/source.js';
 import { buildNativeCollisionProxy } from './assembly/proxy.js';
 import { IDENTITY_TRANSFORM } from './assembly/math.js';
@@ -20,7 +21,7 @@ export const FOUNDATION_BUNDLE_ROOT = fileURLToPath(new URL('../../data/parts-fo
 export const FOUNDATION_LIMITATIONS = [
   'Element → Part / Design / 颜色映射来自固定版本的公开数据镜像，保留 source-observed；LDraw 跨编号关系仍需明确证据。',
   '附录数量有页码依据；颜色映射尚未独立与 PDF 图像逐项核对，备用件属性及整套完整性仍未知。',
-  '装配通过仅适用于逐件报告白名单中的接口和规则；其余接口保持禁用，不代表已做实物或制造公差验证。',
+  '接口语法资格只允许尝试对应源接口；每个生成布局仍须通过实际碰撞、占用和连接图验证，不代表已做实物或制造公差认证。',
   '闭合原生代理用于实体碰撞检查；无法可靠闭合的几何、未知机械配合或未测接口均保留具体阻塞原因。',
   '6572269.pdf 与 6592544.pdf 超过当前附件传输上限，未读取其内容。Porsche 77239 暂无已读取的本地说明书。',
   '真实装配生成器先开放基础结构。旧版参数化生成与导出继续暂停；没有训练神经网络或将 PDF 自动还原为整车。',
@@ -106,7 +107,7 @@ export class RealPartRegistry {
   readonly localInventoryDir: string;
   constructor(options: { dataDir?: string; repository?: NativePartRepository; assemblyService?: AssemblyService } = {}) {
     this.repository = options.repository ?? new NativePartRepository();
-    this.assemblyService = options.assemblyService ?? new AssemblyService({ repository: this.repository });
+    this.assemblyService = options.assemblyService ?? new GrammarAssemblyService({ repository: this.repository });
     this.localInventoryDir = path.resolve(options.dataDir ?? process.env.BRICKLAB_DATA_DIR ?? 'data', 'parts-foundation', 'private', 'inventories');
   }
   private async initialize(): Promise<void> {
@@ -157,6 +158,7 @@ export class RealPartRegistry {
       collisionReady: geometryReady && proxy.status === 'ready',
       assemblyVerified: entry?.assemblyVerified === true,
       generatorSmokePassed: entry?.generatorSmokePassed === true && entry.generatable,
+      grammarEligible: entry?.admissionBasis === 'interface-grammar' && entry.generatable && entry.sourceReady === true && entry.collisionGeometryReady === true && entry.connectable === true,
       checks,
     });
     return {

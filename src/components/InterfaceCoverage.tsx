@@ -31,9 +31,10 @@ export interface AggregateInterfaceCoverageData extends InterfaceCoverageMetrics
 
 const percent = (value: number | null | undefined) => value == null ? '—' : `${Number(value.toFixed(2))}%`;
 
-export default function InterfaceCoverage({ value, title = '物理接口验证覆盖' }: { value?: InterfaceCoverageMetrics; title?: string }) {
+export default function InterfaceCoverage({ value, title = '物理接口验证覆盖', description }: { value?: InterfaceCoverageMetrics; title?: string; description?: string }) {
   return <section className="interface-coverage" aria-label={title}>
     <h3>{title}</h3>
+    {description && <p>{description}</p>}
     <div className="interface-coverage-states">{[
       ['physicalInterfacesDiscovered', '已发现物理接口'], ['verifiedPass', 'PASS'], ['verifiedBlocked', 'BLOCKED'], ['requiresAstraReview', 'REQUIRES_ASTRA_REVIEW'], ['pending', 'PENDING'],
     ].map(([key, label]) => <div key={key}><span>{label}</span><strong>{value ? String(value[key as keyof InterfaceCoverageMetrics] ?? '—') : '—'}</strong></div>)}</div>

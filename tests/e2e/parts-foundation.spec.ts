@@ -4,7 +4,7 @@ import path from 'node:path';
 import { expectCoverageMatches } from './assemblyChecks.js';
 import type { InterfaceCoverageData } from '../../src/components/InterfaceCoverage.js';
 
-const artifactDirectory = path.resolve('artifacts/parts-foundation');
+const artifactDirectory = path.resolve('artifacts/connector-grammar/screenshots/parts');
 const pathname = (response: Response) => decodeURIComponent(new URL(response.url()).pathname);
 const pageErrors = new WeakMap<Page, string[]>();
 
@@ -30,6 +30,7 @@ interface NativePartDetail {
   connections: null | { points: { source: { sha256: string } }[] };
 }
 interface AssemblyStatus {
+  admissionBasis: 'interface-grammar';
   counts: { total: number; assemblyVerified: number; generatable: number; blocked: number };
   queue?: { partId: string; assemblyVerified: boolean; generatable: boolean }[];
   entries?: { partId: string; assemblyVerified: boolean; generatable: boolean }[];
@@ -133,9 +134,11 @@ test.describe('real parts foundation with actual bundled sources and WebGL', () 
     expect(status.counts.generatable).toBe(migration.counts.generatable);
     expect(status.counts.generatable).toBeGreaterThan(0);
     expect(status.counts.verified).toBe(catalog.filter(part => part.verified).length);
-    expect(migration.counts.assemblyVerified + migration.counts.blocked).toBe(migration.counts.total);
+    expect(migration.admissionBasis).toBe('interface-grammar');
+    expect(migration.counts.generatable + migration.counts.blocked).toBe(migration.counts.total);
+    expect(status.counts.assemblyVerified).toBe(0);
     expect(status.counts).toMatchObject({ observedElementIds: 531, readableDocuments: 6 });
-    for (const [label, key] of [['已有真实几何', 'geometryReady'], ['仅目录', 'catalogOnly'], ['有已验证接口', 'assemblyVerified'], ['允许用于生成', 'generatable'], ['限定范围复核', 'verified']]) {
+    for (const [label, key] of [['已有真实几何', 'geometryReady'], ['仅目录', 'catalogOnly'], ['有已保存装配证明', 'assemblyVerified'], ['语法可选零件', 'generatable'], ['限定范围复核', 'verified']]) {
       await expect(page.locator('.part-counts > div').filter({ hasText: label }).locator('strong')).toHaveText(String(status.counts[key]));
     }
 
@@ -146,7 +149,10 @@ test.describe('real parts foundation with actual bundled sources and WebGL', () 
     expect(detail.part.assemblyVerified).toBe(migrationPart!.assemblyVerified);
     expect(detail.part.generatable).toBe(migrationPart!.generatable);
     await expectCoverageMatches(page.getByRole('region', { name: '本零件物理接口验证覆盖', exact: true }), detail.part.interfaceCoverage);
-    await expect(page.locator('.part-interface-qualification')).toContainText(detail.part.interfaceCoverage.fullyAssemblyVerified ? '全部已发现接口通过' : '未全部通过');
+    expect(detail.part.assemblyVerified).toBe(false);
+    expect(detail.part.interfaceCoverage.verifiedPass).toBe(0);
+    await expect(page.locator('.part-interface-qualification')).toContainText(detail.part.generatable ? '有可选接口' : '暂无可选接口');
+    await expect(page.locator('.part-interface-qualification')).toContainText('尚无逐件装配证明');
     expect(detail.geometry?.status).toBe('geometryReady');
     expect(detail.geometry!.mesh.indices.length).toBeGreaterThan(300);
     expect(detail.geometry!.source.files.length).toBeGreaterThan(1);
@@ -186,8 +192,8 @@ test.describe('real parts foundation with actual bundled sources and WebGL', () 
     await expect(page.locator('.part-mapping-evidence')).toContainText('未获准，仅 VERIFIED 映射可进入正式几何流程');
     await expect(page.locator('.part-mapping-evidence')).toContainText('待核对，未绑定几何');
     await page.screenshot({ path: path.join(artifactDirectory, 'element-mapped-no-invented-geometry.png'), fullPage: true });
-    await page.getByRole('checkbox', { name: '只看允许用于生成的零件' }).check();
-    await expect(page.getByText('暂无通过生成准入的零件', { exact: true })).toBeVisible();
+    await page.getByRole('checkbox', { name: '只看语法可选零件' }).check();
+    await expect(page.getByText('暂无语法可选零件', { exact: true })).toBeVisible();
     await expect(page.locator('.part-native-canvas canvas')).toHaveCount(0);
   });
 
