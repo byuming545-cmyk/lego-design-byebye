@@ -5,6 +5,7 @@ import { RealPartRegistry } from './registry.js';
 import { storeLocalInventory } from './inventoryStore.js';
 import { NATIVE_MODULE_TYPES, validateNativeModuleRequest, type NativeModuleType, type NativeModuleRequest } from './assembly/generator.js';
 import { exportNativeAssemblyBomCsv, exportNativeAssemblyJson, exportNativeAssemblyLDraw } from './assembly/documents.js';
+import { BAR_CLIP_RULE_ID } from './assembly/compatibility.js';
 import { buildNativeCollisionProxy } from './assembly/proxy.js';
 import { IDENTITY_TRANSFORM } from './assembly/math.js';
 import { NativeModelImportError } from './assembly/modelImport.js';
@@ -20,7 +21,7 @@ export function createPartsFoundationRouter(options: { dataDir?: string; registr
   const router = Router();
   const registry = options.registry ?? new RealPartRegistry(options);
   const assembly = registry.assemblyService;
-  router.get('/grammar', (_request, response) => { response.json({ version: CONNECTOR_GRAMMAR_VERSION, units: 'LDU', families: CONNECTOR_FAMILIES, rules: CONNECTOR_GRAMMAR_RULES, nativeGraphRulesEnabled: ['C01'], physicalBuildVerified: false }); });
+  router.get('/grammar', (_request, response) => { response.json({ version: CONNECTOR_GRAMMAR_VERSION, units: 'LDU', families: CONNECTOR_FAMILIES, rules: CONNECTOR_GRAMMAR_RULES, nativeGraphRulesEnabled: ['C01', BAR_CLIP_RULE_ID], physicalBuildVerified: false }); });
   router.get('/parts/:partId/connectors', async (request, response) => {
     if (!/^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,79}$/.test(request.params.partId)) bad('零件编号格式无效。');
     const part = await assembly.getPart(request.params.partId);
@@ -55,11 +56,15 @@ export function createPartsFoundationRouter(options: { dataDir?: string; registr
   });
   router.post('/assembly/generate', async (request, response) => {
     const body = request.body;
-    if (!object(body) || Object.keys(body).some(key => !['kind', 'module', 'partCount', 'requiredPartIds'].includes(key)) ||
+    if (!object(body)) bad('请求内容无效。');
+    const module = (body.kind ?? body.module) as NativeModuleType;
+    const minimum = module === 'bar-clip' ? 2 : 3;
+    if (Object.keys(body).some(key => !['kind', 'module', 'partCount', 'requiredPartIds'].includes(key)) ||
         body.kind !== undefined && body.module !== undefined ||
-        !NATIVE_MODULE_TYPES.includes((body.kind ?? body.module) as NativeModuleType) ||
-        body.partCount !== undefined && (!Number.isInteger(body.partCount) || (body.partCount as number) < 3 || (body.partCount as number) > 32)) bad('请选择受支持的基础结构，零件数量应为 3–32。');
+        !NATIVE_MODULE_TYPES.includes(module) ||
+        body.partCount !== undefined && (!Number.isInteger(body.partCount) || (body.partCount as number) < minimum || (body.partCount as number) > 32)) bad(`请选择受支持的基础结构，零件数量应为 ${minimum}–32。`);
     if ((body.kind ?? body.module) === 'basic-snot' && body.partCount !== undefined && body.partCount !== 3) bad('当前基础侧向模块固定由 3 个真实零件组成。');
+    if ((body.kind ?? body.module) === 'bar-clip' && body.partCount !== undefined && body.partCount !== 2) bad('当前杆夹模块固定由 2 个真实零件组成。');
     const generationRequest: NativeModuleRequest = { module: (body.kind ?? body.module) as NativeModuleType, ...(body.partCount === undefined ? {} : { partCount: body.partCount as number }), ...(body.requiredPartIds === undefined ? {} : { requiredPartIds: body.requiredPartIds as string[] }) };
     try { validateNativeModuleRequest(generationRequest); }
     catch (error) { bad(error instanceof Error ? error.message : '生成目标无效。'); }

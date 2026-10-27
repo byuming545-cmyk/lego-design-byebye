@@ -5,6 +5,8 @@ import type { NativeAssemblyPart } from '../src/parts/assembly/types.js';
 import { AttachmentEngine } from '../src/parts/assembly/engine.js';
 import { assessGrammarAdmission } from '../src/parts/grammar/admission.js';
 import { GrammarAssemblyService } from '../src/parts/grammar/service.js';
+import { BAR_CLIP_RULE_ID } from '../src/parts/assembly/compatibility.js';
+import { exportNativeAssemblyJson } from '../src/parts/assembly/documents.js';
 
 const repository = new NativePartRepository();
 const service = new GrammarAssemblyService({ repository, dataDir: '/tmp/grammar-test-no-historical-report' });
@@ -58,19 +60,19 @@ describe('source-derived interface grammar admission', () => {
     expect(admission.featureSupport.filter(feature => feature.family === 'PIN_HOLE').every(feature => !feature.supported)).toBe(true);
   });
 
-  it('admits the source-declared BAR endpoint but keeps open-shell clips blocked', async () => {
+  it('admits the source-declared BAR and source-open CLIP seat surfaces without promoting unrelated R4 cylinders', async () => {
     const bar = assessGrammarAdmission((await repository.getPart('30374'))!);
     expect(bar).toMatchObject({ connectable: true, collisionGeometryReady: true, generationEligible: true });
-    expect(bar.featureSupport.find(feature => feature.family === 'BAR')).toMatchObject({ supported: true, ruleIds: ['ldcad-source-declared-bar-clip-v1'] });
-    expect(bar.capability?.ruleIds).toContain('ldcad-source-declared-bar-clip-v1');
+    expect(bar.featureSupport.find(feature => feature.family === 'BAR')).toMatchObject({ supported: true, ruleIds: [BAR_CLIP_RULE_ID] });
+    expect(bar.capability?.ruleIds).toContain(BAR_CLIP_RULE_ID);
 
-    for (const [partId, reason] of [['48729b', 'grammar-collision-non-manifold-boundary'], ['60470b', 'grammar-collision-open-nonplanar-shell']] as const) {
+    for (const partId of ['48729b', '60470b'] as const) {
       const clip = assessGrammarAdmission((await repository.getPart(partId))!);
       expect(clip.connectable, partId).toBe(true);
-      expect(clip.collisionGeometryReady, partId).toBe(false);
-      expect(clip.generationEligible, partId).toBe(false);
-      expect(clip.reasonCodes, partId).toContain(reason);
-      expect(clip.capability?.allowedConnectionIds, partId).toEqual([]);
+      expect(clip.collisionGeometryReady, partId).toBe(true);
+      expect(clip.generationEligible, partId).toBe(true);
+      expect(clip.proxy, partId).toMatchObject({ status: 'ready', reasonCode: 'source-open-surface-clip' });
+      expect(clip.capability?.allowedConnectionIds.length, partId).toBeGreaterThan(0);
       expect(clip.featureSupport.filter(feature => feature.family === 'CLIP').every(feature => feature.supported), partId).toBe(true);
       expect(clip.featureSupport.filter(feature => feature.family === 'BAR').length, partId).toBe(partId === '48729b' ? 1 : 0);
     }
@@ -155,6 +157,23 @@ describe('source-derived interface grammar admission', () => {
     stale.grammarVersion = 'obsolete-connector-grammar';
     const engine = new AttachmentEngine({ mode: 'production', loadPart: id => repository.getPart(id), getCapability: () => stale });
     await expect(engine.createAssembly('3001')).rejects.toThrow();
+  }, 30_000);
+
+  it('generates a source-backed Bar-Clip model and reimports its exported JSON', async () => {
+    const generated = await service.generate({ module: 'bar-clip' });
+    expect(generated.status, generated.reasons.join('; ')).toBe('generated');
+    const model = generated.model!;
+    expect(model.placements.map(placement => placement.partId).sort()).toEqual(['30374', '48729b']);
+    expect(model.edges).toHaveLength(1);
+    expect(model.edges[0].ruleId).toBe(BAR_CLIP_RULE_ID);
+    expect(model.steps).toHaveLength(2);
+    expect(model.bom.reduce((sum, row) => sum + row.quantity, 0)).toBe(2);
+    expect(model.assemblyValidation.valid).toBe(true);
+    const exported = exportNativeAssemblyJson(model);
+    const adopted = await service.importModel(JSON.parse(exported));
+    expect(adopted.status, adopted.reasons.join('; ')).toBe('VALID');
+    expect(adopted.model?.bom.map(row => row.partId).sort()).toEqual(['30374', '48729b']);
+    await expect(service.generate({ module: 'bar-clip', partCount: 3 })).rejects.toThrow('固定');
   }, 30_000);
 
   it('allows ordinary production generation and current export reimport without a per-part success cache', async () => {

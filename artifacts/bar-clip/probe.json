@@ -1,7 +1,7 @@
 {
   "schemaVersion": "bar-clip-probe-1",
-  "generatedAt": "2026-10-27T05:08:15.321Z",
-  "purpose": "Source-backed Bar/Clip evidence probe. It does not generate, export or reimport a model.",
+  "generatedAt": "2026-10-27T05:21:23.768Z",
+  "purpose": "Source-backed Bar/Clip evidence probe. Model generation/export/reimport is recorded separately in generation-report.json.",
   "features": {
     "30374": [
       {
@@ -251,25 +251,36 @@
     },
     "48729b": {
       "partId": "48729b",
-      "generationEligible": false,
+      "generationEligible": true,
       "connectable": true,
-      "collisionGeometryReady": false,
-      "reasonCodes": [
-        "grammar-collision-non-manifold-boundary"
+      "collisionGeometryReady": true,
+      "reasonCodes": [],
+      "ruleIds": [
+        "ldcad-source-declared-bar-clip-v1"
       ],
-      "ruleIds": [],
-      "allowedConnectionIds": []
+      "allowedConnectionIds": [
+        "parts/48729b.dat:8:0",
+        "parts/48729b.dat:9:1"
+      ]
     },
     "60470b": {
       "partId": "60470b",
-      "generationEligible": false,
+      "generationEligible": true,
       "connectable": true,
-      "collisionGeometryReady": false,
-      "reasonCodes": [
-        "grammar-collision-open-nonplanar-shell"
+      "collisionGeometryReady": true,
+      "reasonCodes": [],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1",
+        "ldcad-source-declared-bar-clip-v1"
       ],
-      "ruleIds": [],
-      "allowedConnectionIds": []
+      "allowedConnectionIds": [
+        "p/stud.dat:8:0",
+        "p/stud.dat:8:1",
+        "p/clip6.dat:8:3",
+        "p/clip6.dat:8:4",
+        "parts/60470b.dat:9:5",
+        "parts/60470b.dat:9:6"
+      ]
     },
     "2412b": {
       "partId": "2412b",
@@ -317,6 +328,165 @@
           180,
           270
         ]
+      },
+      "collision": {
+        "status": "clear",
+        "reasonCode": "open-surface-seat-clearance",
+        "reason": "All actual open-shell/closed-solid intersections lie inside the source-declared cylindrical seat; no other overlap was found. This is surface clearance, not a closed-solid certificate.",
+        "classification": "OPEN_SURFACE_SEAT_CLEARANCE",
+        "triangleTests": 1314,
+        "closedSourceProxies": false,
+        "openSourceSurfaces": true,
+        "openSurfaceSeatChecked": true,
+        "containmentChecked": false,
+        "completeSurfacePartition": false,
+        "witness": null,
+        "zone": {
+          "center": [
+            0,
+            40,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "radius": 4,
+          "depth": 8,
+          "anchor": [
+            0,
+            40,
+            0
+          ]
+        },
+        "allTwists": [
+          {
+            "twistDeg": 0,
+            "status": "clear",
+            "reasonCode": "open-surface-seat-clearance",
+            "witness": null,
+            "triangleTests": 1314
+          },
+          {
+            "twistDeg": 90,
+            "status": "clear",
+            "reasonCode": "open-surface-seat-clearance",
+            "witness": null,
+            "triangleTests": 1314
+          },
+          {
+            "twistDeg": 180,
+            "status": "clear",
+            "reasonCode": "open-surface-seat-clearance",
+            "witness": null,
+            "triangleTests": 1314
+          },
+          {
+            "twistDeg": 270,
+            "status": "clear",
+            "reasonCode": "open-surface-seat-clearance",
+            "witness": null,
+            "triangleTests": 1314
+          }
+        ],
+        "slideTests": [
+          {
+            "offsetLdu": -36,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -32,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -28,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -24,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -20,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -16,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -12,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -8,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -4,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 0,
+            "status": "clear",
+            "reasonCode": "open-surface-seat-clearance"
+          },
+          {
+            "offsetLdu": 4,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 8,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 12,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 16,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 20,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 24,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 28,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 32,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 36,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          }
+        ]
       }
     },
     {
@@ -349,6 +519,185 @@
           180,
           270
         ]
+      },
+      "collision": {
+        "status": "collision",
+        "reasonCode": "open-surface-contact-outside-seat",
+        "reason": "An open source shell intersects its closed counterpart outside the source-declared cylindrical seat; the local connection zone grants no exemption.",
+        "classification": "OPEN_SURFACE_SEAT_OVERLAP",
+        "triangleTests": 151,
+        "closedSourceProxies": false,
+        "openSourceSurfaces": true,
+        "openSurfaceSeatChecked": false,
+        "containmentChecked": false,
+        "completeSurfacePartition": false,
+        "witness": [
+          -4,
+          80,
+          0
+        ],
+        "zone": {
+          "center": [
+            0,
+            40,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "radius": 4,
+          "depth": 8,
+          "anchor": [
+            0,
+            40,
+            0
+          ]
+        },
+        "allTwists": [
+          {
+            "twistDeg": 0,
+            "status": "collision",
+            "reasonCode": "open-surface-contact-outside-seat",
+            "witness": [
+              -4,
+              80,
+              0
+            ],
+            "triangleTests": 151
+          },
+          {
+            "twistDeg": 90,
+            "status": "collision",
+            "reasonCode": "open-surface-contact-outside-seat",
+            "witness": [
+              0,
+              80,
+              4
+            ],
+            "triangleTests": 151
+          },
+          {
+            "twistDeg": 180,
+            "status": "collision",
+            "reasonCode": "open-surface-contact-outside-seat",
+            "witness": [
+              4,
+              80,
+              0
+            ],
+            "triangleTests": 149
+          },
+          {
+            "twistDeg": 270,
+            "status": "collision",
+            "reasonCode": "open-surface-contact-outside-seat",
+            "witness": [
+              0,
+              80,
+              -4
+            ],
+            "triangleTests": 151
+          }
+        ],
+        "slideTests": [
+          {
+            "offsetLdu": -36,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -32,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -28,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -24,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -20,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -16,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -12,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -8,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -4,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 0,
+            "status": "collision",
+            "reasonCode": "open-surface-contact-outside-seat"
+          },
+          {
+            "offsetLdu": 4,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 8,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 12,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 16,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 20,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 24,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 28,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 32,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 36,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          }
+        ]
       }
     },
     {
@@ -371,7 +720,8 @@
         "reason": "compatibilityUnknown: clip deformation, bar engagement and insertion path have not been validated.",
         "candidateCount": 0,
         "candidateTwistsDeg": []
-      }
+      },
+      "collision": null
     }
   ]
 }

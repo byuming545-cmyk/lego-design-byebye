@@ -45,10 +45,11 @@ describe('all-native-root assembly migration', () => {
     expect(report.entries.filter(entry => !entry.assemblyVerified).every(entry => entry.reasonCodes.length > 0 && entry.reasons.length > 0 && !entry.allowedConnectionIds.length)).toBe(true);
   });
 
-  it('retains source-bound historical proof but revokes its obsolete engine/rule versions', async () => {
-    expect(report).toMatchObject({ partLibraryVersion: PART_LIBRARY_VERSION, collisionVersion: COLLISION_VERSION });
+  it('retains source-bound historical proof but revokes its obsolete engine, rule and collision versions', async () => {
+    expect(report).toMatchObject({ partLibraryVersion: PART_LIBRARY_VERSION, collisionVersion: 'native-closed-bvh-local-partition-1.1.0' });
     expect(report.assemblyEngineVersion).not.toBe(ASSEMBLY_ENGINE_VERSION);
     expect(report.connectionRuleVersion).not.toBe(CONNECTION_RULE_VERSION);
+    expect(report.collisionVersion).not.toBe(COLLISION_VERSION);
     expect(fullReport.assemblyEngineVersion).toBe(report.assemblyEngineVersion);
     expect(fullReport.connectionRuleVersion).toBe(report.connectionRuleVersion);
     const stale = await new AssemblyService({ repository }).status();

@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import type { NativeAssemblyPart, NativePlacement, Vector3 } from './types.js';
 import { add, cross, dot, IDENTITY_TRANSFORM, isRigidTransform, normalize, rotate, scale, subtract, transformPoint } from './math.js';
+import { isSourceDeclaredClipEndpoint } from '../grammar/sources.js';
 
 export interface MeshBounds { min: Vector3; max: Vector3 }
 export interface CollisionTriangle {
@@ -12,7 +13,16 @@ export interface CollisionTriangle {
 export interface TriangleBvh { bounds: MeshBounds; triangles?: number[]; left?: TriangleBvh; right?: TriangleBvh }
 export interface CollisionProxy {
   partId: string; instanceId: string; triangles: CollisionTriangle[]; bvh: TriangleBvh; bounds: MeshBounds;
-  topology: { status: 'closed-oriented-chain'; sourceTriangles: number; internalCaps: number; sourceCoveredCapArea: number; signedVolume: number };
+  topology: {
+    status: 'closed-oriented-chain' | 'open-source-surface';
+    sourceTriangles: number;
+    internalCaps: number;
+    sourceCoveredCapArea: number;
+    signedVolume: number | null;
+    /** Null means the source boundary graph was too branched to count. */
+    boundarySegments: number | null;
+    boundaryLoops: number | null;
+  };
   evidence: { libraryRevision: string; meshSha256: string; sourceFiles: { path: string; sha256: string }[] };
 }
 export interface ProxyBuildResult { status: 'ready' | 'blocked'; reason: string; reasonCode: string; proxy?: CollisionProxy }
@@ -168,9 +178,22 @@ function deriveNativeCollisionProxy(part: NativeAssemblyPart, placement: NativeP
   }
   if (triangles.length === 0) return blocked('empty-solid-mesh', 'No solid native triangles are available.');
   const sourceTriangleCount = triangles.length;
+  const openSurface = part.connections.points.some(isSourceDeclaredClipEndpoint);
   const boundaries = boundaryEdges(triangles);
+  const loops = boundaries ? boundaryLoops(boundaries) : null;
+  if (openSurface) {
+    // A C-clip is an open plastic shell by construction. Its source triangles
+    // are retained exactly; no cap, solid volume or winding is invented. The
+    // narrow phase below may only classify this as a surface seat interaction.
+    const bvh = buildBvh(triangles, triangles.map((_, index) => index));
+    const meshSha256 = createHash('sha256').update(JSON.stringify({ positions: mesh.positions, indices: mesh.indices, doubleSided: mesh.doubleSided })).digest('hex');
+    return { status: 'ready', reasonCode: 'source-open-surface-clip', reason: 'Source-declared CLIP shell retained as an open surface; collision is resolved by the sourced cylindrical seat, not by inventing a solid cap.', proxy: {
+      partId: part.partId, instanceId: placement.instanceId, triangles, bvh, bounds: bvh.bounds,
+      topology: { status: 'open-source-surface', sourceTriangles: sourceTriangleCount, internalCaps: 0, sourceCoveredCapArea: 0, signedVolume: null, boundarySegments: boundaries?.length ?? null, boundaryLoops: loops?.length ?? null },
+      evidence: { libraryRevision: geometry.source.revision, meshSha256, sourceFiles: geometry.source.files.map(file => ({ path: file.path, sha256: file.sha256 })) },
+    } };
+  }
   if (boundaries === null) return blocked('non-manifold-boundary', 'Native oriented boundary multiplicity is unresolved.');
-  const loops = boundaryLoops(boundaries);
   if (!loops) return blocked('branched-native-boundary', 'The source mesh has open/branched boundary chains.');
   let capArea = 0;
   for (const loop of loops) {
@@ -194,7 +217,7 @@ function deriveNativeCollisionProxy(part: NativeAssemblyPart, placement: NativeP
   const meshSha256 = createHash('sha256').update(JSON.stringify({ positions: mesh.positions, indices: mesh.indices, doubleSided: mesh.doubleSided })).digest('hex');
   return { status: 'ready', reasonCode: 'source-closed-proxy', reason: 'Native closed oriented mesh with only fully source-covered internal caps.', proxy: {
     partId: part.partId, instanceId: placement.instanceId, triangles, bvh, bounds: bvh.bounds,
-    topology: { status: 'closed-oriented-chain', sourceTriangles: sourceTriangleCount, internalCaps: triangles.length - sourceTriangleCount, sourceCoveredCapArea: capArea, signedVolume },
+    topology: { status: 'closed-oriented-chain', sourceTriangles: sourceTriangleCount, internalCaps: triangles.length - sourceTriangleCount, sourceCoveredCapArea: capArea, signedVolume, boundarySegments: 0, boundaryLoops: 0 },
     evidence: { libraryRevision: geometry.source.revision, meshSha256, sourceFiles: geometry.source.files.map(file => ({ path: file.path, sha256: file.sha256 })) },
   } };
 }

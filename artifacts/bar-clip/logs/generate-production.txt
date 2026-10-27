@@ -1,0 +1,34 @@
+
+> bricklab@0.6.0 generate:bar-clip
+> tsx src/cli/bar-clip-generate.ts
+
+{
+  "status": "generated",
+  "module": "bar-clip",
+  "placements": [
+    "30374",
+    "48729b"
+  ],
+  "edges": 1,
+  "steps": 2,
+  "exportBytes": 12993,
+  "reimport": "VALID",
+  "counts": {
+    "total": 253,
+    "assemblyVerified": 0,
+    "generatable": 102,
+    "blocked": 151,
+    "verifiedInterfaces": 0,
+    "disabledInterfaces": 2544,
+    "testedPhysicalInterfaces": 0,
+    "deferredPhysicalInterfaces": 5019,
+    "deferredRawConnectionIds": 5084,
+    "wheelModulesVerified": 0,
+    "physicalBuildsVerified": 0
+  }
+}
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

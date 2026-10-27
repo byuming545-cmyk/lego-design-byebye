@@ -62,7 +62,7 @@ flowchart LR
 
 `describeGrammarPart()` 组合原始geometry、collision geometry状态、connectors、bounds、metadata和provenance。没有可靠证据的整件symmetry与surfaces保持null；不从零件标题推断。
 
-同一位置可以有多个不同feature：外部Hollow Stud和中心Bar receptacle都能保存。两者必须各自有来源；看到空心凸点不能自动补造中心Bar接口。同位功能也不意味着可以同时占用，实际连接仍检查接口占用与实体。原生生产图目前只开放C01；其它功能的共享占用语义需要相应来源及图适配。
+同一位置可以有多个不同feature：外部Hollow Stud和中心Bar receptacle都能保存。两者必须各自有来源；看到空心凸点不能自动补造中心Bar接口。同位功能也不意味着可以同时占用，实际连接仍检查接口占用与实体。原生生产图目前开放C01与BAR_CLIP的明确来源子集；其它功能的共享占用语义需要相应来源及图适配。
 
 ## 4. 25个可扩展接口族
 
@@ -88,7 +88,7 @@ RAIL, GROOVE, GENERIC_SPECIAL
 | 规则 | 接口配对 | 关节含义及所需条件 | 当前真实原生生产图 |
 | --- | --- | --- | --- |
 | C01 | STUD/HOLLOW_STUD ↔ ANTISTUD | 来源证明的普通System stud完全就位，RIGID，0平移/0转动DOF | 已启用明确来源子集 |
-| BAR_CLIP | BAR ↔ CLIP | 官方Bar描述 + LDCad male cylinder/clip seat；span、宽度、限位与运动权限可派生 | 语法/原生兼容/求解已启用；生产生成图未启用（两个CLIP零件碰撞壳未闭合） |
+| BAR_CLIP | BAR ↔ CLIP | 官方Bar描述 + LDCad male cylinder/clip seat；span、宽度、限位与运动权限可派生 | 已启用明确来源子集；一个真实2件模型已生成、导出并重导入 |
 | BAR_RECEPTACLE | BAR ↔ BAR_HOLE/ROUND_HOLE | 真实孔类型和插入范围；不能把任意孔视为Bar孔 | 未启用 |
 | PIN_HOLE | PIN ↔ PIN_HOLE | 需要摩擦/保持、插入范围、实际运动权限 | 未启用 |
 | AXLE_KEYED | AXLE ↔ AXLE_HOLE | CROSS截面对齐；锁定自由roll，可在来源允许范围滑动 | 未启用 |
@@ -103,7 +103,7 @@ RAIL, GROOVE, GENERIC_SPECIAL
 | RAIL_GROOVE | RAIL ↔ GROOVE | 实际行程与stop；PRISMATIC，不能自由旋转 | 未启用 |
 | GENERIC_GROUP | GENERIC_SPECIAL ↔ GENERIC_SPECIAL | group、角色及获证配合策略共同匹配 | 未启用 |
 
-C01仍是唯一进入普通生产生成的规则。BAR_CLIP新增`SOURCE_DECLARED_FIT`来源层：官方根LDraw描述提供BAR身份，LDCad `SNAP_CYL`/`SNAP_CLP`提供直径、seat长度、insertion与运动声明；其语法、原生兼容和求解已实现，但两个CLIP零件的开壳碰撞尚未闭合，因此没有进入生产生成图。其余13条仍是**条件式算法kernel**，需要完整、经核定的真实fit数据。算法测试用的明确标记 `ALGORITHM_FIXTURE` 不能作为LEGO实配记录或生产override；默认规则不接纳此范围的证据。
+C01和BAR_CLIP的明确来源子集进入普通生产生成。BAR_CLIP新增`SOURCE_DECLARED_FIT`来源层：官方根LDraw描述提供BAR身份，LDCad `SNAP_CYL`/`SNAP_CLP`提供直径、seat长度、insertion与运动声明；开壳CLIP使用独立的`open-source-surface` seat证明，仍然只做姿态验证，不把表面接触当成闭合实体或实物认证。其余13条仍是**条件式算法kernel**，需要完整、经核定的真实fit数据。算法测试用的明确标记 `ALGORITHM_FIXTURE` 不能作为LEGO实配记录或生产override；默认规则不接纳此范围的证据。
 
 `VERIFIED_FIT` 需要双方共享经核定的接口profile/seat身份、有效来源证据、轴关系、座位偏移及真实范围。该profile身份表示可复用接口标准，不是零件A/B配对允许表。相同半径、family或group不会跳过此检查。
 
@@ -279,7 +279,7 @@ native bar-clip rule: ldcad-source-declared-bar-clip-v1
 - canonical connector coverage：COMPLETE / PARTIAL / NONE，包含族语义和缺失字段。
 - generation eligibility：已知启用接口、来源和原生实体满足候选条件；随后每个模型仍单独验证。
 
-开发核对快照是253个来源根件，raw解析205完整/44部分/4缺失；canonical 98 COMPLETE/151 PARTIAL/4 NONE；grammar候选资格99，旧87件均保留候选资格。这些是开发中核对的状态，**最终交付数量以同版本的当前audit和普通API状态为准**，不能将99候选资格说成99件已实际生成或全部接口已通过。
+开发核对快照是253个来源根件，raw解析205完整/44部分/4缺失；canonical 98 COMPLETE/151 PARTIAL/4 NONE；grammar候选资格102（C01旧87件 + 新增BAR/CLIP来源子集），旧87件均保留候选资格。这些是开发中核对的状态，**最终交付数量以同版本的当前audit和普通API状态为准**，不能将102候选资格说成102件已实际生成或全部接口已通过。
 
 ```sh
 npm run audit:connectors
@@ -307,6 +307,6 @@ curl -X POST http://localhost:3001/api/parts-foundation/assembly/generate \
 
 ## 13. 尚需真实数据或后续求解的内容
 
-当前真实生产仍集中于C01。Bar/Clip已有来源声明的配合、span和insertion，但两个CLIP零件的开壳碰撞壳、保持力/摩擦仍是缺口；Bar receptacle在固定库中没有明确的来源声明。其他未闭合事项包括Pin摩擦/保持、Axle-bearing差异、hinge/click detent、ball/towball角度包络及完整空间姿态、wheel retention/rotation/clearance、tyre/rim seat fit和安装过程，以及复杂原生边界的实体解释。相同group或可显示几何都不足以关闭这些缺口。
+当前真实生产为C01加BAR_CLIP。Bar/Clip已有来源声明的配合、span和insertion，已用一个`30374`+`48729b`真实2件模型走通正常生成、导出和重导入；`60470b`仍因实际板体与80 LDU杆碰撞而不可用于该模块，两个CLIP零件的保持力/摩擦仍是缺口；Bar receptacle在固定库中没有明确的来源声明。其他未闭合事项包括Pin摩擦/保持、Axle-bearing差异、hinge/click detent、ball/towball角度包络及完整空间姿态、wheel retention/rotation/clearance、tyre/rim seat fit和安装过程，以及复杂原生边界的实体解释。相同group或可显示几何都不足以关闭这些缺口。
 
-优先补充合法、可追溯的Bar/Clip连接资料及真实装配证据，可以直接扩展汽车后视镜、尾翼、小杆支架和斜置panel；它们完成前不会被记作已支持的真实生成成果。P1/P2接口和MechanicalInteraction继续使用相同来源与未知状态原则，不会挤进Stud兼容逻辑。
+Bar/Clip第一段已完成到两件真实模型；后续仍应补充合法、可追溯的Bar receptacle及更多真实装配证据，再扩展到汽车后视镜、尾翼、小杆支架和斜置panel。Pin/Axle等P1接口和MechanicalInteraction继续使用相同来源与未知状态原则，不会挤进Stud兼容逻辑。

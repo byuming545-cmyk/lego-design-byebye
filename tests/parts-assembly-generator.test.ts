@@ -59,6 +59,7 @@ describe('real native generator eligibility', () => {
     await expect(new NativeAssemblyGenerator(engine).generate({ module: 'invent-a-car' as 'wall' })).rejects.toThrow('支持的基础结构');
     await expect(new NativeAssemblyGenerator(engine).generate({ module: 'wall', partCount: 33 })).rejects.toThrow('3–32');
     await expect(new NativeAssemblyGenerator(engine).generate({ module: 'basic-snot', partCount: 4 })).rejects.toThrow('固定');
+    await expect(new NativeAssemblyGenerator(engine).generate({ module: 'bar-clip', partCount: 3 })).rejects.toThrow('固定');
     await expect(new NativeAssemblyGenerator(engine).generate({ module: 'wall', requiredPartIds: ['3001', '3001'] })).rejects.toThrow('不重复');
     await expect(new NativeAssemblyGenerator(engine).generate({ module: 'wall', requiredPartIds: ['../3001'] })).rejects.toThrow('原生编号');
     expect(engine.getCapability).not.toHaveBeenCalled();

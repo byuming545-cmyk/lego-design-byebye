@@ -1,6 +1,6 @@
 import type { ImportedConnectionPoint } from '../connections/types.js';
 import type { Matrix3, NativeAssemblyPart, NativePlacement, RigidTransform, Vector3 } from './types.js';
-import { checkConnectionCompatibility, CONNECTION_RULE_VERSION } from './compatibility.js';
+import { BAR_CLIP_RULE_ID, checkConnectionCompatibility, CONNECTION_RULE_VERSION } from './compatibility.js';
 import type { CompatibilityResult, CompatibilitySourceEvidence } from './compatibility.js';
 import { add, axisRotation, connectionFrame, distance, isRigidTransform, isRotation, multiply, normalize, normalizedTwist, rotate, scale, subtract, transformPoint, transpose } from './math.js';
 import { adaptImportedConnection } from '../grammar/sources.js';
@@ -91,8 +91,9 @@ export function solveAttachment(request: AttachmentSolveRequest): AttachmentSolv
     const insertionDirection = moving.gender === 'M' ? axis : scale(axis, -1);
     const insertionPath: [Vector3, Vector3] = [subtract(anchor, scale(insertionDirection, depth)), [...anchor]];
     const male = fixed.gender === 'M' ? fixed : moving;
+    const seatCenter = compatibility.ruleId === BAR_CLIP_RULE_ID ? anchor : add(anchor, scale(axis, depth / 2));
     candidates.push({ transform, twistDeg: twist, axis: [...axis], anchor: [...anchor], insertionDirection, insertionPath,
-      penetrationZone: { kind: 'cylinder', center: add(anchor, scale(axis, depth / 2)), axis: [...axis], radius: male.sections[0].radius, depth, ruleId: compatibility.ruleId, sourceEvidence: compatibility.sourceEvidence.map((source) => ({ ...source })), toleranceLdu: compatibility.toleranceLdu },
+      penetrationZone: { kind: 'cylinder', center: seatCenter, axis: [...axis], radius: male.sections[0].radius, depth, ruleId: compatibility.ruleId, sourceEvidence: compatibility.sourceEvidence.map((source) => ({ ...source })), toleranceLdu: compatibility.toleranceLdu },
     });
   }
   return candidates.length ? { status: 'solved', compatibility, candidates, reason: 'Source connection anchors and permitted discrete orientations are solved; collision and graph checks remain required.' } : block('No finite proper transform satisfies the source connection constraints.', compatibility);

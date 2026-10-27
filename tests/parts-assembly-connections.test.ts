@@ -5,6 +5,7 @@ import type { ImportedConnectionPoint } from '../src/parts/connections/types.js'
 import type { NativeAssemblyPart, NativePlacement, RigidTransform, Vector3 } from '../src/parts/assembly/types.js';
 import { BAR_CLIP_RULE_ID, checkConnectionCompatibility, CONNECTION_RULE_VERSION, STANDARD_STUD_RULE_ID } from '../src/parts/assembly/compatibility.js';
 import { solveAttachment, worldConnection } from '../src/parts/assembly/solver.js';
+import { checkNativePairCollision } from '../src/parts/assembly/collision.js';
 import { isSourceDeclaredBarEndpoint, isSourceDeclaredClipEndpoint } from '../src/parts/grammar/sources.js';
 import { axisRotation, composeTransforms, determinant, distance, IDENTITY_TRANSFORM, inverseTransform, isRotation, rotate, transformPoint } from '../src/parts/assembly/math.js';
 
@@ -72,6 +73,34 @@ describe('source-backed compatibility rule', () => {
     expect(checkConnectionCompatibility(male, { ...female, sections: [{ profile: 'S', radius: 6, length: 2 }] })).toMatchObject({ status: 'unknown', reasonCode: 'source-sections-unresolved' });
     expect(checkConnectionCompatibility(male, { ...female, properties: { ...female.properties, center: 'true' } })).toMatchObject({ status: 'unknown', reasonCode: 'receiver-seating-unresolved' });
     expect(checkConnectionCompatibility({ ...male, dimensionsResolved: false }, female)).toMatchObject({ status: 'unknown', reasonCode: 'unresolved-connection-frame' });
+  });
+});
+
+describe('open-surface Bar/Clip collision proof', () => {
+  const bar = () => part('30374').connections.points.find(isSourceDeclaredBarEndpoint)!;
+  const clip = () => part('48729b').connections.points.find(isSourceDeclaredClipEndpoint)!;
+  const solve = (fixedId: string, fixedPoint: ImportedConnectionPoint, movingId: string, movingPoint: ImportedConnectionPoint) => {
+    const solved = solveAttachment({ fixedPart: part(fixedId), fixedPlacement: place(fixedId), fixedConnectionId: fixedPoint.id, movingPart: part(movingId), movingConnectionId: movingPoint.id });
+    expect(solved.status).toBe('solved');
+    return solved.candidates[0];
+  };
+
+  it('clears the source seat only and records that no closed-solid certificate exists', () => {
+    const candidate = solve('30374', bar(), '48729b', clip());
+    const result = checkNativePairCollision(part('30374'), place('30374'), part('48729b'), { ...place('48729b'), transform: candidate.transform }, candidate.penetrationZone);
+    expect(result).toMatchObject({ status: 'clear', reasonCode: 'open-surface-seat-clearance', classification: 'OPEN_SURFACE_SEAT_CLEARANCE' });
+    expect(result.proof).toMatchObject({ openSourceSurfaces: true, openSurfaceSeatChecked: true, closedSourceProxies: false, completeSurfacePartition: false, containmentChecked: false, wholePairExempted: false });
+  });
+
+  it('rejects the real 60470b plate/bar overlap instead of exempting the whole open pair', () => {
+    const candidate = solve('30374', bar(), '60470b', endpoint('60470b', 'F', (point) => point.family === 'clip'));
+    const result = checkNativePairCollision(part('30374'), place('30374'), part('60470b'), { ...place('60470b'), transform: candidate.transform }, candidate.penetrationZone);
+    expect(result).toMatchObject({ status: 'collision', reasonCode: 'open-surface-contact-outside-seat', classification: 'OPEN_SURFACE_SEAT_OVERLAP' });
+  });
+
+  it('refuses two open shells because no closed counterpart exists', () => {
+    const result = checkNativePairCollision(part('48729b'), place('48729b'), part('60470b'), place('60470b'));
+    expect(result).toMatchObject({ status: 'blocked', reasonCode: 'open-surface-pair-unresolved', proof: { openSourceSurfaces: true, closedSourceProxies: false } });
   });
 });
 

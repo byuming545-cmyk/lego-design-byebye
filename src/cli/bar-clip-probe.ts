@@ -5,6 +5,8 @@ import { NativePartRepository } from '../parts/assembly/source.js';
 import type { NativeAssemblyPart } from '../parts/assembly/types.js';
 import { checkConnectionCompatibility } from '../parts/assembly/compatibility.js';
 import { solveAttachment } from '../parts/assembly/solver.js';
+import { checkNativePairCollision } from '../parts/assembly/collision.js';
+import { add, scale } from '../parts/assembly/math.js';
 import { assessGrammarAdmission } from '../parts/grammar/admission.js';
 import { adaptImportedConnection, isSourceDeclaredBarEndpoint, isSourceDeclaredClipEndpoint } from '../parts/grammar/sources.js';
 import { partDescriptionFor } from '../parts/connections/importer.js';
@@ -44,7 +46,17 @@ const admission = (id: string) => {
 };
 const pair = (fixedId: string, movingId: string, fixedPoint: ImportedConnectionPoint, movingPoint: ImportedConnectionPoint) => {
   const compatibility = checkConnectionCompatibility(fixedPoint, movingPoint);
-  const solved = solveAttachment({ fixedPart: part(fixedId), fixedPlacement: { instanceId: 'fixed', partId: fixedId, transform: { rotation: [1, 0, 0, 0, 1, 0, 0, 0, 1], translation: [0, 0, 0] } }, fixedConnectionId: fixedPoint.id, movingPart: part(movingId), movingConnectionId: movingPoint.id });
+  const fixedPlacement = { instanceId: 'fixed', partId: fixedId, transform: { rotation: [1, 0, 0, 0, 1, 0, 0, 0, 1] as [number, number, number, number, number, number, number, number, number], translation: [0, 0, 0] as [number, number, number] } };
+  const solved = solveAttachment({ fixedPart: part(fixedId), fixedPlacement, fixedConnectionId: fixedPoint.id, movingPart: part(movingId), movingConnectionId: movingPoint.id });
+  const collisionResults = solved.candidates.map(candidate => ({ twistDeg: candidate.twistDeg, result: checkNativePairCollision(part(fixedId), fixedPlacement, part(movingId), { instanceId: 'moving', partId: movingId, transform: candidate.transform }, candidate.penetrationZone) }));
+  const slideTests = solved.candidates[0] ? [-36, -32, -28, -24, -20, -16, -12, -8, -4, 0, 4, 8, 12, 16, 20, 24, 28, 32, 36].map(offset => {
+    const base = solved.candidates[0]!;
+    const transform = { ...base.transform, translation: add(base.transform.translation, scale(base.axis, offset)) };
+    const zone = { ...base.penetrationZone, center: add(base.penetrationZone.center, scale(base.axis, offset)) };
+    const result = checkNativePairCollision(part(fixedId), fixedPlacement, part(movingId), { instanceId: 'moving', partId: movingId, transform }, zone);
+    return { offsetLdu: offset, status: result.status, reasonCode: result.reasonCode };
+  }) : [];
+  const collision = collisionResults[0]?.result ?? null;
   return {
     fixedPartId: fixedId, movingPartId: movingId,
     fixedConnectionId: fixedPoint.id, movingConnectionId: movingPoint.id,
@@ -52,7 +64,15 @@ const pair = (fixedId: string, movingId: string, fixedPoint: ImportedConnectionP
       insertionDepthLdu: compatibility.insertionDepthLdu, allowedTwistsDeg: compatibility.allowedTwistsDeg,
       permittedTranslation: compatibility.permittedTranslation, reasonCode: compatibility.reasonCode, reason: compatibility.reason },
     solver: { status: solved.status, reason: solved.reason, candidateCount: solved.candidates.length,
-      candidateTwistsDeg: solved.candidates.map(candidate => candidate.twistDeg) },
+      candidateTwistsDeg: solved.candidates.map(value => value.twistDeg) },
+    collision: collision ? { status: collision.status, reasonCode: collision.reasonCode, reason: collision.reason,
+      classification: collision.classification, triangleTests: collision.triangleTests,
+      closedSourceProxies: collision.proof.closedSourceProxies, openSourceSurfaces: collision.proof.openSourceSurfaces,
+      openSurfaceSeatChecked: collision.proof.openSurfaceSeatChecked, containmentChecked: collision.proof.containmentChecked,
+      completeSurfacePartition: collision.proof.completeSurfacePartition, witness: collision.witness ?? null,
+      zone: solved.candidates[0] ? { center: solved.candidates[0].penetrationZone.center, axis: solved.candidates[0].penetrationZone.axis, radius: solved.candidates[0].penetrationZone.radius, depth: solved.candidates[0].penetrationZone.depth, anchor: solved.candidates[0].anchor } : null,
+      allTwists: collisionResults.map(({ twistDeg, result }) => ({ twistDeg, status: result.status, reasonCode: result.reasonCode, witness: result.witness ?? null, triangleTests: result.triangleTests })),
+      slideTests } : null,
   };
 };
 
@@ -61,7 +81,7 @@ const ambiguous = part('2412b').connections.points.find(p => p.kind === 'cylinde
 const output = {
   schemaVersion: 'bar-clip-probe-1',
   generatedAt: new Date().toISOString(),
-  purpose: 'Source-backed Bar/Clip evidence probe. It does not generate, export or reimport a model.',
+  purpose: 'Source-backed Bar/Clip evidence probe. Model generation/export/reimport is recorded separately in generation-report.json.',
   features: {
     '30374': part('30374').connections.points.map(point),
     '48729b': part('48729b').connections.points.map(point),

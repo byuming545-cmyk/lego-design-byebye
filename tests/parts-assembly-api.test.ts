@@ -93,7 +93,7 @@ describe('native assembly production HTTP boundaries', () => {
     expect(status.queue).toHaveLength(253);
     expect(new Set(status.queue.map(entry => entry.partId)).size).toBe(253);
     expect(status.admissionBasis).toBe('interface-grammar');
-    expect(status.counts).toMatchObject({ assemblyVerified: 0, generatable: 100, blocked: 153, verifiedInterfaces: 0, testedPhysicalInterfaces: 0 });
+    expect(status.counts).toMatchObject({ assemblyVerified: 0, generatable: 102, blocked: 151, verifiedInterfaces: 0, testedPhysicalInterfaces: 0 });
     expect(report.counts.generatable).toBe(87); // Retained historical evidence, not current admission authority.
     expect(status.sourceCounts).toEqual(report.sourceCounts);
     expect(status.sourceCounts).toEqual({ totalRoots: 253, geometryReady: 253, connectionReady: 205, connectionPartial: 44, connectionMissing: 4 });
@@ -157,7 +157,7 @@ describe('native assembly production HTTP boundaries', () => {
       expect((await post(`${prefix}/assembly/attach`, { ...status.defaultPair, ...extra })).status).toBe(400);
     }
     for (const body of [
-      { module: 'wall', partCount: 2 }, { module: 'wall', partCount: 33 }, { module: 'basic-snot', partCount: 4 },
+      { module: 'wall', partCount: 2 }, { module: 'wall', partCount: 33 }, { module: 'bar-clip', partCount: 3 }, { module: 'basic-snot', partCount: 4 },
       { module: 'invent-a-car' }, { module: 'wall', kind: 'wall' }, { module: 'wall', mode: 'verification' }, { module: 'wall', placements: [] },
     ]) expect((await post(`${prefix}/assembly/generate`, body)).status).toBe(400);
     expect((await post(`${prefix}/assembly/attach`, { ...status.defaultPair, twistDegrees: 45 })).status).toBe(400);
@@ -183,6 +183,15 @@ describe('native assembly production HTTP boundaries', () => {
   }, 15000);
 
   it('generates actual wall and simple chassis models and exports only server-retained source-bound documents', async () => {
+    const barClip = await post(`${prefix}/assembly/generate`, { module: 'bar-clip' });
+    expect(barClip.status).toBe(200);
+    const barResult = await barClip.json() as NativeGenerationResult;
+    expect(barResult.status).toBe('generated');
+    expect(barResult.model).toMatchObject({ module: 'bar-clip', physicalBuildVerified: false, assemblyValidation: { checked: true, valid: true } });
+    expect(barResult.model!.placements).toHaveLength(2);
+    expect(barResult.model!.edges).toHaveLength(1);
+    await expectConnectedSourceGraph(barResult.model!);
+
     for (const module of ['wall', 'simple-chassis'] as const) {
       const response = await post(`${prefix}/assembly/generate`, { module, partCount: 3 });
       expect(response.status).toBe(200);

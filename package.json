@@ -34,7 +34,8 @@
     "collision:review": "tsx src/cli/collision-review.ts",
     "collision:diff": "tsx src/cli/collision-diff.ts",
     "audit:connections": "tsx src/cli/connection-parse-audit.ts",
-    "verify:interfaces": "tsx src/cli/assembly-deferred.ts"
+    "verify:interfaces": "tsx src/cli/assembly-deferred.ts",
+    "generate:bar-clip": "tsx src/cli/bar-clip-generate.ts"
   },
   "dependencies": {
     "@fontsource/noto-sans-sc": "^5.2.9",

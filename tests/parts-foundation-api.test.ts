@@ -38,7 +38,7 @@ describe('real source foundation HTTP API', () => {
     expect(status.counts).toMatchObject({ readableDocuments: 6, ldrawPartIds: 253, observedElementIds: 531, geometryReady: 253, connectionReady: 205, catalogOnly: 531 });
     expect(migration.sourceCounts).toEqual({ totalRoots: 253, geometryReady: 253, connectionReady: 205, connectionPartial: 44, connectionMissing: 4 });
     expect(migration.sourceCounts).toEqual(report.sourceCounts);
-    expect(migration.counts).toMatchObject({ total: 253, assemblyVerified: 0, generatable: 100, blocked: 153, testedPhysicalInterfaces: 0 });
+    expect(migration.counts).toMatchObject({ total: 253, assemblyVerified: 0, generatable: 102, blocked: 151, testedPhysicalInterfaces: 0 });
     expect(report.counts.generatable).toBe(87);
     expect(migration.runtimeValidation).toMatchObject({ status: 'ready', reportLoaded: false, issues: [] });
     expect(status.assembly.counts).toEqual(migration.counts);

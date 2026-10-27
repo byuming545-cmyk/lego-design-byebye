@@ -1,12 +1,12 @@
 import type { NativeAssemblyPart, NativePlacement, Vector3 } from './types.js';
 import type { ConnectionPenetrationZone } from './solver.js';
 import { createHash } from 'node:crypto';
-import { checkConnectionCompatibility, STANDARD_STUD_RULE_ID } from './compatibility.js';
+import { BAR_CLIP_RULE_ID, checkConnectionCompatibility, STANDARD_STUD_RULE_ID } from './compatibility.js';
 import { add, cross, distance, dot, isRigidTransform, length, normalize, rotate, scale, subtract, transformPoint } from './math.js';
 import { boundsOverlap, buildNativeCollisionProxy, polygonArea, splitConvexPolygon, nativeBounds } from './proxy.js';
 import type { CollisionProxy, CollisionTriangle, MeshBounds, Plane, TriangleBvh } from './proxy.js';
 
-export const COLLISION_VERSION = 'native-closed-bvh-local-partition-1.1.0';
+export const COLLISION_VERSION = 'native-open-surface-seat-2.0.0';
 /** A numerical surface-comparison tolerance, not modified LEGO geometry. */
 export const COLLISION_TOLERANCE_LDU = 0.0001;
 const EPS = COLLISION_TOLERANCE_LDU;
@@ -30,6 +30,8 @@ export interface PairCollisionResult {
   proof: {
     broadPhaseOnly: boolean;
     closedSourceProxies: boolean;
+    openSourceSurfaces: boolean;
+    openSurfaceSeatChecked: boolean;
     completeSurfacePartition: boolean;
     containmentChecked: boolean;
     sourceEvidence: Array<CollisionProxy['evidence']>;
@@ -218,9 +220,12 @@ function adaptivePartition(face: CollisionTriangle, other: CollisionProxy, deadl
 
 function validateZone(zone: ConnectionPenetrationZone, parts: NativeAssemblyPart[], placements: NativePlacement[]): { source: boolean; spatial: boolean } {
   const invalid = { source: false, spatial: false };
-  if (zone.kind !== 'cylinder' || zone.ruleId !== STANDARD_STUD_RULE_ID || !Array.isArray(zone.center) || zone.center.length !== 3 || !zone.center.every(Number.isFinite)
+  const expected = zone.ruleId === STANDARD_STUD_RULE_ID ? { radius: 6, minDepth: 4, maxDepth: 4 }
+    : zone.ruleId === BAR_CLIP_RULE_ID ? { radius: 4, minDepth: 1, maxDepth: 8 } : null;
+  if (!expected || zone.kind !== 'cylinder' || !Array.isArray(zone.center) || zone.center.length !== 3 || !zone.center.every(Number.isFinite)
       || !Array.isArray(zone.axis) || zone.axis.length !== 3 || !zone.axis.every(Number.isFinite) || !Array.isArray(zone.sourceEvidence)
-      || Math.abs(length(zone.axis) - 1) > 1e-6 || zone.radius !== 6 || zone.depth !== 4 || !(zone.toleranceLdu > 0 && zone.toleranceLdu <= 0.001)) return invalid;
+      || Math.abs(length(zone.axis) - 1) > 1e-6 || zone.radius !== expected.radius || zone.depth < expected.minDepth || zone.depth > expected.maxDepth
+      || !(zone.toleranceLdu > 0 && zone.toleranceLdu <= 0.001)) return invalid;
   const directives = zone.sourceEvidence.filter(evidence => evidence.kind === 'source-directive');
   const matches = (point: NativeAssemblyPart['connections']['points'][number], evidence: typeof directives[number]) => point.source.sha256 === evidence.sha256
     && point.source.path === evidence.file && point.source.revision === evidence.revision && point.source.line === evidence.line && point.source.sourceUrl === evidence.url;
@@ -234,10 +239,45 @@ function validateZone(zone: ConnectionPenetrationZone, parts: NativeAssemblyPart
     const anchorA = transformPoint(placements[0].transform, a.position), anchorB = transformPoint(placements[1].transform, b.position);
     const axisA = normalize(rotate(placements[0].transform.rotation, a.direction)), axisB = normalize(rotate(placements[1].transform.rotation, b.direction));
     if (!axisA || !axisB) continue;
-    const center = add(anchorA, scale(axisA, zone.depth / 2));
+    const center = zone.ruleId === BAR_CLIP_RULE_ID ? anchorA : add(anchorA, scale(axisA, zone.depth / 2));
     if (distance(anchorA, anchorB) <= zone.toleranceLdu && distance(axisA, axisB) < 1e-6 && distance(axisA, zone.axis) < 1e-6 && distance(center, zone.center) <= zone.toleranceLdu) return { source: true, spatial: true };
   }
   return { source: compatibleSource, spatial: false };
+}
+
+
+/** The validated seat is the only place an open clip surface may contact the
+ * closed bar. It comes from the matched SNAP_CLP/SNAP_CYL endpoints, not from
+ * a guessed envelope around the part. */
+function pointInSeat(point: Vector3, zone: ConnectionPenetrationZone): boolean {
+  const delta = subtract(point, zone.center);
+  const along = dot(delta, zone.axis);
+  const radial = subtract(delta, scale(zone.axis, along));
+  // LDraw stores 4-decimal coordinates, so a nominal R4 polygon can measure
+  // R4.0001 at a vertex. This is coordinate quantization, not extra clearance.
+  const quantization = 0.002;
+  return Math.abs(along) <= zone.depth / 2 + quantization && length(radial) <= zone.radius + quantization;
+}
+
+/** Double-sided segment/triangle crossing. Contact (t on either endpoint) is
+ * deliberately included so a coplanar seat is checked rather than skipped. */
+function segmentFace(start: Vector3, end: Vector3, face: CollisionTriangle): Vector3 | null {
+  const direction = subtract(end, start), e1 = subtract(face.vertices[1], face.vertices[0]), e2 = subtract(face.vertices[2], face.vertices[0]);
+  const p = cross(direction, e2), determinant = dot(e1, p);
+  if (Math.abs(determinant) < 1e-10) return null;
+  const inverse = 1 / determinant, t = subtract(start, face.vertices[0]);
+  const u = dot(t, p) * inverse;
+  if (u < -1e-9 || u > 1 + 1e-9) return null;
+  const q = cross(t, e1), v = dot(direction, q) * inverse;
+  if (v < -1e-9 || u + v > 1 + 1e-9) return null;
+  const distance = dot(e2, q) * inverse;
+  if (distance < -EPS || distance > 1 + EPS) return null;
+  return add(start, scale(direction, distance));
+}
+
+function coplanarFaces(a: CollisionTriangle, b: CollisionTriangle): boolean {
+  if (Math.abs(dot(a.normal, b.normal)) < 1 - 1e-6) return false;
+  return b.vertices.every(vertex => Math.abs(dot(a.normal, subtract(vertex, a.vertices[0]))) <= EPS);
 }
 
 /**
@@ -250,8 +290,8 @@ function validateZone(zone: ConnectionPenetrationZone, parts: NativeAssemblyPart
 function deriveNativePairCollision(fixedPart: NativeAssemblyPart, fixedPlacement: NativePlacement, movingPart: NativeAssemblyPart, movingPlacement: NativePlacement, penetrationZone?: ConnectionPenetrationZone): PairCollisionResult {
   let triangleTests = 0, checkedSurfacePatches = 0, spatialPartitionFallbacks = 0;
   const deadline = performance.now() + COLLISION_COMPUTATION_BUDGET_MS;
-  const proof: PairCollisionResult['proof'] = { broadPhaseOnly: false, closedSourceProxies: false, completeSurfacePartition: false, containmentChecked: false, sourceEvidence: [], topology: [], penetrationZone: penetrationZone ?? null, penetrationZoneValidated: false, wholePairExempted: false };
-  const result = (status: PairCollisionResult['status'], reasonCode: string, reason: string, witness?: Vector3): PairCollisionResult => ({ status, reasonCode, reason, collisionVersion: COLLISION_VERSION, toleranceLdu: EPS, triangleTests, checkedSurfacePatches, spatialPartitionFallbacks, classification: status === 'collision' ? 'SOLID_SOLID_OVERLAP' : status === 'clear' ? (proof.broadPhaseOnly ? 'BROAD_PHASE_SEPARATED' : 'NATIVE_SOLID_CLEARANCE') : /limit|budget/.test(reasonCode) ? 'REQUIRES_HIGHER_RESOLUTION' : 'UNKNOWN_COMPLEX_GEOMETRY', proof, ...(witness ? { witness } : {}) });
+  const proof: PairCollisionResult['proof'] = { broadPhaseOnly: false, closedSourceProxies: false, openSourceSurfaces: false, openSurfaceSeatChecked: false, completeSurfacePartition: false, containmentChecked: false, sourceEvidence: [], topology: [], penetrationZone: penetrationZone ?? null, penetrationZoneValidated: false, wholePairExempted: false };
+  const result = (status: PairCollisionResult['status'], reasonCode: string, reason: string, witness?: Vector3): PairCollisionResult => ({ status, reasonCode, reason, collisionVersion: COLLISION_VERSION, toleranceLdu: EPS, triangleTests, checkedSurfacePatches, spatialPartitionFallbacks, classification: status === 'collision' ? (proof.openSourceSurfaces ? 'OPEN_SURFACE_SEAT_OVERLAP' : 'SOLID_SOLID_OVERLAP') : status === 'clear' ? (proof.openSourceSurfaces ? (proof.broadPhaseOnly ? 'OPEN_SURFACE_SEAT_BROADPHASE' : 'OPEN_SURFACE_SEAT_CLEARANCE') : (proof.broadPhaseOnly ? 'BROAD_PHASE_SEPARATED' : 'NATIVE_SOLID_CLEARANCE')) : /limit|budget/.test(reasonCode) ? 'REQUIRES_HIGHER_RESOLUTION' : 'UNKNOWN_COMPLEX_GEOMETRY', proof, ...(witness ? { witness } : {}) });
   if (!isRigidTransform(fixedPlacement.transform) || !isRigidTransform(movingPlacement.transform)) return result('blocked', 'non-rigid-transform', 'Only finite proper rigid placements are accepted.');
   const zone = penetrationZone ? validateZone(penetrationZone, [fixedPart, movingPart], [fixedPlacement, movingPlacement]) : { source: true, spatial: true };
   if (!zone.source) return result('blocked', 'unverified-penetration-zone', 'The local penetration zone is not backed by a compatible source endpoint from each of the two parts.');
@@ -263,7 +303,51 @@ function deriveNativePairCollision(fixedPart: NativeAssemblyPart, fixedPlacement
     return result('blocked', failure.reasonCode, failure.reason);
   }
   const a = fixed.proxy, b = moving.proxy;
-  proof.closedSourceProxies = true; proof.sourceEvidence = [a.evidence, b.evidence]; proof.topology = [a.topology, b.topology];
+  const openA = a.topology.status === 'open-source-surface', openB = b.topology.status === 'open-source-surface';
+  proof.openSourceSurfaces = openA || openB;
+  proof.closedSourceProxies = !proof.openSourceSurfaces;
+  proof.sourceEvidence = [a.evidence, b.evidence]; proof.topology = [a.topology, b.topology];
+  if (openA || openB) {
+    if (openA && openB) return result('blocked', 'open-surface-pair-unresolved', 'Two open source shells cannot establish a surface-only clearance without a closed counterpart.');
+    if (!penetrationZone || !zone.spatial) return result('blocked', 'open-surface-zone-required', 'An open source shell requires a validated cylindrical seat bound to both placed endpoints; no generic open-surface exemption is granted.');
+    const open = openA ? a : b, closed = openA ? b : a;
+    if (!boundsOverlap(open.bounds, closed.bounds, EPS)) {
+      proof.broadPhaseOnly = true; proof.openSurfaceSeatChecked = true;
+      return result('clear', 'open-surface-seat-broadphase', 'The open source shell and its closed counterpart have disjoint bounds.');
+    }
+    let outsideSeat: Vector3 | null = null, openVertexInsideClosed: Vector3 | null = null;
+    const consider = (point: Vector3): boolean => {
+      if (pointInSeat(point, penetrationZone)) { checkedSurfacePatches++; return false; }
+      outsideSeat = point; return true;
+    };
+    outer: for (const openFace of open.triangles) {
+      for (const closedFace of closed.triangles) {
+        if (!boundsOverlap(openFace.bounds, closedFace.bounds, EPS)) continue;
+        if (++triangleTests > MAX_TRIANGLE_TESTS || triangleTests % 128 === 0 && performance.now() > deadline) return result('blocked', 'collision-resource-limit', 'The open-surface face-pair budget was exceeded; no clearance certificate is granted.');
+        if (coplanarFaces(openFace, closedFace)) {
+          for (const vertex of [...openFace.vertices, ...closedFace.vertices]) if (consider(vertex)) break outer;
+          continue;
+        }
+        for (let edge = 0; edge < 3; edge++) {
+          const hit = segmentFace(openFace.vertices[edge], openFace.vertices[(edge + 1) % 3], closedFace);
+          if (hit && consider(hit)) break outer;
+        }
+        for (let edge = 0; edge < 3; edge++) {
+          const hit = segmentFace(closedFace.vertices[edge], closedFace.vertices[(edge + 1) % 3], openFace);
+          if (hit && consider(hit)) break outer;
+        }
+      }
+    }
+    if (outsideSeat) return result('collision', 'open-surface-contact-outside-seat', 'An open source shell intersects its closed counterpart outside the source-declared cylindrical seat; the local connection zone grants no exemption.', outsideSeat);
+    for (const face of open.triangles) for (const vertex of face.vertices) {
+      if (++triangleTests > MAX_TRIANGLE_TESTS) return result('blocked', 'collision-resource-limit', 'The open-surface containment budget was exceeded; no clearance certificate is granted.');
+      if (classifyPoint(closed, vertex) === 'inside') { openVertexInsideClosed = vertex; break; }
+    }
+    if (openVertexInsideClosed) return result('collision', 'open-surface-vertex-inside-solid', 'An open source shell has a vertex strictly inside the closed counterpart; surface contact inside the seat cannot justify solid penetration.', openVertexInsideClosed);
+    proof.openSurfaceSeatChecked = true; proof.completeSurfacePartition = false; proof.containmentChecked = false;
+    return result('clear', 'open-surface-seat-clearance', 'All actual open-shell/closed-solid intersections lie inside the source-declared cylindrical seat; no other overlap was found. This is surface clearance, not a closed-solid certificate.');
+  }
+  proof.closedSourceProxies = true;
   if (a.evidence.meshSha256 === b.evidence.meshSha256
       && fixedPlacement.transform.rotation.every((value, index) => value === movingPlacement.transform.rotation[index])
       && fixedPlacement.transform.translation.every((value, index) => value === movingPlacement.transform.translation[index])) {
