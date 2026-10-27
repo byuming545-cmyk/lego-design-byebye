@@ -93,10 +93,10 @@ describe('native assembly production HTTP boundaries', () => {
     expect(status.queue).toHaveLength(253);
     expect(new Set(status.queue.map(entry => entry.partId)).size).toBe(253);
     expect(status.admissionBasis).toBe('interface-grammar');
-    expect(status.counts).toMatchObject({ assemblyVerified: 0, generatable: 102, blocked: 151, verifiedInterfaces: 0, testedPhysicalInterfaces: 0 });
+    expect(status.counts).toMatchObject({ assemblyVerified: 0, generatable: 104, blocked: 149, verifiedInterfaces: 0, testedPhysicalInterfaces: 0 });
     expect(report.counts.generatable).toBe(87); // Retained historical evidence, not current admission authority.
     expect(status.sourceCounts).toEqual(report.sourceCounts);
-    expect(status.sourceCounts).toEqual({ totalRoots: 253, geometryReady: 253, connectionReady: 205, connectionPartial: 44, connectionMissing: 4 });
+    expect(status.sourceCounts).toEqual({ totalRoots: 253, geometryReady: 253, connectionReady: 206, connectionPartial: 43, connectionMissing: 4 });
     expect(status.counts.assemblyVerified).toBe(status.queue.filter((entry) => entry.assemblyVerified).length);
     expect(status.counts.generatable).toBe(status.queue.filter((entry) => entry.generatable).length);
     expect(status.counts.blocked + status.counts.generatable).toBe(253);
@@ -106,12 +106,12 @@ describe('native assembly production HTTP boundaries', () => {
     const coverage = status.interfaceCoverage!;
     expect(coverage).toBeDefined();
     expect(coverage).toMatchObject({ verifiedPass: 0, verifiedBlocked: 0, requiresAstraReview: 0 });
-    expect(coverage.physicalInterfacesDiscovered).toBe(5019);
+    expect(coverage.physicalInterfacesDiscovered).toBe(5020);
     expect(coverage.physicalInterfacesDiscovered).toBe(coverage.verifiedPass + coverage.verifiedBlocked + coverage.requiresAstraReview + coverage.pending);
     expect(coverage.verifiedPhysicalInterfaces).toBe(coverage.verifiedPass);
     expect(coverage.enabledPhysicalInterfaces).toBeLessThanOrEqual(coverage.verifiedPass);
     expect(coverage.enabledRawConnectionIds).toBe(status.counts.verifiedInterfaces);
-    expect(coverage.pending).toBe(5019);
+    expect(coverage.pending).toBe(5020);
     expect(coverage.processedCoveragePercent).toBe(0);
     expect(coverage.verifiedCoveragePercent).toBe(Number((100 * coverage.verifiedPass / coverage.physicalInterfacesDiscovered).toFixed(4)));
     expect(coverage.fullyAssemblyVerified + coverage.partiallyGeneratable + coverage.blockedParts + coverage.unresolvedParts).toBe(253);
@@ -157,7 +157,7 @@ describe('native assembly production HTTP boundaries', () => {
       expect((await post(`${prefix}/assembly/attach`, { ...status.defaultPair, ...extra })).status).toBe(400);
     }
     for (const body of [
-      { module: 'wall', partCount: 2 }, { module: 'wall', partCount: 33 }, { module: 'bar-clip', partCount: 3 }, { module: 'basic-snot', partCount: 4 },
+      { module: 'wall', partCount: 2 }, { module: 'wall', partCount: 33 }, { module: 'bar-clip', partCount: 3 }, { module: 'pin-hole', partCount: 3 }, { module: 'basic-snot', partCount: 4 },
       { module: 'invent-a-car' }, { module: 'wall', kind: 'wall' }, { module: 'wall', mode: 'verification' }, { module: 'wall', placements: [] },
     ]) expect((await post(`${prefix}/assembly/generate`, body)).status).toBe(400);
     expect((await post(`${prefix}/assembly/attach`, { ...status.defaultPair, twistDegrees: 45 })).status).toBe(400);
@@ -191,6 +191,14 @@ describe('native assembly production HTTP boundaries', () => {
     expect(barResult.model!.placements).toHaveLength(2);
     expect(barResult.model!.edges).toHaveLength(1);
     await expectConnectedSourceGraph(barResult.model!);
+    const pinHole = await post(`${prefix}/assembly/generate`, { module: 'pin-hole' });
+    expect(pinHole.status).toBe(200);
+    const pinResult = await pinHole.json() as NativeGenerationResult;
+    expect(pinResult.status).toBe('generated');
+    expect(pinResult.model).toMatchObject({ module: 'pin-hole', physicalBuildVerified: false, assemblyValidation: { checked: true, valid: true } });
+    expect(pinResult.model!.placements.map(placement => placement.partId).sort()).toEqual(['32000', '3673']);
+    expect(pinResult.model!.edges).toHaveLength(1);
+    await expectConnectedSourceGraph(pinResult.model!);
 
     for (const module of ['wall', 'simple-chassis'] as const) {
       const response = await post(`${prefix}/assembly/generate`, { module, partCount: 3 });
@@ -276,7 +284,7 @@ describe('native assembly production HTTP boundaries', () => {
     const holes = source.connections.points.filter(point => point.family === 'pinHole');
     const capability = status.capabilities.find(entry => entry.partId === '32000')!;
     expect(holes.length).toBeGreaterThan(0);
-    expect(holes.every(point => !capability.allowedConnectionIds.includes(point.id))).toBe(true);
+    expect(holes.every(point => capability.allowedConnectionIds.includes(point.id))).toBe(true);
     const tampered = structuredClone(model);
     const node = tampered.placements.find(placement => placement.partId === '32000')!;
     const edge = tampered.edges.find(edge => edge.fixedInstanceId === node.instanceId || edge.movingInstanceId === node.instanceId)!;

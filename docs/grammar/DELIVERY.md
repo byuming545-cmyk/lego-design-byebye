@@ -1,13 +1,15 @@
 # 接口优先拼接语法：本轮交付
 
-> **2026-10-27 Bar↔Clip 生产切片轮次**：当前语法准入计数为 253 总数、
-> 102 generatable / 151 blocked。Bar↔Clip 已通过 source-declared 语法、
-> 开壳 seat 碰撞证明、正式装配图、普通 `bar-clip` 生成模块、导出和重导入：
-> 真实模型为 `30374` + `48729b`，2 个placement、1 条边、2 个步骤，
-> 12,993 字节JSON重导入 `VALID`。`60470b` 仍因实际板体与80 LDU杆碰撞，
-> 不能用于该模块。全量单测 53 文件 767/767 通过，`npm run build` 通过。
-> Playwright e2e/preview 因环境缺少 `/usr/bin/chromium` 未执行，不能算作通过。下文第 2 节及其后的 761/761、11/11、3/3、99/154
-> 和 100/153 均为历史记录，不是本轮最终计数。
+> **2026-10-27 Pin↔Pin Hole 生产切片轮次**：当前语法准入计数为 253 总数、
+> 104 generatable / 149 blocked。Bar↔Clip 与 Pin↔Pin Hole 均已通过
+> source-declared 语法、正式装配图、普通生成模块、导出和重导入。
+> Bar/Clip 模型为 `30374` + `48729b`，12,993 字节JSON重导入 `VALID`；
+> Pin/Hole 模型为 `3673` + `32000`，19,239 字节JSON重导入 `VALID`。
+> `60470b` 因实际板体与80 LDU杆碰撞不能用于杆夹模块；`18591` 虽获准入，
+> 但其风挡本体与孔件姿态发生seat外碰撞，未用于销孔模型。
+> 全量单测与 build 以本轮最终日志为准；Playwright e2e/preview 因环境缺少
+> `/usr/bin/chromium` 未执行，不能算作通过。下文第 2 节及其后的历史计数
+> 均为历史记录，不是本轮最终计数。
 
 本轮在基准`35eec2067b4e9a711b65bd0199ac3bb5f89db636`上建立工作分支`codex/interface-first-grammar`，保留原有已验证装配引擎，默认生产入口改为接口语法准入。工作区开始时干净。没有合并main、部署网站、扩大源数据分发许可或重新开放旧生成器。
 
@@ -71,7 +73,7 @@ canonical COMPLETE仅表示当前接口解释完整；可能仍被实体几何�
 
 25个family和15条规则覆盖完整可扩展词典；RIGID、REVOLUTE、PRISMATIC、CYLINDRICAL、SPHERICAL共用关节模型。轴向区间、真实重叠长度、截面对称、摩擦、detents和未知字段均有明确表示。共位不同feature不再按位置粗暴合并。
 
-C01保留真实固定Shadow来源规则并进入正常生成。BAR_CLIP新增**SOURCE_DECLARED_FIT**来源层（官方LDraw Bar描述 + LDCad male cylinder/clip seat），并新增**open-source-surface** seat碰撞证明：开壳CLIP不再被静默当作闭合实体，而是在来源声明的R4/8 LDU seat内验证表面接触，保留`completeSurfacePartition:false`和`containmentChecked:false`。正式`bar-clip`生成模块已生成`30374`+`48729b`真实两件模型并导出/重导入；`60470b`因实际板体与80 LDU杆碰撞仍不可用于该模块。其余13规则为**条件式算法内核**：只有适用的结构化VERIFIED_FIT证据及完整参数才能推导；数学测试fixture明确标记ALGORITHM_FIXTURE且生产默认拒绝。实际库尚无这些机械配合的充分证据，未宣称真实轮组、销轴或球关节生成完成。
+C01保留真实固定Shadow来源规则并进入正常生成。BAR_CLIP新增**SOURCE_DECLARED_FIT**来源层（官方LDraw Bar描述 + LDCad male cylinder/clip seat），并新增**open-source-surface** seat碰撞证明：开壳CLIP不再被静默当作闭合实体，而是在来源声明的R4/8 LDU seat内验证表面接触，保留`completeSurfacePartition:false`和`containmentChecked:false`。正式`bar-clip`生成模块已生成`30374`+`48729b`真实两件模型并导出/重导入；`60470b`因实际板体与80 LDU杆碰撞仍不可用于该模块。PIN_HOLE同样采用`SOURCE_DECLARED_FIT`（官方Technic Pin/Connector Hole标题 + pinned多段`SNAP_CYL`），正式`pin-hole`模块已生成`3673`+`32000`真实两件模型并导出/重导入；`18591`因风挡本体与孔件发生seat外碰撞未使用，`16477`等孔件仍受开壳/分支边界代理限制。销轴采用源销轴全包络seat证明，并明确允许seat内顶点穿透；这不是闭合实体、保持力或实物认证。其余12规则为**条件式算法内核**：只有适用的结构化VERIFIED_FIT证据及完整参数才能推导；数学测试fixture明确标记ALGORITHM_FIXTURE且生产默认拒绝。实际库尚无这些机械配合的充分证据，未宣称真实轮组或球关节生成完成。
 
 新solver区分圆截面滚转和keyed对称，检查实际轴向重叠及端部约束。球关节可返回SPHERICAL符号自由度；完整球姿态定向求解仍未知。Click角未给出时不猜步长，group或半径相同不能自动建立配合。
 
@@ -99,12 +101,12 @@ Studio提供有权限且已解码记录的adapter，保留原始ID及未知映�
 
 首次dev浏览器测试为10 PASS / 1 FAIL：开发watch因并行编辑重启，内存模型丢失导致导出404。稳定compiled服务重跑全11通过；随后最后3preview构建核对最新exact-kernel和UI。未把早期失败隐藏为成功。
 
-未执行或未完成：真实机械族端到端原生图、轮组、球关节完整定向、物理应力/公差/稳定性/插入轨迹、实物搭建、未知复杂外壳修复、Studio授权资源、完整车辆生成、部署。现有Vite bundle体积提示仍保留。
+Pin/Hole 已进入正式生产图和普通生成模块；未完成：Axle/轮组、球关节完整定向、物理应力/公差/稳定性/插入轨迹、实物搭建、未知复杂外壳修复、Studio授权资源、完整车辆生成、部署。现有Vite bundle体积提示仍保留。
 
 ## 6. 来源、许可与下一步
 
-与本轮基准相比，743个LDraw和245个Shadow，共988个原始文件及两份manifest字节保持一致；旧几何/连接parser、碰撞proxy与legacy策略未改。逐文件SHA/作者/许可仍以原始清单为准。
+与本轮基准相比，743个LDraw和245个Shadow，共988个原始文件及两份manifest字节保持一致；几何文件未改。连接parser增加了`L_`多段与声明标题读取，序列化point版本仍为v2；碰撞proxy/语义新增受规则约束的CLIP/PIN开壳seat证明，闭壳路径保持。历史migration证明未被重标为当前结果。逐文件SHA/作者/许可仍以原始清单为准。
 
 LDraw逐文件CC BY条件与Shadow CC BY-SA 4.0署名保留。本轮连接衍生记录及相应图证据继续保留Shadow的相同许可与署名要求；这不扩大历史镜像、PDF、Studio、整个应用、字体或依赖的数据分发许可。没有把未知许可或私有资料放入新的源分发包；本轮没有新增源包，先前包保留历史证明范围。
 
-下一类最值得补的是**Bar/Clip及明确来源的Bar receptacle**，直接服务汽车细节，并可复用轴向区间/自由度内核。需要先补真实身份与配合/插入范围证据，不能把匿名R4圆柱或hollow外观自动当作BAR或中心孔。随后再处理Pin/Axle与轮组配合；复杂碰撞实体和结构目标搜索也是独立瓶颈。
+Pin/Hole 与 Bar/Clip 已完成到各自的两件真实模型；下一类最值得补的是有明确来源的**Bar receptacle**、**Axle/Axle Hole**与轮组配合。需要先补真实身份与配合/插入范围证据，不能把匿名R4圆柱或hollow外观自动当作BAR或中心孔；轮组必须有保持、旋转净空和底盘连接证据。复杂碰撞实体和结构目标搜索仍是独立瓶颈。

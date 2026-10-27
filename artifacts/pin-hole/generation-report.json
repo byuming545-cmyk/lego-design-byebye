@@ -1,0 +1,418 @@
+{
+  "schemaVersion": "pin-hole-generation-report-1",
+  "generatedAt": "2026-10-27T06:07:48.033Z",
+  "branch": "codex/pin-pin-hole-source-grammar",
+  "baseCommit": "ffd1d6d",
+  "module": "pin-hole",
+  "moduleName": "真实零件销孔连接模块",
+  "status": "generated",
+  "reasons": [],
+  "placements": [
+    {
+      "instanceId": "root",
+      "partId": "3673",
+      "transform": {
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "translation": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "instanceId": "p-1",
+      "partId": "32000",
+      "transform": {
+        "rotation": [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "translation": [
+          0,
+          10,
+          -10
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-1",
+      "fixedInstanceId": "root",
+      "fixedConnectionId": "parts/3673.dat:10:2",
+      "movingInstanceId": "p-1",
+      "movingConnectionId": "p/connhole.dat:8:4",
+      "ruleId": "ldcad-source-declared-pin-hole-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "anchor": [
+        0,
+        0,
+        0
+      ],
+      "insertionDepthLdu": 20
+    }
+  ],
+  "bom": [
+    {
+      "partId": "32000",
+      "name": "Technic Brick  1 x  2 with Holes",
+      "quantity": 1,
+      "ldrawColor": 16,
+      "colorAvailability": "not-verified"
+    },
+    {
+      "partId": "3673",
+      "name": "Technic Pin",
+      "quantity": 1,
+      "ldrawColor": 16,
+      "colorAvailability": "not-verified"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "addedInstanceId": "root",
+      "partId": "3673",
+      "connectionEdgeIds": []
+    },
+    {
+      "step": 2,
+      "addedInstanceId": "p-1",
+      "partId": "32000",
+      "connectionEdgeIds": [
+        "edge-1"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "library": "LDCadShadowLibrary",
+      "path": "p/connect.dat",
+      "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+      "sha256": "d084361faf2441fca20c2148763a64884a065d20f7435d7ec9da3019ef22e30e",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connect.dat"
+    },
+    {
+      "library": "LDCadShadowLibrary",
+      "path": "p/connhole.dat",
+      "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+      "sha256": "1fe9a793ea6d0a60b7956536d616fac23ba5f2c778fa2eee15cf02001226f63e",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhole.dat"
+    },
+    {
+      "library": "LDCadShadowLibrary",
+      "path": "p/stud2.dat",
+      "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+      "sha256": "62e2ba6afee204d3e4a457d026569e6114e99f1fe6a4c3524b5af93a573570eb",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud2.dat"
+    },
+    {
+      "library": "LDCadShadowLibrary",
+      "path": "parts/32000.dat",
+      "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+      "sha256": "4a034f6a929265ec1b10286351f936d6a7fa3e89ed54d6ba6c73b94145c78f57",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/32000.dat"
+    },
+    {
+      "library": "LDCadShadowLibrary",
+      "path": "parts/3673.dat",
+      "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+      "sha256": "d472351e53f08a54b291ec0a9b3c4e9527b6fa5acadc5e2ff234f28b97fc8832",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3673.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/1-4cyli.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "5a7168952a5a3570327873b9a5802fa7b3be40967ab78c03b6a2bfd4419a1f10",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4cyli.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/1-4edge.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "9ce2de7e67bbac575d52cfdc771b9d00856efc9b88002d97db8e665e50f4d467",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4edge.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/1-4ndis.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "ff6685838636e7ab6152356d8f09e4f00a38af0d878b0881423f5c45fb868f0c",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-4ndis.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/3-8cyli.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "9224d4e5edc6f5b0f75f6fa358fd1368a4fd65f676b74fe1bb6e3bbb05046206",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/3-8cyli.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/3-8edge.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "a590f230678d592d514a9c5e307c6a30945e50e4c529fc06accf37530d0e0ed5",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/3-8edge.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/3-8ring12.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "3480b87412d6592fcbcfbbea7e1c1120c63b13b96a88bf64a0cbc689ce2aec00",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/3-8ring12.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/3-8ring2.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "c65d4b41084dd68c63f74ca1f92d7ae9e7a79e5b1632823f24739f3ff8196691",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/3-8ring2.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/4-4cyli.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/4-4edge.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/4-4ndis.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "21202dc15823f4336bc2544244d0b539b76745c89f7a59ad18cdd03ad45cc543",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ndis.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/4-4ring2.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "6fb38804b1f5e9bee8c0b80caf1397b09454fc58b048dc19045b6f37c8762ab0",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring2.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/4-4ring3.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "1f2835ac308154edc2d6f479d8e742a55be981f6167b20bfa100c195bc0731dd",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring3.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/connect.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "fa572d5b7bcdb19ea2ba74cd1a98aca913e1e556001232e484611915adf83305",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/connect.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/peghole.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "90c6dba9e5bcdd63955b9a5208f377761850863be9ed26cac7cd2be61ab85c92",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/peghole.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/rect.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "ffeb2dd3d9b83c38841f18f1f74800fbba9e90c5fb6badfff2a795f08a96cb71",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/stud2.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "5ed3702c7d7000bfac2906f12b74ae312c59194a8e3b504952820c826b51c810",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud2.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "parts/32000.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "d5c344e273a7df7bbbd49e5696c973d9f31359e2b658acf620d5c23302c06811",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/32000.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "parts/3673.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "d846c8c80ecd254b61378e7a40b5b75b243be75de63b2458ac834de988c05b7b",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3673.dat"
+    }
+  ],
+  "search": {
+    "attempts": 9,
+    "attachmentApiCalls": 9,
+    "acceptedAttachments": 1,
+    "rejectedAttachments": 8,
+    "transformFailures": 0,
+    "compatibilityFailures": 0,
+    "collisionFailures": 8,
+    "occupancyFailures": 0,
+    "designGoalFailures": 0,
+    "backtracks": 0,
+    "testedRoots": 2,
+    "exhausted": false,
+    "timeBudgetExceeded": false,
+    "catalogTimeMs": 124.171,
+    "searchTimeMs": 96.616,
+    "budget": {
+      "maxAttempts": 1800,
+      "maxBacktracks": 120,
+      "maxSearchTimeMs": 10000
+    },
+    "finalPlacements": 2,
+    "finalConnectionEdges": 1,
+    "rejectionCounts": {
+      "multi-point-missing-requested-mate": 8,
+      "no-collision-free-transform": 8
+    },
+    "rejectionReasons": [
+      {
+        "code": "multi-point-missing-requested-mate",
+        "reason": "root: The selected source mating endpoints do not share the candidate placement.",
+        "count": 8
+      },
+      {
+        "code": "no-collision-free-transform",
+        "reason": "Every permitted source-derived placement was rejected by native collision checks.",
+        "count": 8
+      }
+    ]
+  },
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+    "assemblyEngineVersion": "native-assembly-0.7.0-grammar",
+    "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-2",
+    "collisionVersion": "native-open-surface-seat-2.0.0"
+  },
+  "exported": {
+    "jsonBytes": 19239,
+    "jsonSha256": "6f1d6600851425a70c1de991768dab2ad2f65cc5f49088ed4990b1f01afb0c3b",
+    "ldrPath": "model.ldr",
+    "bomPath": "bom.csv"
+  },
+  "reimport": {
+    "status": "VALID",
+    "reasons": [],
+    "path": "model-revalidation.json"
+  },
+  "productionCounts": {
+    "total": 253,
+    "assemblyVerified": 0,
+    "generatable": 104,
+    "blocked": 149,
+    "verifiedInterfaces": 0,
+    "disabledInterfaces": 2540,
+    "testedPhysicalInterfaces": 0,
+    "deferredPhysicalInterfaces": 5020,
+    "deferredRawConnectionIds": 5085,
+    "wheelModulesVerified": 0,
+    "physicalBuildsVerified": 0
+  },
+  "admissions": {
+    "3673": {
+      "partId": "3673",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "parts/3673.dat:10:2"
+      ],
+      "ruleIds": [
+        "ldcad-source-declared-pin-hole-v1"
+      ],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "32000": {
+      "partId": "32000",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "p/stud2.dat:9:0",
+        "p/stud2.dat:9:2",
+        "p/connhole.dat:8:4",
+        "p/connhole.dat:8:5",
+        "parts/32000.dat:12:6",
+        "parts/32000.dat:12:7"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1",
+        "ldcad-source-declared-pin-hole-v1"
+      ],
+      "reasonCodes": [],
+      "reasons": []
+    }
+  },
+  "physicalBuildVerified": false,
+  "limitations": [
+    "This is one real two-part Pin-Hole placement, not a physical build or a retention/stress proof.",
+    "The pin-bearing part uses a source-scoped open-surface proxy and the full pinned multi-section pin envelope; the connector-hole part remains a closed solid. This is not a closed-solid certificate for the pin, and seat-contained vertex penetration is explicitly not physical clearance.",
+    "The 18591 windscreen carries source-declared pins but its body collides outside the seat with the 32000 hole test poses; it is admitted but not used here.",
+    "Axial friction, pull-out force and physical fit remain UNKNOWN."
+  ]
+}

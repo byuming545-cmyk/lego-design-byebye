@@ -17,13 +17,14 @@ describe('wheel source evidence and strict mechanical boundary', () => {
       claims: { finalPoseVerified: false, rotationClearanceVerified: false, installationPathVerified: false, physicalBuildVerified: false } });
   });
 
-  it('reports missing tyre endpoints and unsupported pin/grid interpretation with original source lines', () => {
+  it('reports missing tyre endpoints and preserved grid evidence while resolving the pinned L_ pin sections', () => {
     const tyre = assessment.parts.find(part => part.partId === '18977')!;
     expect(tyre.connectionStatus).toBe('missing'); expect(tyre.connectionPoints).toEqual([]);
     const holder = assessment.parts.find(part => part.partId === '18975')!;
     expect(holder.connectionIssues.some(issue => issue.file === 'parts/18975.dat' && issue.line === 10 && issue.directive?.includes('grid=1 C 2 1 0 60 0'))).toBe(true);
     const pin = assessment.parts.find(part => part.partId === '3673')!;
-    expect(pin.connectionIssues.some(issue => issue.file === 'parts/3673.dat' && issue.directive?.includes('L_ 6.25 2'))).toBe(true);
+    expect(pin.connectionStatus).toBe('ready');
+    expect(pin.connectionIssues).toEqual([]);
     expect(assessment.pairs.find(pair => pair.fixedPartId === '66727')!.reasonCodes).toContain('wheel-mating-endpoint-missing');
   });
 

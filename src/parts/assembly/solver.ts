@@ -1,6 +1,6 @@
 import type { ImportedConnectionPoint } from '../connections/types.js';
 import type { Matrix3, NativeAssemblyPart, NativePlacement, RigidTransform, Vector3 } from './types.js';
-import { BAR_CLIP_RULE_ID, checkConnectionCompatibility, CONNECTION_RULE_VERSION } from './compatibility.js';
+import { BAR_CLIP_RULE_ID, PIN_HOLE_RULE_ID, checkConnectionCompatibility, CONNECTION_RULE_VERSION } from './compatibility.js';
 import type { CompatibilityResult, CompatibilitySourceEvidence } from './compatibility.js';
 import { add, axisRotation, connectionFrame, distance, isRigidTransform, isRotation, multiply, normalize, normalizedTwist, rotate, scale, subtract, transformPoint, transpose } from './math.js';
 import { adaptImportedConnection } from '../grammar/sources.js';
@@ -84,16 +84,17 @@ export function solveAttachment(request: AttachmentSolveRequest): AttachmentSolv
     const rotation = transform.rotation;
     if (!isRigidTransform(transform) || !isRotation(rotation)) continue;
     const movingAnchor = transformPoint(transform, moving.position), movingAxis = normalize(rotate(rotation, moving.direction));
-    if (!movingAxis || distance(movingAnchor, anchor) > compatibility.toleranceLdu || distance(movingAxis, axis) > 1e-6) continue;
-    const depth = compatibility.insertionDepthLdu;
+    const seatedAnchor = pose.seatedAnchor ?? anchor;
+    if (!movingAxis || distance(movingAnchor, seatedAnchor) > compatibility.toleranceLdu || distance(movingAxis, axis) > 1e-6) continue;
+    const male = fixed.gender === 'M' ? fixed : moving;
+    const depth = compatibility.ruleId === PIN_HOLE_RULE_ID ? Math.max(compatibility.insertionDepthLdu, male.sections.reduce((sum, section) => sum + section.length, 0)) : compatibility.insertionDepthLdu;
     // Both source snap axes point along the protruding stud / into its receiver.
     // The approaching part moves oppositely when the moving endpoint is female.
     const insertionDirection = moving.gender === 'M' ? axis : scale(axis, -1);
     const insertionPath: [Vector3, Vector3] = [subtract(anchor, scale(insertionDirection, depth)), [...anchor]];
-    const male = fixed.gender === 'M' ? fixed : moving;
-    const seatCenter = compatibility.ruleId === BAR_CLIP_RULE_ID ? anchor : add(anchor, scale(axis, depth / 2));
+    const seatCenter = compatibility.ruleId === PIN_HOLE_RULE_ID ? seatedAnchor : compatibility.ruleId === BAR_CLIP_RULE_ID ? anchor : add(anchor, scale(axis, depth / 2));
     candidates.push({ transform, twistDeg: twist, axis: [...axis], anchor: [...anchor], insertionDirection, insertionPath,
-      penetrationZone: { kind: 'cylinder', center: seatCenter, axis: [...axis], radius: male.sections[0].radius, depth, ruleId: compatibility.ruleId, sourceEvidence: compatibility.sourceEvidence.map((source) => ({ ...source })), toleranceLdu: compatibility.toleranceLdu },
+      penetrationZone: { kind: 'cylinder', center: seatCenter, axis: [...axis], radius: compatibility.ruleId === PIN_HOLE_RULE_ID ? Math.max(...male.sections.map(section => section.radius)) : male.sections[0].radius, depth, ruleId: compatibility.ruleId, sourceEvidence: compatibility.sourceEvidence.map((source) => ({ ...source })), toleranceLdu: compatibility.toleranceLdu },
     });
   }
   return candidates.length ? { status: 'solved', compatibility, candidates, reason: 'Source connection anchors and permitted discrete orientations are solved; collision and graph checks remain required.' } : block('No finite proper transform satisfies the source connection constraints.', compatibility);

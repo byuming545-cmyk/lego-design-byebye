@@ -43,14 +43,16 @@ export function deriveJointModel(ruleId: GrammarRuleId, male: Connector, female:
     const limits = intersectRanges(male.angleLimitsDeg, female.angleLimitsDeg);
     return limits ? model('SPHERICAL', 0, 3, null, limits) : missing('Spherical angular limits are unknown or contradictory.');
   }
-  const sourceDeclaredBarClip = ruleId === 'BAR_CLIP';
-  if (!sourceDeclaredBarClip && (male.slideAllowed === null || female.slideAllowed === null || male.rotationAllowed === null || female.rotationAllowed === null)) return missing('Sliding and rotation permissions are not established by the source.');
-  if (sourceDeclaredBarClip && (male.rotationAllowed !== true || female.rotationAllowed !== true)) return missing('Round bar/clip roll is not established by both source endpoints.');
-  if (ruleId === 'PIN_HOLE' && male.friction === 'UNKNOWN') return missing('Pin friction/retention is UNKNOWN; no rigid/revolute behaviour is inferred.');
-  // LDCad clip semantics permit the declared male cylinder to slide when either
-  // side declares slide=true; an omitted clip slide property is the documented
-  // default false, not an unknown permission. Rotation is round-profile roll.
-  const slide = sourceDeclaredBarClip ? male.slideAllowed === true || female.slideAllowed === true : male.slideAllowed === true && female.slideAllowed === true;
+  const sourceDeclaredAxial = (ruleId === 'BAR_CLIP' || ruleId === 'PIN_HOLE')
+    && male.matchingPolicy?.kind === 'SOURCE_DECLARED_FIT' && female.matchingPolicy?.kind === 'SOURCE_DECLARED_FIT';
+  if (!sourceDeclaredAxial && ruleId === 'PIN_HOLE' && (male.friction === 'UNKNOWN' || female.friction === 'UNKNOWN')) return missing('Pin friction is unknown; the conditional pin kernel cannot choose a rigid or revolving joint.');
+  if (!sourceDeclaredAxial && (male.slideAllowed === null || female.slideAllowed === null || male.rotationAllowed === null || female.rotationAllowed === null)) return missing('Sliding and rotation permissions are not established by the source.');
+  if (sourceDeclaredAxial && (male.rotationAllowed !== true || female.rotationAllowed !== true)) return missing('Round axial roll is not established by both source endpoints.');
+  // Source-declared round axial interfaces permit the male cylinder to slide
+  // when either side declares slide=true; omitted slide is the documented
+  // default false. Rotation is round-profile roll. Friction and retention stay
+  // UNKNOWN and are not inferred as a kinematic lock.
+  const slide = sourceDeclaredAxial ? male.slideAllowed === true || female.slideAllowed === true : male.slideAllowed === true && female.slideAllowed === true;
   const roll = male.rotationAllowed === true && female.rotationAllowed === true;
   if (ruleId === 'AXLE_KEYED') {
     if (roll || male.profile !== 'CROSS' || female.profile !== 'CROSS' || !male.symmetryOrder || !female.symmetryOrder) return missing('Keyed axle requires locked roll and an explicit CROSS symmetry.');

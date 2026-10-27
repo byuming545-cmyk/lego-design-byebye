@@ -1,7 +1,7 @@
 import type { AssemblyInterfaceCapability, NativeAssemblyPart } from '../assembly/types.js';
 import { hasIsolatedUnknownDimensions } from '../assembly/types.js';
 import { nativePartSourceHash } from '../assembly/source.js';
-import { BAR_CLIP_RULE_ID, STANDARD_STUD_RULE_ID } from '../assembly/compatibility.js';
+import { BAR_CLIP_RULE_ID, PIN_HOLE_RULE_ID, STANDARD_STUD_RULE_ID } from '../assembly/compatibility.js';
 import { buildNativeCollisionProxy, type ProxyBuildResult } from '../assembly/proxy.js';
 import { IDENTITY_TRANSFORM } from '../assembly/math.js';
 import { CONNECTOR_GRAMMAR_VERSION, type Connector } from './schema.js';
@@ -60,7 +60,7 @@ export function assessGrammarAdmission(part: NativeAssemblyPart): GrammarPartAdm
   const featureSupport: GrammarFeatureSupport[] = ingestion.connectors.map(feature => {
     const support = inspectConnectorSupport(feature);
     const original = part.connections.points.find(point => point.id === feature.sourceConnectionId);
-    const nativeRuleIds = support.ruleIds.flatMap(id => id === 'C01' ? [STANDARD_STUD_RULE_ID] : id === 'BAR_CLIP' ? [BAR_CLIP_RULE_ID] : []);
+    const nativeRuleIds = support.ruleIds.flatMap(id => id === 'C01' ? [STANDARD_STUD_RULE_ID] : id === 'BAR_CLIP' ? [BAR_CLIP_RULE_ID] : id === 'PIN_HOLE' ? [PIN_HOLE_RULE_ID] : []);
     const supported = sourceReady && support.supported && nativeRuleIds.length > 0 && !!original &&
       (!support.ruleIds.includes('C01') || supportsStandardStudEndpoint(original));
     return {

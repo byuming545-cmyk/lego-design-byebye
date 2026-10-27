@@ -1,13 +1,14 @@
 import type { ImportedConnectionPoint } from '../connections/types.js';
 import { partDescriptionFor, SHADOW_REVISION, SHADOW_SOURCE_ROOT } from '../connections/importer.js';
 import { connectionFrame } from './math.js';
-import { adaptImportedConnection, isSourceDeclaredBarEndpoint, isSourceDeclaredClipEndpoint } from '../grammar/sources.js';
+import { adaptImportedConnection, isSourceDeclaredBarEndpoint, isSourceDeclaredClipEndpoint, isSourceDeclaredPinEndpoint, isSourceDeclaredPinHoleEndpoint } from '../grammar/sources.js';
 import { evaluateConnectorCompatibility } from '../grammar/rules.js';
 import { CONNECTOR_GRAMMAR_VERSION } from '../grammar/schema.js';
 
 export const CONNECTION_RULE_VERSION = `source-stud-2.0.0-${CONNECTOR_GRAMMAR_VERSION}`;
 export const STANDARD_STUD_RULE_ID = 'ldcad-standard-stud-to-capped-underside-v1';
 export const BAR_CLIP_RULE_ID = 'ldcad-source-declared-bar-clip-v1';
+export const PIN_HOLE_RULE_ID = 'ldcad-source-declared-pin-hole-v1';
 
 export interface CompatibilitySourceEvidence {
   kind: 'source-document' | 'source-directive' | 'implementation-policy';
@@ -25,7 +26,7 @@ export interface CompatibilityResult {
   ruleVersion: string;
   reason: string;
   reasonCode: string;
-  connectionType: 'standard-stud-underside' | 'bar-clip' | 'unsupported';
+  connectionType: 'standard-stud-underside' | 'bar-clip' | 'pin-hole' | 'unsupported';
   axisRelation: 'same' | null;
   insertionDepthLdu: number | null;
   allowedTwistsDeg: number[];
@@ -99,6 +100,42 @@ function barClipCompatibilityDiagnostics(fixed: ImportedConnectionPoint, moving:
   };
 }
 
+/** Native adapter for the source-declared PIN_HOLE rule. The pin identity and
+ * the hole title are parsed evidence; four quarter-turns are a conservative
+ * subset of round axial roll. Axial retention/friction remains UNKNOWN. */
+function pinHoleCompatibilityDiagnostics(fixed: ImportedConnectionPoint, moving: ImportedConnectionPoint): CompatibilityResult {
+  const points = [fixed, moving];
+  if (points.some((point) => !hasPinnedEvidence(point))) return result('unknown', 'source-unverified', 'compatibilityUnknown: connection source is not the pinned, hashed Shadow input.', points);
+  if (points.some((point) => !point.dimensionsResolved || !connectionFrame(point))) return result('unknown', 'unresolved-connection-frame', 'compatibilityUnknown: connection frame or inherited section scaling is unresolved.', points);
+  const male = fixed.gender === 'M' ? fixed : moving, female = fixed.gender === 'F' ? fixed : moving;
+  if (male.gender === female.gender) return result('incompatible', 'same-mating-gender', 'Both connection endpoints have the same source mating gender.', points);
+  if (!isSourceDeclaredPinEndpoint(male) || !isSourceDeclaredPinHoleEndpoint(female)) return result('unknown', 'pin-hole-source-identity-unresolved', 'compatibilityUnknown: the male must be a pinned multi-section Technic pin source and the female a pinned Technic connector-hole source.', points);
+  const span = (point: ImportedConnectionPoint): [number, number] | null => {
+    const length = point.sections.length ? point.sections.reduce((sum, section) => sum + section.length, 0) : point.length;
+    if (length === null || !Number.isFinite(length) || length <= 0) return null;
+    return point.properties.center === 'true' ? [-length / 2, length / 2] : [0, length];
+  };
+  const maleSpan = span(male), femaleSpan = span(female);
+  if (!maleSpan || !femaleSpan) return result('unknown', 'pin-hole-insertion-range-unresolved', 'compatibilityUnknown: the source axial spans needed for pin engagement are unresolved.', points);
+  const overlap = Math.max(0, Math.min(maleSpan[1], femaleSpan[1]) - Math.max(maleSpan[0], femaleSpan[0]));
+  if (overlap < 1) return result('unknown', 'pin-hole-insertion-range-unresolved', 'compatibilityUnknown: the source axial spans do not overlap the declared 1..20 LDU pin seat.', points);
+  // The native seat is the hole depth: a pin may pass through a 20 LDU connector
+  // hole and protrude, but its collision envelope is the full connector seat.
+  const insertionDepth = Math.min(20, maleSpan[1] - maleSpan[0], femaleSpan[1] - femaleSpan[0]);
+  return {
+    ...result('compatible', 'source-declared-pin-hole', 'Pinned multi-section Technic pin and pinned connector-hole title establish a round axial candidate; collision, retention, stress and physical build remain separate.', points),
+    ruleId: PIN_HOLE_RULE_ID, connectionType: 'pin-hole', axisRelation: 'same', insertionDepthLdu: insertionDepth,
+    allowedTwistsDeg: [...QUARTER_TURNS], permittedTranslation: 'sliding',
+    sourceEvidence: [
+      ...points.map(pointEvidence),
+      { kind: 'source-document', url: 'https://www.melkert.net/LDCad/tech/meta', revision: 'LDCad-meta-documentation', file: 'LDCad SNAP_CYL semantics', line: null, sha256: null,
+        note: 'SNAP_CYL sections describe the male pin and female connector-hole axial envelope; slide is source-declared. This is source semantics, not physical verification.' },
+      { kind: 'implementation-policy', url: 'docs/grammar/PIN_PIN_HOLE.md', revision: CONNECTION_RULE_VERSION, file: 'docs/grammar/PIN_PIN_HOLE.md', line: null, sha256: null,
+        note: 'PIN identity requires a pinned multi-section male R6 Technic pin directive and its declaring source title/ID; PIN_HOLE requires a pinned female R6 connector-hole directive with center/slide and its declaring title. Four quarter-turns are the conservative native graph subset. Friction/retention remain UNKNOWN.' },
+    ],
+  };
+}
+
 /**
  * Conservative first rule: the explicit source's normal LEGO stud, not arbitrary
  * male cylinders of the same radius. Other families need their own sourced
@@ -144,6 +181,7 @@ export function checkConnectionCompatibility(fixed: ImportedConnectionPoint, mov
   const diagnostic = sourceCompatibilityDiagnostics(fixed, moving);
   if (grammar.status === 'COMPATIBLE' && grammar.ruleId === 'C01') return diagnostic;
   if (grammar.status === 'COMPATIBLE' && grammar.ruleId === 'BAR_CLIP') return barClipCompatibilityDiagnostics(fixed, moving);
+  if (grammar.status === 'COMPATIBLE' && grammar.ruleId === 'PIN_HOLE') return pinHoleCompatibilityDiagnostics(fixed, moving);
   if (diagnostic.status !== 'compatible') return diagnostic;
   return result(grammar.status === 'INCOMPATIBLE' ? 'incompatible' : 'unknown', grammar.reasonCodes[0] ?? 'grammar-unknown', grammar.reasons.join(' '), [fixed, moving]);
 }

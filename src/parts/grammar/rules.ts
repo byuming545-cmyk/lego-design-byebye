@@ -1,7 +1,7 @@
 import { finiteVector, isRotation, normalize, dot, cross, scale, subtract } from '../assembly/math.js';
 import type { Matrix3 } from '../assembly/types.js';
 import { SHADOW_REVISION, SHADOW_SOURCE_ROOT } from '../connections/importer.js';
-import { OFFICIAL_BAR_DESCRIPTION, barClipProfileId } from './sources.js';
+import { OFFICIAL_BAR_DESCRIPTION, OFFICIAL_PIN_DESCRIPTION, OFFICIAL_PIN_HOLE_DESCRIPTION, barClipProfileId, pinHoleProfileId } from './sources.js';
 import { deriveJointModel, intersectRanges } from './joints.js';
 import type { Connector, ConnectorFamily, ConnectorProvenance, GrammarCompatibility, GrammarEvaluationOptions, GrammarRuleId } from './schema.js';
 
@@ -14,7 +14,7 @@ export const CONNECTOR_GRAMMAR_RULES: readonly ConnectorGrammarRule[] = [
   { id: 'C01', maleFamilies: ['STUD', 'HOLLOW_STUD'], femaleFamilies: ['ANTISTUD'], evidenceRequired: 'STANDARD_STUD_SOURCE' },
   { id: 'BAR_CLIP', maleFamilies: ['BAR'], femaleFamilies: ['CLIP'], evidenceRequired: 'SOURCE_DECLARED_FIT' },
   { id: 'BAR_RECEPTACLE', maleFamilies: ['BAR'], femaleFamilies: ['BAR_HOLE', 'ROUND_HOLE'], evidenceRequired: 'VERIFIED_FIT' },
-  { id: 'PIN_HOLE', maleFamilies: ['PIN'], femaleFamilies: ['PIN_HOLE'], evidenceRequired: 'VERIFIED_FIT' },
+  { id: 'PIN_HOLE', maleFamilies: ['PIN'], femaleFamilies: ['PIN_HOLE'], evidenceRequired: 'SOURCE_DECLARED_FIT' },
   { id: 'AXLE_KEYED', maleFamilies: ['AXLE'], femaleFamilies: ['AXLE_HOLE'], evidenceRequired: 'VERIFIED_FIT' },
   { id: 'AXLE_ROUND', maleFamilies: ['AXLE'], femaleFamilies: ['ROUND_HOLE'], evidenceRequired: 'VERIFIED_FIT' },
   { id: 'HINGE', maleFamilies: ['HINGE_FINGER'], femaleFamilies: ['HINGE_FINGER'], evidenceRequired: 'VERIFIED_FIT' },
@@ -148,12 +148,43 @@ function sourceDeclaredBarClipSource(feature: Connector, options: GrammarEvaluat
   }
   return false;
 }
+/** A PIN/PIN_HOLE premise is source-declared only where a pinned male
+ * multi-section pin cylinder and a pinned female connector-hole cylinder both
+ * retain their declaring source titles/IDs and agree on the nominal R6 seat. */
+function sourceDeclaredPinHoleSource(feature: Connector, options: GrammarEvaluationOptions): boolean {
+  const policy = feature.matchingPolicy;
+  if (!policy || policy.ruleId !== 'PIN_HOLE' || policy.kind !== 'SOURCE_DECLARED_FIT'
+      || policy.profileId !== pinHoleProfileId(6) || policy.axisRelation !== 'SAME' || policy.seatingOffsetLdu !== 0
+      || !policyEvidence(feature, options, false) || feature.coverage !== 'COMPLETE'
+      || feature.profile !== 'ROUND' || feature.dimensions.radiusLdu !== 6 || feature.rotationAllowed !== true
+      || feature.insertionRangeLdu?.[0] !== 1 || feature.insertionRangeLdu?.[1] !== 20) return false;
+  const source = feature.sources.find(item => item.kind === 'LDCAD_SHADOW' && /^0\s+!LDCAD\s+SNAP_CYL\b/i.test(item.raw ?? '') && evidenceValid(item, options, false));
+  if (!source) return false;
+  const props = rawProperties(source.raw);
+  const identity = feature.sources.filter(item => item.line === 1 && !!item.raw && evidenceValid(item, options, false));
+  if (feature.role === 'MALE') {
+    if (feature.family !== 'PIN' || feature.dimensions.sections.length < 3 || props.gender !== 'M'
+        || !['none', 'one'].includes(props.caps ?? '') || props.group !== undefined || props.id !== undefined && props.id !== 'pin8') return false;
+    if (!feature.dimensions.sections.every(section => /^(R|L_|_L)$/.test(section.profile) && section.radiusLdu > 0 && section.radiusLdu <= 8)
+        || !feature.dimensions.sections.some(section => section.profile === 'R' && section.radiusLdu === 6)) return false;
+    return identity.some(item => OFFICIAL_PIN_DESCRIPTION.test((item.raw ?? '').replace(/^0\s+/, '').trim()));
+  }
+  if (feature.role === 'FEMALE') {
+    if (feature.family !== 'PIN_HOLE' || feature.dimensions.sections.length === 0 || feature.dimensions.lengthLdu !== 20
+        || props.gender !== 'F' || props.center !== 'true' || props.slide !== 'true' || props.group !== undefined) return false;
+    if (!feature.dimensions.sections.every(section => /^(R|L_|_L)$/.test(section.profile) && section.radiusLdu > 0 && section.radiusLdu <= 8)
+        || !feature.dimensions.sections.some(section => section.profile === 'R' && section.radiusLdu === 6)) return false;
+    return identity.some(item => OFFICIAL_PIN_HOLE_DESCRIPTION.test((item.raw ?? '').replace(/^0\s+/, '').trim()));
+  }
+  return false;
+}
 /** Single-feature recognition certifies a known grammar premise, not a trial
  * against a fabricated mate, and not a collision or physical-build result. */
 export function inspectConnectorSupport(feature: Connector, options: GrammarEvaluationOptions = {}): { supported: boolean; ruleIds: GrammarRuleId[]; reasonCodes: string[] } {
   if (feature.coverage === 'NONE' || feature.confidence === 'UNKNOWN' || feature.confidence === 'HEURISTIC' || !connectorFrame(feature)) return { supported: false, ruleIds: [], reasonCodes: ['connector-evidence-incomplete'] };
   if (feature.matchingPolicy?.ruleId === 'C01' && standardStudSource(feature, options)) return { supported: true, ruleIds: ['C01'], reasonCodes: [] };
   if (feature.matchingPolicy?.ruleId === 'BAR_CLIP' && sourceDeclaredBarClipSource(feature, options)) return { supported: true, ruleIds: ['BAR_CLIP'], reasonCodes: [] };
+  if (feature.matchingPolicy?.ruleId === 'PIN_HOLE' && sourceDeclaredPinHoleSource(feature, options)) return { supported: true, ruleIds: ['PIN_HOLE'], reasonCodes: [] };
   return { supported: false, ruleIds: [], reasonCodes: [feature.matchingPolicy?.ruleId === 'C01' ? 'standard-stud-source-unverified' : feature.matchingPolicy?.ruleId === 'BAR_CLIP' ? 'bar-clip-source-unverified' : 'family-rule-needs-verified-fit'] };
 }
 function status(a: Connector, b: Connector, outcome: GrammarCompatibility['status'], code: string, reason: string, ruleId: GrammarRuleId | null = null): GrammarCompatibility {
@@ -185,8 +216,10 @@ export function evaluateConnectorCompatibility(a: Connector, b: Connector, optio
     if (!policyEvidence(male, options, false) || !policyEvidence(female, options, false)) return status(a, b, 'UNKNOWN', 'mating-policy-unverified', 'The family is recognised, but its sourced seating/profile policy is not established.', rule.id);
     if (verifiedFixture) {
       if (!policyEvidence(male, options, true) || !policyEvidence(female, options, true)) return status(a, b, 'UNKNOWN', 'fit-evidence-required', 'A verified-fit override must retain its explicit verified authority.', rule.id);
-    } else if (pa.kind !== 'SOURCE_DECLARED_FIT' || pb.kind !== 'SOURCE_DECLARED_FIT' || !sourceDeclaredBarClipSource(male, options) || !sourceDeclaredBarClipSource(female, options)) {
-      return status(a, b, 'UNKNOWN', 'source-declared-fit-unverified', 'BAR_CLIP requires the pinned official Bar description plus the explicit LDCad male-cylinder and clip-seat directives.', rule.id);
+    } else if (pa.kind !== 'SOURCE_DECLARED_FIT' || pb.kind !== 'SOURCE_DECLARED_FIT'
+        || rule.id === 'BAR_CLIP' && (!sourceDeclaredBarClipSource(male, options) || !sourceDeclaredBarClipSource(female, options))
+        || rule.id === 'PIN_HOLE' && (!sourceDeclaredPinHoleSource(male, options) || !sourceDeclaredPinHoleSource(female, options))) {
+      return status(a, b, 'UNKNOWN', 'source-declared-fit-unverified', `${rule.id} requires its pinned source-declared interface directives and source identities.`, rule.id);
     }
   } else if (!policyEvidence(male, options, fit) || !policyEvidence(female, options, fit)) {
     return status(a, b, 'UNKNOWN', 'mating-policy-unverified', 'The family is recognised, but its sourced seating/profile policy is not established.', rule.id);

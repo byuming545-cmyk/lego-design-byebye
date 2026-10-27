@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import type { NativeAssemblyPart, NativePlacement, Vector3 } from './types.js';
 import { add, cross, dot, IDENTITY_TRANSFORM, isRigidTransform, normalize, rotate, scale, subtract, transformPoint } from './math.js';
-import { isSourceDeclaredClipEndpoint } from '../grammar/sources.js';
+import { isSourceDeclaredClipEndpoint, isSourceDeclaredPinEndpoint } from '../grammar/sources.js';
 
 export interface MeshBounds { min: Vector3; max: Vector3 }
 export interface CollisionTriangle {
@@ -178,7 +178,7 @@ function deriveNativeCollisionProxy(part: NativeAssemblyPart, placement: NativeP
   }
   if (triangles.length === 0) return blocked('empty-solid-mesh', 'No solid native triangles are available.');
   const sourceTriangleCount = triangles.length;
-  const openSurface = part.connections.points.some(isSourceDeclaredClipEndpoint);
+  const openSurface = part.connections.points.some(point => isSourceDeclaredClipEndpoint(point) || isSourceDeclaredPinEndpoint(point));
   const boundaries = boundaryEdges(triangles);
   const loops = boundaries ? boundaryLoops(boundaries) : null;
   if (openSurface) {

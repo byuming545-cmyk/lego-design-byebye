@@ -35,7 +35,7 @@ describe('all-native-root assembly migration', () => {
     const ids = await repository.listIds();
     expect(ids).toHaveLength(253);
     expect(report.entries.map(entry => entry.partId).sort()).toEqual([...ids].sort());
-    expect(report.sourceCounts).toEqual({ totalRoots: 253, geometryReady: 253, connectionReady: 205, connectionPartial: 44, connectionMissing: 4 });
+    expect(report.sourceCounts).toEqual({ totalRoots: 253, geometryReady: 253, connectionReady: 206, connectionPartial: 43, connectionMissing: 4 });
     expect(report.counts.total).toBe(253);
     expect(report.counts.assemblyVerified + report.counts.blocked).toBe(253);
     expect(report.counts.assemblyVerified).toBeGreaterThan(0);

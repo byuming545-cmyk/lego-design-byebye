@@ -16,8 +16,8 @@ const report = () => reportPromise ??= loadAudit();
 describe('complete pinned Connection Parse Audit', () => {
   it('accounts for all roots and every remaining issue with literal source evidence or an explicit missing-evidence outcome', async () => {
     const audit = await report();
-    expect(audit.counts).toMatchObject({ roots: 253, ready: 205, partial: 44, missing: 4, retainedRawConnectionRecords: 5084, activeFailureInstances: 114, discardedDimensionWarnings: 3 });
-    expect(audit.failures).toHaveLength(114);
+    expect(audit.counts).toMatchObject({ roots: 253, ready: 206, partial: 43, missing: 4, retainedRawConnectionRecords: 5085, activeFailureInstances: 113, discardedDimensionWarnings: 3 });
+    expect(audit.failures).toHaveLength(113);
     expect(new Set(audit.parts.map(part => part.partId)).size).toBe(253);
     for (const failure of audit.failures) {
       expect(failure.expectedInterpretation.status).toBe('EXPECTED_UNKNOWN');
@@ -34,15 +34,22 @@ describe('complete pinned Connection Parse Audit', () => {
         expect(failure.instruction).toMatch(/^0 !LDCAD SNAP_/);
       }
     }
-    expect(audit.categories).toEqual({ CONNECTION_EVIDENCE_MISSING: 4, CYLINDER_PROFILE: 1, FINGER_JOINT_GRAMMAR: 9, GRID_GRAMMAR: 2, INCLUDE_OVERRIDE: 4, INHERITED_SCALING: 94 });
+    expect(audit.categories).toEqual({ CONNECTION_EVIDENCE_MISSING: 4, FINGER_JOINT_GRAMMAR: 9, GRID_GRAMMAR: 2, INCLUDE_OVERRIDE: 4, INHERITED_SCALING: 94 });
   });
-  it('preserves every pre-fix point/source record and retires only the three explicit CLEAR warnings', async () => {
+  it('preserves every pre-fix point/source record except the documented 3673 PIN reclassification, and retires only the three explicit CLEAR warnings', async () => {
     const audit = await report();
     const before = JSON.parse(await readFile(new URL('../artifacts/connection-parse-audit/before.json', import.meta.url), 'utf8')) as { parts: { partId: string; pointSha256: string; sourceClosureSha256: string }[] };
     const currentById = new Map(audit.parts.map(part => [part.partId, part]));
     for (const previous of before.parts) {
       const part = currentById.get(previous.partId)!;
       expect(part, previous.partId).toBeDefined();
+      if (previous.partId === '3673') {
+        // The source bytes did not change; the canonical point now records the
+        // newly supported L_ pin sections and PIN family.
+        expect(part.pointSha256, part.partId).not.toBe(previous.pointSha256);
+        expect(part.sourceClosureSha256, part.partId).toBe(previous.sourceClosureSha256);
+        continue;
+      }
       expect(part.pointSha256, part.partId).toBe(previous.pointSha256);
       expect(part.sourceClosureSha256, part.partId).toBe(previous.sourceClosureSha256);
     }
@@ -58,6 +65,6 @@ describe('complete pinned Connection Parse Audit', () => {
     expect(new Set(audit.discarded.map(issue => issue.partId))).toEqual(new Set(['30209', '29115']));
     expect(audit.discarded.every(issue => issue.code === 'unsupported-scaling' && issue.discardedBy.directive.startsWith('0 !LDCAD SNAP_CLEAR') && issue.affectedConnectionIds.length > 0)).toBe(true);
     expect(audit.parts.every(part => !('generatable' in part) && !('assemblyVerified' in part))).toBe(true);
-    expect(audit.failures.find(failure => failure.partId === '3673')).toMatchObject({ category: 'CYLINDER_PROFILE', expectedInterpretation: { status: 'EXPECTED_UNKNOWN' } });
+    expect(audit.failures.find(failure => failure.partId === '3673')).toBeUndefined();
   });
 });

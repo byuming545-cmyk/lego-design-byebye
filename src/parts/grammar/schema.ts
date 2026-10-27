@@ -90,6 +90,8 @@ export interface GrammarCompatibility {
 export interface GrammarEvaluationOptions { allowAlgorithmFixtures?: boolean }
 export interface GrammarPoseCandidate {
   transform: RigidTransform; twistDeg: number; insertionLdu: number;
+  /** Source-span seating origin after axial slide; the fixed anchor itself. */
+  seatedAnchor?: [number, number, number];
   joint: JointModel; fixedFeatureId: string; movingFeatureId: string;
 }
 export interface GrammarPlacementResult {

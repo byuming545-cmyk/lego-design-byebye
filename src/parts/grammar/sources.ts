@@ -1,5 +1,5 @@
 import type { ImportedConnectionPoint, ConnectionImportIssue, ConnectionSourceFile, ConnectionTransformEvidence } from '../connections/types.js';
-import { partDescriptionFor, SHADOW_REVISION, SHADOW_SOURCE_ROOT } from '../connections/importer.js';
+import { connectionDescriptionFor, partDescriptionFor, SHADOW_REVISION, SHADOW_SOURCE_ROOT } from '../connections/importer.js';
 import { connectionFrame, finiteVector } from '../assembly/math.js';
 import type { NativeAssemblyPart, Matrix3, Vector3 } from '../assembly/types.js';
 import type { Connector, ConnectorCoverage, ConnectorDiagnostic, ConnectorFamily, ConnectorProvenance, ConnectorRole, ConnectorSourceKind } from './schema.js';
@@ -8,8 +8,13 @@ export const CONNECTOR_INGESTION_VERSION = 'native-connector-adapter-2-source-de
 const STANDARD_PROFILE = 'ldcad-standard-stud-to-capped-underside-v1';
 /** Official LDraw bar descriptions are length-denominated, e.g. "Bar  4L ...". */
 export const OFFICIAL_BAR_DESCRIPTION = /^Bar\s+\d+(?:\.\d+)?L\b/i;
+export const OFFICIAL_PIN_DESCRIPTION = /^Technic Pin\b/i;
+export const OFFICIAL_PIN_HOLE_DESCRIPTION = /^Technic Connector Hole\b/i;
 export function barClipProfileId(radius: number): string {
   return `ldcad-source-declared-round-bar-clip-r${radius}-v1`;
+}
+export function pinHoleProfileId(radius: number): string {
+  return `ldcad-source-declared-round-pin-hole-r${radius}-v1`;
 }
 
 export interface UnknownConnectorInterface {
@@ -78,6 +83,42 @@ export function isSourceDeclaredBarEndpoint(point: ImportedConnectionPoint): boo
     (props.caps === 'none' || props.caps === 'one') &&
     (props.scale === undefined || ['none', 'yonly'].includes(props.scale.toLowerCase()));
 }
+/** A Pin identity comes from the pinned Shadow pin ID or the standalone part's
+ * official `Technic Pin` description, plus a multi-section male source cylinder.
+ * No radius or visual resemblance is accepted on its own. */
+export function isSourceDeclaredPinEndpoint(point: ImportedConnectionPoint): boolean {
+  if (!pinned(point) || point.kind !== 'cylinder' || point.gender !== 'M' || !point.dimensionsResolved ||
+      !!point.group || !sourceSectionsAgree(point) || point.sections.length < 3) return false;
+  const props = sourceProperties(point);
+  if (!/^0\s+!LDCAD\s+SNAP_CYL\b/i.test(point.source.raw) || props.gender !== 'M' || props.group !== undefined
+      || !['none', 'one'].includes(props.caps ?? '') || props.scale && !['none', 'yonly'].includes(props.scale.toLowerCase())
+      || props.id !== undefined && props.id !== 'pin8') return false;
+  const title = partDescriptionFor(point)?.text.trim() ?? '';
+  const declared = point.sourceId === 'pin8' || point.sourceId === null && descriptionPinned(point) && OFFICIAL_PIN_DESCRIPTION.test(title);
+  if (!declared) return false;
+  return point.sections.every(section => /^(R|L_|_L)$/.test(section.profile) && section.radius > 0 && section.radius <= 8 && section.length > 0)
+    && point.sections.some(section => section.profile === 'R' && section.radius === 6);
+}
+function connectionDescriptionPinned(point: ImportedConnectionPoint): boolean {
+  const description = connectionDescriptionFor(point);
+  return !!description && description.source.library === 'LDCadShadowLibrary' && /^[a-f0-9]{64}$/.test(description.source.sha256) &&
+    description.source.license === 'CC-BY-SA-4.0' && Number.isSafeInteger(description.line) && description.line > 0 &&
+    description.source.sourceUrl === `${SHADOW_SOURCE_ROOT}${description.source.path}` && !!description.text.trim();
+}
+/** Pin-hole identity comes from the declaring Shadow primitive title or its
+ * explicit LDCad hole ID; a bare R6/R8 cavity is not enough. */
+export function isSourceDeclaredPinHoleEndpoint(point: ImportedConnectionPoint): boolean {
+  if (!pinned(point) || point.kind !== 'cylinder' || point.gender !== 'F' || !point.dimensionsResolved ||
+      !!point.group || !sourceSectionsAgree(point) || point.sections.length === 0) return false;
+  const props = sourceProperties(point);
+  if (!/^0\s+!LDCAD\s+SNAP_CYL\b/i.test(point.source.raw) || props.gender !== 'F' || props.group !== undefined
+      || props.center !== 'true' || props.slide !== 'true' || props.scale && !['none', 'yonly'].includes(props.scale.toLowerCase())) return false;
+  const title = connectionDescriptionFor(point)?.text.trim() ?? '';
+  const declared = ['connhole', 'connhol3'].includes(point.sourceId ?? '') || connectionDescriptionPinned(point) && OFFICIAL_PIN_HOLE_DESCRIPTION.test(title);
+  if (!declared) return false;
+  return point.sections.every(section => /^(R|L_|_L)$/.test(section.profile) && section.radius > 0 && section.radius <= 8 && section.length > 0)
+    && point.sections.some(section => section.profile === 'R' && section.radius === 6);
+}
 /** CLIP comes only from an explicit LDCad SNAP_CLP seat whose radius, length and
  * centered origin agree with the parsed source directive. */
 export function isSourceDeclaredClipEndpoint(point: ImportedConnectionPoint): boolean {
@@ -88,6 +129,14 @@ export function isSourceDeclaredClipEndpoint(point: ImportedConnectionPoint): bo
     props.radius === '4' && props.length === '8' && props.center === 'true' &&
     (props.slide === undefined || props.slide === 'true' || props.slide === 'false') &&
     (props.scale === undefined || ['none', 'yonly'].includes(props.scale.toLowerCase()));
+}
+function connectionDescriptionSource(point: ImportedConnectionPoint): ConnectorProvenance | null {
+  if (!connectionDescriptionPinned(point)) return null;
+  const description = connectionDescriptionFor(point)!;
+  return { id: `ldcad-title:${description.source.path}:${description.line}:${description.source.sha256}`, kind: 'LDCAD_SHADOW',
+    reference: description.source.sourceUrl, revision: description.source.revision, sha256: description.source.sha256,
+    license: description.source.license, line: description.line, raw: '0 ' + description.text, verification: 'SOURCE_DECLARED', scope: 'PRODUCTION',
+    notes: ['Pinned Shadow/primitive title retained as interface-identity evidence; it is not a physical-fit certificate.'] };
 }
 function descriptionSource(point: ImportedConnectionPoint): ConnectorProvenance | null {
   if (!descriptionPinned(point)) return null;
@@ -117,6 +166,8 @@ export function supportsStandardStudEndpoint(point: ImportedConnectionPoint): bo
 
 function family(point: ImportedConnectionPoint): ConnectorFamily {
   if (isSourceDeclaredBarEndpoint(point)) return 'BAR';
+  if (isSourceDeclaredPinEndpoint(point)) return 'PIN';
+  if (isSourceDeclaredPinHoleEndpoint(point)) return 'PIN_HOLE';
   if (isSourceDeclaredClipEndpoint(point)) return 'CLIP';
   if (point.kind === 'clip') return 'CLIP';
   // A group is retained as a group; it does not establish a wheel seat or fit.
@@ -139,7 +190,7 @@ function profile(point: ImportedConnectionPoint): Connector['profile'] {
   if (point.kind === 'clip') return 'ROUND';
   const profiles = new Set(point.sections.map(section => section.profile));
   if (profiles.size === 1 && profiles.has('A')) return 'CROSS';
-  if (profiles.size === 1 && profiles.has('R')) return 'ROUND';
+  if (profiles.size > 0 && [...profiles].every(profile => profile === 'R' || profile === 'L_' || profile === '_L') && profiles.has('R')) return 'ROUND';
   if (profiles.size === 1 && profiles.has('S')) return 'SQUARE';
   return point.kind === 'generic' ? 'GENERIC' : 'UNKNOWN';
 }
@@ -156,12 +207,14 @@ const standardEvidence = (): ConnectorProvenance => ({ id: 'policy:' + STANDARD_
 
 export function adaptImportedConnection(point: ImportedConnectionPoint): Connector {
   const bar = isSourceDeclaredBarEndpoint(point), clip = isSourceDeclaredClipEndpoint(point);
-  const sourceDeclaredFit = bar || clip;
+  const pin = isSourceDeclaredPinEndpoint(point), pinHole = isSourceDeclaredPinHoleEndpoint(point);
+  const sourceDeclaredFit = bar || clip || pin || pinHole;
   const supported = supportsStandardStudEndpoint(point) || sourceDeclaredFit;
   const canonicalFamily = family(point), canonicalProfile = profile(point);
   const diagnostics: ConnectorDiagnostic[] = [], unknownFields: string[] = [];
   const totalLength = point.sections.length ? point.sections.reduce((sum, section) => sum + section.length, 0) : point.length;
-  const radius = point.sections.length === 1 ? point.sections[0].radius : point.radius;
+  const rawRadius = point.sections.length === 1 ? point.sections[0].radius : point.radius;
+  const radius = pin || pinHole ? 6 : rawRadius;
   if (!point.dimensionsResolved) { unknownFields.push('effectiveDimensions'); diagnostics.push({ code: 'INHERITED_DIMENSIONS_UNRESOLVED', message: 'The native importer did not resolve the inherited physical section dimensions.', featureId: point.id }); }
   if (!pinned(point)) { unknownFields.push('sourceIntegrity'); diagnostics.push({ code: 'SOURCE_NOT_PINNED', message: 'Endpoint provenance does not match the pinned licensed Shadow input.', featureId: point.id }); }
   if (canonicalFamily === 'GENERIC_SPECIAL' && !point.group) { unknownFields.push('canonicalFamily'); diagnostics.push({ code: 'CANONICAL_FAMILY_UNRESOLVED', message: 'A shape/radius alone does not identify this source interface family.', featureId: point.id }); }
@@ -172,12 +225,18 @@ export function adaptImportedConnection(point: ImportedConnectionPoint): Connect
     ? (centered ? [-totalLength / 2, totalLength / 2] : [0, totalLength]) as [number, number] : null;
   const coverage: ConnectorCoverage = supported ? 'COMPLETE' : 'PARTIAL';
   const description = bar ? descriptionSource(point) : null;
+  const sourceTitle = pin || pinHole ? connectionDescriptionSource(point) : null;
+  const pinDescription = pin && point.sourceId === null ? descriptionSource(point) : null;
+  const identitySources = [description, sourceTitle, pinDescription].filter((source): source is ConnectorProvenance => !!source);
   const policy = supportsStandardStudEndpoint(point)
     ? { ruleId: 'C01' as const, kind: 'STANDARD_STUD' as const, profileId: STANDARD_PROFILE,
         evidenceSourceIds: [sourceId(point)], axisRelation: 'SAME' as const, seatingOffsetLdu: 0 }
     : sourceDeclaredFit
-      ? { ruleId: 'BAR_CLIP' as const, kind: 'SOURCE_DECLARED_FIT' as const, profileId: barClipProfileId(radius ?? 4),
-          evidenceSourceIds: [sourceId(point), ...(description ? [description.id] : [])], axisRelation: 'SAME' as const, seatingOffsetLdu: 0 }
+      ? pin || pinHole
+        ? { ruleId: 'PIN_HOLE' as const, kind: 'SOURCE_DECLARED_FIT' as const, profileId: pinHoleProfileId(6),
+            evidenceSourceIds: [sourceId(point), ...identitySources.map(source => source.id)], axisRelation: 'SAME' as const, seatingOffsetLdu: 0 }
+        : { ruleId: 'BAR_CLIP' as const, kind: 'SOURCE_DECLARED_FIT' as const, profileId: barClipProfileId(radius ?? 4),
+            evidenceSourceIds: [sourceId(point), ...(description ? [description.id] : [])], axisRelation: 'SAME' as const, seatingOffsetLdu: 0 }
       : null;
   return {
     featureId: point.id, sourceConnectionId: point.id, family: canonicalFamily,
@@ -190,17 +249,17 @@ export function adaptImportedConnection(point: ImportedConnectionPoint): Connect
     // caps=one does not, by itself, identify a physical cap end for every family.
     capStart: point.properties.caps === 'none' ? false : null,
     capEnd: point.properties.caps === 'none' ? false : null,
-    insertionRangeLdu: !supported ? null : sourceDeclaredFit ? [1, 8] : [4, 4],
+    insertionRangeLdu: !supported ? null : pin || pinHole ? [1, 20] : sourceDeclaredFit ? [1, 8] : [4, 4],
     slideAllowed: sourceDeclaredFit ? (point.properties.slide === 'true' ? true : point.properties.slide === 'false' ? false : null) : supported ? false : point.properties.slide === 'true' ? true : point.properties.slide === 'false' ? false : null,
     rotationAllowed: sourceDeclaredFit ? true : supported ? false : null,
     symmetryOrder: canonicalProfile === 'CROSS' || canonicalProfile === 'SQUARE' ? 4 : null,
     friction: 'UNKNOWN', angleLimitsDeg: sourceDeclaredFit ? [0, 360] : null, detentsDeg: null, compatibilityGroup: point.group,
     occupied: false, contactSurface: null, entryFace: null,
     matchingPolicy: policy,
-    sources: [source(point), ...(description ? [description] : []), ...(supportsStandardStudEndpoint(point) ? [standardEvidence()] : [])],
+    sources: [source(point), ...(description ? [description] : []), ...identitySources.filter(source => source !== description), ...(supportsStandardStudEndpoint(point) ? [standardEvidence()] : [])],
     confidence: pinned(point) ? 'SOURCE_BACKED' : 'UNKNOWN', coverage, unknownFields,
     diagnostics, notes: ['Native source-local sections are retained without guessed clearance, effective scaling or physical friction.',
-      ...(sourceDeclaredFit ? ['BAR identity comes from the pinned top-level official LDraw description; the fit seat comes from the explicit LDCad source directive. Motion/friction remain separate from physical verification.'] : [])],
+      ...(sourceDeclaredFit ? [bar ? 'BAR identity comes from the pinned top-level official LDraw description; the fit seat comes from the explicit LDCad source directive. Motion/friction remain separate from physical verification.' : pin || pinHole ? 'PIN/PIN_HOLE identity comes from the pinned Shadow source title/ID and a multi-section SNAP_CYL; the fit seat comes from the explicit LDCad source directive. Motion/friction remain separate from physical verification.' : 'BAR identity comes from the pinned top-level official LDraw description; the fit seat comes from the explicit LDCad source directive. Motion/friction remain separate from physical verification.'] : [])],
   };
 }
 

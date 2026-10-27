@@ -74,7 +74,7 @@ export function solveConnectorPlacement(request: ConnectorPlacementRequest): Gra
     const rotation = multiply(multiply(multiply(exactQuarterTurn(axis, twistDeg), worldFrame), relation), transpose(b));
     const transform = { rotation, translation: subtract(seated, rotate(rotation, moving.localPositionLdu)) };
     if (!isRigidTransform(transform)) return [];
-    return [{ transform, twistDeg, insertionLdu: depth, joint: { ...joint, axis, pivotLdu: anchor }, fixedFeatureId: fixed.featureId, movingFeatureId: moving.featureId }];
+    return [{ transform, twistDeg, insertionLdu: depth, seatedAnchor: [...seated] as [number, number, number], joint: { ...joint, axis, pivotLdu: anchor }, fixedFeatureId: fixed.featureId, movingFeatureId: moving.featureId }];
   });
   return candidates.length ? { status: 'SOLVED', compatibility, candidates, poseFamily: { ...joint, axis, pivotLdu: anchor }, reasons: [] } : block('No proper rigid frame solution exists.');
 }

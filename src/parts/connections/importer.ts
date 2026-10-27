@@ -19,8 +19,24 @@ const ZERO: ConnectionVector = [0, 0, 0];
  * to the exact immutable point instance produced by this importer.
  */
 const partDescriptions = new WeakMap<ImportedConnectionPoint, PartDescriptionEvidence>();
+const connectionDescriptions = new WeakMap<ImportedConnectionPoint, PartDescriptionEvidence>();
 export function partDescriptionFor(point: ImportedConnectionPoint): PartDescriptionEvidence | null {
   return partDescriptions.get(point) ?? null;
+}
+/** The declaring Shadow/primitive file's own title, bound to this point only. */
+export function connectionDescriptionFor(point: ImportedConnectionPoint): PartDescriptionEvidence | null {
+  return connectionDescriptions.get(point) ?? null;
+}
+function titleLine(lines: string[], source: ConnectionSourceFile): PartDescriptionEvidence | undefined {
+  for (let i = 0; i < lines.length; i++) {
+    const raw = lines[i].trim();
+    if (!raw.startsWith('0 ')) continue;
+    const text = raw.slice(2).trim();
+    if (!text || /^(!|\/\/|Name:|Author:|BFC|STEP|END\b)/i.test(text)) continue;
+    const quoted = /^LDCad shadow info for "([^"]+)"$/i.exec(text);
+    return { text: quoted ? quoted[1].trim() : text, line: i + 1, raw, source: { ...source } };
+  }
+  return undefined;
 }
 
 export function canonicalConnectionPath(input: string): string | undefined {
@@ -178,6 +194,7 @@ export async function importLdcadShadow(partId: string, library: ConnectionLibra
     if (shadow === undefined) return points;
     const source = sources.get(`shadow:${path}`)!;
     const lines = shadow.split(/\r?\n/);
+    const connectionDescription = titleLine(lines, source);
     for (let i = 0; i < lines.length; i++) {
       const raw = lines[i].trim(), match = /^0\s+!LDCAD\s+(SNAP_[A-Z_]+)(?:\s+(.*))?$/i.exec(raw);
       if (!match) continue;
@@ -218,7 +235,7 @@ export async function importLdcadShadow(partId: string, library: ConnectionLibra
         const tokens = props.secs?.split(/\s+/) ?? [];
         if (tokens.length < 3 || tokens.length % 3 !== 0) { invalid('Malformed cylinder sections.'); continue; }
         for (let s = 0; s < tokens.length; s += 3) sections.push({ profile: tokens[s], radius: Number(tokens[s + 1]), length: Number(tokens[s + 2]) });
-        if (sections.some((s) => !/^(R|A|S|_L)$/.test(s.profile) || !Number.isFinite(s.radius) || !Number.isFinite(s.length) || s.radius <= 0 || s.length <= 0)) { invalid('Unsupported or invalid cylinder section profile.'); continue; }
+        if (sections.some((s) => !/^(R|A|S|_L|L_)$/.test(s.profile) || !Number.isFinite(s.radius) || !Number.isFinite(s.length) || s.radius <= 0 || s.length <= 0)) { invalid('Unsupported or invalid cylinder section profile.'); continue; }
       }
       const radius = kind === 'clip' ? Number(props.radius) : null, length = kind === 'clip' ? Number(props.length) : null;
       if (kind === 'clip' && (!radius || !length || !Number.isFinite(radius) || !Number.isFinite(length) || radius <= 0 || length <= 0)) { invalid('Invalid source clip radius/length.'); continue; }
@@ -239,6 +256,7 @@ export async function importLdcadShadow(partId: string, library: ConnectionLibra
         if (!finite(pointPosition)) { invalid('Connection position overflows finite coordinates.'); continue; }
         const point: ImportedConnectionPoint = { id: `${path}:${i + 1}:${serial++}`, sourceId: props.id ?? null, kind, family: family(kind, props.id ?? null, props.group ?? null, sections, gender), gender, position: pointPosition, direction: directionRaw.map((v) => v / norm) as ConnectionVector, orientation, units: 'LDU', sections: sections.map((s) => ({ ...s })), dimensionsFrame: 'source-local', dimensionsResolved, radius, length, group: props.group ?? null, properties: { ...props }, source: { ...source, line: i + 1, raw, transforms: evidence.map((e) => ({ ...e, position: [...e.position] as ConnectionVector, matrix: [...e.matrix] as ConnectionMatrix })) }, physicalVerified: false };
         if (description) partDescriptions.set(point, description);
+        if (connectionDescription) connectionDescriptions.set(point, connectionDescription);
         points.push(point);
         for (const issue of dimensionIssues) pointScopedIssues.get(issue)!.add(point);
         if (points.length > maxPoints) { invalid('Connection point budget exceeded.', 'resource-limit'); return []; }

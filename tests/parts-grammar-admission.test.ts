@@ -5,7 +5,7 @@ import type { NativeAssemblyPart } from '../src/parts/assembly/types.js';
 import { AttachmentEngine } from '../src/parts/assembly/engine.js';
 import { assessGrammarAdmission } from '../src/parts/grammar/admission.js';
 import { GrammarAssemblyService } from '../src/parts/grammar/service.js';
-import { BAR_CLIP_RULE_ID } from '../src/parts/assembly/compatibility.js';
+import { BAR_CLIP_RULE_ID, PIN_HOLE_RULE_ID } from '../src/parts/assembly/compatibility.js';
 import { exportNativeAssemblyJson } from '../src/parts/assembly/documents.js';
 
 const repository = new NativePartRepository();
@@ -50,14 +50,14 @@ describe('source-derived interface grammar admission', () => {
     expect(admission.reasonCodes).toContain('grammar-source-interpretation-incomplete');
   });
 
-  it('keeps 32000 pin holes disabled when its ordinary endpoints inherit C01', async () => {
+  it('admits 32000 pin holes only through the source-declared PIN_HOLE policy', async () => {
     const part = (await repository.getPart('32000'))!, admission = assessGrammarAdmission(part);
     expect(admission.generationEligible).toBe(true);
-    expect(admission.capability.allowedConnectionIds).toHaveLength(4);
+    expect(admission.capability.allowedConnectionIds).toHaveLength(6);
     const holes = part.connections.points.filter(point => point.family === 'pinHole');
     expect(holes.length).toBeGreaterThan(0);
-    expect(holes.every(point => !admission.capability.allowedConnectionIds.includes(point.id))).toBe(true);
-    expect(admission.featureSupport.filter(feature => feature.family === 'PIN_HOLE').every(feature => !feature.supported)).toBe(true);
+    expect(holes.every(point => admission.capability.allowedConnectionIds.includes(point.id))).toBe(true);
+    expect(admission.featureSupport.filter(feature => feature.family === 'PIN_HOLE').every(feature => feature.supported && feature.ruleIds.includes(PIN_HOLE_RULE_ID))).toBe(true);
   });
 
   it('admits the source-declared BAR and source-open CLIP seat surfaces without promoting unrelated R4 cylinders', async () => {
@@ -157,6 +157,21 @@ describe('source-derived interface grammar admission', () => {
     stale.grammarVersion = 'obsolete-connector-grammar';
     const engine = new AttachmentEngine({ mode: 'production', loadPart: id => repository.getPart(id), getCapability: () => stale });
     await expect(engine.createAssembly('3001')).rejects.toThrow();
+  }, 30_000);
+
+  it('generates a source-backed Pin-PinHole model and reimports its exported JSON', async () => {
+    const generated = await service.generate({ module: 'pin-hole' });
+    expect(generated.status, generated.reasons.join('; ')).toBe('generated');
+    const model = generated.model!;
+    expect(model.placements.map(placement => placement.partId).sort()).toEqual(['32000', '3673']);
+    expect(model.edges).toHaveLength(1);
+    expect(model.edges[0].ruleId).toBe(PIN_HOLE_RULE_ID);
+    expect(model.steps).toHaveLength(2);
+    expect(model.assemblyValidation.valid).toBe(true);
+    const adopted = await service.importModel(JSON.parse(exportNativeAssemblyJson(model)));
+    expect(adopted.status, adopted.reasons.join('; ')).toBe('VALID');
+    expect(adopted.model?.bom.map(row => row.partId).sort()).toEqual(['32000', '3673']);
+    await expect(service.generate({ module: 'pin-hole', partCount: 3 })).rejects.toThrow('固定');
   }, 30_000);
 
   it('generates a source-backed Bar-Clip model and reimports its exported JSON', async () => {

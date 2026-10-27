@@ -178,7 +178,7 @@ describe('source-bound Astra diagnostic handoff', () => {
     const { root } = await saveManifest(nativeCase);
     const loaded = await loadAstraCase(nativeCase.caseId, root);
     expect(loaded.affectedParts).toEqual(nativeCase.affectedParts);
-    expect(await reproduceAstraCase(loaded, repository)).toMatchObject({ reproduced: true, physicalBuildVerified: false, actual: { status: 'partial' } });
+    expect(await reproduceAstraCase(loaded, repository)).toMatchObject({ reproduced: true, physicalBuildVerified: false, actual: { status: 'ready' } });
   });
 
   it('rejects case-byte tampering and a tampered manifest case SHA', async () => {
@@ -217,6 +217,6 @@ describe('source-bound Astra diagnostic handoff', () => {
     const different = structuredClone(nativeCase);
     different.actualBehavior.status = 'invented-physical-pass';
     const result = await reproduceAstraCase(different, repository);
-    expect(result).toMatchObject({ reproduced: false, physicalBuildVerified: false, actual: { status: 'partial' } });
+    expect(result).toMatchObject({ reproduced: false, physicalBuildVerified: false, actual: { status: 'ready' } });
   });
 });

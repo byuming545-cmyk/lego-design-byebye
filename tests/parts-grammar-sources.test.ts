@@ -40,11 +40,11 @@ describe('source-backed canonical connector ingestion', () => {
     expect(ingestion.unknownInterfaces.some(issue => issue.code === 'unsupported-scaling')).toBe(true);
   });
 
-  it('never turns a pin hole or an equally sized unnamed cylinder into a standard-stud endpoint, while sourcing a declared Bar from its root description', async () => {
+  it('sources a declared Pin Hole without turning an unnamed equal-sized cylinder into a standard-stud endpoint, while sourcing a declared Bar', async () => {
     const part = await native('32000'), result = adaptNativePartConnectors(part);
     const holes = result.connectors.filter(feature => feature.family === 'PIN_HOLE');
     expect(holes.length).toBeGreaterThan(0);
-    expect(holes.every(feature => feature.matchingPolicy === null && feature.coverage === 'PARTIAL')).toBe(true);
+    expect(holes.every(feature => feature.matchingPolicy?.ruleId === 'PIN_HOLE' && feature.coverage === 'COMPLETE')).toBe(true);
     expect(result.connectors.some(feature => feature.matchingPolicy?.ruleId === 'C01')).toBe(true);
     const bar = await native('30374');
     expect(bar.connections.points).toHaveLength(1);
@@ -89,11 +89,9 @@ describe('source-backed canonical connector ingestion', () => {
     expect(adaptImportedConnection(scale).matchingPolicy).toBeNull();
   });
 
-  it('preserves unsupported finger/grid/section diagnostics without invented replacement endpoints', async () => {
+  it('preserves unsupported finger/grid diagnostics while sourcing a declared L_ pin', async () => {
     const pin = adaptNativePartConnectors(await native('3673'));
-    expect(pin.unknownInterfaces.some(issue => issue.raw?.includes('L_ 6.25'))).toBe(true);
-    expect(pin.connectors.every(feature => feature.family !== 'PIN')).toBe(true);
-    expect(pin.connectors.every(feature => feature.friction === 'UNKNOWN')).toBe(true);
+    expect(pin.connectors.filter(feature => feature.family === 'PIN').every(feature => feature.matchingPolicy?.ruleId === 'PIN_HOLE' && feature.coverage === 'COMPLETE')).toBe(true);
     const tyre = adaptNativePartConnectors(await native('18977'));
     expect(tyre.coverage).toBe('NONE'); expect(tyre.connectors).toEqual([]);
     const hinge = adaptNativePartConnectors(await native('2418a'));
@@ -119,7 +117,7 @@ describe('source-backed canonical connector ingestion', () => {
       // Changing a display/part identifier cannot confer or remove interface knowledge.
       if (id === '3001') expect(adaptNativePartConnectors({ ...part, partId: 'test-only-unseen-id' }).connectors).toEqual(ingestion.connectors);
     }
-    expect(points).toBe(5084); expect(features).toBe(points);
+    expect(points).toBe(5085); expect(features).toBe(points);
   }, 30000);
 });
 

@@ -1,7 +1,7 @@
 import type { NativeAssemblyPart, NativePlacement, Vector3 } from './types.js';
 import type { ConnectionPenetrationZone } from './solver.js';
 import { createHash } from 'node:crypto';
-import { BAR_CLIP_RULE_ID, checkConnectionCompatibility, STANDARD_STUD_RULE_ID } from './compatibility.js';
+import { BAR_CLIP_RULE_ID, checkConnectionCompatibility, PIN_HOLE_RULE_ID, STANDARD_STUD_RULE_ID } from './compatibility.js';
 import { add, cross, distance, dot, isRigidTransform, length, normalize, rotate, scale, subtract, transformPoint } from './math.js';
 import { boundsOverlap, buildNativeCollisionProxy, polygonArea, splitConvexPolygon, nativeBounds } from './proxy.js';
 import type { CollisionProxy, CollisionTriangle, MeshBounds, Plane, TriangleBvh } from './proxy.js';
@@ -221,7 +221,8 @@ function adaptivePartition(face: CollisionTriangle, other: CollisionProxy, deadl
 function validateZone(zone: ConnectionPenetrationZone, parts: NativeAssemblyPart[], placements: NativePlacement[]): { source: boolean; spatial: boolean } {
   const invalid = { source: false, spatial: false };
   const expected = zone.ruleId === STANDARD_STUD_RULE_ID ? { radius: 6, minDepth: 4, maxDepth: 4 }
-    : zone.ruleId === BAR_CLIP_RULE_ID ? { radius: 4, minDepth: 1, maxDepth: 8 } : null;
+    : zone.ruleId === BAR_CLIP_RULE_ID ? { radius: 4, minDepth: 1, maxDepth: 8 }
+    : zone.ruleId === PIN_HOLE_RULE_ID ? { radius: 8, minDepth: 1, maxDepth: 40 } : null;
   if (!expected || zone.kind !== 'cylinder' || !Array.isArray(zone.center) || zone.center.length !== 3 || !zone.center.every(Number.isFinite)
       || !Array.isArray(zone.axis) || zone.axis.length !== 3 || !zone.axis.every(Number.isFinite) || !Array.isArray(zone.sourceEvidence)
       || Math.abs(length(zone.axis) - 1) > 1e-6 || zone.radius !== expected.radius || zone.depth < expected.minDepth || zone.depth > expected.maxDepth
@@ -234,11 +235,22 @@ function validateZone(zone: ConnectionPenetrationZone, parts: NativeAssemblyPart
   let compatibleSource = false;
   for (const a of endpoints[0]) for (const b of endpoints[1]) {
     const rule = checkConnectionCompatibility(a, b);
-    if (rule.status !== 'compatible' || rule.ruleId !== zone.ruleId || rule.insertionDepthLdu !== zone.depth) continue;
+    if (rule.status !== 'compatible' || rule.ruleId !== zone.ruleId || (zone.ruleId === PIN_HOLE_RULE_ID ? rule.insertionDepthLdu !== null && zone.depth < rule.insertionDepthLdu : rule.insertionDepthLdu !== zone.depth)) continue;
     compatibleSource = true;
     const anchorA = transformPoint(placements[0].transform, a.position), anchorB = transformPoint(placements[1].transform, b.position);
     const axisA = normalize(rotate(placements[0].transform.rotation, a.direction)), axisB = normalize(rotate(placements[1].transform.rotation, b.direction));
     if (!axisA || !axisB) continue;
+    if (zone.ruleId === PIN_HOLE_RULE_ID) {
+      // A pin may be source-slid through its connector hole; the seat center is
+      // the seated receiver origin, not necessarily the male anchor.
+      const centerDelta = subtract(zone.center, anchorA);
+      const centerRadial = subtract(centerDelta, scale(axisA, dot(centerDelta, axisA)));
+      if (distance(axisA, axisB) < 1e-6 && distance(axisA, zone.axis) < 1e-6
+          && length(centerRadial) <= zone.toleranceLdu
+          && Math.abs(dot(centerDelta, axisA)) <= zone.depth / 2 + zone.toleranceLdu
+          && distance(anchorB, zone.center) <= zone.toleranceLdu) return { source: true, spatial: true };
+      continue;
+    }
     const center = zone.ruleId === BAR_CLIP_RULE_ID ? anchorA : add(anchorA, scale(axisA, zone.depth / 2));
     if (distance(anchorA, anchorB) <= zone.toleranceLdu && distance(axisA, axisB) < 1e-6 && distance(axisA, zone.axis) < 1e-6 && distance(center, zone.center) <= zone.toleranceLdu) return { source: true, spatial: true };
   }
@@ -308,7 +320,8 @@ function deriveNativePairCollision(fixedPart: NativeAssemblyPart, fixedPlacement
   proof.closedSourceProxies = !proof.openSourceSurfaces;
   proof.sourceEvidence = [a.evidence, b.evidence]; proof.topology = [a.topology, b.topology];
   if (openA || openB) {
-    if (openA && openB) return result('blocked', 'open-surface-pair-unresolved', 'Two open source shells cannot establish a surface-only clearance without a closed counterpart.');
+    if (openA && openB && penetrationZone?.ruleId !== PIN_HOLE_RULE_ID) return result('blocked', 'open-surface-pair-unresolved', 'Two open source shells cannot establish a surface-only clearance without a closed counterpart.');
+    if (openA && openB && (!penetrationZone || !zone.spatial)) return result('blocked', 'open-surface-zone-required', 'An open pin/hole pair requires a validated cylindrical pin seat bound to both placed endpoints.');
     if (!penetrationZone || !zone.spatial) return result('blocked', 'open-surface-zone-required', 'An open source shell requires a validated cylindrical seat bound to both placed endpoints; no generic open-surface exemption is granted.');
     const open = openA ? a : b, closed = openA ? b : a;
     if (!boundsOverlap(open.bounds, closed.bounds, EPS)) {
@@ -341,7 +354,8 @@ function deriveNativePairCollision(fixedPart: NativeAssemblyPart, fixedPlacement
     if (outsideSeat) return result('collision', 'open-surface-contact-outside-seat', 'An open source shell intersects its closed counterpart outside the source-declared cylindrical seat; the local connection zone grants no exemption.', outsideSeat);
     for (const face of open.triangles) for (const vertex of face.vertices) {
       if (++triangleTests > MAX_TRIANGLE_TESTS) return result('blocked', 'collision-resource-limit', 'The open-surface containment budget was exceeded; no clearance certificate is granted.');
-      if (classifyPoint(closed, vertex) === 'inside') { openVertexInsideClosed = vertex; break; }
+      const seatExceptions = zone.spatial && penetrationZone && penetrationZone.ruleId === PIN_HOLE_RULE_ID && pointInSeat(vertex, penetrationZone);
+      if (classifyPoint(closed, vertex) === 'inside' && !seatExceptions) { openVertexInsideClosed = vertex; break; }
     }
     if (openVertexInsideClosed) return result('collision', 'open-surface-vertex-inside-solid', 'An open source shell has a vertex strictly inside the closed counterpart; surface contact inside the seat cannot justify solid penetration.', openVertexInsideClosed);
     proof.openSurfaceSeatChecked = true; proof.completeSurfacePartition = false; proof.containmentChecked = false;

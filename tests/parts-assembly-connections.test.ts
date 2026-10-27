@@ -3,16 +3,16 @@ import { createBundledLDrawResolver, LDrawPartImporter } from '../src/parts/ldra
 import { createBundledConnectionImporter } from '../src/parts/connections/index.js';
 import type { ImportedConnectionPoint } from '../src/parts/connections/types.js';
 import type { NativeAssemblyPart, NativePlacement, RigidTransform, Vector3 } from '../src/parts/assembly/types.js';
-import { BAR_CLIP_RULE_ID, checkConnectionCompatibility, CONNECTION_RULE_VERSION, STANDARD_STUD_RULE_ID } from '../src/parts/assembly/compatibility.js';
+import { BAR_CLIP_RULE_ID, checkConnectionCompatibility, CONNECTION_RULE_VERSION, PIN_HOLE_RULE_ID, STANDARD_STUD_RULE_ID } from '../src/parts/assembly/compatibility.js';
 import { solveAttachment, worldConnection } from '../src/parts/assembly/solver.js';
 import { checkNativePairCollision } from '../src/parts/assembly/collision.js';
-import { isSourceDeclaredBarEndpoint, isSourceDeclaredClipEndpoint } from '../src/parts/grammar/sources.js';
+import { isSourceDeclaredBarEndpoint, isSourceDeclaredClipEndpoint, isSourceDeclaredPinEndpoint, isSourceDeclaredPinHoleEndpoint } from '../src/parts/grammar/sources.js';
 import { axisRotation, composeTransforms, determinant, distance, IDENTITY_TRANSFORM, inverseTransform, isRotation, rotate, transformPoint } from '../src/parts/assembly/math.js';
 
 const parts = new Map<string, NativeAssemblyPart>();
 beforeAll(async () => {
   const resolver = await createBundledLDrawResolver(), geometry = new LDrawPartImporter(resolver), connections = createBundledConnectionImporter(resolver);
-  for (const partId of ['3001', '3005', '3024', '87087', '99207', '48729b', '30374', '60470b', '2412b', '4624', '3641', '3673', '3700']) parts.set(partId, { partId, geometry: await geometry.importPart(partId), connections: await connections.importPart(partId) });
+  for (const partId of ['3001', '3005', '3024', '87087', '99207', '48729b', '30374', '60470b', '2412b', '4624', '3641', '3673', '3700', '32000']) parts.set(partId, { partId, geometry: await geometry.importPart(partId), connections: await connections.importPart(partId) });
 });
 const part = (id: string) => parts.get(id)!;
 function endpoint(id: string, gender: 'M' | 'F', predicate: (point: ImportedConnectionPoint) => boolean = () => true) {
@@ -48,7 +48,7 @@ describe('source-backed compatibility rule', () => {
     expect(checkConnectionCompatibility(standardMale('3001'), smallHole)).toMatchObject({ status: 'incompatible', reasonCode: 'receiver-size-mismatch' });
   });
 
-  it('enables only the source-declared bar/clip family and leaves unrelated pin, wheel/tyre groups closed', () => {
+  it('enables source-declared bar/clip and pin/hole families while leaving wheel/tyre groups closed', () => {
     const clip = endpoint('48729b', 'F'), bar = endpoint('30374', 'M');
     const checked = checkConnectionCompatibility(bar, clip);
     expect(checked).toMatchObject({ status: 'compatible', ruleId: BAR_CLIP_RULE_ID, connectionType: 'bar-clip', axisRelation: 'same', insertionDepthLdu: 8, permittedTranslation: 'sliding', allowedTwistsDeg: [0, 90, 180, 270] });
@@ -62,9 +62,8 @@ describe('source-backed compatibility rule', () => {
     const hole = endpoint('3700', 'F', (point) => point.sourceId === 'connhole');
     expect(checkConnectionCompatibility(standardMale('3001'), hole)).toMatchObject({ status: 'incompatible', reasonCode: 'stud-to-technic-pin-hole-forbidden' });
     expect(checkConnectionCompatibility(hole, standardMale('3001'))).toMatchObject({ status: 'incompatible', reasonCode: 'stud-to-technic-pin-hole-forbidden' });
-    // This source pin's L_ shoulder is not parsed; no imaginary male endpoint is added.
-    expect(part('3673').connections.points.some((point) => point.gender === 'M')).toBe(false);
-    expect(part('3673').connections.issues.some((issue) => issue.code === 'invalid-directive')).toBe(true);
+    const pin = part('3673').connections.points.find(isSourceDeclaredPinEndpoint)!, pinHole = part('32000').connections.points.find(isSourceDeclaredPinHoleEndpoint)!;
+    expect(checkConnectionCompatibility(pin, pinHole)).toMatchObject({ status: 'compatible', ruleId: PIN_HOLE_RULE_ID, connectionType: 'pin-hole' });
   });
 
   it('blocks altered source sections, missing provenance, unknown seating and source scaling', () => {
@@ -101,6 +100,20 @@ describe('open-surface Bar/Clip collision proof', () => {
   it('refuses two open shells because no closed counterpart exists', () => {
     const result = checkNativePairCollision(part('48729b'), place('48729b'), part('60470b'), place('60470b'));
     expect(result).toMatchObject({ status: 'blocked', reasonCode: 'open-surface-pair-unresolved', proof: { openSourceSurfaces: true, closedSourceProxies: false } });
+  });
+});
+
+describe('source-declared Pin envelope collision proof', () => {
+  it('clears the pinned 3673 pin envelope in the 32000 hole seat without claiming a closed-solid certificate', () => {
+    const pin = part('3673').connections.points.find(isSourceDeclaredPinEndpoint)!, hole = part('32000').connections.points.find(isSourceDeclaredPinHoleEndpoint)!;
+    const solved = solveAttachment({ fixedPart: part('3673'), fixedPlacement: place('3673'), fixedConnectionId: pin.id, movingPart: part('32000'), movingConnectionId: hole.id });
+    expect(solved.status).toBe('solved');
+    expect(solved.candidates).toHaveLength(4);
+    const candidate = solved.candidates[0];
+    expect(candidate.penetrationZone).toMatchObject({ ruleId: PIN_HOLE_RULE_ID, radius: 8, depth: 40 });
+    const result = checkNativePairCollision(part('3673'), place('3673'), part('32000'), { ...place('32000'), transform: candidate.transform }, candidate.penetrationZone);
+    expect(result).toMatchObject({ status: 'clear', reasonCode: 'open-surface-seat-clearance', classification: 'OPEN_SURFACE_SEAT_CLEARANCE' });
+    expect(result.proof).toMatchObject({ openSourceSurfaces: true, openSurfaceSeatChecked: true, closedSourceProxies: false, completeSurfacePartition: false, containmentChecked: false, wholePairExempted: false });
   });
 });
 
