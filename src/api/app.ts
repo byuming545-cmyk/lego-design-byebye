@@ -9,6 +9,9 @@ import { validateModel } from '../validators/index.js';
 import { createSpeedRouter } from '../speed/api.js';
 import { createAutomotiveRouter } from '../automotive/api.js';
 import { createPartsFoundationRouter } from '../parts/api.js';
+import { RealPartRegistry } from '../parts/registry.js';
+import { InterfaceLibrary } from '../parts/library/interfaceLibrary.js';
+import { createInterfaceLibraryRouter } from '../parts/library/api.js';
 import { createLegacyAuthenticityGate, type LegacyGenerationPolicy } from '../parts/legacyPolicy.js';
 import { LEGACY_QUARANTINE } from '../parts/legacyStatus.js';
 
@@ -60,13 +63,17 @@ export function createApp(options: AppOptions = {}) {
   const feedbackJson = express.json({ limit: '1mb', strict: true });
   const referenceJson = express.json({ limit: '10mb', strict: true });
   app.use((request, response, next) => (request.path === '/api/speed/models/import' ? modelJson : request.path === '/api/automotive/references/import' || request.path === '/api/parts-foundation/inventories/import' || request.path === '/api/parts-foundation/assembly/models/import' ? referenceJson : /^\/api\/speed\/models\/[^/]+\/feedback$/.test(request.path) ? feedbackJson : defaultJson)(request, response, next));
-  app.use('/api/parts-foundation', createPartsFoundationRouter({ dataDir: options.partsDataDir }));
+  const dataDir = options.partsDataDir ?? process.env.BRICKLAB_DATA_DIR ?? 'data';
+  const partsRegistry = new RealPartRegistry({ dataDir: options.partsDataDir });
+  const interfaceLibrary = new InterfaceLibrary(partsRegistry, { libraryDataDir: dataDir });
+  app.use('/api/parts-foundation', createPartsFoundationRouter({ dataDir: options.partsDataDir, registry: partsRegistry }));
+  app.use('/api/interface-library', createInterfaceLibraryRouter({ library: interfaceLibrary }));
   app.use(createLegacyAuthenticityGate(options.legacyGenerationPolicy));
   app.use('/api/speed', createSpeedRouter(provider));
   app.use('/api/automotive', createAutomotiveRouter());
 
   app.get('/api/health', (_request, response) => {
-    response.json({ status: 'ok', version: '0.6.0', provider: provider.source, demo: provider.source === 'mock', dataMode: provider instanceof MissingRebrickableInventoryProvider ? 'unconfigured' : provider.source === 'mock' ? 'mock' : 'real', primaryArea: '/part-lab', nativeAssemblyArea: '/part-lab?mode=assembly', legacyGenerationEnabled: options.legacyGenerationPolicy === 'test-fixture', legacyData: LEGACY_QUARANTINE });
+    response.json({ status: 'ok', version: '0.6.0', provider: provider.source, demo: provider.source === 'mock', dataMode: provider instanceof MissingRebrickableInventoryProvider ? 'unconfigured' : provider.source === 'mock' ? 'mock' : 'real', primaryArea: '/part-lab', nativeAssemblyArea: '/part-lab?mode=assembly', interfaceLibraryArea: '/interface-library', legacyGenerationEnabled: options.legacyGenerationPolicy === 'test-fixture', legacyData: LEGACY_QUARANTINE });
   });
 
   app.get('/api/sets/:setNumber', async (request, response) => {

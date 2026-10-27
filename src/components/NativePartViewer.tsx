@@ -26,11 +26,20 @@ export default function NativePartViewer({
   points,
   showBounds,
   showConnections,
+  focusFeatureId = null,
+  opacity = 1,
+  section = false,
+  showAxes = false,
 }: {
   mesh: NativeMesh;
   points: NativeConnectionPoint[];
   showBounds: boolean;
   showConnections: boolean;
+  /** Highlights the source connector with this exact id; no synthetic interface geometry. */
+  focusFeatureId?: string | null;
+  opacity?: number;
+  section?: boolean;
+  showAxes?: boolean;
 }) {
   const host = useRef<HTMLDivElement>(null);
   const [error, setError] = useState('');
@@ -70,6 +79,7 @@ export default function NativePartViewer({
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.localClippingEnabled = section;
       renderer.domElement.setAttribute('aria-label', 'LDraw 原生零件三维视图，可拖动旋转、滚轮缩放');
       renderer.domElement.setAttribute('role', 'img');
       container.appendChild(renderer.domElement);
@@ -77,7 +87,9 @@ export default function NativePartViewer({
       geometry.setAttribute('position', new THREE.Float32BufferAttribute(mesh.positions.flat(), 3));
       geometry.setIndex(mesh.indices);
       geometry.computeVertexNormals();
-      const material = new THREE.MeshStandardMaterial({ color: '#9ab49c', roughness: 0.5, metalness: 0.02, side: THREE.DoubleSide });
+      const focusedPoint = focusFeatureId ? points.find(point => point.id === focusFeatureId) : undefined;
+      const focusedWorld = focusedPoint?.position?.every(Number.isFinite) ? new THREE.Vector3().fromArray(focusedPoint.position) : null;
+      const material = new THREE.MeshStandardMaterial({ color: '#9ab49c', roughness: 0.5, metalness: 0.02, side: THREE.DoubleSide, transparent: opacity < 1, opacity, depthWrite: opacity >= 1 });
       const native = new THREE.Group();
       native.add(new THREE.Mesh(geometry, material));
       // LDraw uses Y down. Apply this display-only rotation to geometry and source connectors together.
@@ -89,17 +101,20 @@ export default function NativePartViewer({
           male: new THREE.MeshBasicMaterial({ color: '#2281a6', depthTest: false }),
           female: new THREE.MeshBasicMaterial({ color: '#d18032', depthTest: false }),
           other: new THREE.MeshBasicMaterial({ color: '#9b66b2', depthTest: false }),
+          focus: new THREE.MeshBasicMaterial({ color: '#f0b34a', depthTest: false }),
         };
         for (const point of points) {
           if (!point.position.every(Number.isFinite)) continue;
           const gender = point.gender === 'male' || point.gender === 'M' ? 'male' : point.gender === 'female' || point.gender === 'F' ? 'female' : 'other';
-          const marker = new THREE.Mesh(markerGeometry, markerMaterials[gender]);
+          const rowMaterial = point.id === focusFeatureId ? markerMaterials.focus : markerMaterials[gender];
+          const marker = new THREE.Mesh(markerGeometry, rowMaterial);
           marker.position.fromArray(point.position);
+          if (point.id === focusFeatureId) marker.scale.setScalar(2.3);
           marker.renderOrder = 10;
           native.add(marker);
           if (point.direction?.every(Number.isFinite)) {
             const direction = new THREE.Vector3().fromArray(point.direction);
-            if (direction.lengthSq() > 0) native.add(new THREE.ArrowHelper(direction.normalize(), marker.position, scale * 5, markerMaterials[gender].color, scale * 1.5, scale));
+            if (direction.lengthSq() > 0) native.add(new THREE.ArrowHelper(direction.normalize(), marker.position, scale * (point.id === focusFeatureId ? 8 : 5), rowMaterial.color, scale * 1.5, scale));
           }
         }
       }
@@ -113,10 +128,17 @@ export default function NativePartViewer({
       }
       const center = bounds.getCenter(new THREE.Vector3());
       const extent = Math.max(bounds.getSize(new THREE.Vector3()).length(), 8);
+      const target = focusedWorld ? native.localToWorld(focusedWorld.clone()) : center;
       const camera = new THREE.PerspectiveCamera(38, 1, Math.max(extent / 1000, 0.01), extent * 100);
-      camera.position.copy(center).add(new THREE.Vector3(extent * 1.2, extent * 0.85, extent * 1.2));
+      camera.position.copy(target).add(new THREE.Vector3(extent * (focusedWorld ? 0.7 : 1.2), extent * (focusedWorld ? 0.5 : 0.85), extent * (focusedWorld ? 0.7 : 1.2)));
       controls = new OrbitControls(camera, renderer.domElement);
-      controls.target.copy(center);
+      controls.target.copy(target);
+      if (section) {
+        const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -target.z);
+        material.clippingPlanes = [plane];
+        material.clipShadows = true;
+      }
+      if (showAxes) native.add(new THREE.AxesHelper(extent * 0.35));
       controls.enableDamping = true;
       controls.minDistance = extent * 0.15;
       controls.maxDistance = extent * 8;
@@ -146,7 +168,7 @@ export default function NativePartViewer({
       setError(reason instanceof Error ? reason.message : '浏览器无法启动三维显示。');
     }
     return release;
-  }, [mesh, points, showBounds, showConnections, revision]);
+  }, [mesh, points, showBounds, showConnections, focusFeatureId, opacity, section, showAxes, revision]);
 
   return <div className="part-native-stage">
     <div className="part-native-canvas" ref={host} />

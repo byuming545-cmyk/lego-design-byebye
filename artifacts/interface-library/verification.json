@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "interface-library-verification-1",
+  "generatedAt": "2026-10-27T23:50:00+08:00",
+  "branch": "codex/interface-library",
+  "baselineCommit": "137bd4037323a2027d109e3f9e543a857d93ebaa",
+  "status": "local-unpushed",
+  "counts": {
+    "parts": 253,
+    "interfaces": 5085,
+    "types": 25,
+    "rules": 15,
+    "productionRules": 3,
+    "productionInterfaces": 2545,
+    "sourceReady": 1912,
+    "partial": 628,
+    "cases": 4,
+    "validatedCases": 3,
+    "blockedCases": 1,
+    "queueLimit": 800
+  },
+  "productionRules": [
+    "C01",
+    "BAR_CLIP",
+    "PIN_HOLE"
+  ],
+  "cases": [
+    {
+      "id": "case-c01-standard-studs",
+      "fixed": "3024",
+      "moving": "3070b",
+      "status": "validated",
+      "engine": "accepted",
+      "collision": "clear"
+    },
+    {
+      "id": "case-bar-clip-30374-48729b",
+      "fixed": "30374",
+      "moving": "48729b",
+      "status": "validated",
+      "engine": "accepted",
+      "collision": "clear",
+      "exportBytes": 12993,
+      "reimport": "VALID"
+    },
+    {
+      "id": "case-pin-hole-3673-32000",
+      "fixed": "3673",
+      "moving": "32000",
+      "status": "validated",
+      "engine": "accepted",
+      "collision": "clear",
+      "exportBytes": 19239,
+      "reimport": "VALID"
+    },
+    {
+      "id": "case-bar-clip-60470b-blocked",
+      "fixed": "30374",
+      "moving": "60470b",
+      "status": "blocked",
+      "engine": "rejected",
+      "collision": "collision"
+    }
+  ],
+  "feedback": {
+    "store": "<data>/interface-library/feedback.json",
+    "kinds": [
+      "reasonable",
+      "position-direction-wrong",
+      "interface-identification-wrong",
+      "should-not-mate",
+      "insufficient-evidence"
+    ],
+    "statuses": [
+      "open",
+      "triaged",
+      "needs-evidence",
+      "accepted-for-review",
+      "rejected",
+      "resolved"
+    ],
+    "humanObservation": true,
+    "canAuthorizeRule": false,
+    "attachments": "source-link-only"
+  },
+  "tests": {
+    "command": "npm test -- --maxWorkers=2",
+    "files": 54,
+    "passed": 774,
+    "failed": 0,
+    "durationSeconds": 65.63,
+    "artifact": "artifacts/interface-library/unit-final.txt"
+  },
+  "build": {
+    "command": "npm run build",
+    "status": "passed",
+    "artifact": "artifacts/interface-library/build.txt"
+  },
+  "browser": {
+    "engine": "Chromium 1248 (local, not committed)",
+    "viewports": [
+      "1440x1100",
+      "390x844"
+    ],
+    "consoleErrors": 0,
+    "screenshots": [
+      "artifacts/interface-library/overview.png",
+      "artifacts/interface-library/interface-detail.png",
+      "artifacts/interface-library/interface-feedback.png",
+      "artifacts/interface-library/rule-detail.png",
+      "artifacts/interface-library/case-detail.png",
+      "artifacts/interface-library/compare.png",
+      "artifacts/interface-library/review.png",
+      "artifacts/interface-library/mobile-overview.png"
+    ]
+  },
+  "limitations": [
+    "Only C01, BAR_CLIP and PIN_HOLE are in the production graph; the other 12 rules remain conditional.",
+    "Open CLIP/PIN seat proof is not closed-solid collision certification.",
+    "No physical build verification; all cases physicalBuildVerified=false.",
+    "No source-declared standalone Bar Receptacle exists in the pinned 253-root library.",
+    "Review queue is capped at 800 records per response.",
+    "Binary attachments are not supported; only source links.",
+    "No model training or automatic rule authorization.",
+    "Historical migration ledger remains 87/166; live runtime counts are 104/149."
+  ]
+}

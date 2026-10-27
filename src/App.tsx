@@ -28,6 +28,7 @@ import { PartThumbnail } from "./components/PartThumbnail.js";
 import SpeedCreative from "./pages/SpeedCreative.js";
 import AutomotiveDesigner from "./pages/AutomotiveDesigner.js";
 import PartLab from "./pages/PartLab.js";
+import InterfaceLibrary from "./pages/InterfaceLibrary.js";
 import { LEGACY_OPERATIONS_BLOCKED } from "./parts/legacyStatus.js";
 import type {
   GenerationOptions,
@@ -127,10 +128,10 @@ function Toggle({
 }
 
 export default function App() {
-  type Area = 'general' | 'speed' | 'automotive' | 'automotive-lab' | 'part-lab';
+  type Area = 'general' | 'speed' | 'automotive' | 'automotive-lab' | 'part-lab' | 'interface-library';
   const currentArea = (): Area => {
     const route = (window.location.hash ? window.location.hash.slice(1) : window.location.pathname).split('?')[0];
-    return route === '/automotive-lab' ? 'automotive-lab' : route === '/automotive' ? 'automotive' : route === '/speed' ? 'speed' : route === '/general' ? 'general' : 'part-lab';
+    return route === '/automotive-lab' ? 'automotive-lab' : route === '/automotive' ? 'automotive' : route === '/speed' ? 'speed' : route === '/general' ? 'general' : route === '/interface-library' ? 'interface-library' : 'part-lab';
   };
   const [area, setArea] = useState<Area>(currentArea);
   const automotiveActive = area === 'automotive' || area === 'automotive-lab';
@@ -319,6 +320,7 @@ export default function App() {
         </a>
         <nav aria-label="主导航">
           <button className={area === 'part-lab' ? 'nav-link active' : 'nav-link'} onClick={() => { window.location.hash = '/part-lab'; setArea('part-lab'); }}>真实零件库</button>
+          <button className={area === 'interface-library' ? 'nav-link active' : 'nav-link'} onClick={() => { window.location.hash = '/interface-library'; setArea('interface-library'); }}>接口与拼接库</button>
           <button
             className={area === 'general' && view === "model" ? "nav-link active" : "nav-link"}
             onClick={() => { window.location.hash = '/general'; setArea('general'); setView("model"); }}
@@ -336,14 +338,15 @@ export default function App() {
           </button>
         </nav>
         <button className="version-button" onClick={() => setAboutOpen(true)}>
-          <span className="status-dot" /> {area === 'part-lab' ? 'PART LAB' : area === 'speed' ? 'V0.2.1' : 'V0.1'}{" "}
-          <span className="version-label">· {area === 'part-lab' ? '来源核验中' : '历史原型'}</span>
+          <span className="status-dot" /> {area === 'interface-library' ? 'INTERFACE LIBRARY' : area === 'part-lab' ? 'PART LAB' : area === 'speed' ? 'V0.2.1' : 'V0.1'}{" "}
+          <span className="version-label">· {area === 'interface-library' ? '来源绑定' : area === 'part-lab' ? '来源核验中' : '历史原型'}</span>
           <ArrowUpRight size={14} />
         </button>
       </header>
 
-      {area !== 'part-lab' && <div className="legacy-foundation-banner" role="status"><ShieldCheck size={18} /><p><strong>历史版本 · 参数化零件尚未验证</strong>当前优先建立真实零件基础，旧版生成与模型导出已暂停。已有检查结果不代表真实乐高零件验证。</p><a href="#/part-lab">查看真实零件库 <ArrowRight size={14} /></a></div>}
+      {area !== 'part-lab' && area !== 'interface-library' && <div className="legacy-foundation-banner" role="status"><ShieldCheck size={18} /><p><strong>历史版本 · 参数化零件尚未验证</strong>当前优先建立真实零件基础，旧版生成与模型导出已暂停。已有检查结果不代表真实乐高零件验证。</p><a href="#/part-lab">查看真实零件库 <ArrowRight size={14} /></a></div>}
       {area === 'part-lab' && <PartLab />}
+      {area === 'interface-library' && <InterfaceLibrary />}
       {(speedOpened || area === 'speed') && <div hidden={area !== 'speed'}><SpeedCreative /></div>}
       {(automotiveOpened || automotiveActive) && <div hidden={!automotiveActive}><AutomotiveDesigner lab={area === 'automotive-lab'} /></div>}
       <main hidden={area !== 'general'}>
@@ -972,7 +975,7 @@ export default function App() {
         </section>
       </main>
 
-      <footer hidden={automotiveActive || area === 'part-lab'}>
+      <footer hidden={automotiveActive || area === 'part-lab' || area === 'interface-library'}>
         <span className="footer-brand">bricklab.</span>
         <span>为每一块积木，寻找下一种可能。</span>
         <span>独立创意原型 · 与 LEGO® 集团无关联</span>
