@@ -146,6 +146,8 @@ export class InterfaceLibrary {
         instanceCount: matching.length, partCount: new Set(matching.map(instance => instance.partId)).size, caseIds: CASE_DEFS.filter(definition => definition.ruleId === rule.id).map(definition => definition.id),
         conditions: row?.conditions ?? ['规则声明存在；尚无生产适配或来源前提核验。'], missingEvidence: row?.missing ?? ['尚未实现生产连接图适配。'],
         negativeControls: row?.negative ?? ['不得用名称、半径或外观替代来源证据。'], docs: row?.docs ?? ['docs/CONNECTOR_GRAMMAR.md'],
+        openFeedback: 0,
+        reviewState: 'clear' as const,
         versions: { grammar: CONNECTOR_GRAMMAR_VERSION, connectionRule: nativeRuleId ? CONNECTION_RULE_VERSION : null },
       };
     });
@@ -165,7 +167,12 @@ export class InterfaceLibrary {
     };
   }
 
-  async overview(): Promise<LibraryOverview> { const index = await this.index(); const cases = await this.cases().catch(() => []); const openFeedback = (await this.feedback.list()).filter(record => record.status === 'open' || record.status === 'triaged').length; return { ...index.overview, counts: { ...index.overview.counts, cases: cases.length, validatedCases: cases.filter(item => item.status === 'validated').length, blockedCases: cases.filter(item => item.status === 'blocked').length, openFeedback }, recentCases: cases.map(this.caseSummary), types: index.overview.types, rules: index.overview.rules }; }
+  private async enrichRules(rows: JointRuleRecord[]): Promise<JointRuleRecord[]> {
+    const active = (await this.feedback.list()).filter(record => !['resolved', 'rejected'].includes(record.status));
+    return rows.map(row => { const openFeedback = active.filter(record => record.target.ruleId === row.id || (record.target.kind === 'rule' && record.target.id === row.id)).length; return { ...row, openFeedback, reviewState: openFeedback > 0 ? 'review-required' : 'clear' }; });
+  }
+
+  async overview(): Promise<LibraryOverview> { const index = await this.index(); const cases = await this.cases().catch(() => []); const openFeedback = (await this.feedback.list()).filter(record => record.status === 'open' || record.status === 'triaged').length; const rules = await this.enrichRules(index.overview.rules); return { ...index.overview, counts: { ...index.overview.counts, cases: cases.length, validatedCases: cases.filter(item => item.status === 'validated').length, blockedCases: cases.filter(item => item.status === 'blocked').length, openFeedback }, recentCases: cases.map(this.caseSummary), types: index.overview.types, rules }; }
 
   async interfaces(query: { family?: string; status?: string; coverage?: string; query?: string; supported?: string; partId?: string; limit?: number; offset?: number } = {}) {
     const index = await this.index();
@@ -200,9 +207,9 @@ export class InterfaceLibrary {
     };
   }
 
-  async rules(): Promise<JointRuleRecord[]> { return (await this.index()).rules; }
+  async rules(): Promise<JointRuleRecord[]> { return this.enrichRules((await this.index()).rules); }
   async rule(ruleId: string): Promise<JointRuleDetail | null> {
-    const index = await this.index(); const row = index.rules.find(rule => rule.id === ruleId); if (!row) return null;
+    const index = await this.index(); const found = index.rules.find(rule => rule.id === ruleId); if (!found) return null; const row = (await this.enrichRules([found]))[0];
     const cases = (await this.cases()).filter(item => item.ruleId === ruleId);
     const examples = index.instances.filter(instance => row.maleFamilies.includes(instance.family) || row.femaleFamilies.includes(instance.family)).slice(0, 12);
     return { ...row, cases: cases.map(this.caseSummary), examples, sources: [...new Set(examples.flatMap(example => example.sourcePath ? [example.sourcePath] : []))], jointTypes: ruleId === 'C01' ? ['RIGID'] : ruleId === 'BAR_CLIP' || ruleId === 'PIN_HOLE' ? ['CYLINDRICAL'] : ['RIGID'] };

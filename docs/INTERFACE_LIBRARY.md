@@ -34,7 +34,7 @@
 | POST | `/compare` | `{ partId, targetPartId? }`，只读比较，不授予准入 |
 | GET/POST/PATCH | `/feedback` | 持久化人工观察与处理状态 |
 
-反馈写入 `<data>/interface-library/feedback.json`，原子替换。记录包含时间、目标、接口/规则版本、语法/零件库/碰撞版本、来源摘要、原始软件结论、正文、署名、视图、仅链接附件（如提供）、处理状态与历史。`humanObservation` 永远为 `true`，`canAuthorizeRule` 永远为 `false`。
+反馈写入 `<data>/interface-library/feedback.json`，原子替换。记录包含时间、目标、接口/规则版本、语法/零件库/碰撞版本、来源摘要、原始软件结论、正文、署名、视图、仅链接附件（如提供）、处理状态与历史。`humanObservation` 永远为 `true`，`canAuthorizeRule` 永远为 `false`。存在 `open/triaged/needs-evidence/accepted-for-review` 反馈的规则会额外显示 `review-required` 标记和未关闭数量；该标记只进入复核，不自动撤销生产规则、开放接口或跳过碰撞。
 
 ## 页面
 

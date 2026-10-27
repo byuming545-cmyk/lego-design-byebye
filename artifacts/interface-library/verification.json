@@ -80,14 +80,28 @@
     ],
     "humanObservation": true,
     "canAuthorizeRule": false,
-    "attachments": "source-link-only"
+    "attachments": "source-link-only",
+    "reviewFlag": {
+      "field": "reviewState",
+      "values": [
+        "clear",
+        "review-required"
+      ],
+      "activeStatuses": [
+        "open",
+        "triaged",
+        "needs-evidence",
+        "accepted-for-review"
+      ],
+      "autoRevokes": false
+    }
   },
   "tests": {
     "command": "npm test -- --maxWorkers=2",
     "files": 54,
     "passed": 774,
     "failed": 0,
-    "durationSeconds": 65.63,
+    "durationSeconds": 91.33,
     "artifact": "artifacts/interface-library/unit-final.txt"
   },
   "build": {

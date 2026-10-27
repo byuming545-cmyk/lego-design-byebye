@@ -186,3 +186,5 @@ button.il-pill { cursor: pointer; }
 .il-case-phases button { border: 1px solid rgba(23,33,29,.18); background: #fffdf7; color: #46584d; border-radius: 999px; padding: 5px 10px; font-size: 11px; cursor: pointer; }
 .il-case-phases button.active { background: #17211d; color: #fff; border-color: #17211d; }
 .il-case-phases span { color: #65746b; font-size: 10px; margin-left: 4px; }
+.il-warning { margin: 12px 0; padding: 10px 12px; border: 1px solid rgba(154, 95, 42, .35); background: rgba(255, 246, 226, .8); color: #74491e; font-size: 12px; line-height: 1.6; border-radius: 6px; }
+.il-rule-row .il-pill.bad { margin-left: auto; }

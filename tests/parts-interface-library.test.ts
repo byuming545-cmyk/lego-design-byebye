@@ -90,7 +90,11 @@ describe('real interface and assembly library', () => {
     expect(created).toMatchObject({ status: 'open', canAuthorizeRule: false });
     const listed = await get(`/feedback?targetId=${encodeURIComponent('PIN_HOLE')}`) as unknown[];
     expect(listed.length).toBe(1);
+    const flagged = await get(`/rule?id=${encodeURIComponent('PIN_HOLE')}`) as { openFeedback: number; reviewState: string };
+    expect(flagged).toMatchObject({ openFeedback: 1, reviewState: 'review-required' });
     const patched = await (await fetch(`${base}/feedback/${created.id}`, { method: 'PATCH', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ status: 'resolved', note: '已验证记录', reviewer: 'api' }) })).json() as { status: string };
     expect(patched.status).toBe('resolved');
+    const cleared = await get(`/rule?id=${encodeURIComponent('PIN_HOLE')}`) as { openFeedback: number; reviewState: string };
+    expect(cleared).toMatchObject({ openFeedback: 0, reviewState: 'clear' });
   }, 30000);
 });

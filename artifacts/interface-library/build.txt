@@ -6,11 +6,6 @@
 > bricklab@0.6.0 typecheck
 > tsc --noEmit
 
-npm notice
-npm notice New major version of npm available! 11.19.0 -> 12.2.1
-npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
-npm notice To update run: npm install -g npm@12.2.1
-npm notice
 vite v7.3.7 building client environment for production...
 transforming...
 ✓ 1863 modules transformed.
@@ -231,18 +226,18 @@ dist/assets/noto-sans-sc-22-400-normal-BKfopAEH.woff               43.28 kB
 dist/assets/noto-sans-sc-100-400-normal-BT1M_hxC.woff              43.88 kB
 dist/assets/noto-sans-sc-45-400-normal-odgwNltt.woff               45.75 kB
 dist/assets/noto-sans-sc-119-400-normal-DJUwOonj.woff              52.71 kB
-dist/assets/index-ByWfDCgp.css                                    260.02 kB │ gzip:  78.11 kB
+dist/assets/index-B6eQwyWt.css                                    260.23 kB │ gzip:  78.16 kB
 dist/assets/purify.es-18JuyMri.js                                  30.12 kB │ gzip:  11.51 kB
-dist/assets/index.es-CkvPAFje.js                                  158.96 kB │ gzip:  53.05 kB
+dist/assets/index.es-9eT8LSOw.js                                  158.96 kB │ gzip:  53.05 kB
 dist/assets/html2canvas.esm-DXEQVQnt.js                           201.04 kB │ gzip:  47.43 kB
-dist/assets/pdf-YJsqibBt.js                                       397.20 kB │ gzip: 131.12 kB
-dist/assets/index-BCrLzddH.js                                   1,036.24 kB │ gzip: 292.59 kB
+dist/assets/pdf-Cd3XgBEp.js                                       397.20 kB │ gzip: 131.12 kB
+dist/assets/index-C3pvFuKg.js                                   1,036.59 kB │ gzip: 292.72 kB
 
 (!) Some chunks are larger than 500 kB after minification. Consider:
 - Using dynamic import() to code-split the application
 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
-✓ built in 3.58s
+✓ built in 3.06s
 npm notice
 npm notice New major version of npm available! 11.19.0 -> 12.2.1
 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1

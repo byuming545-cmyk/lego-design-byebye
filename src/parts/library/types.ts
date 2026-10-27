@@ -89,6 +89,8 @@ export interface JointRuleRecord {
   missingEvidence: string[];
   negativeControls: string[];
   docs: string[];
+  openFeedback: number;
+  reviewState: 'clear' | 'review-required';
   versions: { grammar: string; connectionRule: string | null };
 }
 
