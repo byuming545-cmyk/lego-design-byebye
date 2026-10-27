@@ -3,13 +3,25 @@ import type {
   ConnectionImportIssue, ConnectionImportOptions, ConnectionImportResult,
   ConnectionLibrary, ConnectionMatrix, ConnectionSourceFile,
   ConnectionTransformEvidence, ConnectionVector, DiscardedConnectionIssue, ImportedConnectionPoint,
+  PartDescriptionEvidence,
 } from './types.js';
 
 export const SHADOW_REVISION = '9b1131fb1991f8c0bfc072325e4e12f6271aba35';
 export const SHADOW_SOURCE_ROOT = `https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/${SHADOW_REVISION}/`;
 export const CONNECTION_PARSER_VERSION = 'ldcad-shadow-parser-2-clear-scope';
+/** Additive root-description context; it does not alter serialized point records. */
+export const PART_DESCRIPTION_VERSION = 'ldraw-root-description-1';
 const IDENTITY: ConnectionMatrix = [1, 0, 0, 0, 1, 0, 0, 0, 1];
 const ZERO: ConnectionVector = [0, 0, 0];
+/**
+ * Root part-description context is provenance, not a connector field. Keeping it
+ * out of the point record preserves the historical point digest while binding it
+ * to the exact immutable point instance produced by this importer.
+ */
+const partDescriptions = new WeakMap<ImportedConnectionPoint, PartDescriptionEvidence>();
+export function partDescriptionFor(point: ImportedConnectionPoint): PartDescriptionEvidence | null {
+  return partDescriptions.get(point) ?? null;
+}
 
 export function canonicalConnectionPath(input: string): string | undefined {
   const path = input.trim().toLowerCase().replaceAll('\\', '/');
@@ -137,7 +149,7 @@ export async function importLdcadShadow(partId: string, library: ConnectionLibra
     for (const path of candidates) if (await read(path, layer) !== undefined) return path;
     return undefined;
   }
-  async function walk(path: string, transform: ConnectionMatrix, position: ConnectionVector, evidence: ConnectionTransformEvidence[], stack: string[], shadowOnly = false): Promise<ImportedConnectionPoint[]> {
+  async function walk(path: string, transform: ConnectionMatrix, position: ConnectionVector, evidence: ConnectionTransformEvidence[], stack: string[], shadowOnly = false, description?: PartDescriptionEvidence): Promise<ImportedConnectionPoint[]> {
     const key = `${shadowOnly ? 'shadow' : 'geometry'}:${path}`;
     if (stack.includes(key)) { report({ code: 'cycle', file: path, message: 'Recursive source reference.' }); return []; }
     if (stack.length >= maxDepth || ++visits > maxVisits) { report({ code: 'resource-limit', file: path, message: 'Recursion/instance budget exceeded.' }); return []; }
@@ -158,7 +170,7 @@ export async function importLdcadShadow(partId: string, library: ConnectionLibra
         const childEvidence = [...evidence, { file: path, line: i + 1, directive: raw, position: shift, matrix }];
         const childMatrix = multiply(transform, matrix), childPosition = add(position, vector(transform, shift));
         if (!finite(childMatrix) || !finite(childPosition)) { report({ code: 'invalid-directive', file: path, line: i + 1, message: 'Native transform overflows finite coordinates.' }); continue; }
-        points.push(...await walk(child, childMatrix, childPosition, childEvidence, nextStack));
+        points.push(...await walk(child, childMatrix, childPosition, childEvidence, nextStack, false, description));
         if (points.length > maxPoints) { report({ code: 'resource-limit', file: path, message: 'Connection point budget exceeded.' }); return []; }
       }
     }
@@ -193,7 +205,7 @@ export async function importLdcadShadow(partId: string, library: ConnectionLibra
           const shift = add(pos, offset);
           const childMatrix = multiply(transform, ori), childPosition = add(position, vector(transform, shift));
           if (!finite(childMatrix) || !finite(childPosition)) { invalid('Shadow include overflows finite coordinates.'); continue; }
-          points.push(...await walk(child, childMatrix, childPosition, [...evidence, { file: path, line: i + 1, directive: raw, position: shift, matrix: ori }], nextStack, true));
+          points.push(...await walk(child, childMatrix, childPosition, [...evidence, { file: path, line: i + 1, directive: raw, position: shift, matrix: ori }], nextStack, true, description));
           if (points.length > maxPoints) { invalid('Connection point budget exceeded.', 'resource-limit'); return []; }
         }
         continue;
@@ -226,6 +238,7 @@ export async function importLdcadShadow(partId: string, library: ConnectionLibra
         const pointPosition = add(position, vector(transform, add(pos, offset)));
         if (!finite(pointPosition)) { invalid('Connection position overflows finite coordinates.'); continue; }
         const point: ImportedConnectionPoint = { id: `${path}:${i + 1}:${serial++}`, sourceId: props.id ?? null, kind, family: family(kind, props.id ?? null, props.group ?? null, sections, gender), gender, position: pointPosition, direction: directionRaw.map((v) => v / norm) as ConnectionVector, orientation, units: 'LDU', sections: sections.map((s) => ({ ...s })), dimensionsFrame: 'source-local', dimensionsResolved, radius, length, group: props.group ?? null, properties: { ...props }, source: { ...source, line: i + 1, raw, transforms: evidence.map((e) => ({ ...e, position: [...e.position] as ConnectionVector, matrix: [...e.matrix] as ConnectionMatrix })) }, physicalVerified: false };
+        if (description) partDescriptions.set(point, description);
         points.push(point);
         for (const issue of dimensionIssues) pointScopedIssues.get(issue)!.add(point);
         if (points.length > maxPoints) { invalid('Connection point budget exceeded.', 'resource-limit'); return []; }
@@ -238,7 +251,23 @@ export async function importLdcadShadow(partId: string, library: ConnectionLibra
   if (!safe) report({ code: 'invalid-path', file: partId, message: 'Unsafe requested part identifier.' });
   else {
     const root = await resolve(safe, '', 'geometry');
-    if (root) points = await walk(root, IDENTITY, ZERO, [], []);
+    if (root) {
+      const geometry = await read(root, 'geometry');
+      const rootSource = sources.get(`geometry:${root}`);
+      let description: PartDescriptionEvidence | undefined;
+      if (geometry && rootSource) {
+        const lines = geometry.split(/\r?\n/);
+        for (let i = 0; i < Math.min(lines.length, 16); i++) {
+          const raw = lines[i].trim();
+          if (!/^0\s+/.test(raw)) continue;
+          const text = raw.replace(/^0\s+/, '').trim();
+          if (!text || /^(name|author|!|bfc|step|end|\/\/)/i.test(text)) continue;
+          description = { text, line: i + 1, raw, source: { ...rootSource } };
+          break;
+        }
+      }
+      points = await walk(root, IDENTITY, ZERO, [], [], false, description);
+    }
     else report({ code: 'missing-geometry', file: safe, message: 'Native root part is not in this source library.' });
   }
   if (points.length === 0) report({ code: 'no-connections', file: partId, message: 'No imported supported source connections are available.' });

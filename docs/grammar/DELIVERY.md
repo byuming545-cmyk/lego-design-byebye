@@ -1,5 +1,12 @@
 # 接口优先拼接语法：本轮交付
 
+> **2026-10-27 Bar↔Clip 追加轮次**：当前语法准入计数为 253 总数、
+> 100 generatable / 153 blocked；`npm test -- --maxWorkers=2` 当前为
+> 53 文件 763/763 通过，`npm run build` 通过。Playwright e2e/preview 因环境
+> 缺少 `/usr/bin/chromium` 未执行，不能算作通过。Bar↔Clip 已实现
+> source-declared 语法/兼容/求解，两个 CLIP 零件仍因开壳碰撞未进入生成。
+> 下文第 2 节及其后的 761/761、11/11、3/3 和 99/154 均为上一轮历史记录。
+
 本轮在基准`35eec2067b4e9a711b65bd0199ac3bb5f89db636`上建立工作分支`codex/interface-first-grammar`，保留原有已验证装配引擎，默认生产入口改为接口语法准入。工作区开始时干净。没有合并main、部署网站、扩大源数据分发许可或重新开放旧生成器。
 
 ## 1. 变更与实际效果
@@ -62,7 +69,7 @@ canonical COMPLETE仅表示当前接口解释完整；可能仍被实体几何�
 
 25个family和15条规则覆盖完整可扩展词典；RIGID、REVOLUTE、PRISMATIC、CYLINDRICAL、SPHERICAL共用关节模型。轴向区间、真实重叠长度、截面对称、摩擦、detents和未知字段均有明确表示。共位不同feature不再按位置粗暴合并。
 
-C01保留真实固定Shadow来源规则并进入正常生成。其它14规则为**条件式算法内核**：只有适用的结构化VERIFIED_FIT证据及完整参数才能推导；数学测试fixture明确标记ALGORITHM_FIXTURE且生产默认拒绝。实际库尚无这些机械配合的充分证据，原生模型图/导出当前只启用C01，未宣称真实轮组、销轴或球关节生成完成。
+C01保留真实固定Shadow来源规则并进入正常生成。BAR_CLIP新增**SOURCE_DECLARED_FIT**来源层（官方LDraw Bar描述 + LDCad male cylinder/clip seat），语法、原生兼容和求解已实现；两个真实CLIP零件仍因开壳碰撞不能进入生产生成，原生模型图/导出当前只启用C01。其余13规则为**条件式算法内核**：只有适用的结构化VERIFIED_FIT证据及完整参数才能推导；数学测试fixture明确标记ALGORITHM_FIXTURE且生产默认拒绝。实际库尚无这些机械配合的充分证据，未宣称真实轮组、销轴或球关节生成完成。
 
 新solver区分圆截面滚转和keyed对称，检查实际轴向重叠及端部约束。球关节可返回SPHERICAL符号自由度；完整球姿态定向求解仍未知。Click角未给出时不猜步长，group或半径相同不能自动建立配合。
 

@@ -1,0 +1,16 @@
+
+ RUN  v5.0.5 /home/zhuishihen/lego design gpt
+
+ ✓ tests/parts-assembly-connections.test.ts (12 tests) 160ms
+ ✓ tests/parts-connection-audit.test.ts (2 tests) 1297ms
+   ✓ complete pinned Connection Parse Audit (2)
+     ✓ accounts for all roots and every remaining issue with literal source evidence or an explicit missing-evidence outcome 1288ms
+ ✓ tests/parts-grammar-sources.test.ts (11 tests) 3117ms
+   ✓ source-backed canonical connector ingestion (7)
+     ✓ accounts for every source point in the complete real 253-root library without any part-ID mapping list 2985ms
+
+ Test Files  3 passed (3)
+      Tests  25 passed (25)
+   Start at  13:07:59
+   Duration  3.21s (tests 98%, import 1%, transform 1%)
+

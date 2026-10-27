@@ -1,12 +1,13 @@
 import type { ImportedConnectionPoint } from '../connections/types.js';
-import { SHADOW_REVISION, SHADOW_SOURCE_ROOT } from '../connections/importer.js';
+import { partDescriptionFor, SHADOW_REVISION, SHADOW_SOURCE_ROOT } from '../connections/importer.js';
 import { connectionFrame } from './math.js';
-import { adaptImportedConnection } from '../grammar/sources.js';
+import { adaptImportedConnection, isSourceDeclaredBarEndpoint, isSourceDeclaredClipEndpoint } from '../grammar/sources.js';
 import { evaluateConnectorCompatibility } from '../grammar/rules.js';
 import { CONNECTOR_GRAMMAR_VERSION } from '../grammar/schema.js';
 
 export const CONNECTION_RULE_VERSION = `source-stud-2.0.0-${CONNECTOR_GRAMMAR_VERSION}`;
 export const STANDARD_STUD_RULE_ID = 'ldcad-standard-stud-to-capped-underside-v1';
+export const BAR_CLIP_RULE_ID = 'ldcad-source-declared-bar-clip-v1';
 
 export interface CompatibilitySourceEvidence {
   kind: 'source-document' | 'source-directive' | 'implementation-policy';
@@ -24,11 +25,11 @@ export interface CompatibilityResult {
   ruleVersion: string;
   reason: string;
   reasonCode: string;
-  connectionType: 'standard-stud-underside' | 'unsupported';
+  connectionType: 'standard-stud-underside' | 'bar-clip' | 'unsupported';
   axisRelation: 'same' | null;
   insertionDepthLdu: number | null;
   allowedTwistsDeg: number[];
-  permittedTranslation: 'fully-seated' | null;
+  permittedTranslation: 'fully-seated' | 'sliding' | null;
   /** Numerical comparison tolerance, not a change to source dimensions. */
   toleranceLdu: number;
   sourceEvidence: CompatibilitySourceEvidence[];
@@ -53,6 +54,49 @@ function sectionsAgreeWithSource(point: ImportedConnectionPoint): boolean {
   const sourceSections = /\[secs=([^\]]+)\]/i.exec(point.source.raw)?.[1]?.trim().split(/\s+/);
   if (!sourceSections || sourceSections.length !== point.sections.length * 3) return false;
   return point.sections.every((section, index) => sourceSections[index * 3] === section.profile && Number(sourceSections[index * 3 + 1]) === section.radius && Number(sourceSections[index * 3 + 2]) === section.length);
+}
+
+
+function descriptionEvidence(point: ImportedConnectionPoint): CompatibilitySourceEvidence | null {
+  const description = partDescriptionFor(point);
+  if (!description) return null;
+  return { kind: 'source-document', url: description.source.sourceUrl, revision: description.source.revision,
+    file: description.source.path, line: description.line, sha256: description.source.sha256, note: description.raw };
+}
+
+/** Native adapter for the source-declared BAR_CLIP rule. The bar identity and
+ * the clip seat are both parsed evidence; the four quarter-turns are a
+ * conservative discrete subset of the round joint, not a new fit claim. */
+function barClipCompatibilityDiagnostics(fixed: ImportedConnectionPoint, moving: ImportedConnectionPoint): CompatibilityResult {
+  const points = [fixed, moving];
+  if (points.some((point) => !hasPinnedEvidence(point))) return result('unknown', 'source-unverified', 'compatibilityUnknown: connection source is not the pinned, hashed Shadow input.', points);
+  if (points.some((point) => !point.dimensionsResolved || !connectionFrame(point))) return result('unknown', 'unresolved-connection-frame', 'compatibilityUnknown: connection frame or inherited section scaling is unresolved.', points);
+  const male = fixed.gender === 'M' ? fixed : moving, female = fixed.gender === 'F' ? fixed : moving;
+  if (male.gender === female.gender) return result('incompatible', 'same-mating-gender', 'Both connection endpoints have the same source mating gender.', points);
+  if (!isSourceDeclaredBarEndpoint(male) || !isSourceDeclaredClipEndpoint(female)) return result('unknown', 'bar-clip-source-identity-unresolved', 'compatibilityUnknown: the male must be an official Bar part with a pinned male R4 SNAP_CYL and the female must be a pinned R4/L8 SNAP_CLP seat.', points);
+  const span = (point: ImportedConnectionPoint): [number, number] | null => {
+    const length = point.sections.length ? point.sections.reduce((sum, section) => sum + section.length, 0) : point.length;
+    if (length === null || !Number.isFinite(length) || length <= 0) return null;
+    return point.properties.center === 'true' ? [-length / 2, length / 2] : [0, length];
+  };
+  const maleSpan = span(male), femaleSpan = span(female);
+  if (!maleSpan || !femaleSpan) return result('unknown', 'bar-clip-insertion-range-unresolved', 'compatibilityUnknown: the source axial spans needed for actual clip engagement are unresolved.', points);
+  const insertionDepth = Math.max(0, Math.min(maleSpan[1], femaleSpan[1]) - Math.max(maleSpan[0], femaleSpan[0]));
+  if (insertionDepth < 1 || insertionDepth > 8) return result('unknown', 'bar-clip-insertion-range-unresolved', 'compatibilityUnknown: the source axial spans do not overlap the declared 1..8 LDU clip seat.', points);
+  const description = descriptionEvidence(male);
+  return {
+    ...result('compatible', 'source-declared-bar-clip', 'Pinned official Bar description and LDCad SNAP_CLP seat establish a round axial candidate; collision, retention, stress and physical build remain separate.', points),
+    ruleId: BAR_CLIP_RULE_ID, connectionType: 'bar-clip', axisRelation: 'same', insertionDepthLdu: insertionDepth,
+    allowedTwistsDeg: [...QUARTER_TURNS], permittedTranslation: 'sliding',
+    sourceEvidence: [
+      ...points.map(pointEvidence),
+      ...(description ? [description] : []),
+      { kind: 'source-document', url: 'https://www.melkert.net/LDCad/tech/meta', revision: 'LDCad-meta-documentation', file: 'LDCad SNAP_CLP semantics', line: null, sha256: null,
+        note: 'SNAP_CLIP is female and tested against male cylinder shapes; radius is the clip inner radius and length its partial-hole width. This is source semantics, not physical verification.' },
+      { kind: 'implementation-policy', url: 'docs/grammar/BAR_CLIP.md', revision: CONNECTION_RULE_VERSION, file: 'docs/grammar/BAR_CLIP.md', line: null, sha256: null,
+        note: 'BAR identity requires the official LDraw Bar description and one male R4 source cylinder; CLIP requires SNAP_CLP R4/L8 center=true. Four quarter-turns are the conservative native graph subset. Friction/retention remain UNKNOWN.' },
+    ],
+  };
 }
 
 /**
@@ -99,6 +143,7 @@ export function checkConnectionCompatibility(fixed: ImportedConnectionPoint, mov
   if (grammar.status === 'ILLEGAL') return result('incompatible', grammar.reasonCodes[0], grammar.reasons.join(' '), [fixed, moving]);
   const diagnostic = sourceCompatibilityDiagnostics(fixed, moving);
   if (grammar.status === 'COMPATIBLE' && grammar.ruleId === 'C01') return diagnostic;
+  if (grammar.status === 'COMPATIBLE' && grammar.ruleId === 'BAR_CLIP') return barClipCompatibilityDiagnostics(fixed, moving);
   if (diagnostic.status !== 'compatible') return diagnostic;
   return result(grammar.status === 'INCOMPATIBLE' ? 'incompatible' : 'unknown', grammar.reasonCodes[0] ?? 'grammar-unknown', grammar.reasons.join(' '), [fixed, moving]);
 }

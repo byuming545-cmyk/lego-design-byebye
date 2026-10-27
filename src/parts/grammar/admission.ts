@@ -1,14 +1,14 @@
 import type { AssemblyInterfaceCapability, NativeAssemblyPart } from '../assembly/types.js';
 import { hasIsolatedUnknownDimensions } from '../assembly/types.js';
 import { nativePartSourceHash } from '../assembly/source.js';
-import { STANDARD_STUD_RULE_ID } from '../assembly/compatibility.js';
+import { BAR_CLIP_RULE_ID, STANDARD_STUD_RULE_ID } from '../assembly/compatibility.js';
 import { buildNativeCollisionProxy, type ProxyBuildResult } from '../assembly/proxy.js';
 import { IDENTITY_TRANSFORM } from '../assembly/math.js';
 import { CONNECTOR_GRAMMAR_VERSION, type Connector } from './schema.js';
 import { inspectConnectorSupport } from './rules.js';
 import { adaptNativePartConnectors, supportsStandardStudEndpoint, type ConnectorIngestion } from './sources.js';
 
-export const GRAMMAR_ADMISSION_VERSION = 'source-connector-admission-1';
+export const GRAMMAR_ADMISSION_VERSION = 'source-connector-admission-2';
 
 export interface GrammarFeatureSupport {
   featureId: string;
@@ -60,15 +60,17 @@ export function assessGrammarAdmission(part: NativeAssemblyPart): GrammarPartAdm
   const featureSupport: GrammarFeatureSupport[] = ingestion.connectors.map(feature => {
     const support = inspectConnectorSupport(feature);
     const original = part.connections.points.find(point => point.id === feature.sourceConnectionId);
-    const supported = sourceReady && support.supported && support.ruleIds.includes('C01') &&
-      !!original && supportsStandardStudEndpoint(original);
+    const nativeRuleIds = support.ruleIds.flatMap(id => id === 'C01' ? [STANDARD_STUD_RULE_ID] : id === 'BAR_CLIP' ? [BAR_CLIP_RULE_ID] : []);
+    const supported = sourceReady && support.supported && nativeRuleIds.length > 0 && !!original &&
+      (!support.ruleIds.includes('C01') || supportsStandardStudEndpoint(original));
     return {
       featureId: feature.featureId, sourceConnectionId: feature.sourceConnectionId, family: feature.family,
-      supported, ruleIds: supported ? ['C01'] : [], reasonCodes: supported ? [] :
-        !sourceReady ? ['source-not-ready'] : support.supported && !support.ruleIds.includes('C01') ? ['native-joint-adapter-not-enabled'] : support.reasonCodes.length ? support.reasonCodes : ['unsupported-native-endpoint'],
+      supported, ruleIds: supported ? nativeRuleIds : [], reasonCodes: supported ? [] :
+        !sourceReady ? ['source-not-ready'] : support.supported && nativeRuleIds.length === 0 ? ['native-joint-adapter-not-enabled'] : support.reasonCodes.length ? support.reasonCodes : ['unsupported-native-endpoint'],
     };
   });
   const supportedIds = [...new Set(featureSupport.filter(feature => feature.supported && feature.sourceConnectionId).map(feature => feature.sourceConnectionId!))];
+  const nativeRuleIds = [...new Set(featureSupport.filter(feature => feature.supported).flatMap(feature => feature.ruleIds))];
   const connectable = supportedIds.length > 0;
   const proxy = buildNativeCollisionProxy(part, { instanceId: 'grammar-source', partId: part.partId, transform: IDENTITY_TRANSFORM });
   const collisionGeometryReady = proxy.status === 'ready';
@@ -84,7 +86,7 @@ export function assessGrammarAdmission(part: NativeAssemblyPart): GrammarPartAdm
     sourceReady, collisionGeometryReady, connectable,
     assemblyVerified: false, generatable: generationEligible,
     allowedConnectionIds: generationEligible ? supportedIds : [],
-    ruleIds: generationEligible ? [STANDARD_STUD_RULE_ID] : [],
+    ruleIds: generationEligible ? nativeRuleIds : [],
     reasonCodes, reasons,
   };
   return {

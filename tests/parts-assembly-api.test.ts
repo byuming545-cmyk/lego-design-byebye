@@ -93,7 +93,7 @@ describe('native assembly production HTTP boundaries', () => {
     expect(status.queue).toHaveLength(253);
     expect(new Set(status.queue.map(entry => entry.partId)).size).toBe(253);
     expect(status.admissionBasis).toBe('interface-grammar');
-    expect(status.counts).toMatchObject({ assemblyVerified: 0, generatable: 99, blocked: 154, verifiedInterfaces: 0, testedPhysicalInterfaces: 0 });
+    expect(status.counts).toMatchObject({ assemblyVerified: 0, generatable: 100, blocked: 153, verifiedInterfaces: 0, testedPhysicalInterfaces: 0 });
     expect(report.counts.generatable).toBe(87); // Retained historical evidence, not current admission authority.
     expect(status.sourceCounts).toEqual(report.sourceCounts);
     expect(status.sourceCounts).toEqual({ totalRoots: 253, geometryReady: 253, connectionReady: 205, connectionPartial: 44, connectionMissing: 4 });

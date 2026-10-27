@@ -3,14 +3,15 @@ import { createBundledLDrawResolver, LDrawPartImporter } from '../src/parts/ldra
 import { createBundledConnectionImporter } from '../src/parts/connections/index.js';
 import type { ImportedConnectionPoint } from '../src/parts/connections/types.js';
 import type { NativeAssemblyPart, NativePlacement, RigidTransform, Vector3 } from '../src/parts/assembly/types.js';
-import { checkConnectionCompatibility, CONNECTION_RULE_VERSION, STANDARD_STUD_RULE_ID } from '../src/parts/assembly/compatibility.js';
+import { BAR_CLIP_RULE_ID, checkConnectionCompatibility, CONNECTION_RULE_VERSION, STANDARD_STUD_RULE_ID } from '../src/parts/assembly/compatibility.js';
 import { solveAttachment, worldConnection } from '../src/parts/assembly/solver.js';
+import { isSourceDeclaredBarEndpoint, isSourceDeclaredClipEndpoint } from '../src/parts/grammar/sources.js';
 import { axisRotation, composeTransforms, determinant, distance, IDENTITY_TRANSFORM, inverseTransform, isRotation, rotate, transformPoint } from '../src/parts/assembly/math.js';
 
 const parts = new Map<string, NativeAssemblyPart>();
 beforeAll(async () => {
   const resolver = await createBundledLDrawResolver(), geometry = new LDrawPartImporter(resolver), connections = createBundledConnectionImporter(resolver);
-  for (const partId of ['3001', '3005', '3024', '87087', '99207', '48729b', '30374', '4624', '3641', '3673', '3700']) parts.set(partId, { partId, geometry: await geometry.importPart(partId), connections: await connections.importPart(partId) });
+  for (const partId of ['3001', '3005', '3024', '87087', '99207', '48729b', '30374', '60470b', '2412b', '4624', '3641', '3673', '3700']) parts.set(partId, { partId, geometry: await geometry.importPart(partId), connections: await connections.importPart(partId) });
 });
 const part = (id: string) => parts.get(id)!;
 function endpoint(id: string, gender: 'M' | 'F', predicate: (point: ImportedConnectionPoint) => boolean = () => true) {
@@ -46,9 +47,14 @@ describe('source-backed compatibility rule', () => {
     expect(checkConnectionCompatibility(standardMale('3001'), smallHole)).toMatchObject({ status: 'incompatible', reasonCode: 'receiver-size-mismatch' });
   });
 
-  it('does not enable clips, pin interfaces or wheel/tyre groups from names alone', () => {
+  it('enables only the source-declared bar/clip family and leaves unrelated pin, wheel/tyre groups closed', () => {
     const clip = endpoint('48729b', 'F'), bar = endpoint('30374', 'M');
-    expect(checkConnectionCompatibility(bar, clip)).toMatchObject({ status: 'unknown', reasonCode: 'clip-bar-seating-unresolved' });
+    const checked = checkConnectionCompatibility(bar, clip);
+    expect(checked).toMatchObject({ status: 'compatible', ruleId: BAR_CLIP_RULE_ID, connectionType: 'bar-clip', axisRelation: 'same', insertionDepthLdu: 8, permittedTranslation: 'sliding', allowedTwistsDeg: [0, 90, 180, 270] });
+    expect(checked.sourceEvidence.some((source) => source.kind === 'source-document' && source.note.includes('Bar  4L'))).toBe(true);
+    expect(checkConnectionCompatibility(bar, endpoint('60470b', 'F', (point) => point.family === 'clip'))).toMatchObject({ status: 'compatible', ruleId: BAR_CLIP_RULE_ID });
+    const unnamedR4 = endpoint('2412b', 'M');
+    expect(checkConnectionCompatibility(unnamedR4, clip)).toMatchObject({ status: 'unknown', reasonCode: 'clip-bar-seating-unresolved' });
     const rim = endpoint('4624', 'M', (point) => point.kind === 'generic'), tyre = endpoint('3641', 'F', (point) => point.kind === 'generic');
     expect(rim.group).toBe(tyre.group);
     expect(checkConnectionCompatibility(rim, tyre)).toMatchObject({ status: 'unknown', reasonCode: 'grouped-interface-seating-unresolved' });
@@ -84,6 +90,17 @@ describe('native attachment transform solver', () => {
     expectCloseVector(candidate.insertionPath[0], [male.position[0], -4, male.position[2]]);
     expectCloseVector(candidate.penetrationZone.center, [male.position[0], -2, male.position[2]]);
     expect(candidate.penetrationZone).toMatchObject({ radius: 6, depth: 4, toleranceLdu: 0.0001, ruleId: STANDARD_STUD_RULE_ID });
+  });
+
+  it('seats the source-declared 30374 Bar in the source-declared 48729b Clip with four discrete candidates', () => {
+    const bar = part('30374').connections.points.find(isSourceDeclaredBarEndpoint)!, clip = part('48729b').connections.points.find(isSourceDeclaredClipEndpoint)!;
+    const solved = solveAttachment({ fixedPart: part('30374'), fixedPlacement: place('30374'), fixedConnectionId: bar.id, movingPart: part('48729b'), movingConnectionId: clip.id });
+    expect(solved.status).toBe('solved');
+    expect(solved.candidates.map((candidate) => candidate.twistDeg)).toEqual([0, 90, 180, 270]);
+    for (const candidate of solved.candidates) {
+      expectCloseVector(worldConnection(clip, candidate.transform).position, bar.position);
+      expectCloseVector(worldConnection(clip, candidate.transform).direction, bar.direction);
+    }
   });
 
   it('returns only four proper grid-preserving rotations with unchanged native geometry', () => {

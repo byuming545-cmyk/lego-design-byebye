@@ -1,0 +1,217 @@
+
+> bricklab@0.6.0 test:e2e
+> playwright test --config playwright.config.ts
+
+[WebServer] (node:31) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:44) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 11 tests using 1 worker
+
+(node:142) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 [chromium] › tests/e2e/assembly.spec.ts:7:1 › uses an admitted 32000 through normal UI generation, exports it and validates the uploaded model (1ms)
+(node:155) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   2 [chromium] › tests/e2e/assembly.spec.ts:105:1 › separates source grammar eligibility from actual assembly evidence for every real part (1ms)
+(node:174) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   3 [chromium] › tests/e2e/assembly.spec.ts:152:1 › attaches a source-backed grammar pair and rejects the same mating gender (1ms)
+(node:209) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   4 [chromium] › tests/e2e/assembly.spec.ts:177:1 › generates source-bound wall and chassis modules and preserves unsupported wheel reasons (1ms)
+(node:221) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   5 [chromium] › tests/e2e/assembly.spec.ts:208:1 › imports exported real models through current validation and prevents export after version or occupancy invalidation (1ms)
+(node:233) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   6 [chromium] › tests/e2e/assembly.spec.ts:257:1 › mobile assembly mode keeps source controls, accepted rendering and debug data within the viewport (1ms)
+(node:245) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   7 [chromium] › tests/e2e/parts-foundation.spec.ts:121:3 › real parts foundation with actual bundled sources and WebGL › opens the real library by default and renders native 3001 mesh plus source markers (1ms)
+(node:257) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   8 [chromium] › tests/e2e/parts-foundation.spec.ts:175:3 › real parts foundation with actual bundled sources and WebGL › retains source-observed external mapping without inventing an LDraw cross-reference or generation eligibility (1ms)
+(node:269) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   9 [chromium] › tests/e2e/parts-foundation.spec.ts:200:3 › real parts foundation with actual bundled sources and WebGL › shows six readable PDFs, two transfer failures and evidence-based element frequency without invented design coverage (1ms)
+(node:281) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  10 [chromium] › tests/e2e/parts-foundation.spec.ts:237:3 › real parts foundation with actual bundled sources and WebGL › supports mobile inspection and keeps legacy UI and actual HTTP generation/export blocked (0ms)
+(node:293) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  11 [chromium] › tests/e2e/parts-foundation.spec.ts:268:3 › real parts foundation with actual bundled sources and WebGL › does not restore quarantined browser history or enable legacy file import (1ms)
+
+
+  1) [chromium] › tests/e2e/assembly.spec.ts:7:1 › uses an admitted 32000 through normal UI generation, exports it and validates the uploaded model 
+
+    Error: browserType.launch: Failed to launch chromium because executable doesn't exist at /usr/bin/chromium
+
+    Error Context: test-results/e2e/assembly-uses-an-admitted--36543-alidates-the-uploaded-model-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/assembly-uses-an-admitted--36543-alidates-the-uploaded-model-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/assembly-uses-an-admitted--36543-alidates-the-uploaded-model-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › tests/e2e/assembly.spec.ts:105:1 › separates source grammar eligibility from actual assembly evidence for every real part 
+
+    Error: browserType.launch: Failed to launch chromium because executable doesn't exist at /usr/bin/chromium
+
+    Error Context: test-results/e2e/assembly-separates-source--93258-vidence-for-every-real-part-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/assembly-separates-source--93258-vidence-for-every-real-part-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/assembly-separates-source--93258-vidence-for-every-real-part-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › tests/e2e/assembly.spec.ts:152:1 › attaches a source-backed grammar pair and rejects the same mating gender 
+
+    Error: browserType.launch: Failed to launch chromium because executable doesn't exist at /usr/bin/chromium
+
+    Error Context: test-results/e2e/assembly-attaches-a-source-7c676-ects-the-same-mating-gender-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/assembly-attaches-a-source-7c676-ects-the-same-mating-gender-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/assembly-attaches-a-source-7c676-ects-the-same-mating-gender-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › tests/e2e/assembly.spec.ts:177:1 › generates source-bound wall and chassis modules and preserves unsupported wheel reasons 
+
+    Error: browserType.launch: Failed to launch chromium because executable doesn't exist at /usr/bin/chromium
+
+    Error Context: test-results/e2e/assembly-generates-source--c3224-s-unsupported-wheel-reasons-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/assembly-generates-source--c3224-s-unsupported-wheel-reasons-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/assembly-generates-source--c3224-s-unsupported-wheel-reasons-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › tests/e2e/assembly.spec.ts:208:1 › imports exported real models through current validation and prevents export after version or occupancy invalidation 
+
+    Error: browserType.launch: Failed to launch chromium because executable doesn't exist at /usr/bin/chromium
+
+    Error Context: test-results/e2e/assembly-imports-exported--2daa4-n-or-occupancy-invalidation-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/assembly-imports-exported--2daa4-n-or-occupancy-invalidation-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/assembly-imports-exported--2daa4-n-or-occupancy-invalidation-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › tests/e2e/assembly.spec.ts:257:1 › mobile assembly mode keeps source controls, accepted rendering and debug data within the viewport 
+
+    Error: browserType.launch: Failed to launch chromium because executable doesn't exist at /usr/bin/chromium
+
+    Error Context: test-results/e2e/assembly-mobile-assembly-m-9b9cf-ug-data-within-the-viewport-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/assembly-mobile-assembly-m-9b9cf-ug-data-within-the-viewport-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/assembly-mobile-assembly-m-9b9cf-ug-data-within-the-viewport-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [chromium] › tests/e2e/parts-foundation.spec.ts:121:3 › real parts foundation with actual bundled sources and WebGL › opens the real library by default and renders native 3001 mesh plus source markers 
+
+    Error: browserType.launch: Failed to launch chromium because executable doesn't exist at /usr/bin/chromium
+
+    Error Context: test-results/e2e/parts-foundation-real-part-15981-01-mesh-plus-source-markers-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/parts-foundation-real-part-15981-01-mesh-plus-source-markers-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/parts-foundation-real-part-15981-01-mesh-plus-source-markers-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [chromium] › tests/e2e/parts-foundation.spec.ts:175:3 › real parts foundation with actual bundled sources and WebGL › retains source-observed external mapping without inventing an LDraw cross-reference or generation eligibility 
+
+    Error: browserType.launch: Failed to launch chromium because executable doesn't exist at /usr/bin/chromium
+
+    Error Context: test-results/e2e/parts-foundation-real-part-453a8-e-or-generation-eligibility-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/parts-foundation-real-part-453a8-e-or-generation-eligibility-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/parts-foundation-real-part-453a8-e-or-generation-eligibility-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [chromium] › tests/e2e/parts-foundation.spec.ts:200:3 › real parts foundation with actual bundled sources and WebGL › shows six readable PDFs, two transfer failures and evidence-based element frequency without invented design coverage 
+
+    Error: browserType.launch: Failed to launch chromium because executable doesn't exist at /usr/bin/chromium
+
+    Error Context: test-results/e2e/parts-foundation-real-part-fe123-ut-invented-design-coverage-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/parts-foundation-real-part-fe123-ut-invented-design-coverage-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/parts-foundation-real-part-fe123-ut-invented-design-coverage-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [chromium] › tests/e2e/parts-foundation.spec.ts:237:3 › real parts foundation with actual bundled sources and WebGL › supports mobile inspection and keeps legacy UI and actual HTTP generation/export blocked 
+
+    Error: browserType.launch: Failed to launch chromium because executable doesn't exist at /usr/bin/chromium
+
+    Error Context: test-results/e2e/parts-foundation-real-part-decb1-P-generation-export-blocked-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/parts-foundation-real-part-decb1-P-generation-export-blocked-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/parts-foundation-real-part-decb1-P-generation-export-blocked-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [chromium] › tests/e2e/parts-foundation.spec.ts:268:3 › real parts foundation with actual bundled sources and WebGL › does not restore quarantined browser history or enable legacy file import 
+
+    Error: browserType.launch: Failed to launch chromium because executable doesn't exist at /usr/bin/chromium
+
+    Error Context: test-results/e2e/parts-foundation-real-part-ab87c-r-enable-legacy-file-import-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/parts-foundation-real-part-ab87c-r-enable-legacy-file-import-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/parts-foundation-real-part-ab87c-r-enable-legacy-file-import-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11 failed
+    [chromium] › tests/e2e/assembly.spec.ts:7:1 › uses an admitted 32000 through normal UI generation, exports it and validates the uploaded model 
+    [chromium] › tests/e2e/assembly.spec.ts:105:1 › separates source grammar eligibility from actual assembly evidence for every real part 
+    [chromium] › tests/e2e/assembly.spec.ts:152:1 › attaches a source-backed grammar pair and rejects the same mating gender 
+    [chromium] › tests/e2e/assembly.spec.ts:177:1 › generates source-bound wall and chassis modules and preserves unsupported wheel reasons 
+    [chromium] › tests/e2e/assembly.spec.ts:208:1 › imports exported real models through current validation and prevents export after version or occupancy invalidation 
+    [chromium] › tests/e2e/assembly.spec.ts:257:1 › mobile assembly mode keeps source controls, accepted rendering and debug data within the viewport 
+    [chromium] › tests/e2e/parts-foundation.spec.ts:121:3 › real parts foundation with actual bundled sources and WebGL › opens the real library by default and renders native 3001 mesh plus source markers 
+    [chromium] › tests/e2e/parts-foundation.spec.ts:175:3 › real parts foundation with actual bundled sources and WebGL › retains source-observed external mapping without inventing an LDraw cross-reference or generation eligibility 
+    [chromium] › tests/e2e/parts-foundation.spec.ts:200:3 › real parts foundation with actual bundled sources and WebGL › shows six readable PDFs, two transfer failures and evidence-based element frequency without invented design coverage 
+    [chromium] › tests/e2e/parts-foundation.spec.ts:237:3 › real parts foundation with actual bundled sources and WebGL › supports mobile inspection and keeps legacy UI and actual HTTP generation/export blocked 
+    [chromium] › tests/e2e/parts-foundation.spec.ts:268:3 › real parts foundation with actual bundled sources and WebGL › does not restore quarantined browser history or enable legacy file import 
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

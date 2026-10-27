@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "bar-clip-verification-1",
+  "generatedAt": "2026-10-27T05:08:06.981277+00:00",
+  "branch": "codex/bar-clip-source-grammar",
+  "headCommit": null,
+  "baseCommit": "fe74141de5870547d71d0874a39c4ca69c707487",
+  "commands": [
+    {
+      "command": "npm run typecheck",
+      "status": "pass"
+    },
+    {
+      "command": "npm test -- --maxWorkers=2",
+      "status": "pass",
+      "testFiles": 53,
+      "tests": 763,
+      "skipped": 0,
+      "durationSeconds": 79.47
+    },
+    {
+      "command": "npm run build",
+      "status": "pass",
+      "note": "typecheck + vite client build + server TypeScript build"
+    },
+    {
+      "command": "vitest run tests/parts-assembly-connections.test.ts tests/parts-grammar-sources.test.ts tests/parts-grammar-core.test.ts tests/parts-grammar-admission.test.ts",
+      "status": "pass",
+      "tests": 82
+    },
+    {
+      "command": "vitest run tests/parts-assembly-connections.test.ts tests/parts-grammar-sources.test.ts tests/parts-connection-audit.test.ts",
+      "status": "pass",
+      "tests": 25
+    },
+    {
+      "command": "npm run probe:bar-clip",
+      "status": "pass",
+      "output": "artifacts/bar-clip/probe.json"
+    },
+    {
+      "command": "npm run test:e2e",
+      "status": "blocked",
+      "reason": "Playwright chromium executable is absent at /usr/bin/chromium; all 11 tests failed at browserType.launch before exercising the app.",
+      "log": "artifacts/bar-clip/logs/e2e-preview.txt"
+    },
+    {
+      "command": "npm run test:preview",
+      "status": "not-run",
+      "reason": "Prerequisite e2e command stopped on the missing browser."
+    },
+    {
+      "command": "vitest run tests/parts-assembly-connections.test.ts",
+      "status": "pass",
+      "tests": 12
+    }
+  ],
+  "productionCounts": {
+    "parts": 253,
+    "generationEligible": 100,
+    "blocked": 153,
+    "assemblyVerified": 0
+  },
+  "barClipOutcome": {
+    "barFeatures": 2,
+    "clipFeatures": 3,
+    "newlyEligibleParts": [
+      "30374"
+    ],
+    "generatedAndReimported": 0,
+    "barReceptaclesFound": 0
+  },
+  "physicalBuildVerified": false,
+  "limitations": [
+    "The only two CLIP sources fail closed-solid collision proxy construction.",
+    "The normal generator currently anchors and searches standard studs only.",
+    "No source-backed Bar Receptacle exists in the pinned 253-root library."
+  ],
+  "headCommitNote": "Generated from the delivery working tree; the delivery commit is the git HEAD containing this artifact."
+}

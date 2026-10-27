@@ -19,6 +19,14 @@ export interface ConnectionTransformEvidence {
   matrix: ConnectionMatrix;
 }
 
+/** Immutable top-level LDraw description retained as metadata, never as a mesh inference. */
+export interface PartDescriptionEvidence {
+  text: string;
+  line: number;
+  raw: string;
+  source: ConnectionSourceFile;
+}
+
 export interface ImportedConnectionPoint {
   id: string;
   sourceId: string | null;

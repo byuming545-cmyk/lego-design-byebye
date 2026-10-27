@@ -1,0 +1,84 @@
+
+> bricklab@0.6.0 probe:bar-clip
+> tsx src/cli/bar-clip-probe.ts
+
+/home/zhuishihen/lego design gpt/artifacts/bar-clip/probe.json
+{
+  "admissions": {
+    "30374": {
+      "partId": "30374",
+      "generationEligible": true,
+      "connectable": true,
+      "collisionGeometryReady": true,
+      "reasonCodes": [],
+      "ruleIds": [
+        "ldcad-source-declared-bar-clip-v1"
+      ],
+      "allowedConnectionIds": [
+        "parts/30374.dat:8:0"
+      ]
+    },
+    "48729b": {
+      "partId": "48729b",
+      "generationEligible": false,
+      "connectable": true,
+      "collisionGeometryReady": false,
+      "reasonCodes": [
+        "grammar-collision-non-manifold-boundary"
+      ],
+      "ruleIds": [],
+      "allowedConnectionIds": []
+    },
+    "60470b": {
+      "partId": "60470b",
+      "generationEligible": false,
+      "connectable": true,
+      "collisionGeometryReady": false,
+      "reasonCodes": [
+        "grammar-collision-open-nonplanar-shell"
+      ],
+      "ruleIds": [],
+      "allowedConnectionIds": []
+    },
+    "2412b": {
+      "partId": "2412b",
+      "generationEligible": true,
+      "connectable": true,
+      "collisionGeometryReady": true,
+      "reasonCodes": [],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "allowedConnectionIds": [
+        "parts/2412b.dat:9:0",
+        "parts/2412b.dat:9:1"
+      ]
+    }
+  },
+  "pairs": [
+    {
+      "fixedPartId": "30374",
+      "movingPartId": "48729b",
+      "compatibility": "compatible",
+      "ruleId": "ldcad-source-declared-bar-clip-v1",
+      "solver": "solved",
+      "candidates": 4
+    },
+    {
+      "fixedPartId": "30374",
+      "movingPartId": "60470b",
+      "compatibility": "compatible",
+      "ruleId": "ldcad-source-declared-bar-clip-v1",
+      "solver": "solved",
+      "candidates": 4
+    },
+    {
+      "fixedPartId": "2412b",
+      "movingPartId": "48729b",
+      "compatibility": "unknown",
+      "ruleId": null,
+      "solver": "unknown",
+      "candidates": 0
+    }
+  ]
+}

@@ -25,6 +25,7 @@
     "audit:wheel": "tsx src/cli/wheel-assessment.ts --output artifacts/wheel-assembly/source-assessment.json",
     "audit:connectors": "tsx src/cli/connector-audit.ts",
     "coverage:grammar": "tsx src/cli/generation-expansion.ts --plan docs/grammar/generation-plan.json --output artifacts/connector-grammar",
+    "probe:bar-clip": "tsx src/cli/bar-clip-probe.ts",
     "verify:assembly": "tsx src/cli/assembly-verify.ts",
     "smoke:assembly": "tsx src/cli/assembly-smoke.ts",
     "astra:case": "tsx src/cli/astra-case.ts",

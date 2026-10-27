@@ -1,0 +1,17 @@
+
+ RUN  v5.0.5 /home/zhuishihen/lego design gpt
+
+ ✓ tests/parts-grammar-core.test.ts (46 tests) 61ms
+ ✓ tests/parts-assembly-connections.test.ts (12 tests) 147ms
+ ✓ tests/parts-grammar-sources.test.ts (11 tests) 3558ms
+   ✓ source-backed canonical connector ingestion (7)
+     ✓ accounts for every source point in the complete real 253-root library without any part-ID mapping list 3430ms
+ ✓ tests/parts-grammar-admission.test.ts (13 tests) 9123ms
+   ✓ source-derived interface grammar admission (13)
+     ✓ the production service works without migration.json and does not relabel grammar admission as executed assembly PASS 8615ms
+
+ Test Files  4 passed (4)
+      Tests  82 passed (82)
+   Start at  13:07:48
+   Duration  9.26s (tests 99%, import 1%, transform 1%)
+

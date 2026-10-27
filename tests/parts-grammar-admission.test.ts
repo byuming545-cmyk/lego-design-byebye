@@ -58,6 +58,28 @@ describe('source-derived interface grammar admission', () => {
     expect(admission.featureSupport.filter(feature => feature.family === 'PIN_HOLE').every(feature => !feature.supported)).toBe(true);
   });
 
+  it('admits the source-declared BAR endpoint but keeps open-shell clips blocked', async () => {
+    const bar = assessGrammarAdmission((await repository.getPart('30374'))!);
+    expect(bar).toMatchObject({ connectable: true, collisionGeometryReady: true, generationEligible: true });
+    expect(bar.featureSupport.find(feature => feature.family === 'BAR')).toMatchObject({ supported: true, ruleIds: ['ldcad-source-declared-bar-clip-v1'] });
+    expect(bar.capability?.ruleIds).toContain('ldcad-source-declared-bar-clip-v1');
+
+    for (const [partId, reason] of [['48729b', 'grammar-collision-non-manifold-boundary'], ['60470b', 'grammar-collision-open-nonplanar-shell']] as const) {
+      const clip = assessGrammarAdmission((await repository.getPart(partId))!);
+      expect(clip.connectable, partId).toBe(true);
+      expect(clip.collisionGeometryReady, partId).toBe(false);
+      expect(clip.generationEligible, partId).toBe(false);
+      expect(clip.reasonCodes, partId).toContain(reason);
+      expect(clip.capability?.allowedConnectionIds, partId).toEqual([]);
+      expect(clip.featureSupport.filter(feature => feature.family === 'CLIP').every(feature => feature.supported), partId).toBe(true);
+      expect(clip.featureSupport.filter(feature => feature.family === 'BAR').length, partId).toBe(partId === '48729b' ? 1 : 0);
+    }
+
+    const ambiguous = (await repository.getPart('2412b'))!;
+    expect(ambiguous.connections.points.filter(point => point.family === 'bar')).toHaveLength(0);
+    expect(assessGrammarAdmission(ambiguous).featureSupport.filter(feature => feature.family === 'BAR')).toHaveLength(0);
+  }, 30_000);
+
   it('requires actual source identity and integrity instead of reported geometry or fixture success flags', () => {
     const wrongIdentity = structuredClone(brick); wrongIdentity.partId = 'test-only-identity-mismatch';
     expect(assessGrammarAdmission(wrongIdentity).generationEligible).toBe(false);

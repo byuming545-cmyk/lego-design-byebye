@@ -40,7 +40,7 @@ describe('source-backed canonical connector ingestion', () => {
     expect(ingestion.unknownInterfaces.some(issue => issue.code === 'unsupported-scaling')).toBe(true);
   });
 
-  it('never turns a pin hole or an equally sized unnamed cylinder into a standard-stud endpoint', async () => {
+  it('never turns a pin hole or an equally sized unnamed cylinder into a standard-stud endpoint, while sourcing a declared Bar from its root description', async () => {
     const part = await native('32000'), result = adaptNativePartConnectors(part);
     const holes = result.connectors.filter(feature => feature.family === 'PIN_HOLE');
     expect(holes.length).toBeGreaterThan(0);
@@ -49,11 +49,12 @@ describe('source-backed canonical connector ingestion', () => {
     const bar = await native('30374');
     expect(bar.connections.points).toHaveLength(1);
     const cylinder = adaptImportedConnection(bar.connections.points[0]);
-    expect(cylinder.family).toBe('GENERIC_SPECIAL');
-    expect(cylinder.unknownFields).toContain('canonicalFamily');
+    expect(cylinder.family).toBe('BAR');
+    expect(cylinder.coverage).toBe('COMPLETE');
+    expect(cylinder.unknownFields).toContain('retention');
     expect(cylinder.slideAllowed).toBe(true);
     expect(cylinder.axialSpanLdu).toEqual([-40, 40]);
-    expect(cylinder.matchingPolicy).toBeNull();
+    expect(cylinder.matchingPolicy).toMatchObject({ ruleId: 'BAR_CLIP', kind: 'SOURCE_DECLARED_FIT' });
   });
 
   it('preserves explicitly colocated independent features and never fabricates a hollow stud centre hole', async () => {

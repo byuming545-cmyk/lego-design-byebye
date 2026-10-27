@@ -1,7 +1,7 @@
 import type { Matrix3, RigidTransform, Vector3 } from '../assembly/types.js';
 
-export const CONNECTOR_SCHEMA_VERSION = 'connector-schema-1';
-export const CONNECTOR_GRAMMAR_VERSION = 'connector-grammar-1';
+export const CONNECTOR_SCHEMA_VERSION = 'connector-schema-2';
+export const CONNECTOR_GRAMMAR_VERSION = 'connector-grammar-2';
 export const CONNECTOR_FAMILIES = [
   'STUD', 'ANTISTUD', 'HOLLOW_STUD', 'BAR', 'BAR_HOLE', 'CLIP', 'PIN', 'PIN_HOLE',
   'AXLE', 'AXLE_HOLE', 'ROUND_HOLE', 'HINGE_FINGER', 'CLICK_HINGE', 'TURNTABLE',
@@ -27,7 +27,7 @@ export type GrammarRuleId = 'C01' | 'BAR_CLIP' | 'BAR_RECEPTACLE' | 'PIN_HOLE' |
 export interface ConnectorMatchPolicy {
   /** This is structured mating evidence, not an ID-based part-pair allowlist. */
   ruleId: GrammarRuleId;
-  kind: 'STANDARD_STUD' | 'VERIFIED_FIT';
+  kind: 'STANDARD_STUD' | 'VERIFIED_FIT' | 'SOURCE_DECLARED_FIT';
   /** A sourced profile/seat identity; equal radii or raw SNAP_GEN groups are insufficient. */
   profileId: string;
   evidenceSourceIds: string[];

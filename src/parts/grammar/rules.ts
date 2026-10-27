@@ -1,17 +1,18 @@
 import { finiteVector, isRotation, normalize, dot, cross, scale, subtract } from '../assembly/math.js';
 import type { Matrix3 } from '../assembly/types.js';
 import { SHADOW_REVISION, SHADOW_SOURCE_ROOT } from '../connections/importer.js';
+import { OFFICIAL_BAR_DESCRIPTION, barClipProfileId } from './sources.js';
 import { deriveJointModel, intersectRanges } from './joints.js';
 import type { Connector, ConnectorFamily, ConnectorProvenance, GrammarCompatibility, GrammarEvaluationOptions, GrammarRuleId } from './schema.js';
 
 export interface ConnectorGrammarRule {
   id: GrammarRuleId; maleFamilies: readonly ConnectorFamily[]; femaleFamilies: readonly ConnectorFamily[];
-  evidenceRequired: 'STANDARD_STUD_SOURCE' | 'VERIFIED_FIT';
+  evidenceRequired: 'STANDARD_STUD_SOURCE' | 'VERIFIED_FIT' | 'SOURCE_DECLARED_FIT';
 }
 /** Rules scale with connection families, never with part-pair count. */
 export const CONNECTOR_GRAMMAR_RULES: readonly ConnectorGrammarRule[] = [
   { id: 'C01', maleFamilies: ['STUD', 'HOLLOW_STUD'], femaleFamilies: ['ANTISTUD'], evidenceRequired: 'STANDARD_STUD_SOURCE' },
-  { id: 'BAR_CLIP', maleFamilies: ['BAR'], femaleFamilies: ['CLIP'], evidenceRequired: 'VERIFIED_FIT' },
+  { id: 'BAR_CLIP', maleFamilies: ['BAR'], femaleFamilies: ['CLIP'], evidenceRequired: 'SOURCE_DECLARED_FIT' },
   { id: 'BAR_RECEPTACLE', maleFamilies: ['BAR'], femaleFamilies: ['BAR_HOLE', 'ROUND_HOLE'], evidenceRequired: 'VERIFIED_FIT' },
   { id: 'PIN_HOLE', maleFamilies: ['PIN'], femaleFamilies: ['PIN_HOLE'], evidenceRequired: 'VERIFIED_FIT' },
   { id: 'AXLE_KEYED', maleFamilies: ['AXLE'], femaleFamilies: ['AXLE_HOLE'], evidenceRequired: 'VERIFIED_FIT' },
@@ -104,12 +105,56 @@ function standardStudSource(feature: Connector, options: GrammarEvaluationOption
   });
 }
 
+function rawProperties(raw: string | null): Record<string, string> {
+  return Object.fromEntries([...(raw ?? '').matchAll(/\[([a-zA-Z][a-zA-Z0-9]*)=([^\]]*)\]/g)].map(match => [match[1].toLowerCase(), match[2].trim()]));
+}
+/** The production BAR_CLIP premise is deliberately narrow: the official root
+ * LDraw description supplies the BAR identity, while LDCad supplies the male
+ * cylinder and female clip seat geometry. Equal radius alone never qualifies. */
+function sourceDeclaredBarClipSource(feature: Connector, options: GrammarEvaluationOptions): boolean {
+  const policy = feature.matchingPolicy;
+  if (!policy || policy.ruleId !== 'BAR_CLIP' || policy.kind !== 'SOURCE_DECLARED_FIT'
+      || policy.profileId !== barClipProfileId(4) || policy.axisRelation !== 'SAME' || policy.seatingOffsetLdu !== 0
+      || !policyEvidence(feature, options, false) || feature.coverage !== 'COMPLETE') return false;
+  if (feature.role === 'MALE') {
+    if (feature.family !== 'BAR' || feature.profile !== 'ROUND' || feature.insertionRangeLdu?.[0] !== 1 || feature.insertionRangeLdu?.[1] !== 8
+        || feature.rotationAllowed !== true || feature.dimensions.radiusLdu !== 4 || feature.dimensions.sections.length !== 1) return false;
+    const section = feature.dimensions.sections[0];
+    if (section.profile !== 'R' || section.radiusLdu !== 4 || !(section.lengthLdu > 0) || feature.dimensions.lengthLdu !== section.lengthLdu) return false;
+    const description = feature.sources.find(source => source.kind === 'LDRAW_PRIMITIVE' && source.line === 1 && !!source.raw && evidenceValid(source, options, false));
+    if (!description || !OFFICIAL_BAR_DESCRIPTION.test((description.raw ?? '').replace(/^0\s+/, '').trim())) return false;
+    return feature.sources.some(source => {
+      const props = rawProperties(source.raw);
+      const tokens = props.secs?.split(/\s+/) ?? [];
+      return source.kind === 'LDCAD_SHADOW' && source.revision === SHADOW_REVISION && !!source.raw && !!source.line
+        && evidenceValid(source, options, false) && /^0\s+!LDCAD\s+SNAP_CYL\b/i.test(source.raw)
+        && props.gender === 'M' && props.id === undefined && props.group === undefined && ['none', 'one'].includes(props.caps ?? '')
+        && tokens.length === 3 && tokens[0] === 'R' && Number(tokens[1]) === 4 && Number(tokens[2]) === section.lengthLdu
+        && (!props.scale || ['none', 'yonly'].includes(props.scale.toLowerCase()));
+    });
+  }
+  if (feature.role === 'FEMALE') {
+    if (feature.family !== 'CLIP' || feature.profile !== 'ROUND' || feature.rotationAllowed !== true
+        || feature.dimensions.radiusLdu !== 4 || feature.dimensions.lengthLdu !== 8 || feature.dimensions.sections.length !== 0
+        || feature.insertionRangeLdu?.[0] !== 1 || feature.insertionRangeLdu?.[1] !== 8) return false;
+    return feature.sources.some(source => {
+      const props = rawProperties(source.raw);
+      return source.kind === 'LDCAD_SHADOW' && source.revision === SHADOW_REVISION && !!source.raw && !!source.line
+        && evidenceValid(source, options, false) && /^0\s+!LDCAD\s+SNAP_CLP\b/i.test(source.raw)
+        && props.radius === '4' && props.length === '8' && props.center === 'true'
+        && props.id === undefined && props.group === undefined
+        && (!props.slide || ['true', 'false'].includes(props.slide)) && (!props.scale || ['none', 'yonly'].includes(props.scale.toLowerCase()));
+    });
+  }
+  return false;
+}
 /** Single-feature recognition certifies a known grammar premise, not a trial
  * against a fabricated mate, and not a collision or physical-build result. */
 export function inspectConnectorSupport(feature: Connector, options: GrammarEvaluationOptions = {}): { supported: boolean; ruleIds: GrammarRuleId[]; reasonCodes: string[] } {
   if (feature.coverage === 'NONE' || feature.confidence === 'UNKNOWN' || feature.confidence === 'HEURISTIC' || !connectorFrame(feature)) return { supported: false, ruleIds: [], reasonCodes: ['connector-evidence-incomplete'] };
   if (feature.matchingPolicy?.ruleId === 'C01' && standardStudSource(feature, options)) return { supported: true, ruleIds: ['C01'], reasonCodes: [] };
-  return { supported: false, ruleIds: [], reasonCodes: [feature.matchingPolicy?.ruleId === 'C01' ? 'standard-stud-source-unverified' : 'family-rule-needs-verified-fit'] };
+  if (feature.matchingPolicy?.ruleId === 'BAR_CLIP' && sourceDeclaredBarClipSource(feature, options)) return { supported: true, ruleIds: ['BAR_CLIP'], reasonCodes: [] };
+  return { supported: false, ruleIds: [], reasonCodes: [feature.matchingPolicy?.ruleId === 'C01' ? 'standard-stud-source-unverified' : feature.matchingPolicy?.ruleId === 'BAR_CLIP' ? 'bar-clip-source-unverified' : 'family-rule-needs-verified-fit'] };
 }
 function status(a: Connector, b: Connector, outcome: GrammarCompatibility['status'], code: string, reason: string, ruleId: GrammarRuleId | null = null): GrammarCompatibility {
   return { status: outcome, ruleId, reasonCodes: [code], reasons: [reason], joint: null, axisRelation: null, insertionRangeLdu: null, allowedAnglesDeg: null,
@@ -133,8 +178,20 @@ export function evaluateConnectorCompatibility(a: Connector, b: Connector, optio
   if (!rule) return status(a, b, 'UNKNOWN', 'family-pair-not-registered', 'There is no registered family rule for this pair; nominal size does not establish either fit or physical incompatibility.');
   const pa = male.matchingPolicy, pb = female.matchingPolicy;
   const fit = rule.evidenceRequired === 'VERIFIED_FIT';
-  if (!pa || !pb || pa.ruleId !== rule.id || pb.ruleId !== rule.id || !policyEvidence(male, options, fit) || !policyEvidence(female, options, fit)) return status(a, b, 'UNKNOWN', 'mating-policy-unverified', 'The family is recognised, but its sourced seating/profile policy is not established.', rule.id);
-  if (fit && (pa.kind !== 'VERIFIED_FIT' || pb.kind !== 'VERIFIED_FIT')) return status(a, b, 'UNKNOWN', 'fit-evidence-required', 'This family requires explicit verified fit evidence beyond a source group or radius.', rule.id);
+  const sourceDeclared = rule.evidenceRequired === 'SOURCE_DECLARED_FIT';
+  if (!pa || !pb || pa.ruleId !== rule.id || pb.ruleId !== rule.id) return status(a, b, 'UNKNOWN', 'mating-policy-unverified', 'The family is recognised, but its sourced seating/profile policy is not established.', rule.id);
+  const verifiedFixture = pa.kind === 'VERIFIED_FIT' && pb.kind === 'VERIFIED_FIT';
+  if (sourceDeclared) {
+    if (!policyEvidence(male, options, false) || !policyEvidence(female, options, false)) return status(a, b, 'UNKNOWN', 'mating-policy-unverified', 'The family is recognised, but its sourced seating/profile policy is not established.', rule.id);
+    if (verifiedFixture) {
+      if (!policyEvidence(male, options, true) || !policyEvidence(female, options, true)) return status(a, b, 'UNKNOWN', 'fit-evidence-required', 'A verified-fit override must retain its explicit verified authority.', rule.id);
+    } else if (pa.kind !== 'SOURCE_DECLARED_FIT' || pb.kind !== 'SOURCE_DECLARED_FIT' || !sourceDeclaredBarClipSource(male, options) || !sourceDeclaredBarClipSource(female, options)) {
+      return status(a, b, 'UNKNOWN', 'source-declared-fit-unverified', 'BAR_CLIP requires the pinned official Bar description plus the explicit LDCad male-cylinder and clip-seat directives.', rule.id);
+    }
+  } else if (!policyEvidence(male, options, fit) || !policyEvidence(female, options, fit)) {
+    return status(a, b, 'UNKNOWN', 'mating-policy-unverified', 'The family is recognised, but its sourced seating/profile policy is not established.', rule.id);
+  }
+  if (fit && (!verifiedFixture || pa.kind !== 'VERIFIED_FIT' || pb.kind !== 'VERIFIED_FIT')) return status(a, b, 'UNKNOWN', 'fit-evidence-required', 'This family requires explicit verified fit evidence beyond a source group or radius.', rule.id);
   if (!pa.profileId || pa.profileId !== pb.profileId) return status(a, b, 'INCOMPATIBLE', 'mating-profile-mismatch', 'The evidenced interface profile/seat identities differ.', rule.id);
   if (pa.axisRelation !== pb.axisRelation || pa.seatingOffsetLdu !== pb.seatingOffsetLdu || !Number.isFinite(pa.seatingOffsetLdu)) return status(a, b, 'UNKNOWN', 'seating-policy-conflict', 'Sources disagree on axial relation or seating origin.', rule.id);
   if (rule.id === 'GENERIC_GROUP' && (!male.compatibilityGroup || male.compatibilityGroup !== female.compatibilityGroup)) return status(a, b, 'INCOMPATIBLE', 'generic-group-mismatch', 'A verified generic fit additionally requires the same compatible group.', rule.id);
