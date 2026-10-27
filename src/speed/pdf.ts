@@ -43,7 +43,7 @@ function summary(step: SpeedBuildStep): string {
 }
 
 /** Reuse the proven V0.1 layout while preserving Speed's canonical, per-step snapshots. */
-export async function buildSpeedInstructionsPdf(candidate: VehicleCandidate, inventory: SpeedInventory): Promise<jsPDF> {
+export async function buildSpeedInstructionsPdf(candidate: VehicleCandidate, inventory: SpeedInventory, labels: Pick<InstructionsPdfOptions, 'editionLabel' | 'creator' | 'footerLabel' | 'readingGuide'> = {}): Promise<jsPDF> {
   const checks = [candidate.validation, candidate.validation.inventory, candidate.validation.collision, candidate.validation.connection, candidate.validation.wheels, candidate.validation.structure];
   if (checks.some(check => !check.valid)) throw new Error('车辆尚未通过验证，无法导出最终拼搭说明书。');
   if (!candidate.steps.length) throw new Error('当前车辆尚未生成拼搭步骤，请先完成说明书生成。');
@@ -80,12 +80,13 @@ export async function buildSpeedInstructionsPdf(candidate: VehicleCandidate, inv
     validation: { valid: candidate.validation.valid, errors: candidate.validation.errors, warnings: candidate.validation.warnings },
     steps,
     inventory: {
-      setNumber: setSources.length ? setSources.map(source => source.setNumber).join(' + ') : hasCustomSources ? '无套装来源（用户自报散件）' : inventory.setNumber,
+      setNumber: inventory.setNumber === 'virtual-automotive-palette' ? '自由设计 · 虚拟零件库' : setSources.length ? setSources.map(source => source.setNumber).join(' + ') : hasCustomSources ? '无套装来源（用户自报散件）' : inventory.setNumber,
       name: inventory.name, source: setSources.some(source => source.source === 'rebrickable') || (!setSources.length && inventory.source === 'rebrickable') ? 'rebrickable' : 'mock', sourceLabel: inventory.sourceLabel,
       items: [], warnings: inventory.warnings,
     },
   };
   const options: InstructionsPdfOptions = {
+    jpegQuality: 0.7,
     editionLabel: 'Speed Creative · V0.2',
     creator: 'BRICKLAB Speed Creative V0.2',
     footerLabel: 'BRICKLAB  /  Speed Creative 拼搭说明书',
@@ -101,6 +102,7 @@ export async function buildSpeedInstructionsPdf(candidate: VehicleCandidate, inv
     stepSummary: step => summary(sources.get(step)!),
     stepPartsHeading: step => sources.get(step)!.type === 'attach' ? '已拼子组件内容（不重复取件）' : '本步所需零件',
     emptyPartsText: () => '本步无需领取新零件。',
+    ...labels,
   };
   return buildInstructionsPdf(result, options);
 }

@@ -1,0 +1,362 @@
+{
+  "schemaVersion": 1,
+  "caseId": "PART-29115",
+  "category": "HOLLOW_GEOMETRY",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "29115",
+      "ldrawId": "29115",
+      "identitySystem": "ldraw",
+      "sourceDigest": "a7eaa1fd2c2ffaca4930b83a271cb6887ae0a3e052c30fc93ed3079330047649",
+      "geometryHash": "46a6bf6698a24ce1e58e073e549bb16f2efd0650fcbf4141064d37b88b4cfc99",
+      "connectionMetadataHash": "b42691d5d9e7aab53a5db5d9cda4d447e542fc9ab9f4e07ca176564418569ea2"
+    }
+  ],
+  "affectedPhysicalInterfaces": [
+    "02d5dbda13482ff8db8f348137432e120b769e21e8dce7624a84fb4ef0f03209",
+    "b634658155941f88d0bf50e7d438e8d86974099a346be845f0052486795bbb8a",
+    "57f7ec2388849d8e6c949d0d2d48259dec20130a7f66291a2ada458c4dfdd7e8",
+    "1d5e57c96fe817abdb8bda6d5e90a27974d06aad8672c1e2aaca29df85bc930b",
+    "bec2810d0136394430da7d3aee035bc2cae84eab0fb342d48b65e3b8f9122ba2",
+    "cd6cfd6e5f2bcee35bbac1ce1c6b7cc3fedfffd2dd2710c4ff5ed0e7d5f92202",
+    "2bf46ba2a2e2b8987b1060246e32582066c21c775a195d8e9906f6c8243f4f0e",
+    "95152b6813d87f29c99565818dd7ce705fb3869fc6ac041fb6b27cdeb59bf97e",
+    "110347fbc2b350fcf63ec1ac198bc7538b8cf2c05b3ebbfd569f1a4fe018150b",
+    "26bfa967967bf1dfc2a03a9be68ab189a8e8b3a3222c19f5c8ace0ca4bdd8d56",
+    "586a43dc780b70552d2fdd422201545e322eb9090dc27dffa205c3ee6f69f700",
+    "a93cbcfc475156ce03f775793fb2854ea35ec19d312afebb11cf5cce101c0a87",
+    "0e508539c168d5f300ea252a45226b0441aa4b4500222dc86100cddc197bcbd0",
+    "6ab81fc9051bccfe4bd1f1c59dfd10f3c17aabb59743e3ab0d4f987b3d6b0ba6",
+    "e7fc041bc8802e99c73731c7825c87d9fe02e37f634ccc284116a49ecd95ff0d",
+    "3ce1f35d4e79d92d691135d0cf8c8c1eb4e29d9efcac1d181a498aa802f6d5a8",
+    "1e297ed253ed3973e505baab994c061127996819ac1b765ccece3d31ec29bda5",
+    "d8c99784b1264c25a215ca171c122d744c1553c236808e42b4ef88a65427590d",
+    "7de4e3f7b217d7d311c7eef938b63ce8c7ae8d3588303a0c1806bda460ba57c4",
+    "324a9c96b3cd07dd9e9c6eaa99209d2d323e33498137bd13179a72c88ce17a5c",
+    "0cabb54688ebaef2349c64330c5d8127e4fb42cef7dd27edc4b2eaf234ec5f3a",
+    "957d21819084d40b455f5970684b085b635cd3dde762dd6adf68366fa0663d99",
+    "161e1e1520c00f622366f21b308d51d25e31ebe392b70bf3554feac7421f5f34",
+    "30a3cfe61087e079a90cf362ddfe4ee19e88f5c1c3f4c69e7b9d5bd500ea1078",
+    "4d844a57d98ce40b87120d98af7e854cad788a225297c61096cc047c6bb371f6",
+    "036541923e865c43c578cd937a67ed66d9da69efe0a698848d3c2c68918f3b85",
+    "1493169354638d0c21de09e02419dd58cf9b7029567afc676264be796c009004",
+    "913a0401da60e5794ab8aea85d40e6f52533e2fe6361620358a57a33b7402648",
+    "8db17d68cbc791f1785fd960370d2c1cbdf0693413ba42c27851ee9c7dc5c8d2",
+    "64ac599730ddc415b49903d4df3195a9595c9bf195fdd2614d4950bb4fceb287",
+    "b28bfc4073c9274f1648360b5162241d3e17a38ee57069a174f1788af18ceef8",
+    "5012c0ee5e59028a3f95c992671d20ed7be64918d80f4d065918afea4167a47f",
+    "17c345ed0021102f098c842498c49bb244cbbf151b8e3288cce5e6e8b891f476",
+    "cd4081462106e66d6417b4e82f4855d3c76c0975a43041e00f6899daa80a9ba1",
+    "6f0c03b49106dc9e9b04f9261607a630c10a85ef443f066139295ebd103e575f",
+    "de14ecdd02e53c8445c2bf67ee1552464ef7bebc26061bc42d5a8844c8654a0f",
+    "718e1b652b02c63fa052427229f791c8a171d5c062594e8a1518ebd060a77819",
+    "673f862bc5a39971434731032656bb20f3fde530f7cce7e53927778a5f28475d",
+    "c652bd58835ab97fb77161185148ceb533a97e814ccec72a66a71c7ac523cc22",
+    "2eb98811fd7beac1c54aae8a244d4521f6c7ae54281f8eb595df85a68ac1033b",
+    "f7152482893c5e2c3566306b1144a0214bc4c456d769039c625bfd81e58fe694",
+    "a2b3e90cf90cd0662756e82500d5971540542e8f9b9940bfd3fc4bfb7713622c",
+    "17025ee82dc316da034e0316344c4a5ef3507294dc266ef7985c45474e43b01f",
+    "f047e22a3b8ee5db09934313a4d24936134ff3d6b782ad31bfefb4a3cbe3dbcd",
+    "6cd9a98f9ddddfc9a86456167692b90e8527f04e5697d4067ad087eb06d5297b",
+    "df7b180998ce14becb0cf8c095d03ad14298f43a7ad39083d96e8a30cd0ddf0c",
+    "11781d221b2185e2997d7a376d3392e10ae079aa3e43b96708bbd0114010e796",
+    "0937f38e35ffe4a597ba854a510d24ba3f749f14efda76f129196d5256720bf1",
+    "f3eb54476ad82c4ca1e4f33c6dba4e29b98266a2b69c811e7d0d564f25e5ea9a",
+    "1383a4986d6df0a2290431f0b5c38f46606f416186d924700dac6139a0b39a8e",
+    "aab7abe64173311b9b816f133454d17f154f90af0332f6e625af1d18b55b2c9f",
+    "75ee56db0088834ea0a123a4bf87cf65335b2b3bf1893ace8ef39fdeda262723",
+    "340a13d14eb901b816249268256fca3de0700af5114640c2338612d775873a93",
+    "f62be58363b4e8b24aee49958c5c4633b5e282990c88d278b74ecf8f034887f6",
+    "c8b3586ad81203a1bfbb6bd83da0009e79ce160929c159cabd60859103409065",
+    "0a76e61e377316ca014d1a0c75a62475ceb5326fb467b8340a775a691f7bba1a",
+    "1f52373020151b96bc8a65fb0be2db9f922bae577ddd5476576a4849ec889c81",
+    "e6ee410938683544f57ec35a84898d9eaab6728743608ead2cb0ba36e7dc47ec",
+    "3044d7793165b8ceb1a2dfd7215ebbe13d735c3ef2fdf23bf9c5bd8dad011ff8",
+    "8145b5f0a4cce62ca115072ae40662cb6d9b6de33d658af15a74343f0ccbcc24",
+    "f9592bd888419f67d0f445858e23be4b536f48c14e95d44a23268645bee2612b"
+  ],
+  "connections": [
+    {
+      "id": "parts/s/29115s01.dat:9:5",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "F",
+      "position": [
+        10,
+        24,
+        -30
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "F",
+        "caps": "one",
+        "secs": "R 6 4",
+        "pos": "20 24 10",
+        "grid": "C 2 C 5 20 20"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/s/29115s01.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "af92fefdf85d16b753097b7376119afc70520aee28e3d37595fac3945c4d57e1",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/29115s01.dat",
+        "line": 9,
+        "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 6 4] [pos=20 24 10] [grid=C 2 C 5 20 20]",
+        "transforms": [
+          {
+            "file": "parts/29115.dat",
+            "line": 14,
+            "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\29115s01.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    },
+    {
+      "id": "parts/s/29115s01.dat:9:6",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "F",
+      "position": [
+        10,
+        24,
+        -10
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "F",
+        "caps": "one",
+        "secs": "R 6 4",
+        "pos": "20 24 10",
+        "grid": "C 2 C 5 20 20"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/s/29115s01.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "af92fefdf85d16b753097b7376119afc70520aee28e3d37595fac3945c4d57e1",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/29115s01.dat",
+        "line": 9,
+        "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 6 4] [pos=20 24 10] [grid=C 2 C 5 20 20]",
+        "transforms": [
+          {
+            "file": "parts/29115.dat",
+            "line": 14,
+            "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\29115s01.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": {
+    "rotation": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "translation": [
+      0,
+      0,
+      0
+    ]
+  },
+  "transformStatus": "SOURCE_IDENTITY",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "blocked",
+    "reasonCodes": [
+      "branched-native-boundary"
+    ],
+    "details": {
+      "reason": "The source mesh has open/branched boundary chains."
+    }
+  },
+  "replay": {
+    "kind": "proxy",
+    "partId": "29115"
+  },
+  "reproductionCommand": "npm run astra:case -- PART-29115",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/1-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/2-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/2-4cylo.dat",
+    "data/parts-foundation/ldraw/files/p/2-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/2-4ring3.dat",
+    "data/parts-foundation/ldraw/files/p/2-4stud4.dat",
+    "data/parts-foundation/ldraw/files/p/3-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/4-4cylo.dat",
+    "data/parts-foundation/ldraw/files/p/4-4cyls.dat",
+    "data/parts-foundation/ldraw/files/p/4-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ndis.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring2.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring3.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring7.dat",
+    "data/parts-foundation/ldraw/files/p/5-16cyli.dat",
+    "data/parts-foundation/ldraw/files/p/5-16cylo.dat",
+    "data/parts-foundation/ldraw/files/p/5-16edge.dat",
+    "data/parts-foundation/ldraw/files/p/rect.dat",
+    "data/parts-foundation/ldraw/files/p/rect2a.dat",
+    "data/parts-foundation/ldraw/files/p/rect2p.dat",
+    "data/parts-foundation/ldraw/files/p/rect3.dat",
+    "data/parts-foundation/ldraw/files/p/stud.dat",
+    "data/parts-foundation/ldraw/files/p/stud2a.dat",
+    "data/parts-foundation/ldraw/files/p/stud2s2.dat",
+    "data/parts-foundation/ldraw/files/p/stud2s2e.dat",
+    "data/parts-foundation/ldraw/files/p/stud4.dat",
+    "data/parts-foundation/ldraw/files/p/stud4a.dat",
+    "data/parts-foundation/ldraw/files/p/stud4od.dat",
+    "data/parts-foundation/ldraw/files/p/stug-2x2.dat",
+    "data/parts-foundation/ldraw/files/p/stug-4x4.dat",
+    "data/parts-foundation/ldraw/files/p/stug4-1x3.dat",
+    "data/parts-foundation/ldraw/files/parts/29115.dat",
+    "data/parts-foundation/ldraw/files/parts/s/29115s01.dat",
+    "data/parts-foundation/shadow/files/p/stud4.dat",
+    "data/parts-foundation/shadow/files/p/stud4od.dat",
+    "data/parts-foundation/shadow/files/p/stud2a.dat",
+    "data/parts-foundation/shadow/files/parts/s/29115s01.dat",
+    "data/parts-foundation/shadow/files/p/stud.dat",
+    "data/parts-foundation/shadow/files/parts/29115.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [
+    {
+      "reasonCodes": [
+        "collision-proxy-branched-native-boundary"
+      ],
+      "reasons": [
+        "The source mesh has open/branched boundary chains."
+      ],
+      "sourceChecks": [
+        {
+          "name": "source-integrity",
+          "outcome": "passed",
+          "reason": "Pinned native geometry and every source-backed connection file are hashed and licensed."
+        },
+        {
+          "name": "collision",
+          "outcome": "blocked",
+          "reason": "The source mesh has open/branched boundary chains."
+        }
+      ]
+    }
+  ],
+  "attemptsAlreadyMade": [
+    "Loaded and fingerprinted the actual pinned native source.",
+    "Ran the current per-part migration source/fixture prerequisites."
+  ],
+  "whySolStopped": "Further progress requires missing source semantics or complex solid/retention rules; no ad hoc geometry or collision exception was introduced.",
+  "diagnosticOnly": true
+}

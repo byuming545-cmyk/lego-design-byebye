@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 1,
+  "caseId": "PART-54096",
+  "category": "HOLLOW_GEOMETRY",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "54096",
+      "ldrawId": "54096",
+      "identitySystem": "ldraw",
+      "sourceDigest": "b937e5b54d204a114025d67a1efafc502c84c1631d96203020be2dcc7c8141d4",
+      "geometryHash": "57a8de323bee97648106ed0f49a7d226e58a0549c4f726e8fa3d0948a6703d94",
+      "connectionMetadataHash": "8419f757e7515eec2ea882e647d51a47b3920f2ec1e942aaebc4633c78daf3c2"
+    }
+  ],
+  "affectedPhysicalInterfaces": [
+    "9490f2ee7aa46b2064ae8e330f6788a0132962fd6549529fef4fdab8c1c846f7",
+    "ab37986687fde0ddccbfbc5356f224defded379d8c2428a92e5ff644407269a3",
+    "6bc002629cda81287792a2b6a30c25bac0f221b0edfc3c682ab969af3e05d3e0",
+    "249129d674a2beb556a129e72f5775da78a17939fb7297e833f2e50ae9ce5d68",
+    "235278c37ad25b31bf44d13c5cd801e529e5a8375be59007950956e54c55b3e0",
+    "d0128ab0d09400827fda0e157eada51450e64161f31e600212941485a08a44f3",
+    "4e2b9f7dacd180402c1ee60b15758c77f22da081dba4c07328333f8735b74132",
+    "262ee4967bf33f052b57508a829e26815918cd3a05a077276f2367ad2280bf14",
+    "2a0b5814ffc99216588d22b2cf81a836d48f92171e8ec48d1b8b69c3d756286b",
+    "563eabe6d99285eb78d59f8606932492d70febe15a3c12d122793c66b4d9222b",
+    "369d1841868b67c79ecc842825ac2a0da4e962471d7cd3f3e5fc13f244ca13a7",
+    "da3e39f0cdb8c6af6c6ff5e83f16247a74e977ab5992fde9bc3deee7a9d5a9c6",
+    "528e1e3dfa5d8fa3e2f6df8e86b7364ffea54be25d90aa0ac4fd20631b88bd0c",
+    "9d119aeab324f674582d880b295d81fc746362af2de7aabe3e865f93053399dd",
+    "cb8153fb004b2974bee6d0daac548d6a86ae686973075fbcbb1c43296797d52f",
+    "dd78b02a5c962588a86306c84ad9d4262927a15c38846802e693b79bc251abf4",
+    "278c30a48098afede630f82a8d8ca55645d2f80ac14a15a77895d30e57321382",
+    "0ffc6fa5e1082299cffc119ea2d5c4073e6d543b0e06ddbbe9246d99db46a71a",
+    "a3d93e0f9e27fb7161168bd5fe1fcd378321765785501494ff8a23709ca0749a",
+    "01fc6cf79f367cf52447cc8ec8d259ae13c67471225b0e156fb3f0736f8fb733",
+    "cc813c729bca53640e3be13756f633a7e14897f9900f29b3ad22f076573d4690",
+    "44919e4ab660f8f6772931b234177df787a4354b23ac3f353b898f65fd34f769",
+    "6648baa5ee6c333e3300c9e9d03844bf440c9b892b9627eba5175d8ba89096a6",
+    "c9bc7551176250e493e7da81d50afff970489d1a308aa18c42f70926e3da3cac",
+    "235f37142ef4e8b6d24c092eabc1d1a158cc9403e4085e82ec9817db6cbc2140",
+    "d162014d44785049941bdb310642cf8089fa389ba121ec3e9841d18a193529dd",
+    "09c6c632f05dba019256f57224cd8da58fb4ada213b08d250abfe240c35e7b8f",
+    "fbdd2c9c5882709c7ab42d217aba49c4e248fc0d5c68e77784c9612fba3916ac",
+    "ba1234dbeee344b12788a687b26b4463eae42835556f6347866e60ff154e3847",
+    "526a7bea11506ca21bc148019e4a074679c21efe6caf9f611c6f134853013528",
+    "2c5c3b4232d656938813d93895de41ea4427cc71ff2f0dd776aaed833ec44a4a",
+    "d5513730078d6a29763cd644a72a3cca2fc33fc0d26112bb188b1318da9a1c2b",
+    "307966a48f9508ec482839e95a42d96635c3da1d1cf123a1258e7333c5bafa88",
+    "b0ca13a866eee938733b1e606518f3b085ee074d935eba78625622d8b1d8e8f6",
+    "b0769b2bc9c6a8b2a43c5acaf46a7f338197843ab6f1199aaeff417650d73310",
+    "03ba57d6052f899cf76d5821ce5a002d39d22a6959b422f411b5079c79eb3cea",
+    "429146657dc0620f0ff7cf7ccbfbd39d536aa920a3928fc5ecd49c50d5041e45",
+    "0f8250086b9a099090232d53563374bd2d1a60acfdc0322f2a99017f50b6f035",
+    "6d0187dbc27c456a3e388bee9a62c77ed4d76d22a1ee32d1b38615c8c52c5f1d",
+    "e7f47aa1c309b2a83b7171575f1c54a321d687f655f60290743fe65606189e6d",
+    "4df4da2463a5dd7865c8e77695c80d21603a582d3718901b520986ecefececaa",
+    "230dcf522534c30215e2c1d139749cfa109fafb29d3a3b5c0cfed57424832d52",
+    "04a3f00a4c6e57f5e776a38bf3ea315910a7fe62bc0da3a5af68e7de471af8ea",
+    "c7d417ca1c57baf1aaa1eda5543637d669e430b040588ef64c01a14658e08a7c",
+    "6d5ae522ee65cddc442c2d426fb5864d4a4c88531f074d8953d051b37706feac",
+    "fa6d1f496e2b8f2780dafc27e5b2a1ae941365b04850eb2f044270bf976004f0",
+    "e92d7ded757ebba6330bc157e54431e2bf81a88cd6593e2eaa05e479a2afa495",
+    "dd081142de8225dc38d1812f91731faae3fb0619dcceefe3bbf87339062ba0a7",
+    "aef0ec22eb66bade4bef56f246744fd9c0253cb553411bd6f49497d28779d003",
+    "61bb9ddd3b712c94a69f53df7853294f9afb21a9a573a264e53b25f0160ec2e3",
+    "5e25c9b46e6055af161f0a34a580dce1a7419f9c66faac5ac8c96b12af537068",
+    "c1c75de706a2c16c07e9802ad4483d02ebe02b4e406e7ce12ce882a3d386af6e",
+    "cfe3eaabf36253dd1dd458b95d851c27827f3423fc7f5abfbc3305c462debfdc",
+    "453fe9ebb098edd5b918724e668b3c4ffb24a84f8680efec9b044fa22a56c009",
+    "7e8b600b7ae24a1f7b411eb1236b01a7c8edecfe9cdc18341088ca01a7d71bfc",
+    "c2905bf32dee94df44bf3e69efb60218730720e2c6af893d57ef7016d8848f94"
+  ],
+  "connections": [
+    {
+      "id": "p/connhol2.dat:8:0",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "F",
+      "position": [
+        20,
+        10,
+        70
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 8,
+          "length": 2
+        },
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 16
+        },
+        {
+          "profile": "R",
+          "radius": 8,
+          "length": 2
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "F",
+        "caps": "none",
+        "secs": "R 8 2   R 6 16   R 8 2",
+        "center": "true",
+        "slide": "true"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "p/connhol2.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "5a9b8fe861444088dec2c30a8b5851873c7a859fd451900dfff06b9efe552979",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhol2.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=none] [secs=R 8 2   R 6 16   R 8 2] [center=true] [slide=true]",
+        "transforms": [
+          {
+            "file": "parts/54096.dat",
+            "line": 14,
+            "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\54096s01.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "file": "parts/s/54096s01.dat",
+            "line": 118,
+            "directive": "1 16 20 10 70 1 0 0 0 0 1 0 1 0 connhol2.dat",
+            "position": [
+              20,
+              10,
+              70
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    },
+    {
+      "id": "parts/s/54096s01.dat:8:1",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "F",
+      "position": [
+        10,
+        24,
+        70
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "S",
+          "radius": 6,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "F",
+        "caps": "one",
+        "secs": "S 6 4",
+        "pos": "10 24 70",
+        "grid": "3 1 20 0"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/s/54096s01.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "8e3641d2bdc6bc5f5fd82f4667e32fe4939089ba5ffa9818a0137eccf0287d61",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/54096s01.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=10 24 70] [grid=3 1 20 0]",
+        "transforms": [
+          {
+            "file": "parts/54096.dat",
+            "line": 14,
+            "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\54096s01.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": {
+    "rotation": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "translation": [
+      0,
+      0,
+      0
+    ]
+  },
+  "transformStatus": "SOURCE_IDENTITY",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "blocked",
+    "reasonCodes": [
+      "branched-native-boundary"
+    ],
+    "details": {
+      "reason": "The source mesh has open/branched boundary chains."
+    }
+  },
+  "replay": {
+    "kind": "proxy",
+    "partId": "54096"
+  },
+  "reproductionCommand": "npm run astra:case -- PART-54096",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/1-4cylc.dat",
+    "data/parts-foundation/ldraw/files/p/1-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/1-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/1-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/1-4ndis.dat",
+    "data/parts-foundation/ldraw/files/p/2-4cylc.dat",
+    "data/parts-foundation/ldraw/files/p/2-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/2-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/2-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/2-4ndis.dat",
+    "data/parts-foundation/ldraw/files/p/4-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/4-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ndis.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring2.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring3.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring8.dat",
+    "data/parts-foundation/ldraw/files/p/box2-5.dat",
+    "data/parts-foundation/ldraw/files/p/connhol2.dat",
+    "data/parts-foundation/ldraw/files/p/cylj4x8.dat",
+    "data/parts-foundation/ldraw/files/p/peghole.dat",
+    "data/parts-foundation/ldraw/files/p/rect.dat",
+    "data/parts-foundation/ldraw/files/p/rect1.dat",
+    "data/parts-foundation/ldraw/files/p/rect2a.dat",
+    "data/parts-foundation/ldraw/files/p/rect2p.dat",
+    "data/parts-foundation/ldraw/files/p/rect3.dat",
+    "data/parts-foundation/ldraw/files/p/stud.dat",
+    "data/parts-foundation/ldraw/files/p/stud2.dat",
+    "data/parts-foundation/ldraw/files/p/stud3a.dat",
+    "data/parts-foundation/ldraw/files/p/stug-2x2.dat",
+    "data/parts-foundation/ldraw/files/parts/54096.dat",
+    "data/parts-foundation/ldraw/files/parts/s/54095s01.dat",
+    "data/parts-foundation/ldraw/files/parts/s/54096s01.dat",
+    "data/parts-foundation/shadow/files/p/connhol2.dat",
+    "data/parts-foundation/shadow/files/parts/s/54096s01.dat",
+    "data/parts-foundation/shadow/files/parts/s/54095s01.dat",
+    "data/parts-foundation/shadow/files/p/stud.dat",
+    "data/parts-foundation/shadow/files/p/stud2.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [
+    {
+      "reasonCodes": [
+        "collision-proxy-branched-native-boundary"
+      ],
+      "reasons": [
+        "The source mesh has open/branched boundary chains."
+      ],
+      "sourceChecks": [
+        {
+          "name": "source-integrity",
+          "outcome": "passed",
+          "reason": "Pinned native geometry and every source-backed connection file are hashed and licensed."
+        },
+        {
+          "name": "collision",
+          "outcome": "blocked",
+          "reason": "The source mesh has open/branched boundary chains."
+        }
+      ]
+    }
+  ],
+  "attemptsAlreadyMade": [
+    "Loaded and fingerprinted the actual pinned native source.",
+    "Ran the current per-part migration source/fixture prerequisites."
+  ],
+  "whySolStopped": "Further progress requires missing source semantics or complex solid/retention rules; no ad hoc geometry or collision exception was introduced.",
+  "diagnosticOnly": true
+}

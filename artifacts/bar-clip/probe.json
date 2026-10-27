@@ -1,0 +1,727 @@
+{
+  "schemaVersion": "bar-clip-probe-1",
+  "generatedAt": "2026-10-27T05:21:23.768Z",
+  "purpose": "Source-backed Bar/Clip evidence probe. Model generation/export/reimport is recorded separately in generation-report.json.",
+  "features": {
+    "30374": [
+      {
+        "id": "parts/30374.dat:8:0",
+        "family": "BAR",
+        "role": "MALE",
+        "profile": "ROUND",
+        "gender": "M",
+        "radiusLdu": 4,
+        "lengthLdu": 80,
+        "insertionRangeLdu": [
+          1,
+          8
+        ],
+        "slideAllowed": true,
+        "rotationAllowed": true,
+        "angleLimitsDeg": [
+          0,
+          360
+        ],
+        "coverage": "COMPLETE",
+        "policy": {
+          "ruleId": "BAR_CLIP",
+          "kind": "SOURCE_DECLARED_FIT",
+          "profileId": "ldcad-source-declared-round-bar-clip-r4-v1",
+          "evidenceSourceIds": [
+            "shadow:parts/30374.dat:8:ea72990127a54f62bc09430581e249151ff99d58c4f34e4bbcd53fcdcc6e640a",
+            "ldraw:parts/30374.dat:1:45d72e623efabbb846475a19ace99d0673962624e21175a0ec23c27901d19af6"
+          ],
+          "axisRelation": "SAME",
+          "seatingOffsetLdu": 0
+        },
+        "sourceIds": [
+          "shadow:parts/30374.dat:8:ea72990127a54f62bc09430581e249151ff99d58c4f34e4bbcd53fcdcc6e640a",
+          "ldraw:parts/30374.dat:1:45d72e623efabbb846475a19ace99d0673962624e21175a0ec23c27901d19af6"
+        ],
+        "description": {
+          "text": "Bar  4L Lightsaber Blade",
+          "line": 1,
+          "path": "parts/30374.dat",
+          "sha256": "45d72e623efabbb846475a19ace99d0673962624e21175a0ec23c27901d19af6"
+        }
+      }
+    ],
+    "48729b": [
+      {
+        "id": "parts/48729b.dat:8:0",
+        "family": "CLIP",
+        "role": "FEMALE",
+        "profile": "ROUND",
+        "gender": "F",
+        "radiusLdu": 4,
+        "lengthLdu": 8,
+        "insertionRangeLdu": [
+          1,
+          8
+        ],
+        "slideAllowed": null,
+        "rotationAllowed": true,
+        "angleLimitsDeg": [
+          0,
+          360
+        ],
+        "coverage": "COMPLETE",
+        "policy": {
+          "ruleId": "BAR_CLIP",
+          "kind": "SOURCE_DECLARED_FIT",
+          "profileId": "ldcad-source-declared-round-bar-clip-r4-v1",
+          "evidenceSourceIds": [
+            "shadow:parts/48729b.dat:8:4337ee7e407f822d3d60b17dcd5baf973a0adc5fa12569cfee0043f49d968dc0"
+          ],
+          "axisRelation": "SAME",
+          "seatingOffsetLdu": 0
+        },
+        "sourceIds": [
+          "shadow:parts/48729b.dat:8:4337ee7e407f822d3d60b17dcd5baf973a0adc5fa12569cfee0043f49d968dc0"
+        ],
+        "description": {
+          "text": "Bar  1.5L with Clip with Truncated Sides and Hole in Shaft",
+          "line": 1,
+          "path": "parts/48729b.dat",
+          "sha256": "37612ae6ff820fedbd91c68d678979349dca0cab75d307f560861729ff3ce06a"
+        }
+      },
+      {
+        "id": "parts/48729b.dat:9:1",
+        "family": "BAR",
+        "role": "MALE",
+        "profile": "ROUND",
+        "gender": "M",
+        "radiusLdu": 4,
+        "lengthLdu": 21,
+        "insertionRangeLdu": [
+          1,
+          8
+        ],
+        "slideAllowed": true,
+        "rotationAllowed": true,
+        "angleLimitsDeg": [
+          0,
+          360
+        ],
+        "coverage": "COMPLETE",
+        "policy": {
+          "ruleId": "BAR_CLIP",
+          "kind": "SOURCE_DECLARED_FIT",
+          "profileId": "ldcad-source-declared-round-bar-clip-r4-v1",
+          "evidenceSourceIds": [
+            "shadow:parts/48729b.dat:9:4337ee7e407f822d3d60b17dcd5baf973a0adc5fa12569cfee0043f49d968dc0",
+            "ldraw:parts/48729b.dat:1:37612ae6ff820fedbd91c68d678979349dca0cab75d307f560861729ff3ce06a"
+          ],
+          "axisRelation": "SAME",
+          "seatingOffsetLdu": 0
+        },
+        "sourceIds": [
+          "shadow:parts/48729b.dat:9:4337ee7e407f822d3d60b17dcd5baf973a0adc5fa12569cfee0043f49d968dc0",
+          "ldraw:parts/48729b.dat:1:37612ae6ff820fedbd91c68d678979349dca0cab75d307f560861729ff3ce06a"
+        ],
+        "description": {
+          "text": "Bar  1.5L with Clip with Truncated Sides and Hole in Shaft",
+          "line": 1,
+          "path": "parts/48729b.dat",
+          "sha256": "37612ae6ff820fedbd91c68d678979349dca0cab75d307f560861729ff3ce06a"
+        }
+      }
+    ],
+    "60470b": [
+      {
+        "id": "p/clip6.dat:8:3",
+        "family": "CLIP",
+        "role": "FEMALE",
+        "profile": "ROUND",
+        "gender": "F",
+        "radiusLdu": 4,
+        "lengthLdu": 8,
+        "insertionRangeLdu": [
+          1,
+          8
+        ],
+        "slideAllowed": null,
+        "rotationAllowed": true,
+        "angleLimitsDeg": [
+          0,
+          360
+        ],
+        "coverage": "COMPLETE",
+        "policy": {
+          "ruleId": "BAR_CLIP",
+          "kind": "SOURCE_DECLARED_FIT",
+          "profileId": "ldcad-source-declared-round-bar-clip-r4-v1",
+          "evidenceSourceIds": [
+            "shadow:p/clip6.dat:8:a758eab7eccf9126ec377eb831e24a3bb04c5db6a84a35b1b5bfc0a75be7f643"
+          ],
+          "axisRelation": "SAME",
+          "seatingOffsetLdu": 0
+        },
+        "sourceIds": [
+          "shadow:p/clip6.dat:8:a758eab7eccf9126ec377eb831e24a3bb04c5db6a84a35b1b5bfc0a75be7f643"
+        ],
+        "description": {
+          "text": "Plate  1 x  2 with  2 Clips Horizontal (Thick C-Clips)",
+          "line": 1,
+          "path": "parts/60470b.dat",
+          "sha256": "04cb0b662f4d4f9fbe0a5d50a4c285ee318944ff95d9cf02d017fba5360fe31b"
+        }
+      },
+      {
+        "id": "p/clip6.dat:8:4",
+        "family": "CLIP",
+        "role": "FEMALE",
+        "profile": "ROUND",
+        "gender": "F",
+        "radiusLdu": 4,
+        "lengthLdu": 8,
+        "insertionRangeLdu": [
+          1,
+          8
+        ],
+        "slideAllowed": null,
+        "rotationAllowed": true,
+        "angleLimitsDeg": [
+          0,
+          360
+        ],
+        "coverage": "COMPLETE",
+        "policy": {
+          "ruleId": "BAR_CLIP",
+          "kind": "SOURCE_DECLARED_FIT",
+          "profileId": "ldcad-source-declared-round-bar-clip-r4-v1",
+          "evidenceSourceIds": [
+            "shadow:p/clip6.dat:8:a758eab7eccf9126ec377eb831e24a3bb04c5db6a84a35b1b5bfc0a75be7f643"
+          ],
+          "axisRelation": "SAME",
+          "seatingOffsetLdu": 0
+        },
+        "sourceIds": [
+          "shadow:p/clip6.dat:8:a758eab7eccf9126ec377eb831e24a3bb04c5db6a84a35b1b5bfc0a75be7f643"
+        ],
+        "description": {
+          "text": "Plate  1 x  2 with  2 Clips Horizontal (Thick C-Clips)",
+          "line": 1,
+          "path": "parts/60470b.dat",
+          "sha256": "04cb0b662f4d4f9fbe0a5d50a4c285ee318944ff95d9cf02d017fba5360fe31b"
+        }
+      }
+    ],
+    "2412b": [
+      {
+        "id": "parts/2412b.dat:10:2",
+        "family": "GENERIC_SPECIAL",
+        "role": "MALE",
+        "profile": "ROUND",
+        "gender": "M",
+        "radiusLdu": 4,
+        "lengthLdu": 4,
+        "insertionRangeLdu": null,
+        "slideAllowed": null,
+        "rotationAllowed": null,
+        "angleLimitsDeg": null,
+        "coverage": "PARTIAL",
+        "policy": null,
+        "sourceIds": [
+          "shadow:parts/2412b.dat:10:7f009a5099f9f4f380f5fc46a3b469e40cdc2b9a179f4d865bef871c87160947"
+        ],
+        "description": {
+          "text": "Tile  1 x  2 Grille with Groove",
+          "line": 1,
+          "path": "parts/2412b.dat",
+          "sha256": "a7e7b03fc76cad9d94eb7199721b929f95227b1f8a35add5b7c66ee1ba6dca57"
+        }
+      }
+    ]
+  },
+  "admissions": {
+    "30374": {
+      "partId": "30374",
+      "generationEligible": true,
+      "connectable": true,
+      "collisionGeometryReady": true,
+      "reasonCodes": [],
+      "ruleIds": [
+        "ldcad-source-declared-bar-clip-v1"
+      ],
+      "allowedConnectionIds": [
+        "parts/30374.dat:8:0"
+      ]
+    },
+    "48729b": {
+      "partId": "48729b",
+      "generationEligible": true,
+      "connectable": true,
+      "collisionGeometryReady": true,
+      "reasonCodes": [],
+      "ruleIds": [
+        "ldcad-source-declared-bar-clip-v1"
+      ],
+      "allowedConnectionIds": [
+        "parts/48729b.dat:8:0",
+        "parts/48729b.dat:9:1"
+      ]
+    },
+    "60470b": {
+      "partId": "60470b",
+      "generationEligible": true,
+      "connectable": true,
+      "collisionGeometryReady": true,
+      "reasonCodes": [],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1",
+        "ldcad-source-declared-bar-clip-v1"
+      ],
+      "allowedConnectionIds": [
+        "p/stud.dat:8:0",
+        "p/stud.dat:8:1",
+        "p/clip6.dat:8:3",
+        "p/clip6.dat:8:4",
+        "parts/60470b.dat:9:5",
+        "parts/60470b.dat:9:6"
+      ]
+    },
+    "2412b": {
+      "partId": "2412b",
+      "generationEligible": true,
+      "connectable": true,
+      "collisionGeometryReady": true,
+      "reasonCodes": [],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "allowedConnectionIds": [
+        "parts/2412b.dat:9:0",
+        "parts/2412b.dat:9:1"
+      ]
+    }
+  },
+  "pairs": [
+    {
+      "fixedPartId": "30374",
+      "movingPartId": "48729b",
+      "fixedConnectionId": "parts/30374.dat:8:0",
+      "movingConnectionId": "parts/48729b.dat:8:0",
+      "compatibility": {
+        "status": "compatible",
+        "ruleId": "ldcad-source-declared-bar-clip-v1",
+        "connectionType": "bar-clip",
+        "insertionDepthLdu": 8,
+        "allowedTwistsDeg": [
+          0,
+          90,
+          180,
+          270
+        ],
+        "permittedTranslation": "sliding",
+        "reasonCode": "source-declared-bar-clip",
+        "reason": "Pinned official Bar description and LDCad SNAP_CLP seat establish a round axial candidate; collision, retention, stress and physical build remain separate."
+      },
+      "solver": {
+        "status": "solved",
+        "reason": "Source connection anchors and permitted discrete orientations are solved; collision and graph checks remain required.",
+        "candidateCount": 4,
+        "candidateTwistsDeg": [
+          0,
+          90,
+          180,
+          270
+        ]
+      },
+      "collision": {
+        "status": "clear",
+        "reasonCode": "open-surface-seat-clearance",
+        "reason": "All actual open-shell/closed-solid intersections lie inside the source-declared cylindrical seat; no other overlap was found. This is surface clearance, not a closed-solid certificate.",
+        "classification": "OPEN_SURFACE_SEAT_CLEARANCE",
+        "triangleTests": 1314,
+        "closedSourceProxies": false,
+        "openSourceSurfaces": true,
+        "openSurfaceSeatChecked": true,
+        "containmentChecked": false,
+        "completeSurfacePartition": false,
+        "witness": null,
+        "zone": {
+          "center": [
+            0,
+            40,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "radius": 4,
+          "depth": 8,
+          "anchor": [
+            0,
+            40,
+            0
+          ]
+        },
+        "allTwists": [
+          {
+            "twistDeg": 0,
+            "status": "clear",
+            "reasonCode": "open-surface-seat-clearance",
+            "witness": null,
+            "triangleTests": 1314
+          },
+          {
+            "twistDeg": 90,
+            "status": "clear",
+            "reasonCode": "open-surface-seat-clearance",
+            "witness": null,
+            "triangleTests": 1314
+          },
+          {
+            "twistDeg": 180,
+            "status": "clear",
+            "reasonCode": "open-surface-seat-clearance",
+            "witness": null,
+            "triangleTests": 1314
+          },
+          {
+            "twistDeg": 270,
+            "status": "clear",
+            "reasonCode": "open-surface-seat-clearance",
+            "witness": null,
+            "triangleTests": 1314
+          }
+        ],
+        "slideTests": [
+          {
+            "offsetLdu": -36,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -32,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -28,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -24,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -20,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -16,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -12,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -8,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -4,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 0,
+            "status": "clear",
+            "reasonCode": "open-surface-seat-clearance"
+          },
+          {
+            "offsetLdu": 4,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 8,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 12,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 16,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 20,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 24,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 28,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 32,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 36,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          }
+        ]
+      }
+    },
+    {
+      "fixedPartId": "30374",
+      "movingPartId": "60470b",
+      "fixedConnectionId": "parts/30374.dat:8:0",
+      "movingConnectionId": "p/clip6.dat:8:3",
+      "compatibility": {
+        "status": "compatible",
+        "ruleId": "ldcad-source-declared-bar-clip-v1",
+        "connectionType": "bar-clip",
+        "insertionDepthLdu": 8,
+        "allowedTwistsDeg": [
+          0,
+          90,
+          180,
+          270
+        ],
+        "permittedTranslation": "sliding",
+        "reasonCode": "source-declared-bar-clip",
+        "reason": "Pinned official Bar description and LDCad SNAP_CLP seat establish a round axial candidate; collision, retention, stress and physical build remain separate."
+      },
+      "solver": {
+        "status": "solved",
+        "reason": "Source connection anchors and permitted discrete orientations are solved; collision and graph checks remain required.",
+        "candidateCount": 4,
+        "candidateTwistsDeg": [
+          0,
+          90,
+          180,
+          270
+        ]
+      },
+      "collision": {
+        "status": "collision",
+        "reasonCode": "open-surface-contact-outside-seat",
+        "reason": "An open source shell intersects its closed counterpart outside the source-declared cylindrical seat; the local connection zone grants no exemption.",
+        "classification": "OPEN_SURFACE_SEAT_OVERLAP",
+        "triangleTests": 151,
+        "closedSourceProxies": false,
+        "openSourceSurfaces": true,
+        "openSurfaceSeatChecked": false,
+        "containmentChecked": false,
+        "completeSurfacePartition": false,
+        "witness": [
+          -4,
+          80,
+          0
+        ],
+        "zone": {
+          "center": [
+            0,
+            40,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "radius": 4,
+          "depth": 8,
+          "anchor": [
+            0,
+            40,
+            0
+          ]
+        },
+        "allTwists": [
+          {
+            "twistDeg": 0,
+            "status": "collision",
+            "reasonCode": "open-surface-contact-outside-seat",
+            "witness": [
+              -4,
+              80,
+              0
+            ],
+            "triangleTests": 151
+          },
+          {
+            "twistDeg": 90,
+            "status": "collision",
+            "reasonCode": "open-surface-contact-outside-seat",
+            "witness": [
+              0,
+              80,
+              4
+            ],
+            "triangleTests": 151
+          },
+          {
+            "twistDeg": 180,
+            "status": "collision",
+            "reasonCode": "open-surface-contact-outside-seat",
+            "witness": [
+              4,
+              80,
+              0
+            ],
+            "triangleTests": 149
+          },
+          {
+            "twistDeg": 270,
+            "status": "collision",
+            "reasonCode": "open-surface-contact-outside-seat",
+            "witness": [
+              0,
+              80,
+              -4
+            ],
+            "triangleTests": 151
+          }
+        ],
+        "slideTests": [
+          {
+            "offsetLdu": -36,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -32,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -28,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -24,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -20,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -16,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -12,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -8,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": -4,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 0,
+            "status": "collision",
+            "reasonCode": "open-surface-contact-outside-seat"
+          },
+          {
+            "offsetLdu": 4,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 8,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 12,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 16,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 20,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 24,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 28,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 32,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          },
+          {
+            "offsetLdu": 36,
+            "status": "blocked",
+            "reasonCode": "open-surface-zone-required"
+          }
+        ]
+      }
+    },
+    {
+      "fixedPartId": "2412b",
+      "movingPartId": "48729b",
+      "fixedConnectionId": "parts/2412b.dat:10:2",
+      "movingConnectionId": "parts/48729b.dat:8:0",
+      "compatibility": {
+        "status": "unknown",
+        "ruleId": null,
+        "connectionType": "unsupported",
+        "insertionDepthLdu": null,
+        "allowedTwistsDeg": [],
+        "permittedTranslation": null,
+        "reasonCode": "clip-bar-seating-unresolved",
+        "reason": "compatibilityUnknown: clip deformation, bar engagement and insertion path have not been validated."
+      },
+      "solver": {
+        "status": "unknown",
+        "reason": "compatibilityUnknown: clip deformation, bar engagement and insertion path have not been validated.",
+        "candidateCount": 0,
+        "candidateTwistsDeg": []
+      },
+      "collision": null
+    }
+  ]
+}

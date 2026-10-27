@@ -1853,9 +1853,11 @@ footer button {
 }
 @media (max-width: 680px) {
   .site-header {
-    height: 72px;
-    padding: 0 19px;
-    gap: 14px;
+    height: auto;
+    min-height: 72px;
+    padding: 14px 19px 0;
+    gap: 10px 14px;
+    flex-wrap: wrap;
   }
   .brand {
     font-size: 25px;
@@ -1870,12 +1872,19 @@ footer button {
     width: 21px;
   }
   .site-header nav {
+    order: 2;
+    flex-basis: 100%;
+    min-width: 0;
+    height: 36px;
+    margin-left: 0;
+    justify-content: space-between;
     gap: 14px;
   }
   .nav-link {
     font-size: 10px;
   }
   .version-button {
+    margin-left: auto;
     font-size: 9px;
     gap: 5px;
   }
@@ -2157,3 +2166,4 @@ footer button {
     scroll-behavior: auto !important;
   }
 }
+[hidden] { display: none !important; }

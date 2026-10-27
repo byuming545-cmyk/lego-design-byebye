@@ -1,0 +1,153 @@
+{
+  "schemaVersion": "pin-hole-verification-1",
+  "verifiedAt": "2026-10-27T14:12:00+08:00",
+  "branch": "codex/pin-pin-hole-source-grammar",
+  "baseCommit": "ffd1d6d",
+  "headCommit": null,
+  "deliveryStatus": "local-only",
+  "rule": {
+    "grammarRuleId": "PIN_HOLE",
+    "nativeRuleId": "ldcad-source-declared-pin-hole-v1",
+    "profileId": "ldcad-source-declared-round-pin-hole-r6-v1",
+    "connectionType": "pin-hole",
+    "evidenceTier": "SOURCE_DECLARED_FIT",
+    "joint": "CYLINDRICAL",
+    "insertionRangeLdu": [
+      1,
+      20
+    ],
+    "nativeTwistsDeg": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "physicalBuildVerified": false
+  },
+  "productionCounts": {
+    "total": 253,
+    "assemblyVerified": 0,
+    "generatable": 104,
+    "blocked": 149,
+    "verifiedInterfaces": 0,
+    "disabledInterfaces": 2540,
+    "testedPhysicalInterfaces": 0,
+    "deferredPhysicalInterfaces": 5020,
+    "deferredRawConnectionIds": 5085,
+    "wheelModulesVerified": 0,
+    "physicalBuildsVerified": 0
+  },
+  "features": {
+    "pin": 3,
+    "pinHole": 24,
+    "newlyEligibleSinceBarClipBaseline": [
+      "3673",
+      "18591"
+    ],
+    "generatedParts": [
+      "3673",
+      "32000"
+    ],
+    "generatedAndReimportedParts": 2,
+    "barReceptaclesFound": 0
+  },
+  "model": {
+    "module": "pin-hole",
+    "moduleName": "\u771f\u5b9e\u96f6\u4ef6\u9500\u5b54\u8fde\u63a5\u6a21\u5757",
+    "placements": 2,
+    "edges": 1,
+    "steps": 2,
+    "parts": [
+      "3673",
+      "32000"
+    ],
+    "edge": {
+      "fixedConnectionId": "parts/3673.dat:10:2",
+      "movingConnectionId": "p/connhole.dat:8:4",
+      "ruleId": "ldcad-source-declared-pin-hole-v1",
+      "twistDeg": 0,
+      "insertionDepthLdu": 20,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "anchor": [
+        0,
+        0,
+        0
+      ]
+    },
+    "exportBytes": 19239,
+    "exportSha256": "c136c0feb3cd9d78a690ae2162d80661925c3cc37c85ed7d25761e3ae929fa04",
+    "modelContentSha256": "26eaf6fe4665cc2fee6d7dfc4c85f0cb0a602e58ff0117c740f8a6d30875d12f",
+    "reimportStatus": "VALID",
+    "reimportReasons": [],
+    "assemblyValidation": {
+      "checked": true,
+      "valid": true,
+      "issues": []
+    },
+    "physicalBuildVerified": false
+  },
+  "collisionProof": {
+    "mode": "open-source-surface",
+    "ruleScope": "PIN_HOLE",
+    "seatRadiusLdu": 8,
+    "seatDepthLdu": 40,
+    "graphInsertionDepthLdu": 20,
+    "seatCentre": "fixed-connection-anchor",
+    "quantizationLdu": 0.002,
+    "openSourceSurfaces": true,
+    "openSurfaceSeatChecked": true,
+    "closedSourceProxies": false,
+    "completeSurfacePartition": false,
+    "containmentChecked": false,
+    "wholePairExempted": false
+  },
+  "tests": {
+    "unit": {
+      "command": "npm test -- --maxWorkers=2",
+      "status": "passed",
+      "files": 53,
+      "tests": 769,
+      "durationSeconds": 73.91,
+      "log": "artifacts/pin-hole/logs/unit.log"
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "status": "passed"
+    },
+    "build": {
+      "command": "npm run build",
+      "status": "passed",
+      "log": "artifacts/pin-hole/logs/build.log"
+    },
+    "generation": {
+      "command": "npm run generate:pin-hole",
+      "status": "passed",
+      "log": "artifacts/pin-hole/logs/generate.log"
+    },
+    "e2e": {
+      "command": "npm run test:e2e",
+      "status": "not-run",
+      "reason": "The environment has no /usr/bin/chromium; Playwright cannot launch."
+    },
+    "preview": {
+      "command": "npm run test:preview",
+      "status": "not-run",
+      "reason": "Blocked by the same missing browser executable and by the intentionally unexecuted e2e prerequisite."
+    }
+  },
+  "limitations": [
+    "One generated two-part pose is not a physical build, retention test or stress proof.",
+    "The open pin-envelope proof is weaker than a closed-solid certificate and does not prove hole wall thickness or installation path.",
+    "The 40-LDU source pin envelope is not a 40-LDU insertion claim; the graph records 20 LDU.",
+    "18591 is admitted but its windscreen body collides outside the seat in the tested hole poses.",
+    "16477, 45411, 56204, 54091 and other hole parts remain blocked by open/branched source boundaries or native acceptance.",
+    "connhol2 has no declared source ID and remains GENERIC_SPECIAL.",
+    "No source-backed Bar Receptacle exists in the fixed 253-root library.",
+    "Historical migration artifacts remain at 87/166 with the old collision version and are not presented as current.",
+    "E2E and preview were not run; they are not passing results."
+  ]
+}

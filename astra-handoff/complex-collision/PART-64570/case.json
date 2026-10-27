@@ -1,0 +1,367 @@
+{
+  "schemaVersion": 1,
+  "caseId": "PART-64570",
+  "category": "HOLLOW_GEOMETRY",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "64570",
+      "ldrawId": "64570",
+      "identitySystem": "ldraw",
+      "sourceDigest": "db9c91c2b35572550fa422cafdf9a5a74ffcdc237d283fdf71c48b0cc12fd010",
+      "geometryHash": "561d7efdea4790394f1c04e18f42fad4948fd952ae60d85f482878db5d59cd9a",
+      "connectionMetadataHash": "0d01114afc990b7a90c5a5dce38d93fecb1f4b5690202e699651e128f98fd09d"
+    }
+  ],
+  "affectedPhysicalInterfaces": [
+    "591699a797dd880af123e3bcd9f437e2e86f882c98088b818b558921ccd0dbff",
+    "c70a27c075e132bc811c54ce16290108b09addf0ff6699923c1747b9040c09f8",
+    "e09c97501a4579f1a3dfdca67a2c35ff7d6f7aec6eaaca9082fedc909287affd",
+    "27615c5f13e806b2b986b6984153a6971d0b1b636811137eb497d3c7550e4175",
+    "17f25836dee4e6a329b5126ba94cebb8847cd903bf460ae6e8ed48fca62ba35b",
+    "1c202aca4fb5851ae9d3695cd83d27c691a3175a62cecb8b9ec0c8e5b6f33be9",
+    "5fc848caa47a41ae6ebe93d7a85ff058e56a067520a92e75b97795abf48a2ab1",
+    "4a97fdd5ef573753ca8d6590b2d271686a0f9f068c9a4826908e765aa1b6dab0",
+    "3de8e5cf381e4b71b6af97679c7ae0c1012e5da1c1a0a41a5f9d9b9761eac8d6",
+    "bb98075c889c86bb1a35e06182cff71b96bb810895f29fe35ef41a28df15852a",
+    "feb0a1c5c592f6e361e2c09f24f5e140500dce0dda0c53c5ebc615a8dc6bb654",
+    "82386e407c3114110e0ff05515957e229de4ed07c6c4a3f276976712e7fb3f7c",
+    "943007221807086eaaf3705cba956389c1c635c8ad4bde3b161ea82696f2b436",
+    "b567d74168c3127fb504fdbc4ee02cd354d3cfbf1c858ab42e21ccde6776399b",
+    "0003833a9dd63776a5c4ddd66b31da74f764c7c41066b13f0b9bb1ab24022d5f",
+    "e6ac87d105db7df02fbef0babfcef696edd92212a3189e1bd27fa7845934a21e",
+    "ab73d83234de3a9fd6492420207b4ad3af97cde9363d19c5ab41a02c08cd47e4",
+    "b7d20b66cec1b0720fb2747e929ae2a1172998f92fb9008446a9b177c1a198ff",
+    "2d9b9c41229d7a9dd154586e30b2190c9fdbfe7c35f5966e27b43d507500a3d4",
+    "a75b8a06f89ab5923c9ad6706f08c7a07cef43c08cd1bed8b8ec668213a5d5ca",
+    "e647dced1d3f5219cc35442fa6a577ab89c0a1f0f759061ae33292999b3702e5",
+    "83e3c33b49ec7d109ae2f24843dd1b6eb29be8480f37a94dcd089bba2e2f397c",
+    "a3e0bfd4eb828abe86836e6e2aad41c447c5c5fd41099c037a75839c1e1f3d62",
+    "0027a7a3beb6cd4bec9e4e3fc5abeb1ac1331716e9d69a31aca0e31b845a35d5",
+    "0ee0a573ea68407e29a3884af741458f3ec1e3d406e02041a5f0dc61fe4997a1",
+    "49b668f094bb4ccde043a4d5d22ef913521dade0d57b313f700a25ea24e4bae5",
+    "15a29f50df578b1462ce09e1e6c1efc8dd5d01f7cc885af09e28e2b14d8dbb49",
+    "4262e5bf39ee7fa0a3ed4c2fc97a38ba020194721b5323d5ad0b7520c65830d0",
+    "55085bd31f7862eed8694373869b6dfbfcc4f01469825088339c45e9a6cb9808",
+    "4f2fedea5a5eadc24cf7468d70f89921e5a5c2aa9a1e0ce0d311c675b6bf08f5",
+    "f029736582c937317c77b63065320b066a2f6c83a8905642badd5b9e690deb5b",
+    "6a047a5b2097563ea04af5bd70131c6d40c0fe237a947357c57f8708f73ca7ab",
+    "f3ca191f17820314c6f7ea2179d6511a954a51da936a1971454d239b6cc2c0e5",
+    "155645315306e9d5f903cc49d012dedb45b924397f1105abe10ef6a3a0caec37",
+    "6869df026a58d1481bfde3b9cf55b51753c8e5813e68b7dee4b57cd32da0b8e4",
+    "3993c750e334792c0101fdab475480d533c86c0968cea3dddd17bd52b687b523"
+  ],
+  "connections": [
+    {
+      "id": "p/stud.dat:8:0",
+      "sourceId": "studC",
+      "kind": "cylinder",
+      "family": "stud",
+      "gender": "M",
+      "position": [
+        -50,
+        0,
+        -10
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "id": "studC",
+        "gender": "M",
+        "caps": "one",
+        "secs": "R 6 4"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "p/stud.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [ID=studC] [gender=M] [caps=one] [secs=R 6 4]",
+        "transforms": [
+          {
+            "file": "parts/64570.dat",
+            "line": 63,
+            "directive": "1 16 0 0 -10 1 0 0 0 1 0 0 0 1 stug-1x6.dat",
+            "position": [
+              0,
+              0,
+              -10
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "file": "p/stug-1x6.dat",
+            "line": 12,
+            "directive": "1 16 -50 0 0 1 0 0 0 1 0 0 0 1 stud.dat",
+            "position": [
+              -50,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    },
+    {
+      "id": "p/stud.dat:8:1",
+      "sourceId": "studC",
+      "kind": "cylinder",
+      "family": "stud",
+      "gender": "M",
+      "position": [
+        -30,
+        0,
+        -10
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "id": "studC",
+        "gender": "M",
+        "caps": "one",
+        "secs": "R 6 4"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "p/stud.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [ID=studC] [gender=M] [caps=one] [secs=R 6 4]",
+        "transforms": [
+          {
+            "file": "parts/64570.dat",
+            "line": 63,
+            "directive": "1 16 0 0 -10 1 0 0 0 1 0 0 0 1 stug-1x6.dat",
+            "position": [
+              0,
+              0,
+              -10
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "file": "p/stug-1x6.dat",
+            "line": 13,
+            "directive": "1 16 -30 0 0 1 0 0 0 1 0 0 0 1 stud.dat",
+            "position": [
+              -30,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": {
+    "rotation": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "translation": [
+      0,
+      0,
+      0
+    ]
+  },
+  "transformStatus": "SOURCE_IDENTITY",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "blocked",
+    "reasonCodes": [
+      "unresolved-boundary-cap"
+    ],
+    "details": {
+      "reason": "A nonconvex native boundary needs a more capable source-backed proxy."
+    }
+  },
+  "replay": {
+    "kind": "proxy",
+    "partId": "64570"
+  },
+  "reproductionCommand": "npm run astra:case -- PART-64570",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/1-4chrd.dat",
+    "data/parts-foundation/ldraw/files/p/1-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/1-4cylo.dat",
+    "data/parts-foundation/ldraw/files/p/1-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/2-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/2-4cylo.dat",
+    "data/parts-foundation/ldraw/files/p/2-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/2-4ring3.dat",
+    "data/parts-foundation/ldraw/files/p/2-4stud4.dat",
+    "data/parts-foundation/ldraw/files/p/4-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/4-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring2.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring3.dat",
+    "data/parts-foundation/ldraw/files/p/box2-7.dat",
+    "data/parts-foundation/ldraw/files/p/box4-1.dat",
+    "data/parts-foundation/ldraw/files/p/rect2a.dat",
+    "data/parts-foundation/ldraw/files/p/rect2p.dat",
+    "data/parts-foundation/ldraw/files/p/rect3.dat",
+    "data/parts-foundation/ldraw/files/p/recte4.dat",
+    "data/parts-foundation/ldraw/files/p/stud.dat",
+    "data/parts-foundation/ldraw/files/p/stud2.dat",
+    "data/parts-foundation/ldraw/files/p/stud4.dat",
+    "data/parts-foundation/ldraw/files/p/stug-1x6.dat",
+    "data/parts-foundation/ldraw/files/p/stug2-6x1.dat",
+    "data/parts-foundation/ldraw/files/p/stug4-1x5.dat",
+    "data/parts-foundation/ldraw/files/parts/64570.dat",
+    "data/parts-foundation/shadow/files/p/stud4.dat",
+    "data/parts-foundation/shadow/files/p/stud.dat",
+    "data/parts-foundation/shadow/files/p/stud2.dat",
+    "data/parts-foundation/shadow/files/parts/64570.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [
+    {
+      "reasonCodes": [
+        "collision-proxy-unresolved-boundary-cap"
+      ],
+      "reasons": [
+        "A nonconvex native boundary needs a more capable source-backed proxy."
+      ],
+      "sourceChecks": [
+        {
+          "name": "source-integrity",
+          "outcome": "passed",
+          "reason": "Pinned native geometry and every source-backed connection file are hashed and licensed."
+        },
+        {
+          "name": "collision",
+          "outcome": "blocked",
+          "reason": "A nonconvex native boundary needs a more capable source-backed proxy."
+        }
+      ]
+    }
+  ],
+  "attemptsAlreadyMade": [
+    "Loaded and fingerprinted the actual pinned native source.",
+    "Ran the current per-part migration source/fixture prerequisites."
+  ],
+  "whySolStopped": "Further progress requires missing source semantics or complex solid/retention rules; no ad hoc geometry or collision exception was introduced.",
+  "diagnosticOnly": true
+}

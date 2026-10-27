@@ -1,7 +1,14 @@
 import { defineConfig, devices } from '@playwright/test';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { randomUUID } from 'node:crypto';
 
 export default defineConfig({
   testDir: './tests/preview',
+  outputDir: 'test-results/preview',
+  // The compiled V0.6 preview serves source-backed coverage and the assembly engine. Archived
+  // generation specs cannot run against its intentional authenticity gate.
+  testMatch: 'parts-foundation.spec.ts',
   timeout: 60000,
   expect: { timeout: 15000 },
   workers: 1,
@@ -20,6 +27,6 @@ export default defineConfig({
     url: 'http://127.0.0.1:3010/api/health',
     reuseExistingServer: false,
     timeout: 120000,
-    env: { PREVIEW_PORT: '3010', INVENTORY_PROVIDER: 'mock' },
+    env: { PREVIEW_PORT: '3010', INVENTORY_PROVIDER: 'mock', BRICKLAB_DATA_DIR: path.join(tmpdir(), `bricklab-preview-${randomUUID()}`) },
   },
 });

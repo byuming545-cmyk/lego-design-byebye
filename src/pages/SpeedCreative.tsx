@@ -27,6 +27,9 @@ import {
   X,
 } from "lucide-react";
 import ModelViewer from "../components/ModelViewer.js";
+import { LEGACY_GENERATION_BLOCK, LEGACY_OPERATIONS_BLOCKED } from "../parts/legacyStatus.js";
+import type { SpeedModelDocument, SpeedModelMetadata, SpeedModelSummary } from "../speed/documents.js";
+import type { PhysicalBuildFeedback, PhysicalBuildFeedbackInput } from "../speed/feedback.js";
 import {
   speedRenderingAdapter,
   toSpeedViewerParts,
@@ -47,6 +50,7 @@ import "./speed.css";
 
 interface SpeedSession extends SpeedGenerationResult {
   sessionId: string;
+  modelMetadata: Record<string, SpeedModelMetadata>;
 }
 type BusyAction =
   | "inventory"
@@ -55,7 +59,37 @@ type BusyAction =
   | "lock"
   | "undo"
   | "pdf"
+  | "open"
+  | "import"
+  | "json"
+  | "feedback"
   | null;
+interface SpeedStatus {
+  dataSource: "Rebrickable" | "Mock";
+  mode: "real" | "mock" | "unconfigured";
+  realAvailable: boolean;
+  demoAllowed: boolean;
+  versions: { generatorVersion: string; validatorVersion: string; partLibraryVersion: string };
+}
+type BuildFeedback = Omit<PhysicalBuildFeedbackInput, "modelId" | "revision" | "modelDigest">;
+type BuildProblemType = BuildFeedback["problems"][number]["issueType"];
+const problemLabels: Record<BuildProblemType, string> = {
+  cannot_connect: "无法连接", collision: "零件碰撞", too_weak: "连接过弱",
+  wheel_blocked: "车轮受阻", impossible_step: "步骤无法完成", wrong_part: "零件不对",
+  unclear_instruction: "说明不清", other: "其他",
+};
+const LAST_MODEL_KEY = "bricklab-speed-last-model-id";
+function rememberModel(id: string | null) {
+  // Quarantine must neither restore nor rewrite the user's historical pointer.
+  if (LEGACY_OPERATIONS_BLOCKED) return;
+  try {
+    if (id) localStorage.setItem(LAST_MODEL_KEY, id);
+    else localStorage.removeItem(LAST_MODEL_KEY);
+  } catch { /* The server still saves models when browser storage is unavailable. */ }
+}
+function lastModelId() {
+  try { return localStorage.getItem(LAST_MODEL_KEY); } catch { return null; }
+}
 const vehicleLabels: Record<VehicleType, string> = {
   supercar: "Supercar · 超级跑车",
   "sports-car": "Sports Car · 运动跑车",
@@ -178,9 +212,95 @@ function CheckLabel({
   );
 }
 
+function PhysicalFeedbackForm({ disabled, candidate, onSubmit }: {
+  disabled: boolean;
+  candidate: VehicleCandidate;
+  onSubmit: (feedback: BuildFeedback) => Promise<void>;
+}) {
+  const [actuallyBuilt, setActuallyBuilt] = useState(false);
+  const [buildResult, setBuildResult] = useState<BuildFeedback["buildResult"]>("partial");
+  const [wheel, setWheel] = useState<BuildFeedback["wheel"]>("normal");
+  const [stability, setStability] = useState<BuildFeedback["stability"]>("stable");
+  const [instructions, setInstructions] = useState<BuildFeedback["instructions"]>("clear");
+  const [problems, setProblems] = useState<{ stepNumber: string; partId: string; issueType: BuildProblemType; text: string }[]>([]);
+  return (
+    <form className="speed-feedback-form" onSubmit={(event) => {
+      event.preventDefault();
+      if (disabled || !actuallyBuilt) return;
+      void onSubmit({ actuallyBuilt: true, buildResult, wheel, stability, instructions,
+        problems: problems.map(problem => ({ issueType: problem.issueType, text: problem.text.trim(),
+          ...(problem.stepNumber ? { stepNumber: Number(problem.stepNumber) } : {}),
+          ...(problem.partId.trim() ? { partId: problem.partId.trim() } : {}),
+        })),
+      });
+    }}>
+      <label className="speed-built-confirmation">
+        <input type="checkbox" checked={actuallyBuilt} disabled={disabled} onChange={event => setActuallyBuilt(event.target.checked)} />
+        我已使用真实积木，实际尝试拼搭这个版本。
+      </label>
+      <div className="speed-feedback-grid">
+        <label>拼搭结果<select aria-label="实拼结果" value={buildResult} disabled={disabled || !actuallyBuilt} onChange={event => setBuildResult(event.target.value as BuildFeedback["buildResult"])}>
+          <option value="success">成功</option><option value="partial">部分成功</option><option value="failure">失败</option>
+        </select></label>
+        <label>车轮<select aria-label="实拼车轮" value={wheel} disabled={disabled || !actuallyBuilt} onChange={event => setWheel(event.target.value as BuildFeedback["wheel"])}>
+          <option value="normal">四轮正常</option><option value="friction">摩擦严重</option><option value="blocked">无法转动</option>
+        </select></label>
+        <label>稳定性<select aria-label="实拼稳定性" value={stability} disabled={disabled || !actuallyBuilt} onChange={event => setStability(event.target.value as BuildFeedback["stability"])}>
+          <option value="strong">非常牢固</option><option value="stable">基本稳定</option><option value="weak">容易掉</option><option value="impossible">无法成立</option>
+        </select></label>
+        <label>说明书<select aria-label="实拼说明书" value={instructions} disabled={disabled || !actuallyBuilt} onChange={event => setInstructions(event.target.value as BuildFeedback["instructions"])}>
+          <option value="clear">清楚</option><option value="difficult">部分步骤困难</option><option value="impossible">有步骤无法完成</option>
+        </select></label>
+      </div>
+      {problems.map((problem, index) => <fieldset className="speed-feedback-problem" key={index} disabled={disabled || !actuallyBuilt}>
+        <legend>问题 {index + 1}</legend>
+        <div className="speed-feedback-grid">
+          <label>步骤编号（可选）<input aria-label={`问题 ${index + 1} 步骤编号`} type="number" min={1} max={Math.max(...candidate.steps.map(step => step.stepNumber))} step={1} value={problem.stepNumber} onChange={event => setProblems(rows => rows.map((row, at) => at === index ? { ...row, stepNumber: event.target.value } : row))} /></label>
+          <label>零件编号（可选）<input aria-label={`问题 ${index + 1} 零件编号`} maxLength={80} value={problem.partId} onChange={event => setProblems(rows => rows.map((row, at) => at === index ? { ...row, partId: event.target.value } : row))} /></label>
+          <label>问题类型<select aria-label={`问题 ${index + 1} 类型`} value={problem.issueType} onChange={event => setProblems(rows => rows.map((row, at) => at === index ? { ...row, issueType: event.target.value as BuildProblemType } : row))}>
+            {Object.entries(problemLabels).map(([value, label]) => <option value={value} key={value}>{label}</option>)}
+          </select></label>
+        </div>
+        <label>问题描述<textarea aria-label={`问题 ${index + 1} 描述`} required maxLength={2000} rows={2} value={problem.text} onChange={event => setProblems(rows => rows.map((row, at) => at === index ? { ...row, text: event.target.value } : row))} /></label>
+        <button type="button" onClick={() => setProblems(rows => rows.filter((_, at) => at !== index))}>删除问题 {index + 1}</button>
+      </fieldset>)}
+      <div className="speed-feedback-actions">
+        <button type="button" disabled={disabled || !actuallyBuilt || problems.length >= 30} onClick={() => setProblems(rows => [...rows, { stepNumber: "", partId: "", issueType: "other", text: "" }])}>添加拼搭问题</button>
+        <button type="submit" disabled={disabled || !actuallyBuilt}>保存实拼反馈</button>
+      </div>
+    </form>
+  );
+}
+
+function PhysicalFeedbackHistory({ model }: { model: SpeedModelSummary | undefined }) {
+  const [feedback, setFeedback] = useState<PhysicalBuildFeedback[]>([]);
+  const [historyError, setHistoryError] = useState("");
+  useEffect(() => {
+    let cancelled = false;
+    setFeedback([]);
+    setHistoryError("");
+    if (model) void request<{ feedback: PhysicalBuildFeedback[] }>(`/api/speed/models/${encodeURIComponent(model.id)}/feedback`)
+      .then(result => { if (!cancelled) setFeedback(result.feedback); })
+      .catch(failure => { if (!cancelled) setHistoryError(`反馈记录暂时无法读取：${failureText(failure)}`); });
+    return () => { cancelled = true; };
+  }, [model]);
+  return <div className="speed-feedback-history" aria-label="已保存实拼反馈">
+    <p>{historyError || (feedback.length ? `已保存 ${feedback.length} 条用户自报反馈` : "尚无用户自报实拼反馈。")}</p>
+    {feedback.slice(0, 10).map(item => <div key={item.feedbackId}>
+      <strong>修订 {item.revision} · {item.revision === model?.metadata.revision && item.modelDigest === model.metadata.modelDigest ? "当前版本" : "历史版本"} · 用户自报：{{ success: "成功", partial: "部分成功", failure: "失败" }[item.buildResult]}</strong>
+      <span>{new Date(item.submittedAt).toLocaleString()} · {item.physicalValidation === "passed" ? "用户实拼自报通过" : "untested"}</span>
+      <span>车轮：{{ normal: "四轮正常", friction: "摩擦严重", blocked: "无法转动" }[item.wheel]} · 稳定性：{{ strong: "非常牢固", stable: "基本稳定", weak: "容易掉", impossible: "无法成立" }[item.stability]} · 说明书：{{ clear: "清楚", difficult: "部分步骤困难", impossible: "有步骤无法完成" }[item.instructions]}</span>
+      {item.problems.map((problem, index) => <p key={index}>{problem.stepNumber ? `步骤 ${problem.stepNumber} · ` : ""}{problem.partId ? `零件 ${problem.partId} · ` : ""}{problemLabels[problem.issueType]}：{problem.text}</p>)}
+    </div>)}
+  </div>;
+}
+
 export default function SpeedCreative() {
-  const [setNumbers, setSetNumbers] = useState("DEMO-SPEED");
-  const [loadedInput, setLoadedInput] = useState("DEMO-SPEED");
+  const [setNumbers, setSetNumbers] = useState("");
+  const [loadedInput, setLoadedInput] = useState("");
+  const [status, setStatus] = useState<SpeedStatus | null>(null);
+  const [savedModels, setSavedModels] = useState<SpeedModelSummary[]>([]);
+  const [savedSelection, setSavedSelection] = useState("");
   const [inventory, setInventory] = useState<SpeedInventory | null>(null);
   const [session, setSession] = useState<SpeedSession | null>(null);
   const [selectedId, setSelectedId] = useState("");
@@ -214,6 +334,23 @@ export default function SpeedCreative() {
     session?.candidates.find((item) => item.model.id === selectedId) ||
     session?.candidates[0];
   const activeInventory = session?.inventory || inventory;
+  const latestSavedModel = savedModels.find(model => model.id === candidate?.model.id);
+  const displayedMetadata = candidate ? session?.modelMetadata?.[candidate.model.id] : undefined;
+  const displayedHistorical = !!displayedMetadata && !!latestSavedModel && (displayedMetadata.revision !== latestSavedModel.metadata.revision || displayedMetadata.modelDigest !== latestSavedModel.metadata.modelDigest);
+  const savedModel = useMemo<SpeedModelSummary | undefined>(() => {
+    if (!candidate || !activeInventory || !displayedMetadata) return undefined;
+    return {
+      id: candidate.model.id, name: candidate.model.name, version: candidate.model.version,
+      dataSource: activeInventory.source, metadata: displayedMetadata,
+      physicalValidation: !displayedHistorical ? latestSavedModel?.physicalValidation ?? "untested" : "untested",
+      partCount: candidate.model.parts.length, sourceLabel: activeInventory.sourceLabel,
+    };
+  }, [candidate, activeInventory, displayedMetadata, displayedHistorical, latestSavedModel]);
+  const dataSource = activeInventory
+    ? activeInventory.inventorySources.some(source => source.source === "rebrickable")
+      ? activeInventory.inventorySources.some(source => source.source === "mock") ? "Rebrickable + Mock" : "Rebrickable"
+      : activeInventory.inventorySources.some(source => source.source === "mock") ? "Mock" : "用户自报（未核验）"
+    : status?.dataSource;
   const currentStep = candidate?.steps[stepIndex];
   const visibleParts =
     view === "steps"
@@ -245,6 +382,94 @@ export default function SpeedCreative() {
     [candidate],
   );
 
+  async function refreshSavedModels() {
+    try {
+      const data = await request<{ models: SpeedModelSummary[] }>("/api/speed/models");
+      setSavedModels(data.models);
+    } catch (failure) {
+      setSavedModels([]);
+      setError(`暂时无法刷新已保存模型列表：${failureText(failure)}`);
+    }
+  }
+  function restoreSession(data: SpeedSession) {
+    if (!data.candidates.length || data.candidates.some(item => !item.validation.valid))
+      throw new Error("保存的模型未能通过当前自动校验，请重新导入或生成。");
+    const first = data.candidates[0];
+    const input = data.inventory.inventorySources.filter(source => source.source !== "custom").map(source => source.setNumber).join(" + ");
+    const customIds = new Set(data.inventory.inventorySources.filter(source => source.source === "custom").map(source => source.sourceId));
+    const extras = data.inventory.items.flatMap(item => {
+      const quantity = item.sources.filter(source => customIds.has(source.sourceId)).reduce((total, source) => total + source.quantity, 0);
+      return quantity ? [{ partId: item.partId, color: { ...item.color }, quantity }] : [];
+    });
+    setInventory(data.inventory);
+    setSession(data);
+    setSelectedId(first.model.id);
+    setSavedSelection(first.model.id);
+    setSetNumbers(input);
+    setLoadedInput(input);
+    setExtraParts(extras);
+    setLoadedExtras(structuredClone(extras));
+    const options = first.model.options;
+    setPrompt(options.prompt);
+    setVehicleType(options.vehicleType);
+    setStyle(options.style);
+    setMinifigure(options.minifigure);
+    setPriority(options.priority);
+    setMaximizeUsage(options.maximizeUsage);
+    setStepIndex(0);
+    setView("model");
+    setExploded(false);
+    setUndoDepths({});
+    rememberModel(first.model.id);
+  }
+  async function openSavedModel(id = savedSelection) {
+    if (LEGACY_OPERATIONS_BLOCKED) { setError(LEGACY_GENERATION_BLOCK.error); return; }
+    if (busy || !id) return;
+    setBusy("open");
+    setError("");
+    try {
+      const data = await request<SpeedSession>(`/api/speed/models/${encodeURIComponent(id)}/open`, { method: "POST", body: "{}" });
+      restoreSession(data);
+      await refreshSavedModels();
+      setNotice("已打开保存模型，拼搭步骤与库存已恢复。");
+    } catch (failure) {
+      rememberModel(null);
+      setError(`模型打开失败：${failureText(failure)}`);
+    } finally { setBusy(null); }
+  }
+  async function importJson(event: React.ChangeEvent<HTMLInputElement>) {
+    if (LEGACY_OPERATIONS_BLOCKED) { event.target.value = ""; setError(LEGACY_GENERATION_BLOCK.error); return; }
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (busy || !file) return;
+    if (file.size > 40 * 1024 * 1024) { setError("模型 JSON 不能超过 40 MB。"); return; }
+    setBusy("import");
+    setError("");
+    try {
+      let document: unknown;
+      try { document = JSON.parse(await file.text()); }
+      catch { throw new Error("无法读取 JSON，请选择有效的模型 JSON 文件。"); }
+      const data = await request<SpeedSession>("/api/speed/models/import", { method: "POST", body: JSON.stringify(document) });
+      restoreSession(data);
+      await refreshSavedModels();
+      setNotice("模型已重新校验并导入，已分配新的模型 ID。实拼状态为 untested。");
+    } catch (failure) { setError(`模型导入失败：${failureText(failure)}`); }
+    finally { setBusy(null); }
+  }
+  async function submitFeedback(feedback: BuildFeedback) {
+    if (busy || !candidate || !savedModel) return;
+    setBusy("feedback");
+    setError("");
+    try {
+      const result = await request<{ physicalValidation: "passed" | "untested" }>(`/api/speed/models/${encodeURIComponent(candidate.model.id)}/feedback`, {
+        method: "POST", body: JSON.stringify({ ...feedback, modelId: candidate.model.id, revision: savedModel.metadata.revision, modelDigest: savedModel.metadata.modelDigest }),
+      });
+      await refreshSavedModels();
+      setNotice(result.physicalValidation === "passed" ? "用户实拼自报通过。反馈已关联当前模型版本。" : "实拼反馈已保存；尚未达到用户自报通过条件，状态为 untested。");
+    } catch (failure) { setError(`反馈未保存：${failureText(failure)}`); }
+    finally { setBusy(null); }
+  }
+
   async function load(value = setNumbers, extras = extraParts) {
     setBusy("inventory");
     setError("");
@@ -266,6 +491,7 @@ export default function SpeedCreative() {
       setStepIndex(0);
       setView("model");
       setUndoDepths({});
+      rememberModel(null);
     } catch (failure) {
       setError(failureText(failure));
     } finally {
@@ -273,8 +499,53 @@ export default function SpeedCreative() {
     }
   }
   useEffect(() => {
-    void load("DEMO-SPEED");
+    const rememberedId = LEGACY_OPERATIONS_BLOCKED ? null : lastModelId();
+    let cancelled = false;
+    void (async () => {
+      const [statusResult, modelsResult] = await Promise.allSettled([
+        request<SpeedStatus>("/api/speed/status"),
+        request<{ models: SpeedModelSummary[] }>("/api/speed/models"),
+      ]);
+      if (cancelled) return;
+      if (modelsResult.status === "fulfilled") setSavedModels(modelsResult.value.models);
+      if (statusResult.status === "rejected") {
+        setError(failureText(statusResult.reason));
+        setBusy(null);
+        return;
+      }
+      const serverStatus = statusResult.value;
+      setStatus(serverStatus);
+      let restoreError = "";
+      if (rememberedId) {
+        try {
+          const data = await request<SpeedSession>(`/api/speed/models/${encodeURIComponent(rememberedId)}/open`, { method: "POST", body: "{}" });
+          if (cancelled) return;
+          restoreSession(data);
+          setNotice("已恢复上次打开的保存模型。");
+          if (serverStatus.mode === "unconfigured") setError("Rebrickable API Key 未配置。");
+          setBusy(null);
+          return;
+        } catch (failure) {
+          rememberModel(null);
+          restoreError = `上次模型恢复失败，已清除自动恢复记录：${failureText(failure)}`;
+        }
+      }
+      if (cancelled) return;
+      if (serverStatus.mode === "mock" && serverStatus.demoAllowed) {
+        setSetNumbers("DEMO-SPEED");
+        await load("DEMO-SPEED", []);
+      } else {
+        setBusy(null);
+        if (serverStatus.mode === "unconfigured") setError("Rebrickable API Key 未配置。");
+      }
+      if (restoreError) setError(`${restoreError}${serverStatus.mode === "unconfigured" ? " Rebrickable API Key 未配置。" : ""}`);
+      else if (modelsResult.status === "rejected") setError(`${serverStatus.mode === "unconfigured" ? "Rebrickable API Key 未配置。 " : ""}暂时无法读取已保存模型列表：${failureText(modelsResult.reason)}`);
+    })();
+    return () => { cancelled = true; };
   }, []);
+  useEffect(() => {
+    if (inventoryDirty) rememberModel(null);
+  }, [inventoryDirty]);
   useEffect(() => {
     if (!notice) return;
     const timer = window.setTimeout(() => setNotice(""), 6000);
@@ -315,6 +586,7 @@ export default function SpeedCreative() {
 
   async function generate(event: React.FormEvent) {
     event.preventDefault();
+    if (LEGACY_OPERATIONS_BLOCKED) { setError(LEGACY_GENERATION_BLOCK.error); return; }
     if (busy || !inventory || inventoryDirty) return;
     setBusy("generate");
     setError("");
@@ -348,6 +620,9 @@ export default function SpeedCreative() {
       setView("model");
       setExploded(false);
       setUndoDepths({});
+      rememberModel(data.candidates[0].model.id);
+      setSavedSelection(data.candidates[0].model.id);
+      await refreshSavedModels();
       setNotice(`已生成 ${data.candidates.length} 个通过全部校验的设计。`);
     } catch (failure) {
       setError(failureText(failure));
@@ -359,6 +634,7 @@ export default function SpeedCreative() {
     next: VehicleCandidate,
     beforeId: string,
     undoDepth?: number,
+    metadata?: SpeedModelMetadata,
   ) {
     if (!next.validation.valid)
       throw new Error("修改结果未通过全部校验，已保留原设计。");
@@ -369,10 +645,13 @@ export default function SpeedCreative() {
             candidates: previous.candidates.map((item) =>
               item.model.id === beforeId ? next : item,
             ),
+            modelMetadata: { ...previous.modelMetadata, ...(metadata ? { [next.model.id]: metadata } : {}) },
           }
         : previous,
     );
     setSelectedId(next.model.id);
+    rememberModel(inventoryDirty ? null : next.model.id);
+    setSavedSelection(next.model.id);
     setStepIndex(0);
     setView("model");
     setExploded(false);
@@ -383,6 +662,7 @@ export default function SpeedCreative() {
       }));
   }
   async function setLocked(moduleId: VehicleModuleId, locked: boolean) {
+    if (LEGACY_OPERATIONS_BLOCKED) { setError(LEGACY_GENERATION_BLOCK.error); return; }
     if (busy || !session || !candidate) return;
     setBusy("lock");
     setError("");
@@ -390,6 +670,7 @@ export default function SpeedCreative() {
       const result = await request<{
         candidate: VehicleCandidate;
         undoDepth?: number;
+        metadata: SpeedModelMetadata;
       }>(
         `/api/speed/designs/${encodeURIComponent(session.sessionId)}/modules/${moduleId}`,
         {
@@ -397,7 +678,8 @@ export default function SpeedCreative() {
           body: JSON.stringify({ candidateId: candidate.model.id, locked }),
         },
       );
-      replaceCandidate(result.candidate, candidate.model.id, result.undoDepth);
+      replaceCandidate(result.candidate, candidate.model.id, result.undoDepth, result.metadata);
+      await refreshSavedModels();
       setNotice(`${moduleLabels[moduleId]}已${locked ? "锁定" : "解锁"}。`);
     } catch (failure) {
       setError(failureText(failure));
@@ -407,13 +689,14 @@ export default function SpeedCreative() {
   }
   async function redesign(event: React.FormEvent) {
     event.preventDefault();
+    if (LEGACY_OPERATIONS_BLOCKED) { setError(LEGACY_GENERATION_BLOCK.error); return; }
     if (busy || !session || !candidate || !editPrompt.trim()) return;
     setBusy("redesign");
     setError("");
     setNotice("");
     try {
       const result = await request<
-        LocalRedesignResult & { undoDepth?: number }
+        LocalRedesignResult & { undoDepth?: number; metadata: SpeedModelMetadata }
       >(
         `/api/speed/designs/${encodeURIComponent(session.sessionId)}/redesign`,
         {
@@ -433,9 +716,11 @@ export default function SpeedCreative() {
           result.candidate,
           candidate.model.id,
           result.undoDepth ?? fallbackDepth,
+          result.metadata,
         );
         setNotice(result.message);
         setEditPrompt("");
+        await refreshSavedModels();
       } else {
         setError(
           `${result.message}${result.rolledBack ? " 已保留修改前的方案。" : ""}`,
@@ -448,6 +733,7 @@ export default function SpeedCreative() {
     }
   }
   async function undo() {
+    if (LEGACY_OPERATIONS_BLOCKED) { setError(LEGACY_GENERATION_BLOCK.error); return; }
     if (busy || !session || !candidate) return;
     setBusy("undo");
     setError("");
@@ -455,6 +741,7 @@ export default function SpeedCreative() {
       const result = await request<{
         candidate: VehicleCandidate;
         undoDepth?: number;
+        metadata: SpeedModelMetadata;
       }>(`/api/speed/designs/${encodeURIComponent(session.sessionId)}/undo`, {
         method: "POST",
         body: JSON.stringify({ candidateId: candidate.model.id }),
@@ -463,8 +750,10 @@ export default function SpeedCreative() {
         result.candidate,
         candidate.model.id,
         result.undoDepth ?? Math.max(0, undoDepth - 1),
+        result.metadata,
       );
       setNotice("已恢复到上一个版本。");
+      await refreshSavedModels();
     } catch (failure) {
       setError(failureText(failure));
     } finally {
@@ -472,6 +761,7 @@ export default function SpeedCreative() {
     }
   }
   async function exportPdf() {
+    if (LEGACY_OPERATIONS_BLOCKED) { setError(LEGACY_GENERATION_BLOCK.error); return; }
     if (!candidate || !activeInventory) return;
     setBusy("pdf");
     setError("");
@@ -485,24 +775,32 @@ export default function SpeedCreative() {
       setBusy(null);
     }
   }
-  function exportJson() {
-    if (!candidate || !activeInventory) return;
-    const url = URL.createObjectURL(
-      new Blob(
-        [JSON.stringify({ candidate, inventory: activeInventory }, null, 2)],
-        { type: "application/json" },
-      ),
-    );
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `bricklab-speed-${candidate.model.id}.json`;
-    link.click();
-    window.setTimeout(() => URL.revokeObjectURL(url), 0);
-    setNotice("车辆、连接图与库存 JSON 已导出。");
+  async function exportJson() {
+    if (LEGACY_OPERATIONS_BLOCKED) { setError(LEGACY_GENERATION_BLOCK.error); return; }
+    if (busy || !candidate || !activeInventory) return;
+    setBusy("json");
+    setError("");
+    try {
+      const modelDocument = await request<SpeedModelDocument>(`/api/speed/models/${encodeURIComponent(candidate.model.id)}/export`);
+      const url = URL.createObjectURL(
+        new Blob([JSON.stringify(modelDocument, null, 2)], { type: "application/json" }),
+      );
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `bricklab-speed-${candidate.model.id}.json`;
+      link.click();
+      window.setTimeout(() => URL.revokeObjectURL(url), 0);
+      setNotice("模型 JSON 已导出，包含库存、拼搭步骤、版本与校验结果。");
+    } catch (failure) { setError(`JSON 导出失败：${failureText(failure)}`); }
+    finally { setBusy(null); }
   }
 
   return (
     <main className="speed-page">
+      <div className="speed-source-hint" role="status">
+        <strong>历史参数化预览 · 零件未验证</strong>
+        <p>{LEGACY_GENERATION_BLOCK.error} <a href="#/part-lab">打开真实零件库</a></p>
+      </div>
       <section className="speed-hero">
         <div>
           <span className="speed-kicker">
@@ -534,6 +832,12 @@ export default function SpeedCreative() {
         <em>
           <span /> INVENTORY FIRST. CREATIVITY NEXT.
         </em>
+      </div>
+      <div className="speed-runtime-status" aria-label="Speed 数据来源与版本">
+        <span>Data Source: <strong>{dataSource || "读取中…"}</strong></span>
+        <span>Mode: <strong>{status?.mode || "读取中…"}</strong></span>
+        <span>Validation Edition <strong>V0.2.1</strong></span>
+        {status && <details><summary>算法版本 <ChevronDown size={11} /></summary><span>Generator {status.versions.generatorVersion} · Validator {status.versions.validatorVersion} · Parts {status.versions.partLibraryVersion}</span></details>}
       </div>
       {error && (
         <div className="speed-error" role="alert">
@@ -583,7 +887,7 @@ export default function SpeedCreative() {
                 </button>
               </div>
             </form>
-            <button
+            {status?.demoAllowed && <button
               className="speed-demo-link"
               disabled={!!busy}
               onClick={() => {
@@ -593,11 +897,13 @@ export default function SpeedCreative() {
             >
               使用 DEMO-SPEED 演示库存
               <ArrowUpRight size={11} />
-            </button>
-            <p className="speed-source-hint">
+            </button>}
+            {status?.demoAllowed && <p className="speed-source-hint">
               DEMO-SPEED 为独立的人工合成零件池，不是 BMW
               或其他官方套装的真实清单。
-            </p>
+            </p>}
+            {status?.mode === "real" && <p className="speed-source-hint">输入真实 Speed Champions 套装编号，再点击读取库存。</p>}
+            {status?.mode === "unconfigured" && <p className="speed-source-hint">Rebrickable API Key 未配置。请在服务器配置后读取真实套装。</p>}
             <details className="speed-extra-parts">
               <summary>
                 添加自有散件
@@ -746,6 +1052,25 @@ export default function SpeedCreative() {
             )}
           </section>
 
+          <details className="speed-card speed-saved-models">
+            <summary>保存的模型与 JSON <ChevronDown size={13} /></summary>
+            <p>历史参数化模型仅保留存档索引；导入、恢复与导出已隔离，不能成为真实零件装配证明。</p>
+            <label htmlFor="speed-saved-model">保存的模型</label>
+            <select id="speed-saved-model" value={savedSelection} disabled={!!busy || !savedModels.length} onChange={event => setSavedSelection(event.target.value)}>
+              <option value="">{savedModels.length ? "选择一个模型" : "尚无保存的模型"}</option>
+              {savedModels.map(model => <option key={model.id} value={model.id}>{model.name} · {model.partCount} 件 · {model.id}</option>)}
+            </select>
+            <div className="speed-saved-actions">
+              <button disabled={LEGACY_OPERATIONS_BLOCKED || !!busy || !savedSelection} onClick={() => void openSavedModel()}>打开模型</button>
+              <button disabled={!!busy} onClick={() => void refreshSavedModels()}>刷新列表</button>
+              <label className={LEGACY_OPERATIONS_BLOCKED || busy ? "speed-import-button disabled" : "speed-import-button"}>
+                导入模型 JSON
+                <input aria-label="导入模型 JSON" type="file" accept=".json,application/json" disabled={LEGACY_OPERATIONS_BLOCKED || !!busy} onChange={event => void importJson(event)} />
+              </label>
+            </div>
+            <small>旧存档已标记 LEGACY_QUARANTINED；原文件保留，不会自动迁入真实零件库。</small>
+          </details>
+
           <section className="speed-card speed-design-card">
             <div className="speed-card-title">
               <span>02 / DESIGN BRIEF</span>
@@ -839,6 +1164,7 @@ export default function SpeedCreative() {
               <button
                 className="speed-generate-button"
                 disabled={
+                  LEGACY_OPERATIONS_BLOCKED ||
                   !!busy ||
                   !inventory?.analysis.canGenerate ||
                   inventoryDirty ||
@@ -889,7 +1215,7 @@ export default function SpeedCreative() {
               </div>
               <button
                 className="speed-export-button"
-                disabled={!!busy || !candidate?.validation.valid}
+                disabled={LEGACY_OPERATIONS_BLOCKED || !!busy || !candidate?.validation.valid}
                 onClick={exportPdf}
               >
                 {busy === "pdf" ? (
@@ -917,6 +1243,8 @@ export default function SpeedCreative() {
                     disabled={!!busy}
                     onClick={() => {
                       setSelectedId(item.model.id);
+                      setSavedSelection(item.model.id);
+                      if (!inventoryDirty) rememberModel(item.model.id);
                       setStepIndex(0);
                       setView("model");
                       setExploded(false);
@@ -1225,7 +1553,7 @@ export default function SpeedCreative() {
                     结构与轮组检查
                   </h2>
                   <span className="speed-valid-badge">
-                    {candidate.validation.valid ? "全部通过" : "未通过"}
+                    {candidate.validation.valid ? "自动校验通过" : "未通过"}
                   </span>
                 </div>
                 <div className="speed-check-grid">
@@ -1292,6 +1620,17 @@ export default function SpeedCreative() {
                 </details>
               </section>
 
+              <details className="speed-card speed-physical-feedback">
+                <summary>
+                  <span>实物拼搭反馈 <small>{displayedHistorical ? "历史修订 · 查看反馈记录" : savedModel?.physicalValidation === "passed" ? "用户实拼自报通过" : "实拼状态 · untested"}</small></span>
+                  <ChevronDown size={14} />
+                </summary>
+                <p>自动校验只表示符合当前程序规则。实拼反馈由用户自报；未实际拼搭时为 untested。</p>
+                <p className="speed-feedback-model-id">模型 {candidate.model.id}{savedModel ? ` · 修订 ${savedModel.metadata.revision}` : " · 正在读取保存版本"}</p>
+                <PhysicalFeedbackForm key={`${candidate.model.id}-${savedModel?.metadata.revision ?? "loading"}`} candidate={candidate} disabled={!!busy || !savedModel} onSubmit={submitFeedback} />
+                <PhysicalFeedbackHistory model={savedModel} />
+              </details>
+
               <section className="speed-card speed-redesign-card">
                 <div className="speed-section-header">
                   <div>
@@ -1303,7 +1642,7 @@ export default function SpeedCreative() {
                   <button
                     className="speed-undo-button"
                     onClick={undo}
-                    disabled={!!busy || undoDepth < 1}
+                    disabled={LEGACY_OPERATIONS_BLOCKED || !!busy || undoDepth < 1}
                   >
                     <Undo2 size={14} />
                     撤销上一次修改
@@ -1322,7 +1661,7 @@ export default function SpeedCreative() {
                       aria-label={`${module.locked ? "解锁" : "锁定"}${moduleLabels[module.id]}`}
                       aria-pressed={module.locked}
                       className={module.locked ? "locked" : ""}
-                      disabled={!!busy}
+                      disabled={LEGACY_OPERATIONS_BLOCKED || !!busy}
                       onClick={() => void setLocked(module.id, !module.locked)}
                     >
                       {module.locked ? (
@@ -1352,7 +1691,7 @@ export default function SpeedCreative() {
                       maxLength={300}
                       placeholder="例如：车头太高了，驾驶舱保持不变。"
                     />
-                    <button disabled={!!busy || !editPrompt.trim()}>
+                    <button disabled={LEGACY_OPERATIONS_BLOCKED || !!busy || !editPrompt.trim()}>
                       {busy === "redesign" ? (
                         <LoaderCircle className="spin" size={15} />
                       ) : (
@@ -1384,7 +1723,7 @@ export default function SpeedCreative() {
                   </h2>
                   <button
                     className="speed-json-button"
-                    disabled={!!busy}
+                    disabled={LEGACY_OPERATIONS_BLOCKED || !!busy}
                     onClick={exportJson}
                   >
                     <FileJson size={13} />

@@ -7,7 +7,7 @@ import type { SetInventoryProvider } from '../src/inventory/index.js';
 let server: Server;
 let base: string;
 beforeAll(async () => {
-  server = createApp({ provider: new MockInventoryProvider(), staticDir: false }).listen(0, '127.0.0.1');
+  server = createApp({ legacyGenerationPolicy: 'test-fixture', provider: new MockInventoryProvider(), staticDir: false }).listen(0, '127.0.0.1');
   await new Promise<void>(resolve => server.once('listening', resolve));
   const address = server.address();
   if (!address || typeof address === 'string') throw new Error('Missing test address');
@@ -99,7 +99,7 @@ describe('independent Speed API', () => {
         };
       },
     };
-    const isolated = createApp({ provider, staticDir: false }).listen(0, '127.0.0.1');
+    const isolated = createApp({ legacyGenerationPolicy: 'test-fixture', provider, staticDir: false }).listen(0, '127.0.0.1');
     await new Promise<void>(resolve => isolated.once('listening', resolve));
     const address = isolated.address();
     if (!address || typeof address === 'string') throw new Error('Missing test address');

@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "caseId": "PART-29119",
+  "category": "HOLLOW_GEOMETRY",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "29119",
+      "ldrawId": "29119",
+      "identitySystem": "ldraw",
+      "sourceDigest": "e39fbe6a5a2f8b9ad5812035241c117db53f27350b0fd4b7231c68d702657524",
+      "geometryHash": "76d4bc16c646eafa51baf3246cc1cbbdeb82c6d673b66994a00921389c73586c",
+      "connectionMetadataHash": "56a5545f84581470791203cb21f6f8f205cae7f21d2856037f6dce148b71e80b"
+    }
+  ],
+  "affectedPhysicalInterfaces": [
+    "c3322b64a5f543cd6eda80ee870a1a9cc23b23f0c1dbad47d9f082c09426afa8"
+  ],
+  "connections": [
+    {
+      "id": "parts/29120.dat:8:0",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "F",
+      "position": [
+        0,
+        -8,
+        10
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "orientation": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "F",
+        "caps": "one",
+        "secs": "R 6 4",
+        "pos": "0 -8 10"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/29120.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "fc585724734e6b76e34686bb8a3fa9f8505f476c33eda0db242490e73e217afe",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/29120.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 6 4] [pos=0 -8 10]",
+        "transforms": [
+          {
+            "file": "parts/29119.dat",
+            "line": 12,
+            "directive": "1 16 0 0 0 -1 0 0 0 1 0 0 0 1 29120.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              -1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": {
+    "rotation": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "translation": [
+      0,
+      0,
+      0
+    ]
+  },
+  "transformStatus": "SOURCE_IDENTITY",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "blocked",
+    "reasonCodes": [
+      "open-external-shell"
+    ],
+    "details": {
+      "reason": "An open native boundary is not fully covered by original coplanar source faces. No missing plastic is invented."
+    }
+  },
+  "replay": {
+    "kind": "proxy",
+    "partId": "29119"
+  },
+  "reproductionCommand": "npm run astra:case -- PART-29119",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/1-4cyls2.dat",
+    "data/parts-foundation/ldraw/files/p/2-4chrd.dat",
+    "data/parts-foundation/ldraw/files/p/2-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/2-4ndis.dat",
+    "data/parts-foundation/ldraw/files/p/box2-9.dat",
+    "data/parts-foundation/ldraw/files/p/box4-1.dat",
+    "data/parts-foundation/ldraw/files/p/box4-4a.dat",
+    "data/parts-foundation/ldraw/files/p/rect.dat",
+    "data/parts-foundation/ldraw/files/p/rect1.dat",
+    "data/parts-foundation/ldraw/files/parts/29119.dat",
+    "data/parts-foundation/ldraw/files/parts/29120.dat",
+    "data/parts-foundation/shadow/files/parts/29120.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [
+    {
+      "reasonCodes": [
+        "collision-proxy-open-external-shell"
+      ],
+      "reasons": [
+        "An open native boundary is not fully covered by original coplanar source faces. No missing plastic is invented."
+      ],
+      "sourceChecks": [
+        {
+          "name": "source-integrity",
+          "outcome": "passed",
+          "reason": "Pinned native geometry and every source-backed connection file are hashed and licensed."
+        },
+        {
+          "name": "collision",
+          "outcome": "blocked",
+          "reason": "An open native boundary is not fully covered by original coplanar source faces. No missing plastic is invented."
+        }
+      ]
+    }
+  ],
+  "attemptsAlreadyMade": [
+    "Loaded and fingerprinted the actual pinned native source.",
+    "Ran the current per-part migration source/fixture prerequisites."
+  ],
+  "whySolStopped": "Further progress requires missing source semantics or complex solid/retention rules; no ad hoc geometry or collision exception was introduced.",
+  "diagnosticOnly": true
+}

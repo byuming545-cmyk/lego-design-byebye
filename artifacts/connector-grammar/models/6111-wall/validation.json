@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "requestRequiredPartIds": [
+    "6111"
+  ],
+  "modelId": "assembly-0c11f57e-eeed-4df0-8858-5b0695d9e1a7",
+  "placements": 3,
+  "edges": 11,
+  "actualPartIds": [
+    "3005",
+    "4477",
+    "6111"
+  ],
+  "bomMatches": true,
+  "stepsMatch": true,
+  "currentSourceEvidencePresent": true,
+  "sourceHashes": {
+    "3005": "fe5888c2f25ab7ef2f0797af3023c2a5021fd27814173ae98c5821c33b58197a",
+    "4477": "0c67ab2a1d811d091085273ea5ffc81cbe56a7ccfca6075096444a2a8a361261",
+    "6111": "37a10cf670b3eef73bedd349cd6641595cb5f88e152a07691e70f8d62be8c3be"
+  },
+  "finalModelValidation": {
+    "checked": true,
+    "valid": true,
+    "issues": []
+  },
+  "exportReimportStatus": "VALID",
+  "validationScope": "source-interfaces-final-pose-graph-only",
+  "physicalBuildVerified": false,
+  "files": [
+    "model.json",
+    "model.ldr",
+    "bom.csv",
+    "steps.json",
+    "sources.json",
+    "reimported.json"
+  ],
+  "exportedJsonSha256": "d5cfc41e74328b0bd10adc3c661b48dc202c5ea27c1a56453eb68ea9b9c42767"
+}

@@ -1,0 +1,488 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T07:34:56.552Z",
+  "scope": "production-engine-and-current-saved-per-interface-migration-evidence",
+  "summary": {
+    "requested": 7,
+    "generated": 6,
+    "blocked": 1,
+    "failed": 0,
+    "physicalBuildsVerified": 0
+  },
+  "runtimeAudit": {
+    "candidateAttempts": 54,
+    "attachmentApiCalls": 30,
+    "acceptedBranchPlacements": 30,
+    "rejectedCandidates": 24,
+    "transformFailureCandidates": 0,
+    "compatibilityFailureCandidates": 0,
+    "collisionFailureCandidates": 0,
+    "occupancyFailureCandidates": 0,
+    "designGoalFailureCandidates": 24,
+    "searchTimeMs": 1566.2820000000002,
+    "catalogTimeMs": 98.163,
+    "multiPointPlacements": 0
+  },
+  "bridgeProbe": {
+    "status": "passed",
+    "nodes": 4,
+    "edges": 4,
+    "attachmentApiCalls": 3,
+    "reasons": [],
+    "artifact": "regression-probes/production-bridge.json"
+  },
+  "modules": [
+    {
+      "module": "wall",
+      "status": "generated",
+      "reasons": [],
+      "search": {
+        "attempts": 4,
+        "attachmentApiCalls": 4,
+        "acceptedAttachments": 4,
+        "rejectedAttachments": 0,
+        "transformFailures": 0,
+        "compatibilityFailures": 0,
+        "collisionFailures": 0,
+        "occupancyFailures": 0,
+        "designGoalFailures": 0,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "timeBudgetExceeded": false,
+        "catalogTimeMs": 97.7,
+        "searchTimeMs": 155.86,
+        "budget": {
+          "maxAttempts": 1800,
+          "maxBacktracks": 120,
+          "maxSearchTimeMs": 10000
+        },
+        "finalPlacements": 5,
+        "finalConnectionEdges": 4,
+        "rejectionCounts": {},
+        "rejectionReasons": []
+      },
+      "elapsedMilliseconds": 256,
+      "modelId": "assembly-87ce76aa-5b75-45c2-8b9c-26e6ec744380",
+      "partCount": 5,
+      "graphEdges": 4,
+      "multiPointPlacements": 0,
+      "contentSha256": "e429c5e7efe6f062d54a0b1ad47cd047dd876e03b06feae3ab0e71bf3f335ecf",
+      "sourceHashes": {
+        "3005": "fe5888c2f25ab7ef2f0797af3023c2a5021fd27814173ae98c5821c33b58197a",
+        "3023": "1b86b4b1ea715f804317d4e3dafd3d4196c228acbe11aed49c89d94a7c591b47"
+      },
+      "artifacts": {
+        "json": "models/wall/model.json",
+        "ldraw": "models/wall/model.ldr",
+        "bom": "models/wall/bom.csv"
+      }
+    },
+    {
+      "module": "platform",
+      "status": "generated",
+      "reasons": [],
+      "search": {
+        "attempts": 4,
+        "attachmentApiCalls": 4,
+        "acceptedAttachments": 4,
+        "rejectedAttachments": 0,
+        "transformFailures": 0,
+        "compatibilityFailures": 0,
+        "collisionFailures": 0,
+        "occupancyFailures": 0,
+        "designGoalFailures": 0,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "timeBudgetExceeded": false,
+        "catalogTimeMs": 0.081,
+        "searchTimeMs": 221.105,
+        "budget": {
+          "maxAttempts": 1800,
+          "maxBacktracks": 120,
+          "maxSearchTimeMs": 10000
+        },
+        "finalPlacements": 5,
+        "finalConnectionEdges": 4,
+        "rejectionCounts": {},
+        "rejectionReasons": []
+      },
+      "elapsedMilliseconds": 221,
+      "modelId": "assembly-8793715d-04fd-4bd6-9e3b-e23a57fae479",
+      "partCount": 5,
+      "graphEdges": 4,
+      "multiPointPlacements": 0,
+      "contentSha256": "af480a92e88b17afd3348420e5aa08e36871940fb04acf27ffe11442c9d4fabe",
+      "sourceHashes": {
+        "3022": "f1f5219cd220d4f7c5ef2827915a839fa4901933bf7b6666b0fb3d6de4ed546f",
+        "3024": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5"
+      },
+      "artifacts": {
+        "json": "models/platform/model.json",
+        "ldraw": "models/platform/model.ldr",
+        "bom": "models/platform/bom.csv"
+      }
+    },
+    {
+      "module": "simple-chassis",
+      "status": "generated",
+      "reasons": [],
+      "search": {
+        "attempts": 4,
+        "attachmentApiCalls": 4,
+        "acceptedAttachments": 4,
+        "rejectedAttachments": 0,
+        "transformFailures": 0,
+        "compatibilityFailures": 0,
+        "collisionFailures": 0,
+        "occupancyFailures": 0,
+        "designGoalFailures": 0,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "timeBudgetExceeded": false,
+        "catalogTimeMs": 0.055,
+        "searchTimeMs": 218.343,
+        "budget": {
+          "maxAttempts": 1800,
+          "maxBacktracks": 120,
+          "maxSearchTimeMs": 10000
+        },
+        "finalPlacements": 5,
+        "finalConnectionEdges": 4,
+        "rejectionCounts": {},
+        "rejectionReasons": []
+      },
+      "elapsedMilliseconds": 219,
+      "modelId": "assembly-8db8158b-b2a0-440a-97e8-2a9dd75c025b",
+      "partCount": 5,
+      "graphEdges": 4,
+      "multiPointPlacements": 0,
+      "contentSha256": "0e163592416f29c932bfd164b5af80c3c47ed87899789d51d5d76b0fd458843e",
+      "sourceHashes": {
+        "3020": "1932a6d04aed72f3f085d7a3b4f23c6a67d44946e405a9fc5db803ae68233231",
+        "3024": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5"
+      },
+      "artifacts": {
+        "json": "models/simple-chassis/model.json",
+        "ldraw": "models/simple-chassis/model.ldr",
+        "bom": "models/simple-chassis/bom.csv"
+      }
+    },
+    {
+      "module": "simple-box",
+      "status": "generated",
+      "reasons": [],
+      "search": {
+        "attempts": 12,
+        "attachmentApiCalls": 12,
+        "acceptedAttachments": 12,
+        "rejectedAttachments": 0,
+        "transformFailures": 0,
+        "compatibilityFailures": 0,
+        "collisionFailures": 0,
+        "occupancyFailures": 0,
+        "designGoalFailures": 0,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "timeBudgetExceeded": false,
+        "catalogTimeMs": 0.079,
+        "searchTimeMs": 545.601,
+        "budget": {
+          "maxAttempts": 1800,
+          "maxBacktracks": 120,
+          "maxSearchTimeMs": 10000
+        },
+        "finalPlacements": 13,
+        "finalConnectionEdges": 12,
+        "rejectionCounts": {},
+        "rejectionReasons": []
+      },
+      "elapsedMilliseconds": 546,
+      "modelId": "assembly-3b193388-af40-464a-9044-2beb9992c567",
+      "partCount": 13,
+      "graphEdges": 12,
+      "multiPointPlacements": 0,
+      "contentSha256": "fd2173e16e6503b37afb56d992143f5f9f23c6f1f4eaa72c246beeb26c42fc23",
+      "sourceHashes": {
+        "3005": "fe5888c2f25ab7ef2f0797af3023c2a5021fd27814173ae98c5821c33b58197a",
+        "3031": "c7bd7ca0fe59e651e495e026790a9f6df0cb436650fd06b390e3f54c211e5677"
+      },
+      "artifacts": {
+        "json": "models/simple-box/model.json",
+        "ldraw": "models/simple-box/model.ldr",
+        "bom": "models/simple-box/bom.csv"
+      }
+    },
+    {
+      "module": "simple-roof",
+      "status": "generated",
+      "reasons": [],
+      "search": {
+        "attempts": 28,
+        "attachmentApiCalls": 4,
+        "acceptedAttachments": 4,
+        "rejectedAttachments": 24,
+        "transformFailures": 0,
+        "compatibilityFailures": 0,
+        "collisionFailures": 0,
+        "occupancyFailures": 0,
+        "designGoalFailures": 24,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "timeBudgetExceeded": false,
+        "catalogTimeMs": 0.101,
+        "searchTimeMs": 223.391,
+        "budget": {
+          "maxAttempts": 1800,
+          "maxBacktracks": 120,
+          "maxSearchTimeMs": 10000
+        },
+        "finalPlacements": 5,
+        "finalConnectionEdges": 4,
+        "rejectionCounts": {
+          "design-goal": 24
+        },
+        "rejectionReasons": [
+          {
+            "code": "design-goal",
+            "reason": "The source-solved pose does not satisfy the requested module footprint/orientation.",
+            "count": 24
+          }
+        ]
+      },
+      "elapsedMilliseconds": 224,
+      "modelId": "assembly-cc72c953-44af-4b9d-ac6c-a5477bc5a994",
+      "partCount": 5,
+      "graphEdges": 4,
+      "multiPointPlacements": 0,
+      "contentSha256": "300d804555c6732da812ee4877e3b80d5a423ec2044305a68dfdae54aa7ec636",
+      "sourceHashes": {
+        "3022": "f1f5219cd220d4f7c5ef2827915a839fa4901933bf7b6666b0fb3d6de4ed546f",
+        "54200": "3a85de4ea55a2204cc489ad4a17a406769387ea60367db093486ec47a6344adb"
+      },
+      "artifacts": {
+        "json": "models/simple-roof/model.json",
+        "ldraw": "models/simple-roof/model.ldr",
+        "bom": "models/simple-roof/bom.csv"
+      }
+    },
+    {
+      "module": "basic-snot",
+      "status": "generated",
+      "reasons": [],
+      "search": {
+        "attempts": 2,
+        "attachmentApiCalls": 2,
+        "acceptedAttachments": 2,
+        "rejectedAttachments": 0,
+        "transformFailures": 0,
+        "compatibilityFailures": 0,
+        "collisionFailures": 0,
+        "occupancyFailures": 0,
+        "designGoalFailures": 0,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "timeBudgetExceeded": false,
+        "catalogTimeMs": 0.1,
+        "searchTimeMs": 194.72,
+        "budget": {
+          "maxAttempts": 1800,
+          "maxBacktracks": 120,
+          "maxSearchTimeMs": 10000
+        },
+        "finalPlacements": 3,
+        "finalConnectionEdges": 2,
+        "rejectionCounts": {},
+        "rejectionReasons": []
+      },
+      "elapsedMilliseconds": 195,
+      "modelId": "assembly-4a14c72c-572a-43b0-baae-90a94484bbd9",
+      "partCount": 3,
+      "graphEdges": 2,
+      "multiPointPlacements": 0,
+      "contentSha256": "f2f9dfc1aeb3e2513da35a983d3661c166779623a75a7d9ec5c11e6769082beb",
+      "sourceHashes": {
+        "3023": "1b86b4b1ea715f804317d4e3dafd3d4196c228acbe11aed49c89d94a7c591b47",
+        "4070": "b99022940e6c18a5a20c7e86c5738d3a25660acbf8b0aa5512bbfa32f7adc7b6",
+        "3070b": "d9dcde894e36ef701c6df34dc55f2bb3e6234f37576ed1c590714820037e340d"
+      },
+      "artifacts": {
+        "json": "models/basic-snot/model.json",
+        "ldraw": "models/basic-snot/model.ldr",
+        "bom": "models/basic-snot/bom.csv"
+      }
+    },
+    {
+      "module": "wheel-module",
+      "status": "blocked",
+      "reasons": [
+        "轮毂／轮胎／轮架的原生来源、机械规则或实体证据尚不完整；当前来源审查结果保留具体阻塞原因，未生成轮组。",
+        "wheel-connections-missing: 18977: source connections are missing.",
+        "wheel-connections-partial: 18975: source connections are partial.; 3673: source connections are partial.",
+        "wheel-installation-path-not-verified: A final pose cannot establish a swept whole-part insertion path or an elastic assembly process.",
+        "wheel-mechanical-rule-not-verified: No implemented source-backed wheel rule provides the required seating transform, insertion depth and occupancy semantics.",
+        "wheel-proxy-branched-native-boundary: 3673: The source mesh has open/branched boundary chains.; 66727: The source mesh has open/branched boundary chains.; 18977: The source mesh has open/branched boundary chains.",
+        "wheel-proxy-unresolved-boundary-cap: 18975: A nonconvex native boundary needs a more capable source-backed proxy.",
+        "wheel-retention-tolerance-not-evidenced: The source review has not established prerequisite wheel-retention-tolerance-not-evidenced.",
+        "wheel-rotation-clearance-not-verified: Static source geometry or a displayed wheel does not certify clearance over a rotation range."
+      ],
+      "search": {
+        "attempts": 0,
+        "attachmentApiCalls": 0,
+        "acceptedAttachments": 0,
+        "rejectedAttachments": 0,
+        "transformFailures": 0,
+        "compatibilityFailures": 0,
+        "collisionFailures": 0,
+        "occupancyFailures": 0,
+        "designGoalFailures": 0,
+        "backtracks": 0,
+        "testedRoots": 0,
+        "exhausted": false,
+        "timeBudgetExceeded": false,
+        "catalogTimeMs": 0.047,
+        "searchTimeMs": 7.262,
+        "budget": {
+          "maxAttempts": 1800,
+          "maxBacktracks": 120,
+          "maxSearchTimeMs": 10000
+        },
+        "finalPlacements": 0,
+        "finalConnectionEdges": 0,
+        "rejectionCounts": {
+          "wheel-connections-missing": 1,
+          "wheel-connections-partial": 1,
+          "wheel-installation-path-not-verified": 1,
+          "wheel-mechanical-rule-not-verified": 1,
+          "wheel-proxy-branched-native-boundary": 1,
+          "wheel-proxy-unresolved-boundary-cap": 1,
+          "wheel-retention-tolerance-not-evidenced": 1,
+          "wheel-rotation-clearance-not-verified": 1
+        },
+        "rejectionReasons": [
+          {
+            "code": "wheel-connections-missing",
+            "reason": "18977: source connections are missing.",
+            "count": 1
+          },
+          {
+            "code": "wheel-connections-partial",
+            "reason": "18975: source connections are partial.; 3673: source connections are partial.",
+            "count": 1
+          },
+          {
+            "code": "wheel-installation-path-not-verified",
+            "reason": "A final pose cannot establish a swept whole-part insertion path or an elastic assembly process.",
+            "count": 1
+          },
+          {
+            "code": "wheel-mechanical-rule-not-verified",
+            "reason": "No implemented source-backed wheel rule provides the required seating transform, insertion depth and occupancy semantics.",
+            "count": 1
+          },
+          {
+            "code": "wheel-proxy-branched-native-boundary",
+            "reason": "3673: The source mesh has open/branched boundary chains.; 66727: The source mesh has open/branched boundary chains.; 18977: The source mesh has open/branched boundary chains.",
+            "count": 1
+          },
+          {
+            "code": "wheel-proxy-unresolved-boundary-cap",
+            "reason": "18975: A nonconvex native boundary needs a more capable source-backed proxy.",
+            "count": 1
+          },
+          {
+            "code": "wheel-retention-tolerance-not-evidenced",
+            "reason": "The source review has not established prerequisite wheel-retention-tolerance-not-evidenced.",
+            "count": 1
+          },
+          {
+            "code": "wheel-rotation-clearance-not-verified",
+            "reason": "Static source geometry or a displayed wheel does not certify clearance over a rotation range.",
+            "count": 1
+          }
+        ]
+      },
+      "elapsedMilliseconds": 8
+    }
+  ],
+  "limitations": [
+    "A passing result verifies source-backed virtual seating and final native mesh collision checks; it does not certify physical construction or swept insertion clearance.",
+    "Search time budgets are checked between bounded native operations; one in-flight source/collision verification is not interrupted.",
+    "LDraw current colour 16 is unspecified; official colour and owned inventory availability are unverified.",
+    "Wheel modules remain blocked until rim, tyre and axle interfaces have complete passing native assembly fixtures."
+  ],
+  "elapsedMilliseconds": 13835,
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+    "assemblyEngineVersion": "native-assembly-0.7.0-grammar",
+    "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-1",
+    "collisionVersion": "native-closed-bvh-local-partition-1.1.0"
+  },
+  "runtime": {
+    "migrationVersion": "source-connector-admission-1",
+    "migrationGeneratedAt": "2026-10-26T07:34:42.717Z",
+    "interfaceBudget": null,
+    "validation": {
+      "status": "ready",
+      "issues": [],
+      "reportLoaded": false,
+      "checkedAt": "2026-10-26T07:34:42.717Z"
+    },
+    "counts": {
+      "total": 253,
+      "assemblyVerified": 0,
+      "generatable": 99,
+      "blocked": 154,
+      "verifiedInterfaces": 0,
+      "disabledInterfaces": 2553,
+      "testedPhysicalInterfaces": 0,
+      "deferredPhysicalInterfaces": 5019,
+      "deferredRawConnectionIds": 5084,
+      "wheelModulesVerified": 0,
+      "physicalBuildsVerified": 0
+    },
+    "sourceCounts": {
+      "totalRoots": 253,
+      "geometryReady": 253,
+      "connectionReady": 205,
+      "connectionPartial": 44,
+      "connectionMissing": 4
+    },
+    "interfaceCoverage": {
+      "rawSourceConnectionRecords": 5084,
+      "logicalConnectionGroups": 3063,
+      "physicalInterfacesDiscovered": 5019,
+      "verifiedPass": 0,
+      "verifiedBlocked": 0,
+      "requiresAstraReview": 0,
+      "pending": 5019,
+      "verifiedPhysicalInterfaces": 0,
+      "enabledPhysicalInterfaces": 0,
+      "enabledRawConnectionIds": 0,
+      "verifiedCoveragePercent": 0,
+      "processedCoveragePercent": 0,
+      "fullyAssemblyVerified": 0,
+      "interfaceVerificationComplete": 0,
+      "partiallyGeneratable": 0,
+      "blockedParts": 0,
+      "unresolvedParts": 253
+    }
+  },
+  "sourceHashes": {
+    "3005": "fe5888c2f25ab7ef2f0797af3023c2a5021fd27814173ae98c5821c33b58197a",
+    "3020": "1932a6d04aed72f3f085d7a3b4f23c6a67d44946e405a9fc5db803ae68233231",
+    "3022": "f1f5219cd220d4f7c5ef2827915a839fa4901933bf7b6666b0fb3d6de4ed546f",
+    "3023": "1b86b4b1ea715f804317d4e3dafd3d4196c228acbe11aed49c89d94a7c591b47",
+    "3024": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+    "3031": "c7bd7ca0fe59e651e495e026790a9f6df0cb436650fd06b390e3f54c211e5677",
+    "4070": "b99022940e6c18a5a20c7e86c5738d3a25660acbf8b0aa5512bbfa32f7adc7b6",
+    "54200": "3a85de4ea55a2204cc489ad4a17a406769387ea60367db093486ec47a6344adb",
+    "3070b": "d9dcde894e36ef701c6df34dc55f2bb3e6234f37576ed1c590714820037e340d"
+  },
+  "migrationReportSha256": null
+}

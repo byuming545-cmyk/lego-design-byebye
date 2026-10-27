@@ -1,0 +1,946 @@
+{
+  "status": "VALID",
+  "reasons": [],
+  "originalModelId": "assembly-852c6fc1-d91c-4f61-a347-f2b5ae1c74a3",
+  "model": {
+    "schemaVersion": 1,
+    "id": "assembly-import-8b363da9-e111-4126-af9d-2a80b6963509",
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+    "assemblyEngineVersion": "native-assembly-0.7.0-grammar",
+    "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-1",
+    "collisionVersion": "native-closed-bvh-local-partition-1.1.0",
+    "placements": [
+      {
+        "instanceId": "root",
+        "partId": "3666",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "instanceId": "p-1",
+        "partId": "3009",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -24,
+            0
+          ]
+        }
+      },
+      {
+        "instanceId": "p-2",
+        "partId": "3005",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -50,
+            -48,
+            0
+          ]
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge-1",
+        "fixedInstanceId": "root",
+        "fixedConnectionId": "p/stud.dat:8:5",
+        "movingInstanceId": "p-1",
+        "movingConnectionId": "parts/s/3009s01.dat:8:11",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "ruleVersion": "source-stud-2.0.0-connector-grammar-1",
+        "twistDeg": 0,
+        "axis": [
+          0,
+          -1,
+          0
+        ],
+        "anchor": [
+          -50,
+          0,
+          0
+        ],
+        "insertionDepthLdu": 4
+      },
+      {
+        "id": "edge-2",
+        "fixedInstanceId": "root",
+        "fixedConnectionId": "p/stud.dat:8:6",
+        "movingInstanceId": "p-1",
+        "movingConnectionId": "parts/s/3009s01.dat:8:12",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "ruleVersion": "source-stud-2.0.0-connector-grammar-1",
+        "twistDeg": 0,
+        "axis": [
+          0,
+          -1,
+          0
+        ],
+        "anchor": [
+          -30,
+          0,
+          0
+        ],
+        "insertionDepthLdu": 4
+      },
+      {
+        "id": "edge-3",
+        "fixedInstanceId": "root",
+        "fixedConnectionId": "p/stud.dat:8:7",
+        "movingInstanceId": "p-1",
+        "movingConnectionId": "parts/s/3009s01.dat:8:13",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "ruleVersion": "source-stud-2.0.0-connector-grammar-1",
+        "twistDeg": 0,
+        "axis": [
+          0,
+          -1,
+          0
+        ],
+        "anchor": [
+          -10,
+          0,
+          0
+        ],
+        "insertionDepthLdu": 4
+      },
+      {
+        "id": "edge-4",
+        "fixedInstanceId": "root",
+        "fixedConnectionId": "p/stud.dat:8:8",
+        "movingInstanceId": "p-1",
+        "movingConnectionId": "parts/s/3009s01.dat:8:14",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "ruleVersion": "source-stud-2.0.0-connector-grammar-1",
+        "twistDeg": 0,
+        "axis": [
+          0,
+          -1,
+          0
+        ],
+        "anchor": [
+          10,
+          0,
+          0
+        ],
+        "insertionDepthLdu": 4
+      },
+      {
+        "id": "edge-5",
+        "fixedInstanceId": "root",
+        "fixedConnectionId": "p/stud.dat:8:9",
+        "movingInstanceId": "p-1",
+        "movingConnectionId": "parts/s/3009s01.dat:8:15",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "ruleVersion": "source-stud-2.0.0-connector-grammar-1",
+        "twistDeg": 0,
+        "axis": [
+          0,
+          -1,
+          0
+        ],
+        "anchor": [
+          30,
+          0,
+          0
+        ],
+        "insertionDepthLdu": 4
+      },
+      {
+        "id": "edge-6",
+        "fixedInstanceId": "root",
+        "fixedConnectionId": "p/stud.dat:8:10",
+        "movingInstanceId": "p-1",
+        "movingConnectionId": "parts/s/3009s01.dat:8:16",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "ruleVersion": "source-stud-2.0.0-connector-grammar-1",
+        "twistDeg": 0,
+        "axis": [
+          0,
+          -1,
+          0
+        ],
+        "anchor": [
+          50,
+          0,
+          0
+        ],
+        "insertionDepthLdu": 4
+      },
+      {
+        "id": "edge-7",
+        "fixedInstanceId": "p-1",
+        "fixedConnectionId": "p/stud.dat:8:10",
+        "movingInstanceId": "p-2",
+        "movingConnectionId": "parts/s/3005s01.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "ruleVersion": "source-stud-2.0.0-connector-grammar-1",
+        "twistDeg": 0,
+        "axis": [
+          0,
+          -1,
+          0
+        ],
+        "anchor": [
+          -50,
+          -24,
+          0
+        ],
+        "insertionDepthLdu": 4
+      }
+    ],
+    "sourceHashes": {
+      "3005": "fe5888c2f25ab7ef2f0797af3023c2a5021fd27814173ae98c5821c33b58197a",
+      "3009": "b28278014ce5d128147bfd1bc16a115a50b3232390e285e85488c1a349e93e9e",
+      "3666": "ab49814bf016f0f507fe242a21a166d43e4bbcf6f1aff6ed2e7552d4a494534a"
+    },
+    "physicalBuildVerified": false,
+    "module": "wall",
+    "name": "已重新验证的真实装配（导入标签：wall）",
+    "bom": [
+      {
+        "partId": "3005",
+        "name": "Brick  1 x  1",
+        "quantity": 1,
+        "ldrawColor": 16,
+        "colorAvailability": "not-verified"
+      },
+      {
+        "partId": "3009",
+        "name": "Brick  1 x  6",
+        "quantity": 1,
+        "ldrawColor": 16,
+        "colorAvailability": "not-verified"
+      },
+      {
+        "partId": "3666",
+        "name": "Plate  1 x  6",
+        "quantity": 1,
+        "ldrawColor": 16,
+        "colorAvailability": "not-verified"
+      }
+    ],
+    "steps": [
+      {
+        "step": 1,
+        "addedInstanceId": "root",
+        "partId": "3666",
+        "connectionEdgeIds": []
+      },
+      {
+        "step": 2,
+        "addedInstanceId": "p-1",
+        "partId": "3009",
+        "connectionEdgeIds": [
+          "edge-1",
+          "edge-2",
+          "edge-3",
+          "edge-4",
+          "edge-5",
+          "edge-6"
+        ]
+      },
+      {
+        "step": 3,
+        "addedInstanceId": "p-2",
+        "partId": "3005",
+        "connectionEdgeIds": [
+          "edge-7"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "library": "LDCadShadowLibrary",
+        "path": "p/stud.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat"
+      },
+      {
+        "library": "LDCadShadowLibrary",
+        "path": "p/stud3.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat"
+      },
+      {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/3666.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "d1f3f90f11dd065491b30b234b949ba8302ccfed262fb5cf41d6cc3bb4975be4",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3666.dat"
+      },
+      {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/s/3005s01.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "a2b6ae111a59f79d1ceb4a39dc8be20eed308b9f4e4153bf17501bd70a0dad59",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3005s01.dat"
+      },
+      {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/s/3009s01.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "fb5b8435b5e7444888a1eca5bde7296dfafd731a6c445f3c8e836a6294693604",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3009s01.dat"
+      },
+      {
+        "library": "LDraw",
+        "path": "p/4-4cyli.dat",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+        "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+        "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+      },
+      {
+        "library": "LDraw",
+        "path": "p/4-4disc.dat",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+        "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+        "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4disc.dat"
+      },
+      {
+        "library": "LDraw",
+        "path": "p/4-4edge.dat",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+        "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+        "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+      },
+      {
+        "library": "LDraw",
+        "path": "p/box4t.dat",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "sha256": "72c7629db2b741e680ad548b2cbec631e44f75cdde206001b423ccb0f3b60c1f",
+        "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+        "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box4t.dat"
+      },
+      {
+        "library": "LDraw",
+        "path": "p/box5.dat",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "sha256": "ccb7b8a1d36692335b10ea6aa196849afcad4b15331683ed8112a10b50977318",
+        "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+        "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box5.dat"
+      },
+      {
+        "library": "LDraw",
+        "path": "p/stud.dat",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4",
+        "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+        "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud.dat"
+      },
+      {
+        "library": "LDraw",
+        "path": "p/stud3.dat",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "sha256": "d29e9160faeaf85b2b72a098e89a81f41e0082517a82065d7b1f149b5fd2addd",
+        "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+        "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud3.dat"
+      },
+      {
+        "library": "LDraw",
+        "path": "p/stug-1x6.dat",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "sha256": "907b74bad03688f6d2f22220db6ec4a6c922203a3e3001aa24f214c6ed48a226",
+        "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+        "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug-1x6.dat"
+      },
+      {
+        "library": "LDraw",
+        "path": "p/stug3-1x5.dat",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "sha256": "85d37bfc3cbb90f12a55dfe2543f507c1763f0336962c712cbec327d688b5624",
+        "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+        "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stug3-1x5.dat"
+      },
+      {
+        "library": "LDraw",
+        "path": "parts/3005.dat",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "sha256": "f86e5f3aed432cab8f5dffcf2e41a9f2ee8c3bd4dcad1732da9630837849a4f8",
+        "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+        "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3005.dat"
+      },
+      {
+        "library": "LDraw",
+        "path": "parts/3009.dat",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "sha256": "950a186800b17a778e6c4b91420b1846df98c2bdbac8a551cfe7f74ddc831a3e",
+        "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+        "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3009.dat"
+      },
+      {
+        "library": "LDraw",
+        "path": "parts/3666.dat",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "sha256": "f4fc83d8c3fc1df32c1a217dc09775a99fad1ced348cffc5167f9c6a69aa9bca",
+        "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+        "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3666.dat"
+      },
+      {
+        "library": "LDraw",
+        "path": "parts/s/3005s01.dat",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "sha256": "ed6218c566690622fed39b8fb3dac9ae9a36df66cac106e2e1d4b5862567841a",
+        "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+        "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3005s01.dat"
+      },
+      {
+        "library": "LDraw",
+        "path": "parts/s/3009s01.dat",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "sha256": "889704b3896146872fdfd6b0f759ec00c90495d94cdd4bb1bed07875024efc47",
+        "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+        "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3009s01.dat"
+      },
+      {
+        "library": "LDraw",
+        "path": "parts/s/3666s01.dat",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "sha256": "71aefa629ca2df065d9cde349bb46a51a8e59265ad4d74e55da24611095d5538",
+        "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+        "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3666s01.dat"
+      }
+    ],
+    "ownership": "virtual-design-not-owned",
+    "colorAvailability": "not-verified",
+    "assemblyValidation": {
+      "checked": true,
+      "valid": true,
+      "issues": []
+    },
+    "connectorAssessment": {
+      "grammarVersion": "connector-grammar-1",
+      "scope": "current-source-final-rigid-pose-and-connector-graph",
+      "constraints": [
+        {
+          "edgeId": "edge-1",
+          "ruleId": "C01",
+          "joint": {
+            "axis": [
+              0,
+              -1,
+              0
+            ],
+            "pivotLdu": [
+              -50,
+              0,
+              0
+            ],
+            "collisionEnvelope": {
+              "sourceIds": [
+                "shadow:p/stud.dat:8:15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+                "policy:ldcad-standard-stud-to-capped-underside-v1",
+                "shadow:parts/s/3009s01.dat:8:fb5b8435b5e7444888a1eca5bde7296dfafd731a6c445f3c8e836a6294693604"
+              ],
+              "status": "UNKNOWN"
+            },
+            "physicalBuildVerified": false,
+            "type": "RIGID",
+            "translationDof": 0,
+            "rotationDof": 0,
+            "translationRangeLdu": null,
+            "angleLimitsDeg": null,
+            "detentsDeg": null
+          },
+          "connectability": "COMPATIBLE",
+          "placement": "SOLVED",
+          "collision": {
+            "status": "CLEAR",
+            "reason": "The complete native graph passed current solid/contact validation.",
+            "sourceBoundedContactChecked": true
+          },
+          "stress": {
+            "status": "UNKNOWN",
+            "scope": "rigid-constraint-consistency-only",
+            "sources": [],
+            "reasons": [
+              "Material stress, fit and tolerance evidence has not been supplied."
+            ]
+          },
+          "legal": "UNKNOWN",
+          "stable": "UNKNOWN",
+          "reasons": [
+            "No verified assembly stress/fit evidence was supplied. Exact rigid closure alone cannot certify material stress or retention."
+          ],
+          "physicalBuildVerified": false
+        },
+        {
+          "edgeId": "edge-2",
+          "ruleId": "C01",
+          "joint": {
+            "axis": [
+              0,
+              -1,
+              0
+            ],
+            "pivotLdu": [
+              -30,
+              0,
+              0
+            ],
+            "collisionEnvelope": {
+              "sourceIds": [
+                "shadow:p/stud.dat:8:15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+                "policy:ldcad-standard-stud-to-capped-underside-v1",
+                "shadow:parts/s/3009s01.dat:8:fb5b8435b5e7444888a1eca5bde7296dfafd731a6c445f3c8e836a6294693604"
+              ],
+              "status": "UNKNOWN"
+            },
+            "physicalBuildVerified": false,
+            "type": "RIGID",
+            "translationDof": 0,
+            "rotationDof": 0,
+            "translationRangeLdu": null,
+            "angleLimitsDeg": null,
+            "detentsDeg": null
+          },
+          "connectability": "COMPATIBLE",
+          "placement": "SOLVED",
+          "collision": {
+            "status": "CLEAR",
+            "reason": "The complete native graph passed current solid/contact validation.",
+            "sourceBoundedContactChecked": true
+          },
+          "stress": {
+            "status": "UNKNOWN",
+            "scope": "rigid-constraint-consistency-only",
+            "sources": [],
+            "reasons": [
+              "Material stress, fit and tolerance evidence has not been supplied."
+            ]
+          },
+          "legal": "UNKNOWN",
+          "stable": "UNKNOWN",
+          "reasons": [
+            "No verified assembly stress/fit evidence was supplied. Exact rigid closure alone cannot certify material stress or retention."
+          ],
+          "physicalBuildVerified": false
+        },
+        {
+          "edgeId": "edge-3",
+          "ruleId": "C01",
+          "joint": {
+            "axis": [
+              0,
+              -1,
+              0
+            ],
+            "pivotLdu": [
+              -10,
+              0,
+              0
+            ],
+            "collisionEnvelope": {
+              "sourceIds": [
+                "shadow:p/stud.dat:8:15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+                "policy:ldcad-standard-stud-to-capped-underside-v1",
+                "shadow:parts/s/3009s01.dat:8:fb5b8435b5e7444888a1eca5bde7296dfafd731a6c445f3c8e836a6294693604"
+              ],
+              "status": "UNKNOWN"
+            },
+            "physicalBuildVerified": false,
+            "type": "RIGID",
+            "translationDof": 0,
+            "rotationDof": 0,
+            "translationRangeLdu": null,
+            "angleLimitsDeg": null,
+            "detentsDeg": null
+          },
+          "connectability": "COMPATIBLE",
+          "placement": "SOLVED",
+          "collision": {
+            "status": "CLEAR",
+            "reason": "The complete native graph passed current solid/contact validation.",
+            "sourceBoundedContactChecked": true
+          },
+          "stress": {
+            "status": "UNKNOWN",
+            "scope": "rigid-constraint-consistency-only",
+            "sources": [],
+            "reasons": [
+              "Material stress, fit and tolerance evidence has not been supplied."
+            ]
+          },
+          "legal": "UNKNOWN",
+          "stable": "UNKNOWN",
+          "reasons": [
+            "No verified assembly stress/fit evidence was supplied. Exact rigid closure alone cannot certify material stress or retention."
+          ],
+          "physicalBuildVerified": false
+        },
+        {
+          "edgeId": "edge-4",
+          "ruleId": "C01",
+          "joint": {
+            "axis": [
+              0,
+              -1,
+              0
+            ],
+            "pivotLdu": [
+              10,
+              0,
+              0
+            ],
+            "collisionEnvelope": {
+              "sourceIds": [
+                "shadow:p/stud.dat:8:15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+                "policy:ldcad-standard-stud-to-capped-underside-v1",
+                "shadow:parts/s/3009s01.dat:8:fb5b8435b5e7444888a1eca5bde7296dfafd731a6c445f3c8e836a6294693604"
+              ],
+              "status": "UNKNOWN"
+            },
+            "physicalBuildVerified": false,
+            "type": "RIGID",
+            "translationDof": 0,
+            "rotationDof": 0,
+            "translationRangeLdu": null,
+            "angleLimitsDeg": null,
+            "detentsDeg": null
+          },
+          "connectability": "COMPATIBLE",
+          "placement": "SOLVED",
+          "collision": {
+            "status": "CLEAR",
+            "reason": "The complete native graph passed current solid/contact validation.",
+            "sourceBoundedContactChecked": true
+          },
+          "stress": {
+            "status": "UNKNOWN",
+            "scope": "rigid-constraint-consistency-only",
+            "sources": [],
+            "reasons": [
+              "Material stress, fit and tolerance evidence has not been supplied."
+            ]
+          },
+          "legal": "UNKNOWN",
+          "stable": "UNKNOWN",
+          "reasons": [
+            "No verified assembly stress/fit evidence was supplied. Exact rigid closure alone cannot certify material stress or retention."
+          ],
+          "physicalBuildVerified": false
+        },
+        {
+          "edgeId": "edge-5",
+          "ruleId": "C01",
+          "joint": {
+            "axis": [
+              0,
+              -1,
+              0
+            ],
+            "pivotLdu": [
+              30,
+              0,
+              0
+            ],
+            "collisionEnvelope": {
+              "sourceIds": [
+                "shadow:p/stud.dat:8:15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+                "policy:ldcad-standard-stud-to-capped-underside-v1",
+                "shadow:parts/s/3009s01.dat:8:fb5b8435b5e7444888a1eca5bde7296dfafd731a6c445f3c8e836a6294693604"
+              ],
+              "status": "UNKNOWN"
+            },
+            "physicalBuildVerified": false,
+            "type": "RIGID",
+            "translationDof": 0,
+            "rotationDof": 0,
+            "translationRangeLdu": null,
+            "angleLimitsDeg": null,
+            "detentsDeg": null
+          },
+          "connectability": "COMPATIBLE",
+          "placement": "SOLVED",
+          "collision": {
+            "status": "CLEAR",
+            "reason": "The complete native graph passed current solid/contact validation.",
+            "sourceBoundedContactChecked": true
+          },
+          "stress": {
+            "status": "UNKNOWN",
+            "scope": "rigid-constraint-consistency-only",
+            "sources": [],
+            "reasons": [
+              "Material stress, fit and tolerance evidence has not been supplied."
+            ]
+          },
+          "legal": "UNKNOWN",
+          "stable": "UNKNOWN",
+          "reasons": [
+            "No verified assembly stress/fit evidence was supplied. Exact rigid closure alone cannot certify material stress or retention."
+          ],
+          "physicalBuildVerified": false
+        },
+        {
+          "edgeId": "edge-6",
+          "ruleId": "C01",
+          "joint": {
+            "axis": [
+              0,
+              -1,
+              0
+            ],
+            "pivotLdu": [
+              50,
+              0,
+              0
+            ],
+            "collisionEnvelope": {
+              "sourceIds": [
+                "shadow:p/stud.dat:8:15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+                "policy:ldcad-standard-stud-to-capped-underside-v1",
+                "shadow:parts/s/3009s01.dat:8:fb5b8435b5e7444888a1eca5bde7296dfafd731a6c445f3c8e836a6294693604"
+              ],
+              "status": "UNKNOWN"
+            },
+            "physicalBuildVerified": false,
+            "type": "RIGID",
+            "translationDof": 0,
+            "rotationDof": 0,
+            "translationRangeLdu": null,
+            "angleLimitsDeg": null,
+            "detentsDeg": null
+          },
+          "connectability": "COMPATIBLE",
+          "placement": "SOLVED",
+          "collision": {
+            "status": "CLEAR",
+            "reason": "The complete native graph passed current solid/contact validation.",
+            "sourceBoundedContactChecked": true
+          },
+          "stress": {
+            "status": "UNKNOWN",
+            "scope": "rigid-constraint-consistency-only",
+            "sources": [],
+            "reasons": [
+              "Material stress, fit and tolerance evidence has not been supplied."
+            ]
+          },
+          "legal": "UNKNOWN",
+          "stable": "UNKNOWN",
+          "reasons": [
+            "No verified assembly stress/fit evidence was supplied. Exact rigid closure alone cannot certify material stress or retention."
+          ],
+          "physicalBuildVerified": false
+        },
+        {
+          "edgeId": "edge-7",
+          "ruleId": "C01",
+          "joint": {
+            "axis": [
+              0,
+              -1,
+              0
+            ],
+            "pivotLdu": [
+              -50,
+              0,
+              0
+            ],
+            "collisionEnvelope": {
+              "sourceIds": [
+                "shadow:p/stud.dat:8:15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+                "policy:ldcad-standard-stud-to-capped-underside-v1",
+                "shadow:parts/s/3005s01.dat:8:a2b6ae111a59f79d1ceb4a39dc8be20eed308b9f4e4153bf17501bd70a0dad59"
+              ],
+              "status": "UNKNOWN"
+            },
+            "physicalBuildVerified": false,
+            "type": "RIGID",
+            "translationDof": 0,
+            "rotationDof": 0,
+            "translationRangeLdu": null,
+            "angleLimitsDeg": null,
+            "detentsDeg": null
+          },
+          "connectability": "COMPATIBLE",
+          "placement": "SOLVED",
+          "collision": {
+            "status": "CLEAR",
+            "reason": "The complete native graph passed current solid/contact validation.",
+            "sourceBoundedContactChecked": true
+          },
+          "stress": {
+            "status": "UNKNOWN",
+            "scope": "rigid-constraint-consistency-only",
+            "sources": [],
+            "reasons": [
+              "Material stress, fit and tolerance evidence has not been supplied."
+            ]
+          },
+          "legal": "UNKNOWN",
+          "stable": "UNKNOWN",
+          "reasons": [
+            "No verified assembly stress/fit evidence was supplied. Exact rigid closure alone cannot certify material stress or retention."
+          ],
+          "physicalBuildVerified": false
+        }
+      ],
+      "topology": {
+        "version": "connector-topology-patterns-1",
+        "coordinateSystem": "ldraw-native",
+        "units": "LDU",
+        "patterns": [
+          {
+            "kind": "NORMAL_STACK",
+            "state": "TOPOLOGY_POTENTIAL",
+            "featureIds": [
+              "root/p/stud.dat:8:5",
+              "root/parts/3666.dat:8:11"
+            ],
+            "sourceIds": [
+              "policy:ldcad-standard-stud-to-capped-underside-v1",
+              "shadow:p/stud.dat:8:15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+              "shadow:parts/3666.dat:8:d1f3f90f11dd065491b30b234b949ba8302ccfed262fb5cf41d6cc3bb4975be4"
+            ],
+            "occurrences": 169,
+            "notes": [
+              "Parallel male/receiving stud-system axes transmit the build direction; fit and collision remain separate."
+            ],
+            "offsetLdu": [
+              "0",
+              "8",
+              "0"
+            ]
+          },
+          {
+            "kind": "PLATE_HEIGHT_OFFSET",
+            "state": "TOPOLOGY_POTENTIAL",
+            "featureIds": [
+              "root/p/stud.dat:8:5",
+              "root/parts/3666.dat:8:11"
+            ],
+            "sourceIds": [
+              "policy:ldcad-standard-stud-to-capped-underside-v1",
+              "shadow:p/stud.dat:8:15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+              "shadow:parts/3666.dat:8:d1f3f90f11dd065491b30b234b949ba8302ccfed262fb5cf41d6cc3bb4975be4"
+            ],
+            "occurrences": 127,
+            "notes": [
+              "An input/output axial separation is an exact nonzero multiple of 8 LDU; 24 LDU equals one brick."
+            ],
+            "offsetLdu": [
+              "0",
+              "8",
+              "0"
+            ]
+          },
+          {
+            "kind": "MULTI_POINT_CONNECTION",
+            "state": "SOLVED_JOINT",
+            "featureIds": [
+              "root/p/stud.dat:8:5",
+              "p-1/parts/s/3009s01.dat:8:11"
+            ],
+            "sourceIds": [
+              "policy:ldcad-standard-stud-to-capped-underside-v1",
+              "shadow:p/stud.dat:8:15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+              "shadow:parts/s/3009s01.dat:8:fb5b8435b5e7444888a1eca5bde7296dfafd731a6c445f3c8e836a6294693604"
+            ],
+            "occurrences": 6,
+            "notes": [
+              "At least two distinct mates were checked under the same rigid pose; this is not inferred from a part merely having several studs."
+            ]
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "topology-feature-unknown",
+            "message": "Some stud-system features lack a source-backed exact unit axis or established position; no rounding or guessed pattern was applied to them."
+          }
+        ],
+        "legalAssemblyEstablished": false
+      },
+      "stability": {
+        "status": "HEURISTIC",
+        "heuristicScore": 45,
+        "contributions": [
+          {
+            "factor": "observed-rigid-connectors",
+            "points": 21,
+            "reason": "7 actual rigid connection observations; no invented load capacity."
+          },
+          {
+            "factor": "observed-stud-connectors",
+            "points": 14,
+            "reason": "7 observed stud-system connections."
+          },
+          {
+            "factor": "multiple-support-edges",
+            "points": 10,
+            "reason": "Multiple actual edges provide a ranking signal; geometry and load path remain separate evidence."
+          }
+        ],
+        "missingFactors": [
+          "Connector friction/retention evidence",
+          "Source-backed contact area",
+          "Load path and lever arm",
+          "Support symmetry",
+          "Measured weight/load",
+          "Material strength, friction forces and physical build verification"
+        ],
+        "diagnostics": [],
+        "policy": "structural-ranking-1",
+        "physicalStability": "UNKNOWN",
+        "createsConnections": false
+      },
+      "materialStress": "UNKNOWN",
+      "physicalBuildVerified": false
+    },
+    "warnings": [
+      "导入后已核对当前原生来源、接口权限与完整连接图；未认证实物拼搭、颜色库存或连续插入轨迹。",
+      "导入模块名称仅为文件标签；本次校验不认证墙体、车架或轮组等结构设计目标。"
+    ],
+    "contentSha256": "bdce6d7cbbf16681bdc3fc7a93b08a661c88fda079fc3a9187ef484cae67ee66"
+  },
+  "physicalBuildVerified": false,
+  "validationScope": "source-interfaces-final-pose-graph-only"
+}

@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 1,
+  "caseId": "PART-18591",
+  "category": "HOLLOW_GEOMETRY",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "18591",
+      "ldrawId": "18591",
+      "identitySystem": "ldraw",
+      "sourceDigest": "635751b564f0258bd202d610da99546cc68672973cda50c40aed9514bb54800e",
+      "geometryHash": "021070bac2d8a16c6feef2d4c844b4d21717f5bb34ec5b4b133509cbbf0edaa0",
+      "connectionMetadataHash": "d9b5e6700abaa7f3d121ca961181d094db0c84174bc78312382439b1032991ed"
+    }
+  ],
+  "affectedPhysicalInterfaces": [
+    "012b922de8b485c0544908a94105fd3246fa5fa41b0edb57d59b6ba1e08df9b2",
+    "eb73140399885675ad2d7fde121f28e6f5957acd1ce58057fab496630cf338d6"
+  ],
+  "connections": [
+    {
+      "id": "p/connect8.dat:8:0",
+      "sourceId": "pin8",
+      "kind": "cylinder",
+      "family": "pin",
+      "gender": "M",
+      "position": [
+        30,
+        0,
+        0
+      ],
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 8,
+          "length": 2
+        },
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 16
+        },
+        {
+          "profile": "_L",
+          "radius": 6.25,
+          "length": 2
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "id": "pin8",
+        "gender": "M",
+        "caps": "one",
+        "secs": "R 8 2   R 6 16   _L 6.25 2"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "p/connect8.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "b4d140f0fe8135dad7e1e798fe2b2211b52cddd8f9e09fb808d4dd6edf603ff8",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connect8.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [ID=pin8] [gender=M] [caps=one] [secs=R 8 2   R 6 16   _L 6.25 2]",
+        "transforms": [
+          {
+            "file": "parts/18591.dat",
+            "line": 12,
+            "directive": "1 16 30 0 0 1 0 0 0 -1 0 0 0 1 connect8.dat",
+            "position": [
+              30,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              -1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    },
+    {
+      "id": "p/connect8.dat:8:1",
+      "sourceId": "pin8",
+      "kind": "cylinder",
+      "family": "pin",
+      "gender": "M",
+      "position": [
+        -30,
+        0,
+        0
+      ],
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 8,
+          "length": 2
+        },
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 16
+        },
+        {
+          "profile": "_L",
+          "radius": 6.25,
+          "length": 2
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "id": "pin8",
+        "gender": "M",
+        "caps": "one",
+        "secs": "R 8 2   R 6 16   _L 6.25 2"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "p/connect8.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "b4d140f0fe8135dad7e1e798fe2b2211b52cddd8f9e09fb808d4dd6edf603ff8",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connect8.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [ID=pin8] [gender=M] [caps=one] [secs=R 8 2   R 6 16   _L 6.25 2]",
+        "transforms": [
+          {
+            "file": "parts/18591.dat",
+            "line": 14,
+            "directive": "1 16 -30 0 0 1 0 0 0 -1 0 0 0 1 connect8.dat",
+            "position": [
+              -30,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              -1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": {
+    "rotation": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "translation": [
+      0,
+      0,
+      0
+    ]
+  },
+  "transformStatus": "SOURCE_IDENTITY",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "blocked",
+    "reasonCodes": [
+      "branched-native-boundary"
+    ],
+    "details": {
+      "reason": "The source mesh has open/branched boundary chains."
+    }
+  },
+  "replay": {
+    "kind": "proxy",
+    "partId": "18591"
+  },
+  "reproductionCommand": "npm run astra:case -- PART-18591",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/1-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/1-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/1-4ndis.dat",
+    "data/parts-foundation/ldraw/files/p/3-16chrd.dat",
+    "data/parts-foundation/ldraw/files/p/3-16cyli.dat",
+    "data/parts-foundation/ldraw/files/p/3-16cylo.dat",
+    "data/parts-foundation/ldraw/files/p/3-16edge.dat",
+    "data/parts-foundation/ldraw/files/p/3-8cyli.dat",
+    "data/parts-foundation/ldraw/files/p/3-8edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/4-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring3.dat",
+    "data/parts-foundation/ldraw/files/p/48/1-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/48/1-4ring9.dat",
+    "data/parts-foundation/ldraw/files/p/48/1-8chrd.dat",
+    "data/parts-foundation/ldraw/files/p/48/1-8cyli.dat",
+    "data/parts-foundation/ldraw/files/p/48/1-8cylo.dat",
+    "data/parts-foundation/ldraw/files/p/48/1-8edge.dat",
+    "data/parts-foundation/ldraw/files/p/48/1-8sphe.dat",
+    "data/parts-foundation/ldraw/files/p/connect8.dat",
+    "data/parts-foundation/ldraw/files/p/rect1.dat",
+    "data/parts-foundation/ldraw/files/p/rect2p.dat",
+    "data/parts-foundation/ldraw/files/p/rect3.dat",
+    "data/parts-foundation/ldraw/files/parts/18591.dat",
+    "data/parts-foundation/ldraw/files/parts/s/18591s01.dat",
+    "data/parts-foundation/shadow/files/p/connect8.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [
+    {
+      "reasonCodes": [
+        "collision-proxy-branched-native-boundary"
+      ],
+      "reasons": [
+        "The source mesh has open/branched boundary chains."
+      ],
+      "sourceChecks": [
+        {
+          "name": "source-integrity",
+          "outcome": "passed",
+          "reason": "Pinned native geometry and every source-backed connection file are hashed and licensed."
+        },
+        {
+          "name": "collision",
+          "outcome": "blocked",
+          "reason": "The source mesh has open/branched boundary chains."
+        }
+      ]
+    }
+  ],
+  "attemptsAlreadyMade": [
+    "Loaded and fingerprinted the actual pinned native source.",
+    "Ran the current per-part migration source/fixture prerequisites."
+  ],
+  "whySolStopped": "Further progress requires missing source semantics or complex solid/retention rules; no ad hoc geometry or collision exception was introduced.",
+  "diagnosticOnly": true
+}

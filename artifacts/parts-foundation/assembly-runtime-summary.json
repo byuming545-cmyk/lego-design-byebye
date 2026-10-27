@@ -1,0 +1,988 @@
+{
+  "schemaVersion": 1,
+  "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+  "assemblyEngineVersion": "native-assembly-0.6.0",
+  "connectionRuleVersion": "source-stud-1.0.0",
+  "collisionVersion": "native-closed-bvh-local-partition-1.1.0",
+  "generatedAt": "2026-10-25T15:33:07.397Z",
+  "runtimeValidation": {
+    "status": "ready",
+    "issues": [],
+    "reportLoaded": true,
+    "checkedAt": "2026-10-25T15:34:46.067Z"
+  },
+  "scope": "every-pinned-native-root",
+  "verificationScope": "only-listed-connection-ids; no physical-build claim",
+  "interfaceBudget": null,
+  "counts": {
+    "total": 253,
+    "assemblyVerified": 87,
+    "generatable": 87,
+    "blocked": 166,
+    "verifiedInterfaces": 2268,
+    "disabledInterfaces": 2816,
+    "testedPhysicalInterfaces": 2426,
+    "deferredPhysicalInterfaces": 0,
+    "deferredRawConnectionIds": 0,
+    "wheelModulesVerified": 0,
+    "physicalBuildsVerified": 0
+  },
+  "sourceCounts": {
+    "totalRoots": 253,
+    "geometryReady": 253,
+    "connectionReady": 205,
+    "connectionPartial": 44,
+    "connectionMissing": 4
+  },
+  "proxyReadiness": {
+    "nativeRoots": 253,
+    "ready": 106,
+    "blocked": 147,
+    "basis": "source-derived native collision proxy; not assembly or generator approval"
+  },
+  "blockedReasons": {
+    "geometry": 0,
+    "connection": 46,
+    "collision": 114,
+    "special-assembly": 3,
+    "other": 3
+  },
+  "interfaceCoverage": {
+    "rawSourceConnectionRecords": 5084,
+    "logicalConnectionGroups": 3063,
+    "physicalInterfacesDiscovered": 5019,
+    "verifiedPass": 2251,
+    "verifiedBlocked": 786,
+    "requiresAstraReview": 1982,
+    "pending": 0,
+    "verifiedPhysicalInterfaces": 2251,
+    "enabledPhysicalInterfaces": 2251,
+    "enabledRawConnectionIds": 2268,
+    "verifiedCoveragePercent": 44.8496,
+    "processedCoveragePercent": 100,
+    "fullyAssemblyVerified": 38,
+    "interfaceVerificationComplete": 249,
+    "partiallyGeneratable": 49,
+    "blockedParts": 162,
+    "unresolvedParts": 4
+  },
+  "deferredRun": {
+    "targetCount": 978,
+    "pass": 816,
+    "blocked": 0,
+    "requiresAstraReview": 162,
+    "pending": 0,
+    "directTests": 818,
+    "sharedPrecondition": 0,
+    "reviewDependency": 160,
+    "interrupted": false,
+    "checkpointDirectory": "/tmp/generation-expansion-geometry1-final",
+    "testVersion": "native-interface-suite-0.6.0-worker-2"
+  },
+  "batches": [
+    {
+      "batch": "1-basic-brick-plate-tile",
+      "total": 59,
+      "assemblyVerified": 50,
+      "generatable": 50,
+      "blocked": 9
+    },
+    {
+      "batch": "2-modified-bracket-snot",
+      "total": 50,
+      "assemblyVerified": 22,
+      "generatable": 22,
+      "blocked": 28
+    },
+    {
+      "batch": "3-slope-curved-wedge",
+      "total": 80,
+      "assemblyVerified": 4,
+      "generatable": 4,
+      "blocked": 76
+    },
+    {
+      "batch": "4-body-windscreen-mudguard",
+      "total": 47,
+      "assemblyVerified": 9,
+      "generatable": 9,
+      "blocked": 38
+    },
+    {
+      "batch": "5-wheel-tyre-axle",
+      "total": 11,
+      "assemblyVerified": 1,
+      "generatable": 1,
+      "blocked": 10
+    },
+    {
+      "batch": "6-bar-clip-detail",
+      "total": 5,
+      "assemblyVerified": 0,
+      "generatable": 0,
+      "blocked": 5
+    },
+    {
+      "batch": "other-source-part",
+      "total": 1,
+      "assemblyVerified": 1,
+      "generatable": 1,
+      "blocked": 0
+    }
+  ],
+  "fixtures": [
+    {
+      "role": "brick-1x1",
+      "partId": "3005",
+      "status": "source-ready",
+      "reason": "Imported source connections: ready; assembly tests have not yet promoted any interface."
+    },
+    {
+      "role": "brick-1x2",
+      "partId": "3004",
+      "status": "source-partial",
+      "reason": "Imported source connections: partial; assembly tests have not yet promoted any interface."
+    },
+    {
+      "role": "brick-2x2",
+      "partId": "3003",
+      "status": "source-ready",
+      "reason": "Imported source connections: ready; assembly tests have not yet promoted any interface."
+    },
+    {
+      "role": "plate-1x1",
+      "partId": "3024",
+      "status": "source-ready",
+      "reason": "Imported source connections: ready; assembly tests have not yet promoted any interface."
+    },
+    {
+      "role": "plate-1x2",
+      "partId": "3023b",
+      "status": "source-ready",
+      "reason": "Imported source connections: ready; assembly tests have not yet promoted any interface."
+    },
+    {
+      "role": "tile-1x1",
+      "partId": "3070b",
+      "status": "source-ready",
+      "reason": "Imported source connections: ready; assembly tests have not yet promoted any interface."
+    },
+    {
+      "role": "side-stud",
+      "partId": "87087",
+      "status": "source-ready",
+      "reason": "Imported source connections: ready; assembly tests have not yet promoted any interface."
+    },
+    {
+      "role": "bar",
+      "partId": "30374",
+      "status": "source-ready",
+      "reason": "Imported source connections: ready; assembly tests have not yet promoted any interface."
+    },
+    {
+      "role": "clip",
+      "partId": "48729b",
+      "status": "source-ready",
+      "reason": "Imported source connections: ready; assembly tests have not yet promoted any interface."
+    },
+    {
+      "role": "clip-plate",
+      "partId": "60470b",
+      "status": "source-ready",
+      "reason": "Imported source connections: ready; assembly tests have not yet promoted any interface."
+    },
+    {
+      "role": "axle",
+      "partId": null,
+      "status": "missing",
+      "reason": "No standalone axle is included in the current pinned root set; do not invent a reference axle."
+    },
+    {
+      "role": "axle-hole",
+      "partId": "65635",
+      "status": "source-partial",
+      "reason": "Imported source connections: partial; assembly tests have not yet promoted any interface."
+    },
+    {
+      "role": "pin",
+      "partId": "3673",
+      "status": "source-partial",
+      "reason": "Imported source connections: partial; assembly tests have not yet promoted any interface."
+    },
+    {
+      "role": "pin-hole",
+      "partId": "3700",
+      "status": "source-ready",
+      "reason": "Imported source connections: ready; assembly tests have not yet promoted any interface."
+    },
+    {
+      "role": "wheel-holder",
+      "partId": "4600",
+      "status": "source-ready",
+      "reason": "Imported source connections: ready; assembly tests have not yet promoted any interface."
+    },
+    {
+      "role": "wheel",
+      "partId": "4624",
+      "status": "source-ready",
+      "reason": "Imported source connections: ready; assembly tests have not yet promoted any interface."
+    },
+    {
+      "role": "tyre",
+      "partId": "3641",
+      "status": "source-ready",
+      "reason": "Imported source connections: ready; assembly tests have not yet promoted any interface."
+    }
+  ],
+  "representativePairs": [
+    {
+      "id": "bracket-plate",
+      "fixedPartId": "99207",
+      "movingPartId": "3024",
+      "label": "Bracket + standard plate",
+      "requiredInterface": "standard-stud",
+      "status": "verified",
+      "reason": "The required actual pair interface passed compatibility, transform, reverse, collision, rotation, graph and attachment smoke checks.",
+      "fixedSourceDigest": "262a459a9c33ad5fbac552fad98ff26be4ed9dbf19aaacdc34e17f8ffcbc1455",
+      "movingSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+      "result": {
+        "connectionId": "p/stud.dat:8:1",
+        "connectionFamily": "stud",
+        "sourceFile": "p/stud.dat",
+        "sourceLine": 8,
+        "sourceHash": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+        "status": "verified",
+        "fixturePartId": "3024",
+        "fixtureRole": "representative-pair",
+        "fixtureConnectionId": "parts/s/3024s01.dat:8:1",
+        "fixtureSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "compatibleTwistsDeg": [
+          0,
+          90,
+          180,
+          270
+        ],
+        "acceptedTwistDeg": 0,
+        "transform": {
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "translation": [
+            10,
+            -8,
+            0
+          ]
+        },
+        "checks": [
+          {
+            "name": "connection",
+            "outcome": "passed",
+            "reason": "Real source profiles passed the named compatibility rule."
+          },
+          {
+            "name": "transform",
+            "outcome": "passed",
+            "reason": "Source connection anchors and axes agree in the solved rigid world frame."
+          },
+          {
+            "name": "reverse-connection",
+            "outcome": "passed",
+            "reason": "Swapping fixed and moving parts recovers the original rigid placement within numerical tolerance."
+          },
+          {
+            "name": "collision",
+            "outcome": "passed",
+            "reason": "The native mesh collision validator accepted the source-rule connection pose."
+          },
+          {
+            "name": "illegal-collision",
+            "outcome": "passed",
+            "reason": "Coincident duplicate source geometry must be rejected; result: collision."
+          },
+          {
+            "name": "rotation",
+            "outcome": "passed",
+            "reason": "Solver enumerated every allowed discrete source-rule twist and no extra rotation."
+          },
+          {
+            "name": "connection-graph",
+            "outcome": "passed",
+            "reason": "Two source-bound nodes contain the requested physical pair and all validated coincident edges; occupied-port reuse was rejected without changing the graph."
+          },
+          {
+            "name": "generator-smoke",
+            "outcome": "passed",
+            "reason": "The actual attachment path placed the fixture through compatibility, transform, collision and graph update."
+          }
+        ],
+        "reasonCodes": [],
+        "reasons": [],
+        "equivalentConnectionIds": [
+          "p/stud.dat:8:1"
+        ],
+        "lastAttempt": {
+          "fixturePartId": "3024",
+          "fixtureConnectionId": "parts/s/3024s01.dat:8:1",
+          "fixtureSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+          "twistDeg": 0,
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              10,
+              -8,
+              0
+            ]
+          },
+          "stage": "assembly",
+          "status": "verified",
+          "reasonCode": "fixture-verified",
+          "reason": "All current fixture checks passed."
+        }
+      }
+    },
+    {
+      "id": "side-stud-tile",
+      "fixedPartId": "87087",
+      "movingPartId": "3070b",
+      "label": "Side stud brick + tile",
+      "requiredInterface": "side-stud",
+      "status": "verified",
+      "reason": "The required actual pair interface passed compatibility, transform, reverse, collision, rotation, graph and attachment smoke checks.",
+      "fixedSourceDigest": "1917d6ea8c8524f7b5f01058baa9ada5544ec9e68fb6828bc920a1ee71ec78d1",
+      "movingSourceDigest": "d9dcde894e36ef701c6df34dc55f2bb3e6234f37576ed1c590714820037e340d",
+      "result": {
+        "connectionId": "p/stud2a.dat:11:1",
+        "connectionFamily": "stud",
+        "sourceFile": "p/stud2a.dat",
+        "sourceLine": 11,
+        "sourceHash": "d316e281be1503e4b98cba6274f3974841851686d11c779da1397583bd0efb79",
+        "status": "verified",
+        "fixturePartId": "3070b",
+        "fixtureRole": "representative-pair",
+        "fixtureConnectionId": "parts/s/3070bs01.dat:8:0",
+        "fixtureSourceDigest": "d9dcde894e36ef701c6df34dc55f2bb3e6234f37576ed1c590714820037e340d",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "compatibleTwistsDeg": [
+          0,
+          90,
+          180,
+          270
+        ],
+        "acceptedTwistDeg": 0,
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0
+          ],
+          "translation": [
+            0,
+            10,
+            -18
+          ]
+        },
+        "checks": [
+          {
+            "name": "connection",
+            "outcome": "passed",
+            "reason": "Real source profiles passed the named compatibility rule."
+          },
+          {
+            "name": "transform",
+            "outcome": "passed",
+            "reason": "Source connection anchors and axes agree in the solved rigid world frame."
+          },
+          {
+            "name": "reverse-connection",
+            "outcome": "passed",
+            "reason": "Swapping fixed and moving parts recovers the original rigid placement within numerical tolerance."
+          },
+          {
+            "name": "collision",
+            "outcome": "passed",
+            "reason": "The native mesh collision validator accepted the source-rule connection pose."
+          },
+          {
+            "name": "illegal-collision",
+            "outcome": "passed",
+            "reason": "Coincident duplicate source geometry must be rejected; result: collision."
+          },
+          {
+            "name": "rotation",
+            "outcome": "passed",
+            "reason": "Solver enumerated every allowed discrete source-rule twist and no extra rotation."
+          },
+          {
+            "name": "connection-graph",
+            "outcome": "passed",
+            "reason": "Two source-bound nodes contain the requested physical pair and all validated coincident edges; occupied-port reuse was rejected without changing the graph."
+          },
+          {
+            "name": "generator-smoke",
+            "outcome": "passed",
+            "reason": "The actual attachment path placed the fixture through compatibility, transform, collision and graph update."
+          }
+        ],
+        "reasonCodes": [],
+        "reasons": [],
+        "equivalentConnectionIds": [
+          "p/stud2a.dat:11:1"
+        ],
+        "lastAttempt": {
+          "fixturePartId": "3070b",
+          "fixtureConnectionId": "parts/s/3070bs01.dat:8:0",
+          "fixtureSourceDigest": "d9dcde894e36ef701c6df34dc55f2bb3e6234f37576ed1c590714820037e340d",
+          "twistDeg": 0,
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              -1,
+              0,
+              1,
+              0
+            ],
+            "translation": [
+              0,
+              10,
+              -18
+            ]
+          },
+          "stage": "assembly",
+          "status": "verified",
+          "reasonCode": "fixture-verified",
+          "reason": "All current fixture checks passed."
+        }
+      }
+    },
+    {
+      "id": "mudguard-body",
+      "fixedPartId": "18974",
+      "movingPartId": "3024",
+      "label": "Mudguard + standard body plate",
+      "requiredInterface": "standard-stud",
+      "status": "blocked",
+      "reason": "The source mesh has open/branched boundary chains.",
+      "fixedSourceDigest": "ffdf623fabd29425eb489650715525bf1ee49208cb9966669d418e0e417fcd93",
+      "movingSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+      "result": {
+        "connectionId": "parts/18974.dat:9:13",
+        "connectionFamily": "cylinder",
+        "sourceFile": "parts/18974.dat",
+        "sourceLine": 9,
+        "sourceHash": "51cb69de81465ae6a287a78fd40a2e1e09717bd49c2a7a547fd1d80b21df184e",
+        "status": "blocked",
+        "fixturePartId": null,
+        "fixtureRole": null,
+        "fixtureConnectionId": null,
+        "fixtureSourceDigest": null,
+        "ruleId": null,
+        "compatibleTwistsDeg": [],
+        "acceptedTwistDeg": null,
+        "transform": null,
+        "checks": [
+          {
+            "name": "collision",
+            "outcome": "blocked",
+            "reason": "The source mesh has open/branched boundary chains."
+          }
+        ],
+        "reasonCodes": [
+          "collision-or-transform-blocked"
+        ],
+        "reasons": [
+          "The source mesh has open/branched boundary chains."
+        ],
+        "equivalentConnectionIds": [
+          "parts/18974.dat:9:13"
+        ],
+        "lastAttempt": {
+          "fixturePartId": "3024",
+          "fixtureConnectionId": "p/stud.dat:8:0",
+          "fixtureSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+          "twistDeg": 270,
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              1.8369701987210297e-16,
+              0,
+              1,
+              0,
+              -1.8369701987210297e-16,
+              0,
+              1
+            ],
+            "translation": [
+              10,
+              32,
+              10
+            ]
+          },
+          "stage": "collision",
+          "status": "blocked",
+          "reasonCode": "branched-native-boundary",
+          "reason": "The source mesh has open/branched boundary chains."
+        }
+      }
+    },
+    {
+      "id": "windscreen-base",
+      "fixedPartId": "18973",
+      "movingPartId": "3024",
+      "label": "Windscreen + base plate",
+      "requiredInterface": "standard-stud",
+      "status": "blocked",
+      "reason": "The source mesh has open/branched boundary chains.",
+      "fixedSourceDigest": "47dbd3f226a2858e80a60cba45b027c2dbd8428ca6d433d045d439c539be89dd",
+      "movingSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+      "result": {
+        "connectionId": "parts/18973.dat:8:5",
+        "connectionFamily": "cylinder",
+        "sourceFile": "parts/18973.dat",
+        "sourceLine": 8,
+        "sourceHash": "5aeadeaf58860edb8fd4ad037b9157abed49a5c9edd11f303fb6c4441816301a",
+        "status": "blocked",
+        "fixturePartId": null,
+        "fixtureRole": null,
+        "fixtureConnectionId": null,
+        "fixtureSourceDigest": null,
+        "ruleId": null,
+        "compatibleTwistsDeg": [],
+        "acceptedTwistDeg": null,
+        "transform": null,
+        "checks": [
+          {
+            "name": "collision",
+            "outcome": "blocked",
+            "reason": "The source mesh has open/branched boundary chains."
+          }
+        ],
+        "reasonCodes": [
+          "collision-or-transform-blocked"
+        ],
+        "reasons": [
+          "The source mesh has open/branched boundary chains."
+        ],
+        "equivalentConnectionIds": [
+          "parts/18973.dat:8:5"
+        ],
+        "lastAttempt": {
+          "fixturePartId": "3024",
+          "fixtureConnectionId": "p/stud.dat:8:0",
+          "fixtureSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+          "twistDeg": 270,
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              1.8369701987210297e-16,
+              0,
+              1,
+              0,
+              -1.8369701987210297e-16,
+              0,
+              1
+            ],
+            "translation": [
+              10,
+              32,
+              -100
+            ]
+          },
+          "stage": "collision",
+          "status": "blocked",
+          "reasonCode": "branched-native-boundary",
+          "reason": "The source mesh has open/branched boundary chains."
+        }
+      }
+    },
+    {
+      "id": "wheel-tyre",
+      "fixedPartId": "4624",
+      "movingPartId": "3641",
+      "label": "Wheel + tyre",
+      "requiredInterface": "wheel-rim",
+      "status": "blocked",
+      "reason": "Profile, insertion depth, retention or interface-specific mating semantics are not supported by the current rule set.",
+      "fixedSourceDigest": "7e0b8057ec53eecfc25f6528a257b53de68e7926df1b1deae2cb44fcba973837",
+      "movingSourceDigest": "1e5c3cdf7f6ada58aa78c9f31af3a9510f1ea18cb0fd1bb4fe766257391ec9f0",
+      "result": {
+        "connectionId": "parts/4624.dat:10:1",
+        "connectionFamily": "wheelMount",
+        "sourceFile": "parts/4624.dat",
+        "sourceLine": 10,
+        "sourceHash": "97060b1442d758038a03d3250589b63d5c62ea74c37b4ab157e2c5d9a7dfe5cd",
+        "status": "blocked",
+        "fixturePartId": null,
+        "fixtureRole": null,
+        "fixtureConnectionId": null,
+        "fixtureSourceDigest": null,
+        "ruleId": null,
+        "compatibleTwistsDeg": [],
+        "acceptedTwistDeg": null,
+        "transform": null,
+        "checks": [
+          {
+            "name": "connection",
+            "outcome": "blocked",
+            "reason": "No source-ready standard fixture has a supported, source-backed mating rule for this interface."
+          }
+        ],
+        "reasonCodes": [
+          "compatibility-unknown"
+        ],
+        "reasons": [
+          "Profile, insertion depth, retention or interface-specific mating semantics are not supported by the current rule set."
+        ],
+        "equivalentConnectionIds": [
+          "parts/4624.dat:10:1"
+        ]
+      }
+    },
+    {
+      "id": "wheel-holder",
+      "fixedPartId": "4600",
+      "movingPartId": "4624",
+      "label": "Wheel holder + wheel",
+      "requiredInterface": "wheel-pin",
+      "status": "blocked",
+      "reason": "Profile, insertion depth, retention or interface-specific mating semantics are not supported by the current rule set.",
+      "fixedSourceDigest": "efc40479aac437ab82b2ed915d690876667edaf4df688688df307952d669b6a1",
+      "movingSourceDigest": "7e0b8057ec53eecfc25f6528a257b53de68e7926df1b1deae2cb44fcba973837",
+      "result": {
+        "connectionId": "p/wpin.dat:8:3",
+        "connectionFamily": "cylinder",
+        "sourceFile": "p/wpin.dat",
+        "sourceLine": 8,
+        "sourceHash": "49309e3705533a082a59a54c6b5b0f49da792e28040bc66c302b6724f21ee334",
+        "status": "blocked",
+        "fixturePartId": null,
+        "fixtureRole": null,
+        "fixtureConnectionId": null,
+        "fixtureSourceDigest": null,
+        "ruleId": null,
+        "compatibleTwistsDeg": [],
+        "acceptedTwistDeg": null,
+        "transform": null,
+        "checks": [
+          {
+            "name": "connection",
+            "outcome": "blocked",
+            "reason": "No source-ready standard fixture has a supported, source-backed mating rule for this interface."
+          }
+        ],
+        "reasonCodes": [
+          "compatibility-unknown"
+        ],
+        "reasons": [
+          "Profile, insertion depth, retention or interface-specific mating semantics are not supported by the current rule set."
+        ],
+        "equivalentConnectionIds": [
+          "p/wpin.dat:8:3"
+        ]
+      }
+    },
+    {
+      "id": "axle-compatible-hole",
+      "fixedPartId": "65635",
+      "movingPartId": null,
+      "label": "Axle hole + standalone axle",
+      "requiredInterface": "axle",
+      "status": "blocked",
+      "reason": "No pinned standalone axle fixture exists in the current source root set.",
+      "fixedSourceDigest": null,
+      "movingSourceDigest": null,
+      "result": null
+    },
+    {
+      "id": "curved-slope-body",
+      "fixedPartId": "11477",
+      "movingPartId": "3024",
+      "label": "Curved slope + standard body plate",
+      "requiredInterface": "standard-stud",
+      "status": "blocked",
+      "reason": "An open native boundary is not fully covered by original coplanar source faces. No missing plastic is invented.",
+      "fixedSourceDigest": "76e4f75447b3f042268b1febb7a79c7f57a823512994358e288165ce44594e03",
+      "movingSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+      "result": {
+        "connectionId": "parts/s/11477s01.dat:9:1",
+        "connectionFamily": "cylinder",
+        "sourceFile": "parts/s/11477s01.dat",
+        "sourceLine": 9,
+        "sourceHash": "b604c88094ad1e25c1fb230ed4b241c80f7d18d623586f4a8f7711f3fb365fa7",
+        "status": "blocked",
+        "fixturePartId": null,
+        "fixtureRole": null,
+        "fixtureConnectionId": null,
+        "fixtureSourceDigest": null,
+        "ruleId": null,
+        "compatibleTwistsDeg": [],
+        "acceptedTwistDeg": null,
+        "transform": null,
+        "checks": [
+          {
+            "name": "collision",
+            "outcome": "blocked",
+            "reason": "An open native boundary is not fully covered by original coplanar source faces. No missing plastic is invented."
+          }
+        ],
+        "reasonCodes": [
+          "collision-or-transform-blocked"
+        ],
+        "reasons": [
+          "An open native boundary is not fully covered by original coplanar source faces. No missing plastic is invented."
+        ],
+        "equivalentConnectionIds": [
+          "parts/s/11477s01.dat:9:1"
+        ],
+        "lastAttempt": {
+          "fixturePartId": "3024",
+          "fixtureConnectionId": "p/stud.dat:8:0",
+          "fixtureSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+          "twistDeg": 270,
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              1.8369701987210297e-16,
+              0,
+              1,
+              0,
+              -1.8369701987210297e-16,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -8,
+              10
+            ]
+          },
+          "stage": "collision",
+          "status": "blocked",
+          "reasonCode": "open-external-shell",
+          "reason": "An open native boundary is not fully covered by original coplanar source faces. No missing plastic is invented."
+        }
+      }
+    },
+    {
+      "id": "jumper-offset",
+      "fixedPartId": "15573",
+      "movingPartId": "3024",
+      "label": "Jumper offset + standard plate",
+      "requiredInterface": "standard-stud",
+      "status": "verified",
+      "reason": "The required actual pair interface passed compatibility, transform, reverse, collision, rotation, graph and attachment smoke checks.",
+      "fixedSourceDigest": "7489332069717daf927f83dc666550ba6da380274633adbf5f2e46d7b8b8eb18",
+      "movingSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+      "result": {
+        "connectionId": "p/stud2.dat:9:0",
+        "connectionFamily": "stud",
+        "sourceFile": "p/stud2.dat",
+        "sourceLine": 9,
+        "sourceHash": "62e2ba6afee204d3e4a457d026569e6114e99f1fe6a4c3524b5af93a573570eb",
+        "status": "verified",
+        "fixturePartId": "3024",
+        "fixtureRole": "representative-pair",
+        "fixtureConnectionId": "parts/s/3024s01.dat:8:1",
+        "fixtureSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "compatibleTwistsDeg": [
+          0,
+          90,
+          180,
+          270
+        ],
+        "acceptedTwistDeg": 0,
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -8,
+            0
+          ]
+        },
+        "checks": [
+          {
+            "name": "connection",
+            "outcome": "passed",
+            "reason": "Real source profiles passed the named compatibility rule."
+          },
+          {
+            "name": "transform",
+            "outcome": "passed",
+            "reason": "Source connection anchors and axes agree in the solved rigid world frame."
+          },
+          {
+            "name": "reverse-connection",
+            "outcome": "passed",
+            "reason": "Swapping fixed and moving parts recovers the original rigid placement within numerical tolerance."
+          },
+          {
+            "name": "collision",
+            "outcome": "passed",
+            "reason": "The native mesh collision validator accepted the source-rule connection pose."
+          },
+          {
+            "name": "illegal-collision",
+            "outcome": "passed",
+            "reason": "Coincident duplicate source geometry must be rejected; result: collision."
+          },
+          {
+            "name": "rotation",
+            "outcome": "passed",
+            "reason": "Solver enumerated every allowed discrete source-rule twist and no extra rotation."
+          },
+          {
+            "name": "connection-graph",
+            "outcome": "passed",
+            "reason": "Two source-bound nodes contain the requested physical pair and all validated coincident edges; occupied-port reuse was rejected without changing the graph."
+          },
+          {
+            "name": "generator-smoke",
+            "outcome": "passed",
+            "reason": "The actual attachment path placed the fixture through compatibility, transform, collision and graph update."
+          }
+        ],
+        "reasonCodes": [],
+        "reasons": [],
+        "equivalentConnectionIds": [
+          "p/stud2.dat:9:0"
+        ],
+        "lastAttempt": {
+          "fixturePartId": "3024",
+          "fixtureConnectionId": "parts/s/3024s01.dat:8:1",
+          "fixtureSourceDigest": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+          "twistDeg": 0,
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -8,
+              0
+            ]
+          },
+          "stage": "assembly",
+          "status": "verified",
+          "reasonCode": "fixture-verified",
+          "reason": "All current fixture checks passed."
+        }
+      }
+    },
+    {
+      "id": "bar-clip",
+      "fixedPartId": "48729b",
+      "movingPartId": "30374",
+      "label": "Real clip + real bar",
+      "requiredInterface": "bar-clip",
+      "status": "blocked",
+      "reason": "Profile, insertion depth, retention or interface-specific mating semantics are not supported by the current rule set.",
+      "fixedSourceDigest": "36e44e7ce246380323135cebce7be711621a3f3909d0f578e66eba63b0a3ea42",
+      "movingSourceDigest": "aa66d7f6acd683b65fc800280bea377c83680192ded7b905335eba1dab6b7388",
+      "result": {
+        "connectionId": "parts/48729b.dat:8:0",
+        "connectionFamily": "clip",
+        "sourceFile": "parts/48729b.dat",
+        "sourceLine": 8,
+        "sourceHash": "4337ee7e407f822d3d60b17dcd5baf973a0adc5fa12569cfee0043f49d968dc0",
+        "status": "blocked",
+        "fixturePartId": null,
+        "fixtureRole": null,
+        "fixtureConnectionId": null,
+        "fixtureSourceDigest": null,
+        "ruleId": null,
+        "compatibleTwistsDeg": [],
+        "acceptedTwistDeg": null,
+        "transform": null,
+        "checks": [
+          {
+            "name": "connection",
+            "outcome": "blocked",
+            "reason": "No source-ready standard fixture has a supported, source-backed mating rule for this interface."
+          }
+        ],
+        "reasonCodes": [
+          "compatibility-unknown"
+        ],
+        "reasons": [
+          "Profile, insertion depth, retention or interface-specific mating semantics are not supported by the current rule set."
+        ],
+        "equivalentConnectionIds": [
+          "parts/48729b.dat:8:0"
+        ]
+      }
+    },
+    {
+      "id": "pin-hole",
+      "fixedPartId": "3700",
+      "movingPartId": "3673",
+      "label": "Technic hole + real pin",
+      "requiredInterface": "pin",
+      "status": "blocked",
+      "reason": "Source connection data remains incomplete: fixed=ready, moving=partial.",
+      "fixedSourceDigest": "82ddaf33d5886e6b932eecb4254136cff7a8d4259dd95a23101c6936657a972f",
+      "movingSourceDigest": "f29f619520c7c275e381cd7a537900be330e0298a893b78f2e7710c7584776ee",
+      "result": null
+    }
+  ],
+  "runtimeReport": "data/parts-foundation/assembly/migration.json",
+  "fullProofArtifact": "artifacts/assembly-development/migration-full.json.gz",
+  "limitations": [
+    "Every interface decision is current-version, source-bound evidence or explicit review routing; no old PASS was relabelled for the new engine.",
+    "PASS/discovered is verified coverage; (PASS + BLOCKED + REQUIRES_ASTRA_REVIEW)/discovered is processed coverage.",
+    "Fully verified requires every recognizable physical frame/profile group to PASS. Terminal blocked/review outcomes only establish processing completeness.",
+    "Worker and per-part CPU limits route unresolved cases to review without asserting a collision failure.",
+    "No wheel, tyre, axle, clip or deformation rule was invented or relaxed. No physical build is claimed.",
+    "Runtime capabilities require current source hashes, current engine versions and retained passing fixtures for each allowed source endpoint.",
+    "Insertion paths are source-axis seating candidates; swept whole-part insertion clearance and physical builds are not certified."
+  ]
+}

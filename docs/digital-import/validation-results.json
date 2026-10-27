@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "0ea4741dea40f5c0a4afd5417dc528ae826a13fe",
+  "branch": "codex/compliant-parts-pilot",
+  "status": "passed",
+  "runs": [
+    {
+      "name": "unit-api",
+      "command": "npm test -- --maxWorkers=2",
+      "exitCode": 0,
+      "summary": {
+        "filesPassed": 46,
+        "passed": 619,
+        "failed": 0,
+        "durationSeconds": 89.88
+      },
+      "output": "\n> bricklab@0.6.0 test\n> vitest run --maxWorkers=2\n\n\n RUN  v5.0.5 /workspace/lego-design-byebye\n\n\n Test Files  46 passed (46)\n      Tests  619 passed (619)\n   Start at  12:23:54\n   Duration  89.88s (tests 98%, import 2%)\n\n",
+      "logSha256": "4635225e0d6af53a2dd70a1591e084e0c176ec670826ae00375c12413ba3b18f"
+    },
+    {
+      "name": "compiled-preview",
+      "command": "npm run test:preview",
+      "exitCode": 0,
+      "summary": {
+        "passed": 3,
+        "failed": 0,
+        "durationSeconds": 32.2,
+        "buildAndTypecheckIncluded": true
+      },
+      "output": "\n> bricklab@0.6.0 test:preview\n> playwright test --config playwright.preview.config.ts\n\n[WebServer] (node:186064) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)\n[WebServer] \n[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:\n[WebServer] - Using dynamic import() to code-split the application\n[WebServer] - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks\n[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.\n[WebServer] (node:186104) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)\n\nRunning 3 tests using 1 worker\n\n(node:186116) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n  ✓  1 [preview-chromium] › tests/preview/parts-foundation.spec.ts:7:1 › compiled preview serves Part Lab, bundled native geometry, fonts and API on one origin (13.8s)\n  ✓  2 [preview-chromium] › tests/preview/parts-foundation.spec.ts:37:1 › compiled routes preserve source evidence and generation restrictions (324ms)\n  ✓  3 [preview-chromium] › tests/preview/parts-foundation.spec.ts:59:1 › compiled assembly API attaches verified source interfaces and exports a versioned real wall (330ms)\n\n  3 passed (32.2s)\n",
+      "logSha256": "eb669a4feff705df59336730d400d55005bf04529067ece3125da44ed3f8333d"
+    },
+    {
+      "name": "actual-pilot",
+      "command": "npm run import:pilot",
+      "exitCode": 0,
+      "summary": {
+        "requested": 26,
+        "identity": {
+          "EXACT_NATIVE_ID": 26,
+          "CANDIDATE": 0,
+          "CONFLICT": 0,
+          "UNRESOLVED": 0
+        },
+        "geometryReady": 26,
+        "connectionReady": 23,
+        "connectionPartial": 3,
+        "connectionMissing": 0,
+        "assemblyVerified": 15,
+        "stagingLibraryAllowed": 26,
+        "productionGeneratorAllowed": 14
+      },
+      "output": "\n> bricklab@0.6.0 import:pilot\n> tsx src/cli/digital-import-pilot.ts\n\n1/26\t3001\tgeometry=geometryReady\tconnections=ready\tassembly=assemblyVerified\tinterfaces=16/16\n2/26\t3005\tgeometry=geometryReady\tconnections=ready\tassembly=assemblyVerified\tinterfaces=2/2\n3/26\t3020\tgeometry=geometryReady\tconnections=ready\tassembly=assemblyVerified\tinterfaces=16/16\n4/26\t3024\tgeometry=geometryReady\tconnections=ready\tassembly=assemblyVerified\tinterfaces=2/2\n5/26\t3710\tgeometry=geometryReady\tconnections=ready\tassembly=assemblyVerified\tinterfaces=11/11\n6/26\t3023b\tgeometry=geometryReady\tconnections=ready\tassembly=assemblyVerified\tinterfaces=5/5\n7/26\t91988\tgeometry=geometryReady\tconnections=ready\tassembly=assemblyVerified\tinterfaces=56/56\n8/26\t3068b\tgeometry=geometryReady\tconnections=ready\tassembly=assemblyVerified\tinterfaces=5/5\n9/26\t3070b\tgeometry=geometryReady\tconnections=ready\tassembly=assemblyVerified\tinterfaces=1/1\n10/26\t3069b\tgeometry=geometryReady\tconnections=ready\tassembly=assemblyVerified\tinterfaces=2/2\n11/26\t99780\tgeometry=geometryReady\tconnections=ready\tassembly=assemblyVerified\tinterfaces=9/9\n12/26\t99207\tgeometry=geometryReady\tconnections=ready\tassembly=assemblyVerified\tinterfaces=13/13\n13/26\t15573\tgeometry=geometryReady\tconnections=ready\tassembly=assemblyVerified\tinterfaces=5/5\n14/26\t87087\tgeometry=geometryReady\tconnections=ready\tassembly=assemblyVerified\tinterfaces=4/4\n15/26\t11477\tgeometry=geometryReady\tconnections=ready\tassembly=blocked\tinterfaces=0/2\n16/26\t15068\tgeometry=geometryReady\tconnections=ready\tassembly=blocked\tinterfaces=0/5\n17/26\t18973\tgeometry=geometryReady\tconnections=ready\tassembly=blocked\tinterfaces=0/4\n18/26\t18974\tgeometry=geometryReady\tconnections=ready\tassembly=blocked\tinterfaces=0/14\n19/26\t18976\tgeometry=geometryReady\tconnections=partial\tassembly=blocked\tinterfaces=0/2\n20/26\t4624\tgeometry=geometryReady\tconnections=ready\tassembly=blocked\tinterfaces=0/2\n21/26\t3641\tgeometry=geometryReady\tconnections=ready\tassembly=blocked\tinterfaces=0/1\n22/26\t3700\tgeometry=geometryReady\tconnections=ready\tassembly=blocked\tinterfaces=0/7\n23/26\t3705\tgeometry=geometryReady\tconnections=partial\tassembly=blocked\tinterfaces=0/2\n24/26\t2780\tgeometry=geometryReady\tconnections=partial\tassembly=blocked\tinterfaces=0/3\n25/26\t32000\tgeometry=geometryReady\tconnections=ready\tassembly=assemblyVerified\tinterfaces=8/8\n26/26\t32054\tgeometry=geometryReady\tconnections=ready\tassembly=blocked\tinterfaces=0/3\n{\"counts\":{\"requested\":26,\"identity\":{\"EXACT_NATIVE_ID\":26,\"CANDIDATE\":0,\"CONFLICT\":0,\"UNRESOLVED\":0},\"geometryReady\":26,\"connectionReady\":23,\"connectionPartial\":3,\"connectionMissing\":0,\"assemblyVerified\":15,\"stagingLibraryAllowed\":26,\"productionGeneratorAllowed\":14},\"demandIdentityCounts\":{\"EXACT\":0,\"CANDIDATE\":14,\"CONFLICT\":88,\"UNRESOLVED\":429},\"newlyStaged\":[\"3705\",\"2780\",\"32000\",\"32054\"],\"productionQualificationWrites\":false,\"output\":\"/workspace/lego-design-byebye/docs/digital-import\"}\n",
+      "logSha256": "e12754eca78d43c4835b0c12cfbbc74b93724949360b2f3d95b65cca9986bd95"
+    },
+    {
+      "name": "source-preparation-and-distribution",
+      "command": "python -B scripts/test_digital_pilot_export.py -v",
+      "exitCode": 0,
+      "summary": {
+        "passed": 6,
+        "failed": 0
+      },
+      "output": "test_complete_candidate_rows_cannot_enter_public_demand_metadata (__main__.DigitalPilotDistribution.test_complete_candidate_rows_cannot_enter_public_demand_metadata) ... ok\ntest_dependency_references_cannot_escape_the_approved_namespace (__main__.DigitalPilotDistribution.test_dependency_references_cannot_escape_the_approved_namespace) ... ok\ntest_extra_notice_paths_cannot_smuggle_unreviewed_files (__main__.DigitalPilotDistribution.test_extra_notice_paths_cannot_smuggle_unreviewed_files) ... ok\ntest_only_fixed_source_allowlist_is_distributed (__main__.DigitalPilotDistribution.test_only_fixed_source_allowlist_is_distributed) ... ok\ntest_self_declared_new_manifest_is_not_upstream_authority (__main__.DigitalPilotDistribution.test_self_declared_new_manifest_is_not_upstream_authority) ... ok\ntest_wrong_archive_bytes_are_rejected_before_source_preparation (__main__.DigitalPilotDistribution.test_wrong_archive_bytes_are_rejected_before_source_preparation) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.154s\n\nOK\n",
+      "logSha256": "eed8b8e97e652911b9bc76c0bcac4211ba829eff2f5dff5be3cc3bed63dbf4e0"
+    },
+    {
+      "name": "windows-source-byte-preservation",
+      "command": "npx vitest run tests/parts-digital-pilot-bundle.test.ts --maxWorkers=2",
+      "exitCode": 0,
+      "summary": {
+        "passed": 5,
+        "failed": 0
+      },
+      "output": "\n RUN  v5.0.5 /workspace/lego-design-byebye\n\n\n Test Files  1 passed (1)\n      Tests  5 passed (5)\n   Start at  12:29:52\n   Duration  605ms (tests 84%, transform 10%, import 5%, worker 1%)\n\n"
+    }
+  ],
+  "trialVerification": {
+    "discoveredPhysicalGroups": 200,
+    "fixtureTestedGroups": 155,
+    "preconditionBlockedGroups": 45,
+    "verifiedGroups": 136,
+    "blockedTestedGroups": 19,
+    "passedChecks": 1088,
+    "executedChecks": 1107,
+    "verificationSuiteVersion": "native-interface-suite-0.6.0-worker-2"
+  },
+  "preservation": {
+    "unchangedExistingSourceReferenceAndQualificationFiles": 997,
+    "sourceFilesUnchanged": 968,
+    "algorithmFilesUnchanged": [
+      "src/parts/assembly/collision.ts",
+      "src/parts/assembly/proxy.ts",
+      "src/parts/assembly/compatibility.ts",
+      "src/parts/assembly/solver.ts",
+      "src/parts/assembly/engine.ts",
+      "src/parts/assembly/generator.ts"
+    ],
+    "productionRoots": 245,
+    "productionQualifiedParts": 79,
+    "productionPassInterfaces": 1765,
+    "qualificationWrites": 0
+  },
+  "newTests": {
+    "vitest": 29,
+    "files": [
+      "tests/parts-digital-demand.test.ts",
+      "tests/parts-digital-sources.test.ts",
+      "tests/parts-digital-pipeline.test.ts",
+      "tests/parts-digital-pilot-bundle.test.ts"
+    ]
+  },
+  "review": {
+    "finalBlockingFindings": 0,
+    "fixedFinding": "CLI now authenticates the exact reviewed manifest bytes before source loading; self-declared bundle hashes cannot authenticate upstream origin."
+  },
+  "scopeLimits": [
+    "No full 4632-interface migration rerun; unchanged production source and rules retain current qualifications",
+    "No physical construction or continuous insertion certification",
+    "Official website permissions/rates/terms not freshly fetched; no restricted requests attempted",
+    "Production application historical datasets remain outside the licensed source-only export scope"
+  ],
+  "warnings": [
+    "Existing Vite chunk-size warning remains"
+  ]
+}

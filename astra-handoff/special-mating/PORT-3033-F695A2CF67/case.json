@@ -1,0 +1,1749 @@
+{
+  "schemaVersion": 1,
+  "caseId": "PORT-3033-F695A2CF67",
+  "category": "VERIFICATION_BUDGET",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "3033",
+      "ldrawId": "3033",
+      "identitySystem": "ldraw",
+      "sourceDigest": "45dac6f30a1076f135ea4b6ab4d75e19ffadbd606c13d437fa8eb6c20a8f277d",
+      "geometryHash": "55dadfa7e2bfc16dc43696d195ae84ba15ed12aa441c5519d5ce8cd1ce231925",
+      "connectionMetadataHash": "42239e60a4c54ec199eddba72ba3949e5eef263afb1d129ca0eda800580b0f50"
+    }
+  ],
+  "affectedPhysicalInterfaces": [
+    "b287c44fd940fe2ead804455529d57a442d5af32c771912c51790b62a705675e",
+    "75e1d255dd3126e745663d5db1e9a27028f19ffc48394602429421d437072bf2",
+    "3e657cfcdff87519c19ac1779470d9b943693006c281b002282507989bbad00f",
+    "fba1e5024213114884f0c8a60855e67b978690a008e0ce561b651b17e1122a66",
+    "393aed8fbd5d8ee3457aa37937c106d568f4310b1cf21c861719f131908018d8",
+    "c7c10a7a740604862f39faf436562ac123f8492f35c2e7f0bc1d41bd4a46862b",
+    "350700f986df1d9d832ec7d09e1dca80427adeaab068ec5ce5075bcf2452c2a7",
+    "3f6b9e724585530cbbedf3c9873feef5110234c65a41c16a9f13d5be745edf46",
+    "934617ad5371196916f87a4c9dd33f3ffc76085beba2325741215f8977d0ae3f",
+    "bc945cece69f8096711707e1fe1a3c673b1282dceaa1c38e44ff163d145e1f40",
+    "9f5e57d2ced94ac113bacbdb0ab4eab8c7c69dcfcb3ebbfd9fb9306663d690db",
+    "b2b2686ab9b567f1e5ae549867d9b4b368c5ef25d306624256df4a9673bc5789",
+    "97527f8366210b1164e80341e62977ea447f4f84a5583979f6e5e1d4ed444537",
+    "1e69903e59e82d6bd23fa63f589671575c96e55de0d60f159ca25be9d12e890d",
+    "4499dfcaea33966ebf5d28b9960a25244af42f7e10a21442f6a1d58249f3aa1f",
+    "4710ec61c38e75ba278a28456cb8e0867a6ee829990369fd460c246bfc396a96",
+    "36073f925d910740d9b229c914cfd1961acd103b87ccf50c2e563960baca4be0",
+    "c9362a127c3c82c34bf00c61f8cc4393d1edbfc87598dd07e13ea711249e6b06",
+    "c6112aca91f91f753f09ba3a0e430b6075355da9a776a315f8492a1d78ebbc34",
+    "9d66a9f061b0e58fc6bd9d9dc2656d1f2b12d73c9e1cad0954e95449ff7ac623",
+    "31101d6532c4c22dcc4b9d9759ecf025502db8ce1adfa247beeb805729db3c5b",
+    "934734b5cc68389307215223a7fc4680b28e50a01e3b52341da5a3bac5e723a2",
+    "da74e5a7991961b1c50b231e0df38f093fc7bf046d538148ec9981cac7a76ea2",
+    "b28669f88c40d8cf9573ad8afa7f0dd6729fd013a214866ea3e56e8d31ac6875",
+    "cc877c51ca62a46e369c1e8d26c4de3f2ca7b1300ebbb69cd4072dc66a40ad69",
+    "dccc1bde84a005d79025c6bbaba9b318a236105806e263131adcd91f1a8c6b23",
+    "4e19240815408016150e672bf1601d3964eab5f83223f21b27ce73fa0fba77ef",
+    "7d871638a2fa53c46d3155130f5b4b2d8ba5c2055b71752a721eb42ff9cf60f0",
+    "a7a07cff953d8952af804c1e0e8c0646d1f081df85f031297f68265c1daa2819",
+    "7de8698c0ef9db88c2f502aa99b328f1f7cfb779b88367f249a8233721054d69",
+    "d716662cec43b37069ca690c9b96e433fd8abacf1dce40adaa5427c286d93289",
+    "27977b24ea605e61fc755d2b8894276be0daa923da28462dde370de1bf66694b",
+    "d60d25b5670cb3bb521b2fdea2f16bf2c59e5777991dc33ce822c98ce08f6f4d",
+    "6bed506301f5c7d0f8a6e75c4a31bf890b73c2c389ea4e95e618c2aa21116b37",
+    "231b890988b1cecbbe7d5d820a7e761976b607398bc4f40096ab331d47dab2f0",
+    "dbfa2cefa46d9558fb34e382edff6a454e6057b71c567477bb435ac001c7544e",
+    "48208f8f3f83e17b51a203a860098caf59a7c3b9dfded5c7b8f7a5aa9c38712f",
+    "04a9f43eaeac58ae29305401b9ea851d1b23447c6a7cd7dc72517c6639e7d27d",
+    "12a1b8a8da988ae6574f74517d26d26cfa46af2ccbb38c21631c5d7c5dd8f3c4",
+    "bd0a6bbbdf424927746194952b425f0f7064a953f0b0c383c36b541eb31a8aba",
+    "cd89c5a14d2e1a6abd971573144982a94f36713b2fdd52ba66d2dddbaad618e1",
+    "7bd5d3207cfc09e9beeb89db29ddd7edb26eec8f5ed328cf0eedb12457600b41",
+    "9637ca6943a4c249d31d586966321f3d5d596b9be4a347e90e582fb926be38f4",
+    "1a38c8d90f111bee562ef0453094123488f26453a163b2d58a0b3389c57172a7",
+    "3cb05cdd0d293c2d85154bbf19b8af689f470df90067d8d4fc5d917397545c32",
+    "b4b9f06e075c592c6ed936aae588fac131beaf97e51a751804358eb4ea18424a",
+    "3a5a1b03aa920bd8756b7c49c81fc218fb29df95c52ba4cdb007b4ea153e0312",
+    "2f1d601ef9ea3a2dae4ef0ec604d11be40242294945d9484870fb1d64d1df46f",
+    "665afcfd022709d41043b8430c2a6b5d587695406141cbe16801c80f1a9bdfd9",
+    "c3b81f4544a9ab9064afee925d4c4bfc052e72cbbd9dff1be815657ff2f5e82a",
+    "1a76c7fef086edfa8db20c9a95d118b28707184dcfa3ab80f1fe3774105401e6",
+    "2e3f2e60ff1460eafc918720534b2f2b527d42723fa6a435d02dbe343d6c839e",
+    "b041f41c762d9a6ea6e058285b994c73d04201c72351064d6160388d27317236",
+    "d1d2b70ce26f6a56db57a0a45d4765dfb9ffcf461c7da8763f4db2d23abe6ca8",
+    "756916b35892c5c94b2f3f841376ca862b547217625da0d14e23c9410551c55d",
+    "fc41e6076ddfbae08aae18d110f46513fb2c756090625f8c970e5d188bb9adef",
+    "2bf538d893a7a33b42db967dfbba0fb67aa8cb1800de2903f16ed4563f2b38cf",
+    "c62f3e77d214057efa11818d513cc89a3568ffba0dcf28654efe3ba358a21fa4",
+    "bde8b0cc2fc5e4fad36e43d53116bed7d0b260f0a66004abbd20af70748e481e",
+    "1c50aad1ad0fe4cdaf2c9afd2ec91b43f619921a57b032abcd42337e98317ad3",
+    "c4659a37b209df0219a5a06c9da6cc7faf0d002f0b02e3fecb9f94c1e8097c87",
+    "e8db1790076118cbe2083e8bdc97844d5e04e1b3ef4ee470aed081355c72b75d",
+    "0689ea87e0843c986db1af7a06c4332a610a21b9af7e37f77cb77721cce244e0",
+    "79cc391019bb61133fecea5b292ce61288ce41a7c7b7d4bc8acf927215d44081",
+    "049531c39ecd4fd9b58725fb5af6260694c4e926ce139578e1b0c556fce1adf5",
+    "74acd69a96b340b01963bb25a0a09339ebbe14f900f4f33e8f10f24605479c94",
+    "5065b80cba7de504ec22be61da0720316f33a50360805a3a5172b1d22d7c32c1",
+    "a769b733add97535a62f56f53b1592c200fbc261b3d44f2f310e60f3c50cb9f5",
+    "a102be764b965ba4ad2563c26b4880657b3ab8be01c3350867448421542736a0",
+    "a709a3e57160d1baf77156c1e64d96cb778b35db2b082b9b526f76de38141cd9",
+    "ad807874fab75f8f4d2a3cfa5ad5eab744331219d02d53b73892af6a62f43d29",
+    "391000e2780df0713631d5c20240332216c6fd1e30839487218e9e98b8924e45"
+  ],
+  "connections": [
+    {
+      "id": "p/stud.dat:8:2",
+      "sourceId": "studC",
+      "kind": "cylinder",
+      "family": "stud",
+      "gender": "M",
+      "position": [
+        50,
+        0,
+        50
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "id": "studC",
+        "gender": "M",
+        "caps": "one",
+        "secs": "R 6 4"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "p/stud.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [ID=studC] [gender=M] [caps=one] [secs=R 6 4]",
+        "transforms": [
+          {
+            "file": "parts/3033.dat",
+            "line": 70,
+            "directive": "1 16 50 0 50 1 0 0 0 1 0 0 0 1 stud.dat",
+            "position": [
+              50,
+              0,
+              50
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": {
+    "rotation": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "translation": [
+      50,
+      -8,
+      50
+    ]
+  },
+  "transformStatus": "SOLVED_CANDIDATE",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "PASS",
+    "reasonCodes": [],
+    "details": {
+      "schemaVersion": 1,
+      "testVersion": "native-interface-suite-0.6.0-worker-2",
+      "partId": "3033",
+      "context": {
+        "testVersion": "native-interface-suite-0.6.0-worker-2",
+        "partId": "3033",
+        "partSourceHash": "45dac6f30a1076f135ea4b6ab4d75e19ffadbd606c13d437fa8eb6c20a8f277d",
+        "geometryHash": "ee8c963ead0f7f0c51cc4bdae34724b698bd6666c489130f4f4f3c5047359889",
+        "connectionMetadataHash": "42239e60a4c54ec199eddba72ba3949e5eef263afb1d129ca0eda800580b0f50",
+        "fixtures": [
+          {
+            "role": "brick-1x1",
+            "partId": "3005",
+            "sourceHash": "e0e841bff7bb8c42b13088878880800bc7231f06a2b0774369fec3e7c0608bb8",
+            "geometryHash": "dbc6318d720b3c65e9b1c32f565e8a0d121aacb033f75063b784b07f905b9997",
+            "connectionMetadataHash": "5ffdbc628028b2753fb15fa733d664c326235c70054320baa840ba8bd0c9b759"
+          },
+          {
+            "role": "brick-1x2",
+            "partId": "3004",
+            "sourceHash": "f10538d0cc351b07eb406454f8c21d9de3989eb5a7d211cba07dde51fbbfca8f",
+            "geometryHash": "f08baa9261c5b803a2092757212349c369262a964fb956eb3fb1482f2e58a737",
+            "connectionMetadataHash": "8e88dbb89c508a17241c859d33a1c09a224f42562bbb91f58189df12d4239208"
+          },
+          {
+            "role": "brick-2x2",
+            "partId": "3003",
+            "sourceHash": "1bbe69d033c22376b5dcf9e211d907c4cd38f1258ba1e37d7e6d052717660ada",
+            "geometryHash": "ae971af0bd0fcd4823bec52143488353de029bb9670bc938c2c065dde6e2fa06",
+            "connectionMetadataHash": "20ae18794e69279ef2a6ffdd66019ed4e0700ef0e8efe886bd400d0837d9afc1"
+          },
+          {
+            "role": "plate-1x1",
+            "partId": "3024",
+            "sourceHash": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+            "geometryHash": "413e9c9e450294c6e0a8c02a1809994b68defc79969b0421ea43cd3ab658ecb4",
+            "connectionMetadataHash": "475618588fe093780011ccb8247344c2c4903681c6ac9c728dd4ca86bad245b8"
+          },
+          {
+            "role": "plate-1x2",
+            "partId": "3023b",
+            "sourceHash": "a8a6933891c2d7761b1b57ad2e29d8bd6102e192d40515769308385b85801f53",
+            "geometryHash": "17e857d88df4327931cf750b94d3dc03d249d06d1d6d12281e72fa947b9846e5",
+            "connectionMetadataHash": "6864b0fb016b3eec14c8c916178a11f5196f99c145c3dd57f0526377111a9ac2"
+          },
+          {
+            "role": "tile-1x1",
+            "partId": "3070b",
+            "sourceHash": "d3f492650fe439f738028056baa657c7ccaf559a7093acbbb11a59bff8dfdd15",
+            "geometryHash": "b83a26bace317d772d69c406017365fd898903eaef656dd18ab9cad80c44cdd3",
+            "connectionMetadataHash": "3d4358ca41e3b686f2c2a3eb781a9f9414a67ea3fac25754214fc1b29bc3b10f"
+          },
+          {
+            "role": "side-stud",
+            "partId": "87087",
+            "sourceHash": "c81a3585a7bf37b2e040056175df0d4a0ea381f47b5cc0d1e3858e739a2cebc3",
+            "geometryHash": "3ad64167f2b88143b30eff53a2a51c04e128c9b7e84e8798cbd2361cd9423346",
+            "connectionMetadataHash": "0ed6190e528140c2c5d0bad6678a0430f228f3d28eb5b98807fa4ea6db61e017"
+          },
+          {
+            "role": "bar",
+            "partId": "30374",
+            "sourceHash": "b9f2f3b8049913f2cffdeacaa97be916298480949eb74197329b2cc2e4c0fca5",
+            "geometryHash": "60bd25686cf62b39331c19ff129d2b1d226bba8c7ca0943c2ddf98fae9dfd8f2",
+            "connectionMetadataHash": "347797e5a6f3f8607e4480dccb61beb5757d7bf496f1239919110e4a6fccaffa"
+          },
+          {
+            "role": "clip",
+            "partId": "48729b",
+            "sourceHash": "bbfb99b27cfcff264aa112fd267a588e96cad1ce2e4899f0bb7a2066e0200ee1",
+            "geometryHash": "9152c633d93811fbcd127e86f1244eff74e2c0142150c4f48bb3b1173469d527",
+            "connectionMetadataHash": "52c94a299895d7c674d418da55bab6a27937b374613f3de51ed5998f0dfbb524"
+          },
+          {
+            "role": "clip-plate",
+            "partId": "60470b",
+            "sourceHash": "7dfa014c7051b9d20013b40222dac7c03cdb9a7a08dc8ea72d055a75ea7bd2cc",
+            "geometryHash": "2accb9463687dd4e3462a9615607ada19f87e1f127e1709d7497807faa4b8c3d",
+            "connectionMetadataHash": "0fda8e771b2f77ea498ced5071d827733ceb680f8f6ba5876e1dd8f08cfedb56"
+          },
+          {
+            "role": "axle",
+            "partId": null,
+            "sourceHash": null,
+            "geometryHash": null,
+            "connectionMetadataHash": null
+          },
+          {
+            "role": "axle-hole",
+            "partId": "65635",
+            "sourceHash": "775f26bab73bc0ff318ecec50170c202e1dfaeaed36e1b29ba8037a0b20840b9",
+            "geometryHash": "5c22f39087f4f30a25ced09de8fa519aa5793ec0cc1afaf85f6f8a42c27f83e4",
+            "connectionMetadataHash": "8baea4a1196164f021eb845c54fad7f9ea8162b01d988a19b376a66dd56a8220"
+          },
+          {
+            "role": "pin",
+            "partId": "3673",
+            "sourceHash": "13a3105f483a738c9bc6eea03ce01c550111ca61f9e46c8d5baed913322fc25a",
+            "geometryHash": "62dbc7c79630a9a21a8bee84e46a35a450cb87ba293c47b212f4970875ef9954",
+            "connectionMetadataHash": "6202cbe9858f21a716a521ea0ce3463aa35af0567509f8049688294f2e193a00"
+          },
+          {
+            "role": "pin-hole",
+            "partId": "3700",
+            "sourceHash": "9eba35d0f453804ceeb4a7177c6e9ed5f5f58007f0c98f08b684e7aabe8bd7b9",
+            "geometryHash": "94718f51f9b232d937272d92d2d4e0e31f169500cc3415b262cc05dfaec0d116",
+            "connectionMetadataHash": "ba783ce92534e6da5aa7f45804a222afcef061709b9fd78ac5718f647ed1d9a6"
+          },
+          {
+            "role": "wheel-holder",
+            "partId": "4600",
+            "sourceHash": "5fb7923473b0e1e8eed210ad7b53844763a0875844b16c9bf95d65570b1c7b8c",
+            "geometryHash": "dddf1d8a479d7fc67f261d87ed48f795c4894cb38d92d51da01a18924ce890e7",
+            "connectionMetadataHash": "aff4c3ae82e273ca5434e6e3acfd7abe4b3f4212b358fb644dfbded95591f9db"
+          },
+          {
+            "role": "wheel",
+            "partId": "4624",
+            "sourceHash": "8ca8bd482f59516e1bc7689bdb77abce1b7362cc58e7234bc6cb2016948b926f",
+            "geometryHash": "8c36bf6285843b5f40cea1f31be28cfa974b631e6507732f1a010151401c60e4",
+            "connectionMetadataHash": "800755487eb77dd78abf231d0f5ca88612c8c40d4d3f1184db9f763ff5ff27aa"
+          },
+          {
+            "role": "tyre",
+            "partId": "3641",
+            "sourceHash": "bba6f88f177eadb2899ff5e321a52120de0dd9e523ca1ef1e73a9df4610bc1f5",
+            "geometryHash": "8c3d67c5fd628dd098fbac6c2182c048a7f12001aace59ac7c3880adbe085e95",
+            "connectionMetadataHash": "46b7e4de391813169c023043ae3bfdedc6a6139dbd5e29bb4b0e7468599e77eb"
+          }
+        ],
+        "fixtureSetHash": "57ebb5cfd1e6cfff4061dfd0e8a04e9e3d127ca51e5460245b9c0ec450f2c0bb",
+        "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+        "assemblyEngineVersion": "native-assembly-0.6.0",
+        "connectionRuleVersion": "source-stud-1.0.0",
+        "collisionVersion": "native-closed-bvh-partition-1.0.0",
+        "contextId": "8a23fd5f3f2249a05bc152bac4671173ef2899fc9f8848721312b9b9fe8ea958"
+      },
+      "physicalInterfaceId": "b287c44fd940fe2ead804455529d57a442d5af32c771912c51790b62a705675e",
+      "rawConnectionIds": [
+        "p/stud.dat:8:2"
+      ],
+      "status": "PASS",
+      "reasonCodes": [],
+      "reasons": [],
+      "proof": {
+        "connectionId": "p/stud.dat:8:2",
+        "connectionFamily": "stud",
+        "sourceFile": "p/stud.dat",
+        "sourceLine": 8,
+        "sourceHash": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+        "status": "verified",
+        "fixturePartId": "3070b",
+        "fixtureRole": "tile-1x1",
+        "fixtureConnectionId": "parts/s/3070bs01.dat:8:0",
+        "fixtureSourceDigest": "d3f492650fe439f738028056baa657c7ccaf559a7093acbbb11a59bff8dfdd15",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "compatibleTwistsDeg": [
+          0,
+          90,
+          180,
+          270
+        ],
+        "acceptedTwistDeg": 0,
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            50,
+            -8,
+            50
+          ]
+        },
+        "checks": [
+          {
+            "name": "connection",
+            "outcome": "passed",
+            "reason": "Real source profiles passed the named compatibility rule."
+          },
+          {
+            "name": "transform",
+            "outcome": "passed",
+            "reason": "Source connection anchors and axes agree in the solved rigid world frame."
+          },
+          {
+            "name": "reverse-connection",
+            "outcome": "passed",
+            "reason": "Swapping fixed and moving parts recovers the original rigid placement within numerical tolerance."
+          },
+          {
+            "name": "collision",
+            "outcome": "passed",
+            "reason": "The native mesh collision validator accepted the source-rule connection pose."
+          },
+          {
+            "name": "illegal-collision",
+            "outcome": "passed",
+            "reason": "Coincident duplicate source geometry must be rejected; result: collision."
+          },
+          {
+            "name": "rotation",
+            "outcome": "passed",
+            "reason": "Solver enumerated every allowed discrete source-rule twist and no extra rotation."
+          },
+          {
+            "name": "connection-graph",
+            "outcome": "passed",
+            "reason": "Two source-bound nodes contain the requested physical pair and all validated coincident edges; occupied-port reuse was rejected without changing the graph."
+          },
+          {
+            "name": "generator-smoke",
+            "outcome": "passed",
+            "reason": "The actual attachment path placed the fixture through compatibility, transform, collision and graph update."
+          }
+        ],
+        "reasonCodes": [],
+        "reasons": [],
+        "equivalentConnectionIds": [
+          "p/stud.dat:8:2"
+        ],
+        "lastAttempt": {
+          "fixturePartId": "3070b",
+          "fixtureConnectionId": "parts/s/3070bs01.dat:8:0",
+          "fixtureSourceDigest": "d3f492650fe439f738028056baa657c7ccaf559a7093acbbb11a59bff8dfdd15",
+          "twistDeg": 0,
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              50,
+              -8,
+              50
+            ]
+          },
+          "stage": "assembly",
+          "status": "verified",
+          "reasonCode": "fixture-verified",
+          "reason": "All current fixture checks passed."
+        }
+      },
+      "sourceChecks": [
+        {
+          "name": "source-integrity",
+          "outcome": "passed",
+          "reason": "Pinned native geometry and every source-backed connection file are hashed and licensed."
+        },
+        {
+          "name": "collision",
+          "outcome": "passed",
+          "reason": "Native source mesh yields a source-bound closed solid proxy; actual mating clearance still requires fixture tests."
+        }
+      ],
+      "startedAt": "2026-10-23T18:40:12.798Z",
+      "finishedAt": "2026-10-23T18:40:13.103Z",
+      "durationMs": 305,
+      "attempts": 1,
+      "execution": "direct-test",
+      "relatedCaseIds": [],
+      "caseId": "ASM-E6F3AA6BC41DE46DC3BF",
+      "fixturePartId": "3070b",
+      "fixtureSourceHash": "d3f492650fe439f738028056baa657c7ccaf559a7093acbbb11a59bff8dfdd15"
+    }
+  },
+  "replay": {
+    "kind": "fixture",
+    "partId": "3033",
+    "physicalInterfaceId": "b287c44fd940fe2ead804455529d57a442d5af32c771912c51790b62a705675e",
+    "timeoutMs": 8000
+  },
+  "reproductionCommand": "npm run astra:case -- PORT-3033-F695A2CF67",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/4-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/4-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring3.dat",
+    "data/parts-foundation/ldraw/files/p/box5.dat",
+    "data/parts-foundation/ldraw/files/p/stud.dat",
+    "data/parts-foundation/ldraw/files/p/stud4.dat",
+    "data/parts-foundation/ldraw/files/parts/3033.dat",
+    "data/parts-foundation/shadow/files/p/stud4.dat",
+    "data/parts-foundation/shadow/files/p/stud.dat",
+    "data/parts-foundation/shadow/files/parts/3033.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [
+    {
+      "originalExecution": {
+        "schemaVersion": 1,
+        "testVersion": "native-interface-suite-0.6.0-worker-2",
+        "context": {
+          "testVersion": "native-interface-suite-0.6.0-worker-2",
+          "partId": "3033",
+          "partSourceHash": "45dac6f30a1076f135ea4b6ab4d75e19ffadbd606c13d437fa8eb6c20a8f277d",
+          "geometryHash": "ee8c963ead0f7f0c51cc4bdae34724b698bd6666c489130f4f4f3c5047359889",
+          "connectionMetadataHash": "42239e60a4c54ec199eddba72ba3949e5eef263afb1d129ca0eda800580b0f50",
+          "fixtures": [
+            {
+              "role": "brick-1x1",
+              "partId": "3005",
+              "sourceHash": "e0e841bff7bb8c42b13088878880800bc7231f06a2b0774369fec3e7c0608bb8",
+              "geometryHash": "dbc6318d720b3c65e9b1c32f565e8a0d121aacb033f75063b784b07f905b9997",
+              "connectionMetadataHash": "5ffdbc628028b2753fb15fa733d664c326235c70054320baa840ba8bd0c9b759"
+            },
+            {
+              "role": "brick-1x2",
+              "partId": "3004",
+              "sourceHash": "f10538d0cc351b07eb406454f8c21d9de3989eb5a7d211cba07dde51fbbfca8f",
+              "geometryHash": "f08baa9261c5b803a2092757212349c369262a964fb956eb3fb1482f2e58a737",
+              "connectionMetadataHash": "8e88dbb89c508a17241c859d33a1c09a224f42562bbb91f58189df12d4239208"
+            },
+            {
+              "role": "brick-2x2",
+              "partId": "3003",
+              "sourceHash": "1bbe69d033c22376b5dcf9e211d907c4cd38f1258ba1e37d7e6d052717660ada",
+              "geometryHash": "ae971af0bd0fcd4823bec52143488353de029bb9670bc938c2c065dde6e2fa06",
+              "connectionMetadataHash": "20ae18794e69279ef2a6ffdd66019ed4e0700ef0e8efe886bd400d0837d9afc1"
+            },
+            {
+              "role": "plate-1x1",
+              "partId": "3024",
+              "sourceHash": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+              "geometryHash": "413e9c9e450294c6e0a8c02a1809994b68defc79969b0421ea43cd3ab658ecb4",
+              "connectionMetadataHash": "475618588fe093780011ccb8247344c2c4903681c6ac9c728dd4ca86bad245b8"
+            },
+            {
+              "role": "plate-1x2",
+              "partId": "3023b",
+              "sourceHash": "a8a6933891c2d7761b1b57ad2e29d8bd6102e192d40515769308385b85801f53",
+              "geometryHash": "17e857d88df4327931cf750b94d3dc03d249d06d1d6d12281e72fa947b9846e5",
+              "connectionMetadataHash": "6864b0fb016b3eec14c8c916178a11f5196f99c145c3dd57f0526377111a9ac2"
+            },
+            {
+              "role": "tile-1x1",
+              "partId": "3070b",
+              "sourceHash": "d3f492650fe439f738028056baa657c7ccaf559a7093acbbb11a59bff8dfdd15",
+              "geometryHash": "b83a26bace317d772d69c406017365fd898903eaef656dd18ab9cad80c44cdd3",
+              "connectionMetadataHash": "3d4358ca41e3b686f2c2a3eb781a9f9414a67ea3fac25754214fc1b29bc3b10f"
+            },
+            {
+              "role": "side-stud",
+              "partId": "87087",
+              "sourceHash": "c81a3585a7bf37b2e040056175df0d4a0ea381f47b5cc0d1e3858e739a2cebc3",
+              "geometryHash": "3ad64167f2b88143b30eff53a2a51c04e128c9b7e84e8798cbd2361cd9423346",
+              "connectionMetadataHash": "0ed6190e528140c2c5d0bad6678a0430f228f3d28eb5b98807fa4ea6db61e017"
+            },
+            {
+              "role": "bar",
+              "partId": "30374",
+              "sourceHash": "b9f2f3b8049913f2cffdeacaa97be916298480949eb74197329b2cc2e4c0fca5",
+              "geometryHash": "60bd25686cf62b39331c19ff129d2b1d226bba8c7ca0943c2ddf98fae9dfd8f2",
+              "connectionMetadataHash": "347797e5a6f3f8607e4480dccb61beb5757d7bf496f1239919110e4a6fccaffa"
+            },
+            {
+              "role": "clip",
+              "partId": "48729b",
+              "sourceHash": "bbfb99b27cfcff264aa112fd267a588e96cad1ce2e4899f0bb7a2066e0200ee1",
+              "geometryHash": "9152c633d93811fbcd127e86f1244eff74e2c0142150c4f48bb3b1173469d527",
+              "connectionMetadataHash": "52c94a299895d7c674d418da55bab6a27937b374613f3de51ed5998f0dfbb524"
+            },
+            {
+              "role": "clip-plate",
+              "partId": "60470b",
+              "sourceHash": "7dfa014c7051b9d20013b40222dac7c03cdb9a7a08dc8ea72d055a75ea7bd2cc",
+              "geometryHash": "2accb9463687dd4e3462a9615607ada19f87e1f127e1709d7497807faa4b8c3d",
+              "connectionMetadataHash": "0fda8e771b2f77ea498ced5071d827733ceb680f8f6ba5876e1dd8f08cfedb56"
+            },
+            {
+              "role": "axle",
+              "partId": null,
+              "sourceHash": null,
+              "geometryHash": null,
+              "connectionMetadataHash": null
+            },
+            {
+              "role": "axle-hole",
+              "partId": "65635",
+              "sourceHash": "775f26bab73bc0ff318ecec50170c202e1dfaeaed36e1b29ba8037a0b20840b9",
+              "geometryHash": "5c22f39087f4f30a25ced09de8fa519aa5793ec0cc1afaf85f6f8a42c27f83e4",
+              "connectionMetadataHash": "8baea4a1196164f021eb845c54fad7f9ea8162b01d988a19b376a66dd56a8220"
+            },
+            {
+              "role": "pin",
+              "partId": "3673",
+              "sourceHash": "13a3105f483a738c9bc6eea03ce01c550111ca61f9e46c8d5baed913322fc25a",
+              "geometryHash": "62dbc7c79630a9a21a8bee84e46a35a450cb87ba293c47b212f4970875ef9954",
+              "connectionMetadataHash": "6202cbe9858f21a716a521ea0ce3463aa35af0567509f8049688294f2e193a00"
+            },
+            {
+              "role": "pin-hole",
+              "partId": "3700",
+              "sourceHash": "9eba35d0f453804ceeb4a7177c6e9ed5f5f58007f0c98f08b684e7aabe8bd7b9",
+              "geometryHash": "94718f51f9b232d937272d92d2d4e0e31f169500cc3415b262cc05dfaec0d116",
+              "connectionMetadataHash": "ba783ce92534e6da5aa7f45804a222afcef061709b9fd78ac5718f647ed1d9a6"
+            },
+            {
+              "role": "wheel-holder",
+              "partId": "4600",
+              "sourceHash": "5fb7923473b0e1e8eed210ad7b53844763a0875844b16c9bf95d65570b1c7b8c",
+              "geometryHash": "dddf1d8a479d7fc67f261d87ed48f795c4894cb38d92d51da01a18924ce890e7",
+              "connectionMetadataHash": "aff4c3ae82e273ca5434e6e3acfd7abe4b3f4212b358fb644dfbded95591f9db"
+            },
+            {
+              "role": "wheel",
+              "partId": "4624",
+              "sourceHash": "8ca8bd482f59516e1bc7689bdb77abce1b7362cc58e7234bc6cb2016948b926f",
+              "geometryHash": "8c36bf6285843b5f40cea1f31be28cfa974b631e6507732f1a010151401c60e4",
+              "connectionMetadataHash": "800755487eb77dd78abf231d0f5ca88612c8c40d4d3f1184db9f763ff5ff27aa"
+            },
+            {
+              "role": "tyre",
+              "partId": "3641",
+              "sourceHash": "bba6f88f177eadb2899ff5e321a52120de0dd9e523ca1ef1e73a9df4610bc1f5",
+              "geometryHash": "8c3d67c5fd628dd098fbac6c2182c048a7f12001aace59ac7c3880adbe085e95",
+              "connectionMetadataHash": "46b7e4de391813169c023043ae3bfdedc6a6139dbd5e29bb4b0e7468599e77eb"
+            }
+          ],
+          "fixtureSetHash": "57ebb5cfd1e6cfff4061dfd0e8a04e9e3d127ca51e5460245b9c0ec450f2c0bb",
+          "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+          "assemblyEngineVersion": "native-assembly-0.6.0",
+          "connectionRuleVersion": "source-stud-1.0.0",
+          "collisionVersion": "native-closed-bvh-partition-1.0.0",
+          "contextId": "8a23fd5f3f2249a05bc152bac4671173ef2899fc9f8848721312b9b9fe8ea958"
+        },
+        "partId": "3033",
+        "physicalInterfaceId": "b287c44fd940fe2ead804455529d57a442d5af32c771912c51790b62a705675e",
+        "rawConnectionIds": [
+          "p/stud.dat:8:2"
+        ],
+        "status": "REQUIRES_ASTRA_REVIEW",
+        "reasonCodes": [
+          "part-scheduling-budget-review"
+        ],
+        "reasons": [
+          "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+        ],
+        "startedAt": "2026-10-23T18:30:36.696Z",
+        "finishedAt": "2026-10-23T18:30:36.696Z",
+        "durationMs": 0,
+        "attempts": 1,
+        "sourceChecks": [],
+        "execution": "review-dependency",
+        "relatedCaseIds": [],
+        "caseId": "ASM-E6F3AA6BC41DE46DC3BF",
+        "fixturePartId": null,
+        "fixtureSourceHash": null
+      }
+    },
+    {
+      "physicalInterfaceId": "b287c44fd940fe2ead804455529d57a442d5af32c771912c51790b62a705675e",
+      "rawConnectionIds": [
+        "p/stud.dat:8:2"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "75e1d255dd3126e745663d5db1e9a27028f19ffc48394602429421d437072bf2",
+      "rawConnectionIds": [
+        "p/stud.dat:8:3"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "3e657cfcdff87519c19ac1779470d9b943693006c281b002282507989bbad00f",
+      "rawConnectionIds": [
+        "p/stud.dat:8:4"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "fba1e5024213114884f0c8a60855e67b978690a008e0ce561b651b17e1122a66",
+      "rawConnectionIds": [
+        "p/stud.dat:8:6"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "393aed8fbd5d8ee3457aa37937c106d568f4310b1cf21c861719f131908018d8",
+      "rawConnectionIds": [
+        "p/stud.dat:8:8"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "c7c10a7a740604862f39faf436562ac123f8492f35c2e7f0bc1d41bd4a46862b",
+      "rawConnectionIds": [
+        "p/stud.dat:8:9"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "350700f986df1d9d832ec7d09e1dca80427adeaab068ec5ce5075bcf2452c2a7",
+      "rawConnectionIds": [
+        "p/stud.dat:8:11"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "3f6b9e724585530cbbedf3c9873feef5110234c65a41c16a9f13d5be745edf46",
+      "rawConnectionIds": [
+        "p/stud.dat:8:13"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "934617ad5371196916f87a4c9dd33f3ffc76085beba2325741215f8977d0ae3f",
+      "rawConnectionIds": [
+        "p/stud.dat:8:14"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "bc945cece69f8096711707e1fe1a3c673b1282dceaa1c38e44ff163d145e1f40",
+      "rawConnectionIds": [
+        "p/stud.dat:8:15"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "9f5e57d2ced94ac113bacbdb0ab4eab8c7c69dcfcb3ebbfd9fb9306663d690db",
+      "rawConnectionIds": [
+        "p/stud.dat:8:17"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "b2b2686ab9b567f1e5ae549867d9b4b368c5ef25d306624256df4a9673bc5789",
+      "rawConnectionIds": [
+        "p/stud.dat:8:18"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "97527f8366210b1164e80341e62977ea447f4f84a5583979f6e5e1d4ed444537",
+      "rawConnectionIds": [
+        "p/stud.dat:8:21"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "1e69903e59e82d6bd23fa63f589671575c96e55de0d60f159ca25be9d12e890d",
+      "rawConnectionIds": [
+        "p/stud.dat:8:22"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "4499dfcaea33966ebf5d28b9960a25244af42f7e10a21442f6a1d58249f3aa1f",
+      "rawConnectionIds": [
+        "p/stud.dat:8:23"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "4710ec61c38e75ba278a28456cb8e0867a6ee829990369fd460c246bfc396a96",
+      "rawConnectionIds": [
+        "p/stud.dat:8:26"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "36073f925d910740d9b229c914cfd1961acd103b87ccf50c2e563960baca4be0",
+      "rawConnectionIds": [
+        "p/stud.dat:8:28"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "c9362a127c3c82c34bf00c61f8cc4393d1edbfc87598dd07e13ea711249e6b06",
+      "rawConnectionIds": [
+        "p/stud.dat:8:31"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "c6112aca91f91f753f09ba3a0e430b6075355da9a776a315f8492a1d78ebbc34",
+      "rawConnectionIds": [
+        "p/stud.dat:8:33"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "9d66a9f061b0e58fc6bd9d9dc2656d1f2b12d73c9e1cad0954e95449ff7ac623",
+      "rawConnectionIds": [
+        "p/stud.dat:8:34"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "31101d6532c4c22dcc4b9d9759ecf025502db8ce1adfa247beeb805729db3c5b",
+      "rawConnectionIds": [
+        "p/stud.dat:8:36"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "934734b5cc68389307215223a7fc4680b28e50a01e3b52341da5a3bac5e723a2",
+      "rawConnectionIds": [
+        "p/stud.dat:8:37"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "da74e5a7991961b1c50b231e0df38f093fc7bf046d538148ec9981cac7a76ea2",
+      "rawConnectionIds": [
+        "p/stud.dat:8:39"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "b28669f88c40d8cf9573ad8afa7f0dd6729fd013a214866ea3e56e8d31ac6875",
+      "rawConnectionIds": [
+        "p/stud.dat:8:40"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "cc877c51ca62a46e369c1e8d26c4de3f2ca7b1300ebbb69cd4072dc66a40ad69",
+      "rawConnectionIds": [
+        "p/stud.dat:8:42"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "dccc1bde84a005d79025c6bbaba9b318a236105806e263131adcd91f1a8c6b23",
+      "rawConnectionIds": [
+        "p/stud.dat:8:43"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "4e19240815408016150e672bf1601d3964eab5f83223f21b27ce73fa0fba77ef",
+      "rawConnectionIds": [
+        "p/stud.dat:8:44"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "7d871638a2fa53c46d3155130f5b4b2d8ba5c2055b71752a721eb42ff9cf60f0",
+      "rawConnectionIds": [
+        "p/stud.dat:8:45"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "a7a07cff953d8952af804c1e0e8c0646d1f081df85f031297f68265c1daa2819",
+      "rawConnectionIds": [
+        "p/stud.dat:8:47"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "7de8698c0ef9db88c2f502aa99b328f1f7cfb779b88367f249a8233721054d69",
+      "rawConnectionIds": [
+        "p/stud.dat:8:48"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "d716662cec43b37069ca690c9b96e433fd8abacf1dce40adaa5427c286d93289",
+      "rawConnectionIds": [
+        "p/stud.dat:8:49"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "27977b24ea605e61fc755d2b8894276be0daa923da28462dde370de1bf66694b",
+      "rawConnectionIds": [
+        "p/stud.dat:8:52"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "d60d25b5670cb3bb521b2fdea2f16bf2c59e5777991dc33ce822c98ce08f6f4d",
+      "rawConnectionIds": [
+        "p/stud.dat:8:53"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "6bed506301f5c7d0f8a6e75c4a31bf890b73c2c389ea4e95e618c2aa21116b37",
+      "rawConnectionIds": [
+        "p/stud.dat:8:55"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "231b890988b1cecbbe7d5d820a7e761976b607398bc4f40096ab331d47dab2f0",
+      "rawConnectionIds": [
+        "p/stud.dat:8:56"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "dbfa2cefa46d9558fb34e382edff6a454e6057b71c567477bb435ac001c7544e",
+      "rawConnectionIds": [
+        "p/stud.dat:8:58"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "48208f8f3f83e17b51a203a860098caf59a7c3b9dfded5c7b8f7a5aa9c38712f",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:63"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "04a9f43eaeac58ae29305401b9ea851d1b23447c6a7cd7dc72517c6639e7d27d",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:64"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "12a1b8a8da988ae6574f74517d26d26cfa46af2ccbb38c21631c5d7c5dd8f3c4",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:66"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "bd0a6bbbdf424927746194952b425f0f7064a953f0b0c383c36b541eb31a8aba",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:68"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "cd89c5a14d2e1a6abd971573144982a94f36713b2fdd52ba66d2dddbaad618e1",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:70"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "7bd5d3207cfc09e9beeb89db29ddd7edb26eec8f5ed328cf0eedb12457600b41",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:72"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "9637ca6943a4c249d31d586966321f3d5d596b9be4a347e90e582fb926be38f4",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:73"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "1a38c8d90f111bee562ef0453094123488f26453a163b2d58a0b3389c57172a7",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:74"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "3cb05cdd0d293c2d85154bbf19b8af689f470df90067d8d4fc5d917397545c32",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:75"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "b4b9f06e075c592c6ed936aae588fac131beaf97e51a751804358eb4ea18424a",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:76"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "3a5a1b03aa920bd8756b7c49c81fc218fb29df95c52ba4cdb007b4ea153e0312",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:77"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "2f1d601ef9ea3a2dae4ef0ec604d11be40242294945d9484870fb1d64d1df46f",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:79"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "665afcfd022709d41043b8430c2a6b5d587695406141cbe16801c80f1a9bdfd9",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:80"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "c3b81f4544a9ab9064afee925d4c4bfc052e72cbbd9dff1be815657ff2f5e82a",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:81"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "1a76c7fef086edfa8db20c9a95d118b28707184dcfa3ab80f1fe3774105401e6",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:83"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "2e3f2e60ff1460eafc918720534b2f2b527d42723fa6a435d02dbe343d6c839e",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:84"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "b041f41c762d9a6ea6e058285b994c73d04201c72351064d6160388d27317236",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:85"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "d1d2b70ce26f6a56db57a0a45d4765dfb9ffcf461c7da8763f4db2d23abe6ca8",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:88"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "756916b35892c5c94b2f3f841376ca862b547217625da0d14e23c9410551c55d",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:89"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "fc41e6076ddfbae08aae18d110f46513fb2c756090625f8c970e5d188bb9adef",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:90"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "2bf538d893a7a33b42db967dfbba0fb67aa8cb1800de2903f16ed4563f2b38cf",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:92"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "c62f3e77d214057efa11818d513cc89a3568ffba0dcf28654efe3ba358a21fa4",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:93"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "bde8b0cc2fc5e4fad36e43d53116bed7d0b260f0a66004abbd20af70748e481e",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:94"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "1c50aad1ad0fe4cdaf2c9afd2ec91b43f619921a57b032abcd42337e98317ad3",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:95"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "c4659a37b209df0219a5a06c9da6cc7faf0d002f0b02e3fecb9f94c1e8097c87",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:96"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "e8db1790076118cbe2083e8bdc97844d5e04e1b3ef4ee470aed081355c72b75d",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:97"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "0689ea87e0843c986db1af7a06c4332a610a21b9af7e37f77cb77721cce244e0",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:98"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "79cc391019bb61133fecea5b292ce61288ce41a7c7b7d4bc8acf927215d44081",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:99"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "049531c39ecd4fd9b58725fb5af6260694c4e926ce139578e1b0c556fce1adf5",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:104"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "74acd69a96b340b01963bb25a0a09339ebbe14f900f4f33e8f10f24605479c94",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:106"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "5065b80cba7de504ec22be61da0720316f33a50360805a3a5172b1d22d7c32c1",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:109"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "a769b733add97535a62f56f53b1592c200fbc261b3d44f2f310e60f3c50cb9f5",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:112"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "a102be764b965ba4ad2563c26b4880657b3ab8be01c3350867448421542736a0",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:113"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "a709a3e57160d1baf77156c1e64d96cb778b35db2b082b9b526f76de38141cd9",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:116"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "ad807874fab75f8f4d2a3cfa5ad5eab744331219d02d53b73892af6a62f43d29",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:117"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "391000e2780df0713631d5c20240332216c6fd1e30839487218e9e98b8924e45",
+      "rawConnectionIds": [
+        "parts/3033.dat:8:119"
+      ],
+      "reasonCodes": [
+        "part-scheduling-budget-review"
+      ],
+      "reasons": [
+        "This interface was not directly tested within the 60000 ms part scheduling budget and requires review. No collision failure is asserted."
+      ],
+      "attempts": 1
+    }
+  ],
+  "attemptsAlreadyMade": [
+    "Applied the existing source-backed stud rule.",
+    "Used bounded fixture tests and the recorded retry policy without changing collision rules."
+  ],
+  "whySolStopped": "The original run routed this group without direct testing under its scheduling budget. This isolated representative now passes; no geometric failure is asserted. The other linked interfaces still need individual source-bound tests, and this diagnostic does not publish production permissions.",
+  "diagnosticOnly": true,
+  "fixtureTestContext": {
+    "testVersion": "native-interface-suite-0.6.0-worker-2",
+    "partId": "3033",
+    "partSourceHash": "45dac6f30a1076f135ea4b6ab4d75e19ffadbd606c13d437fa8eb6c20a8f277d",
+    "geometryHash": "ee8c963ead0f7f0c51cc4bdae34724b698bd6666c489130f4f4f3c5047359889",
+    "connectionMetadataHash": "42239e60a4c54ec199eddba72ba3949e5eef263afb1d129ca0eda800580b0f50",
+    "fixtures": [
+      {
+        "role": "brick-1x1",
+        "partId": "3005",
+        "sourceHash": "e0e841bff7bb8c42b13088878880800bc7231f06a2b0774369fec3e7c0608bb8",
+        "geometryHash": "dbc6318d720b3c65e9b1c32f565e8a0d121aacb033f75063b784b07f905b9997",
+        "connectionMetadataHash": "5ffdbc628028b2753fb15fa733d664c326235c70054320baa840ba8bd0c9b759"
+      },
+      {
+        "role": "brick-1x2",
+        "partId": "3004",
+        "sourceHash": "f10538d0cc351b07eb406454f8c21d9de3989eb5a7d211cba07dde51fbbfca8f",
+        "geometryHash": "f08baa9261c5b803a2092757212349c369262a964fb956eb3fb1482f2e58a737",
+        "connectionMetadataHash": "8e88dbb89c508a17241c859d33a1c09a224f42562bbb91f58189df12d4239208"
+      },
+      {
+        "role": "brick-2x2",
+        "partId": "3003",
+        "sourceHash": "1bbe69d033c22376b5dcf9e211d907c4cd38f1258ba1e37d7e6d052717660ada",
+        "geometryHash": "ae971af0bd0fcd4823bec52143488353de029bb9670bc938c2c065dde6e2fa06",
+        "connectionMetadataHash": "20ae18794e69279ef2a6ffdd66019ed4e0700ef0e8efe886bd400d0837d9afc1"
+      },
+      {
+        "role": "plate-1x1",
+        "partId": "3024",
+        "sourceHash": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+        "geometryHash": "413e9c9e450294c6e0a8c02a1809994b68defc79969b0421ea43cd3ab658ecb4",
+        "connectionMetadataHash": "475618588fe093780011ccb8247344c2c4903681c6ac9c728dd4ca86bad245b8"
+      },
+      {
+        "role": "plate-1x2",
+        "partId": "3023b",
+        "sourceHash": "a8a6933891c2d7761b1b57ad2e29d8bd6102e192d40515769308385b85801f53",
+        "geometryHash": "17e857d88df4327931cf750b94d3dc03d249d06d1d6d12281e72fa947b9846e5",
+        "connectionMetadataHash": "6864b0fb016b3eec14c8c916178a11f5196f99c145c3dd57f0526377111a9ac2"
+      },
+      {
+        "role": "tile-1x1",
+        "partId": "3070b",
+        "sourceHash": "d3f492650fe439f738028056baa657c7ccaf559a7093acbbb11a59bff8dfdd15",
+        "geometryHash": "b83a26bace317d772d69c406017365fd898903eaef656dd18ab9cad80c44cdd3",
+        "connectionMetadataHash": "3d4358ca41e3b686f2c2a3eb781a9f9414a67ea3fac25754214fc1b29bc3b10f"
+      },
+      {
+        "role": "side-stud",
+        "partId": "87087",
+        "sourceHash": "c81a3585a7bf37b2e040056175df0d4a0ea381f47b5cc0d1e3858e739a2cebc3",
+        "geometryHash": "3ad64167f2b88143b30eff53a2a51c04e128c9b7e84e8798cbd2361cd9423346",
+        "connectionMetadataHash": "0ed6190e528140c2c5d0bad6678a0430f228f3d28eb5b98807fa4ea6db61e017"
+      },
+      {
+        "role": "bar",
+        "partId": "30374",
+        "sourceHash": "b9f2f3b8049913f2cffdeacaa97be916298480949eb74197329b2cc2e4c0fca5",
+        "geometryHash": "60bd25686cf62b39331c19ff129d2b1d226bba8c7ca0943c2ddf98fae9dfd8f2",
+        "connectionMetadataHash": "347797e5a6f3f8607e4480dccb61beb5757d7bf496f1239919110e4a6fccaffa"
+      },
+      {
+        "role": "clip",
+        "partId": "48729b",
+        "sourceHash": "bbfb99b27cfcff264aa112fd267a588e96cad1ce2e4899f0bb7a2066e0200ee1",
+        "geometryHash": "9152c633d93811fbcd127e86f1244eff74e2c0142150c4f48bb3b1173469d527",
+        "connectionMetadataHash": "52c94a299895d7c674d418da55bab6a27937b374613f3de51ed5998f0dfbb524"
+      },
+      {
+        "role": "clip-plate",
+        "partId": "60470b",
+        "sourceHash": "7dfa014c7051b9d20013b40222dac7c03cdb9a7a08dc8ea72d055a75ea7bd2cc",
+        "geometryHash": "2accb9463687dd4e3462a9615607ada19f87e1f127e1709d7497807faa4b8c3d",
+        "connectionMetadataHash": "0fda8e771b2f77ea498ced5071d827733ceb680f8f6ba5876e1dd8f08cfedb56"
+      },
+      {
+        "role": "axle",
+        "partId": null,
+        "sourceHash": null,
+        "geometryHash": null,
+        "connectionMetadataHash": null
+      },
+      {
+        "role": "axle-hole",
+        "partId": "65635",
+        "sourceHash": "775f26bab73bc0ff318ecec50170c202e1dfaeaed36e1b29ba8037a0b20840b9",
+        "geometryHash": "5c22f39087f4f30a25ced09de8fa519aa5793ec0cc1afaf85f6f8a42c27f83e4",
+        "connectionMetadataHash": "8baea4a1196164f021eb845c54fad7f9ea8162b01d988a19b376a66dd56a8220"
+      },
+      {
+        "role": "pin",
+        "partId": "3673",
+        "sourceHash": "13a3105f483a738c9bc6eea03ce01c550111ca61f9e46c8d5baed913322fc25a",
+        "geometryHash": "62dbc7c79630a9a21a8bee84e46a35a450cb87ba293c47b212f4970875ef9954",
+        "connectionMetadataHash": "6202cbe9858f21a716a521ea0ce3463aa35af0567509f8049688294f2e193a00"
+      },
+      {
+        "role": "pin-hole",
+        "partId": "3700",
+        "sourceHash": "9eba35d0f453804ceeb4a7177c6e9ed5f5f58007f0c98f08b684e7aabe8bd7b9",
+        "geometryHash": "94718f51f9b232d937272d92d2d4e0e31f169500cc3415b262cc05dfaec0d116",
+        "connectionMetadataHash": "ba783ce92534e6da5aa7f45804a222afcef061709b9fd78ac5718f647ed1d9a6"
+      },
+      {
+        "role": "wheel-holder",
+        "partId": "4600",
+        "sourceHash": "5fb7923473b0e1e8eed210ad7b53844763a0875844b16c9bf95d65570b1c7b8c",
+        "geometryHash": "dddf1d8a479d7fc67f261d87ed48f795c4894cb38d92d51da01a18924ce890e7",
+        "connectionMetadataHash": "aff4c3ae82e273ca5434e6e3acfd7abe4b3f4212b358fb644dfbded95591f9db"
+      },
+      {
+        "role": "wheel",
+        "partId": "4624",
+        "sourceHash": "8ca8bd482f59516e1bc7689bdb77abce1b7362cc58e7234bc6cb2016948b926f",
+        "geometryHash": "8c36bf6285843b5f40cea1f31be28cfa974b631e6507732f1a010151401c60e4",
+        "connectionMetadataHash": "800755487eb77dd78abf231d0f5ca88612c8c40d4d3f1184db9f763ff5ff27aa"
+      },
+      {
+        "role": "tyre",
+        "partId": "3641",
+        "sourceHash": "bba6f88f177eadb2899ff5e321a52120de0dd9e523ca1ef1e73a9df4610bc1f5",
+        "geometryHash": "8c3d67c5fd628dd098fbac6c2182c048a7f12001aace59ac7c3880adbe085e95",
+        "connectionMetadataHash": "46b7e4de391813169c023043ae3bfdedc6a6139dbd5e29bb4b0e7468599e77eb"
+      }
+    ],
+    "fixtureSetHash": "57ebb5cfd1e6cfff4061dfd0e8a04e9e3d127ca51e5460245b9c0ec450f2c0bb",
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0",
+    "contextId": "8a23fd5f3f2249a05bc152bac4671173ef2899fc9f8848721312b9b9fe8ea958"
+  }
+}

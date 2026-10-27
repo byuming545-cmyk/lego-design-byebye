@@ -1,6 +1,6 @@
 {
   "name": "bricklab",
-  "version": "0.2.0",
+  "version": "0.6.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "concurrently -k -n api,web \"npm:dev:api\" \"npm:dev:web\"",
-    "dev:api": "tsx watch src/api/server.ts",
+    "dev:api": "tsx watch src/api/server.ts --development",
     "dev:web": "vite --host 0.0.0.0",
     "typecheck": "tsc --noEmit",
     "build": "npm run typecheck && vite build && tsc -p tsconfig.server.json",
@@ -16,7 +16,27 @@
     "start": "node dist-server/api/server.js",
     "test": "vitest run",
     "test:e2e": "playwright test --config playwright.config.ts",
-    "test:preview": "playwright test --config playwright.preview.config.ts"
+    "test:preview": "playwright test --config playwright.preview.config.ts",
+    "benchmark:speed": "tsx src/cli/speed-benchmark.ts",
+    "benchmark:automotive": "tsx src/cli/automotive-benchmark.ts",
+    "report:parts": "tsx src/cli/parts-foundation-report.ts",
+    "import:pilot": "tsx src/cli/digital-import-pilot.ts",
+    "coverage:expansion": "tsx src/cli/generation-expansion.ts",
+    "audit:wheel": "tsx src/cli/wheel-assessment.ts --output artifacts/wheel-assembly/source-assessment.json",
+    "audit:connectors": "tsx src/cli/connector-audit.ts",
+    "coverage:grammar": "tsx src/cli/generation-expansion.ts --plan docs/grammar/generation-plan.json --output artifacts/connector-grammar",
+    "probe:bar-clip": "tsx src/cli/bar-clip-probe.ts",
+    "verify:assembly": "tsx src/cli/assembly-verify.ts",
+    "smoke:assembly": "tsx src/cli/assembly-smoke.ts",
+    "astra:case": "tsx src/cli/astra-case.ts",
+    "astra:pack": "tsx src/cli/astra-pack.ts",
+    "astra:check": "tsx src/cli/astra-check.ts",
+    "collision:review": "tsx src/cli/collision-review.ts",
+    "collision:diff": "tsx src/cli/collision-diff.ts",
+    "audit:connections": "tsx src/cli/connection-parse-audit.ts",
+    "verify:interfaces": "tsx src/cli/assembly-deferred.ts",
+    "generate:bar-clip": "tsx src/cli/bar-clip-generate.ts",
+    "generate:pin-hole": "tsx src/cli/pin-hole-generate.ts"
   },
   "dependencies": {
     "@fontsource/noto-sans-sc": "^5.2.9",

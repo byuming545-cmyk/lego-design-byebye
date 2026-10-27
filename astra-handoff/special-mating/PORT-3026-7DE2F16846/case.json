@@ -1,0 +1,2573 @@
+{
+  "schemaVersion": 1,
+  "caseId": "PORT-3026-7DE2F16846",
+  "category": "SPECIAL_MATING",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "3026",
+      "ldrawId": "3026",
+      "identitySystem": "ldraw",
+      "sourceDigest": "c9028f8fb227d6fcde38cb842711424800ef480247afc8afc1b3cb6e168c2db9",
+      "geometryHash": "fd17dadf3919e6493362325a914f11503facc54153baebb8bb50e0bed8e0ceb3",
+      "connectionMetadataHash": "a273e83afa843fcc35a14628be59ff113ef19a7fc128eec5986a953c35cca26a"
+    }
+  ],
+  "affectedPhysicalInterfaces": [
+    "198b2c9ab00bc409412d5dee786cae93efbdbb192a46c4c187c29ce727c384b4",
+    "d5b851b6dec7f7606acf86213d0c5d1d3f8923e9e2e5ee955ed0b65c2e166c63",
+    "74d764391202b4ac7872eb1aa61ac99841d44875c66cddcf4eefe7e37bc88070",
+    "b3c833a5c51bc98d75bcdf69233afe3e55538cf36d2429626b1d4a513c4af775",
+    "06fa5202e0102956cef88433818aa836b6a7c7a59e9d9c607e28509abe7b1a38",
+    "f0d2c16303e098583734af9134fe2033977e4788c09c0d570d50971ccdf850a2",
+    "6a168df3623bf2bf030223987cdcaaf72fc0dcbfc3ac13eda6510712581d06f3",
+    "6fff76fc4888658eb1f74dc38fd3299567e1457a5730a2b18877ba19c8db5329",
+    "da2a12684020582a224efb8a32c2acc30838f35894d15225b64c9e9701fdea67",
+    "686ee493bcb16223e67c57b00854ec5a39eb2072affd0f167f03e0b84c6d2cfd",
+    "b4d4c3c3239e55065464218e561bc6b60a5a577559559daa3300818898375f04",
+    "dd1b7c5c460f20bb0855435fc7c3e3c61749b5146852fbeb609b147829ee536f",
+    "7d6a1fff385d2be7c28b21e37a392eeb105844f88ada80ef5f3d8e667128898a",
+    "8f5ad37b596320f808dc58e8e266d092ea72b29aa3bb47e19cc0a271edd54af2",
+    "a3ebaa86d280d9710b83f347193867a64b48d00c57baae6dbd9766ba678e378a",
+    "678c0f34790ea3f467b6fa894caa0ce013ef731b2f008b519b4c674586fc498a",
+    "39719ef2f6129da6c818bf6ad5307e0f660dea0a64321be5f7e92b282da324cc",
+    "d95ab21d92f4c43de67e6809011048ac2e7183ec15e5adfed14b01eff8f32315",
+    "6311b97b738dd5d9713c264fb6050e096e75986692fa4fd3b22d74c4e7317330",
+    "de33fa3e723eb71355047beb4885f45c6dcc4541015cdc345d390328bb7aa779",
+    "402cbed9fef0df47c8ac183df907cfc5e074905b24be9819016e88a8533aa74a",
+    "c2271873bb01e0f4a791572db7ac1078a5bede912310004dbf88074732f9440a",
+    "107d8ddc6a9331e5be97bb1ceea2d4de7578479d181f0576673666202bd3d58e",
+    "513c128d55818dd58bfa5f126ea68c7267e46c22e64e9af9c8e84d73a456017a",
+    "935d420cf2ab6f390aa9dc2d83a2a512780090a2ef07fbefdcb6071bf6c5e6db",
+    "55e6d64c8a687265be2129ae828eeca8a60887b024462333b2fb13740dd3a0a1",
+    "367ba97ae564506b37515d6b730127fc83d6aa77af79802999ff6bfcb3a72f2c",
+    "bb1c80aee2fadd88689a18e1768a6685cd3ea7ee02e7a43630d3e637b2c7587c",
+    "37d0c303ce5a3b873e80de61e8acbf7363345c33efbbda0427f0132542a3e268",
+    "b62bd60d68784a75eb59c7cd25cf1b96cae7457844544423768130b64645a0b0",
+    "0bc603e603712c94bd0ec3b789f49297aa23b12830a8ce64aa86530dd2774108",
+    "5ce3411ff0ff15265275f7b0027e11acbc3ad2a4f15b23b3ab6e1bce8eccbbe8",
+    "3bf7351c61861dc12ac28a588170861212daac3cca62484eda9e944676c219ae",
+    "1c03bf0339c49d72fc6073e1fffa94f145faa0ecf6e4f758487dcf43840c2007",
+    "e4c6e198e31ae34957f3b5abc6128ebd8afae6ad078df90047a44fbee895d4b8",
+    "6c028f7733e9d465394bb38e51f61de740a7765eb28227b4c8f0faffb65cde06",
+    "d396722a4c0dca5aec1693d47b836274d1f22ac78b572b21d9aac80519f10fb8",
+    "3e3adbdfe0e4e19987ac4688daccd4cb7068e1003336aa9cd752daae01d18941",
+    "8a6a9619cc2517e6d5a24c7c585857e36959a33a49267460749e4df221595db5",
+    "d66cc6c0af1bf678e9ca039c6444ec2a8c2f056b67f16b8b6c59eedd1374939e",
+    "85bbbb9bb67fd4b097a689eaac0d90aaffb1ed624ad8b6f3b71c99f306b8b433",
+    "d542d6265615011ae5da54dde6c94587ece5c2487e9677baec0f02358f7a0bf6",
+    "1e546d557b955a24a09c8edd9740cd6ed4d55bb1227e8162d0c428424c7795dd",
+    "787c1cacb9e65e9d7e4f63c91b75c89caf40f8c96250c9f80088754f83a93604",
+    "e35bf1065baf21be0829dd0d1b49fbaea4b28b9a792992dc033b0098f7138328",
+    "0448af7daae40138e932211e1ed4369fae39f84270d094b0467ea9c9e7c90bf6",
+    "e60827267efc2778c4bf34a1948d9373e9d308566d641458c2fe17e9c5998bc4",
+    "9344f1ed048f49d9c6b380bde507d278896d1cc21888c004a4ff148a551e1253",
+    "721bd683f42208551e90f78ae69e3c5611f51dfe2797858380e91ac37925345e",
+    "def69d76d1418faac1cc28b0a412497cf8eadd81e93361ed202875958e480971",
+    "1da85ed9a3de68aee4c6a908e055783bc93bfd149c60b56537b93199dc4ec960",
+    "36c22c5d86c002bfce836690170284a714d1d57169b17b1c583ae9effb90ff62",
+    "cd0e482f8ed43349b063434e46165e44b4dcabc0dbaaca652c298c585f06eb54",
+    "5574e96c74f24e1ea90dc4de733c4405f86838644f422c415004ea6044d009ac",
+    "c57bb74b05a511f0333ceb3c44a7de4b7138f0c69a67cc44339f8910716b2418",
+    "e274430f3a1ece2b1f6c85c543a6b5fca1a185d316ae1f7adb76a5da169277ca",
+    "94e553fd2e62979f1bdd2a3ff9ef3868b00330757923203c12fd60c61b6af744",
+    "7dd1a856efb88eb97f2b43c59a33eaee33b5a7e68988c7102d54e44b96425f81",
+    "691dca43582ba7f6d3d10086a5b327552d31b39e52e2450182396d5242c7ecec",
+    "098c296ea7960aa03acc7625c82a8d558bad492b2a3b1d7fb15e21d77a3ac779",
+    "b45bd00a2c360b3360ccb0d7d05f4518bf91d67bf9f316291cf6b31ab2d85d74",
+    "ad75918cd038c15ee3bc748e7e3e222bc1b5789b61518ccb9a20a6b1c346003e",
+    "b4d756bae4b4a3d816206b9626c203427cbb24b727a9233bc4a49a11a24f2ef4",
+    "433a61decfec84d4c7820ed963fed8c94b7c647112ee3399a78544ec0ba1af91",
+    "338143cf4442066b62fef9d8821d435969ddda92d4f2d98feab272230a70f1f9",
+    "320e4998ec49de6e22468d61f49b44a8dfcec756228cadc9c1eb8da490d183d1",
+    "2f378a54ebe78a0efd57241bc25a627c80d339b46c84e6c234a3f60cd6ec5601",
+    "ba4e83c0393a19de260c7dc3bd406a24097e35f0010b409d5207fa4c97a7fd2d",
+    "5c93b52e582918a9eb4c19ae423cd1139ceefd922ef752773f9b602df91b2bad",
+    "507c89cded61c110e95bed80e8869e63a74ccccf43fbe280241e28ebc976e501",
+    "a62c547996b9828dbacbae9261289f4b1dd08d15c7d58b57f15f37e9c397fa5a",
+    "d5c0f68f0ffbc7c55855f13b67a57adad0a268fcf4154941ab2d8af77aa87460",
+    "034ebb2b59a097878e5f70c393086829bbfd18c2b86ff33a1d12ed3eabc35a4e",
+    "5134a3b4a30d1a59c63b32472176f08f5556d75d3ad80eb71f1742e14ec998be",
+    "0e5eaf44b39f1324d288d3d2c7c9c8227d903b83418047a12a698b9c00a59fbf",
+    "f8a85a1bea7dccb1bd944f92adf426cef236ed24d3248f6648b5ea6307f4d730",
+    "f76f205ace5c205c69f4f268e181db5651783d3ebdc3c8f1035beb52553b387f",
+    "fd0eff29ee467fa7a77d2567032462ef78103e835b7910a161b2f008b5fe3ea4",
+    "f5bf6d11942c7e7697d70354022d166e4a2326683d01616929d2c5889e163697",
+    "26f528829ba87baf8f67e59ea965df1165679fa460c632420ec1cc4dc85c3ecf",
+    "c788ee5a4b14d1c71b9fe0e4e01d3ffe3d7616f70c73ad8896069b2026104d9c",
+    "925d4de0710c37cc9e36ebf0669bbfef5dc1d66d780ac99a730cd1c99392aafb",
+    "3658c0fd16dc161ab1f87a4aed08e0a3a491c97fc1b0b2a7e7a61172655b969b",
+    "09f26a7aa12300b8352db04559978a87fc92a24555d742fa2c571854f8cf7435",
+    "97dc5f1ca447fd5f9fa45469f72451ea4e284e72f0c4514dbb30200b7c27d1dc",
+    "172db55a65affbf6636160f0ffa16f681527d61215d44390939fdd7dc472a5a8",
+    "ca45b559cd5dc12330ad01a44357392c68095ab4ba686bb30a40dc6cbd77eb99",
+    "67cb0f7aab007b869ae434f9c4361da2d99c31fc7f561c9430b687f29c4f5d7d",
+    "3edc4d8dfe8eb8dc8cb90b23c13f2fd2813320dc993c41de8b419613ab51dad4",
+    "471549ca2ef76e2e34e3d4ef8297031f5d0fa6534d2a5c04ae364ea86c14938f",
+    "1042081585e03b04984061d051efc03eca1fc423f0ac35e491bbdc0788e2272d",
+    "535f9722384afc689ee7bbcffe0d5405f46abc1ebee20b4ca72291d255ddc171",
+    "1946acafa64709372aa9e6ff998b5da5d36be355ba32b819d50b77e62b672953",
+    "0f05138d1d3c0a831b196d3b1a0def0fef83ed9a5ef7a9fa58b8a5e818ded3ac",
+    "c25134e2743898d34315348caf62067da027d7f6bfa9e74398bb27e856371e15",
+    "f16a26ec1334fafe92d99adfff957d68dc1fec71ccc1b48f7bd4fabc9d1907df",
+    "c036730402b342f630c1f62372ea99fa05dd538b7061dd69f305ab0c907b459e",
+    "82092c56d78f9767af1252b958a96fe429c8b9286172c5d51f036fa6e9a3a8e5",
+    "9614aa44b0728118530c798782a1742ded0a96bb22b66fbd4aebc9deafcd64fd",
+    "c48080ab672b2081799145d15b5daa6261f12791ca2b33a70cd1a9cb073182ce",
+    "0bf123af3183f6ea9f368cfafe9dd72feb673b888bf4d6332ff38911681821fd",
+    "2419901eb79e0bcc4e998ca508084a3b681e08a52cfeb3855390c9a0a23ef76b",
+    "9c8872b19a3c05beeac69f002a79ead67b3626910bc6e550ae31c23c93e67d88",
+    "93249eabb7ec5b3908f88f6f351c1b37cbeb5cd343de4194e625614f190a947a",
+    "12a69f2bb6ee96c15d61e55e4d094192af53718f7dae9401a175d07d32e657c7",
+    "d5f93e151485bc493fd36f0a5fb7d3d032d682340a715279cd3ed9ffd2ef5d01",
+    "2cdf0738b5971203ca0f1903c6ea05390ab9a827fc226a0ec94a69eabcf7cfde",
+    "d0c8d329029ddd04295d894cd1dc40fc6bef09a1040501257c0d183f5131e5a9",
+    "fb450e072134c632426e4467553342503f69e5d1ddb7f705c01d22fc0b30e5e9",
+    "f5d2250700ec19beac9ec9c14072a17e9a87e4725dbba31c0f24b167b7da62dd",
+    "961e8e9da4c2d4e5e27f3aaf740812f9b405c110656523d6365273d763b34dcd",
+    "85e62cd33d761e5585cf6e29ec4e34cbb1cd4ed57db69d64dab9ebe7b5d2f65d",
+    "1b773d93599f55960a554202793e78c1b754d5c1495fd2059c670cc50217a8f2",
+    "e06eba6f5d7473e8444e25cdd7a4444423442e5f5aabe488b6a8be64b9ec9f72",
+    "c15ef57be9379c03a8fe1d0f1a31658dc4f50d25fd14cd4126a710b130891493",
+    "6bb7335f99fa2768d6afd73497ec238e403c04c0f75249e471da1d40e33c922b",
+    "6c5bb47817eea09df26715003e096bc8908b0e711de8538afbb2a6e3c06b198c",
+    "e9fa490022d03afa22d9b448530f03b7d8b16a426ce2e2e62635a0b7ade18aef",
+    "85af829d15466e86bcbe5834d72a1431bce30d63df28e789b243f4382e60df78",
+    "dc1198a4822007d57d0b31c83fb98d256e888794023f2914f30a8eed4e6f97b3",
+    "8e951da44512384a6f6f735040f685ee40dde896672763793d9aacd3c965d729",
+    "a2629d4f2f1308e67ee4f420f90af3f09cc41c304e0da3393c6c76229f989a6c",
+    "4b76c49cfacf92c2db6f97892ee72bb27b9b1bfbab42c22386745f58291451cd",
+    "28dd34dc2d3fb6eb3b58b63fe612dac036cb59429b09c98c45c89f2fa0b122b4",
+    "832d8db8f60e8a4c918ef846db2ff428eb3588fe7d501d62dd28fd1d6abf63a7",
+    "02af1ed3b332881ada9f5fb6790465847ec3d6d3958619469abb94d467ec71ae",
+    "5e9ac830b7d90f31fbd43f61b7b176785e43b94a4ee6ba5c63fa608e2c140c43",
+    "d6cbab3b25a3cd1d5b2a95b7b2a6c297b33d16980a81549a9d9ee9791cff080a",
+    "d79ae025a731f96d29dc0b5e56bff80e25a768e0159264bdbcb96378a76dba48",
+    "b8b98a6eadbb02c0bf2cb7d6882b5e84c9fdc2eb7196f2022bd82d64228a368d",
+    "bc611cab98fed8eefb0240b07bc4aa6184c71863173c9f01738452693827ea13",
+    "4296dd382f65dd42d19f5f811ade4eec1506ea3cba1b7a5fb6fac4836d5a39d0",
+    "cc8e66bbd47a4f8e0dc93c3e711573e0caed9b56180bd578ab94413218e7bf6b",
+    "166c5e7fa6892b246ddf47ee67d90fb24de1e8e0b8cd2cea6b52e5cef34308a1",
+    "beef5459dfd031ec6573cf975dbaeee610f92748bdf104e02ce10de1bdc41ebe",
+    "ff522476570c312a1dd4ec298a2228d282e291914500b5616758d44ecaddef81",
+    "dbfd367d4c8a4c179702097d63270bef00bd34415bf6d707457d207c518b28ff",
+    "61dd00c551012020005ef85695c3f3d316474fd4f4818ce14f40d90bcd1977b7",
+    "2399ce5285eb49bcf8904e381a459128b0fdc4f0a7ad6b2fac76c9dceabffbd7",
+    "b3776263a1ff809a6d86c7a34375fbd7cb7e8114e5bffad1f31ef2488893a015",
+    "e7ce9bb367e0b2b667f9dbc45ce3e9eb1a4fd8f5d92086f6136ce4a78796a2d7",
+    "7eb91d4f942c2bc73c066af16a873442b1496c794f987bf18bf28b1ddc43549f"
+  ],
+  "connections": [
+    {
+      "id": "parts/3026.dat:8:159",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "F",
+      "position": [
+        -190,
+        8,
+        10
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "F",
+        "caps": "one",
+        "secs": "R 6 4",
+        "pos": "0 8 0",
+        "grid": "C 24 C 6 20 20"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/3026.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "3d0d6997820ec0bd1f0403cc575d32e84d25f3257231de5dfdedf54023aa9813",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3026.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 6 4] [pos=0 8 0] [grid=C 24 C 6 20 20]",
+        "transforms": []
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": null,
+  "transformStatus": "UNRESOLVED",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "REQUIRES_ASTRA_REVIEW",
+    "reasonCodes": [
+      "isolated-interface-timeout"
+    ],
+    "details": {
+      "schemaVersion": 1,
+      "testVersion": "native-interface-suite-0.6.0-worker-2",
+      "context": {
+        "testVersion": "native-interface-suite-0.6.0-worker-2",
+        "partId": "3026",
+        "partSourceHash": "c9028f8fb227d6fcde38cb842711424800ef480247afc8afc1b3cb6e168c2db9",
+        "geometryHash": "6d2c3de9d4eee9d906559f4db3cfae9a1fc28a1194899cf05207d850239a8821",
+        "connectionMetadataHash": "a273e83afa843fcc35a14628be59ff113ef19a7fc128eec5986a953c35cca26a",
+        "fixtures": [
+          {
+            "role": "brick-1x1",
+            "partId": "3005",
+            "sourceHash": "e0e841bff7bb8c42b13088878880800bc7231f06a2b0774369fec3e7c0608bb8",
+            "geometryHash": "dbc6318d720b3c65e9b1c32f565e8a0d121aacb033f75063b784b07f905b9997",
+            "connectionMetadataHash": "5ffdbc628028b2753fb15fa733d664c326235c70054320baa840ba8bd0c9b759"
+          },
+          {
+            "role": "brick-1x2",
+            "partId": "3004",
+            "sourceHash": "f10538d0cc351b07eb406454f8c21d9de3989eb5a7d211cba07dde51fbbfca8f",
+            "geometryHash": "f08baa9261c5b803a2092757212349c369262a964fb956eb3fb1482f2e58a737",
+            "connectionMetadataHash": "8e88dbb89c508a17241c859d33a1c09a224f42562bbb91f58189df12d4239208"
+          },
+          {
+            "role": "brick-2x2",
+            "partId": "3003",
+            "sourceHash": "1bbe69d033c22376b5dcf9e211d907c4cd38f1258ba1e37d7e6d052717660ada",
+            "geometryHash": "ae971af0bd0fcd4823bec52143488353de029bb9670bc938c2c065dde6e2fa06",
+            "connectionMetadataHash": "20ae18794e69279ef2a6ffdd66019ed4e0700ef0e8efe886bd400d0837d9afc1"
+          },
+          {
+            "role": "plate-1x1",
+            "partId": "3024",
+            "sourceHash": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+            "geometryHash": "413e9c9e450294c6e0a8c02a1809994b68defc79969b0421ea43cd3ab658ecb4",
+            "connectionMetadataHash": "475618588fe093780011ccb8247344c2c4903681c6ac9c728dd4ca86bad245b8"
+          },
+          {
+            "role": "plate-1x2",
+            "partId": "3023b",
+            "sourceHash": "a8a6933891c2d7761b1b57ad2e29d8bd6102e192d40515769308385b85801f53",
+            "geometryHash": "17e857d88df4327931cf750b94d3dc03d249d06d1d6d12281e72fa947b9846e5",
+            "connectionMetadataHash": "6864b0fb016b3eec14c8c916178a11f5196f99c145c3dd57f0526377111a9ac2"
+          },
+          {
+            "role": "tile-1x1",
+            "partId": "3070b",
+            "sourceHash": "d3f492650fe439f738028056baa657c7ccaf559a7093acbbb11a59bff8dfdd15",
+            "geometryHash": "b83a26bace317d772d69c406017365fd898903eaef656dd18ab9cad80c44cdd3",
+            "connectionMetadataHash": "3d4358ca41e3b686f2c2a3eb781a9f9414a67ea3fac25754214fc1b29bc3b10f"
+          },
+          {
+            "role": "side-stud",
+            "partId": "87087",
+            "sourceHash": "c81a3585a7bf37b2e040056175df0d4a0ea381f47b5cc0d1e3858e739a2cebc3",
+            "geometryHash": "3ad64167f2b88143b30eff53a2a51c04e128c9b7e84e8798cbd2361cd9423346",
+            "connectionMetadataHash": "0ed6190e528140c2c5d0bad6678a0430f228f3d28eb5b98807fa4ea6db61e017"
+          },
+          {
+            "role": "bar",
+            "partId": "30374",
+            "sourceHash": "b9f2f3b8049913f2cffdeacaa97be916298480949eb74197329b2cc2e4c0fca5",
+            "geometryHash": "60bd25686cf62b39331c19ff129d2b1d226bba8c7ca0943c2ddf98fae9dfd8f2",
+            "connectionMetadataHash": "347797e5a6f3f8607e4480dccb61beb5757d7bf496f1239919110e4a6fccaffa"
+          },
+          {
+            "role": "clip",
+            "partId": "48729b",
+            "sourceHash": "bbfb99b27cfcff264aa112fd267a588e96cad1ce2e4899f0bb7a2066e0200ee1",
+            "geometryHash": "9152c633d93811fbcd127e86f1244eff74e2c0142150c4f48bb3b1173469d527",
+            "connectionMetadataHash": "52c94a299895d7c674d418da55bab6a27937b374613f3de51ed5998f0dfbb524"
+          },
+          {
+            "role": "clip-plate",
+            "partId": "60470b",
+            "sourceHash": "7dfa014c7051b9d20013b40222dac7c03cdb9a7a08dc8ea72d055a75ea7bd2cc",
+            "geometryHash": "2accb9463687dd4e3462a9615607ada19f87e1f127e1709d7497807faa4b8c3d",
+            "connectionMetadataHash": "0fda8e771b2f77ea498ced5071d827733ceb680f8f6ba5876e1dd8f08cfedb56"
+          },
+          {
+            "role": "axle",
+            "partId": null,
+            "sourceHash": null,
+            "geometryHash": null,
+            "connectionMetadataHash": null
+          },
+          {
+            "role": "axle-hole",
+            "partId": "65635",
+            "sourceHash": "775f26bab73bc0ff318ecec50170c202e1dfaeaed36e1b29ba8037a0b20840b9",
+            "geometryHash": "5c22f39087f4f30a25ced09de8fa519aa5793ec0cc1afaf85f6f8a42c27f83e4",
+            "connectionMetadataHash": "8baea4a1196164f021eb845c54fad7f9ea8162b01d988a19b376a66dd56a8220"
+          },
+          {
+            "role": "pin",
+            "partId": "3673",
+            "sourceHash": "13a3105f483a738c9bc6eea03ce01c550111ca61f9e46c8d5baed913322fc25a",
+            "geometryHash": "62dbc7c79630a9a21a8bee84e46a35a450cb87ba293c47b212f4970875ef9954",
+            "connectionMetadataHash": "6202cbe9858f21a716a521ea0ce3463aa35af0567509f8049688294f2e193a00"
+          },
+          {
+            "role": "pin-hole",
+            "partId": "3700",
+            "sourceHash": "9eba35d0f453804ceeb4a7177c6e9ed5f5f58007f0c98f08b684e7aabe8bd7b9",
+            "geometryHash": "94718f51f9b232d937272d92d2d4e0e31f169500cc3415b262cc05dfaec0d116",
+            "connectionMetadataHash": "ba783ce92534e6da5aa7f45804a222afcef061709b9fd78ac5718f647ed1d9a6"
+          },
+          {
+            "role": "wheel-holder",
+            "partId": "4600",
+            "sourceHash": "5fb7923473b0e1e8eed210ad7b53844763a0875844b16c9bf95d65570b1c7b8c",
+            "geometryHash": "dddf1d8a479d7fc67f261d87ed48f795c4894cb38d92d51da01a18924ce890e7",
+            "connectionMetadataHash": "aff4c3ae82e273ca5434e6e3acfd7abe4b3f4212b358fb644dfbded95591f9db"
+          },
+          {
+            "role": "wheel",
+            "partId": "4624",
+            "sourceHash": "8ca8bd482f59516e1bc7689bdb77abce1b7362cc58e7234bc6cb2016948b926f",
+            "geometryHash": "8c36bf6285843b5f40cea1f31be28cfa974b631e6507732f1a010151401c60e4",
+            "connectionMetadataHash": "800755487eb77dd78abf231d0f5ca88612c8c40d4d3f1184db9f763ff5ff27aa"
+          },
+          {
+            "role": "tyre",
+            "partId": "3641",
+            "sourceHash": "bba6f88f177eadb2899ff5e321a52120de0dd9e523ca1ef1e73a9df4610bc1f5",
+            "geometryHash": "8c3d67c5fd628dd098fbac6c2182c048a7f12001aace59ac7c3880adbe085e95",
+            "connectionMetadataHash": "46b7e4de391813169c023043ae3bfdedc6a6139dbd5e29bb4b0e7468599e77eb"
+          }
+        ],
+        "fixtureSetHash": "57ebb5cfd1e6cfff4061dfd0e8a04e9e3d127ca51e5460245b9c0ec450f2c0bb",
+        "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+        "assemblyEngineVersion": "native-assembly-0.6.0",
+        "connectionRuleVersion": "source-stud-1.0.0",
+        "collisionVersion": "native-closed-bvh-partition-1.0.0",
+        "contextId": "2d330e40cb5c05021c72cdf2623e74298723b0f9315056ef07719fcc74db0d5f"
+      },
+      "partId": "3026",
+      "physicalInterfaceId": "cc6101605937b21b5bfbf709cdec6c5de40225c831218f45911fb78bbf2d7c80",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:159"
+      ],
+      "status": "REQUIRES_ASTRA_REVIEW",
+      "reasonCodes": [
+        "isolated-interface-timeout"
+      ],
+      "reasons": [
+        "The isolated test exceeded 8000 ms. The worker was terminated; physical validity remains unknown."
+      ],
+      "startedAt": "2026-10-23T18:39:53.658Z",
+      "finishedAt": "2026-10-23T18:39:53.658Z",
+      "durationMs": 8000,
+      "attempts": 1,
+      "sourceChecks": [],
+      "execution": "direct-test",
+      "relatedCaseIds": [],
+      "caseId": "ASM-ACBE2108A789FF5AF719",
+      "fixturePartId": null,
+      "fixtureSourceHash": null
+    }
+  },
+  "replay": {
+    "kind": "fixture",
+    "partId": "3026",
+    "physicalInterfaceId": "cc6101605937b21b5bfbf709cdec6c5de40225c831218f45911fb78bbf2d7c80",
+    "timeoutMs": 8000
+  },
+  "reproductionCommand": "npm run astra:case -- PORT-3026-7DE2F16846",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/4-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/4-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring3.dat",
+    "data/parts-foundation/ldraw/files/p/box5.dat",
+    "data/parts-foundation/ldraw/files/p/stud.dat",
+    "data/parts-foundation/ldraw/files/p/stud4.dat",
+    "data/parts-foundation/ldraw/files/parts/3026.dat",
+    "data/parts-foundation/shadow/files/p/stud4.dat",
+    "data/parts-foundation/shadow/files/p/stud.dat",
+    "data/parts-foundation/shadow/files/parts/3026.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [
+    {
+      "originalExecution": {
+        "schemaVersion": 1,
+        "testVersion": "native-interface-suite-0.6.0-worker-2",
+        "context": {
+          "testVersion": "native-interface-suite-0.6.0-worker-2",
+          "partId": "3026",
+          "partSourceHash": "c9028f8fb227d6fcde38cb842711424800ef480247afc8afc1b3cb6e168c2db9",
+          "geometryHash": "6d2c3de9d4eee9d906559f4db3cfae9a1fc28a1194899cf05207d850239a8821",
+          "connectionMetadataHash": "a273e83afa843fcc35a14628be59ff113ef19a7fc128eec5986a953c35cca26a",
+          "fixtures": [
+            {
+              "role": "brick-1x1",
+              "partId": "3005",
+              "sourceHash": "e0e841bff7bb8c42b13088878880800bc7231f06a2b0774369fec3e7c0608bb8",
+              "geometryHash": "dbc6318d720b3c65e9b1c32f565e8a0d121aacb033f75063b784b07f905b9997",
+              "connectionMetadataHash": "5ffdbc628028b2753fb15fa733d664c326235c70054320baa840ba8bd0c9b759"
+            },
+            {
+              "role": "brick-1x2",
+              "partId": "3004",
+              "sourceHash": "f10538d0cc351b07eb406454f8c21d9de3989eb5a7d211cba07dde51fbbfca8f",
+              "geometryHash": "f08baa9261c5b803a2092757212349c369262a964fb956eb3fb1482f2e58a737",
+              "connectionMetadataHash": "8e88dbb89c508a17241c859d33a1c09a224f42562bbb91f58189df12d4239208"
+            },
+            {
+              "role": "brick-2x2",
+              "partId": "3003",
+              "sourceHash": "1bbe69d033c22376b5dcf9e211d907c4cd38f1258ba1e37d7e6d052717660ada",
+              "geometryHash": "ae971af0bd0fcd4823bec52143488353de029bb9670bc938c2c065dde6e2fa06",
+              "connectionMetadataHash": "20ae18794e69279ef2a6ffdd66019ed4e0700ef0e8efe886bd400d0837d9afc1"
+            },
+            {
+              "role": "plate-1x1",
+              "partId": "3024",
+              "sourceHash": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+              "geometryHash": "413e9c9e450294c6e0a8c02a1809994b68defc79969b0421ea43cd3ab658ecb4",
+              "connectionMetadataHash": "475618588fe093780011ccb8247344c2c4903681c6ac9c728dd4ca86bad245b8"
+            },
+            {
+              "role": "plate-1x2",
+              "partId": "3023b",
+              "sourceHash": "a8a6933891c2d7761b1b57ad2e29d8bd6102e192d40515769308385b85801f53",
+              "geometryHash": "17e857d88df4327931cf750b94d3dc03d249d06d1d6d12281e72fa947b9846e5",
+              "connectionMetadataHash": "6864b0fb016b3eec14c8c916178a11f5196f99c145c3dd57f0526377111a9ac2"
+            },
+            {
+              "role": "tile-1x1",
+              "partId": "3070b",
+              "sourceHash": "d3f492650fe439f738028056baa657c7ccaf559a7093acbbb11a59bff8dfdd15",
+              "geometryHash": "b83a26bace317d772d69c406017365fd898903eaef656dd18ab9cad80c44cdd3",
+              "connectionMetadataHash": "3d4358ca41e3b686f2c2a3eb781a9f9414a67ea3fac25754214fc1b29bc3b10f"
+            },
+            {
+              "role": "side-stud",
+              "partId": "87087",
+              "sourceHash": "c81a3585a7bf37b2e040056175df0d4a0ea381f47b5cc0d1e3858e739a2cebc3",
+              "geometryHash": "3ad64167f2b88143b30eff53a2a51c04e128c9b7e84e8798cbd2361cd9423346",
+              "connectionMetadataHash": "0ed6190e528140c2c5d0bad6678a0430f228f3d28eb5b98807fa4ea6db61e017"
+            },
+            {
+              "role": "bar",
+              "partId": "30374",
+              "sourceHash": "b9f2f3b8049913f2cffdeacaa97be916298480949eb74197329b2cc2e4c0fca5",
+              "geometryHash": "60bd25686cf62b39331c19ff129d2b1d226bba8c7ca0943c2ddf98fae9dfd8f2",
+              "connectionMetadataHash": "347797e5a6f3f8607e4480dccb61beb5757d7bf496f1239919110e4a6fccaffa"
+            },
+            {
+              "role": "clip",
+              "partId": "48729b",
+              "sourceHash": "bbfb99b27cfcff264aa112fd267a588e96cad1ce2e4899f0bb7a2066e0200ee1",
+              "geometryHash": "9152c633d93811fbcd127e86f1244eff74e2c0142150c4f48bb3b1173469d527",
+              "connectionMetadataHash": "52c94a299895d7c674d418da55bab6a27937b374613f3de51ed5998f0dfbb524"
+            },
+            {
+              "role": "clip-plate",
+              "partId": "60470b",
+              "sourceHash": "7dfa014c7051b9d20013b40222dac7c03cdb9a7a08dc8ea72d055a75ea7bd2cc",
+              "geometryHash": "2accb9463687dd4e3462a9615607ada19f87e1f127e1709d7497807faa4b8c3d",
+              "connectionMetadataHash": "0fda8e771b2f77ea498ced5071d827733ceb680f8f6ba5876e1dd8f08cfedb56"
+            },
+            {
+              "role": "axle",
+              "partId": null,
+              "sourceHash": null,
+              "geometryHash": null,
+              "connectionMetadataHash": null
+            },
+            {
+              "role": "axle-hole",
+              "partId": "65635",
+              "sourceHash": "775f26bab73bc0ff318ecec50170c202e1dfaeaed36e1b29ba8037a0b20840b9",
+              "geometryHash": "5c22f39087f4f30a25ced09de8fa519aa5793ec0cc1afaf85f6f8a42c27f83e4",
+              "connectionMetadataHash": "8baea4a1196164f021eb845c54fad7f9ea8162b01d988a19b376a66dd56a8220"
+            },
+            {
+              "role": "pin",
+              "partId": "3673",
+              "sourceHash": "13a3105f483a738c9bc6eea03ce01c550111ca61f9e46c8d5baed913322fc25a",
+              "geometryHash": "62dbc7c79630a9a21a8bee84e46a35a450cb87ba293c47b212f4970875ef9954",
+              "connectionMetadataHash": "6202cbe9858f21a716a521ea0ce3463aa35af0567509f8049688294f2e193a00"
+            },
+            {
+              "role": "pin-hole",
+              "partId": "3700",
+              "sourceHash": "9eba35d0f453804ceeb4a7177c6e9ed5f5f58007f0c98f08b684e7aabe8bd7b9",
+              "geometryHash": "94718f51f9b232d937272d92d2d4e0e31f169500cc3415b262cc05dfaec0d116",
+              "connectionMetadataHash": "ba783ce92534e6da5aa7f45804a222afcef061709b9fd78ac5718f647ed1d9a6"
+            },
+            {
+              "role": "wheel-holder",
+              "partId": "4600",
+              "sourceHash": "5fb7923473b0e1e8eed210ad7b53844763a0875844b16c9bf95d65570b1c7b8c",
+              "geometryHash": "dddf1d8a479d7fc67f261d87ed48f795c4894cb38d92d51da01a18924ce890e7",
+              "connectionMetadataHash": "aff4c3ae82e273ca5434e6e3acfd7abe4b3f4212b358fb644dfbded95591f9db"
+            },
+            {
+              "role": "wheel",
+              "partId": "4624",
+              "sourceHash": "8ca8bd482f59516e1bc7689bdb77abce1b7362cc58e7234bc6cb2016948b926f",
+              "geometryHash": "8c36bf6285843b5f40cea1f31be28cfa974b631e6507732f1a010151401c60e4",
+              "connectionMetadataHash": "800755487eb77dd78abf231d0f5ca88612c8c40d4d3f1184db9f763ff5ff27aa"
+            },
+            {
+              "role": "tyre",
+              "partId": "3641",
+              "sourceHash": "bba6f88f177eadb2899ff5e321a52120de0dd9e523ca1ef1e73a9df4610bc1f5",
+              "geometryHash": "8c3d67c5fd628dd098fbac6c2182c048a7f12001aace59ac7c3880adbe085e95",
+              "connectionMetadataHash": "46b7e4de391813169c023043ae3bfdedc6a6139dbd5e29bb4b0e7468599e77eb"
+            }
+          ],
+          "fixtureSetHash": "57ebb5cfd1e6cfff4061dfd0e8a04e9e3d127ca51e5460245b9c0ec450f2c0bb",
+          "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+          "assemblyEngineVersion": "native-assembly-0.6.0",
+          "connectionRuleVersion": "source-stud-1.0.0",
+          "collisionVersion": "native-closed-bvh-partition-1.0.0",
+          "contextId": "2d330e40cb5c05021c72cdf2623e74298723b0f9315056ef07719fcc74db0d5f"
+        },
+        "partId": "3026",
+        "physicalInterfaceId": "cc6101605937b21b5bfbf709cdec6c5de40225c831218f45911fb78bbf2d7c80",
+        "rawConnectionIds": [
+          "parts/3026.dat:8:159"
+        ],
+        "status": "REQUIRES_ASTRA_REVIEW",
+        "reasonCodes": [
+          "isolated-interface-timeout"
+        ],
+        "reasons": [
+          "The isolated test exceeded 8000 ms. The worker was terminated; physical validity remains unknown."
+        ],
+        "startedAt": "2026-10-23T18:27:19.026Z",
+        "finishedAt": "2026-10-23T18:27:19.026Z",
+        "durationMs": 8000,
+        "attempts": 2,
+        "sourceChecks": [],
+        "execution": "direct-test",
+        "relatedCaseIds": [],
+        "caseId": "ASM-ACBE2108A789FF5AF719",
+        "fixturePartId": null,
+        "fixtureSourceHash": null
+      }
+    },
+    {
+      "physicalInterfaceId": "198b2c9ab00bc409412d5dee786cae93efbdbb192a46c4c187c29ce727c384b4",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:144"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "d5b851b6dec7f7606acf86213d0c5d1d3f8923e9e2e5ee955ed0b65c2e166c63",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:145"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "74d764391202b4ac7872eb1aa61ac99841d44875c66cddcf4eefe7e37bc88070",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:146"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "b3c833a5c51bc98d75bcdf69233afe3e55538cf36d2429626b1d4a513c4af775",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:147"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "06fa5202e0102956cef88433818aa836b6a7c7a59e9d9c607e28509abe7b1a38",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:148"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "f0d2c16303e098583734af9134fe2033977e4788c09c0d570d50971ccdf850a2",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:149"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "6a168df3623bf2bf030223987cdcaaf72fc0dcbfc3ac13eda6510712581d06f3",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:150"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "6fff76fc4888658eb1f74dc38fd3299567e1457a5730a2b18877ba19c8db5329",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:151"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "da2a12684020582a224efb8a32c2acc30838f35894d15225b64c9e9701fdea67",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:152"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "686ee493bcb16223e67c57b00854ec5a39eb2072affd0f167f03e0b84c6d2cfd",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:153"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "b4d4c3c3239e55065464218e561bc6b60a5a577559559daa3300818898375f04",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:154"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "dd1b7c5c460f20bb0855435fc7c3e3c61749b5146852fbeb609b147829ee536f",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:155"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "7d6a1fff385d2be7c28b21e37a392eeb105844f88ada80ef5f3d8e667128898a",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:156"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "8f5ad37b596320f808dc58e8e266d092ea72b29aa3bb47e19cc0a271edd54af2",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:157"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "a3ebaa86d280d9710b83f347193867a64b48d00c57baae6dbd9766ba678e378a",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:158"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "678c0f34790ea3f467b6fa894caa0ce013ef731b2f008b519b4c674586fc498a",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:160"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "39719ef2f6129da6c818bf6ad5307e0f660dea0a64321be5f7e92b282da324cc",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:161"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "d95ab21d92f4c43de67e6809011048ac2e7183ec15e5adfed14b01eff8f32315",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:162"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "6311b97b738dd5d9713c264fb6050e096e75986692fa4fd3b22d74c4e7317330",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:163"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "de33fa3e723eb71355047beb4885f45c6dcc4541015cdc345d390328bb7aa779",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:164"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "402cbed9fef0df47c8ac183df907cfc5e074905b24be9819016e88a8533aa74a",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:165"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "c2271873bb01e0f4a791572db7ac1078a5bede912310004dbf88074732f9440a",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:166"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "107d8ddc6a9331e5be97bb1ceea2d4de7578479d181f0576673666202bd3d58e",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:167"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "513c128d55818dd58bfa5f126ea68c7267e46c22e64e9af9c8e84d73a456017a",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:168"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "935d420cf2ab6f390aa9dc2d83a2a512780090a2ef07fbefdcb6071bf6c5e6db",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:169"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "55e6d64c8a687265be2129ae828eeca8a60887b024462333b2fb13740dd3a0a1",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:170"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "367ba97ae564506b37515d6b730127fc83d6aa77af79802999ff6bfcb3a72f2c",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:171"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "bb1c80aee2fadd88689a18e1768a6685cd3ea7ee02e7a43630d3e637b2c7587c",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:172"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "37d0c303ce5a3b873e80de61e8acbf7363345c33efbbda0427f0132542a3e268",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:173"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "b62bd60d68784a75eb59c7cd25cf1b96cae7457844544423768130b64645a0b0",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:174"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "0bc603e603712c94bd0ec3b789f49297aa23b12830a8ce64aa86530dd2774108",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:175"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "5ce3411ff0ff15265275f7b0027e11acbc3ad2a4f15b23b3ab6e1bce8eccbbe8",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:176"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "3bf7351c61861dc12ac28a588170861212daac3cca62484eda9e944676c219ae",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:177"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "1c03bf0339c49d72fc6073e1fffa94f145faa0ecf6e4f758487dcf43840c2007",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:178"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "e4c6e198e31ae34957f3b5abc6128ebd8afae6ad078df90047a44fbee895d4b8",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:179"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "6c028f7733e9d465394bb38e51f61de740a7765eb28227b4c8f0faffb65cde06",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:180"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "d396722a4c0dca5aec1693d47b836274d1f22ac78b572b21d9aac80519f10fb8",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:181"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "3e3adbdfe0e4e19987ac4688daccd4cb7068e1003336aa9cd752daae01d18941",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:182"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "8a6a9619cc2517e6d5a24c7c585857e36959a33a49267460749e4df221595db5",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:183"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "d66cc6c0af1bf678e9ca039c6444ec2a8c2f056b67f16b8b6c59eedd1374939e",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:184"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "85bbbb9bb67fd4b097a689eaac0d90aaffb1ed624ad8b6f3b71c99f306b8b433",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:185"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "d542d6265615011ae5da54dde6c94587ece5c2487e9677baec0f02358f7a0bf6",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:186"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "1e546d557b955a24a09c8edd9740cd6ed4d55bb1227e8162d0c428424c7795dd",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:187"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "787c1cacb9e65e9d7e4f63c91b75c89caf40f8c96250c9f80088754f83a93604",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:188"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "e35bf1065baf21be0829dd0d1b49fbaea4b28b9a792992dc033b0098f7138328",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:189"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "0448af7daae40138e932211e1ed4369fae39f84270d094b0467ea9c9e7c90bf6",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:190"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "e60827267efc2778c4bf34a1948d9373e9d308566d641458c2fe17e9c5998bc4",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:191"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "9344f1ed048f49d9c6b380bde507d278896d1cc21888c004a4ff148a551e1253",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:192"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "721bd683f42208551e90f78ae69e3c5611f51dfe2797858380e91ac37925345e",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:193"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "def69d76d1418faac1cc28b0a412497cf8eadd81e93361ed202875958e480971",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:194"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "1da85ed9a3de68aee4c6a908e055783bc93bfd149c60b56537b93199dc4ec960",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:195"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "36c22c5d86c002bfce836690170284a714d1d57169b17b1c583ae9effb90ff62",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:196"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "cd0e482f8ed43349b063434e46165e44b4dcabc0dbaaca652c298c585f06eb54",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:197"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "5574e96c74f24e1ea90dc4de733c4405f86838644f422c415004ea6044d009ac",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:198"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "c57bb74b05a511f0333ceb3c44a7de4b7138f0c69a67cc44339f8910716b2418",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:199"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "e274430f3a1ece2b1f6c85c543a6b5fca1a185d316ae1f7adb76a5da169277ca",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:200"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "94e553fd2e62979f1bdd2a3ff9ef3868b00330757923203c12fd60c61b6af744",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:201"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "7dd1a856efb88eb97f2b43c59a33eaee33b5a7e68988c7102d54e44b96425f81",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:202"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "691dca43582ba7f6d3d10086a5b327552d31b39e52e2450182396d5242c7ecec",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:203"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "098c296ea7960aa03acc7625c82a8d558bad492b2a3b1d7fb15e21d77a3ac779",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:204"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "b45bd00a2c360b3360ccb0d7d05f4518bf91d67bf9f316291cf6b31ab2d85d74",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:205"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "ad75918cd038c15ee3bc748e7e3e222bc1b5789b61518ccb9a20a6b1c346003e",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:206"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "b4d756bae4b4a3d816206b9626c203427cbb24b727a9233bc4a49a11a24f2ef4",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:207"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "433a61decfec84d4c7820ed963fed8c94b7c647112ee3399a78544ec0ba1af91",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:208"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "338143cf4442066b62fef9d8821d435969ddda92d4f2d98feab272230a70f1f9",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:209"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "320e4998ec49de6e22468d61f49b44a8dfcec756228cadc9c1eb8da490d183d1",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:210"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "2f378a54ebe78a0efd57241bc25a627c80d339b46c84e6c234a3f60cd6ec5601",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:211"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "ba4e83c0393a19de260c7dc3bd406a24097e35f0010b409d5207fa4c97a7fd2d",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:213"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "5c93b52e582918a9eb4c19ae423cd1139ceefd922ef752773f9b602df91b2bad",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:214"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "507c89cded61c110e95bed80e8869e63a74ccccf43fbe280241e28ebc976e501",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:215"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "a62c547996b9828dbacbae9261289f4b1dd08d15c7d58b57f15f37e9c397fa5a",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:216"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "d5c0f68f0ffbc7c55855f13b67a57adad0a268fcf4154941ab2d8af77aa87460",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:217"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "034ebb2b59a097878e5f70c393086829bbfd18c2b86ff33a1d12ed3eabc35a4e",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:218"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "5134a3b4a30d1a59c63b32472176f08f5556d75d3ad80eb71f1742e14ec998be",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:219"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "0e5eaf44b39f1324d288d3d2c7c9c8227d903b83418047a12a698b9c00a59fbf",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:220"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "f8a85a1bea7dccb1bd944f92adf426cef236ed24d3248f6648b5ea6307f4d730",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:221"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "f76f205ace5c205c69f4f268e181db5651783d3ebdc3c8f1035beb52553b387f",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:222"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "fd0eff29ee467fa7a77d2567032462ef78103e835b7910a161b2f008b5fe3ea4",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:223"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "f5bf6d11942c7e7697d70354022d166e4a2326683d01616929d2c5889e163697",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:224"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "26f528829ba87baf8f67e59ea965df1165679fa460c632420ec1cc4dc85c3ecf",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:225"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "c788ee5a4b14d1c71b9fe0e4e01d3ffe3d7616f70c73ad8896069b2026104d9c",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:226"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "925d4de0710c37cc9e36ebf0669bbfef5dc1d66d780ac99a730cd1c99392aafb",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:227"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "3658c0fd16dc161ab1f87a4aed08e0a3a491c97fc1b0b2a7e7a61172655b969b",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:228"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "09f26a7aa12300b8352db04559978a87fc92a24555d742fa2c571854f8cf7435",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:229"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "97dc5f1ca447fd5f9fa45469f72451ea4e284e72f0c4514dbb30200b7c27d1dc",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:230"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "172db55a65affbf6636160f0ffa16f681527d61215d44390939fdd7dc472a5a8",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:231"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "ca45b559cd5dc12330ad01a44357392c68095ab4ba686bb30a40dc6cbd77eb99",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:232"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "67cb0f7aab007b869ae434f9c4361da2d99c31fc7f561c9430b687f29c4f5d7d",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:233"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "3edc4d8dfe8eb8dc8cb90b23c13f2fd2813320dc993c41de8b419613ab51dad4",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:234"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "471549ca2ef76e2e34e3d4ef8297031f5d0fa6534d2a5c04ae364ea86c14938f",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:235"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "1042081585e03b04984061d051efc03eca1fc423f0ac35e491bbdc0788e2272d",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:236"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "535f9722384afc689ee7bbcffe0d5405f46abc1ebee20b4ca72291d255ddc171",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:237"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "1946acafa64709372aa9e6ff998b5da5d36be355ba32b819d50b77e62b672953",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:238"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "0f05138d1d3c0a831b196d3b1a0def0fef83ed9a5ef7a9fa58b8a5e818ded3ac",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:239"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "c25134e2743898d34315348caf62067da027d7f6bfa9e74398bb27e856371e15",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:240"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "f16a26ec1334fafe92d99adfff957d68dc1fec71ccc1b48f7bd4fabc9d1907df",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:241"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "c036730402b342f630c1f62372ea99fa05dd538b7061dd69f305ab0c907b459e",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:242"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "82092c56d78f9767af1252b958a96fe429c8b9286172c5d51f036fa6e9a3a8e5",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:243"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "9614aa44b0728118530c798782a1742ded0a96bb22b66fbd4aebc9deafcd64fd",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:244"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "c48080ab672b2081799145d15b5daa6261f12791ca2b33a70cd1a9cb073182ce",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:245"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "0bf123af3183f6ea9f368cfafe9dd72feb673b888bf4d6332ff38911681821fd",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:246"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "2419901eb79e0bcc4e998ca508084a3b681e08a52cfeb3855390c9a0a23ef76b",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:247"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "9c8872b19a3c05beeac69f002a79ead67b3626910bc6e550ae31c23c93e67d88",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:248"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "93249eabb7ec5b3908f88f6f351c1b37cbeb5cd343de4194e625614f190a947a",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:249"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "12a69f2bb6ee96c15d61e55e4d094192af53718f7dae9401a175d07d32e657c7",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:250"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "d5f93e151485bc493fd36f0a5fb7d3d032d682340a715279cd3ed9ffd2ef5d01",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:251"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "2cdf0738b5971203ca0f1903c6ea05390ab9a827fc226a0ec94a69eabcf7cfde",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:252"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "d0c8d329029ddd04295d894cd1dc40fc6bef09a1040501257c0d183f5131e5a9",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:253"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "fb450e072134c632426e4467553342503f69e5d1ddb7f705c01d22fc0b30e5e9",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:254"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "f5d2250700ec19beac9ec9c14072a17e9a87e4725dbba31c0f24b167b7da62dd",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:255"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "961e8e9da4c2d4e5e27f3aaf740812f9b405c110656523d6365273d763b34dcd",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:256"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "85e62cd33d761e5585cf6e29ec4e34cbb1cd4ed57db69d64dab9ebe7b5d2f65d",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:257"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "1b773d93599f55960a554202793e78c1b754d5c1495fd2059c670cc50217a8f2",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:258"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "e06eba6f5d7473e8444e25cdd7a4444423442e5f5aabe488b6a8be64b9ec9f72",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:259"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "c15ef57be9379c03a8fe1d0f1a31658dc4f50d25fd14cd4126a710b130891493",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:260"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "6bb7335f99fa2768d6afd73497ec238e403c04c0f75249e471da1d40e33c922b",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:261"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "6c5bb47817eea09df26715003e096bc8908b0e711de8538afbb2a6e3c06b198c",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:262"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "e9fa490022d03afa22d9b448530f03b7d8b16a426ce2e2e62635a0b7ade18aef",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:263"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "85af829d15466e86bcbe5834d72a1431bce30d63df28e789b243f4382e60df78",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:264"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "dc1198a4822007d57d0b31c83fb98d256e888794023f2914f30a8eed4e6f97b3",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:265"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "8e951da44512384a6f6f735040f685ee40dde896672763793d9aacd3c965d729",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:266"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "a2629d4f2f1308e67ee4f420f90af3f09cc41c304e0da3393c6c76229f989a6c",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:267"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "4b76c49cfacf92c2db6f97892ee72bb27b9b1bfbab42c22386745f58291451cd",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:268"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "28dd34dc2d3fb6eb3b58b63fe612dac036cb59429b09c98c45c89f2fa0b122b4",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:269"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "832d8db8f60e8a4c918ef846db2ff428eb3588fe7d501d62dd28fd1d6abf63a7",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:270"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "02af1ed3b332881ada9f5fb6790465847ec3d6d3958619469abb94d467ec71ae",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:271"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "5e9ac830b7d90f31fbd43f61b7b176785e43b94a4ee6ba5c63fa608e2c140c43",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:272"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "d6cbab3b25a3cd1d5b2a95b7b2a6c297b33d16980a81549a9d9ee9791cff080a",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:273"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "d79ae025a731f96d29dc0b5e56bff80e25a768e0159264bdbcb96378a76dba48",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:274"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "b8b98a6eadbb02c0bf2cb7d6882b5e84c9fdc2eb7196f2022bd82d64228a368d",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:275"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "bc611cab98fed8eefb0240b07bc4aa6184c71863173c9f01738452693827ea13",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:276"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "4296dd382f65dd42d19f5f811ade4eec1506ea3cba1b7a5fb6fac4836d5a39d0",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:277"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "cc8e66bbd47a4f8e0dc93c3e711573e0caed9b56180bd578ab94413218e7bf6b",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:278"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "166c5e7fa6892b246ddf47ee67d90fb24de1e8e0b8cd2cea6b52e5cef34308a1",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:279"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "beef5459dfd031ec6573cf975dbaeee610f92748bdf104e02ce10de1bdc41ebe",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:280"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "ff522476570c312a1dd4ec298a2228d282e291914500b5616758d44ecaddef81",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:281"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "dbfd367d4c8a4c179702097d63270bef00bd34415bf6d707457d207c518b28ff",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:282"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "61dd00c551012020005ef85695c3f3d316474fd4f4818ce14f40d90bcd1977b7",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:283"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "2399ce5285eb49bcf8904e381a459128b0fdc4f0a7ad6b2fac76c9dceabffbd7",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:284"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "b3776263a1ff809a6d86c7a34375fbd7cb7e8114e5bffad1f31ef2488893a015",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:285"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "e7ce9bb367e0b2b667f9dbc45ce3e9eb1a4fd8f5d92086f6136ce4a78796a2d7",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:286"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    },
+    {
+      "physicalInterfaceId": "7eb91d4f942c2bc73c066af16a873442b1496c794f987bf18bf28b1ddc43549f",
+      "rawConnectionIds": [
+        "parts/3026.dat:8:287"
+      ],
+      "reasonCodes": [
+        "same-stratum-complex-timeout-review"
+      ],
+      "reasons": [
+        "Two direct tests of this same source profile and axis exceeded their isolated CPU budget. This untested interface is routed for review; no collision failure is asserted."
+      ],
+      "attempts": 1
+    }
+  ],
+  "attemptsAlreadyMade": [
+    "Applied the existing source-backed stud rule.",
+    "Used bounded fixture tests and the recorded retry policy without changing collision rules."
+  ],
+  "whySolStopped": "A bounded ordinary-interface fixture could not be certified; the related ports remain disabled and require review of the recorded shared dependency.",
+  "diagnosticOnly": true,
+  "fixtureTestContext": {
+    "testVersion": "native-interface-suite-0.6.0-worker-2",
+    "partId": "3026",
+    "partSourceHash": "c9028f8fb227d6fcde38cb842711424800ef480247afc8afc1b3cb6e168c2db9",
+    "geometryHash": "6d2c3de9d4eee9d906559f4db3cfae9a1fc28a1194899cf05207d850239a8821",
+    "connectionMetadataHash": "a273e83afa843fcc35a14628be59ff113ef19a7fc128eec5986a953c35cca26a",
+    "fixtures": [
+      {
+        "role": "brick-1x1",
+        "partId": "3005",
+        "sourceHash": "e0e841bff7bb8c42b13088878880800bc7231f06a2b0774369fec3e7c0608bb8",
+        "geometryHash": "dbc6318d720b3c65e9b1c32f565e8a0d121aacb033f75063b784b07f905b9997",
+        "connectionMetadataHash": "5ffdbc628028b2753fb15fa733d664c326235c70054320baa840ba8bd0c9b759"
+      },
+      {
+        "role": "brick-1x2",
+        "partId": "3004",
+        "sourceHash": "f10538d0cc351b07eb406454f8c21d9de3989eb5a7d211cba07dde51fbbfca8f",
+        "geometryHash": "f08baa9261c5b803a2092757212349c369262a964fb956eb3fb1482f2e58a737",
+        "connectionMetadataHash": "8e88dbb89c508a17241c859d33a1c09a224f42562bbb91f58189df12d4239208"
+      },
+      {
+        "role": "brick-2x2",
+        "partId": "3003",
+        "sourceHash": "1bbe69d033c22376b5dcf9e211d907c4cd38f1258ba1e37d7e6d052717660ada",
+        "geometryHash": "ae971af0bd0fcd4823bec52143488353de029bb9670bc938c2c065dde6e2fa06",
+        "connectionMetadataHash": "20ae18794e69279ef2a6ffdd66019ed4e0700ef0e8efe886bd400d0837d9afc1"
+      },
+      {
+        "role": "plate-1x1",
+        "partId": "3024",
+        "sourceHash": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+        "geometryHash": "413e9c9e450294c6e0a8c02a1809994b68defc79969b0421ea43cd3ab658ecb4",
+        "connectionMetadataHash": "475618588fe093780011ccb8247344c2c4903681c6ac9c728dd4ca86bad245b8"
+      },
+      {
+        "role": "plate-1x2",
+        "partId": "3023b",
+        "sourceHash": "a8a6933891c2d7761b1b57ad2e29d8bd6102e192d40515769308385b85801f53",
+        "geometryHash": "17e857d88df4327931cf750b94d3dc03d249d06d1d6d12281e72fa947b9846e5",
+        "connectionMetadataHash": "6864b0fb016b3eec14c8c916178a11f5196f99c145c3dd57f0526377111a9ac2"
+      },
+      {
+        "role": "tile-1x1",
+        "partId": "3070b",
+        "sourceHash": "d3f492650fe439f738028056baa657c7ccaf559a7093acbbb11a59bff8dfdd15",
+        "geometryHash": "b83a26bace317d772d69c406017365fd898903eaef656dd18ab9cad80c44cdd3",
+        "connectionMetadataHash": "3d4358ca41e3b686f2c2a3eb781a9f9414a67ea3fac25754214fc1b29bc3b10f"
+      },
+      {
+        "role": "side-stud",
+        "partId": "87087",
+        "sourceHash": "c81a3585a7bf37b2e040056175df0d4a0ea381f47b5cc0d1e3858e739a2cebc3",
+        "geometryHash": "3ad64167f2b88143b30eff53a2a51c04e128c9b7e84e8798cbd2361cd9423346",
+        "connectionMetadataHash": "0ed6190e528140c2c5d0bad6678a0430f228f3d28eb5b98807fa4ea6db61e017"
+      },
+      {
+        "role": "bar",
+        "partId": "30374",
+        "sourceHash": "b9f2f3b8049913f2cffdeacaa97be916298480949eb74197329b2cc2e4c0fca5",
+        "geometryHash": "60bd25686cf62b39331c19ff129d2b1d226bba8c7ca0943c2ddf98fae9dfd8f2",
+        "connectionMetadataHash": "347797e5a6f3f8607e4480dccb61beb5757d7bf496f1239919110e4a6fccaffa"
+      },
+      {
+        "role": "clip",
+        "partId": "48729b",
+        "sourceHash": "bbfb99b27cfcff264aa112fd267a588e96cad1ce2e4899f0bb7a2066e0200ee1",
+        "geometryHash": "9152c633d93811fbcd127e86f1244eff74e2c0142150c4f48bb3b1173469d527",
+        "connectionMetadataHash": "52c94a299895d7c674d418da55bab6a27937b374613f3de51ed5998f0dfbb524"
+      },
+      {
+        "role": "clip-plate",
+        "partId": "60470b",
+        "sourceHash": "7dfa014c7051b9d20013b40222dac7c03cdb9a7a08dc8ea72d055a75ea7bd2cc",
+        "geometryHash": "2accb9463687dd4e3462a9615607ada19f87e1f127e1709d7497807faa4b8c3d",
+        "connectionMetadataHash": "0fda8e771b2f77ea498ced5071d827733ceb680f8f6ba5876e1dd8f08cfedb56"
+      },
+      {
+        "role": "axle",
+        "partId": null,
+        "sourceHash": null,
+        "geometryHash": null,
+        "connectionMetadataHash": null
+      },
+      {
+        "role": "axle-hole",
+        "partId": "65635",
+        "sourceHash": "775f26bab73bc0ff318ecec50170c202e1dfaeaed36e1b29ba8037a0b20840b9",
+        "geometryHash": "5c22f39087f4f30a25ced09de8fa519aa5793ec0cc1afaf85f6f8a42c27f83e4",
+        "connectionMetadataHash": "8baea4a1196164f021eb845c54fad7f9ea8162b01d988a19b376a66dd56a8220"
+      },
+      {
+        "role": "pin",
+        "partId": "3673",
+        "sourceHash": "13a3105f483a738c9bc6eea03ce01c550111ca61f9e46c8d5baed913322fc25a",
+        "geometryHash": "62dbc7c79630a9a21a8bee84e46a35a450cb87ba293c47b212f4970875ef9954",
+        "connectionMetadataHash": "6202cbe9858f21a716a521ea0ce3463aa35af0567509f8049688294f2e193a00"
+      },
+      {
+        "role": "pin-hole",
+        "partId": "3700",
+        "sourceHash": "9eba35d0f453804ceeb4a7177c6e9ed5f5f58007f0c98f08b684e7aabe8bd7b9",
+        "geometryHash": "94718f51f9b232d937272d92d2d4e0e31f169500cc3415b262cc05dfaec0d116",
+        "connectionMetadataHash": "ba783ce92534e6da5aa7f45804a222afcef061709b9fd78ac5718f647ed1d9a6"
+      },
+      {
+        "role": "wheel-holder",
+        "partId": "4600",
+        "sourceHash": "5fb7923473b0e1e8eed210ad7b53844763a0875844b16c9bf95d65570b1c7b8c",
+        "geometryHash": "dddf1d8a479d7fc67f261d87ed48f795c4894cb38d92d51da01a18924ce890e7",
+        "connectionMetadataHash": "aff4c3ae82e273ca5434e6e3acfd7abe4b3f4212b358fb644dfbded95591f9db"
+      },
+      {
+        "role": "wheel",
+        "partId": "4624",
+        "sourceHash": "8ca8bd482f59516e1bc7689bdb77abce1b7362cc58e7234bc6cb2016948b926f",
+        "geometryHash": "8c36bf6285843b5f40cea1f31be28cfa974b631e6507732f1a010151401c60e4",
+        "connectionMetadataHash": "800755487eb77dd78abf231d0f5ca88612c8c40d4d3f1184db9f763ff5ff27aa"
+      },
+      {
+        "role": "tyre",
+        "partId": "3641",
+        "sourceHash": "bba6f88f177eadb2899ff5e321a52120de0dd9e523ca1ef1e73a9df4610bc1f5",
+        "geometryHash": "8c3d67c5fd628dd098fbac6c2182c048a7f12001aace59ac7c3880adbe085e95",
+        "connectionMetadataHash": "46b7e4de391813169c023043ae3bfdedc6a6139dbd5e29bb4b0e7468599e77eb"
+      }
+    ],
+    "fixtureSetHash": "57ebb5cfd1e6cfff4061dfd0e8a04e9e3d127ca51e5460245b9c0ec450f2c0bb",
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0",
+    "contextId": "2d330e40cb5c05021c72cdf2623e74298723b0f9315056ef07719fcc74db0d5f"
+  }
+}

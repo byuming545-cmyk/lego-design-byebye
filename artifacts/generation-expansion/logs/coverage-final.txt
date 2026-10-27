@@ -1,0 +1,20 @@
+
+> bricklab@0.6.0 coverage:expansion
+> tsx src/cli/generation-expansion.ts
+
+1/15	32000	qualified=true	generated=true	wall:generated
+2/15	3623	qualified=true	generated=true	platform:generated
+3/15	60479	qualified=true	generated=true	platform:generated
+4/15	78329	qualified=true	generated=true	platform:generated
+5/15	3456	qualified=true	generated=true	platform:generated
+6/15	69729	qualified=true	generated=true	platform:blocked,simple-chassis:blocked,wall:blocked,basic-snot:generated
+7/15	6934	qualified=true	generated=true	platform:generated
+8/15	41539	qualified=true	generated=true	platform:generated
+9/15	21	qualified=true	generated=true	wall:generated
+10/15	28326	qualified=true	generated=true	wall:generated
+11/15	50967	qualified=true	generated=true	wall:generated
+12/15	11477	qualified=false	generated=false	
+13/15	15068	qualified=false	generated=false	
+14/15	18973	qualified=false	generated=false	
+15/15	18974	qualified=false	generated=false	
+{"candidateCount":15,"qualifiedCandidates":11,"actualCandidateGenerationCoverage":11,"newlyQualifiedAndGenerated":8,"newSourcesQualifiedAndGenerated":7,"stagedPartsQualifiedAndGenerated":1,"existingSourcesRecoveredAndGenerated":0,"existingQualifiedNewUses":3,"allActualGeneratedPartIds":["21","28326","3005","3020","3023","3024","3031","3032","3070b","32000","3456","3623","4070","41539","4477","50967","60479","6934","69729","78329","87087"],"allActualGeneratedPartCount":21,"structuralExamplesPassed":2,"wheelCountedAsSuccess":false,"negativeChecksPassed":8}

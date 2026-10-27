@@ -1,4 +1,7 @@
-import { describe, expect, it, vi } from 'vitest';
+import { mkdtemp, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { createInventoryProvider, MockInventoryProvider, normalizeSetNumber, RebrickableInventoryProvider } from '../src/inventory/index.js';
 
 const metadata = { set_num: '10696-1', name: 'Test set' };
@@ -9,6 +12,15 @@ const part = (id = '3001', quantity = 2, colorId = 14) => ({
 const json = (value: unknown) => new Response(JSON.stringify(value), { headers: { 'Content-Type': 'application/json' } });
 
 describe('inventory providers', () => {
+  let dataDir: string;
+  beforeEach(async () => {
+    dataDir = await mkdtemp(path.join(tmpdir(), 'bricklab-inventory-provider-'));
+    vi.stubEnv('BRICKLAB_DATA_DIR', dataDir);
+  });
+  afterEach(async () => {
+    vi.unstubAllEnvs();
+    await rm(dataDir, { recursive: true, force: true });
+  });
   it('normalizes valid numbers and rejects paths, query strings and malformed input', () => {
     expect(normalizeSetNumber(' 10696 ')).toBe('10696-1');
     expect(normalizeSetNumber('11013-2')).toBe('11013-2');
@@ -35,11 +47,17 @@ describe('inventory providers', () => {
     await expect(provider.getSetInventory('99999')).rejects.toMatchObject({ code: 'DEMO_SET_NOT_FOUND', status: 404 });
   });
 
-  it('selects real data when a key is configured and never silently falls back from explicit real mode', () => {
+  it('selects real data when a key is configured and never silently falls back in production or explicit real mode', async () => {
     expect(createInventoryProvider({}).source).toBe('mock');
     expect(createInventoryProvider({ INVENTORY_PROVIDER: 'mock', REBRICKABLE_API_KEY: 'server-secret' }).source).toBe('mock');
     expect(createInventoryProvider({ REBRICKABLE_API_KEY: 'server-secret' }).source).toBe('rebrickable');
-    expect(() => createInventoryProvider({ INVENTORY_PROVIDER: 'rebrickable' })).toThrow(/REBRICKABLE_API_KEY/);
+    for (const env of [{ INVENTORY_PROVIDER: 'rebrickable' }, { NODE_ENV: 'production' }, { NODE_ENV: 'production', INVENTORY_PROVIDER: 'auto' }]) {
+      const provider = createInventoryProvider(env);
+      expect(provider.source).toBe('rebrickable');
+      await expect(provider.getSetInventory('76922')).rejects.toMatchObject({ code: 'MISSING_API_KEY', status: 503, message: 'Rebrickable API Key 未配置。' });
+    }
+    expect(createInventoryProvider({ NODE_ENV: 'production', INVENTORY_PROVIDER: 'mock' }).source).toBe('mock');
+    expect(() => new RebrickableInventoryProvider('')).toThrow('Rebrickable API Key 未配置。');
     expect(() => createInventoryProvider({ INVENTORY_PROVIDER: 'typo' })).toThrow();
   });
 

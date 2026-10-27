@@ -1,0 +1,8 @@
+.interface-coverage { padding: 16px; margin: 17px 0; border: 1px solid #e1e7d8; border-radius: 7px; background: #fcfdf8; min-width: 0; }
+.interface-coverage h3 { margin: 0 0 15px; font-size: 12px; font-weight: 500; color: #71875a; }
+.interface-coverage-states { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.interface-coverage-states > div { min-width: 0; }.interface-coverage-states span { display: block; color: #939e86; font-size: 8px; overflow-wrap: anywhere; line-height: 1.7; }.interface-coverage-states strong { display: block; color: #67814e; font: 500 20px var(--mono); margin-top: 7px; }
+.interface-coverage dl { margin: 14px 0 0; display: flex; flex-wrap: wrap; gap: 12px 25px; font-size: 9px; }.interface-coverage dt { color: #9aa58e; }.interface-coverage dd { color: #788e60; margin: 6px 0 0; font-family: var(--mono), monospace; }
+.interface-coverage .interface-coverage-units { padding-top: 13px; border-top: 1px solid #e9eddf; }.interface-coverage p { color: #a0a98f; font-size: 8px; line-height: 1.8; margin: 12px 0 0; }
+.part-detail > .interface-coverage { margin: 0 24px 20px; }
+@media (max-width: 680px) { .interface-coverage { padding: 13px; }.interface-coverage-states { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 10px; }.interface-coverage-states strong { font-size: 18px; }.interface-coverage dl { gap: 12px 18px; font-size: 8px; }.part-detail > .interface-coverage { margin-left: 16px; margin-right: 16px; } }

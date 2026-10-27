@@ -1,0 +1,157 @@
+
+> bricklab@0.6.0 verify:interfaces
+> tsx src/cli/assembly-deferred.ts --checkpoint-dir /tmp/generation-expansion-8b88b30 --concurrency 2 --batch-size 8 --timeout-ms 10000 --part-budget-ms 120000 --max-retries 1
+
+5/5019 physical groups: 2431 PASS; 5s
+51/5019 physical groups: 2445 PASS; 10s
+97/5019 physical groups: 3002 PASS; 15s
+204/5019 physical groups: 3010 BLOCKED; 20s
+266/5019 physical groups: 3021 PASS; 25s
+291/5019 physical groups: 3027 PASS; 31s
+307/5019 physical groups: 3027 PASS; 36s
+319/5019 physical groups: 3027 PASS; 41s
+331/5019 physical groups: 3027 PASS; 46s
+347/5019 physical groups: 3027 PASS; 51s
+359/5019 physical groups: 3026 PASS; 56s
+371/5019 physical groups: 3027 PASS; 62s
+387/5019 physical groups: 3027 PASS; 67s
+402/5019 physical groups: 3027 PASS; 72s
+416/5019 physical groups: 3027 PASS; 77s
+430/5019 physical groups: 3027 PASS; 83s
+446/5019 physical groups: 3027 PASS; 88s
+460/5019 physical groups: 3027 PASS; 93s
+473/5019 physical groups: 3027 PASS; 99s
+488/5019 physical groups: 3027 PASS; 104s
+506/5019 physical groups: 3027 PASS; 109s
+520/5019 physical groups: 3026 PASS; 114s
+532/5019 physical groups: 3026 PASS; 120s
+545/5019 physical groups: 3027 PASS; 125s
+555/5019 physical groups: 3027 PASS; 130s
+568/5019 physical groups: 3027 PASS; 135s
+587/5019 physical groups: 3027 PASS; 142s
+603/5019 physical groups: 3027 PASS; 148s
+618/5019 physical groups: 3026 PASS; 153s
+796/5019 physical groups: 3029 PASS; 158s
+822/5019 physical groups: 3029 PASS; 163s
+849/5019 physical groups: 3029 PASS; 169s
+876/5019 physical groups: 3029 PASS; 174s
+905/5019 physical groups: 3029 PASS; 179s
+932/5019 physical groups: 3029 PASS; 184s
+958/5019 physical groups: 3030 PASS; 189s
+988/5019 physical groups: 3028 PASS; 194s
+1014/5019 physical groups: 3030 PASS; 199s
+1040/5019 physical groups: 3030 PASS; 204s
+1066/5019 physical groups: 3030 PASS; 209s
+1102/5019 physical groups: 3031 PASS; 214s
+1130/5019 physical groups: 3032 PASS; 220s
+1160/5019 physical groups: 3032 PASS; 225s
+1198/5019 physical groups: 3033 PASS; 230s
+1236/5019 physical groups: 3033 PASS; 235s
+1270/5019 physical groups: 3035 PASS; 240s
+1303/5019 physical groups: 3033 PASS; 245s
+1336/5019 physical groups: 3033 PASS; 250s
+1370/5019 physical groups: 3036 PASS; 255s
+1398/5019 physical groups: 3036 PASS; 260s
+1423/5019 physical groups: 3036 PASS; 266s
+1474/5019 physical groups: 3036 PASS; 271s
+1530/5019 physical groups: 3666 PASS; 276s
+1582/5019 physical groups: 3795 PASS; 282s
+1622/5019 physical groups: 3958 PASS; 287s
+1665/5019 physical groups: 3958 PASS; 292s
+1714/5019 physical groups: 4282 PASS; 297s
+1751/5019 physical groups: 4282 PASS; 302s
+1788/5019 physical groups: 4282 PASS; 308s
+1886/5019 physical groups: 6636 PASS; 313s
+1970/5019 physical groups: 24307 BLOCKED; 318s
+2085/5019 physical groups: 87079 PASS; 323s
+2159/5019 physical groups: 99207 PASS; 328s
+2214/5019 physical groups: 3070b PASS; 334s
+2307/5019 physical groups: 18729 REQUIRES_ASTRA_REVIEW; 339s
+2442/5019 physical groups: 24151 REQUIRES_ASTRA_REVIEW; 344s
+2558/5019 physical groups: 60212 PASS; 349s
+2710/5019 physical groups: 2422 PASS; 354s
+2948/5019 physical groups: 44728 PASS; 359s
+3033/5019 physical groups: 5090 PASS; 364s
+3203/5019 physical groups: 69906 PASS; 369s
+3284/5019 physical groups: 11290 REQUIRES_ASTRA_REVIEW; 375s
+3423/5019 physical groups: 41766 REQUIRES_ASTRA_REVIEW; 380s
+3789/5019 physical groups: 50967 REQUIRES_ASTRA_REVIEW; 385s
+4123/5019 physical groups: 13349 REQUIRES_ASTRA_REVIEW; 391s
+4478/5019 physical groups: 42021 REQUIRES_ASTRA_REVIEW; 396s
+4665/5019 physical groups: 60479 PASS; 401s
+4707/5019 physical groups: 3456 PASS; 406s
+4742/5019 physical groups: 3456 PASS; 411s
+4764/5019 physical groups: 3456 PASS; 417s
+4790/5019 physical groups: 3456 PASS; 422s
+4810/5019 physical groups: 3456 PASS; 427s
+4836/5019 physical groups: 41539 PASS; 433s
+4862/5019 physical groups: 3456 PASS; 438s
+4885/5019 physical groups: 41539 PASS; 444s
+4908/5019 physical groups: 3456 PASS; 450s
+4935/5019 physical groups: 3456 PASS; 455s
+4957/5019 physical groups: 41539 PASS; 460s
+4972/5019 physical groups: 3456 PASS; 466s
+4984/5019 physical groups: 3456 PASS; 471s
+4996/5019 physical groups: 3456 PASS; 477s
+5009/5019 physical groups: 3456 PASS; 482s
+5019/5019 physical groups: 3456 PASS; 486s
+{
+  "counts": {
+    "total": 253,
+    "assemblyVerified": 87,
+    "generatable": 87,
+    "blocked": 166,
+    "verifiedInterfaces": 2276,
+    "disabledInterfaces": 2808,
+    "testedPhysicalInterfaces": 2434,
+    "deferredPhysicalInterfaces": 0,
+    "deferredRawConnectionIds": 0,
+    "wheelModulesVerified": 0,
+    "physicalBuildsVerified": 0
+  },
+  "before": {
+    "discovered": 4632,
+    "verified": 987,
+    "blocked": 2667,
+    "pending": 978
+  },
+  "after": {
+    "rawSourceConnectionRecords": 5084,
+    "logicalConnectionGroups": 3063,
+    "physicalInterfacesDiscovered": 5019,
+    "verifiedPass": 2259,
+    "verifiedBlocked": 786,
+    "requiresAstraReview": 1974,
+    "pending": 0,
+    "verifiedPhysicalInterfaces": 2259,
+    "enabledPhysicalInterfaces": 2259,
+    "enabledRawConnectionIds": 2276,
+    "verifiedCoveragePercent": 45.009,
+    "processedCoveragePercent": 100,
+    "fullyAssemblyVerified": 38,
+    "interfaceVerificationComplete": 249,
+    "partiallyGeneratable": 49,
+    "blockedParts": 162,
+    "unresolvedParts": 4
+  },
+  "deferred": {
+    "targetCount": 978,
+    "pass": 824,
+    "blocked": 0,
+    "requiresAstraReview": 154,
+    "pending": 0,
+    "directTests": 826,
+    "sharedPrecondition": 0,
+    "reviewDependency": 152,
+    "interrupted": false,
+    "checkpointDirectory": "/tmp/generation-expansion-8b88b30",
+    "testVersion": "native-interface-suite-0.6.0-worker-2"
+  },
+  "executionCounts": {
+    "directTests": 2434,
+    "sharedSourcePrecondition": 2433,
+    "reviewDependency": 152
+  },
+  "resumedRecords": 0,
+  "elapsedSeconds": 486
+}

@@ -1,0 +1,18 @@
+
+> bricklab@0.6.0 coverage:grammar
+> tsx src/cli/generation-expansion.ts --plan docs/grammar/generation-plan.json --output artifacts/connector-grammar
+
+1/13	3004	qualified=true	generated=true	wall:generated
+2/13	3008	qualified=true	generated=true	wall:generated
+3/13	3009	qualified=true	generated=true	wall:generated
+4/13	3010	qualified=true	generated=true	wall:generated
+5/13	3622	qualified=true	generated=true	wall:generated
+6/13	6111	qualified=true	generated=true	wall:generated
+7/13	11211	qualified=true	generated=true	wall:generated
+8/13	24299	qualified=true	generated=true	platform:generated
+9/13	24307	qualified=true	generated=true	platform:generated
+10/13	85984	qualified=true	generated=false	wall:blocked,simple-chassis:blocked,basic-snot:blocked,simple-roof:blocked,platform:blocked
+11/13	17454	qualified=true	generated=false	wall:blocked,simple-chassis:blocked,basic-snot:blocked,simple-roof:blocked,platform:blocked
+12/13	52038	qualified=true	generated=false	wall:blocked,simple-chassis:blocked,basic-snot:blocked,simple-roof:blocked,platform:blocked
+13/13	32000	qualified=true	generated=true	wall:generated
+{"candidateCount":13,"qualifiedCandidates":13,"actualCandidateGenerationCoverage":10,"newlyQualifiedAndGenerated":9,"newSourcesQualifiedAndGenerated":0,"stagedPartsQualifiedAndGenerated":0,"existingSourcesRecoveredAndGenerated":0,"existingQualifiedNewUses":0,"grammarQualifiedAndGenerated":9,"allActualGeneratedPartIds":["11211","24299","24307","3004","3005","3008","3009","3010","3023","3024","3070b","32000","3456","3460","3622","3623","3666","3710","4477","6111","69729","87087"],"allActualGeneratedPartCount":22,"structuralExamplesPassed":2,"wheelCountedAsSuccess":false,"negativeChecksPassed":8}

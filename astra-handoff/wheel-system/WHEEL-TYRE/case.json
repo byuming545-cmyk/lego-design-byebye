@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "caseId": "WHEEL-TYRE",
+  "category": "WHEEL_ASSEMBLY",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "4624",
+      "ldrawId": "4624",
+      "identitySystem": "ldraw",
+      "sourceDigest": "8ca8bd482f59516e1bc7689bdb77abce1b7362cc58e7234bc6cb2016948b926f",
+      "geometryHash": "980db38835aa58561c74c68687a5ac73cb907c3027cd70004cc93469bc85adeb",
+      "connectionMetadataHash": "800755487eb77dd78abf231d0f5ca88612c8c40d4d3f1184db9f763ff5ff27aa"
+    },
+    {
+      "partId": "3641",
+      "ldrawId": "3641",
+      "identitySystem": "ldraw",
+      "sourceDigest": "bba6f88f177eadb2899ff5e321a52120de0dd9e523ca1ef1e73a9df4610bc1f5",
+      "geometryHash": "7a40e0789144722952aee4b1e56b25d3b88b438ad7b9c83432de723fc835eab8",
+      "connectionMetadataHash": "46b7e4de391813169c023043ae3bfdedc6a6139dbd5e29bb4b0e7468599e77eb"
+    }
+  ],
+  "connections": [
+    {
+      "id": "parts/4624.dat:10:1",
+      "sourceId": null,
+      "kind": "generic",
+      "family": "wheelMount",
+      "gender": "M",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "units": "LDU",
+      "sections": [],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": "rim8_6",
+      "properties": {
+        "group": "rim8_6",
+        "gender": "M",
+        "bounding": "cyl 10 3.5",
+        "ori": "1 0 0 0 0 -1 0 1 0"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/4624.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "97060b1442d758038a03d3250589b63d5c62ea74c37b4ab157e2c5d9a7dfe5cd",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/4624.dat",
+        "line": 10,
+        "raw": "0 !LDCAD SNAP_GEN [group=rim8_6] [gender=M] [bounding=cyl 10 3.5] [ori=1 0 0 0 0 -1 0 1 0]",
+        "transforms": []
+      },
+      "physicalVerified": false
+    },
+    {
+      "id": "parts/3641.dat:8:0",
+      "sourceId": null,
+      "kind": "generic",
+      "family": "wheelMount",
+      "gender": "F",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "units": "LDU",
+      "sections": [],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": "rim8_6",
+      "properties": {
+        "group": "rim8_6",
+        "gender": "F",
+        "bounding": "cyl 8 3",
+        "ori": "1 0 0 0 0 -1 0 1 0"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/3641.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "8bbebd0f48e54343e48a1b77951f8e52e4de3d0efb76c6df60bc3a3103b63fca",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3641.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_GEN [group=rim8_6] [gender=F] [bounding=cyl 8 3] [ori=1 0 0 0 0 -1 0 1 0]",
+        "transforms": []
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": null,
+  "transformStatus": "UNRESOLVED",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "unknown",
+    "reasonCodes": [
+      "grouped-interface-seating-unresolved"
+    ],
+    "details": {
+      "compatibility": {
+        "status": "unknown",
+        "ruleId": null,
+        "ruleVersion": "source-stud-1.0.0",
+        "reason": "compatibilityUnknown: wheel/tyre or other grouped interface requires a verified seating rule beyond its matching group.",
+        "reasonCode": "grouped-interface-seating-unresolved",
+        "connectionType": "unsupported",
+        "axisRelation": null,
+        "insertionDepthLdu": null,
+        "allowedTwistsDeg": [],
+        "permittedTranslation": null,
+        "toleranceLdu": 0.0001,
+        "sourceEvidence": [
+          {
+            "kind": "source-directive",
+            "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/4624.dat",
+            "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+            "file": "parts/4624.dat",
+            "line": 10,
+            "sha256": "97060b1442d758038a03d3250589b63d5c62ea74c37b4ab157e2c5d9a7dfe5cd",
+            "note": "0 !LDCAD SNAP_GEN [group=rim8_6] [gender=M] [bounding=cyl 10 3.5] [ori=1 0 0 0 0 -1 0 1 0]"
+          },
+          {
+            "kind": "source-directive",
+            "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3641.dat",
+            "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+            "file": "parts/3641.dat",
+            "line": 8,
+            "sha256": "8bbebd0f48e54343e48a1b77951f8e52e4de3d0efb76c6df60bc3a3103b63fca",
+            "note": "0 !LDCAD SNAP_GEN [group=rim8_6] [gender=F] [bounding=cyl 8 3] [ori=1 0 0 0 0 -1 0 1 0]"
+          }
+        ]
+      },
+      "solver": {
+        "status": "unknown",
+        "compatibility": {
+          "status": "unknown",
+          "ruleId": null,
+          "ruleVersion": "source-stud-1.0.0",
+          "reason": "compatibilityUnknown: wheel/tyre or other grouped interface requires a verified seating rule beyond its matching group.",
+          "reasonCode": "grouped-interface-seating-unresolved",
+          "connectionType": "unsupported",
+          "axisRelation": null,
+          "insertionDepthLdu": null,
+          "allowedTwistsDeg": [],
+          "permittedTranslation": null,
+          "toleranceLdu": 0.0001,
+          "sourceEvidence": [
+            {
+              "kind": "source-directive",
+              "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/4624.dat",
+              "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+              "file": "parts/4624.dat",
+              "line": 10,
+              "sha256": "97060b1442d758038a03d3250589b63d5c62ea74c37b4ab157e2c5d9a7dfe5cd",
+              "note": "0 !LDCAD SNAP_GEN [group=rim8_6] [gender=M] [bounding=cyl 10 3.5] [ori=1 0 0 0 0 -1 0 1 0]"
+            },
+            {
+              "kind": "source-directive",
+              "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3641.dat",
+              "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+              "file": "parts/3641.dat",
+              "line": 8,
+              "sha256": "8bbebd0f48e54343e48a1b77951f8e52e4de3d0efb76c6df60bc3a3103b63fca",
+              "note": "0 !LDCAD SNAP_GEN [group=rim8_6] [gender=F] [bounding=cyl 8 3] [ori=1 0 0 0 0 -1 0 1 0]"
+            }
+          ]
+        },
+        "candidates": [],
+        "reason": "compatibilityUnknown: wheel/tyre or other grouped interface requires a verified seating rule beyond its matching group."
+      }
+    }
+  },
+  "replay": {
+    "kind": "interface",
+    "partId": "4624",
+    "connectionId": "parts/4624.dat:10:1",
+    "fixturePartId": "3641",
+    "fixtureConnectionId": "parts/3641.dat:8:0"
+  },
+  "reproductionCommand": "npm run astra:case -- WHEEL-TYRE",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/1-16chrd.dat",
+    "data/parts-foundation/ldraw/files/p/1-16con16.dat",
+    "data/parts-foundation/ldraw/files/p/1-16con3.dat",
+    "data/parts-foundation/ldraw/files/p/1-16cyli.dat",
+    "data/parts-foundation/ldraw/files/p/1-16cylo.dat",
+    "data/parts-foundation/ldraw/files/p/1-16edge.dat",
+    "data/parts-foundation/ldraw/files/p/1-16ring2.dat",
+    "data/parts-foundation/ldraw/files/p/1-8con4.dat",
+    "data/parts-foundation/ldraw/files/p/1-8cyli.dat",
+    "data/parts-foundation/ldraw/files/p/1-8cylo.dat",
+    "data/parts-foundation/ldraw/files/p/1-8disc.dat",
+    "data/parts-foundation/ldraw/files/p/1-8edge.dat",
+    "data/parts-foundation/ldraw/files/p/1-8ring17.dat",
+    "data/parts-foundation/ldraw/files/p/1-8ring3.dat",
+    "data/parts-foundation/ldraw/files/p/1-8ring4.dat",
+    "data/parts-foundation/ldraw/files/p/1-8ring9.dat",
+    "data/parts-foundation/ldraw/files/p/empty.dat",
+    "data/parts-foundation/ldraw/files/p/rect.dat",
+    "data/parts-foundation/ldraw/files/p/rect2p.dat",
+    "data/parts-foundation/ldraw/files/parts/4624.dat",
+    "data/parts-foundation/ldraw/files/parts/s/4624s01.dat",
+    "data/parts-foundation/shadow/files/parts/4624.dat",
+    "data/parts-foundation/ldraw/files/p/48/1-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/48/1-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/48/4-4con4.dat",
+    "data/parts-foundation/ldraw/files/p/48/4-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/48/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/parts/3641.dat",
+    "data/parts-foundation/shadow/files/parts/3641.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [],
+  "attemptsAlreadyMade": [
+    "Read the exact imported source endpoint sections and frames.",
+    "Kept compatibilityUnknown; did not create a mechanical mating rule."
+  ],
+  "whySolStopped": "The current standard stud rule has no verified insertion/retention/elasticity semantics for this special interface.",
+  "diagnosticOnly": true
+}

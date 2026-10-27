@@ -1,0 +1,372 @@
+{
+  "schemaVersion": 1,
+  "id": "assembly-37ea6bf3-9316-4799-9e17-4e43ec3c1433",
+  "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+  "assemblyEngineVersion": "native-assembly-0.7.0-grammar",
+  "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-2",
+  "collisionVersion": "native-open-surface-seat-2.0.0",
+  "placements": [
+    {
+      "instanceId": "root",
+      "partId": "30374",
+      "transform": {
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "translation": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "instanceId": "p-1",
+      "partId": "48729b",
+      "transform": {
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        "translation": [
+          0,
+          40,
+          0
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-1",
+      "fixedInstanceId": "root",
+      "fixedConnectionId": "parts/30374.dat:8:0",
+      "movingInstanceId": "p-1",
+      "movingConnectionId": "parts/48729b.dat:8:0",
+      "ruleId": "ldcad-source-declared-bar-clip-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "anchor": [
+        0,
+        40,
+        0
+      ],
+      "insertionDepthLdu": 8
+    }
+  ],
+  "sourceHashes": {
+    "30374": "aa66d7f6acd683b65fc800280bea377c83680192ded7b905335eba1dab6b7388",
+    "48729b": "36e44e7ce246380323135cebce7be711621a3f3909d0f578e66eba63b0a3ea42"
+  },
+  "physicalBuildVerified": false,
+  "module": "bar-clip",
+  "name": "真实零件杆夹连接模块",
+  "bom": [
+    {
+      "partId": "30374",
+      "name": "Bar  4L Lightsaber Blade",
+      "quantity": 1,
+      "ldrawColor": 16,
+      "colorAvailability": "not-verified"
+    },
+    {
+      "partId": "48729b",
+      "name": "Bar  1.5L with Clip with Truncated Sides and Hole in Shaft",
+      "quantity": 1,
+      "ldrawColor": 16,
+      "colorAvailability": "not-verified"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "addedInstanceId": "root",
+      "partId": "30374",
+      "connectionEdgeIds": []
+    },
+    {
+      "step": 2,
+      "addedInstanceId": "p-1",
+      "partId": "48729b",
+      "connectionEdgeIds": [
+        "edge-1"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "library": "LDCadShadowLibrary",
+      "path": "parts/30374.dat",
+      "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+      "sha256": "ea72990127a54f62bc09430581e249151ff99d58c4f34e4bbcd53fcdcc6e640a",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/30374.dat"
+    },
+    {
+      "library": "LDCadShadowLibrary",
+      "path": "parts/48729b.dat",
+      "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+      "sha256": "4337ee7e407f822d3d60b17dcd5baf973a0adc5fa12569cfee0043f49d968dc0",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/48729b.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/1-8sphe.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "c38f9b8df6f260a26e920d8bbfb2d6b11667026e0675733d7fc2d3653ef92c53",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-8sphe.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/3-4cyli.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "4a54732476cf4eaad2c9f7b40a3cef24db025132004328e4e84c0666cd217533",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/3-4cyli.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/4-4cyli.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/4-4disc.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4disc.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/4-4edge.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/4-8sphe.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "37fa33d0b13605e0e1a84b8e0917953d42beebee08dc444e1bd44015acd64d9e",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-8sphe.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/rect.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "ffeb2dd3d9b83c38841f18f1f74800fbba9e90c5fb6badfff2a795f08a96cb71",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "parts/30374.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "45d72e623efabbb846475a19ace99d0673962624e21175a0ec23c27901d19af6",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/30374.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "parts/48729b.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "37612ae6ff820fedbd91c68d678979349dca0cab75d307f560861729ff3ce06a",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/48729b.dat"
+    }
+  ],
+  "ownership": "virtual-design-not-owned",
+  "colorAvailability": "not-verified",
+  "assemblyValidation": {
+    "checked": true,
+    "valid": true,
+    "issues": []
+  },
+  "connectorAssessment": {
+    "grammarVersion": "connector-grammar-2",
+    "scope": "current-source-final-rigid-pose-and-connector-graph",
+    "constraints": [
+      {
+        "edgeId": "edge-1",
+        "ruleId": "BAR_CLIP",
+        "joint": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "pivotLdu": [
+            0,
+            40,
+            0
+          ],
+          "collisionEnvelope": {
+            "sourceIds": [
+              "shadow:parts/30374.dat:8:ea72990127a54f62bc09430581e249151ff99d58c4f34e4bbcd53fcdcc6e640a",
+              "ldraw:parts/30374.dat:1:45d72e623efabbb846475a19ace99d0673962624e21175a0ec23c27901d19af6",
+              "shadow:parts/48729b.dat:8:4337ee7e407f822d3d60b17dcd5baf973a0adc5fa12569cfee0043f49d968dc0"
+            ],
+            "status": "UNKNOWN"
+          },
+          "physicalBuildVerified": false,
+          "type": "CYLINDRICAL",
+          "translationDof": 1,
+          "rotationDof": 1,
+          "translationRangeLdu": [
+            -36,
+            36
+          ],
+          "angleLimitsDeg": [
+            0,
+            360
+          ],
+          "detentsDeg": null
+        },
+        "connectability": "COMPATIBLE",
+        "placement": "SOLVED",
+        "collision": {
+          "status": "CLEAR",
+          "reason": "The complete native graph passed current solid/contact validation.",
+          "sourceBoundedContactChecked": true
+        },
+        "stress": {
+          "status": "UNKNOWN",
+          "scope": "rigid-constraint-consistency-only",
+          "sources": [],
+          "reasons": [
+            "Material stress, fit and tolerance evidence has not been supplied."
+          ]
+        },
+        "legal": "UNKNOWN",
+        "stable": "UNKNOWN",
+        "reasons": [
+          "No verified assembly stress/fit evidence was supplied. Exact rigid closure alone cannot certify material stress or retention."
+        ],
+        "physicalBuildVerified": false
+      }
+    ],
+    "topology": {
+      "version": "connector-topology-patterns-1",
+      "coordinateSystem": "ldraw-native",
+      "units": "LDU",
+      "patterns": [
+        {
+          "kind": "AXIAL_SLIDE",
+          "state": "SOLVED_JOINT",
+          "featureIds": [
+            "root/parts/30374.dat:8:0",
+            "p-1/parts/48729b.dat:8:0"
+          ],
+          "sourceIds": [
+            "ldraw:parts/30374.dat:1:45d72e623efabbb846475a19ace99d0673962624e21175a0ec23c27901d19af6",
+            "shadow:parts/30374.dat:8:ea72990127a54f62bc09430581e249151ff99d58c4f34e4bbcd53fcdcc6e640a",
+            "shadow:parts/48729b.dat:8:4337ee7e407f822d3d60b17dcd5baf973a0adc5fa12569cfee0043f49d968dc0"
+          ],
+          "occurrences": 1,
+          "notes": [
+            "Derived from an explicitly source-backed compatible, solved joint. Fit, collision, stressing and stability are not granted by this classification."
+          ]
+        },
+        {
+          "kind": "AXIAL_ROTATION",
+          "state": "SOLVED_JOINT",
+          "featureIds": [
+            "root/parts/30374.dat:8:0",
+            "p-1/parts/48729b.dat:8:0"
+          ],
+          "sourceIds": [
+            "ldraw:parts/30374.dat:1:45d72e623efabbb846475a19ace99d0673962624e21175a0ec23c27901d19af6",
+            "shadow:parts/30374.dat:8:ea72990127a54f62bc09430581e249151ff99d58c4f34e4bbcd53fcdcc6e640a",
+            "shadow:parts/48729b.dat:8:4337ee7e407f822d3d60b17dcd5baf973a0adc5fa12569cfee0043f49d968dc0"
+          ],
+          "occurrences": 1,
+          "notes": [
+            "Derived from an explicitly source-backed compatible, solved joint. Fit, collision, stressing and stability are not granted by this classification."
+          ]
+        },
+        {
+          "kind": "CLIP_BAR_ANGLE",
+          "state": "SOLVED_JOINT",
+          "featureIds": [
+            "root/parts/30374.dat:8:0",
+            "p-1/parts/48729b.dat:8:0"
+          ],
+          "sourceIds": [
+            "ldraw:parts/30374.dat:1:45d72e623efabbb846475a19ace99d0673962624e21175a0ec23c27901d19af6",
+            "shadow:parts/30374.dat:8:ea72990127a54f62bc09430581e249151ff99d58c4f34e4bbcd53fcdcc6e640a",
+            "shadow:parts/48729b.dat:8:4337ee7e407f822d3d60b17dcd5baf973a0adc5fa12569cfee0043f49d968dc0"
+          ],
+          "occurrences": 1,
+          "notes": [
+            "Derived from an explicitly source-backed compatible, solved joint. Fit, collision, stressing and stability are not granted by this classification."
+          ]
+        }
+      ],
+      "diagnostics": [],
+      "legalAssemblyEstablished": false
+    },
+    "stability": {
+      "status": "HEURISTIC",
+      "heuristicScore": 5,
+      "contributions": [
+        {
+          "factor": "observed-rigid-connectors",
+          "points": 3,
+          "reason": "1 actual rigid connection observations; no invented load capacity."
+        },
+        {
+          "factor": "observed-stud-connectors",
+          "points": 2,
+          "reason": "1 observed stud-system connections."
+        }
+      ],
+      "missingFactors": [
+        "Connector friction/retention evidence",
+        "Source-backed contact area",
+        "Load path and lever arm",
+        "Support symmetry",
+        "Measured weight/load",
+        "Material strength, friction forces and physical build verification"
+      ],
+      "diagnostics": [],
+      "policy": "structural-ranking-1",
+      "physicalStability": "UNKNOWN",
+      "createsConnections": false
+    },
+    "materialStress": "UNKNOWN",
+    "physicalBuildVerified": false
+  },
+  "warnings": [
+    "布局已通过当前真实源接口、刚体闭合和实体碰撞检查；材料应力、制造公差及实物承重仍未认证。",
+    "零件颜色使用 LDraw 当前色 16；具体零件颜色供应与个人库存尚未核实。"
+  ],
+  "contentSha256": "4563994b0ddde80c0e4c5b28adcbba5d4926a22a2c0eef85c315bcaf4defdbf7"
+}

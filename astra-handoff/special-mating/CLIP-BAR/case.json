@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "caseId": "CLIP-BAR",
+  "category": "CLIP_BAR",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "48729b",
+      "ldrawId": "48729b",
+      "identitySystem": "ldraw",
+      "sourceDigest": "bbfb99b27cfcff264aa112fd267a588e96cad1ce2e4899f0bb7a2066e0200ee1",
+      "geometryHash": "2b53eeadb90c834367c9810da497b32babc9b5655784ace7e5b94772fad2ffa9",
+      "connectionMetadataHash": "52c94a299895d7c674d418da55bab6a27937b374613f3de51ed5998f0dfbb524"
+    },
+    {
+      "partId": "30374",
+      "ldrawId": "30374",
+      "identitySystem": "ldraw",
+      "sourceDigest": "b9f2f3b8049913f2cffdeacaa97be916298480949eb74197329b2cc2e4c0fca5",
+      "geometryHash": "6053cc5c334b841703c2f4ac55bc99d1c94e8a3d4c6daf9c0e097f56c8bd9c74",
+      "connectionMetadataHash": "347797e5a6f3f8607e4480dccb61beb5757d7bf496f1239919110e4a6fccaffa"
+    }
+  ],
+  "connections": [
+    {
+      "id": "parts/48729b.dat:8:0",
+      "sourceId": null,
+      "kind": "clip",
+      "family": "clip",
+      "gender": "F",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "units": "LDU",
+      "sections": [],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": 4,
+      "length": 8,
+      "group": null,
+      "properties": {
+        "radius": "4",
+        "length": "8",
+        "center": "true",
+        "ori": "1 0 0 0 0 1 0 -1 0"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/48729b.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "4337ee7e407f822d3d60b17dcd5baf973a0adc5fa12569cfee0043f49d968dc0",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/48729b.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CLP [radius=4] [length=8] [center=true] [ori=1 0 0 0 0 1 0 -1 0]",
+        "transforms": []
+      },
+      "physicalVerified": false
+    },
+    {
+      "id": "parts/30374.dat:8:0",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "M",
+      "position": [
+        0,
+        40,
+        0
+      ],
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "orientation": [
+        -1,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 4,
+          "length": 80
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "M",
+        "caps": "none",
+        "secs": "R 4 80",
+        "center": "true",
+        "slide": "true",
+        "pos": "0 40 0",
+        "ori": "-1 0 0 0 -1 0 0 0 1"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/30374.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "ea72990127a54f62bc09430581e249151ff99d58c4f34e4bbcd53fcdcc6e640a",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/30374.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [gender=M] [caps=none] [secs=R 4 80] [center=true] [slide=true] [pos=0 40 0] [ori=-1 0 0 0 -1 0 0 0 1]",
+        "transforms": []
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": null,
+  "transformStatus": "UNRESOLVED",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "unknown",
+    "reasonCodes": [
+      "clip-bar-seating-unresolved"
+    ],
+    "details": {
+      "compatibility": {
+        "status": "unknown",
+        "ruleId": null,
+        "ruleVersion": "source-stud-1.0.0",
+        "reason": "compatibilityUnknown: clip deformation, bar engagement and insertion path have not been validated.",
+        "reasonCode": "clip-bar-seating-unresolved",
+        "connectionType": "unsupported",
+        "axisRelation": null,
+        "insertionDepthLdu": null,
+        "allowedTwistsDeg": [],
+        "permittedTranslation": null,
+        "toleranceLdu": 0.0001,
+        "sourceEvidence": [
+          {
+            "kind": "source-directive",
+            "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/48729b.dat",
+            "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+            "file": "parts/48729b.dat",
+            "line": 8,
+            "sha256": "4337ee7e407f822d3d60b17dcd5baf973a0adc5fa12569cfee0043f49d968dc0",
+            "note": "0 !LDCAD SNAP_CLP [radius=4] [length=8] [center=true] [ori=1 0 0 0 0 1 0 -1 0]"
+          },
+          {
+            "kind": "source-directive",
+            "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/30374.dat",
+            "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+            "file": "parts/30374.dat",
+            "line": 8,
+            "sha256": "ea72990127a54f62bc09430581e249151ff99d58c4f34e4bbcd53fcdcc6e640a",
+            "note": "0 !LDCAD SNAP_CYL [gender=M] [caps=none] [secs=R 4 80] [center=true] [slide=true] [pos=0 40 0] [ori=-1 0 0 0 -1 0 0 0 1]"
+          }
+        ]
+      },
+      "solver": {
+        "status": "unknown",
+        "compatibility": {
+          "status": "unknown",
+          "ruleId": null,
+          "ruleVersion": "source-stud-1.0.0",
+          "reason": "compatibilityUnknown: clip deformation, bar engagement and insertion path have not been validated.",
+          "reasonCode": "clip-bar-seating-unresolved",
+          "connectionType": "unsupported",
+          "axisRelation": null,
+          "insertionDepthLdu": null,
+          "allowedTwistsDeg": [],
+          "permittedTranslation": null,
+          "toleranceLdu": 0.0001,
+          "sourceEvidence": [
+            {
+              "kind": "source-directive",
+              "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/48729b.dat",
+              "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+              "file": "parts/48729b.dat",
+              "line": 8,
+              "sha256": "4337ee7e407f822d3d60b17dcd5baf973a0adc5fa12569cfee0043f49d968dc0",
+              "note": "0 !LDCAD SNAP_CLP [radius=4] [length=8] [center=true] [ori=1 0 0 0 0 1 0 -1 0]"
+            },
+            {
+              "kind": "source-directive",
+              "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/30374.dat",
+              "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+              "file": "parts/30374.dat",
+              "line": 8,
+              "sha256": "ea72990127a54f62bc09430581e249151ff99d58c4f34e4bbcd53fcdcc6e640a",
+              "note": "0 !LDCAD SNAP_CYL [gender=M] [caps=none] [secs=R 4 80] [center=true] [slide=true] [pos=0 40 0] [ori=-1 0 0 0 -1 0 0 0 1]"
+            }
+          ]
+        },
+        "candidates": [],
+        "reason": "compatibilityUnknown: clip deformation, bar engagement and insertion path have not been validated."
+      }
+    }
+  },
+  "replay": {
+    "kind": "interface",
+    "partId": "48729b",
+    "connectionId": "parts/48729b.dat:8:0",
+    "fixturePartId": "30374",
+    "fixtureConnectionId": "parts/30374.dat:8:0"
+  },
+  "reproductionCommand": "npm run astra:case -- CLIP-BAR",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/1-8sphe.dat",
+    "data/parts-foundation/ldraw/files/p/3-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/4-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-8sphe.dat",
+    "data/parts-foundation/ldraw/files/p/rect.dat",
+    "data/parts-foundation/ldraw/files/parts/48729b.dat",
+    "data/parts-foundation/shadow/files/parts/48729b.dat",
+    "data/parts-foundation/ldraw/files/p/4-4cyli.dat",
+    "data/parts-foundation/ldraw/files/parts/30374.dat",
+    "data/parts-foundation/shadow/files/parts/30374.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [],
+  "attemptsAlreadyMade": [
+    "Read the exact imported source endpoint sections and frames.",
+    "Kept compatibilityUnknown; did not create a mechanical mating rule."
+  ],
+  "whySolStopped": "The current standard stud rule has no verified insertion/retention/elasticity semantics for this special interface.",
+  "diagnosticOnly": true
+}

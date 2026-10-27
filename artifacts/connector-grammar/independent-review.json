@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-26T07:49:39.667Z",
+  "reviewer": "independent grammar_review agent",
+  "status": "PASS WITH DOCUMENTED LIMITATIONS",
+  "scope": "Read-only current-source model export hashes, graph/source/endpoint/BOM/steps consistency, actual current engine validation and service reimport of all twelve models; source preservation and key delivery/report counts. Not a rerun of full unit/browser/preview suites, physical assembly or mechanical fit certification.",
+  "baselineCommit": "35eec2067b4e9a711b65bd0199ac3bb5f89db636",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+    "assemblyEngineVersion": "native-assembly-0.7.0-grammar",
+    "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-1",
+    "collisionVersion": "native-closed-bvh-local-partition-1.1.0"
+  },
+  "checks": {
+    "modelExportHashes": true,
+    "contentChecksums": true,
+    "currentSourceHashes": true,
+    "allEdgeEndpointsAllowed": true,
+    "bomAndStepsComplete": true,
+    "standaloneStepsAndSourcesMatch": true,
+    "sourceRecordClosurePresent": true,
+    "ldrInstancesMatch": true,
+    "storedReimportMatchesModel": true,
+    "actualCurrentGraphValidation": true,
+    "actualCurrentServiceReimport": true,
+    "stageSeparation": true,
+    "disabled32000PinHoles": true,
+    "legacyFixtureNotRequired": true,
+    "deliveryKeyCountsMatch": true,
+    "recordedTestTotalsMatch": true,
+    "exportedBomCsvMatches": true,
+    "old87GrammarEligibilityRetained": true
+  },
+  "counts": {
+    "sourceParts": 253,
+    "generationEligible": 99,
+    "canonicalCoverage": {
+      "COMPLETE": 98,
+      "PARTIAL": 151,
+      "NONE": 4
+    },
+    "newlyEligible": 12,
+    "newlyEligibleAndGenerated": 9,
+    "modelWitnesses": 12,
+    "distinctGeneratedPartIds": 22,
+    "oldFixturePassClaimsCreated": 0,
+    "unitRecordedPassed": 761,
+    "e2eRecordedPassed": 11,
+    "previewRecordedPassed": 3
+  },
+  "sourcePreservation": {
+    "ldraw": {
+      "files": 743,
+      "unchanged": true,
+      "manifestSha256": "9af3963dd11f8b59332ea7d90340d864821fcfe0863353410ea836589c9f37c0"
+    },
+    "shadow": {
+      "files": 245,
+      "unchanged": true,
+      "manifestSha256": "1d3cff9c6b643885c73a452e54261be2a2a37a103cdeee1583ce70043f1ef014"
+    }
+  },
+  "deliveryDocumentSha256": "d990a25838cc6c43ca63997ce72e3530a621523f423a1496f6469f4747e0208c",
+  "reportSha256": "8a92469d6d18fd65e7716a96633a55afba5badcb78466cb1fcb22f785b2e8ac8",
+  "generationReportSha256": "70e59f198f1663d24792211f426472615ab0cb92786f788c13d72d723dcf810f",
+  "models": [
+    {
+      "directory": "artifacts/connector-grammar/models/3004-wall",
+      "exportedJsonSha256": "c4dc1d13c5e59ca09f30b98d2f20021aacf95ae2acb440487bef28dca9c7fdbd",
+      "placements": 3,
+      "edges": 3,
+      "partIds": [
+        "3004",
+        "3005",
+        "3023"
+      ],
+      "currentGraphValid": true,
+      "currentImportStatus": "VALID",
+      "stagesSeparated": true,
+      "bomCsvMatches": true,
+      "bomCsvSha256": "8af045c027d59a8e665f6773ea4232113eaeab63435008907dfe2a8e9303fd52"
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/3008-wall",
+      "exportedJsonSha256": "e1b07757be1025aa19b75803a1e4214b377ef5960c67d4de4d6082cc213a2733",
+      "placements": 3,
+      "edges": 9,
+      "partIds": [
+        "3005",
+        "3008",
+        "3460"
+      ],
+      "currentGraphValid": true,
+      "currentImportStatus": "VALID",
+      "stagesSeparated": true,
+      "bomCsvMatches": true,
+      "bomCsvSha256": "15343487be5b476348d8f737091aae3abf6e224de68c081e528a4de4928f014d"
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/3009-wall",
+      "exportedJsonSha256": "d204dd42cecad52d1d8f849d21b04e367501b2aed8c8ced57b85fdc2d54a6906",
+      "placements": 3,
+      "edges": 7,
+      "partIds": [
+        "3005",
+        "3009",
+        "3666"
+      ],
+      "currentGraphValid": true,
+      "currentImportStatus": "VALID",
+      "stagesSeparated": true,
+      "bomCsvMatches": true,
+      "bomCsvSha256": "7bd913c6e7824082abbc1869c5bcbfde9196b885043047bd8b33911a9d2a2213"
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/3010-wall",
+      "exportedJsonSha256": "b3634959045bd8f84a9f17df489dadf8cb88c3e9856effe438779bbe350e433d",
+      "placements": 3,
+      "edges": 5,
+      "partIds": [
+        "3005",
+        "3010",
+        "3710"
+      ],
+      "currentGraphValid": true,
+      "currentImportStatus": "VALID",
+      "stagesSeparated": true,
+      "bomCsvMatches": true,
+      "bomCsvSha256": "7fb9701e3ab0e2edc2f45c2adcca72541f9a53dff2dc30b04f81486881189259"
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/3622-wall",
+      "exportedJsonSha256": "5a0bf52485fa5fa967ead3659207eba2980bac9b400cfbeea2d6fea98adc9378",
+      "placements": 3,
+      "edges": 4,
+      "partIds": [
+        "3005",
+        "3622",
+        "3623"
+      ],
+      "currentGraphValid": true,
+      "currentImportStatus": "VALID",
+      "stagesSeparated": true,
+      "bomCsvMatches": true,
+      "bomCsvSha256": "452605abdb2df784725e151f1916656ef42c98af50668ea323f75d5566834863"
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/6111-wall",
+      "exportedJsonSha256": "d5cfc41e74328b0bd10adc3c661b48dc202c5ea27c1a56453eb68ea9b9c42767",
+      "placements": 3,
+      "edges": 11,
+      "partIds": [
+        "3005",
+        "4477",
+        "6111"
+      ],
+      "currentGraphValid": true,
+      "currentImportStatus": "VALID",
+      "stagesSeparated": true,
+      "bomCsvMatches": true,
+      "bomCsvSha256": "608092a82b995cf62358bb2d24434905059da3a8ecd0b353e9e9dca51c11c3a4"
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/11211-wall",
+      "exportedJsonSha256": "97c7b030a8314591bd04056bf267844c96b6c3f72b12122dc8252c0db01104e6",
+      "placements": 3,
+      "edges": 3,
+      "partIds": [
+        "11211",
+        "24299",
+        "3005"
+      ],
+      "currentGraphValid": true,
+      "currentImportStatus": "VALID",
+      "stagesSeparated": true,
+      "bomCsvMatches": true,
+      "bomCsvSha256": "d290dea6d85bc7d9846287c1f06a71beba0ecdc260dc2b2767350568d88c4d7e"
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/24299-platform",
+      "exportedJsonSha256": "cc275aa6b9800df0a4ab64c619dfab7eed2a7ae52b1f15014ce126c26f55ad81",
+      "placements": 3,
+      "edges": 2,
+      "partIds": [
+        "24299",
+        "3024"
+      ],
+      "currentGraphValid": true,
+      "currentImportStatus": "VALID",
+      "stagesSeparated": true,
+      "bomCsvMatches": true,
+      "bomCsvSha256": "483ec40a333d02381e5a5606a4e2295a7cae4a012c662a850f312da337c313d8"
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/24307-platform",
+      "exportedJsonSha256": "de38b01db1e849198fc66c98fb1f3a265293a0c93d5bdf0f8642bf93e1c309e2",
+      "placements": 3,
+      "edges": 2,
+      "partIds": [
+        "24307",
+        "3024"
+      ],
+      "currentGraphValid": true,
+      "currentImportStatus": "VALID",
+      "stagesSeparated": true,
+      "bomCsvMatches": true,
+      "bomCsvSha256": "7fa99766939fd380bf538840d54952de4caf5050c4688f6b3346ff92a40eb9fa"
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/32000-wall",
+      "exportedJsonSha256": "e930f0edb327702756b1203db0b7982aaaa418ebe6a16020bd082e31551a55aa",
+      "placements": 3,
+      "edges": 3,
+      "partIds": [
+        "3005",
+        "3023",
+        "32000"
+      ],
+      "currentGraphValid": true,
+      "currentImportStatus": "VALID",
+      "stagesSeparated": true,
+      "bomCsvMatches": true,
+      "bomCsvSha256": "b283fd8881cbe224be12ca0e182376add4e4b3b6e08e8da3ad688bb40cd674fc"
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/reinforced-native-chassis",
+      "exportedJsonSha256": "472b9879caa271596bfe221925f3dfb29e544a4f460424bef5077aba32f8008e",
+      "placements": 5,
+      "edges": 16,
+      "partIds": [
+        "3024",
+        "32000",
+        "3456",
+        "69729"
+      ],
+      "currentGraphValid": true,
+      "currentImportStatus": "VALID",
+      "stagesSeparated": true,
+      "bomCsvMatches": true,
+      "bomCsvSha256": "23a56ba0ed627a6db5a650439c1880d1b5e4ab2a3493c77a3e360d69953ce319"
+    },
+    {
+      "directory": "artifacts/connector-grammar/models/native-side-structure",
+      "exportedJsonSha256": "775a9e3d161721a641986b2976e928db9abd24cb66fa5eff6c566cbe1e66daf3",
+      "placements": 3,
+      "edges": 2,
+      "partIds": [
+        "3023",
+        "3070b",
+        "87087"
+      ],
+      "currentGraphValid": true,
+      "currentImportStatus": "VALID",
+      "stagesSeparated": true,
+      "bomCsvMatches": true,
+      "bomCsvSha256": "ef8e8ef2163f61dd637b539fd480c676972a5083bd783a0154068b5d9d32a8aa"
+    }
+  ],
+  "closedFindings": [
+    "OPPOSITE reverse seating now checks actual world segment engagement",
+    "Nonzero seating offset and sliding range share consistent displacement semantics",
+    "Scaled/sheared canonical frames cannot be orthonormalised into accepted fit",
+    "Near discrete angles are not accepted by an epsilon"
+  ],
+  "limitations": [
+    "Native graph production enables C01 only; the other fourteen family kernels require real verified fit evidence and native joint graph adapters",
+    "Studio binary decoding and reusable authorised resource set are not available",
+    "Spherical full-orientation solving, material stress/tolerance/retention and physical stability remain UNKNOWN",
+    "No source, implementation or generated model was changed by this review"
+  ],
+  "eligibilityDelta": {
+    "historicalQualified": 87,
+    "currentGrammarEligible": 99,
+    "retainedHistoricalIds": 87,
+    "newGrammarIds": [
+      "11211",
+      "17454",
+      "24299",
+      "24307",
+      "3004",
+      "3008",
+      "3009",
+      "3010",
+      "3622",
+      "52038",
+      "6111",
+      "85984"
+    ],
+    "newGrammarIdsActuallyGenerated": [
+      "11211",
+      "24299",
+      "24307",
+      "3004",
+      "3008",
+      "3009",
+      "3010",
+      "3622",
+      "6111"
+    ],
+    "newGrammarIdsStillBlockedInCoverageTasks": [
+      "17454",
+      "52038",
+      "85984"
+    ]
+  }
+}

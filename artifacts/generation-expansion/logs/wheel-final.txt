@@ -1,0 +1,5 @@
+
+> bricklab@0.6.0 audit:wheel
+> tsx src/cli/wheel-assessment.ts --output artifacts/wheel-assembly/source-assessment.json
+
+{"status":"blocked","sources":[{"partId":"18975","geometry":"geometryReady","connections":"partial","proxy":"unresolved-boundary-cap"},{"partId":"3673","geometry":"geometryReady","connections":"partial","proxy":"branched-native-boundary"},{"partId":"66727","geometry":"geometryReady","connections":"ready","proxy":"branched-native-boundary"},{"partId":"18977","geometry":"geometryReady","connections":"missing","proxy":"branched-native-boundary"}],"reasonCodes":["wheel-connections-missing","wheel-connections-partial","wheel-installation-path-not-verified","wheel-mechanical-rule-not-verified","wheel-proxy-branched-native-boundary","wheel-proxy-unresolved-boundary-cap","wheel-retention-tolerance-not-evidenced","wheel-rotation-clearance-not-verified"],"mechanicalPairsCertified":0,"modelProduced":false}

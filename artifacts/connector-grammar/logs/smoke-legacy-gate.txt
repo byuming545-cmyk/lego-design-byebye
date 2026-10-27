@@ -1,0 +1,57 @@
+
+> bricklab@0.6.0 smoke:assembly
+> tsx src/cli/assembly-smoke.ts
+
+production-bridge: blocked; 0 nodes; 0 edges; 0 production attachment calls
+{
+  "summary": {
+    "requested": 7,
+    "generated": 0,
+    "blocked": 7,
+    "failed": 0,
+    "physicalBuildsVerified": 0
+  },
+  "runtimeAudit": {
+    "candidateAttempts": 0,
+    "attachmentApiCalls": 0,
+    "acceptedBranchPlacements": 0,
+    "rejectedCandidates": 0,
+    "transformFailureCandidates": 0,
+    "compatibilityFailureCandidates": 0,
+    "collisionFailureCandidates": 0,
+    "occupancyFailureCandidates": 0,
+    "designGoalFailureCandidates": 0,
+    "searchTimeMs": 0,
+    "catalogTimeMs": 0,
+    "multiPointPlacements": 0
+  },
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+    "assemblyEngineVersion": "native-assembly-0.7.0-grammar",
+    "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-1",
+    "collisionVersion": "native-closed-bvh-local-partition-1.1.0"
+  },
+  "runtimeCounts": {
+    "total": 253,
+    "assemblyVerified": 0,
+    "generatable": 99,
+    "blocked": 154,
+    "verifiedInterfaces": 0,
+    "disabledInterfaces": 2553,
+    "testedPhysicalInterfaces": 0,
+    "deferredPhysicalInterfaces": 5019,
+    "deferredRawConnectionIds": 5084,
+    "wheelModulesVerified": 0,
+    "physicalBuildsVerified": 0
+  },
+  "runtimeSourceCounts": {
+    "totalRoots": 253,
+    "geometryReady": 253,
+    "connectionReady": 205,
+    "connectionPartial": 44,
+    "connectionMissing": 4
+  },
+  "sourceHashes": {},
+  "migrationReportSha256": null,
+  "report": "artifacts/assembly-development/generator-smoke.json"
+}

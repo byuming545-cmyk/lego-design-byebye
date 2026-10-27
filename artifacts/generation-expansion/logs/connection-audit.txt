@@ -1,0 +1,28 @@
+
+> bricklab@0.6.0 audit:connections
+> tsx src/cli/connection-parse-audit.ts --output artifacts/generation-expansion/connection-audit
+
+{
+  "output": "/workspace/lego-design-byebye/artifacts/generation-expansion/connection-audit",
+  "parserVersion": "ldcad-shadow-parser-2-clear-scope",
+  "counts": {
+    "roots": 253,
+    "ready": 205,
+    "partial": 44,
+    "missing": 4,
+    "retainedRawConnectionRecords": 5084,
+    "activeFailureInstances": 114,
+    "distinctFailureSourceLocations": 23,
+    "discardedDimensionWarnings": 3,
+    "astraReviewInstances": 110,
+    "missingEvidenceInstances": 4
+  },
+  "categories": {
+    "CONNECTION_EVIDENCE_MISSING": 4,
+    "CYLINDER_PROFILE": 1,
+    "FINGER_JOINT_GRAMMAR": 9,
+    "GRID_GRAMMAR": 2,
+    "INCLUDE_OVERRIDE": 4,
+    "INHERITED_SCALING": 94
+  }
+}

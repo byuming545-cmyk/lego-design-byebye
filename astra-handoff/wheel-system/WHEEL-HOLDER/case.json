@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 1,
+  "caseId": "WHEEL-HOLDER",
+  "category": "WHEEL_ASSEMBLY",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "4600",
+      "ldrawId": "4600",
+      "identitySystem": "ldraw",
+      "sourceDigest": "5fb7923473b0e1e8eed210ad7b53844763a0875844b16c9bf95d65570b1c7b8c",
+      "geometryHash": "9797db5c03b2f9405d5f07923341f11be17803c9700905ca0f99a54db77ffc02",
+      "connectionMetadataHash": "aff4c3ae82e273ca5434e6e3acfd7abe4b3f4212b358fb644dfbded95591f9db"
+    },
+    {
+      "partId": "4624",
+      "ldrawId": "4624",
+      "identitySystem": "ldraw",
+      "sourceDigest": "8ca8bd482f59516e1bc7689bdb77abce1b7362cc58e7234bc6cb2016948b926f",
+      "geometryHash": "980db38835aa58561c74c68687a5ac73cb907c3027cd70004cc93469bc85adeb",
+      "connectionMetadataHash": "800755487eb77dd78abf231d0f5ca88612c8c40d4d3f1184db9f763ff5ff27aa"
+    }
+  ],
+  "connections": [
+    {
+      "id": "p/wpin.dat:8:0",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "M",
+      "position": [
+        22,
+        5,
+        0
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        -1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 4,
+          "length": 11
+        },
+        {
+          "profile": "_L",
+          "radius": 4.25,
+          "length": 1
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "M",
+        "caps": "one",
+        "secs": "R 4 11   _L 4.25 1"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "p/wpin.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "49309e3705533a082a59a54c6b5b0f49da792e28040bc66c302b6724f21ee334",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/wpin.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [gender=M] [caps=one] [secs=R 4 11   _L 4.25 1]",
+        "transforms": [
+          {
+            "file": "parts/4600.dat",
+            "line": 43,
+            "directive": "1 16 22 5 0 0 -1 0 1 0 0 0 0 1 wpin2.dat",
+            "position": [
+              22,
+              5,
+              0
+            ],
+            "matrix": [
+              0,
+              -1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "file": "p/wpin2.dat",
+            "line": 29,
+            "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 wpin2a.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "file": "p/wpin2a.dat",
+            "line": 36,
+            "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 wpin.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    },
+    {
+      "id": "parts/4624.dat:9:0",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "F",
+      "position": [
+        0,
+        0,
+        8
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 4,
+          "length": 10
+        },
+        {
+          "profile": "R",
+          "radius": 5,
+          "length": 2
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "F",
+        "caps": "one",
+        "secs": "R 4 10   R 5 2",
+        "pos": "0 0 8",
+        "ori": "1 0 0 0 0 -1 0 1 0"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/4624.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "97060b1442d758038a03d3250589b63d5c62ea74c37b4ab157e2c5d9a7dfe5cd",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/4624.dat",
+        "line": 9,
+        "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 4 10   R 5 2] [pos=0 0 8] [ori=1 0 0 0 0 -1 0 1 0]",
+        "transforms": []
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": null,
+  "transformStatus": "UNRESOLVED",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "unknown",
+    "reasonCodes": [
+      "standard-stud-identity-unresolved"
+    ],
+    "details": {
+      "compatibility": {
+        "status": "unknown",
+        "ruleId": null,
+        "ruleVersion": "source-stud-1.0.0",
+        "reason": "compatibilityUnknown: the male source is not an explicitly identified standard closed/open stud; cylinder radius alone is insufficient.",
+        "reasonCode": "standard-stud-identity-unresolved",
+        "connectionType": "unsupported",
+        "axisRelation": null,
+        "insertionDepthLdu": null,
+        "allowedTwistsDeg": [],
+        "permittedTranslation": null,
+        "toleranceLdu": 0.0001,
+        "sourceEvidence": [
+          {
+            "kind": "source-directive",
+            "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/wpin.dat",
+            "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+            "file": "p/wpin.dat",
+            "line": 8,
+            "sha256": "49309e3705533a082a59a54c6b5b0f49da792e28040bc66c302b6724f21ee334",
+            "note": "0 !LDCAD SNAP_CYL [gender=M] [caps=one] [secs=R 4 11   _L 4.25 1]"
+          },
+          {
+            "kind": "source-directive",
+            "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/4624.dat",
+            "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+            "file": "parts/4624.dat",
+            "line": 9,
+            "sha256": "97060b1442d758038a03d3250589b63d5c62ea74c37b4ab157e2c5d9a7dfe5cd",
+            "note": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 4 10   R 5 2] [pos=0 0 8] [ori=1 0 0 0 0 -1 0 1 0]"
+          }
+        ]
+      },
+      "solver": {
+        "status": "unknown",
+        "compatibility": {
+          "status": "unknown",
+          "ruleId": null,
+          "ruleVersion": "source-stud-1.0.0",
+          "reason": "compatibilityUnknown: the male source is not an explicitly identified standard closed/open stud; cylinder radius alone is insufficient.",
+          "reasonCode": "standard-stud-identity-unresolved",
+          "connectionType": "unsupported",
+          "axisRelation": null,
+          "insertionDepthLdu": null,
+          "allowedTwistsDeg": [],
+          "permittedTranslation": null,
+          "toleranceLdu": 0.0001,
+          "sourceEvidence": [
+            {
+              "kind": "source-directive",
+              "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/wpin.dat",
+              "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+              "file": "p/wpin.dat",
+              "line": 8,
+              "sha256": "49309e3705533a082a59a54c6b5b0f49da792e28040bc66c302b6724f21ee334",
+              "note": "0 !LDCAD SNAP_CYL [gender=M] [caps=one] [secs=R 4 11   _L 4.25 1]"
+            },
+            {
+              "kind": "source-directive",
+              "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/4624.dat",
+              "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+              "file": "parts/4624.dat",
+              "line": 9,
+              "sha256": "97060b1442d758038a03d3250589b63d5c62ea74c37b4ab157e2c5d9a7dfe5cd",
+              "note": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 4 10   R 5 2] [pos=0 0 8] [ori=1 0 0 0 0 -1 0 1 0]"
+            }
+          ]
+        },
+        "candidates": [],
+        "reason": "compatibilityUnknown: the male source is not an explicitly identified standard closed/open stud; cylinder radius alone is insufficient."
+      }
+    }
+  },
+  "replay": {
+    "kind": "interface",
+    "partId": "4600",
+    "connectionId": "p/wpin.dat:8:0",
+    "fixturePartId": "4624",
+    "fixtureConnectionId": "parts/4624.dat:9:0"
+  },
+  "reproductionCommand": "npm run astra:case -- WHEEL-HOLDER",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/1-16cyli.dat",
+    "data/parts-foundation/ldraw/files/p/1-16edge.dat",
+    "data/parts-foundation/ldraw/files/p/1-4chrd.dat",
+    "data/parts-foundation/ldraw/files/p/1-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/1-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/3-8chrd.dat",
+    "data/parts-foundation/ldraw/files/p/3-8cyli.dat",
+    "data/parts-foundation/ldraw/files/p/3-8cylo.dat",
+    "data/parts-foundation/ldraw/files/p/3-8edge.dat",
+    "data/parts-foundation/ldraw/files/p/3-8ring12.dat",
+    "data/parts-foundation/ldraw/files/p/3-8ring3.dat",
+    "data/parts-foundation/ldraw/files/p/4-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/4-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/8/1-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/8/1-4cyls.dat",
+    "data/parts-foundation/ldraw/files/p/8/1-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/8/1-4ndis.dat",
+    "data/parts-foundation/ldraw/files/p/box3u2p.dat",
+    "data/parts-foundation/ldraw/files/p/box3u8p.dat",
+    "data/parts-foundation/ldraw/files/p/box5-4a.dat",
+    "data/parts-foundation/ldraw/files/p/rect.dat",
+    "data/parts-foundation/ldraw/files/p/rect2a.dat",
+    "data/parts-foundation/ldraw/files/p/st4jfil4.dat",
+    "data/parts-foundation/ldraw/files/p/stud.dat",
+    "data/parts-foundation/ldraw/files/p/stud4f2w.dat",
+    "data/parts-foundation/ldraw/files/p/stug-2x2.dat",
+    "data/parts-foundation/ldraw/files/p/wpin.dat",
+    "data/parts-foundation/ldraw/files/p/wpin2.dat",
+    "data/parts-foundation/ldraw/files/p/wpin2a.dat",
+    "data/parts-foundation/ldraw/files/parts/4600.dat",
+    "data/parts-foundation/shadow/files/p/wpin.dat",
+    "data/parts-foundation/shadow/files/p/wpin2.dat",
+    "data/parts-foundation/shadow/files/p/stud.dat",
+    "data/parts-foundation/shadow/files/parts/4600.dat",
+    "data/parts-foundation/ldraw/files/p/1-16chrd.dat",
+    "data/parts-foundation/ldraw/files/p/1-16con16.dat",
+    "data/parts-foundation/ldraw/files/p/1-16con3.dat",
+    "data/parts-foundation/ldraw/files/p/1-16cylo.dat",
+    "data/parts-foundation/ldraw/files/p/1-16ring2.dat",
+    "data/parts-foundation/ldraw/files/p/1-8con4.dat",
+    "data/parts-foundation/ldraw/files/p/1-8cyli.dat",
+    "data/parts-foundation/ldraw/files/p/1-8cylo.dat",
+    "data/parts-foundation/ldraw/files/p/1-8disc.dat",
+    "data/parts-foundation/ldraw/files/p/1-8edge.dat",
+    "data/parts-foundation/ldraw/files/p/1-8ring17.dat",
+    "data/parts-foundation/ldraw/files/p/1-8ring3.dat",
+    "data/parts-foundation/ldraw/files/p/1-8ring4.dat",
+    "data/parts-foundation/ldraw/files/p/1-8ring9.dat",
+    "data/parts-foundation/ldraw/files/p/empty.dat",
+    "data/parts-foundation/ldraw/files/p/rect2p.dat",
+    "data/parts-foundation/ldraw/files/parts/4624.dat",
+    "data/parts-foundation/ldraw/files/parts/s/4624s01.dat",
+    "data/parts-foundation/shadow/files/parts/4624.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [],
+  "attemptsAlreadyMade": [
+    "Read the exact imported source endpoint sections and frames.",
+    "Kept compatibilityUnknown; did not create a mechanical mating rule."
+  ],
+  "whySolStopped": "The current standard stud rule has no verified insertion/retention/elasticity semantics for this special interface.",
+  "diagnosticOnly": true
+}

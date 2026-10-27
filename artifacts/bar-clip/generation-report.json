@@ -1,0 +1,326 @@
+{
+  "schemaVersion": "bar-clip-generation-report-1",
+  "generatedAt": "2026-10-27T05:22:10.853Z",
+  "branch": "codex/bar-clip-source-grammar",
+  "baseCommit": "fe74141de5870547d71d0874a39c4ca69c707487",
+  "module": "bar-clip",
+  "moduleName": "真实零件杆夹连接模块",
+  "status": "generated",
+  "reasons": [],
+  "placements": [
+    {
+      "instanceId": "root",
+      "partId": "30374",
+      "transform": {
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "translation": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "instanceId": "p-1",
+      "partId": "48729b",
+      "transform": {
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        "translation": [
+          0,
+          40,
+          0
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-1",
+      "fixedInstanceId": "root",
+      "fixedConnectionId": "parts/30374.dat:8:0",
+      "movingInstanceId": "p-1",
+      "movingConnectionId": "parts/48729b.dat:8:0",
+      "ruleId": "ldcad-source-declared-bar-clip-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "anchor": [
+        0,
+        40,
+        0
+      ],
+      "insertionDepthLdu": 8
+    }
+  ],
+  "bom": [
+    {
+      "partId": "30374",
+      "name": "Bar  4L Lightsaber Blade",
+      "quantity": 1,
+      "ldrawColor": 16,
+      "colorAvailability": "not-verified"
+    },
+    {
+      "partId": "48729b",
+      "name": "Bar  1.5L with Clip with Truncated Sides and Hole in Shaft",
+      "quantity": 1,
+      "ldrawColor": 16,
+      "colorAvailability": "not-verified"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "addedInstanceId": "root",
+      "partId": "30374",
+      "connectionEdgeIds": []
+    },
+    {
+      "step": 2,
+      "addedInstanceId": "p-1",
+      "partId": "48729b",
+      "connectionEdgeIds": [
+        "edge-1"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "library": "LDCadShadowLibrary",
+      "path": "parts/30374.dat",
+      "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+      "sha256": "ea72990127a54f62bc09430581e249151ff99d58c4f34e4bbcd53fcdcc6e640a",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/30374.dat"
+    },
+    {
+      "library": "LDCadShadowLibrary",
+      "path": "parts/48729b.dat",
+      "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+      "sha256": "4337ee7e407f822d3d60b17dcd5baf973a0adc5fa12569cfee0043f49d968dc0",
+      "license": "CC-BY-SA-4.0",
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/48729b.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/1-8sphe.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "c38f9b8df6f260a26e920d8bbfb2d6b11667026e0675733d7fc2d3653ef92c53",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/1-8sphe.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/3-4cyli.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "4a54732476cf4eaad2c9f7b40a3cef24db025132004328e4e84c0666cd217533",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/3-4cyli.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/4-4cyli.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4cyli.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/4-4disc.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4disc.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/4-4edge.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4edge.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/4-8sphe.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "37fa33d0b13605e0e1a84b8e0917953d42beebee08dc444e1bd44015acd64d9e",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-8sphe.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "p/rect.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "ffeb2dd3d9b83c38841f18f1f74800fbba9e90c5fb6badfff2a795f08a96cb71",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/rect.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "parts/30374.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "45d72e623efabbb846475a19ace99d0673962624e21175a0ec23c27901d19af6",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/30374.dat"
+    },
+    {
+      "library": "LDraw",
+      "path": "parts/48729b.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "37612ae6ff820fedbd91c68d678979349dca0cab75d307f560861729ff3ce06a",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/48729b.dat"
+    }
+  ],
+  "search": {
+    "attempts": 1,
+    "attachmentApiCalls": 1,
+    "acceptedAttachments": 1,
+    "rejectedAttachments": 0,
+    "transformFailures": 0,
+    "compatibilityFailures": 0,
+    "collisionFailures": 0,
+    "occupancyFailures": 0,
+    "designGoalFailures": 0,
+    "backtracks": 0,
+    "testedRoots": 1,
+    "exhausted": false,
+    "timeBudgetExceeded": false,
+    "catalogTimeMs": 99.489,
+    "searchTimeMs": 17.267,
+    "budget": {
+      "maxAttempts": 1800,
+      "maxBacktracks": 120,
+      "maxSearchTimeMs": 10000
+    },
+    "finalPlacements": 2,
+    "finalConnectionEdges": 1,
+    "rejectionCounts": {},
+    "rejectionReasons": []
+  },
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+    "assemblyEngineVersion": "native-assembly-0.7.0-grammar",
+    "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-2",
+    "collisionVersion": "native-open-surface-seat-2.0.0"
+  },
+  "exported": {
+    "jsonBytes": 12993,
+    "jsonSha256": "01edfbc0690a796cf65ad24d092dc357866e2c258f4d99cedb47818667c889e7",
+    "ldrPath": "model.ldr",
+    "bomPath": "bom.csv"
+  },
+  "reimport": {
+    "status": "VALID",
+    "reasons": [],
+    "path": "model-revalidation.json"
+  },
+  "productionCounts": {
+    "total": 253,
+    "assemblyVerified": 0,
+    "generatable": 102,
+    "blocked": 151,
+    "verifiedInterfaces": 0,
+    "disabledInterfaces": 2544,
+    "testedPhysicalInterfaces": 0,
+    "deferredPhysicalInterfaces": 5019,
+    "deferredRawConnectionIds": 5084,
+    "wheelModulesVerified": 0,
+    "physicalBuildsVerified": 0
+  },
+  "admissions": {
+    "30374": {
+      "partId": "30374",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "parts/30374.dat:8:0"
+      ],
+      "ruleIds": [
+        "ldcad-source-declared-bar-clip-v1"
+      ],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "48729b": {
+      "partId": "48729b",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "parts/48729b.dat:8:0",
+        "parts/48729b.dat:9:1"
+      ],
+      "ruleIds": [
+        "ldcad-source-declared-bar-clip-v1"
+      ],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "60470b": {
+      "partId": "60470b",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "p/stud.dat:8:0",
+        "p/stud.dat:8:1",
+        "p/clip6.dat:8:3",
+        "p/clip6.dat:8:4",
+        "parts/60470b.dat:9:5",
+        "parts/60470b.dat:9:6"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1",
+        "ldcad-source-declared-bar-clip-v1"
+      ],
+      "reasonCodes": [],
+      "reasons": []
+    }
+  },
+  "physicalBuildVerified": false,
+  "limitations": [
+    "This is one real two-part Bar-Clip placement, not a physical build or a full-seat/friction proof.",
+    "The 60470b plate remains unusable for the current module because its body collides with the 80-LDU bar at every tested quarter turn; axial sliding is not admitted by the native solver.",
+    "No source-backed Bar Receptacle exists in the pinned 253-root library."
+  ]
+}

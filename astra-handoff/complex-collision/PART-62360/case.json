@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 1,
+  "caseId": "PART-62360",
+  "category": "HOLLOW_GEOMETRY",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "62360",
+      "ldrawId": "62360",
+      "identitySystem": "ldraw",
+      "sourceDigest": "5a24699aa0c25b5815ca975c29914044ab809bce71c86022d3e1f7120e86d538",
+      "geometryHash": "d9bba8190ea073b211b48670b0a41ebf21423e65aceea08ce6f49ce8f99ab243",
+      "connectionMetadataHash": "d38d17770d973b17a03162d5746e639a2c60540aeb57e085a091d5b724e69ef4"
+    }
+  ],
+  "affectedPhysicalInterfaces": [
+    "e42ae62a251a1304a8cd358f4c38b1c45eabd58ce3e5a94edf0e2ae9330f77cb",
+    "210f672c9c7f636c3f78db206577dc7c6004894edd9f21a3215c7a055b89f73e",
+    "7914515d921227e126629808da0f91df5513732dd4e4422e382b7d384d3f67ca",
+    "c46031c731f6635faf2d321dd05ab7b0b6eb560d535b310182a3a6790275b82e",
+    "0e15ae1575725ccffacff5eaf0b3377de6c565308219dd4ed69f161785a19e54",
+    "474e47e5ee8d9f220ada4ab5d28c7548873c6f63cfa1481902e0d0b3f5fd47b1",
+    "c34c1dae7fe89607eb966a151501b7dabe7ef739ac70f308669af82bfb1cffa0",
+    "bcd5860e895602a0b64c12354fa52a591f62fa99b67d2bbf79319854908a110f",
+    "35fb8331e5533664a50877c1fc9fa4dfad7a16396d5b3c8780e4b2b2c512ef42"
+  ],
+  "connections": [
+    {
+      "id": "parts/s/62360s01.dat:8:0",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "F",
+      "position": [
+        10,
+        24,
+        -40
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "F",
+        "caps": "one",
+        "secs": "R 6 4",
+        "pos": "10 24 -40",
+        "grid": "2 1 20 0"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/s/62360s01.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "4f9d0fe1968d53add834616533ce903eb3a0b2b529fa2e4f3a2b386735d0e8dd",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/62360s01.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 6 4] [pos=10 24 -40] [grid=2 1 20 0]",
+        "transforms": [
+          {
+            "file": "parts/62360.dat",
+            "line": 16,
+            "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\62360s01.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    },
+    {
+      "id": "parts/s/62360s01.dat:8:1",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "F",
+      "position": [
+        30,
+        24,
+        -40
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 4
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "F",
+        "caps": "one",
+        "secs": "R 6 4",
+        "pos": "10 24 -40",
+        "grid": "2 1 20 0"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/s/62360s01.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "4f9d0fe1968d53add834616533ce903eb3a0b2b529fa2e4f3a2b386735d0e8dd",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/62360s01.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 6 4] [pos=10 24 -40] [grid=2 1 20 0]",
+        "transforms": [
+          {
+            "file": "parts/62360.dat",
+            "line": 16,
+            "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\62360s01.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": {
+    "rotation": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "translation": [
+      0,
+      0,
+      0
+    ]
+  },
+  "transformStatus": "SOURCE_IDENTITY",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "blocked",
+    "reasonCodes": [
+      "unresolved-boundary-cap"
+    ],
+    "details": {
+      "reason": "A nonconvex native boundary needs a more capable source-backed proxy."
+    }
+  },
+  "replay": {
+    "kind": "proxy",
+    "partId": "62360"
+  },
+  "reproductionCommand": "npm run astra:case -- PART-62360",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/1-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/1-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/1-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/1-4ndis.dat",
+    "data/parts-foundation/ldraw/files/p/4-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/4-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/parts/62360.dat",
+    "data/parts-foundation/ldraw/files/parts/s/62360s01.dat",
+    "data/parts-foundation/ldraw/files/parts/s/62360s02.dat",
+    "data/parts-foundation/shadow/files/parts/s/62360s01.dat",
+    "data/parts-foundation/shadow/files/parts/62360.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [
+    {
+      "reasonCodes": [
+        "collision-proxy-unresolved-boundary-cap"
+      ],
+      "reasons": [
+        "A nonconvex native boundary needs a more capable source-backed proxy."
+      ],
+      "sourceChecks": [
+        {
+          "name": "source-integrity",
+          "outcome": "passed",
+          "reason": "Pinned native geometry and every source-backed connection file are hashed and licensed."
+        },
+        {
+          "name": "collision",
+          "outcome": "blocked",
+          "reason": "A nonconvex native boundary needs a more capable source-backed proxy."
+        }
+      ]
+    }
+  ],
+  "attemptsAlreadyMade": [
+    "Loaded and fingerprinted the actual pinned native source.",
+    "Ran the current per-part migration source/fixture prerequisites."
+  ],
+  "whySolStopped": "Further progress requires missing source semantics or complex solid/retention rules; no ad hoc geometry or collision exception was introduced.",
+  "diagnosticOnly": true
+}

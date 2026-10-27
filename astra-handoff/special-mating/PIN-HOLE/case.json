@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 1,
+  "caseId": "PIN-HOLE",
+  "category": "AXLE_HOLE",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "3700",
+      "ldrawId": "3700",
+      "identitySystem": "ldraw",
+      "sourceDigest": "9eba35d0f453804ceeb4a7177c6e9ed5f5f58007f0c98f08b684e7aabe8bd7b9",
+      "geometryHash": "8a51c1bcd08e6301e6d01fbf86fdeacfc1377de9603af37ff5a97e7064ede8f4",
+      "connectionMetadataHash": "ba783ce92534e6da5aa7f45804a222afcef061709b9fd78ac5718f647ed1d9a6"
+    },
+    {
+      "partId": "3673",
+      "ldrawId": "3673",
+      "identitySystem": "ldraw",
+      "sourceDigest": "13a3105f483a738c9bc6eea03ce01c550111ca61f9e46c8d5baed913322fc25a",
+      "geometryHash": "2131665bbbbbf1d66165cb787828b1e86bcedaf9711a265c59c52566fbeb8d07",
+      "connectionMetadataHash": "6202cbe9858f21a716a521ea0ce3463aa35af0567509f8049688294f2e193a00"
+    }
+  ],
+  "connections": [
+    {
+      "id": "p/connhole.dat:8:4",
+      "sourceId": "connhole",
+      "kind": "cylinder",
+      "family": "pinHole",
+      "gender": "F",
+      "position": [
+        0,
+        10,
+        0
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "orientation": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 8,
+          "length": 2
+        },
+        {
+          "profile": "R",
+          "radius": 6,
+          "length": 16
+        },
+        {
+          "profile": "R",
+          "radius": 8,
+          "length": 2
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "id": "connhole",
+        "gender": "F",
+        "caps": "none",
+        "secs": "R 8 2   R 6 16   R 8 2",
+        "center": "true",
+        "slide": "true"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "p/connhole.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "1fe9a793ea6d0a60b7956536d616fac23ba5f2c778fa2eee15cf02001226f63e",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhole.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [id=connhole] [gender=F] [caps=none] [secs=R 8 2   R 6 16   R 8 2] [center=true] [slide=true]",
+        "transforms": [
+          {
+            "file": "parts/3700.dat",
+            "line": 9,
+            "directive": "0 !LDCAD SNAP_INCL [ref=connhole.dat] [pos=0 10 0] [ori=1 0 0 0 0 1 0 -1 0]",
+            "position": [
+              0,
+              10,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              -1,
+              0
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    },
+    {
+      "id": "parts/3673.dat:11:2",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "F",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        -1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 4,
+          "length": 40
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "F",
+        "caps": "none",
+        "secs": "R 4 40",
+        "center": "true",
+        "ori": "0 -1 0 1 0 0 0 0 1"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "parts/3673.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "d472351e53f08a54b291ec0a9b3c4e9527b6fa5acadc5e2ff234f28b97fc8832",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3673.dat",
+        "line": 11,
+        "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=none] [secs=R 4 40] [center=true] [ori=0 -1 0 1 0 0 0 0 1]",
+        "transforms": []
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": null,
+  "transformStatus": "UNRESOLVED",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "incompatible",
+    "reasonCodes": [
+      "same-mating-gender"
+    ],
+    "details": {
+      "compatibility": {
+        "status": "incompatible",
+        "ruleId": null,
+        "ruleVersion": "source-stud-1.0.0",
+        "reason": "Both connection endpoints have the same source mating gender.",
+        "reasonCode": "same-mating-gender",
+        "connectionType": "unsupported",
+        "axisRelation": null,
+        "insertionDepthLdu": null,
+        "allowedTwistsDeg": [],
+        "permittedTranslation": null,
+        "toleranceLdu": 0.0001,
+        "sourceEvidence": [
+          {
+            "kind": "source-directive",
+            "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhole.dat",
+            "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+            "file": "p/connhole.dat",
+            "line": 8,
+            "sha256": "1fe9a793ea6d0a60b7956536d616fac23ba5f2c778fa2eee15cf02001226f63e",
+            "note": "0 !LDCAD SNAP_CYL [id=connhole] [gender=F] [caps=none] [secs=R 8 2   R 6 16   R 8 2] [center=true] [slide=true]"
+          },
+          {
+            "kind": "source-directive",
+            "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3673.dat",
+            "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+            "file": "parts/3673.dat",
+            "line": 11,
+            "sha256": "d472351e53f08a54b291ec0a9b3c4e9527b6fa5acadc5e2ff234f28b97fc8832",
+            "note": "0 !LDCAD SNAP_CYL [gender=F] [caps=none] [secs=R 4 40] [center=true] [ori=0 -1 0 1 0 0 0 0 1]"
+          }
+        ]
+      },
+      "solver": {
+        "status": "incompatible",
+        "compatibility": {
+          "status": "incompatible",
+          "ruleId": null,
+          "ruleVersion": "source-stud-1.0.0",
+          "reason": "Both connection endpoints have the same source mating gender.",
+          "reasonCode": "same-mating-gender",
+          "connectionType": "unsupported",
+          "axisRelation": null,
+          "insertionDepthLdu": null,
+          "allowedTwistsDeg": [],
+          "permittedTranslation": null,
+          "toleranceLdu": 0.0001,
+          "sourceEvidence": [
+            {
+              "kind": "source-directive",
+              "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhole.dat",
+              "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+              "file": "p/connhole.dat",
+              "line": 8,
+              "sha256": "1fe9a793ea6d0a60b7956536d616fac23ba5f2c778fa2eee15cf02001226f63e",
+              "note": "0 !LDCAD SNAP_CYL [id=connhole] [gender=F] [caps=none] [secs=R 8 2   R 6 16   R 8 2] [center=true] [slide=true]"
+            },
+            {
+              "kind": "source-directive",
+              "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3673.dat",
+              "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+              "file": "parts/3673.dat",
+              "line": 11,
+              "sha256": "d472351e53f08a54b291ec0a9b3c4e9527b6fa5acadc5e2ff234f28b97fc8832",
+              "note": "0 !LDCAD SNAP_CYL [gender=F] [caps=none] [secs=R 4 40] [center=true] [ori=0 -1 0 1 0 0 0 0 1]"
+            }
+          ]
+        },
+        "candidates": [],
+        "reason": "Both connection endpoints have the same source mating gender."
+      }
+    }
+  },
+  "replay": {
+    "kind": "interface",
+    "partId": "3700",
+    "connectionId": "p/connhole.dat:8:4",
+    "fixturePartId": "3673",
+    "fixtureConnectionId": "parts/3673.dat:11:2"
+  },
+  "reproductionCommand": "npm run astra:case -- PIN-HOLE",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/2-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/2-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/2-4ndis.dat",
+    "data/parts-foundation/ldraw/files/p/4-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/4-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ndis.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring2.dat",
+    "data/parts-foundation/ldraw/files/p/4-4ring3.dat",
+    "data/parts-foundation/ldraw/files/p/box2-5.dat",
+    "data/parts-foundation/ldraw/files/p/box3u2p.dat",
+    "data/parts-foundation/ldraw/files/p/cylj4x8.dat",
+    "data/parts-foundation/ldraw/files/p/peghole.dat",
+    "data/parts-foundation/ldraw/files/p/rect2p.dat",
+    "data/parts-foundation/ldraw/files/p/stud2.dat",
+    "data/parts-foundation/ldraw/files/p/stud3a.dat",
+    "data/parts-foundation/ldraw/files/parts/3700.dat",
+    "data/parts-foundation/shadow/files/p/stud2.dat",
+    "data/parts-foundation/shadow/files/parts/3700.dat",
+    "data/parts-foundation/shadow/files/p/connhole.dat",
+    "data/parts-foundation/ldraw/files/p/1-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/1-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/1-4ndis.dat",
+    "data/parts-foundation/ldraw/files/p/3-8cyli.dat",
+    "data/parts-foundation/ldraw/files/p/3-8edge.dat",
+    "data/parts-foundation/ldraw/files/p/3-8ring12.dat",
+    "data/parts-foundation/ldraw/files/p/3-8ring2.dat",
+    "data/parts-foundation/ldraw/files/p/connect.dat",
+    "data/parts-foundation/ldraw/files/parts/3673.dat",
+    "data/parts-foundation/shadow/files/p/connect.dat",
+    "data/parts-foundation/shadow/files/parts/3673.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [],
+  "attemptsAlreadyMade": [
+    "Read the exact imported source endpoint sections and frames.",
+    "Kept compatibilityUnknown; did not create a mechanical mating rule."
+  ],
+  "whySolStopped": "The current standard stud rule has no verified insertion/retention/elasticity semantics for this special interface.",
+  "diagnosticOnly": true
+}

@@ -11,9 +11,9 @@ function source(setNumber: string, items: PartInventoryItem[]): SetInventory {
 }
 
 describe('Speed part catalog', () => {
-  it('has 100 sourced actual IDs, with only precisely modeled basic parts marked supported', () => {
-    expect(SPEED_CATALOG_STATS).toMatchObject({ total: 100, supported: 63, partiallySupported: 37, unsupported: 0 });
-    expect(Object.keys(SPEED_PART_CATALOG)).toHaveLength(100);
+  it('has 101 sourced actual IDs, including the calibrated independent Technic holder', () => {
+    expect(SPEED_CATALOG_STATS).toMatchObject({ total: 101, supported: 64, partiallySupported: 37, unsupported: 0 });
+    expect(Object.keys(SPEED_PART_CATALOG)).toHaveLength(101);
     for (const definition of Object.values(SPEED_PART_CATALOG)) {
       expect(definition.sourceUrl).toContain('/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/');
       expect(definition.ldrawFile).toBe(`parts/${definition.partId}.dat`);

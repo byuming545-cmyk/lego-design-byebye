@@ -4,6 +4,7 @@ import { createApp } from './app.js';
 
 // Node 24: honor the cloud's inherited HTTPS proxy and CA trust for live inventory.
 setGlobalProxyFromEnv();
+process.env.NODE_ENV ??= process.argv.includes('--development') ? 'development' : 'production';
 const port = Number(process.env.PORT ?? 3001);
 if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('PORT must be an integer from 1 to 65535.');
 const app = createApp();

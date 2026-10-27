@@ -1,0 +1,336 @@
+
+> bricklab@0.6.0 test
+> vitest run --maxWorkers=2
+
+
+ RUN  v5.0.5 /workspace/lego-design-byebye
+
+ ❯ tests/parts-assembly-connections.test.ts (11 tests | 1 failed) 214ms
+   ❯ source-backed compatibility rule (5)
+     × does not enable clips, pin interfaces or wheel/tyre groups from names alone 6ms
+ ❯ tests/parts-assembly-engine.test.ts (11 tests | 1 failed) 328ms
+   ❯ native attachment graph and production admission (11)
+     × requires production admission and an explicit port/rule whitelist 7ms
+ ❯ tests/parts-assembly-api.test.ts (11 tests | 4 failed) 14317ms
+   ❯ native assembly production HTTP boundaries (11)
+     × reports every actual source root and only counts runtime-validated admission decisions 46ms
+     × attaches the evidence-derived default pair with complete source hashes and four version bindings 303ms
+     × generates actual wall and simple chassis models and exports only server-retained source-bound documents 86ms
+     × uses production-qualified 32000 through the public generation API and revalidates its exported model 153ms
+ ❯ tests/parts-foundation-api.test.ts (7 tests | 2 failed) 16643ms
+   ❯ real source foundation HTTP API (6)
+     × reports source observations, scoped assembly admission and evidence-backed mapping recovery 15693ms
+     × returns authentic native mesh and only source-bound, fixture-verified assembly interfaces 95ms
+ ❯ tests/parts-assembly-migration.test.ts (8 tests | 1 failed) 1758ms
+   ❯ all-native-root assembly migration (8)
+     × binds the snapshot to current engine versions and every actual geometry / connector closure 8ms
+ ❯ tests/parts-grammar-sources.test.ts (11 tests | 2 failed) 4166ms
+   ❯ source-backed canonical connector ingestion (7)
+     × does not silently grant scope to altered source sections or provenance 5ms
+   ❯ source conflict and permitted Studio metadata adapters (4)
+     × does not consume or redistribute unlicensed Studio data and retains original type IDs for diagnosis 3ms
+ ❯ tests/parts-assembly-multipoint.test.ts (7 tests | 1 failed) 1771ms
+   ❯ native multi-point consistency (7)
+     × uses one shared rigid transform for all real 2x4 stud/underside pairs at four discrete rotations 28ms
+ ❯ tests/parts-grammar-validation.test.ts (21 tests | 1 failed) 74ms
+   ❯ explicit interface multi-point closure (8)
+     × checks explicit axial span and roll parameters without inventing a point attachment for a shaft 20ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 13 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/parts-assembly-api.test.ts > native assembly production HTTP boundaries > reports every actual source root and only counts runtime-validated admission decisions
+AssertionError: expected { total: 253, …(10) } to deeply equal { total: 253, …(10) }
+
+- Expected
++ Received
+
+  {
+-   "assemblyVerified": 87,
+-   "blocked": 166,
+-   "deferredPhysicalInterfaces": 0,
+-   "deferredRawConnectionIds": 0,
+-   "disabledInterfaces": 2816,
+-   "generatable": 87,
++   "assemblyVerified": 0,
++   "blocked": 154,
++   "deferredPhysicalInterfaces": 5019,
++   "deferredRawConnectionIds": 5084,
++   "disabledInterfaces": 2553,
++   "generatable": 99,
+    "physicalBuildsVerified": 0,
+-   "testedPhysicalInterfaces": 2426,
++   "testedPhysicalInterfaces": 0,
+    "total": 253,
+-   "verifiedInterfaces": 2268,
++   "verifiedInterfaces": 0,
+    "wheelModulesVerified": 0,
+  }
+
+ ❯ tests/parts-assembly-api.test.ts:94:27
+     92|     expect(status.queue).toHaveLength(253);
+     93|     expect(new Set(status.queue.map(entry => entry.partId)).size).toBe…
+     94|     expect(status.counts).toEqual(report.counts);
+       |                           ^
+     95|     expect(status.sourceCounts).toEqual(report.sourceCounts);
+     96|     expect(status.sourceCounts).toEqual({ totalRoots: 253, geometryRea…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/13]⎯
+
+ FAIL  tests/parts-assembly-api.test.ts > native assembly production HTTP boundaries > attaches the evidence-derived default pair with complete source hashes and four version bindings
+AssertionError: expected { partId: '3024', …(11) } to match object { assemblyVerified: true, …(1) }
+(10 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "assemblyVerified": true,
++   "assemblyVerified": false,
+    "generatable": true,
+  }
+
+ ❯ expectConnectedSourceGraph tests/parts-assembly-api.test.ts:44:24
+     42|     expect(graph.sourceHashes[placement.partId]).toBe(nativePartSource…
+     43|     const capability = status.capabilities.find(entry => entry.partId …
+     44|     expect(capability).toMatchObject({ assemblyVerified: true, generat…
+       |                        ^
+     45|   }
+     46|   const adjacency = new Map(graph.placements.map(placement => [placeme…
+ ❯ tests/parts-assembly-api.test.ts:134:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/13]⎯
+
+ FAIL  tests/parts-assembly-api.test.ts > native assembly production HTTP boundaries > generates actual wall and simple chassis models and exports only server-retained source-bound documents
+AssertionError: expected { partId: '3023', …(11) } to match object { assemblyVerified: true, …(1) }
+(10 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "assemblyVerified": true,
++   "assemblyVerified": false,
+    "generatable": true,
+  }
+
+ ❯ expectConnectedSourceGraph tests/parts-assembly-api.test.ts:44:24
+     42|     expect(graph.sourceHashes[placement.partId]).toBe(nativePartSource…
+     43|     const capability = status.capabilities.find(entry => entry.partId …
+     44|     expect(capability).toMatchObject({ assemblyVerified: true, generat…
+       |                        ^
+     45|   }
+     46|   const adjacency = new Map(graph.placements.map(placement => [placeme…
+ ❯ tests/parts-assembly-api.test.ts:188:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/13]⎯
+
+ FAIL  tests/parts-assembly-api.test.ts > native assembly production HTTP boundaries > uses production-qualified 32000 through the public generation API and revalidates its exported model
+AssertionError: expected { partId: '3023', …(11) } to match object { assemblyVerified: true, …(1) }
+(10 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "assemblyVerified": true,
++   "assemblyVerified": false,
+    "generatable": true,
+  }
+
+ ❯ expectConnectedSourceGraph tests/parts-assembly-api.test.ts:44:24
+     42|     expect(graph.sourceHashes[placement.partId]).toBe(nativePartSource…
+     43|     const capability = status.capabilities.find(entry => entry.partId …
+     44|     expect(capability).toMatchObject({ assemblyVerified: true, generat…
+       |                        ^
+     45|   }
+     46|   const adjacency = new Map(graph.placements.map(placement => [placeme…
+ ❯ tests/parts-assembly-api.test.ts:247:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/13]⎯
+
+ FAIL  tests/parts-assembly-connections.test.ts > source-backed compatibility rule > does not enable clips, pin interfaces or wheel/tyre groups from names alone
+AssertionError: expected 'incompatible' to be 'unknown' // Object.is equality
+
+Expected: "unknown"
+Received: "incompatible"
+
+ ❯ tests/parts-assembly-connections.test.ts:56:77
+     54|     expect(checkConnectionCompatibility(rim, tyre)).toMatchObject({ st…
+     55|     const hole = endpoint('3700', 'F', (point) => point.sourceId === '…
+     56|     expect(checkConnectionCompatibility(standardMale('3001'), hole)).t…
+       |                                                                             ^
+     57|     expect(checkConnectionCompatibility(hole, standardMale('3001'))).t…
+     58|     // This source pin's L_ shoulder is not parsed; no imaginary male …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/13]⎯
+
+ FAIL  tests/parts-assembly-engine.test.ts > native attachment graph and production admission > requires production admission and an explicit port/rule whitelist
+AssertionError: expected [Function] to throw error including 'verification' but got 'The part has no current source-backed…'
+
+Expected: "verification"
+Received: "The part has no current source-backed grammar eligibility or retained validated interface qualification."
+
+ ❯ tests/parts-assembly-engine.test.ts:71:49
+     69|       const { engine, capabilities } = provisionalProduction();
+     70|       Object.assign(capabilities.get('3001')!, flags);
+     71|       await expect(engine.createAssembly('3001')).rejects.toThrow('ver…
+       |                                                 ^
+     72|     }
+     73|     const { engine, capabilities } = provisionalProduction(), seed = a…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/13]⎯
+
+ FAIL  tests/parts-assembly-migration.test.ts > all-native-root assembly migration > binds the snapshot to current engine versions and every actual geometry / connector closure
+AssertionError: expected { schemaVersion: 1, …(27) } to match object { …(4) }
+(92 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "assemblyEngineVersion": "native-assembly-0.7.0-grammar",
++   "assemblyEngineVersion": "native-assembly-0.6.0",
+    "collisionVersion": "native-closed-bvh-local-partition-1.1.0",
+-   "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-1",
++   "connectionRuleVersion": "source-stud-1.0.0",
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+  }
+
+ ❯ tests/parts-assembly-migration.test.ts:48:20
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/13]⎯
+
+ FAIL  tests/parts-assembly-multipoint.test.ts > native multi-point consistency > uses one shared rigid transform for all real 2x4 stud/underside pairs at four discrete rotations
+AssertionError: expected 'blocked' to be 'consistent' // Object.is equality
+
+Expected: "consistent"
+Received: "blocked"
+
+ ❯ tests/parts-assembly-multipoint.test.ts:22:29
+     20|       const transform: RigidTransform = { rotation: axisRotation([0, -…
+     21|       const result = checkMultiPointConnection({ fixedPart: part('3001…
+     22|       expect(result.status).toBe('consistent'); expect(result.matches)…
+       |                             ^
+     23|       for (const match of result.matches) {
+     24|         expect(distance(match.candidate.transform.translation, transfo…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/13]⎯
+
+ FAIL  tests/parts-foundation-api.test.ts > real source foundation HTTP API > reports source observations, scoped assembly admission and evidence-backed mapping recovery
+AssertionError: expected { total: 253, …(10) } to deeply equal { total: 253, …(10) }
+
+- Expected
++ Received
+
+  {
+-   "assemblyVerified": 87,
+-   "blocked": 166,
+-   "deferredPhysicalInterfaces": 0,
+-   "deferredRawConnectionIds": 0,
+-   "disabledInterfaces": 2816,
+-   "generatable": 87,
++   "assemblyVerified": 0,
++   "blocked": 154,
++   "deferredPhysicalInterfaces": 5019,
++   "deferredRawConnectionIds": 5084,
++   "disabledInterfaces": 2553,
++   "generatable": 99,
+    "physicalBuildsVerified": 0,
+-   "testedPhysicalInterfaces": 2426,
++   "testedPhysicalInterfaces": 0,
+    "total": 253,
+-   "verifiedInterfaces": 2268,
++   "verifiedInterfaces": 0,
+    "wheelModulesVerified": 0,
+  }
+
+ ❯ tests/parts-foundation-api.test.ts:41:30
+     39|     expect(migration.sourceCounts).toEqual({ totalRoots: 253, geometry…
+     40|     expect(migration.sourceCounts).toEqual(report.sourceCounts);
+     41|     expect(migration.counts).toEqual(report.counts);
+       |                              ^
+     42|     expect(migration.runtimeValidation).toMatchObject({ status: 'ready…
+     43|     expect(status.assembly.counts).toEqual(migration.counts);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/13]⎯
+
+ FAIL  tests/parts-foundation-api.test.ts > real source foundation HTTP API > returns authentic native mesh and only source-bound, fixture-verified assembly interfaces
+AssertionError: expected 'source-backed-grammar-interfaces-only' to be 'source-backed-tested-interfaces-only' // Object.is equality
+
+Expected: "source-backed-tested-interfaces-only"
+Received: "source-backed-grammar-interfaces-only"
+
+ ❯ tests/parts-foundation-api.test.ts:82:47
+     80|     expect(detail.geometry!.collision).toMatchObject({ kind: 'aabb', d…
+     81|     expect(detail.part.checks.find(check => check.id === 'attachment')…
+     82|     expect(detail.part.assemblyReport?.scope).toBe('source-backed-test…
+       |                                               ^
+     83|     expect(detail.part.interfaceCoverage).toEqual(migration.entries.fi…
+     84|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/13]⎯
+
+ FAIL  tests/parts-grammar-sources.test.ts > source-backed canonical connector ingestion > does not silently grant scope to altered source sections or provenance
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/parts-grammar-sources.test.ts:87:49
+     85|     scale.source.raw += ' [scale=unreviewed-mode]'; scale.properties.s…
+     86|     expect(scale.dimensionsResolved).toBe(true);
+     87|     expect(supportsStandardStudEndpoint(scale)).toBe(false);
+       |                                                 ^
+     88|     expect(adaptImportedConnection(scale).matchingPolicy).toBeNull();
+     89|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/13]⎯
+
+ FAIL  tests/parts-grammar-sources.test.ts > source conflict and permitted Studio metadata adapters > does not consume or redistribute unlicensed Studio data and retains original type IDs for diagnosis
+AssertionError: expected { originalTypeId: '9999', …(1) } to match object { raw: '' }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "raw": "",
++   "raw": "Synthetic normalized Studio test record; no proprietary .conn file",
+  }
+
+ ❯ tests/parts-grammar-sources.test.ts:162:50
+    160|     expect(result.unknownInterfaces[0]).toMatchObject({ code: 'STUDIO_…
+    161|     expect(result.rawEvidence['studio-fixture']).toMatchObject({ origi…
+    162|     expect(result.rawEvidence['studio-fixture']).toMatchObject({ raw: …
+       |                                                  ^
+    163|     expect(result.unknownInterfaces[0].raw).toBeNull();
+    164|     const permitted = adaptStudioConnectivity(records, { ...grant, per…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/13]⎯
+
+ FAIL  tests/parts-grammar-validation.test.ts > explicit interface multi-point closure > checks explicit axial span and roll parameters without inventing a point attachment for a shaft
+AssertionError: expected 'INCONSISTENT' to be 'CONSISTENT' // Object.is equality
+
+Expected: "CONSISTENT"
+Received: "INCONSISTENT"
+
+ ❯ tests/parts-grammar-validation.test.ts:93:100
+     91|     pair.axialPositionLdu = 2; pair.angleDeg = 0;
+     92|     const shifted: RigidTransform = { rotation: [...IDENTITY_TRANSFORM…
+     93|     expect(validateGrammarMultiPoint({ pairs: [pair], movingTransform:…
+       |                                                                                                    ^
+     94|     pair.axialPositionLdu = 5;
+     95|     expect(validateGrammarMultiPoint({ pairs: [pair], movingTransform:…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/13]⎯
+
+
+ Test Files  8 failed | 44 passed (52)
+      Tests  13 failed | 733 passed (746)
+   Start at  07:19:54
+   Duration  103.72s (tests 98%, import 2%)
+

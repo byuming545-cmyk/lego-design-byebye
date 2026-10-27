@@ -26,6 +26,9 @@ import {
 import ModelViewer from "./components/ModelViewer.js";
 import { PartThumbnail } from "./components/PartThumbnail.js";
 import SpeedCreative from "./pages/SpeedCreative.js";
+import AutomotiveDesigner from "./pages/AutomotiveDesigner.js";
+import PartLab from "./pages/PartLab.js";
+import { LEGACY_OPERATIONS_BLOCKED } from "./parts/legacyStatus.js";
 import type {
   GenerationOptions,
   GenerationResult,
@@ -67,6 +70,8 @@ const sizeLabels: Record<ModelSize, string> = {
   balanced: "均衡",
   large: "大型",
 };
+
+const legacyGenerationPaused = LEGACY_OPERATIONS_BLOCKED;
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(path, {
@@ -122,11 +127,19 @@ function Toggle({
 }
 
 export default function App() {
-  const [area, setArea] = useState<'general' | 'speed'>(() => window.location.hash === '#/speed' ? 'speed' : 'general');
+  type Area = 'general' | 'speed' | 'automotive' | 'automotive-lab' | 'part-lab';
+  const currentArea = (): Area => {
+    const route = (window.location.hash ? window.location.hash.slice(1) : window.location.pathname).split('?')[0];
+    return route === '/automotive-lab' ? 'automotive-lab' : route === '/automotive' ? 'automotive' : route === '/speed' ? 'speed' : route === '/general' ? 'general' : 'part-lab';
+  };
+  const [area, setArea] = useState<Area>(currentArea);
+  const automotiveActive = area === 'automotive' || area === 'automotive-lab';
+  const [automotiveOpened, setAutomotiveOpened] = useState(automotiveActive);
+  useEffect(() => { if (automotiveActive) setAutomotiveOpened(true); }, [automotiveActive]);
   const [speedOpened, setSpeedOpened] = useState(area === 'speed');
   useEffect(() => { if (area === 'speed') setSpeedOpened(true); }, [area]);
   useEffect(() => {
-    const navigate = () => setArea(window.location.hash === '#/speed' ? 'speed' : 'general');
+    const navigate = () => setArea(currentArea());
     window.addEventListener('hashchange', navigate);
     return () => window.removeEventListener('hashchange', navigate);
   }, []);
@@ -166,19 +179,6 @@ export default function App() {
       try {
         const loaded = await request<SetInventory>("/api/sets/10696");
         setInventory(loaded);
-        const generated = await request<GenerationResult>("/api/generate", {
-          method: "POST",
-          body: JSON.stringify({
-            setNumber: loaded.setNumber,
-            options: {
-              prompt: targets[0].prompt,
-              size: "balanced",
-              colorStrategy: "substitute",
-              maximizeUsage: false,
-            },
-          }),
-        });
-        setResult(generated);
       } catch (err) {
         setError(errorMessage(err));
       } finally {
@@ -222,6 +222,7 @@ export default function App() {
 
   async function generate(event: React.FormEvent) {
     event.preventDefault();
+    if (legacyGenerationPaused) { setError('旧版参数化零件生成已暂停。请进入真实零件库查看来源与验证进度。'); return; }
     if (!inventory) return;
     setGenerating(true);
     setError("");
@@ -246,6 +247,7 @@ export default function App() {
   }
 
   async function exportPdf() {
+    if (legacyGenerationPaused) { setError('旧版模型尚未通过真实零件准入，PDF 导出已暂停。'); return; }
     if (!result) return;
     setExporting(true);
     setError("");
@@ -261,6 +263,7 @@ export default function App() {
   }
 
   function downloadModel() {
+    if (legacyGenerationPaused) { setError('旧版模型尚未通过真实零件准入，模型导出已暂停。'); return; }
     if (!result) return;
     const url = URL.createObjectURL(
       new Blob([JSON.stringify(result, null, 2)], { type: "application/json" }),
@@ -294,15 +297,15 @@ export default function App() {
 
   return (
     <div className="app-shell">
-      <header className="site-header">
+      <header className="site-header" hidden={automotiveActive}>
         <a
           className="brand"
           href="#"
           aria-label="Bricklab 首页"
           onClick={(e) => {
             e.preventDefault();
-            window.location.hash = '/general';
-            setArea('general');
+            window.location.hash = '/part-lab';
+            setArea('part-lab');
             setView("model");
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
@@ -315,6 +318,7 @@ export default function App() {
           </span>
         </a>
         <nav aria-label="主导航">
+          <button className={area === 'part-lab' ? 'nav-link active' : 'nav-link'} onClick={() => { window.location.hash = '/part-lab'; setArea('part-lab'); }}>真实零件库</button>
           <button
             className={area === 'general' && view === "model" ? "nav-link active" : "nav-link"}
             onClick={() => { window.location.hash = '/general'; setArea('general'); setView("model"); }}
@@ -322,6 +326,7 @@ export default function App() {
             通用创意
           </button>
           <button className={area === 'speed' ? 'nav-link active' : 'nav-link'} onClick={() => { window.location.hash = '/speed'; setArea('speed'); }}>Speed Creative</button>
+          <button className="nav-link" onClick={() => { window.location.hash = '/automotive'; setArea('automotive'); }}>自由汽车设计</button>
           <button
             className={area === 'general' && view === "steps" ? "nav-link active general-guide-nav" : "nav-link general-guide-nav"}
             disabled={!result}
@@ -331,14 +336,17 @@ export default function App() {
           </button>
         </nav>
         <button className="version-button" onClick={() => setAboutOpen(true)}>
-          <span className="status-dot" /> {area === 'speed' ? 'V0.2' : 'V0.1'}{" "}
-          <span className="version-label">· 创意实验中</span>
+          <span className="status-dot" /> {area === 'part-lab' ? 'PART LAB' : area === 'speed' ? 'V0.2.1' : 'V0.1'}{" "}
+          <span className="version-label">· {area === 'part-lab' ? '来源核验中' : '历史原型'}</span>
           <ArrowUpRight size={14} />
         </button>
       </header>
 
+      {area !== 'part-lab' && <div className="legacy-foundation-banner" role="status"><ShieldCheck size={18} /><p><strong>历史版本 · 参数化零件尚未验证</strong>当前优先建立真实零件基础，旧版生成与模型导出已暂停。已有检查结果不代表真实乐高零件验证。</p><a href="#/part-lab">查看真实零件库 <ArrowRight size={14} /></a></div>}
+      {area === 'part-lab' && <PartLab />}
       {(speedOpened || area === 'speed') && <div hidden={area !== 'speed'}><SpeedCreative /></div>}
-      <main hidden={area === 'speed'}>
+      {(automotiveOpened || automotiveActive) && <div hidden={!automotiveActive}><AutomotiveDesigner lab={area === 'automotive-lab'} /></div>}
+      <main hidden={area !== 'general'}>
         <section className="page-intro">
           <div>
             <div className="eyebrow">
@@ -543,7 +551,7 @@ export default function App() {
                 <button
                   className="generate-button"
                   type="submit"
-                  disabled={!inventory || !prompt.trim() || busy}
+                  disabled={legacyGenerationPaused || !inventory || !prompt.trim() || busy}
                 >
                   {generating ? (
                     <LoaderCircle className="spin" size={19} />
@@ -594,7 +602,7 @@ export default function App() {
                 </div>
                 <button
                   className="export-button"
-                  disabled={!result || exporting || busy}
+                  disabled={legacyGenerationPaused || !result || exporting || busy}
                   onClick={exportPdf}
                 >
                   {exporting ? (
@@ -836,6 +844,7 @@ export default function App() {
                 </span>
                 <button
                   onClick={downloadModel}
+                  disabled={legacyGenerationPaused}
                   title="导出可继续编辑的结构化数据"
                 >
                   模型 JSON
@@ -963,7 +972,7 @@ export default function App() {
         </section>
       </main>
 
-      <footer>
+      <footer hidden={automotiveActive || area === 'part-lab'}>
         <span className="footer-brand">bricklab.</span>
         <span>为每一块积木，寻找下一种可能。</span>
         <span>独立创意原型 · 与 LEGO® 集团无关联</span>
@@ -999,31 +1008,37 @@ export default function App() {
         <span className="brand-icon">
           <Box size={26} />
         </span>
-        <div className="eyebrow">BRICKLAB · {area === 'speed' ? 'SPEED CREATIVE V0.2' : 'V0.1'}</div>
+        <div className="eyebrow">BRICKLAB · {area === 'part-lab' ? 'PART LAB · REAL PARTS FOUNDATION' : area === 'speed' ? 'SPEED CREATIVE V0.2.1 · VALIDATION EDITION' : 'V0.1'}</div>
         <h2>
-          让已有的积木，
+          {area === 'part-lab' ? '从真实资料，' : '让已有的积木，'}
           <br />
-          遇见新的想象。
+          {area === 'part-lab' ? '到可信零件。' : '遇见新的想象。'}
         </h2>
         <p>
-          {area === 'speed'
+          {area === 'part-lab'
+            ? '真实零件库整理本地说明书中的观测记录，导入有版本和许可来源的 LDraw 几何与连接数据，并逐项显示验证范围。'
+            : area === 'speed'
             ? 'Speed Creative 是独立的原创汽车工作台，按实际库存生成约 8 stud 宽的模块化小车。设计与文字修改由有限规则驱动。'
             : '这是一个规则驱动的创意重拼原型，目前支持机器人、汽车、房子与小动物四种基础模板。'}
         </p>
-        <h3>关于演示数据</h3>
+        <h3>{area === 'part-lab' ? '关于资料与编号' : '关于演示数据'}</h3>
         <p>
-          {area === 'speed'
+          {area === 'part-lab'
+            ? '说明书附录的 Element ID 与 Design ID、LDraw 编号分别登记。缺少可靠映射、颜色或备件信息时，资料保留为待核对，不使用猜测补全。'
+            : area === 'speed'
             ? 'DEMO-SPEED 是人工合成的独立零件池，不代表任何官方套装。真实套装需要在服务器配置 Rebrickable API Key，缺少 Key 时不会用演示零件替代。'
             : '未配置 Rebrickable 时，10696 与 11013 使用人工编写的演示库存，并非对应官方套装的真实零件清单。真实数据由服务器端的 Rebrickable 数据源提供。'}
         </p>
-        <h3>关于拼搭校验</h3>
+        <h3>{area === 'part-lab' ? '关于生成准入' : '关于拼搭校验'}</h3>
         <p>
-          {area === 'speed'
-            ? '车辆检查库存、显式连接图、实体碰撞、轮轴安装、轮胎间隙及规则式结构支撑。这些检查尚未经过实物拼搭、摩擦或承重测试。'
+          {area === 'part-lab'
+            ? '几何或连接导入成功，不表示零件已完成拼接与净空验证。当前旧版生成及导出暂停；PDF 观测也不代表神经网络训练或整车三维还原。'
+            : area === 'speed'
+            ? '自动校验检查库存、连接、碰撞、轮组与规则式结构支撑。它不证明真实积木一定可以拼出。实拼反馈由用户实际尝试后自报，并关联具体模型版本；未实拼为 untested。'
             : '模型按 studs 网格与 plate 高度计算，检查库存、明显重叠和上下连接。简化外形与连接规则不代表完整 CAD 或物理稳定性认证。汽车是静态积木造型，特殊机械件暂不参与生成。'}
         </p>
         <button className="generate-button" onClick={() => setAboutOpen(false)}>
-          知道了，继续创作
+          {area === 'part-lab' ? '继续查看零件' : '知道了，继续查看'}
           <ArrowRight size={18} />
         </button>
       </dialog>

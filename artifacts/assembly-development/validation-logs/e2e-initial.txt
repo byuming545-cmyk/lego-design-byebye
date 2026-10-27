@@ -1,0 +1,110 @@
+
+> bricklab@0.6.0 test:e2e
+> playwright test --config playwright.config.ts
+
+[WebServer] (node:26579) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 9 tests using 1 worker
+
+(node:26667) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [chromium] › tests/e2e/assembly.spec.ts:64:1 › reports every real source part as passed or blocked with an explicit scope (21.2s)
+(node:26881) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 [chromium] › tests/e2e/assembly.spec.ts:100:1 › attaches a source-verified pair and rejects the same mating gender (5.9s)
+  ✓  3 [chromium] › tests/e2e/assembly.spec.ts:125:1 › generates source-bound wall and chassis modules and preserves unsupported wheel reasons (4.5s)
+  ✓  4 [chromium] › tests/e2e/assembly.spec.ts:155:1 › imports exported real models through current validation and prevents export after version or occupancy invalidation (4.7s)
+  ✓  5 [chromium] › tests/e2e/assembly.spec.ts:204:1 › mobile assembly mode keeps source controls, accepted rendering and debug data within the viewport (3.0s)
+  ✘  6 [chromium] › tests/e2e/parts-foundation.spec.ts:120:3 › real parts foundation with actual bundled sources and WebGL › opens the real library by default and renders native 3001 mesh plus source markers (19.1s)
+(node:27280) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  7 [chromium] › tests/e2e/parts-foundation.spec.ts:169:3 › real parts foundation with actual bundled sources and WebGL › retains source-observed external mapping without inventing an LDraw cross-reference or generation eligibility (3.5s)
+  ✓  8 [chromium] › tests/e2e/parts-foundation.spec.ts:194:3 › real parts foundation with actual bundled sources and WebGL › shows six readable PDFs, two transfer failures and evidence-based element frequency without invented design coverage (2.4s)
+  ✓  9 [chromium] › tests/e2e/parts-foundation.spec.ts:231:3 › real parts foundation with actual bundled sources and WebGL › supports mobile inspection and keeps legacy UI and actual HTTP generation/export blocked (3.8s)
+
+
+  1) [chromium] › tests/e2e/assembly.spec.ts:64:1 › reports every real source part as passed or blocked with an explicit scope 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: getByRole('region', { name: '物理接口验证覆盖', exact: true }).locator('.interface-coverage-units > div').filter({ has: getByText('已开放原始 ID', { exact: true }) }).locator('dd')
+    Expected: "1262"
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveText" getByRole('region', { name: '物理接口验证覆盖', exact: true }).locator('.interface-coverage-units > div').filter({ has: getByText('已开放原始 ID', { exact: true }) }).locator('dd') with timeout 15000ms
+      - waiting for getByRole('region', { name: '物理接口验证覆盖', exact: true }).locator('.interface-coverage-units > div').filter({ has: getByText('已开放原始 ID', { exact: true }) }).locator('dd')
+
+
+       at assemblyChecks.ts:41
+
+      39 |   }
+      40 |   for (const [label, key] of [['原始来源连接记录', 'rawSourceConnectionRecords'], ['逻辑连接组', 'logicalConnectionGroups'], ['已验证物理接口', 'verifiedPhysicalInterfaces'], ['已开放原始 ID', 'enabledRawConnectionIds'], ['已开放物理接口', 'enabledPhysicalInterfaces']] as const) {
+    > 41 |     await expect(region.locator('.interface-coverage-units > div').filter({ has: region.page().getByText(label, { exact: true }) }).locator('dd')).toHaveText(String(coverage[key]));
+         |                                                                                                                                                    ^
+      42 |   }
+      43 |   expect(coverage.verifiedPass + coverage.verifiedBlocked + coverage.requiresAstraReview + coverage.pending).toBe(coverage.physicalInterfacesDiscovered);
+      44 |   expect(coverage.enabledPhysicalInterfaces).toBeLessThanOrEqual(coverage.verifiedPass);
+        at expectCoverageMatches (/workspace/lego-design-byebye/tests/e2e/assemblyChecks.ts:41:148)
+        at /workspace/lego-design-byebye/tests/e2e/assembly.spec.ts:75:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/assembly-reports-every-rea-cdb3a-cked-with-an-explicit-scope-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/assembly-reports-every-rea-cdb3a-cked-with-an-explicit-scope-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/assembly-reports-every-rea-cdb3a-cked-with-an-explicit-scope-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/assembly-reports-every-rea-cdb3a-cked-with-an-explicit-scope-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › tests/e2e/parts-foundation.spec.ts:120:3 › real parts foundation with actual bundled sources and WebGL › opens the real library by default and renders native 3001 mesh plus source markers 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: getByRole('region', { name: '本零件物理接口验证覆盖', exact: true }).locator('.interface-coverage-units > div').filter({ has: getByText('已开放原始 ID', { exact: true }) }).locator('dd')
+    Expected: "16"
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveText" getByRole('region', { name: '本零件物理接口验证覆盖', exact: true }).locator('.interface-coverage-units > div').filter({ has: getByText('已开放原始 ID', { exact: true }) }).locator('dd') with timeout 15000ms
+      - waiting for getByRole('region', { name: '本零件物理接口验证覆盖', exact: true }).locator('.interface-coverage-units > div').filter({ has: getByText('已开放原始 ID', { exact: true }) }).locator('dd')
+
+
+       at assemblyChecks.ts:41
+
+      39 |   }
+      40 |   for (const [label, key] of [['原始来源连接记录', 'rawSourceConnectionRecords'], ['逻辑连接组', 'logicalConnectionGroups'], ['已验证物理接口', 'verifiedPhysicalInterfaces'], ['已开放原始 ID', 'enabledRawConnectionIds'], ['已开放物理接口', 'enabledPhysicalInterfaces']] as const) {
+    > 41 |     await expect(region.locator('.interface-coverage-units > div').filter({ has: region.page().getByText(label, { exact: true }) }).locator('dd')).toHaveText(String(coverage[key]));
+         |                                                                                                                                                    ^
+      42 |   }
+      43 |   expect(coverage.verifiedPass + coverage.verifiedBlocked + coverage.requiresAstraReview + coverage.pending).toBe(coverage.physicalInterfacesDiscovered);
+      44 |   expect(coverage.enabledPhysicalInterfaces).toBeLessThanOrEqual(coverage.verifiedPass);
+        at expectCoverageMatches (/workspace/lego-design-byebye/tests/e2e/assemblyChecks.ts:41:148)
+        at /workspace/lego-design-byebye/tests/e2e/parts-foundation.spec.ts:148:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/parts-foundation-real-part-15981-01-mesh-plus-source-markers-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/parts-foundation-real-part-15981-01-mesh-plus-source-markers-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/parts-foundation-real-part-15981-01-mesh-plus-source-markers-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/parts-foundation-real-part-15981-01-mesh-plus-source-markers-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [chromium] › tests/e2e/assembly.spec.ts:64:1 › reports every real source part as passed or blocked with an explicit scope 
+    [chromium] › tests/e2e/parts-foundation.spec.ts:120:3 › real parts foundation with actual bundled sources and WebGL › opens the real library by default and renders native 3001 mesh plus source markers 
+  7 passed (1.2m)

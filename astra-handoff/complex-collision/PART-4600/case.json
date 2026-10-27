@@ -1,0 +1,374 @@
+{
+  "schemaVersion": 1,
+  "caseId": "PART-4600",
+  "category": "HOLLOW_GEOMETRY",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "affectedParts": [
+    {
+      "partId": "4600",
+      "ldrawId": "4600",
+      "identitySystem": "ldraw",
+      "sourceDigest": "5fb7923473b0e1e8eed210ad7b53844763a0875844b16c9bf95d65570b1c7b8c",
+      "geometryHash": "9797db5c03b2f9405d5f07923341f11be17803c9700905ca0f99a54db77ffc02",
+      "connectionMetadataHash": "aff4c3ae82e273ca5434e6e3acfd7abe4b3f4212b358fb644dfbded95591f9db"
+    }
+  ],
+  "affectedPhysicalInterfaces": [
+    "416a0cb3d70f8f22442c49a2d451db35ea066413190c7abcbbd76f5b0ca3a13a",
+    "99eea34d31652c9d0fd16debbc67df5d845db4661a965ded7a96ee3dc10fe229",
+    "1b0a9d791398befe504d82d46cd538b053cc4698b14f151013a20f4d4cc71970",
+    "9c4023dedca251fd26dc285ff8968df6073c47aa033a0fcd21fb9b1a02fec159",
+    "8d2b9cf2952030e33c127cf4abe0e4c1c734fc2520882904bd5e3f237a340b6d",
+    "526d7209cc825f3b8eba4bd3c871881374b2febab91154d4b9944d0c1220641c",
+    "517ddbbcf9dd8e8206af39039a7521292ed3fc74078837d920756b6e2d7b42ef",
+    "f93090fbb93b01ab3259d08f9ae5c2cff724ffa4442a26a618096d65ec332153",
+    "2bb389d2c04b9451a93c17f281af771bf57778737d8470da2c9cd3f0118a80d6",
+    "4087d54cf333f4a98db018d43cece1215ca9a6ecb21d5400a26338b4fd506864"
+  ],
+  "connections": [
+    {
+      "id": "p/wpin.dat:8:0",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "M",
+      "position": [
+        22,
+        5,
+        0
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        -1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 4,
+          "length": 11
+        },
+        {
+          "profile": "_L",
+          "radius": 4.25,
+          "length": 1
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "M",
+        "caps": "one",
+        "secs": "R 4 11   _L 4.25 1"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "p/wpin.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "49309e3705533a082a59a54c6b5b0f49da792e28040bc66c302b6724f21ee334",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/wpin.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [gender=M] [caps=one] [secs=R 4 11   _L 4.25 1]",
+        "transforms": [
+          {
+            "file": "parts/4600.dat",
+            "line": 43,
+            "directive": "1 16 22 5 0 0 -1 0 1 0 0 0 0 1 wpin2.dat",
+            "position": [
+              22,
+              5,
+              0
+            ],
+            "matrix": [
+              0,
+              -1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "file": "p/wpin2.dat",
+            "line": 29,
+            "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 wpin2a.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "file": "p/wpin2a.dat",
+            "line": 36,
+            "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 wpin.dat",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    },
+    {
+      "id": "p/wpin.dat:8:1",
+      "sourceId": null,
+      "kind": "cylinder",
+      "family": "cylinder",
+      "gender": "M",
+      "position": [
+        22,
+        5,
+        0
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "orientation": [
+        0,
+        -1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "units": "LDU",
+      "sections": [
+        {
+          "profile": "R",
+          "radius": 4,
+          "length": 11
+        },
+        {
+          "profile": "_L",
+          "radius": 4.25,
+          "length": 1
+        }
+      ],
+      "dimensionsFrame": "source-local",
+      "dimensionsResolved": true,
+      "radius": null,
+      "length": null,
+      "group": null,
+      "properties": {
+        "gender": "M",
+        "caps": "one",
+        "secs": "R 4 11   _L 4.25 1"
+      },
+      "source": {
+        "library": "LDCadShadowLibrary",
+        "path": "p/wpin.dat",
+        "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+        "sha256": "49309e3705533a082a59a54c6b5b0f49da792e28040bc66c302b6724f21ee334",
+        "license": "CC-BY-SA-4.0",
+        "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/wpin.dat",
+        "line": 8,
+        "raw": "0 !LDCAD SNAP_CYL [gender=M] [caps=one] [secs=R 4 11   _L 4.25 1]",
+        "transforms": [
+          {
+            "file": "parts/4600.dat",
+            "line": 43,
+            "directive": "1 16 22 5 0 0 -1 0 1 0 0 0 0 1 wpin2.dat",
+            "position": [
+              22,
+              5,
+              0
+            ],
+            "matrix": [
+              0,
+              -1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "file": "p/wpin2.dat",
+            "line": 8,
+            "directive": "0 !LDCAD SNAP_INCL [ref=wpin.dat]",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "physicalVerified": false
+    }
+  ],
+  "currentTransform": {
+    "rotation": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "translation": [
+      0,
+      0,
+      0
+    ]
+  },
+  "transformStatus": "SOURCE_IDENTITY",
+  "expectedBehavior": {
+    "status": "EXPECTED_UNKNOWN",
+    "explanation": "No independent physical-build proof is available. Resolve the source, rule or geometric evidence before declaring this arrangement valid."
+  },
+  "actualBehavior": {
+    "status": "blocked",
+    "reasonCodes": [
+      "branched-native-boundary"
+    ],
+    "details": {
+      "reason": "The source mesh has open/branched boundary chains."
+    }
+  },
+  "replay": {
+    "kind": "proxy",
+    "partId": "4600"
+  },
+  "reproductionCommand": "npm run astra:case -- PART-4600",
+  "relevantSourceFiles": [
+    "data/parts-foundation/ldraw/files/p/1-16cyli.dat",
+    "data/parts-foundation/ldraw/files/p/1-16edge.dat",
+    "data/parts-foundation/ldraw/files/p/1-4chrd.dat",
+    "data/parts-foundation/ldraw/files/p/1-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/1-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/3-8chrd.dat",
+    "data/parts-foundation/ldraw/files/p/3-8cyli.dat",
+    "data/parts-foundation/ldraw/files/p/3-8cylo.dat",
+    "data/parts-foundation/ldraw/files/p/3-8edge.dat",
+    "data/parts-foundation/ldraw/files/p/3-8ring12.dat",
+    "data/parts-foundation/ldraw/files/p/3-8ring3.dat",
+    "data/parts-foundation/ldraw/files/p/4-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/4-4disc.dat",
+    "data/parts-foundation/ldraw/files/p/4-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/8/1-4cyli.dat",
+    "data/parts-foundation/ldraw/files/p/8/1-4cyls.dat",
+    "data/parts-foundation/ldraw/files/p/8/1-4edge.dat",
+    "data/parts-foundation/ldraw/files/p/8/1-4ndis.dat",
+    "data/parts-foundation/ldraw/files/p/box3u2p.dat",
+    "data/parts-foundation/ldraw/files/p/box3u8p.dat",
+    "data/parts-foundation/ldraw/files/p/box5-4a.dat",
+    "data/parts-foundation/ldraw/files/p/rect.dat",
+    "data/parts-foundation/ldraw/files/p/rect2a.dat",
+    "data/parts-foundation/ldraw/files/p/st4jfil4.dat",
+    "data/parts-foundation/ldraw/files/p/stud.dat",
+    "data/parts-foundation/ldraw/files/p/stud4f2w.dat",
+    "data/parts-foundation/ldraw/files/p/stug-2x2.dat",
+    "data/parts-foundation/ldraw/files/p/wpin.dat",
+    "data/parts-foundation/ldraw/files/p/wpin2.dat",
+    "data/parts-foundation/ldraw/files/p/wpin2a.dat",
+    "data/parts-foundation/ldraw/files/parts/4600.dat",
+    "data/parts-foundation/shadow/files/p/wpin.dat",
+    "data/parts-foundation/shadow/files/p/wpin2.dat",
+    "data/parts-foundation/shadow/files/p/stud.dat",
+    "data/parts-foundation/shadow/files/parts/4600.dat"
+  ],
+  "relevantTests": [
+    "tests/parts-assembly-collision.test.ts",
+    "tests/parts-assembly-multipoint.test.ts"
+  ],
+  "evidence": [
+    {
+      "reasonCodes": [
+        "collision-proxy-branched-native-boundary"
+      ],
+      "reasons": [
+        "The source mesh has open/branched boundary chains."
+      ],
+      "sourceChecks": [
+        {
+          "name": "source-integrity",
+          "outcome": "passed",
+          "reason": "Pinned native geometry and every source-backed connection file are hashed and licensed."
+        },
+        {
+          "name": "collision",
+          "outcome": "blocked",
+          "reason": "The source mesh has open/branched boundary chains."
+        }
+      ]
+    }
+  ],
+  "attemptsAlreadyMade": [
+    "Loaded and fingerprinted the actual pinned native source.",
+    "Ran the current per-part migration source/fixture prerequisites."
+  ],
+  "whySolStopped": "Further progress requires missing source semantics or complex solid/retention rules; no ad hoc geometry or collision exception was introduced.",
+  "diagnosticOnly": true
+}

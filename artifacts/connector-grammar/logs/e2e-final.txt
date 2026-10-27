@@ -1,0 +1,22 @@
+
+> bricklab@0.6.0 test:e2e
+> playwright test --config playwright.config.ts
+
+
+Running 11 tests using 1 worker
+
+(node:247682) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [chromium] › tests/e2e/assembly.spec.ts:7:1 › uses an admitted 32000 through normal UI generation, exports it and validates the uploaded model (20.5s)
+  ✓   2 [chromium] › tests/e2e/assembly.spec.ts:105:1 › separates source grammar eligibility from actual assembly evidence for every real part (52.0s)
+  ✓   3 [chromium] › tests/e2e/assembly.spec.ts:152:1 › attaches a source-backed grammar pair and rejects the same mating gender (5.8s)
+  ✓   4 [chromium] › tests/e2e/assembly.spec.ts:177:1 › generates source-bound wall and chassis modules and preserves unsupported wheel reasons (4.3s)
+  ✓   5 [chromium] › tests/e2e/assembly.spec.ts:208:1 › imports exported real models through current validation and prevents export after version or occupancy invalidation (3.6s)
+  ✓   6 [chromium] › tests/e2e/assembly.spec.ts:257:1 › mobile assembly mode keeps source controls, accepted rendering and debug data within the viewport (2.2s)
+  ✓   7 [chromium] › tests/e2e/parts-foundation.spec.ts:121:3 › real parts foundation with actual bundled sources and WebGL › opens the real library by default and renders native 3001 mesh plus source markers (4.2s)
+  ✓   8 [chromium] › tests/e2e/parts-foundation.spec.ts:175:3 › real parts foundation with actual bundled sources and WebGL › retains source-observed external mapping without inventing an LDraw cross-reference or generation eligibility (2.3s)
+  ✓   9 [chromium] › tests/e2e/parts-foundation.spec.ts:200:3 › real parts foundation with actual bundled sources and WebGL › shows six readable PDFs, two transfer failures and evidence-based element frequency without invented design coverage (1.7s)
+  ✓  10 [chromium] › tests/e2e/parts-foundation.spec.ts:237:3 › real parts foundation with actual bundled sources and WebGL › supports mobile inspection and keeps legacy UI and actual HTTP generation/export blocked (2.9s)
+  ✓  11 [chromium] › tests/e2e/parts-foundation.spec.ts:268:3 › real parts foundation with actual bundled sources and WebGL › does not restore quarantined browser history or enable legacy file import (693ms)
+
+  11 passed (1.7m)

@@ -1,0 +1,65 @@
+{
+  "commit": "8b88b30b5483d0a06e2b91506f217c64c5806f89",
+  "sourceRoots": 245,
+  "qualifiedParts": 79,
+  "passPhysicalInterfaces": 1765,
+  "retainedSampleCount": 6,
+  "retainedSampleDistinctPartCount": 9,
+  "retainedSamplePartIds": [
+    "3005",
+    "3020",
+    "3022",
+    "3023b",
+    "3024",
+    "3031",
+    "3070b",
+    "4070",
+    "54200"
+  ],
+  "retainedSamples": [
+    {
+      "file": "artifacts/assembly-development/models/basic-snot/model.json",
+      "parts": [
+        "3023b",
+        "3070b",
+        "4070"
+      ]
+    },
+    {
+      "file": "artifacts/assembly-development/models/platform/model.json",
+      "parts": [
+        "3022",
+        "3024"
+      ]
+    },
+    {
+      "file": "artifacts/assembly-development/models/simple-box/model.json",
+      "parts": [
+        "3005",
+        "3031"
+      ]
+    },
+    {
+      "file": "artifacts/assembly-development/models/simple-chassis/model.json",
+      "parts": [
+        "3020",
+        "3024"
+      ]
+    },
+    {
+      "file": "artifacts/assembly-development/models/simple-roof/model.json",
+      "parts": [
+        "3022",
+        "54200"
+      ]
+    },
+    {
+      "file": "artifacts/assembly-development/models/wall/model.json",
+      "parts": [
+        "3005",
+        "3023b"
+      ]
+    }
+  ],
+  "scope": "Historical six retained native generated samples; not a universal claim about every possible baseline generator outcome"
+}

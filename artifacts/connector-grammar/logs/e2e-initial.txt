@@ -1,0 +1,61 @@
+
+> bricklab@0.6.0 test:e2e
+> playwright test --config playwright.config.ts
+
+[WebServer] (node:244159) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 11 tests using 1 worker
+
+(node:244243) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 [chromium] › tests/e2e/assembly.spec.ts:7:1 › uses an admitted 32000 through normal UI generation, exports it and validates the uploaded model (3.0m)
+(node:244924) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [chromium] › tests/e2e/assembly.spec.ts:98:1 › separates source grammar eligibility from actual assembly evidence for every real part (46.3s)
+  ✓   3 [chromium] › tests/e2e/assembly.spec.ts:145:1 › attaches a source-backed grammar pair and rejects the same mating gender (6.3s)
+  ✓   4 [chromium] › tests/e2e/assembly.spec.ts:170:1 › generates source-bound wall and chassis modules and preserves unsupported wheel reasons (5.2s)
+  ✓   5 [chromium] › tests/e2e/assembly.spec.ts:200:1 › imports exported real models through current validation and prevents export after version or occupancy invalidation (4.7s)
+  ✓   6 [chromium] › tests/e2e/assembly.spec.ts:249:1 › mobile assembly mode keeps source controls, accepted rendering and debug data within the viewport (3.0s)
+  ✓   7 [chromium] › tests/e2e/parts-foundation.spec.ts:121:3 › real parts foundation with actual bundled sources and WebGL › opens the real library by default and renders native 3001 mesh plus source markers (5.3s)
+  ✓   8 [chromium] › tests/e2e/parts-foundation.spec.ts:175:3 › real parts foundation with actual bundled sources and WebGL › retains source-observed external mapping without inventing an LDraw cross-reference or generation eligibility (2.9s)
+  ✓   9 [chromium] › tests/e2e/parts-foundation.spec.ts:200:3 › real parts foundation with actual bundled sources and WebGL › shows six readable PDFs, two transfer failures and evidence-based element frequency without invented design coverage (2.3s)
+  ✓  10 [chromium] › tests/e2e/parts-foundation.spec.ts:237:3 › real parts foundation with actual bundled sources and WebGL › supports mobile inspection and keeps legacy UI and actual HTTP generation/export blocked (3.9s)
+  ✓  11 [chromium] › tests/e2e/parts-foundation.spec.ts:268:3 › real parts foundation with actual bundled sources and WebGL › does not restore quarantined browser history or enable legacy file import (885ms)
+
+
+  1) [chromium] › tests/e2e/assembly.spec.ts:7:1 › uses an admitted 32000 through normal UI generation, exports it and validates the uploaded model 
+
+    Test timeout of 180000ms exceeded.
+
+    Error: page.waitForEvent: Test timeout of 180000ms exceeded.
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+      20 |   expect(result.model.steps.some((step: { partId: string }) => step.partId === '32000')).toBe(true);
+      21 |   await expectRealCanvas(page);
+    > 22 |   const download = page.waitForEvent('download');
+         |                         ^
+      23 |   await page.getByRole('button', { name: '模型 JSON', exact: true }).click();
+      24 |   const exported = await download;
+      25 |   const file = await exported.path();
+        at /workspace/lego-design-byebye/tests/e2e/assembly.spec.ts:22:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/assembly-uses-an-admitted--36543-alidates-the-uploaded-model-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/assembly-uses-an-admitted--36543-alidates-the-uploaded-model-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/assembly-uses-an-admitted--36543-alidates-the-uploaded-model-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/assembly-uses-an-admitted--36543-alidates-the-uploaded-model-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › tests/e2e/assembly.spec.ts:7:1 › uses an admitted 32000 through normal UI generation, exports it and validates the uploaded model 
+  10 passed (4.4m)

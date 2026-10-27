@@ -1,0 +1,135 @@
+
+> bricklab@0.6.0 verify:interfaces
+> tsx src/cli/assembly-deferred.ts --checkpoint-dir /tmp/generation-expansion-geometry1-final --concurrency 3 --batch-size 8 --timeout-ms 10000 --part-budget-ms 120000 --max-retries 1
+
+9/5019 physical groups: 2445 PASS; 5s
+64/5019 physical groups: 2456 PASS; 10s
+147/5019 physical groups: 3006 PASS; 15s
+260/5019 physical groups: 3006 PASS; 20s
+296/5019 physical groups: 3028 PASS; 25s
+325/5019 physical groups: 3028 PASS; 31s
+347/5019 physical groups: 3027 PASS; 36s
+370/5019 physical groups: 3026 PASS; 41s
+396/5019 physical groups: 3027 PASS; 46s
+418/5019 physical groups: 3026 PASS; 51s
+441/5019 physical groups: 3027 PASS; 56s
+464/5019 physical groups: 3028 PASS; 61s
+487/5019 physical groups: 3027 PASS; 66s
+509/5019 physical groups: 3027 PASS; 72s
+533/5019 physical groups: 3028 PASS; 77s
+560/5019 physical groups: 3028 PASS; 82s
+583/5019 physical groups: 3027 PASS; 87s
+603/5019 physical groups: 3028 PASS; 92s
+631/5019 physical groups: 3029 PASS; 97s
+656/5019 physical groups: 3029 PASS; 102s
+683/5019 physical groups: 3027 PASS; 108s
+713/5019 physical groups: 3029 PASS; 113s
+738/5019 physical groups: 3029 PASS; 118s
+765/5019 physical groups: 3029 PASS; 123s
+795/5019 physical groups: 3029 PASS; 129s
+827/5019 physical groups: 3026 PASS; 134s
+856/5019 physical groups: 3026 PASS; 139s
+1053/5019 physical groups: 3031 PASS; 144s
+1107/5019 physical groups: 3032 PASS; 149s
+1156/5019 physical groups: 3033 PASS; 154s
+1211/5019 physical groups: 3034 PASS; 160s
+1257/5019 physical groups: 3033 PASS; 165s
+1307/5019 physical groups: 3035 PASS; 170s
+1350/5019 physical groups: 3033 PASS; 175s
+1419/5019 physical groups: 3460 PASS; 180s
+1479/5019 physical groups: 3036 PASS; 185s
+1539/5019 physical groups: 3795 PASS; 190s
+1593/5019 physical groups: 3832 PASS; 195s
+1640/5019 physical groups: 3832 PASS; 200s
+1707/5019 physical groups: 4477 PASS; 205s
+1800/5019 physical groups: 6636 PASS; 210s
+1863/5019 physical groups: 3958 PASS; 215s
+1930/5019 physical groups: 18975 BLOCKED; 220s
+2050/5019 physical groups: 65632 REQUIRES_ASTRA_REVIEW; 225s
+2162/5019 physical groups: 99207 REQUIRES_ASTRA_REVIEW; 231s
+2260/5019 physical groups: 91988 PASS; 236s
+2424/5019 physical groups: 23448 REQUIRES_ASTRA_REVIEW; 241s
+2566/5019 physical groups: 60212 PASS; 246s
+2932/5019 physical groups: 41682 REQUIRES_ASTRA_REVIEW; 251s
+3043/5019 physical groups: 5090 PASS; 256s
+3280/5019 physical groups: 93274 REQUIRES_ASTRA_REVIEW; 261s
+3574/5019 physical groups: 45411 BLOCKED; 266s
+4086/5019 physical groups: 93604 REQUIRES_ASTRA_REVIEW; 271s
+4623/5019 physical groups: 48729b REQUIRES_ASTRA_REVIEW; 276s
+4713/5019 physical groups: 69729 PASS; 281s
+4749/5019 physical groups: 41539 PASS; 286s
+4772/5019 physical groups: 41539 PASS; 292s
+4790/5019 physical groups: 3456 PASS; 297s
+4813/5019 physical groups: 41539 PASS; 302s
+4834/5019 physical groups: 3456 PASS; 307s
+4858/5019 physical groups: 41539 PASS; 312s
+4878/5019 physical groups: 3456 PASS; 317s
+4904/5019 physical groups: 41539 PASS; 322s
+4930/5019 physical groups: 41539 PASS; 327s
+4948/5019 physical groups: 41539 PASS; 333s
+4969/5019 physical groups: 3456 PASS; 338s
+4980/5019 physical groups: 3456 PASS; 344s
+4993/5019 physical groups: 3456 PASS; 349s
+5004/5019 physical groups: 3456 PASS; 355s
+5017/5019 physical groups: 3456 PASS; 360s
+5019/5019 physical groups: 3456 PASS; 361s
+{
+  "counts": {
+    "total": 253,
+    "assemblyVerified": 87,
+    "generatable": 87,
+    "blocked": 166,
+    "verifiedInterfaces": 2268,
+    "disabledInterfaces": 2816,
+    "testedPhysicalInterfaces": 2426,
+    "deferredPhysicalInterfaces": 0,
+    "deferredRawConnectionIds": 0,
+    "wheelModulesVerified": 0,
+    "physicalBuildsVerified": 0
+  },
+  "before": {
+    "discovered": 4632,
+    "verified": 987,
+    "blocked": 2667,
+    "pending": 978
+  },
+  "after": {
+    "rawSourceConnectionRecords": 5084,
+    "logicalConnectionGroups": 3063,
+    "physicalInterfacesDiscovered": 5019,
+    "verifiedPass": 2251,
+    "verifiedBlocked": 786,
+    "requiresAstraReview": 1982,
+    "pending": 0,
+    "verifiedPhysicalInterfaces": 2251,
+    "enabledPhysicalInterfaces": 2251,
+    "enabledRawConnectionIds": 2268,
+    "verifiedCoveragePercent": 44.8496,
+    "processedCoveragePercent": 100,
+    "fullyAssemblyVerified": 38,
+    "interfaceVerificationComplete": 249,
+    "partiallyGeneratable": 49,
+    "blockedParts": 162,
+    "unresolvedParts": 4
+  },
+  "deferred": {
+    "targetCount": 978,
+    "pass": 816,
+    "blocked": 0,
+    "requiresAstraReview": 162,
+    "pending": 0,
+    "directTests": 818,
+    "sharedPrecondition": 0,
+    "reviewDependency": 160,
+    "interrupted": false,
+    "checkpointDirectory": "/tmp/generation-expansion-geometry1-final",
+    "testVersion": "native-interface-suite-0.6.0-worker-2"
+  },
+  "executionCounts": {
+    "directTests": 2426,
+    "sharedSourcePrecondition": 2433,
+    "reviewDependency": 160
+  },
+  "resumedRecords": 0,
+  "elapsedSeconds": 361
+}

@@ -96,15 +96,15 @@ function slopeGeometry(definition: SpeedPartDefinition): THREE.ExtrudeGeometry {
   return geometry;
 }
 
-function holderSideGeometry(holeRadius: number, width: number, offset: number): THREE.ExtrudeGeometry {
+function holderSideGeometry(holeRadius: number, width: number, offset: number, heightPlates = 4, holeHeightPlates = 2.75): THREE.ExtrudeGeometry {
   const profile = new THREE.Shape();
   profile.moveTo(-1.985, 0);
   profile.lineTo(-0.015, 0);
-  profile.lineTo(-0.015, 1.585);
-  profile.lineTo(-1.985, 1.585);
+  profile.lineTo(-0.015, heightPlates * PLATE_HEIGHT - 0.015);
+  profile.lineTo(-1.985, heightPlates * PLATE_HEIGHT - 0.015);
   profile.closePath();
   const hole = new THREE.Path();
-  hole.absarc(-1, 1.1, holeRadius, 0, Math.PI * 2, false);
+  hole.absarc(-1, holeHeightPlates * PLATE_HEIGHT, holeRadius, 0, Math.PI * 2, false);
   profile.holes.push(hole);
   const geometry = new THREE.ExtrudeGeometry(profile, { depth: width, bevelEnabled: false, curveSegments: 24 });
   geometry.rotateY(Math.PI / 2);
@@ -281,7 +281,7 @@ function buildSpeedGraph(parts: readonly SpeedPlacedPart[], options: ModelRender
     const shape = definition.shape;
     const active = highlights.has(part.instanceId);
     const muted = highlights.size > 0 && !active;
-    const material = context.material(part.color.hex, part.category === 'Tyre' ? 'rubber' : 'plastic', active, muted, shape.transparent);
+    const material = context.material(part.color.hex, part.category === 'Tyre' ? 'rubber' : 'plastic', active, muted, shape.transparent || part.color.id === 40);
     const group = new THREE.Group();
     group.name = part.instanceId;
     group.userData = { instanceId: part.instanceId, partId: part.partId, highlighted: active, renderIndex: graph.children.length + 1 };
@@ -290,11 +290,12 @@ function buildSpeedGraph(parts: readonly SpeedPlacedPart[], options: ModelRender
 
     if (shape.kind === 'wheel' || shape.kind === 'tyre' || part.partId === '3673') {
       addRoundPart(group, definition, material, context, active);
-    } else if (part.partId === '18975') {
+    } else if (part.partId === '18975' || part.partId === '3700') {
       // Outer faces have complete counterbores. Inner extended openings are
       // conservatively drawn with their radius-6 LDU inscribed bearing bore.
       const holes = shape.holes?.filter(hole => hole.axis === 'x') ?? [];
-      for (const origin of [0, 3]) {
+      const singleHolder = part.partId === '3700';
+      for (const origin of singleHolder ? [0] : [0, 3]) {
         const start = origin + 0.015, end = origin + 0.985;
         const cuts = new Set([start, end]);
         for (const hole of holes) for (const position of [hole.center.x - hole.width / 2, hole.center.x + hole.width / 2]) if (position > start && position < end) cuts.add(position);
@@ -303,11 +304,11 @@ function buildSpeedGraph(parts: readonly SpeedPlacedPart[], options: ModelRender
           const offset = segments[index], width = segments[index + 1] - offset;
           const midpoint = offset + width / 2;
           const holeRadius = Math.max(0.3, ...holes.filter(hole => Math.abs(midpoint - hole.center.x) < hole.width / 2).map(hole => hole.radius));
-          const side = context.geometry(`18975-side:${holeRadius}:${width}:${offset}`, () => holderSideGeometry(holeRadius, width, offset));
+          const side = context.geometry(`18975-side:${part.partId}:${holeRadius}:${width}:${offset}`, () => holderSideGeometry(holeRadius, width, offset, singleHolder ? 3 : 4, singleHolder ? 1.75 : 2.75));
           context.add(group, side, material, undefined, active);
         }
       }
-      addBox(group, { min: { x: 1, y: 0, z: 0 }, max: { x: 3, y: 2, z: 1 } }, material, context, active);
+      if (!singleHolder) addBox(group, { min: { x: 1, y: 0, z: 0 }, max: { x: 3, y: 2, z: 1 } }, material, context, active);
     } else if (shape.kind === 'slope' || shape.kind === 'curved') {
       context.add(group, context.geometry(`shape:${part.partId}`, () => slopeGeometry(definition)), material, undefined, active);
     } else {

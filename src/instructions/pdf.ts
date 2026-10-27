@@ -29,6 +29,8 @@ export interface InstructionsPdfOptions {
   stepSummary?: (step: BuildStep) => string;
   stepPartsHeading?: (step: BuildStep) => string;
   emptyPartsText?: (step: BuildStep) => string;
+  /** Explicit JPEG quality for specialized exports; omit to preserve V0.1. */
+  jpegQuality?: number;
 }
 
 function canvas(width: number, height: number): HTMLCanvasElement {
@@ -226,7 +228,7 @@ export async function buildInstructionsPdf(result: GenerationResult, options: In
     ctx.fillText(options.footerLabel ?? 'BRICKLAB  /  创意拼搭说明书', MARGIN, FOOTER_Y);
     ctx.textAlign = 'right'; ctx.fillText(`${index + 1} / ${pages.length}`, PAGE_WIDTH - MARGIN, FOOTER_Y); ctx.textAlign = 'left';
     if (index) pdf.addPage();
-    pdf.addImage(item.canvas, 'JPEG', 0, 0, 210, 297, undefined, 'FAST');
+    pdf.addImage(options.jpegQuality === undefined ? item.canvas : item.canvas.toDataURL('image/jpeg', options.jpegQuality), 'JPEG', 0, 0, 210, 297, undefined, 'FAST');
   });
   return pdf;
 }

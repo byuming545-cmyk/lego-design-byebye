@@ -1,0 +1,390 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-26T07:48:21.468736+00:00",
+  "branch": "codex/interface-first-grammar",
+  "baselineCommit": "35eec2067b4e9a711b65bd0199ac3bb5f89db636",
+  "historicalTestResultsReusedAsCurrent": false,
+  "commands": [
+    {
+      "command": "npm test -- --maxWorkers=2",
+      "exitCode": 0,
+      "result": {
+        "testFilesPassed": 53,
+        "passed": 761,
+        "failed": 0,
+        "durationSeconds": 101.54
+      },
+      "log": "artifacts/connector-grammar/logs/unit-final.txt",
+      "logSha256": "e5de0ec71f61ebf8f09bab4bf480f970b98c7ff5c9163ff98e6235cc9a44ec1b"
+    },
+    {
+      "command": "npm run test:e2e",
+      "exitCode": 0,
+      "result": {
+        "passed": 11,
+        "failed": 0,
+        "durationApproximateSeconds": 102,
+        "service": "Stable compiled unified preview on 5173; production UI/API, no watch restart"
+      },
+      "log": "artifacts/connector-grammar/logs/e2e-final.txt",
+      "logSha256": "fee22436cfee0fe5e0ba6be078f85ce72f8b96ed52a84566270abb2c365fcfc7"
+    },
+    {
+      "command": "npm run test:preview",
+      "exitCode": 0,
+      "result": {
+        "passed": 3,
+        "failed": 0,
+        "durationSeconds": 32.9,
+        "buildIncludes": [
+          "tsc --noEmit",
+          "vite build",
+          "tsc -p tsconfig.server.json"
+        ],
+        "stage": "Final exact-detent kernel and final UI wording"
+      },
+      "log": "artifacts/connector-grammar/logs/preview-final.txt",
+      "logSha256": "e700c9f93f98a477d306fe4551396575850f7d211a618ec5984e5bf61105f71a"
+    },
+    {
+      "command": "npm run coverage:grammar",
+      "exitCode": 0,
+      "result": {
+        "candidateCount": 13,
+        "qualifiedCandidates": 13,
+        "actualCandidateGenerationCoverage": 10,
+        "newlyQualifiedAndGenerated": 9,
+        "newSourcesQualifiedAndGenerated": 0,
+        "stagedPartsQualifiedAndGenerated": 0,
+        "existingSourcesRecoveredAndGenerated": 0,
+        "existingQualifiedNewUses": 0,
+        "grammarQualifiedAndGenerated": 9,
+        "allActualGeneratedPartIds": [
+          "11211",
+          "24299",
+          "24307",
+          "3004",
+          "3005",
+          "3008",
+          "3009",
+          "3010",
+          "3023",
+          "3024",
+          "3070b",
+          "32000",
+          "3456",
+          "3460",
+          "3622",
+          "3623",
+          "3666",
+          "3710",
+          "4477",
+          "6111",
+          "69729",
+          "87087"
+        ],
+        "allActualGeneratedPartCount": 22,
+        "structuralExamplesPassed": 2,
+        "wheelCountedAsSuccess": false,
+        "negativeChecksPassed": 8
+      },
+      "log": "artifacts/connector-grammar/logs/generation.txt",
+      "logSha256": "925ddcd516460d11ea2d31f87c4bf7dff13dc4a523c359c6160a57b3f696331c"
+    },
+    {
+      "command": "npm run smoke:assembly -- --output artifacts/connector-grammar/smoke",
+      "exitCode": 0,
+      "result": {
+        "requested": 7,
+        "generated": 6,
+        "blocked": 1,
+        "failed": 0,
+        "physicalBuildsVerified": 0
+      },
+      "log": "artifacts/connector-grammar/logs/smoke-final.txt",
+      "logSha256": "6f9a7c901e855cc3616374933a3b4675aa46649f615591743087769deb893155"
+    }
+  ],
+  "additionalRuns": [
+    {
+      "command": "npm run audit:connectors",
+      "result": {
+        "totalParts": 253,
+        "canonicalCoverage": {
+          "COMPLETE": 98,
+          "PARTIAL": 151,
+          "NONE": 4
+        },
+        "rawParserCoverage": {
+          "ready": 205,
+          "partial": 44,
+          "missing": 4
+        },
+        "geometryReady": 253,
+        "collisionGeometryReady": 106,
+        "generationEligible": 99,
+        "supportedFeatures": 4225,
+        "enabledSourceEndpoints": 2531,
+        "totalCanonicalFeatures": 5084,
+        "familyDistribution": {
+          "STUD": {
+            "features": 1949,
+            "parts": 194
+          },
+          "ANTISTUD": {
+            "features": 2384,
+            "parts": 212
+          },
+          "HOLLOW_STUD": {
+            "features": 330,
+            "parts": 72
+          },
+          "BAR": {
+            "features": 0,
+            "parts": 0
+          },
+          "BAR_HOLE": {
+            "features": 0,
+            "parts": 0
+          },
+          "CLIP": {
+            "features": 3,
+            "parts": 2
+          },
+          "PIN": {
+            "features": 2,
+            "parts": 1
+          },
+          "PIN_HOLE": {
+            "features": 24,
+            "parts": 6
+          },
+          "AXLE": {
+            "features": 0,
+            "parts": 0
+          },
+          "AXLE_HOLE": {
+            "features": 6,
+            "parts": 4
+          },
+          "ROUND_HOLE": {
+            "features": 0,
+            "parts": 0
+          },
+          "HINGE_FINGER": {
+            "features": 0,
+            "parts": 0
+          },
+          "CLICK_HINGE": {
+            "features": 0,
+            "parts": 0
+          },
+          "TURNTABLE": {
+            "features": 0,
+            "parts": 0
+          },
+          "BALL": {
+            "features": 0,
+            "parts": 0
+          },
+          "BALL_SOCKET": {
+            "features": 0,
+            "parts": 0
+          },
+          "TOWBALL": {
+            "features": 0,
+            "parts": 0
+          },
+          "TOWBALL_SOCKET": {
+            "features": 0,
+            "parts": 0
+          },
+          "WHEEL_PIN": {
+            "features": 0,
+            "parts": 0
+          },
+          "WHEEL_HOLE": {
+            "features": 0,
+            "parts": 0
+          },
+          "RIM_SEAT": {
+            "features": 0,
+            "parts": 0
+          },
+          "TYRE_SEAT": {
+            "features": 0,
+            "parts": 0
+          },
+          "RAIL": {
+            "features": 0,
+            "parts": 0
+          },
+          "GROOVE": {
+            "features": 0,
+            "parts": 0
+          },
+          "GENERIC_SPECIAL": {
+            "features": 386,
+            "parts": 93
+          }
+        },
+        "partialFeatureCountsByRecognisedFamily": {
+          "STUD": 205,
+          "GENERIC_SPECIAL": 2,
+          "PIN_HOLE": 24,
+          "AXLE_HOLE": 6,
+          "ANTISTUD": 1,
+          "PIN": 2,
+          "HOLLOW_STUD": 10,
+          "CLIP": 3
+        },
+        "unclassifiedCanonicalFeatureCount": 384,
+        "literalUnparsedFamilyHints": {
+          "HINGE_FINGER": 9
+        },
+        "mostMissingConnectorFamily": null,
+        "missingFamilyExplanation": "Absent/unclassified records do not establish which physical connector family is missing. Only literal source family hints and observed canonical families are counted; no missing family counts are guessed.",
+        "sourceCoverage": {
+          "LDCAD_SHADOW": {
+            "partsWithSourceFiles": 249,
+            "partsWithCanonicalFeatures": 249,
+            "features": 5084
+          },
+          "LDRAW_PRIMITIVE": {
+            "partsWithSourceFiles": 253,
+            "partsWithCanonicalFeatures": 0,
+            "features": 0
+          },
+          "STUDIO_CONNECTIVITY": {
+            "partsWithSourceFiles": 0,
+            "partsWithCanonicalFeatures": 0,
+            "features": 0
+          },
+          "VERIFIED_MANUAL": {
+            "partsWithSourceFiles": 0,
+            "partsWithCanonicalFeatures": 0,
+            "features": 0
+          }
+        },
+        "topologyPatternPartCounts": {
+          "NORMAL_STACK": 173,
+          "PLATE_HEIGHT_OFFSET": 171,
+          "SNOT_90": 35,
+          "BRACKET_OFFSET": 35,
+          "STUD_OUT_SNOT": 31,
+          "HALF_STUD_OFFSET": 14,
+          "SNOT_180": 3,
+          "STUD_IN_SNOT": 2
+        },
+        "partsNeedingSourceOrAlgorithmReview": 212,
+        "executedPartPairTrials": 0,
+        "partFixtureTests": 0,
+        "physicalBuildsVerified": 0,
+        "historicalComparison": {
+          "baselineCommit": "35eec2067b4e9a711b65bd0199ac3bb5f89db636",
+          "fixtureQualifiedParts": 87,
+          "rawParserCoverage": {
+            "ready": 205,
+            "partial": 44,
+            "missing": 4
+          },
+          "note": "The historical 87 fixture-qualified parts and current grammar eligibility are different proof categories, not an inherited or newly executed part-assembly PASS count."
+        }
+      },
+      "evidence": "artifacts/connector-grammar/report.json",
+      "zeroPartPairTrials": true
+    },
+    {
+      "method": "Ordinary HTTP model import on final code",
+      "result": {
+        "passed": 12,
+        "failed": 0
+      },
+      "evidence": "artifacts/connector-grammar/model-revalidation.json"
+    },
+    {
+      "tests": "Independent core+validation review",
+      "passed": 67,
+      "failed": 0,
+      "durationMilliseconds": 240,
+      "scope": "Kernel only, no full suite rerun by reviewer"
+    }
+  ],
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+    "assemblyEngineVersion": "native-assembly-0.7.0-grammar",
+    "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-1",
+    "collisionVersion": "native-closed-bvh-local-partition-1.1.0",
+    "testVersion": "not-applicable-source-derived-admission"
+  },
+  "counts": {
+    "sourceRoots": 253,
+    "sourceFiles": 988,
+    "newSourceParts": 0,
+    "canonicalComplete": 98,
+    "canonicalPartial": 151,
+    "canonicalNone": 4,
+    "grammarEligible": 99,
+    "baselineFixtureQualified": 87,
+    "newGrammarEligible": 12,
+    "newGrammarEligibleActuallyGenerated": 9,
+    "newGrammarEligibleWithoutCurrentGeneratedWitness": [
+      "85984",
+      "17454",
+      "52038"
+    ],
+    "specialisedGeneratedModels": 12,
+    "specialisedDistinctPartIds": 22,
+    "enabledNativeSourceEndpoints": 2531,
+    "physicalBuildsVerified": 0
+  },
+  "developmentFailures": [
+    {
+      "log": "artifacts/connector-grammar/logs/unit-initial.txt",
+      "passed": 733,
+      "failed": 13,
+      "reason": "Initial integration: old production/snapshot count assertions; source/solver files not yet frozen; source validation negative cases; obsolete near-quarter math and inconsistent axial fixture. All corrected without skipped cases."
+    },
+    {
+      "log": "artifacts/connector-grammar/logs/e2e-initial.txt",
+      "passed": 10,
+      "failed": 1,
+      "reason": "Development watch restart discarded the retained in-memory model before export (404). Stable compiled service rerun passed all 11; no test skip."
+    },
+    {
+      "log": "artifacts/connector-grammar/logs/smoke-legacy-gate.txt",
+      "generated": 0,
+      "blocked": 7,
+      "reason": "CLI still required historical migration reportLoaded. Replaced its gate with source-backed grammar admission and preserved independent whole-graph checks; current smoke generated 6, wheel blocked."
+    },
+    {
+      "reason": "Independent review found OPPOSITE reverse seating, nonzero-seat slide range, scaled/sheared frame normalisation, and epsilon detent acceptance. All fixed with world-span and negative tests; final full suite includes them."
+    }
+  ],
+  "unresolvedAutomatedTestFailures": [],
+  "generationBlocksPreserved": [
+    "85984",
+    "17454",
+    "52038",
+    "wheel-module"
+  ],
+  "notExecutedOrIncomplete": [
+    "Verified non-C01 native joint graph/model integration with real fit evidence",
+    "Authorised Studio resource set or binary .conn parser",
+    "Complete spherical orientation solver",
+    "Physical assembly, stress, tolerance, retention, stability, continuous installation/rotation tests",
+    "Complex native solid boundary fixes",
+    "Complete vehicle generation",
+    "Main merge or deployment"
+  ],
+  "warnings": [
+    "Vite chunk-size warning remains; no performance optimisation claimed"
+  ],
+  "licensingScope": "Original LDraw declarations and Shadow CC-BY-SA-4.0 attribution are preserved. This does not expand historical mapping, private PDF/Studio or whole-application data redistribution rights.",
+  "independentReview": {
+    "status": "PASS WITH DOCUMENTED LIMITATIONS",
+    "evidence": "artifacts/connector-grammar/independent-review.json",
+    "actualModelsChecked": 12,
+    "scope": "Read-only current-source model export hashes, graph/source/endpoint/BOM/steps consistency, actual current engine validation and service reimport of all twelve models; source preservation and key delivery/report counts. Not a rerun of full unit/browser/preview suites, physical assembly or mechanical fit certification."
+  }
+}

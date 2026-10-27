@@ -1,0 +1,815 @@
+{
+  "schemaVersion": 1,
+  "reportId": "a285d703-8ef2-4b01-ba6d-781fb9f73a8b",
+  "createdAt": "2026-10-20T04:32:16.310Z",
+  "mode": "real",
+  "versions": {
+    "generatorVersion": "0.2.1",
+    "validatorVersion": "0.2.1",
+    "partLibraryVersion": "0.2.0-ldraw-c43ed06a"
+  },
+  "validationScope": "Automated validation checks current software rules only. Physical validation remains untested.",
+  "onlineValidation": "Real online validation pending",
+  "summary": {
+    "requested": 10,
+    "inventoriesRead": 0,
+    "pending": 10,
+    "executionFailed": 0,
+    "pass": 0,
+    "partial": 10,
+    "fail": 0,
+    "realInventoriesRead": 0,
+    "realValidated": 0,
+    "realPassed": 0,
+    "physicalBuildsValidated": 0
+  },
+  "sets": [
+    {
+      "setNumber": "76900-1",
+      "expectedName": "Koenigsegg Jesko",
+      "name": null,
+      "expectedTheme": "Speed Champions",
+      "configurationEvidence": {
+        "url": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/sets.csv.gz",
+        "themeUrl": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/themes.csv.gz",
+        "title": "Rebrickable catalog archive, TidyTuesday 2022-09-06",
+        "claim": "The archived sets row identifies 76900-1 as Koenigsegg Jesko with theme_id=601; archived themes maps 601 to Speed Champions.",
+        "kind": "reference",
+        "datasetDate": "2022-09-06",
+        "revision": "2684157e38895b3bbe8e8169a434b757489a506e",
+        "verifiedAt": "2026-10-20T04:19:41.357476Z",
+        "verification": "Downloaded and checked both archived CSV files; no live Rebrickable inventory was read.",
+        "setsSha256": "46dc0fd30ffa7152add30fc2aa7f39e205fd7540511242f0f7cb91484dbf696a",
+        "themesSha256": "f7522e548387e557dcb5fc10f8b0f76d51e102ed6192e4be42a09797faae0b01"
+      },
+      "theme": {
+        "id": null,
+        "runtimeVerification": "unverified",
+        "note": "The Rebrickable theme name has not been verified. Configuration evidence is separate from live inventory validation."
+      },
+      "source": null,
+      "sourceLabel": null,
+      "fetchedAt": null,
+      "snapshotId": null,
+      "inventoryRead": false,
+      "executionState": "pending",
+      "result": "PARTIAL",
+      "basic": null,
+      "support": null,
+      "criticalCarParts": null,
+      "canGenerate": null,
+      "prerequisiteFailures": [],
+      "generation": {
+        "status": "unrun",
+        "modelId": null,
+        "failureReason": null
+      },
+      "validators": {
+        "InventoryValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "ConnectionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "WheelValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "StructuralValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "CollisionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        }
+      },
+      "errors": [
+        {
+          "stage": "inventory",
+          "code": "MISSING_API_KEY",
+          "message": "Rebrickable API Key 未配置。 Real online validation pending.",
+          "trace": "InventoryError: Rebrickable API Key 未配置。 Real online validation pending.\n    at speedBenchmarkMain (/workspace/lego-design-byebye/src/cli/speed-benchmark.ts:37:74)"
+        }
+      ],
+      "warnings": [],
+      "physicalValidation": "untested"
+    },
+    {
+      "setNumber": "76901-1",
+      "expectedName": "Toyota GR Supra",
+      "name": null,
+      "expectedTheme": "Speed Champions",
+      "configurationEvidence": {
+        "url": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/sets.csv.gz",
+        "themeUrl": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/themes.csv.gz",
+        "title": "Rebrickable catalog archive, TidyTuesday 2022-09-06",
+        "claim": "The archived sets row identifies 76901-1 as Toyota GR Supra with theme_id=601; archived themes maps 601 to Speed Champions.",
+        "kind": "reference",
+        "datasetDate": "2022-09-06",
+        "revision": "2684157e38895b3bbe8e8169a434b757489a506e",
+        "verifiedAt": "2026-10-20T04:19:41.357476Z",
+        "verification": "Downloaded and checked both archived CSV files; no live Rebrickable inventory was read.",
+        "setsSha256": "46dc0fd30ffa7152add30fc2aa7f39e205fd7540511242f0f7cb91484dbf696a",
+        "themesSha256": "f7522e548387e557dcb5fc10f8b0f76d51e102ed6192e4be42a09797faae0b01"
+      },
+      "theme": {
+        "id": null,
+        "runtimeVerification": "unverified",
+        "note": "The Rebrickable theme name has not been verified. Configuration evidence is separate from live inventory validation."
+      },
+      "source": null,
+      "sourceLabel": null,
+      "fetchedAt": null,
+      "snapshotId": null,
+      "inventoryRead": false,
+      "executionState": "pending",
+      "result": "PARTIAL",
+      "basic": null,
+      "support": null,
+      "criticalCarParts": null,
+      "canGenerate": null,
+      "prerequisiteFailures": [],
+      "generation": {
+        "status": "unrun",
+        "modelId": null,
+        "failureReason": null
+      },
+      "validators": {
+        "InventoryValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "ConnectionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "WheelValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "StructuralValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "CollisionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        }
+      },
+      "errors": [
+        {
+          "stage": "inventory",
+          "code": "MISSING_API_KEY",
+          "message": "Rebrickable API Key 未配置。 Real online validation pending.",
+          "trace": "InventoryError: Rebrickable API Key 未配置。 Real online validation pending.\n    at speedBenchmarkMain (/workspace/lego-design-byebye/src/cli/speed-benchmark.ts:37:74)"
+        }
+      ],
+      "warnings": [],
+      "physicalValidation": "untested"
+    },
+    {
+      "setNumber": "76902-1",
+      "expectedName": "McLaren Elva",
+      "name": null,
+      "expectedTheme": "Speed Champions",
+      "configurationEvidence": {
+        "url": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/sets.csv.gz",
+        "themeUrl": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/themes.csv.gz",
+        "title": "Rebrickable catalog archive, TidyTuesday 2022-09-06",
+        "claim": "The archived sets row identifies 76902-1 as McLaren Elva with theme_id=601; archived themes maps 601 to Speed Champions.",
+        "kind": "reference",
+        "datasetDate": "2022-09-06",
+        "revision": "2684157e38895b3bbe8e8169a434b757489a506e",
+        "verifiedAt": "2026-10-20T04:19:41.357476Z",
+        "verification": "Downloaded and checked both archived CSV files; no live Rebrickable inventory was read.",
+        "setsSha256": "46dc0fd30ffa7152add30fc2aa7f39e205fd7540511242f0f7cb91484dbf696a",
+        "themesSha256": "f7522e548387e557dcb5fc10f8b0f76d51e102ed6192e4be42a09797faae0b01"
+      },
+      "theme": {
+        "id": null,
+        "runtimeVerification": "unverified",
+        "note": "The Rebrickable theme name has not been verified. Configuration evidence is separate from live inventory validation."
+      },
+      "source": null,
+      "sourceLabel": null,
+      "fetchedAt": null,
+      "snapshotId": null,
+      "inventoryRead": false,
+      "executionState": "pending",
+      "result": "PARTIAL",
+      "basic": null,
+      "support": null,
+      "criticalCarParts": null,
+      "canGenerate": null,
+      "prerequisiteFailures": [],
+      "generation": {
+        "status": "unrun",
+        "modelId": null,
+        "failureReason": null
+      },
+      "validators": {
+        "InventoryValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "ConnectionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "WheelValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "StructuralValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "CollisionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        }
+      },
+      "errors": [
+        {
+          "stage": "inventory",
+          "code": "MISSING_API_KEY",
+          "message": "Rebrickable API Key 未配置。 Real online validation pending.",
+          "trace": "InventoryError: Rebrickable API Key 未配置。 Real online validation pending.\n    at speedBenchmarkMain (/workspace/lego-design-byebye/src/cli/speed-benchmark.ts:37:74)"
+        }
+      ],
+      "warnings": [],
+      "physicalValidation": "untested"
+    },
+    {
+      "setNumber": "76903-1",
+      "expectedName": "Chevrolet Corvette C8.R Race Car and 1968 Chevrolet Corvette",
+      "name": null,
+      "expectedTheme": "Speed Champions",
+      "configurationEvidence": {
+        "url": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/sets.csv.gz",
+        "themeUrl": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/themes.csv.gz",
+        "title": "Rebrickable catalog archive, TidyTuesday 2022-09-06",
+        "claim": "The archived sets row identifies 76903-1 as Chevrolet Corvette C8.R Race Car and 1968 Chevrolet Corvette with theme_id=601; archived themes maps 601 to Speed Champions.",
+        "kind": "reference",
+        "datasetDate": "2022-09-06",
+        "revision": "2684157e38895b3bbe8e8169a434b757489a506e",
+        "verifiedAt": "2026-10-20T04:19:41.357476Z",
+        "verification": "Downloaded and checked both archived CSV files; no live Rebrickable inventory was read.",
+        "setsSha256": "46dc0fd30ffa7152add30fc2aa7f39e205fd7540511242f0f7cb91484dbf696a",
+        "themesSha256": "f7522e548387e557dcb5fc10f8b0f76d51e102ed6192e4be42a09797faae0b01"
+      },
+      "theme": {
+        "id": null,
+        "runtimeVerification": "unverified",
+        "note": "The Rebrickable theme name has not been verified. Configuration evidence is separate from live inventory validation."
+      },
+      "source": null,
+      "sourceLabel": null,
+      "fetchedAt": null,
+      "snapshotId": null,
+      "inventoryRead": false,
+      "executionState": "pending",
+      "result": "PARTIAL",
+      "basic": null,
+      "support": null,
+      "criticalCarParts": null,
+      "canGenerate": null,
+      "prerequisiteFailures": [],
+      "generation": {
+        "status": "unrun",
+        "modelId": null,
+        "failureReason": null
+      },
+      "validators": {
+        "InventoryValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "ConnectionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "WheelValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "StructuralValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "CollisionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        }
+      },
+      "errors": [
+        {
+          "stage": "inventory",
+          "code": "MISSING_API_KEY",
+          "message": "Rebrickable API Key 未配置。 Real online validation pending.",
+          "trace": "InventoryError: Rebrickable API Key 未配置。 Real online validation pending.\n    at speedBenchmarkMain (/workspace/lego-design-byebye/src/cli/speed-benchmark.ts:37:74)"
+        }
+      ],
+      "warnings": [],
+      "physicalValidation": "untested"
+    },
+    {
+      "setNumber": "76904-1",
+      "expectedName": "Mopar Dodge//SRT Top Fuel Dragster and 1970 Dodge Challenger T/A",
+      "name": null,
+      "expectedTheme": "Speed Champions",
+      "configurationEvidence": {
+        "url": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/sets.csv.gz",
+        "themeUrl": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/themes.csv.gz",
+        "title": "Rebrickable catalog archive, TidyTuesday 2022-09-06",
+        "claim": "The archived sets row identifies 76904-1 as Mopar Dodge//SRT Top Fuel Dragster and 1970 Dodge Challenger T/A with theme_id=601; archived themes maps 601 to Speed Champions.",
+        "kind": "reference",
+        "datasetDate": "2022-09-06",
+        "revision": "2684157e38895b3bbe8e8169a434b757489a506e",
+        "verifiedAt": "2026-10-20T04:19:41.357476Z",
+        "verification": "Downloaded and checked both archived CSV files; no live Rebrickable inventory was read.",
+        "setsSha256": "46dc0fd30ffa7152add30fc2aa7f39e205fd7540511242f0f7cb91484dbf696a",
+        "themesSha256": "f7522e548387e557dcb5fc10f8b0f76d51e102ed6192e4be42a09797faae0b01"
+      },
+      "theme": {
+        "id": null,
+        "runtimeVerification": "unverified",
+        "note": "The Rebrickable theme name has not been verified. Configuration evidence is separate from live inventory validation."
+      },
+      "source": null,
+      "sourceLabel": null,
+      "fetchedAt": null,
+      "snapshotId": null,
+      "inventoryRead": false,
+      "executionState": "pending",
+      "result": "PARTIAL",
+      "basic": null,
+      "support": null,
+      "criticalCarParts": null,
+      "canGenerate": null,
+      "prerequisiteFailures": [],
+      "generation": {
+        "status": "unrun",
+        "modelId": null,
+        "failureReason": null
+      },
+      "validators": {
+        "InventoryValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "ConnectionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "WheelValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "StructuralValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "CollisionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        }
+      },
+      "errors": [
+        {
+          "stage": "inventory",
+          "code": "MISSING_API_KEY",
+          "message": "Rebrickable API Key 未配置。 Real online validation pending.",
+          "trace": "InventoryError: Rebrickable API Key 未配置。 Real online validation pending.\n    at speedBenchmarkMain (/workspace/lego-design-byebye/src/cli/speed-benchmark.ts:37:74)"
+        }
+      ],
+      "warnings": [],
+      "physicalValidation": "untested"
+    },
+    {
+      "setNumber": "76905-1",
+      "expectedName": "Ford GT Heritage Edition and Bronco R",
+      "name": null,
+      "expectedTheme": "Speed Champions",
+      "configurationEvidence": {
+        "url": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/sets.csv.gz",
+        "themeUrl": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/themes.csv.gz",
+        "title": "Rebrickable catalog archive, TidyTuesday 2022-09-06",
+        "claim": "The archived sets row identifies 76905-1 as Ford GT Heritage Edition and Bronco R with theme_id=601; archived themes maps 601 to Speed Champions.",
+        "kind": "reference",
+        "datasetDate": "2022-09-06",
+        "revision": "2684157e38895b3bbe8e8169a434b757489a506e",
+        "verifiedAt": "2026-10-20T04:19:41.357476Z",
+        "verification": "Downloaded and checked both archived CSV files; no live Rebrickable inventory was read.",
+        "setsSha256": "46dc0fd30ffa7152add30fc2aa7f39e205fd7540511242f0f7cb91484dbf696a",
+        "themesSha256": "f7522e548387e557dcb5fc10f8b0f76d51e102ed6192e4be42a09797faae0b01"
+      },
+      "theme": {
+        "id": null,
+        "runtimeVerification": "unverified",
+        "note": "The Rebrickable theme name has not been verified. Configuration evidence is separate from live inventory validation."
+      },
+      "source": null,
+      "sourceLabel": null,
+      "fetchedAt": null,
+      "snapshotId": null,
+      "inventoryRead": false,
+      "executionState": "pending",
+      "result": "PARTIAL",
+      "basic": null,
+      "support": null,
+      "criticalCarParts": null,
+      "canGenerate": null,
+      "prerequisiteFailures": [],
+      "generation": {
+        "status": "unrun",
+        "modelId": null,
+        "failureReason": null
+      },
+      "validators": {
+        "InventoryValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "ConnectionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "WheelValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "StructuralValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "CollisionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        }
+      },
+      "errors": [
+        {
+          "stage": "inventory",
+          "code": "MISSING_API_KEY",
+          "message": "Rebrickable API Key 未配置。 Real online validation pending.",
+          "trace": "InventoryError: Rebrickable API Key 未配置。 Real online validation pending.\n    at speedBenchmarkMain (/workspace/lego-design-byebye/src/cli/speed-benchmark.ts:37:74)"
+        }
+      ],
+      "warnings": [],
+      "physicalValidation": "untested"
+    },
+    {
+      "setNumber": "76906-1",
+      "expectedName": "1970 Ferrari 512 M",
+      "name": null,
+      "expectedTheme": "Speed Champions",
+      "configurationEvidence": {
+        "url": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/sets.csv.gz",
+        "themeUrl": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/themes.csv.gz",
+        "title": "Rebrickable catalog archive, TidyTuesday 2022-09-06",
+        "claim": "The archived sets row identifies 76906-1 as 1970 Ferrari 512 M with theme_id=601; archived themes maps 601 to Speed Champions.",
+        "kind": "reference",
+        "datasetDate": "2022-09-06",
+        "revision": "2684157e38895b3bbe8e8169a434b757489a506e",
+        "verifiedAt": "2026-10-20T04:19:41.357476Z",
+        "verification": "Downloaded and checked both archived CSV files; no live Rebrickable inventory was read.",
+        "setsSha256": "46dc0fd30ffa7152add30fc2aa7f39e205fd7540511242f0f7cb91484dbf696a",
+        "themesSha256": "f7522e548387e557dcb5fc10f8b0f76d51e102ed6192e4be42a09797faae0b01"
+      },
+      "theme": {
+        "id": null,
+        "runtimeVerification": "unverified",
+        "note": "The Rebrickable theme name has not been verified. Configuration evidence is separate from live inventory validation."
+      },
+      "source": null,
+      "sourceLabel": null,
+      "fetchedAt": null,
+      "snapshotId": null,
+      "inventoryRead": false,
+      "executionState": "pending",
+      "result": "PARTIAL",
+      "basic": null,
+      "support": null,
+      "criticalCarParts": null,
+      "canGenerate": null,
+      "prerequisiteFailures": [],
+      "generation": {
+        "status": "unrun",
+        "modelId": null,
+        "failureReason": null
+      },
+      "validators": {
+        "InventoryValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "ConnectionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "WheelValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "StructuralValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "CollisionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        }
+      },
+      "errors": [
+        {
+          "stage": "inventory",
+          "code": "MISSING_API_KEY",
+          "message": "Rebrickable API Key 未配置。 Real online validation pending.",
+          "trace": "InventoryError: Rebrickable API Key 未配置。 Real online validation pending.\n    at speedBenchmarkMain (/workspace/lego-design-byebye/src/cli/speed-benchmark.ts:37:74)"
+        }
+      ],
+      "warnings": [],
+      "physicalValidation": "untested"
+    },
+    {
+      "setNumber": "76907-1",
+      "expectedName": "Lotus Evija",
+      "name": null,
+      "expectedTheme": "Speed Champions",
+      "configurationEvidence": {
+        "url": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/sets.csv.gz",
+        "themeUrl": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/themes.csv.gz",
+        "title": "Rebrickable catalog archive, TidyTuesday 2022-09-06",
+        "claim": "The archived sets row identifies 76907-1 as Lotus Evija with theme_id=601; archived themes maps 601 to Speed Champions.",
+        "kind": "reference",
+        "datasetDate": "2022-09-06",
+        "revision": "2684157e38895b3bbe8e8169a434b757489a506e",
+        "verifiedAt": "2026-10-20T04:19:41.357476Z",
+        "verification": "Downloaded and checked both archived CSV files; no live Rebrickable inventory was read.",
+        "setsSha256": "46dc0fd30ffa7152add30fc2aa7f39e205fd7540511242f0f7cb91484dbf696a",
+        "themesSha256": "f7522e548387e557dcb5fc10f8b0f76d51e102ed6192e4be42a09797faae0b01"
+      },
+      "theme": {
+        "id": null,
+        "runtimeVerification": "unverified",
+        "note": "The Rebrickable theme name has not been verified. Configuration evidence is separate from live inventory validation."
+      },
+      "source": null,
+      "sourceLabel": null,
+      "fetchedAt": null,
+      "snapshotId": null,
+      "inventoryRead": false,
+      "executionState": "pending",
+      "result": "PARTIAL",
+      "basic": null,
+      "support": null,
+      "criticalCarParts": null,
+      "canGenerate": null,
+      "prerequisiteFailures": [],
+      "generation": {
+        "status": "unrun",
+        "modelId": null,
+        "failureReason": null
+      },
+      "validators": {
+        "InventoryValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "ConnectionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "WheelValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "StructuralValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "CollisionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        }
+      },
+      "errors": [
+        {
+          "stage": "inventory",
+          "code": "MISSING_API_KEY",
+          "message": "Rebrickable API Key 未配置。 Real online validation pending.",
+          "trace": "InventoryError: Rebrickable API Key 未配置。 Real online validation pending.\n    at speedBenchmarkMain (/workspace/lego-design-byebye/src/cli/speed-benchmark.ts:37:74)"
+        }
+      ],
+      "warnings": [],
+      "physicalValidation": "untested"
+    },
+    {
+      "setNumber": "76908-1",
+      "expectedName": "Lamborghini Countach",
+      "name": null,
+      "expectedTheme": "Speed Champions",
+      "configurationEvidence": {
+        "url": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/sets.csv.gz",
+        "themeUrl": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/themes.csv.gz",
+        "title": "Rebrickable catalog archive, TidyTuesday 2022-09-06",
+        "claim": "The archived sets row identifies 76908-1 as Lamborghini Countach with theme_id=601; archived themes maps 601 to Speed Champions.",
+        "kind": "reference",
+        "datasetDate": "2022-09-06",
+        "revision": "2684157e38895b3bbe8e8169a434b757489a506e",
+        "verifiedAt": "2026-10-20T04:19:41.357476Z",
+        "verification": "Downloaded and checked both archived CSV files; no live Rebrickable inventory was read.",
+        "setsSha256": "46dc0fd30ffa7152add30fc2aa7f39e205fd7540511242f0f7cb91484dbf696a",
+        "themesSha256": "f7522e548387e557dcb5fc10f8b0f76d51e102ed6192e4be42a09797faae0b01"
+      },
+      "theme": {
+        "id": null,
+        "runtimeVerification": "unverified",
+        "note": "The Rebrickable theme name has not been verified. Configuration evidence is separate from live inventory validation."
+      },
+      "source": null,
+      "sourceLabel": null,
+      "fetchedAt": null,
+      "snapshotId": null,
+      "inventoryRead": false,
+      "executionState": "pending",
+      "result": "PARTIAL",
+      "basic": null,
+      "support": null,
+      "criticalCarParts": null,
+      "canGenerate": null,
+      "prerequisiteFailures": [],
+      "generation": {
+        "status": "unrun",
+        "modelId": null,
+        "failureReason": null
+      },
+      "validators": {
+        "InventoryValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "ConnectionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "WheelValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "StructuralValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "CollisionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        }
+      },
+      "errors": [
+        {
+          "stage": "inventory",
+          "code": "MISSING_API_KEY",
+          "message": "Rebrickable API Key 未配置。 Real online validation pending.",
+          "trace": "InventoryError: Rebrickable API Key 未配置。 Real online validation pending.\n    at speedBenchmarkMain (/workspace/lego-design-byebye/src/cli/speed-benchmark.ts:37:74)"
+        }
+      ],
+      "warnings": [],
+      "physicalValidation": "untested"
+    },
+    {
+      "setNumber": "76909-1",
+      "expectedName": "Mercedes-AMG F1 W12 E Performance & Mercedes-AMG Project One",
+      "name": null,
+      "expectedTheme": "Speed Champions",
+      "configurationEvidence": {
+        "url": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/sets.csv.gz",
+        "themeUrl": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/2684157e38895b3bbe8e8169a434b757489a506e/data/2022/2022-09-06/themes.csv.gz",
+        "title": "Rebrickable catalog archive, TidyTuesday 2022-09-06",
+        "claim": "The archived sets row identifies 76909-1 as Mercedes-AMG F1 W12 E Performance & Mercedes-AMG Project One with theme_id=601; archived themes maps 601 to Speed Champions.",
+        "kind": "reference",
+        "datasetDate": "2022-09-06",
+        "revision": "2684157e38895b3bbe8e8169a434b757489a506e",
+        "verifiedAt": "2026-10-20T04:19:41.357476Z",
+        "verification": "Downloaded and checked both archived CSV files; no live Rebrickable inventory was read.",
+        "setsSha256": "46dc0fd30ffa7152add30fc2aa7f39e205fd7540511242f0f7cb91484dbf696a",
+        "themesSha256": "f7522e548387e557dcb5fc10f8b0f76d51e102ed6192e4be42a09797faae0b01"
+      },
+      "theme": {
+        "id": null,
+        "runtimeVerification": "unverified",
+        "note": "The Rebrickable theme name has not been verified. Configuration evidence is separate from live inventory validation."
+      },
+      "source": null,
+      "sourceLabel": null,
+      "fetchedAt": null,
+      "snapshotId": null,
+      "inventoryRead": false,
+      "executionState": "pending",
+      "result": "PARTIAL",
+      "basic": null,
+      "support": null,
+      "criticalCarParts": null,
+      "canGenerate": null,
+      "prerequisiteFailures": [],
+      "generation": {
+        "status": "unrun",
+        "modelId": null,
+        "failureReason": null
+      },
+      "validators": {
+        "InventoryValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "ConnectionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "WheelValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "StructuralValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        },
+        "CollisionValidator": {
+          "status": "unrun",
+          "errors": [],
+          "warnings": []
+        }
+      },
+      "errors": [
+        {
+          "stage": "inventory",
+          "code": "MISSING_API_KEY",
+          "message": "Rebrickable API Key 未配置。 Real online validation pending.",
+          "trace": "InventoryError: Rebrickable API Key 未配置。 Real online validation pending.\n    at speedBenchmarkMain (/workspace/lego-design-byebye/src/cli/speed-benchmark.ts:37:74)"
+        }
+      ],
+      "warnings": [],
+      "physicalValidation": "untested"
+    }
+  ],
+  "missingFrequency": {
+    "realSetsRead": 0,
+    "requestedRealSets": 10,
+    "denominatorDefinition": "Only complete, successfully read Rebrickable inventories in this real run; pending and mock sets are excluded. Quantities exclude spare parts.",
+    "status": "pending",
+    "parts": []
+  }
+}

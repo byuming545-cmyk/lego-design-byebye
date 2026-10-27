@@ -1,0 +1,94 @@
+
+> bricklab@0.6.0 report:parts
+> tsx src/cli/parts-foundation-report.ts
+
+{
+  "directory": "/workspace/lego-design-byebye/artifacts/parts-foundation",
+  "version": "0.6.0",
+  "counts": {
+    "catalogOnly": 531,
+    "geometryReady": 253,
+    "connectionReady": 205,
+    "collisionReady": 106,
+    "assemblyVerified": 87,
+    "generatable": 87,
+    "verified": 87,
+    "ldrawPartIds": 253,
+    "observedElementIds": 531,
+    "readableDocuments": 6,
+    "physicalBuildsVerified": 0
+  },
+  "assembly": {
+    "total": 253,
+    "assemblyVerified": 87,
+    "generatable": 87,
+    "blocked": 166,
+    "verifiedInterfaces": 2268,
+    "disabledInterfaces": 2816,
+    "testedPhysicalInterfaces": 2426,
+    "deferredPhysicalInterfaces": 0,
+    "deferredRawConnectionIds": 0,
+    "wheelModulesVerified": 0,
+    "physicalBuildsVerified": 0
+  },
+  "runtimeValidation": {
+    "status": "ready",
+    "issues": [],
+    "reportLoaded": true,
+    "checkedAt": "2026-10-25T15:34:46.067Z"
+  },
+  "mapping": {
+    "observedElements": 531,
+    "mappedBySource": 531,
+    "conflicts": 0,
+    "independentlyVerifiedOfficial": 0,
+    "resolvedLDraw": 0,
+    "mappingStatusCounts": {
+      "VERIFIED": 0,
+      "PROBABLE_BUT_UNVERIFIED": 14,
+      "CONFLICT": 88,
+      "UNRESOLVED": 429
+    },
+    "mappingStatusBasis": "complete-element-to-exact-ldraw-identity-chain",
+    "verifiedMapping": 0,
+    "probableMapping": 14,
+    "mappingConflicts": 88,
+    "unresolvedLDrawMapping": 429,
+    "externalMappingConflicts": 0,
+    "sourceFingerprint": {
+      "mappingPolicyVersion": "exact-identity-chain-1",
+      "manifestSha256": "b9c63b63c18ce598896fa29726cc578a4b7b4d8c35eb827f00d058565a07a41b",
+      "elementSnapshotSha256": "6afab811ed3d2566c1a32c2bd243afbfb7627095388494841c33d32e4efe71ba",
+      "reviewSnapshotSha256": "225a49d5f241a44532f2412fbdedd327ab73b81e9e94de363025bdbe16985728"
+    },
+    "sourceTrust": "source-observed"
+  },
+  "recovery": {
+    "total": 531,
+    "mappedBySource": 531,
+    "mappingUnresolved": 0,
+    "externalMappingUnresolved": 0,
+    "verifiedMapping": 0,
+    "probableMapping": 14,
+    "mappingConflicts": 88,
+    "unresolvedLDrawMapping": 429,
+    "independentlyVerifiedOfficial": 0,
+    "resolvedLDraw": 0,
+    "assemblyVerified": 0,
+    "generatable": 0,
+    "blocked": 531,
+    "recoveredToMapping": 531,
+    "recoveredToVerifiedMapping": 0,
+    "recoveredToGeneratable": 0
+  },
+  "observedInventorySets": 4,
+  "elementIdentities": 531,
+  "unresolvedMappingTargets": 0,
+  "ldrawCrossReferenceTargets": 531,
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-local-partition-1.1.0"
+  }
+}

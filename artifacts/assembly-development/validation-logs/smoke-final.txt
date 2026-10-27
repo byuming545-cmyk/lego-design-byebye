@@ -1,0 +1,81 @@
+
+> bricklab@0.6.0 smoke:assembly
+> tsx src/cli/assembly-smoke.ts
+
+wall: generating from 79 production-admitted native parts...
+wall: generated; 5 parts; 4 attachment attempts; 132 ms
+platform: generating from 79 production-admitted native parts...
+platform: generated; 5 parts; 4 attachment attempts; 179 ms
+simple-chassis: generating from 79 production-admitted native parts...
+simple-chassis: generated; 5 parts; 4 attachment attempts; 211 ms
+simple-box: generating from 79 production-admitted native parts...
+simple-box: generated; 13 parts; 12 attachment attempts; 548 ms
+simple-roof: generating from 79 production-admitted native parts...
+simple-roof: generated; 5 parts; 12 attachment attempts; 164 ms
+basic-snot: generating from 79 production-admitted native parts...
+basic-snot: generated; 3 parts; 2 attachment attempts; 181 ms
+wheel-module: generating from 79 production-admitted native parts...
+wheel-module: blocked; 0 parts; 0 attachment attempts; 0 ms
+production-bridge: passed; 4 nodes; 4 edges; 3 production attachment calls
+{
+  "summary": {
+    "requested": 7,
+    "generated": 6,
+    "blocked": 1,
+    "failed": 0,
+    "physicalBuildsVerified": 0
+  },
+  "runtimeAudit": {
+    "candidateAttempts": 38,
+    "attachmentApiCalls": 30,
+    "acceptedBranchPlacements": 30,
+    "rejectedCandidates": 8,
+    "transformFailureCandidates": 0,
+    "compatibilityFailureCandidates": 0,
+    "collisionFailureCandidates": 0,
+    "occupancyFailureCandidates": 0,
+    "designGoalFailureCandidates": 8,
+    "searchTimeMs": 1408.268,
+    "catalogTimeMs": 4.486,
+    "multiPointPlacements": 0
+  },
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-parser-2",
+    "assemblyEngineVersion": "native-assembly-0.6.0",
+    "connectionRuleVersion": "source-stud-1.0.0",
+    "collisionVersion": "native-closed-bvh-partition-1.0.0"
+  },
+  "runtimeCounts": {
+    "total": 245,
+    "assemblyVerified": 79,
+    "generatable": 79,
+    "blocked": 166,
+    "verifiedInterfaces": 1262,
+    "disabledInterfaces": 3432,
+    "testedPhysicalInterfaces": 1514,
+    "deferredPhysicalInterfaces": 0,
+    "deferredRawConnectionIds": 0,
+    "wheelModulesVerified": 0,
+    "physicalBuildsVerified": 0
+  },
+  "runtimeSourceCounts": {
+    "totalRoots": 245,
+    "geometryReady": 245,
+    "connectionReady": 197,
+    "connectionPartial": 44,
+    "connectionMissing": 4
+  },
+  "sourceHashes": {
+    "3005": "e0e841bff7bb8c42b13088878880800bc7231f06a2b0774369fec3e7c0608bb8",
+    "3020": "80a9087f99c69a761bdca464d42f1c5fba250a7d0637c968c6c6b3034f272d79",
+    "3022": "a00f9dc34e0c77aa5007eefa4ffe97566e00e9f42b8eb75bfdcf3c9dab56e92a",
+    "3024": "bee96ad5973b35688ce5e0cc2de04997c23783d2a240e74d6f52b4dccca6be80",
+    "3031": "593cab170ee5b14b9977f3fa8f27917717833d3a45db98e31460a810b600b175",
+    "4070": "202fc0af46b6c2623c9e816a1d58f765e95e67c411cb7797a88cf2b7b489d7a0",
+    "54200": "90d78b625d2ad23ffbbf4549f28efe3cb15e731c480c4fbba9a29469ce74f90d",
+    "3023b": "a8a6933891c2d7761b1b57ad2e29d8bd6102e192d40515769308385b85801f53",
+    "3070b": "d3f492650fe439f738028056baa657c7ccaf559a7093acbbb11a59bff8dfdd15"
+  },
+  "migrationReportSha256": "ff5daa419f01ad48c0489992b204d9445d75cbdce3fd31a382d7f4c030a466f8",
+  "report": "artifacts/assembly-development/generator-smoke.json"
+}

@@ -1,0 +1,620 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-23T05:11:37.958600+00:00",
+  "provenance": "User-supplied LEGO-branded PDFs; no network source attestation",
+  "summary": {
+    "readableDocuments": 6,
+    "unreadableDocuments": 2,
+    "distinctCoverSetNumbers": [
+      "76924",
+      "77238",
+      "77254",
+      "77257",
+      "77263"
+    ],
+    "documentsWithInventoryAppendix": 4,
+    "extractedRows": 667,
+    "distinctElementIds": 531,
+    "printedQuantitySum": 1586,
+    "visualSpotCheckedRows": 54,
+    "verifiedDesignMappings": 0,
+    "completeVerifiedSetInventories": 0
+  },
+  "documents": [
+    {
+      "id": "6522905",
+      "fileName": "6522905.pdf",
+      "status": "ready",
+      "setNumber": "76924",
+      "pages": 84,
+      "sizeBytes": 23312160,
+      "sha256": "b477dbbca2dac42cd6caa3fb64bc1988b7c7adee6bb4439758260e0ee44f0e80",
+      "printedBookNumberMatchesFileName": true,
+      "coverSetNumberEvidence": {
+        "pdfPage": 1,
+        "rawText": "76924"
+      },
+      "officialProductName": null,
+      "productYear": null,
+      "officialPieceCount": null,
+      "copyrightYear": 2024,
+      "copyrightYearEvidence": {
+        "pdfPage": 84,
+        "method": "native-pdf-text"
+      },
+      "appendixPages": [],
+      "coverDescription": "黄色敞篷跑车；封面只印套装号76924，未印完整产品名称。",
+      "inventoryScope": "本册没有零件附录；不能从本册建立76924全套库存。",
+      "inventoryComplete": false,
+      "sparesDistinguished": false,
+      "designIdsMapped": false,
+      "colorsMapped": false,
+      "extractedRowCount": 0,
+      "printedQuantitySum": 0,
+      "visualSpotCheckedRows": 0,
+      "source": {
+        "kind": "user-uploaded-lego-pdf",
+        "fileName": "6522905.pdf",
+        "sha256": "b477dbbca2dac42cd6caa3fb64bc1988b7c7adee6bb4439758260e0ee44f0e80",
+        "sourceUrl": null,
+        "officialOriginIndependentlyVerified": false
+      },
+      "observations": [
+        {
+          "pdfPages": [
+            1
+          ],
+          "kind": "cover",
+          "note": "封面为单辆黄色敞篷车，不能据此宣称已覆盖同套装其他车辆。",
+          "evidence": {
+            "documentId": "6522905",
+            "sha256": "b477dbbca2dac42cd6caa3fb64bc1988b7c7adee6bb4439758260e0ee44f0e80",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        },
+        {
+          "pdfPages": [
+            10
+          ],
+          "steps": [
+            10
+          ],
+          "kind": "chassis",
+          "note": "步骤10展示侧面带孔结构件围绕中央底盘的分层结构，车轮销保持外露。只能记录装配关系观察，不能据图生成连接坐标。",
+          "evidence": {
+            "documentId": "6522905",
+            "sha256": "b477dbbca2dac42cd6caa3fb64bc1988b7c7adee6bb4439758260e0ee44f0e80",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        },
+        {
+          "pdfPages": [
+            52
+          ],
+          "steps": [
+            56
+          ],
+          "kind": "body-subassembly",
+          "note": "步骤56先将两块黄色零件叠成小组件，再从上方加到车身；座舱开放，轮拱与侧面覆盖件已安装。",
+          "evidence": {
+            "documentId": "6522905",
+            "sha256": "b477dbbca2dac42cd6caa3fb64bc1988b7c7adee6bb4439758260e0ee44f0e80",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        }
+      ],
+      "limitations": [
+        "No PDF-to-3D reconstruction",
+        "Element IDs are not design IDs",
+        "Printed quantity sum is not an official set piece count",
+        "No spare/non-spare classification",
+        "No human certification"
+      ]
+    },
+    {
+      "id": "6572269",
+      "fileName": "6572269.pdf",
+      "status": "transfer-limit",
+      "setNumber": null,
+      "pages": null,
+      "sha256": null,
+      "appendixPages": [],
+      "inventoryComplete": false,
+      "reason": "Executor transfer limit is 32 MiB; content not read. Split the PDF into smaller parts and import them locally."
+    },
+    {
+      "id": "6592544",
+      "fileName": "6592544.pdf",
+      "status": "transfer-limit",
+      "setNumber": null,
+      "pages": null,
+      "sha256": null,
+      "appendixPages": [],
+      "inventoryComplete": false,
+      "reason": "Executor transfer limit is 32 MiB; content not read. Split the PDF into smaller parts and import them locally."
+    },
+    {
+      "id": "6592556",
+      "fileName": "6592556.pdf",
+      "status": "ready",
+      "setNumber": "77238",
+      "pages": 112,
+      "sizeBytes": 30527515,
+      "sha256": "19ced5bd6af1897527a6b74acb74ebca836734e697f956d22557180f8546d1e8",
+      "printedBookNumberMatchesFileName": true,
+      "coverSetNumberEvidence": {
+        "pdfPage": 1,
+        "rawText": "77238\n5\n7\n6\n8"
+      },
+      "officialProductName": null,
+      "productYear": null,
+      "officialPieceCount": null,
+      "copyrightYear": 2025,
+      "copyrightYearEvidence": {
+        "pdfPage": 112,
+        "method": "native-pdf-text"
+      },
+      "appendixPages": [
+        108,
+        109,
+        110,
+        111
+      ],
+      "coverDescription": "蓝色跑车配橙色装饰和大尾翼；封面印77238及袋号5、6、7、8。",
+      "inventoryScope": "77238袋5–8对应说明册末尾的印刷附录。附录含多种橙色与蓝色车身元素，但未把每行归属到单车，也未独立确认是全套清单。",
+      "inventoryComplete": false,
+      "sparesDistinguished": false,
+      "designIdsMapped": false,
+      "colorsMapped": false,
+      "extractedRowCount": 242,
+      "printedQuantitySum": 605,
+      "visualSpotCheckedRows": 17,
+      "source": {
+        "kind": "user-uploaded-lego-pdf",
+        "fileName": "6592556.pdf",
+        "sha256": "19ced5bd6af1897527a6b74acb74ebca836734e697f956d22557180f8546d1e8",
+        "sourceUrl": null,
+        "officialOriginIndependentlyVerified": false
+      },
+      "observations": [
+        {
+          "pdfPages": [
+            1
+          ],
+          "kind": "cover",
+          "note": "封面为蓝色车辆和大尾翼，袋号5–8；不能把两本77238说明册当作两个不同套装计算频次。",
+          "evidence": {
+            "documentId": "6592556",
+            "sha256": "19ced5bd6af1897527a6b74acb74ebca836734e697f956d22557180f8546d1e8",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        },
+        {
+          "pdfPages": [
+            10
+          ],
+          "steps": [
+            14,
+            15
+          ],
+          "kind": "chassis",
+          "note": "步骤14以白色板跨接中央底盘，步骤15添加蓝色横板和两块灰色小板；轮销外露而车壳尚未完成。",
+          "evidence": {
+            "documentId": "6592556",
+            "sha256": "19ced5bd6af1897527a6b74acb74ebca836734e697f956d22557180f8546d1e8",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        },
+        {
+          "pdfPages": [
+            70
+          ],
+          "steps": [
+            85
+          ],
+          "kind": "body-subassembly",
+          "note": "步骤85在座舱后部顶部加两块黑色件；侧面曲线和后部斜面依赖多个独立零件及朝向，不是单个拉伸外壳。",
+          "evidence": {
+            "documentId": "6592556",
+            "sha256": "19ced5bd6af1897527a6b74acb74ebca836734e697f956d22557180f8546d1e8",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        }
+      ],
+      "limitations": [
+        "No PDF-to-3D reconstruction",
+        "Element IDs are not design IDs",
+        "Printed quantity sum is not an official set piece count",
+        "No spare/non-spare classification",
+        "No human certification"
+      ]
+    },
+    {
+      "id": "6592612",
+      "fileName": "6592612.pdf",
+      "status": "ready",
+      "setNumber": "77238",
+      "pages": 108,
+      "sizeBytes": 29276712,
+      "sha256": "4b5fc3474784c48c95a54ad4f5d9a815a522df006afccb7ab10fbbeaa40ab961",
+      "printedBookNumberMatchesFileName": true,
+      "coverSetNumberEvidence": {
+        "pdfPage": 1,
+        "rawText": "77238\n1\n3\n2\n4"
+      },
+      "officialProductName": null,
+      "productYear": null,
+      "officialPieceCount": null,
+      "copyrightYear": 2025,
+      "copyrightYearEvidence": {
+        "pdfPage": 108,
+        "method": "native-pdf-text"
+      },
+      "appendixPages": [],
+      "coverDescription": "橙色封闭座舱跑车；封面印77238及袋号1、2、3、4。",
+      "inventoryScope": "77238袋1–4对应说明册，没有零件附录；另一本6592556含附录，但其覆盖范围不能从本册单独证明。",
+      "inventoryComplete": false,
+      "sparesDistinguished": false,
+      "designIdsMapped": false,
+      "colorsMapped": false,
+      "extractedRowCount": 0,
+      "printedQuantitySum": 0,
+      "visualSpotCheckedRows": 0,
+      "source": {
+        "kind": "user-uploaded-lego-pdf",
+        "fileName": "6592612.pdf",
+        "sha256": "4b5fc3474784c48c95a54ad4f5d9a815a522df006afccb7ab10fbbeaa40ab961",
+        "sourceUrl": null,
+        "officialOriginIndependentlyVerified": false
+      },
+      "observations": [
+        {
+          "pdfPages": [
+            1
+          ],
+          "kind": "cover",
+          "note": "封面为橙色车辆且袋号为1–4，与6592556封面的蓝色车辆/袋5–8分册。",
+          "evidence": {
+            "documentId": "6592612",
+            "sha256": "4b5fc3474784c48c95a54ad4f5d9a815a522df006afccb7ab10fbbeaa40ab961",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        },
+        {
+          "pdfPages": [
+            10
+          ],
+          "steps": [
+            9,
+            10
+          ],
+          "kind": "chassis",
+          "note": "步骤9–10在底盘中央叠板，橙色横向板连接左右侧结构；前后两端车轮销外露。",
+          "evidence": {
+            "documentId": "6592612",
+            "sha256": "4b5fc3474784c48c95a54ad4f5d9a815a522df006afccb7ab10fbbeaa40ab961",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        },
+        {
+          "pdfPages": [
+            70
+          ],
+          "steps": [
+            73
+          ],
+          "kind": "body-subassembly",
+          "note": "车尾上盖、侧窗和后轮拱先形成，车头区域仍裸露；箭头将小块橙色斜面件从上方加到后部曲面。",
+          "evidence": {
+            "documentId": "6592612",
+            "sha256": "4b5fc3474784c48c95a54ad4f5d9a815a522df006afccb7ab10fbbeaa40ab961",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        }
+      ],
+      "limitations": [
+        "No PDF-to-3D reconstruction",
+        "Element IDs are not design IDs",
+        "Printed quantity sum is not an official set piece count",
+        "No spare/non-spare classification",
+        "No human certification"
+      ]
+    },
+    {
+      "id": "6617271",
+      "fileName": "6617271.pdf",
+      "status": "ready",
+      "setNumber": "77254",
+      "pages": 124,
+      "sizeBytes": 31422671,
+      "sha256": "22bc404a153284f8f8bea9894671582042574aae4300187639f27071b25ca67f",
+      "printedBookNumberMatchesFileName": true,
+      "coverSetNumberEvidence": {
+        "pdfPage": 1,
+        "rawText": "77254"
+      },
+      "officialProductName": null,
+      "productYear": null,
+      "officialPieceCount": null,
+      "copyrightYear": 2026,
+      "copyrightYearEvidence": {
+        "pdfPage": 124,
+        "method": "native-pdf-text"
+      },
+      "appendixPages": [
+        122,
+        123
+      ],
+      "coverDescription": "红色低矮跑车、黑色固定尾翼与Ferrari标志。封面只印77254。",
+      "inventoryScope": "本册末尾印刷零件附录；未独立对照官方结构化库存，是否含备件及全套完整性未确认。",
+      "inventoryComplete": false,
+      "sparesDistinguished": false,
+      "designIdsMapped": false,
+      "colorsMapped": false,
+      "extractedRowCount": 133,
+      "printedQuantitySum": 338,
+      "visualSpotCheckedRows": 12,
+      "source": {
+        "kind": "user-uploaded-lego-pdf",
+        "fileName": "6617271.pdf",
+        "sha256": "22bc404a153284f8f8bea9894671582042574aae4300187639f27071b25ca67f",
+        "sourceUrl": null,
+        "officialOriginIndependentlyVerified": false
+      },
+      "observations": [
+        {
+          "pdfPages": [
+            1
+          ],
+          "kind": "cover",
+          "note": "可见低矮车头、大幅倾斜的整体风挡和独立黑色尾翼；只能作为外观参考。",
+          "evidence": {
+            "documentId": "6617271",
+            "sha256": "22bc404a153284f8f8bea9894671582042574aae4300187639f27071b25ca67f",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        },
+        {
+          "pdfPages": [
+            12
+          ],
+          "steps": [
+            8
+          ],
+          "kind": "chassis",
+          "note": "步骤8在黑色底盘上安装灰色小板；底盘侧面孔位、外露轮销和已有斜面支撑都先于外壳。",
+          "evidence": {
+            "documentId": "6617271",
+            "sha256": "22bc404a153284f8f8bea9894671582042574aae4300187639f27071b25ca67f",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        },
+        {
+          "pdfPages": [
+            72
+          ],
+          "steps": [
+            90
+          ],
+          "kind": "body-subassembly",
+          "note": "步骤90把预先组好的车尾两侧小组件水平装到主车架；座舱仍开放，连接方向不能简单按垂直堆砖处理。",
+          "evidence": {
+            "documentId": "6617271",
+            "sha256": "22bc404a153284f8f8bea9894671582042574aae4300187639f27071b25ca67f",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        }
+      ],
+      "limitations": [
+        "No PDF-to-3D reconstruction",
+        "Element IDs are not design IDs",
+        "Printed quantity sum is not an official set piece count",
+        "No spare/non-spare classification",
+        "No human certification"
+      ]
+    },
+    {
+      "id": "6617283",
+      "fileName": "6617283.pdf",
+      "status": "ready",
+      "setNumber": "77257",
+      "pages": 104,
+      "sizeBytes": 31454810,
+      "sha256": "f9f7f1e5a22385ce58ce589b35dc8b47fa86beaba57402ac37bf45c17b7e2d1d",
+      "printedBookNumberMatchesFileName": true,
+      "coverSetNumberEvidence": {
+        "pdfPage": 1,
+        "rawText": "77257"
+      },
+      "officialProductName": null,
+      "productYear": null,
+      "officialPieceCount": null,
+      "copyrightYear": 2026,
+      "copyrightYearEvidence": {
+        "pdfPage": 104,
+        "method": "native-pdf-text"
+      },
+      "appendixPages": [
+        102,
+        103
+      ],
+      "coverDescription": "橙/黑跑车；车鼻上可见McLaren字样，封面印77257。",
+      "inventoryScope": "本册末尾印刷零件附录；未独立对照官方结构化库存，是否含备件及全套完整性未确认。",
+      "inventoryComplete": false,
+      "sparesDistinguished": false,
+      "designIdsMapped": false,
+      "colorsMapped": false,
+      "extractedRowCount": 119,
+      "printedQuantitySum": 286,
+      "visualSpotCheckedRows": 10,
+      "source": {
+        "kind": "user-uploaded-lego-pdf",
+        "fileName": "6617283.pdf",
+        "sha256": "f9f7f1e5a22385ce58ce589b35dc8b47fa86beaba57402ac37bf45c17b7e2d1d",
+        "sourceUrl": null,
+        "officialOriginIndependentlyVerified": false
+      },
+      "observations": [
+        {
+          "pdfPages": [
+            1
+          ],
+          "kind": "cover",
+          "note": "橙色车身沿黑色座舱、车顶和后部形成分区，前轮拱和侧面进气轮廓具有独立造型。",
+          "evidence": {
+            "documentId": "6617283",
+            "sha256": "f9f7f1e5a22385ce58ce589b35dc8b47fa86beaba57402ac37bf45c17b7e2d1d",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        },
+        {
+          "pdfPages": [
+            12
+          ],
+          "steps": [
+            8
+          ],
+          "kind": "chassis",
+          "note": "步骤8将专用大底盘翻转，与已经装有轮销的后部小组件连接；这不能用一块普通长方形板替代。",
+          "evidence": {
+            "documentId": "6617283",
+            "sha256": "f9f7f1e5a22385ce58ce589b35dc8b47fa86beaba57402ac37bf45c17b7e2d1d",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        },
+        {
+          "pdfPages": [
+            70
+          ],
+          "steps": [
+            66
+          ],
+          "kind": "body-subassembly",
+          "note": "步骤66把黑色车头小组件沿水平方向装到主车身；车顶尚未封闭，座舱、侧面和后轮拱先行完成。",
+          "evidence": {
+            "documentId": "6617283",
+            "sha256": "f9f7f1e5a22385ce58ce589b35dc8b47fa86beaba57402ac37bf45c17b7e2d1d",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        }
+      ],
+      "limitations": [
+        "No PDF-to-3D reconstruction",
+        "Element IDs are not design IDs",
+        "Printed quantity sum is not an official set piece count",
+        "No spare/non-spare classification",
+        "No human certification"
+      ]
+    },
+    {
+      "id": "6662707",
+      "fileName": "6662707.pdf",
+      "status": "ready",
+      "setNumber": "77263",
+      "pages": 116,
+      "sizeBytes": 30948680,
+      "sha256": "713cdd8dcec8d9d00d379b836d4510a43a0a5a909c3b2d8773f3fb7f9eb6cf37",
+      "printedBookNumberMatchesFileName": true,
+      "coverSetNumberEvidence": {
+        "pdfPage": 1,
+        "rawText": "77263"
+      },
+      "officialProductName": null,
+      "productYear": null,
+      "officialPieceCount": null,
+      "copyrightYear": 2026,
+      "copyrightYearEvidence": {
+        "pdfPage": 116,
+        "method": "native-pdf-text"
+      },
+      "appendixPages": [
+        113,
+        114,
+        115
+      ],
+      "coverDescription": "白/黑赛车，蓝红条纹与金色车轮；封面车牌可见THE M3 E30。",
+      "inventoryScope": "本册末尾印刷零件附录；未独立对照官方结构化库存，是否含备件及全套完整性未确认。",
+      "inventoryComplete": false,
+      "sparesDistinguished": false,
+      "designIdsMapped": false,
+      "colorsMapped": false,
+      "extractedRowCount": 173,
+      "printedQuantitySum": 357,
+      "visualSpotCheckedRows": 15,
+      "source": {
+        "kind": "user-uploaded-lego-pdf",
+        "fileName": "6662707.pdf",
+        "sha256": "713cdd8dcec8d9d00d379b836d4510a43a0a5a909c3b2d8773f3fb7f9eb6cf37",
+        "sourceUrl": null,
+        "officialOriginIndependentlyVerified": false
+      },
+      "observations": [
+        {
+          "pdfPages": [
+            1
+          ],
+          "kind": "cover",
+          "note": "可见THE M3 E30车牌、方形乘员舱、四个圆形前灯和独立尾翼；这些是外观观察，不是几何尺寸。",
+          "evidence": {
+            "documentId": "6662707",
+            "sha256": "713cdd8dcec8d9d00d379b836d4510a43a0a5a909c3b2d8773f3fb7f9eb6cf37",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        },
+        {
+          "pdfPages": [
+            12
+          ],
+          "steps": [
+            10,
+            11
+          ],
+          "kind": "wheel-carrier-subassembly",
+          "note": "步骤10将两根浅棕色销从两侧插入小型黑色组件，步骤11再覆板并加侧向孔砖；精确零件号/接口仍需来源映射。",
+          "evidence": {
+            "documentId": "6662707",
+            "sha256": "713cdd8dcec8d9d00d379b836d4510a43a0a5a909c3b2d8773f3fb7f9eb6cf37",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        },
+        {
+          "pdfPages": [
+            70
+          ],
+          "kind": "body-subassembly",
+          "note": "安装后部装饰面板时车顶尚未封闭，座舱、侧门和轮拱已形成；说明分组件装配顺序不能由成品轮廓替代。",
+          "evidence": {
+            "documentId": "6662707",
+            "sha256": "713cdd8dcec8d9d00d379b836d4510a43a0a5a909c3b2d8773f3fb7f9eb6cf37",
+            "method": "assistant-visual-review",
+            "humanApproved": false
+          }
+        }
+      ],
+      "limitations": [
+        "No PDF-to-3D reconstruction",
+        "Element IDs are not design IDs",
+        "Printed quantity sum is not an official set piece count",
+        "No spare/non-spare classification",
+        "No human certification"
+      ]
+    }
+  ]
+}

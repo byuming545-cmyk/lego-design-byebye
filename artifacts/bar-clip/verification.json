@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "bar-clip-verification-2",
+  "generatedAt": "2026-10-27T13:26:30+08:00",
+  "branch": "codex/bar-clip-source-grammar",
+  "headCommit": null,
+  "baseCommit": "fe74141de5870547d71d0874a39c4ca69c707487",
+  "commands": [
+    {
+      "command": "npm run typecheck",
+      "status": "pass"
+    },
+    {
+      "command": "npm test -- --maxWorkers=2",
+      "status": "pass",
+      "testFiles": 53,
+      "tests": 767,
+      "skipped": 0,
+      "durationSeconds": 72.49,
+      "log": "artifacts/bar-clip/logs/unit-production.txt"
+    },
+    {
+      "command": "npm run build",
+      "status": "pass",
+      "note": "typecheck + vite client build + server TypeScript build",
+      "log": "artifacts/bar-clip/logs/build-production.txt"
+    },
+    {
+      "command": "npm run generate:bar-clip",
+      "status": "pass",
+      "module": "bar-clip",
+      "placements": 2,
+      "edges": 1,
+      "steps": 2,
+      "exportBytes": 12993,
+      "reimport": "VALID",
+      "log": "artifacts/bar-clip/logs/generate-production.txt"
+    },
+    {
+      "command": "npm run probe:bar-clip",
+      "status": "pass",
+      "output": "artifacts/bar-clip/probe.json",
+      "log": "artifacts/bar-clip/logs/probe-production.txt"
+    },
+    {
+      "command": "npm run test:e2e",
+      "status": "blocked",
+      "reason": "Playwright chromium executable is absent at /usr/bin/chromium; all 11 tests failed at browserType.launch before exercising the app.",
+      "log": "artifacts/bar-clip/logs/e2e-preview.txt"
+    },
+    {
+      "command": "npm run test:preview",
+      "status": "not-run",
+      "reason": "Prerequisite e2e command stopped on the missing browser."
+    }
+  ],
+  "productionCounts": {
+    "parts": 253,
+    "generationEligible": 102,
+    "blocked": 151,
+    "assemblyVerified": 0,
+    "physicalBuildsVerified": 0
+  },
+  "barClipOutcome": {
+    "barFeatures": 2,
+    "clipFeatures": 3,
+    "newlyEligibleParts": [
+      "30374",
+      "48729b",
+      "60470b"
+    ],
+    "generatedModels": 1,
+    "generatedParts": [
+      "30374",
+      "48729b"
+    ],
+    "generatedEdges": 1,
+    "generatedSteps": 2,
+    "exportBytes": 12993,
+    "reimportStatus": "VALID",
+    "barReceptaclesFound": 0
+  },
+  "physicalBuildVerified": false,
+  "limitations": [
+    "The 60470b clip part is collision-ready, but the 80-LDU 30374 bar intersects its plate body at every discrete twist; no shorter standalone source-backed bar exists in the pinned library.",
+    "48729b and 60470b are represented by an open-source-surface proxy, not a closed solid; seat contacts are checked, but complete surface partition and containment are not.",
+    "No source-backed standalone Bar Receptacle exists in the pinned 253-root library.",
+    "Retention, friction, stress and physical fit remain UNKNOWN.",
+    "Playwright e2e and preview were not executed because no Chromium executable is installed."
+  ],
+  "headCommitNote": "Generated from the delivery working tree before the local delivery commit; the commit containing this artifact has the final tree."
+}
