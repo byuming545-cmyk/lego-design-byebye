@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { thumbnailSvg } from './thumbnail.js';
 import { InventoryError } from '../inventory/provider.js';
 import { FoundationInventoryError, importFoundationInventoryCsv, importFoundationInventoryJson, type LocalInventoryOptions } from './inventory/index.js';
 import { RealPartRegistry } from './registry.js';
@@ -28,6 +29,13 @@ export function createPartsFoundationRouter(options: { dataDir?: string; registr
     if (!part) throw new InventoryError('没有该编号的原生来源。', 'FOUNDATION_PART_NOT_FOUND', 404);
     const { geometry, ...descriptor } = describeGrammarPart(part);
     response.json({ ...descriptor, geometry: { status: geometry.status, source: geometry.source }, generationCapability: await assembly.getCapability(part.partId) });
+  });
+  router.get('/parts/:partId/thumbnail', async (request, response) => {
+    if (!/^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,79}$/.test(request.params.partId)) bad('零件编号格式无效。');
+    const part = await assembly.getPart(request.params.partId);
+    if (!part || !part.geometry.mesh) throw new InventoryError('没有该编号的原生来源。', 'FOUNDATION_PART_NOT_FOUND', 404);
+    response.setHeader('Cache-Control', 'public, max-age=3600');
+    response.type('image/svg+xml').send(thumbnailSvg(part.partId, part.geometry.mesh));
   });
   router.get('/assembly/status', async (_request, response) => { response.json(await assembly.status()); });
   router.post('/assembly/models/import', async (request, response) => {

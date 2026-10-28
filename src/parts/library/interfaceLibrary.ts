@@ -21,6 +21,7 @@ import type {
   CasePlacement, CaseTransform, ComparisonCandidate, ConnectionCaseDetail, ConnectionCaseSummary, FeedbackInput, FeedbackPatch,
   InterfaceInstanceDetail, InterfaceInstanceSummary, InterfaceTypeRecord, InterfaceUseStatus, JointRuleDetail, JointRuleRecord,
   LibraryIndexSnapshot, LibraryOverview, LibraryVersions, PartComparison, ReviewItem, RuleUseStatus,
+  StudioCatalog, StudioCatalogExample, StudioCatalogFamily, StudioCatalogPart, StudioCatalogRule,
 } from './types.js';
 
 const FAMILY_LABELS: Record<ConnectorFamily, string> = {
@@ -74,6 +75,13 @@ const unique = <T,>(items: T[]) => [...new Set(items)];
 const vector = (value: readonly number[]): [number, number, number] => [Number(value[0] ?? 0), Number(value[1] ?? 0), Number(value[2] ?? 0)];
 const featureKey = (partId: string, featureId: string) => `${partId}\u0000${featureId}`;
 const instanceId = (partId: string, featureId: string) => `${partId}:${featureId}`;
+const TAG_PATTERNS: [string, RegExp][] = [
+  ['technic', /technic/i], ['brick', /\bBrick\b/i], ['plate', /\bPlate\b/i], ['tile', /\bTile\b/i],
+  ['slope', /\bSlope\b/i], ['panel', /\bPanel\b/i], ['wheel', /\b(Wheel|Tyre|Tire|Rim)\b/i],
+  ['hinge', /\bHinge\b/i], ['bar', /\b(Bar|Clip)\b/i], ['pin', /\b(Pin|Axle|Hole)\b/i],
+  ['windscreen', /\b(Windscreen|Cockpit|Canopy)\b/i], ['vehicle', /\b(Vehicle|Chassis|Base|Car)\b/i],
+];
+function tagsOf(name: string): string[] { return TAG_PATTERNS.filter(([, pattern]) => pattern.test(name)).map(([id]) => id); }
 function sourceOf(connector: Connector) { return connector.sources.find(source => source.line !== null) ?? connector.sources[0] ?? null; }
 function nativeRuleFor(ruleId: GrammarRuleId): string | null { return ruleId === 'C01' ? STANDARD_STUD_RULE_ID : ruleId === 'BAR_CLIP' ? BAR_CLIP_RULE_ID : ruleId === 'PIN_HOLE' ? PIN_HOLE_RULE_ID : null; }
 function caseType(definition: typeof CASE_DEFS[number]): ConnectionCaseSummary['caseType'] { return definition.build === 'blocked' ? 'blocked' : 'production'; }
@@ -82,6 +90,7 @@ function emptyCapability(partId: string): AssemblyInterfaceCapability { return {
 export class InterfaceLibrary {
   private indexPromise?: Promise<LibraryIndexSnapshot>;
   private casesPromise?: Promise<ConnectionCaseDetail[]>;
+  private studioCatalogPromise?: Promise<StudioCatalog>;
   private caseDocuments = new Map<string, NativeGeneratedAssembly>();
   private attachmentGraphs = new Map<string, NativeAssembly>();
   readonly feedback: FeedbackStore;
@@ -170,6 +179,112 @@ export class InterfaceLibrary {
   private async enrichRules(rows: JointRuleRecord[]): Promise<JointRuleRecord[]> {
     const active = (await this.feedback.list()).filter(record => !['resolved', 'rejected'].includes(record.status));
     return rows.map(row => { const openFeedback = active.filter(record => record.target.ruleId === row.id || (record.target.kind === 'rule' && record.target.id === row.id)).length; return { ...row, openFeedback, reviewState: openFeedback > 0 ? 'review-required' : 'clear' }; });
+  }
+
+  private catalogPart(row: InterfaceInstanceSummary): StudioCatalogPart {
+    return {
+      partId: row.partId, name: row.partName, tags: tagsOf(row.partName), featureCount: 1,
+      maleCount: row.role === 'MALE' ? 1 : 0, femaleCount: row.role === 'FEMALE' ? 1 : 0,
+      productionCount: row.status === 'production' ? 1 : 0,
+    };
+  }
+
+  async studioCatalog(): Promise<StudioCatalog> { return this.studioCatalogPromise ??= this.buildStudioCatalog(); }
+
+  private async buildStudioCatalog(): Promise<StudioCatalog> {
+    const index = await this.index();
+    const cases = await this.cases();
+    const partRows = new Map<string, StudioCatalogPart>();
+    for (const row of index.instances) {
+      const current = partRows.get(row.partId);
+      if (!current) partRows.set(row.partId, this.catalogPart(row));
+      else {
+        current.featureCount++;
+        if (row.role === 'MALE') current.maleCount++;
+        if (row.role === 'FEMALE') current.femaleCount++;
+        if (row.status === 'production') current.productionCount++;
+      }
+    }
+    const connectorByInstance = new Map<string, { point: ImportedConnectionPoint }>();
+    for (const entry of index.connectors.values()) connectorByInstance.set(`${entry.partId}:${entry.connector.featureId}`, { point: entry.point });
+    const duplicate = (items: StudioCatalogExample[]) => {
+      const seen = new Set<string>();
+      return items.filter(item => {
+        const key = `${item.fixedPartId}|${item.movingPartId}|${item.fixedConnectionId ?? ''}|${item.movingConnectionId ?? ''}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    };
+    const rules: StudioCatalogRule[] = index.rules.map(rule => {
+      const familySet = new Set<string>([...rule.maleFamilies, ...rule.femaleFamilies]);
+      const parts = [...new Map(index.instances.filter(row => familySet.has(row.family)).map(row => [row.partId, partRows.get(row.partId)!])).values()];
+      const examples: StudioCatalogExample[] = cases.filter(item => item.ruleId === rule.id).map(item => ({
+        id: `case:${item.id}`, ruleId: rule.id, label: `${item.fixedPartId} + ${item.movingPartId}`,
+        status: item.status === 'validated' ? 'validated' : 'blocked', fixedPartId: item.fixedPartId, movingPartId: item.movingPartId,
+        fixedConnectionId: item.edge?.fixedConnectionId ?? null, movingConnectionId: item.edge?.movingConnectionId ?? null,
+        caseId: item.id, summary: item.summary, reason: item.validation.reasons[0] ?? null,
+      }));
+      if (rule.production && examples.length < 3) {
+        const male = index.instances.filter(row => rule.maleFamilies.includes(row.family) && row.role === 'MALE' && row.supported).slice(0, 10);
+        const female = index.instances.filter(row => rule.femaleFamilies.includes(row.family) && row.role === 'FEMALE' && row.supported).slice(0, 10);
+        for (const a of male) for (const b of female) {
+          if (examples.length >= 3) break;
+          if (a.partId === b.partId) continue;
+          if (examples.some(item => item.fixedPartId === a.partId && item.movingPartId === b.partId)) continue;
+          const pa = connectorByInstance.get(`${a.partId}:${a.featureId}`)?.point;
+          const pb = connectorByInstance.get(`${b.partId}:${b.featureId}`)?.point;
+          if (!pa || !pb) continue;
+          const compatibility = checkConnectionCompatibility(pa, pb);
+          if (compatibility.status !== 'compatible' || !compatibility.ruleId) continue;
+          examples.push({
+            id: `candidate:${rule.id}:${a.partId}:${b.partId}`, ruleId: rule.id, label: `${a.partId} + ${b.partId}`,
+            status: 'source-candidate', fixedPartId: a.partId, movingPartId: b.partId,
+            fixedConnectionId: pa.id, movingConnectionId: pb.id, caseId: null,
+            summary: '由当前来源接口和规则求得的候选配对；尚未生成/导出样例。',
+            reason: compatibility.reason,
+          });
+        }
+      }
+      if (!examples.length) {
+        const male = index.instances.find(row => rule.maleFamilies.includes(row.family) && row.role === 'MALE');
+        const female = index.instances.find(row => rule.femaleFamilies.includes(row.family) && row.role === 'FEMALE');
+        if (male && female) examples.push({
+          id: `unverified:${rule.id}:${male.partId}:${female.partId}`, ruleId: rule.id, label: `${male.partId} + ${female.partId}`,
+          status: 'unverified', fixedPartId: male.partId, movingPartId: female.partId,
+          fixedConnectionId: male.sourceConnectionId, movingConnectionId: female.sourceConnectionId, caseId: null,
+          summary: '仅作为自由示范入口；当前规则未接入正式生产图。', reason: '规则尚未实现正式连接图适配。',
+        });
+      }
+      const unique = duplicate(examples).slice(0, 4);
+      const gap = unique.some(item => item.status === 'validated' || item.status === 'source-candidate') ? null
+        : parts.length === 0 ? `固定 253 零件库没有 ${rule.maleFamilies.join('/')} ↔ ${rule.femaleFamilies.join('/')} 的真实来源实例。`
+          : '已有真实来源接口，但规则尚未接入正式生产图；只能进入自由示范。';
+      return { ...rule, parts, examples: unique, gap };
+    });
+    const families: StudioCatalogFamily[] = index.overview.types.map(type => ({
+      id: type.id, label: type.label, description: type.description, status: type.status,
+      instanceCount: type.instanceCount, partCount: type.partCount,
+      parts: [...new Map(index.instances.filter(row => row.family === type.id).map(row => [row.partId, partRows.get(row.partId)!])).values()],
+      rules: type.rules,
+    }));
+    const tagDefs = [
+      ['technic', 'Technic / 机械', /technic/i], ['brick', '砖', /\bBrick\b/i], ['plate', '板', /\bPlate\b/i],
+      ['tile', '光面砖', /\bTile\b/i], ['slope', '斜面', /\bSlope\b/i], ['panel', '面板', /\bPanel\b/i],
+      ['wheel', '轮组', /\b(Wheel|Tyre|Tire|Rim)\b/i], ['hinge', '铰链', /\bHinge\b/i],
+      ['bar', '杆/夹', /\b(Bar|Clip)\b/i], ['pin', '销/孔', /\b(Pin|Axle|Hole)\b/i],
+      ['windscreen', '风挡/座舱', /\b(Windscreen|Cockpit|Canopy)\b/i], ['vehicle', '车辆/底盘', /\b(Vehicle|Chassis|Base|Car)\b/i],
+    ] as const;
+    const partTags = tagDefs.map(([id, label, pattern]) => ({ id, label, partCount: new Set(index.instances.filter(row => pattern.test(row.partName)).map(row => row.partId)).size })).filter(tag => tag.partCount > 0);
+    return {
+      generatedAt: new Date().toISOString(), versions: VERSIONS,
+      rules, families, partTags,
+      limitations: [
+        '门类目录由当前真实接口索引、15 条规则和已生成案例推导；空白门类保留为缺口，不补造零件或配合。',
+        '外形/用途标签只用于浏览，不参与兼容性判断。',
+        '来源候选只表示当前规则和接口可求解，不等于已有生成/导出样例。',
+      ],
+    };
   }
 
   async overview(): Promise<LibraryOverview> { const index = await this.index(); const cases = await this.cases().catch(() => []); const openFeedback = (await this.feedback.list()).filter(record => record.status === 'open' || record.status === 'triaged').length; const rules = await this.enrichRules(index.overview.rules); return { ...index.overview, counts: { ...index.overview.counts, cases: cases.length, validatedCases: cases.filter(item => item.status === 'validated').length, blockedCases: cases.filter(item => item.status === 'blocked').length, openFeedback }, recentCases: cases.map(this.caseSummary), types: index.overview.types, rules }; }

@@ -63,7 +63,8 @@ export function createApp(options: AppOptions = {}) {
   const modelJson = express.json({ limit: '40mb', strict: true });
   const feedbackJson = express.json({ limit: '1mb', strict: true });
   const referenceJson = express.json({ limit: '10mb', strict: true });
-  app.use((request, response, next) => (request.path === '/api/speed/models/import' ? modelJson : request.path === '/api/automotive/references/import' || request.path === '/api/parts-foundation/inventories/import' || request.path === '/api/parts-foundation/assembly/models/import' ? referenceJson : /^\/api\/speed\/models\/[^/]+\/feedback$/.test(request.path) ? feedbackJson : defaultJson)(request, response, next));
+  const studioJson = express.json({ limit: '3mb', strict: true });
+  app.use((request, response, next) => (request.path === '/api/speed/models/import' ? modelJson : request.path === '/api/automotive/references/import' || request.path === '/api/parts-foundation/inventories/import' || request.path === '/api/parts-foundation/assembly/models/import' ? referenceJson : /^\/api\/speed\/models\/[^/]+\/feedback$/.test(request.path) ? feedbackJson : request.path.startsWith('/api/interface-library/studio') ? studioJson : defaultJson)(request, response, next));
   const dataDir = options.partsDataDir ?? process.env.BRICKLAB_DATA_DIR ?? 'data';
   const partsRegistry = new RealPartRegistry({ dataDir: options.partsDataDir });
   const interfaceLibrary = new InterfaceLibrary(partsRegistry, { libraryDataDir: dataDir });

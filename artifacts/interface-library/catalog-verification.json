@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "interface-library-studio-catalog-verification-1",
+  "generatedAt": "2026-10-28T14:28:18.607866+00:00",
+  "branch": "codex/interface-library",
+  "baseline": "5db5e7c",
+  "delivery": "local-only, not pushed",
+  "overview": {
+    "parts": 253,
+    "interfaces": 5085,
+    "types": 25,
+    "rules": 15,
+    "productionRules": 3
+  },
+  "catalog": {
+    "rules": 15,
+    "C01": {
+      "examples": 2,
+      "parts": 239
+    },
+    "BAR_CLIP": {
+      "examples": 3,
+      "parts": 3
+    },
+    "PIN_HOLE": {
+      "examples": 3,
+      "parts": 11
+    },
+    "BAR_RECEPTACLE": {
+      "examples": 0,
+      "parts": 2,
+      "gap": true
+    },
+    "AXLE_KEYED": {
+      "examples": 0,
+      "parts": 4,
+      "gap": true
+    },
+    "GENERIC_GROUP": {
+      "examples": 1,
+      "parts": 90,
+      "gap": true
+    }
+  },
+  "browser": {
+    "base": "http://127.0.0.1:3013 (isolated BRICKLAB_DATA_DIR)",
+    "initialParts": [
+      "3024",
+      "3070b"
+    ],
+    "samePart": [
+      "3024",
+      "3024"
+    ],
+    "thumbnailOk": true,
+    "exampleCount": 2,
+    "gapText": "BALL_SOCKET 球 ↔ 球窝\n\n固定 253 零件库没有 BALL ↔ BALL_SOCKET 的真实来源实例。",
+    "preservedNote": "保存失败时这行说明必须保留。",
+    "preservedStage": 1,
+    "recordCount": 2,
+    "bundleExamples": 2,
+    "listCount": 2,
+    "reopenedView": "俯视",
+    "savedPreview": 1,
+    "importNotice": "已导入 2 条草稿；跳过 0 条。",
+    "expectedInducedErrors": [
+      "console: Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
+    ],
+    "unexpectedErrors": [],
+    "revalidateHttpTested": true
+  },
+  "preservedUserData": {
+    "path": "data/interface-library/studio-examples.json",
+    "records": 3,
+    "parts": [
+      "3673",
+      "32000"
+    ],
+    "status": "pending-review",
+    "categoryUpgrade": "PIN_HOLE",
+    "noDataLoss": true,
+    "sha256": "9981be5dbde62d879b982dfe3b0260d40a2e6da17e93224d8e2191c100375ae3"
+  },
+  "tests": {
+    "command": "npm test -- --maxWorkers=2",
+    "files": 54,
+    "passed": 777,
+    "failed": 0,
+    "durationSeconds": 87.26,
+    "log": "artifacts/interface-library/unit-catalog.log"
+  },
+  "build": {
+    "command": "npm run build",
+    "status": "passed",
+    "log": "artifacts/interface-library/build-catalog.log"
+  },
+  "screenshots": {
+    "studio-catalog.png": "ca8a1693206f96500d4191fbc6bca3ebb5f2a9d1aa13424d871ce9a86fef8eca",
+    "studio-catalog-gap.png": "e11922b0095a182fbb8f293890a3b92348ceb3d73517426a52149a11ca0f162e",
+    "studio-part-picker.png": "37d5179ddb5515bfbe557764af631ede56c02e4372485d7b704fa53af6907b9f",
+    "studio-same-part.png": "d98c3198985d22b7fa54e739adb36d9c4e47b28a5f002cdb268fdf0b96ef9b63",
+    "studio-result-catalog.png": "ae4071c3b802921eefcaec19e20e5f97505c4f8e843c30f487a8e534124478f4",
+    "studio-catalog-saved.png": "9c96b9157f972dbf11a780d4e779e531526aad3611fcbe773dc4c4e896439a7a",
+    "studio-catalog-reopen.png": "457215a79a82ab500afe4d0146c98f9d580a830bd07bc746181f89ccb2c141be",
+    "studio-catalog-mobile.png": "49a341417787370d06803d467188afdd54d408a58a311bbf0fe204fffcf2e728"
+  },
+  "limitations": [
+    "Only C01/BAR_CLIP/PIN_HOLE are production families; other categories are explicit gaps or conditional kernels.",
+    "No source-backed example exists for BAR_RECEPTACLE, AXLE, HINGE, BALL, WHEEL, TYRE/RIM or RAIL in the pinned 253-part library.",
+    "Installation-path samples cannot bind the seated collision zone, so C01 path result is not-checked, not passed.",
+    "Human examples are review-only and never grant production eligibility or modify rules.",
+    "Attachments are http(s) links only; no binary upload.",
+    "Thumbnails are source-triangle isometric projections, not separate geometry.",
+    "One induced 503 console error in the save-failure test is expected; all other console/page errors are zero.",
+    "The three preserved user examples are pending-review and final-collision-blocked; they are not accepted as a successful pin insertion."
+  ],
+  "userBundle": {
+    "path": "artifacts/interface-library/studio-user-bundle.json",
+    "examples": 3,
+    "sourceSummary": {
+      "parts": 2,
+      "sources": 4
+    },
+    "imported": 3,
+    "skipped": 0,
+    "errors": [],
+    "note": "Preserved user 3673+32000 examples exported for the next round; import created drafts and did not overwrite originals.",
+    "sha256": "52694fd1fcc0b3cc47ec671c229d14a5bcb6b7680794196bbc4ac2902e8e943d"
+  }
+}

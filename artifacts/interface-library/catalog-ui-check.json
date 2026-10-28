@@ -1,0 +1,50 @@
+{
+  "categories": [
+    "C01 标准凸点 ↔ 标准凹槽 · 2 示例 / 239 零件",
+    "BAR_CLIP 圆杆 ↔ 夹口 · 3 示例 / 3 零件",
+    "BAR_RECEPTACLE 圆杆 ↔ 杆孔 · 0 示例 / 2 零件 · 有缺口",
+    "PIN_HOLE 销 ↔ 销孔 · 3 示例 / 11 零件",
+    "AXLE_KEYED 十字轴 ↔ 十字孔 · 0 示例 / 4 零件 · 有缺口",
+    "AXLE_ROUND 圆轴 ↔ 圆孔 · 0 示例 / 0 零件 · 有缺口",
+    "HINGE 铰链 · 0 示例 / 0 零件 · 有缺口",
+    "CLICK_HINGE 卡扣铰链 · 0 示例 / 0 零件 · 有缺口",
+    "TURNTABLE 转盘 · 0 示例 / 0 零件 · 有缺口",
+    "BALL_SOCKET 球 ↔ 球窝 · 0 示例 / 0 零件 · 有缺口",
+    "TOWBALL_SOCKET 牵引球 ↔ 球窝 · 0 示例 / 0 零件 · 有缺口",
+    "WHEEL_MOUNT 轮组座 · 0 示例 / 0 零件 · 有缺口",
+    "TYRE_RIM 轮胎 ↔ 轮辋 · 0 示例 / 0 零件 · 有缺口",
+    "RAIL_GROOVE 导轨 ↔ 导槽 · 0 示例 / 0 零件 · 有缺口",
+    "GENERIC_GROUP 来源分组 · 1 示例 / 90 零件 · 有缺口"
+  ],
+  "initialParts": [
+    "3024",
+    "3070b"
+  ],
+  "thumbnailOk": true,
+  "gapText": "BALL_SOCKET 球 ↔ 球窝\n\n固定 253 零件库没有 BALL ↔ BALL_SOCKET 的真实来源实例。",
+  "preservedNote": "保存失败时这行说明必须保留。",
+  "preservedStage": 1,
+  "reopenedView": "俯视",
+  "savedPreview": 1,
+  "samePart": [
+    "3024",
+    "3024"
+  ],
+  "exampleCount": 2,
+  "resultText": "检查结果 人工示例 · 未进入正式生成\n用户认为可行\n已提交（人工判断）\n\n这是你的判断，不是软件验证结论。\n\n规则检查\n规则成立\n\n来源接口参数满足当前规则；这不等同于碰撞或安装路径通过。\n\n规则原始诊断\nldcad-standard-stud-to-capped-underside-v1 · 姿态偏差 0.0° / 0.0 LDU\n最终碰撞\n未发现实体碰撞\n\n最终姿态未发现实体穿透；表面接触是允许的。\n\n碰撞原始诊断\n安装路径\n暂时无法判断\n\n当前取样姿态无法绑定到合法 seat，暂时无法判断安装路径。\n\n路径原始诊断\n1 个取样 · 两件真实零件的刚体关键帧/插值取样；不包含形变、保持力、环境或实物验证。当前取样姿态没有绑定到合法 seat，不能断言路径通过；这不是失败，也不是通过。\n\n自由示范和人工候选点只作为待复核信息，不冒充来源端点。 路径检查只覆盖两件零件的刚体刚体取样，不验证形变、轮胎/卡扣弹性、保持力或实物。 最终结果不会获得生产准入，也不会自动修改规则。\n\n正式生成资格：禁止（人工示例不会自动授权）。",
+  "save1": "已保存 studio-7f9d2da8-d6d6-4e08-bd73-a0b26adde11a\n草稿 · 版本 1 · 10/28/2026, 10:18:55 PM\n重新打开",
+  "save2": "已保存 studio-9fe35c3f-1266-45d1-b00b-316291f209cd\n草稿 · 版本 2 · 10/28/2026, 10:18:55 PM\n重新打开",
+  "recordCount": 2,
+  "bundleFormat": "bricklab-studio-bundle",
+  "bundleExamples": 2,
+  "listCount": 2,
+  "reopenText": "已保存 studio-9fe35c3f-1266-45d1-b00b-316291f209cd\n草稿 · 版本 2 · 10/28/2026, 10:18:55 PM\n重新打开",
+  "importNotice": "已导入 2 条草稿；跳过 0 条。",
+  "errors": [
+    "console: Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
+  ],
+  "expectedInducedErrors": [
+    "console: Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
+  ],
+  "unexpectedErrors": []
+}

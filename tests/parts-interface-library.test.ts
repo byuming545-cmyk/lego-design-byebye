@@ -111,6 +111,54 @@ describe('real interface and assembly library', () => {
     expect(listed.some(item => item.id === saved.id)).toBe(true);
   }, 30000);
 
+  it('derives a data-driven catalog with real examples and explicit gaps', async () => {
+    const catalog = await library.studioCatalog();
+    expect(catalog.rules).toHaveLength(15);
+    expect(catalog.rules.find(item => item.id === 'C01')).toMatchObject({ examples: expect.any(Array), parts: expect.any(Array) });
+    expect(catalog.rules.find(item => item.id === 'C01')!.examples.length).toBeGreaterThanOrEqual(2);
+    expect(catalog.rules.find(item => item.id === 'C01')!.parts.length).toBeGreaterThan(200);
+    expect(catalog.rules.find(item => item.id === 'BAR_CLIP')!.examples.length).toBeGreaterThanOrEqual(3);
+    expect(catalog.rules.find(item => item.id === 'PIN_HOLE')!.examples.length).toBeGreaterThanOrEqual(3);
+    expect(catalog.rules.find(item => item.id === 'BALL_SOCKET')).toMatchObject({ parts: [], examples: [], gap: expect.any(String) });
+    expect(catalog.families.find(item => item.id === 'STUD')!.partCount).toBe(194);
+    expect(catalog.families.reduce((sum, family) => sum + family.partCount, 0)).toBeGreaterThan(0);
+  }, 30000);
+
+  it('prepares same-part dual instances and versions drafts/export bundles over HTTP', async () => {
+    const prepare = async (fixedPartId: string, movingPartId: string) => {
+      const response = await fetch(`${base}/studio/prepare`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ fixedPartId, movingPartId, ruleId: 'C01' }) });
+      expect(response.ok).toBe(true);
+      return response.json() as Promise<{ fixedPartId: string; movingPartId: string; fixedConnectionId: string; movingConnectionId: string; fixedInitial: unknown; movingInitial: unknown; movingFinal: unknown; axis: number[]; insertionDepthLdu: number; compatibility: { status: string }; suggestions: unknown[] }>;
+    };
+    const same = await prepare('3024', '3024');
+    expect(same).toMatchObject({ fixedPartId: '3024', movingPartId: '3024', compatibility: { status: 'compatible' } });
+    expect(same.suggestions.length).toBeGreaterThan(0);
+    const pair = await prepare('3024', '3070b');
+    const input = { mode: 'assisted', categoryId: 'C01', caseId: null, fixedPartId: '3024', movingPartId: '3070b', fixedInstanceId: 'A', movingInstanceId: 'B', fixedConnectionId: pair.fixedConnectionId, movingConnectionId: pair.movingConnectionId, fixedInitial: pair.fixedInitial, movingInitial: pair.movingInitial, movingFinal: pair.movingFinal, keyframes: [], camera: { position: [20, 25, 30], target: [0, 0, 0], view: 'side' }, previewDataUrl: null, userClaim: { connectionNote: '版本测试', reason: '验证草稿版本与反馈包', physicallyBuilt: false, attachments: [] } };
+    const firstResponse = await fetch(`${base}/studio/drafts`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(input) });
+    expect(firstResponse.ok).toBe(true);
+    const first = await firstResponse.json() as { id: string; rootId: string; version: number; status: string };
+    expect(first).toMatchObject({ version: 1, status: 'draft' });
+    const secondResponse = await fetch(`${base}/studio/drafts`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ ...input, rootId: first.rootId }) });
+    expect(secondResponse.ok).toBe(true);
+    const second = await secondResponse.json() as { id: string; rootId: string; version: number; previousId: string };
+    expect(second).toMatchObject({ rootId: first.rootId, version: 2, previousId: first.id });
+    const listed = await (await fetch(`${base}/studio/examples`)).json() as { rootId: string; version: number }[];
+    expect(listed.filter(item => item.rootId === first.rootId).map(item => item.version).sort()).toEqual([1, 2]);
+    const bundle = await (await fetch(`${base}/studio/export`)).json() as { format: string; bundleVersion: number; examples: unknown[]; feedback: unknown[]; sourceSummary: { parts: number } };
+    expect(bundle).toMatchObject({ format: 'bricklab-studio-bundle', bundleVersion: 1 });
+    expect(bundle.examples.length).toBeGreaterThanOrEqual(2);
+    expect(bundle.sourceSummary.parts).toBeGreaterThan(0);
+    const imported = await (await fetch(`${base}/studio/import`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ examples: [bundle.examples[0]] }) })).json() as { imported: number; skipped: number };
+    expect(imported).toMatchObject({ imported: 1, skipped: 0 });
+    const rechecked = await (await fetch(`${base}/studio/examples/${first.id}/revalidate`, { method: 'POST' })).json() as { stale: boolean; history: unknown[] };
+    expect(rechecked.stale).toBe(false);
+    expect(rechecked.history.length).toBeGreaterThan(1);
+    const thumb = await fetch(`${base.replace('/api/interface-library', '/api/parts-foundation')}/parts/3024/thumbnail`);
+    expect(thumb.status).toBe(200);
+    expect(thumb.headers.get('content-type')).toContain('image/svg+xml');
+  }, 60000);
+
   it('serves the read/compare/feedback flow over HTTP', async () => {
     const get = async (part: string) => { const response = await fetch(base + part); expect(response.ok, part).toBe(true); return response.json(); };
     const overview = await get('/overview');

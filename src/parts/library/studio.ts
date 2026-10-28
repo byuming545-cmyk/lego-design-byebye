@@ -10,10 +10,13 @@ import { checkConnectionCompatibility } from '../assembly/compatibility.js';
 import { ASSEMBLY_ENGINE_VERSION } from '../assembly/engine.js';
 import { COLLISION_VERSION } from '../assembly/collision.js';
 import { CONNECTION_RULE_VERSION } from '../assembly/compatibility.js';
+import { CONNECTOR_GRAMMAR_RULES } from '../grammar/rules.js';
 import { CONNECTOR_GRAMMAR_VERSION, CONNECTOR_SCHEMA_VERSION } from '../grammar/schema.js';
 import { GRAMMAR_ADMISSION_VERSION } from '../grammar/admission.js';
 
 export type StudioMode = 'assisted' | 'free';
+export type StudioStatus = 'draft' | 'pending-review';
+export interface StudioCamera { position: Vector3; target: Vector3; view: 'free' | 'front' | 'side' | 'top'; }
 export interface StudioTransform { rotation: Matrix3; translation: Vector3 }
 export interface StudioKeyframe { id: string; label: string; transform: StudioTransform; recordedAt: string }
 export interface StudioAttachment { kind: 'none' | 'link'; url?: string; note?: string }
@@ -32,11 +35,31 @@ export interface StudioBuildInput {
   keyframes: StudioKeyframe[];
   userClaim: StudioUserClaim;
   candidatePoint?: StudioCandidatePoint;
+  categoryId?: string;
+  fixedInstanceId?: string;
+  movingInstanceId?: string;
+  camera?: StudioCamera;
+  previewDataUrl?: string | null;
+  rootId?: string | null;
+  status?: StudioStatus;
 }
 export interface StudioSuggestion { transform: StudioTransform; twistDeg: number; ruleId: string }
 export interface StudioPartSnapshot {
   partId: string; name: string; sourceSha256: string; revision: string;
   connections: { id: string; family: string; role: string; sourceId: string | null; sourcePath: string; line: number | null; raw: string | null }[];
+}
+interface NormalizedBuild extends StudioBuildInput {
+  categoryId: string; fixedInstanceId: string; movingInstanceId: string; camera: StudioCamera;
+  previewDataUrl: string | null; rootId: string | null; status: StudioStatus;
+}
+export interface StudioPreparation {
+  fixedPartId: string; movingPartId: string;
+  fixedConnectionId: string | null; movingConnectionId: string | null;
+  fixedInitial: StudioTransform; movingInitial: StudioTransform; movingFinal: StudioTransform;
+  axis: Vector3; insertionDepthLdu: number;
+  compatibility: { status: 'compatible' | 'incompatible' | 'unknown'; ruleId: string | null; reason: string; reasonCode: string; allowedTwistsDeg: number[] };
+  suggestions: StudioSuggestion[];
+  notice: string;
 }
 export interface StudioValidation {
   rule: {
@@ -52,7 +75,10 @@ export interface StudioValidation {
   limitations: string[];
 }
 export interface StudioExample extends StudioBuildInput {
-  id: string; createdAt: string; updatedAt: string; status: 'pending-review';
+  id: string; rootId: string; version: number; previousId: string | null;
+  createdAt: string; updatedAt: string; status: StudioStatus;
+  categoryId: string; fixedInstanceId: string; movingInstanceId: string; camera: StudioCamera; previewDataUrl: string | null;
+  relativeTransform: StudioTransform; relativeConvention: 'A-local-to-B-local-rigid-v1';
   fixed: StudioPartSnapshot; moving: StudioPartSnapshot;
   validation: StudioValidation;
   versions: { schema: string; grammar: string; admission: string; partLibrary: string; assemblyEngine: string; connectionRule: string; collision: string };
@@ -60,9 +86,17 @@ export interface StudioExample extends StudioBuildInput {
   history: { at: string; action: string; note: string; validation: StudioValidation }[];
 }
 export interface StudioExampleSummary {
-  id: string; createdAt: string; updatedAt: string; mode: StudioMode; status: 'pending-review';
+  id: string; rootId: string; version: number; createdAt: string; updatedAt: string; mode: StudioMode; status: StudioStatus; categoryId: string;
   fixedPartId: string; movingPartId: string; ruleId: string | null; pathStatus: StudioValidation['path']['status']; stale: boolean;
 }
+export interface StudioExportBundle {
+  format: 'bricklab-studio-bundle'; bundleVersion: 1; generatedAt: string;
+  storage: { kind: 'server-json'; path: string; note: string };
+  schema: string; versions: typeof import('./studio.js').STUDIO_VERSIONS;
+  instructions: string[]; examples: StudioExample[]; feedback: unknown[];
+  sourceSummary: { parts: number; sources: number; missingSourceModels: string[] };
+}
+export interface StudioImportResult { imported: number; skipped: number; errors: string[]; }
 export class StudioError extends Error {
   constructor(message: string, readonly code: string, readonly status = 400) { super(message); }
 }
@@ -71,7 +105,30 @@ const VERSIONS = { schema: CONNECTOR_SCHEMA_VERSION, grammar: CONNECTOR_GRAMMAR_
 const ID = /^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,79}$/;
 const FEATURE = /^[a-zA-Z0-9][a-zA-Z0-9_.:/-]{0,999}$/;
 const MAX_RECORDS = 1000;
+const CATEGORY_BY_RULE: Record<string, string> = {
+  'ldcad-standard-stud-to-capped-underside-v1': 'C01',
+  'ldcad-source-declared-bar-clip-v1': 'BAR_CLIP',
+  'ldcad-source-declared-pin-hole-v1': 'PIN_HOLE',
+};
+const categoryFor = (value: string | null | undefined, fallback = 'uncategorized') => value ? (CATEGORY_BY_RULE[value] ?? value) : fallback;
+
 const zero: StudioTransform = { rotation: [1, 0, 0, 0, 1, 0, 0, 0, 1], translation: [0, 0, 0] };
+const DEFAULT_CAMERA: StudioCamera = { position: [0, 0, 120], target: [0, 0, 0], view: 'free' };
+const transpose = (m: Matrix3): Matrix3 => [m[0], m[3], m[6], m[1], m[4], m[7], m[2], m[5], m[8]];
+const matrixVector = (m: Matrix3, v: Vector3): Vector3 => [m[0] * v[0] + m[1] * v[1] + m[2] * v[2], m[3] * v[0] + m[4] * v[1] + m[5] * v[2], m[6] * v[0] + m[7] * v[1] + m[8] * v[2]];
+const matrixMultiply = (a: Matrix3, b: Matrix3): Matrix3 => { const out = new Array<number>(9).fill(0); for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) for (let k = 0; k < 3; k++) out[i * 3 + j] += a[i * 3 + k] * b[k * 3 + j]; return out as Matrix3; };
+const relativeTransformOf = (fixed: StudioTransform, moving: StudioTransform): StudioTransform => {
+  const rotation = transpose(fixed.rotation);
+  const delta: Vector3 = [moving.translation[0] - fixed.translation[0], moving.translation[1] - fixed.translation[1], moving.translation[2] - fixed.translation[2]];
+  return { rotation: matrixMultiply(rotation, moving.rotation), translation: matrixVector(rotation, delta) };
+};
+const isCamera = (value: unknown): value is StudioCamera => {
+  if (!value || typeof value !== 'object') return false;
+  const item = value as Partial<StudioCamera>;
+  return Array.isArray(item.position) && item.position.length === 3 && item.position.every(Number.isFinite)
+    && Array.isArray(item.target) && item.target.length === 3 && item.target.every(Number.isFinite)
+    && ['free', 'front', 'side', 'top'].includes(String(item.view));
+};
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 const isTransform = (value: unknown): value is StudioTransform => {
   if (!value || typeof value !== 'object') return false;
@@ -95,7 +152,7 @@ function nearestSuggestion(input: StudioBuildInput, part: NativeAssemblyPart, fi
   return { candidate: ranked[0].candidate, angle: ranked[0].angle, distance: ranked[0].distance, suggestions: ranked.map(item => ({ transform: copyTransform(item.candidate.transform), twistDeg: item.candidate.twistDeg, ruleId: item.candidate.penetrationZone.ruleId })) };
 }
 function summary(record: StudioExample): StudioExampleSummary {
-  return { id: record.id, createdAt: record.createdAt, updatedAt: record.updatedAt, mode: record.mode, status: record.status, fixedPartId: record.fixedPartId, movingPartId: record.movingPartId, ruleId: record.validation.rule.ruleId, pathStatus: record.validation.path.status, stale: record.stale };
+  return { id: record.id, rootId: record.rootId, version: record.version, createdAt: record.createdAt, updatedAt: record.updatedAt, mode: record.mode, status: record.status, categoryId: record.categoryId, fixedPartId: record.fixedPartId, movingPartId: record.movingPartId, ruleId: record.validation.rule.ruleId, pathStatus: record.validation.path.status, stale: record.stale };
 }
 function sampleTransforms(input: StudioBuildInput): StudioTransform[] {
   const frames = input.keyframes.length >= 2 ? input.keyframes.map(frame => frame.transform) : [input.movingInitial, input.movingFinal];
@@ -140,7 +197,7 @@ export class AssemblyStudioService {
     try {
       const parsed: unknown = JSON.parse(await readFile(this.file, 'utf8'));
       if (!Array.isArray(parsed) || parsed.length > MAX_RECORDS || !parsed.every(item => item && typeof item === 'object' && typeof (item as StudioExample).id === 'string')) throw new Error('invalid studio store');
-      this.records = parsed as StudioExample[];
+      this.records = (parsed as StudioExample[]).map(record => this.upgrade(record));
     } catch (error) {
       if ((error as NodeJS.ErrnoException).code === 'ENOENT') this.records = [];
       else throw new StudioError('拼搭示例存储无法读取；已停止写入以保护现有记录。', 'STUDIO_STORE_FAILED', 500);
@@ -150,7 +207,25 @@ export class AssemblyStudioService {
   private async persist() { await mkdir(this.directoryPath, { recursive: true }); const temp = `${this.file}.${process.pid}.${randomUUID()}.tmp`; await writeFile(temp, JSON.stringify(this.records, null, 2) + '\n', { mode: 0o600 }); await rename(temp, this.file); }
   private async part(partId: string) { const value = await this.repository.getPart(partId); if (!value) throw new StudioError(`没有真实零件 ${partId}。`, 'STUDIO_PART_NOT_FOUND', 404); return value; }
   private snapshot(part: NativeAssemblyPart): StudioPartSnapshot { return { partId: part.partId, name: part.geometry.name ?? part.partId, sourceSha256: nativePartSourceHash(part), revision: part.geometry.source.revision, connections: part.connections.points.map(point => ({ id: point.id, family: point.family ?? 'unknown', role: point.gender === 'M' ? 'MALE' : point.gender === 'F' ? 'FEMALE' : 'UNKNOWN', sourceId: point.sourceId ?? null, sourcePath: point.source.path, line: point.source.line, raw: point.source.raw })) }; }
-  private normalize(value: unknown): StudioBuildInput {
+  private upgrade(record: StudioExample): StudioExample {
+    const camera = isCamera(record.camera) ? record.camera : { ...DEFAULT_CAMERA, position: [...DEFAULT_CAMERA.position] as Vector3, target: [...DEFAULT_CAMERA.target] as Vector3 };
+    const previewDataUrl = typeof record.previewDataUrl === 'string' && /^data:image\/(png|jpeg|webp);base64,/.test(record.previewDataUrl) ? record.previewDataUrl : null;
+    return {
+      ...record,
+      rootId: typeof record.rootId === 'string' && ID.test(record.rootId) ? record.rootId : record.id,
+      version: Number.isInteger(record.version) && record.version > 0 ? record.version : 1,
+      previousId: typeof record.previousId === 'string' ? record.previousId : null,
+      status: record.status === 'draft' ? 'draft' : 'pending-review',
+      categoryId: categoryFor(record.categoryId ?? record.validation?.rule.ruleId),
+      fixedInstanceId: typeof record.fixedInstanceId === 'string' && record.fixedInstanceId ? record.fixedInstanceId : 'A',
+      movingInstanceId: typeof record.movingInstanceId === 'string' && record.movingInstanceId ? record.movingInstanceId : 'B',
+      camera, previewDataUrl,
+      relativeTransform: record.relativeTransform ?? relativeTransformOf(record.fixedInitial, record.movingFinal),
+      relativeConvention: 'A-local-to-B-local-rigid-v1',
+    };
+  }
+
+  private normalize(value: unknown): NormalizedBuild {
     if (!value || typeof value !== 'object') throw new StudioError('拼搭提交格式无效。', 'INVALID_STUDIO_BUILD');
     const v = value as Partial<StudioBuildInput>;
     if (v.mode !== 'assisted' && v.mode !== 'free') throw new StudioError('请选择辅助拼搭或自由示范。', 'INVALID_STUDIO_BUILD');
@@ -171,13 +246,49 @@ export class AssemblyStudioService {
       if (!frame || !isTransform(frame.transform)) throw new StudioError('关键帧姿态无效。', 'INVALID_STUDIO_BUILD');
       return { id: typeof frame.id === 'string' ? frame.id.slice(0, 80) : `k${index}`, label: typeof frame.label === 'string' ? frame.label.slice(0, 120) : `过程 ${index + 1}`, transform: copyTransform(frame.transform), recordedAt: typeof frame.recordedAt === 'string' ? frame.recordedAt : new Date().toISOString() };
     }) : [];
+    const categoryId = categoryFor(typeof v.categoryId === 'string' && v.categoryId.trim() ? v.categoryId.trim().slice(0, 80) : undefined);
+    const fixedInstanceId = typeof v.fixedInstanceId === 'string' && ID.test(v.fixedInstanceId) ? v.fixedInstanceId : 'A';
+    const movingInstanceId = typeof v.movingInstanceId === 'string' && ID.test(v.movingInstanceId) ? v.movingInstanceId : 'B';
+    const camera = isCamera(v.camera) ? { position: [...v.camera.position] as Vector3, target: [...v.camera.target] as Vector3, view: v.camera.view } : { ...DEFAULT_CAMERA, position: [...DEFAULT_CAMERA.position] as Vector3, target: [...DEFAULT_CAMERA.target] as Vector3 };
+    const previewDataUrl = typeof v.previewDataUrl === 'string' && /^data:image\/(png|jpeg|webp);base64,/.test(v.previewDataUrl) && v.previewDataUrl.length <= 900000 ? v.previewDataUrl : null;
+    const rootId = typeof v.rootId === 'string' && ID.test(v.rootId) ? v.rootId : null;
+    const status: StudioStatus = v.status === 'draft' ? 'draft' : 'pending-review';
     let candidatePoint: StudioCandidatePoint | undefined;
     if (v.candidatePoint) {
       if (!ID.test(v.candidatePoint.partId) || !Array.isArray(v.candidatePoint.localPosition) || v.candidatePoint.localPosition.length !== 3 || !v.candidatePoint.localPosition.every(Number.isFinite)) throw new StudioError('人工候选点格式无效。', 'INVALID_STUDIO_BUILD');
       candidatePoint = { partId: v.candidatePoint.partId, localPosition: v.candidatePoint.localPosition as Vector3, note: String(v.candidatePoint.note ?? '').slice(0, 500) };
     }
-    return { mode: v.mode, caseId: typeof v.caseId === 'string' ? v.caseId.slice(0, 80) : null, fixedPartId: v.fixedPartId, movingPartId: v.movingPartId, fixedConnectionId: v.fixedConnectionId ?? null, movingConnectionId: v.movingConnectionId ?? null, fixedInitial: copyTransform(v.fixedInitial), movingInitial: copyTransform(v.movingInitial), movingFinal: copyTransform(v.movingFinal), keyframes, userClaim: { connectionNote: claim.connectionNote, reason: claim.reason, physicallyBuilt: claim.physicallyBuilt, attachments }, ...(candidatePoint ? { candidatePoint } : {}) };
+    return { mode: v.mode, caseId: typeof v.caseId === 'string' ? v.caseId.slice(0, 80) : null, fixedPartId: v.fixedPartId, movingPartId: v.movingPartId, fixedConnectionId: v.fixedConnectionId ?? null, movingConnectionId: v.movingConnectionId ?? null, fixedInitial: copyTransform(v.fixedInitial), movingInitial: copyTransform(v.movingInitial), movingFinal: copyTransform(v.movingFinal), keyframes, userClaim: { connectionNote: claim.connectionNote, reason: claim.reason, physicallyBuilt: claim.physicallyBuilt, attachments }, ...(candidatePoint ? { candidatePoint } : {}), categoryId, fixedInstanceId, movingInstanceId, camera, previewDataUrl, rootId, status };
   }
+  async prepare(value: unknown): Promise<StudioPreparation> {
+    if (!value || typeof value !== 'object') throw new StudioError('拼接准备请求格式无效。', 'INVALID_STUDIO_BUILD');
+    const v = value as { fixedPartId?: unknown; movingPartId?: unknown; ruleId?: unknown; fixedConnectionId?: unknown; movingConnectionId?: unknown };
+    if (typeof v.fixedPartId !== 'string' || !ID.test(v.fixedPartId) || typeof v.movingPartId !== 'string' || !ID.test(v.movingPartId)) throw new StudioError('零件身份无效。', 'INVALID_STUDIO_BUILD');
+    const rule = typeof v.ruleId === 'string' ? CONNECTOR_GRAMMAR_RULES.find(item => item.id === v.ruleId) : null;
+    const fixed = await this.part(v.fixedPartId), moving = await this.part(v.movingPartId);
+    const byId = (part: NativeAssemblyPart, id: unknown) => typeof id === 'string' ? part.connections.points.find(point => point.id === id) : undefined;
+    const rolePoint = (part: NativeAssemblyPart, families: readonly string[], gender: 'M' | 'F') => part.connections.points.find(point => families.includes(point.family ?? '') && point.gender === gender) ?? part.connections.points.find(point => point.gender === gender);
+    const fixedPoint = byId(fixed, v.fixedConnectionId) ?? (rule ? rolePoint(fixed, rule.maleFamilies, 'M') : fixed.connections.points.find(point => point.gender === 'M'));
+    const movingPoint = byId(moving, v.movingConnectionId) ?? (rule ? rolePoint(moving, rule.femaleFamilies, 'F') : moving.connections.points.find(point => point.gender === 'F'));
+    const fixedInitial: StudioTransform = { rotation: [...zero.rotation], translation: [...zero.translation] };
+    const compatibility = fixedPoint && movingPoint ? checkConnectionCompatibility(fixedPoint, movingPoint) : null;
+    const solved = fixedPoint && movingPoint ? solveAttachment({ fixedPart: fixed, fixedPlacement: placement('A', fixed.partId, fixedInitial), fixedConnectionId: fixedPoint.id, movingPart: moving, movingConnectionId: movingPoint.id }) : null;
+    const candidates = solved?.status === 'solved' ? solved.candidates : [];
+    const selected = candidates[0];
+    const movingFinal = selected ? copyTransform(selected.transform) : copyTransform(zero);
+    const axis = selected ? [...selected.penetrationZone.axis] as Vector3 : [0, 1, 0] as Vector3;
+    const insertionDepthLdu = selected?.penetrationZone.depth ?? 32;
+    const separation = Math.max(32, insertionDepthLdu + 32);
+    const movingInitial: StudioTransform = { rotation: [...movingFinal.rotation], translation: [movingFinal.translation[0] + axis[0] * separation, movingFinal.translation[1] + axis[1] * separation, movingFinal.translation[2] + axis[2] * separation] };
+    return {
+      fixedPartId: fixed.partId, movingPartId: moving.partId, fixedConnectionId: fixedPoint?.id ?? null, movingConnectionId: movingPoint?.id ?? null,
+      fixedInitial, movingInitial, movingFinal, axis, insertionDepthLdu,
+      compatibility: { status: compatibility?.status ?? 'unknown', ruleId: compatibility?.ruleId ?? null, reason: compatibility?.reason ?? '未找到两端连接位置。', reasonCode: compatibility?.reasonCode ?? 'no-endpoints', allowedTwistsDeg: compatibility?.allowedTwistsDeg ?? [] },
+      suggestions: candidates.map(candidate => ({ transform: copyTransform(candidate.transform), twistDeg: candidate.twistDeg, ruleId: candidate.penetrationZone.ruleId })),
+      notice: compatibility?.status === 'compatible' ? '来源规则成立；这只建立候选 seat，仍需检查最终碰撞和安装路径。' : '当前没有可用的来源规则姿态；可以继续自由示范，但不能把结果当作规则通过。',
+    };
+  }
+
   async validate(value: unknown): Promise<StudioValidation> {
     const input = this.normalize(value); const fixed = await this.part(input.fixedPartId), moving = await this.part(input.movingPartId);
     const fixedPlacement = placement('fixed', fixed.partId, input.fixedInitial), movingPlacement = placement('moving', moving.partId, input.movingFinal);
@@ -217,13 +328,73 @@ export class AssemblyStudioService {
   }
   async save(value: unknown): Promise<StudioExample> {
     const input = this.normalize(value); const validation = await this.validate(input); const fixed = this.snapshot(await this.part(input.fixedPartId)), moving = this.snapshot(await this.part(input.movingPartId));
-    const now = new Date().toISOString();
-    const record: StudioExample = { ...input, id: `studio-${randomUUID()}`, createdAt: now, updatedAt: now, status: 'pending-review', fixed, moving, validation, versions: VERSIONS, stale: false, history: [{ at: now, action: 'created', note: '保存为待验证人工示例；未获得正式生成资格。', validation }] };
     const records = await this.load(); if (records.length >= MAX_RECORDS) throw new StudioError('拼搭示例记录已达上限。', 'STUDIO_STORE_FULL', 409);
+    const now = new Date().toISOString();
+    const rootId = input.rootId ?? `studio-${randomUUID()}`;
+    const previous = records.filter(item => item.rootId === rootId).sort((a, b) => b.version - a.version)[0] ?? null;
+    const version = previous ? previous.version + 1 : 1;
+    const record: StudioExample = {
+      ...input, id: `studio-${randomUUID()}`, rootId, version, previousId: previous?.id ?? null,
+      createdAt: now, updatedAt: now, status: input.status === 'draft' ? 'draft' : 'pending-review',
+      categoryId: input.categoryId, fixedInstanceId: input.fixedInstanceId, movingInstanceId: input.movingInstanceId,
+      camera: input.camera, previewDataUrl: input.previewDataUrl,
+      relativeTransform: relativeTransformOf(input.fixedInitial, input.movingFinal), relativeConvention: 'A-local-to-B-local-rigid-v1',
+      fixed, moving, validation, versions: VERSIONS, stale: false,
+      history: [{ at: now, action: input.status === 'draft' ? 'draft' : 'created', note: input.status === 'draft' ? '保存为草稿；尚未提交。' : '保存为待验证人工示例；未获得正式生成资格。', validation }],
+    };
     records.unshift(record); this.records = records; this.writeChain = this.writeChain.then(() => this.persist()); await this.writeChain; return structuredClone(record);
   }
+
+  async saveDraft(value: unknown): Promise<StudioExample> { return this.save({ ...(value as Record<string, unknown>), status: 'draft' }); }
+
+  async submit(id: string): Promise<StudioExample> {
+    const records = await this.load(); const index = records.findIndex(item => item.id === id);
+    if (index < 0) throw new StudioError('没有该拼搭草稿。', 'STUDIO_NOT_FOUND', 404);
+    if (records[index].status !== 'draft') return structuredClone(records[index]);
+    const validation = await this.validate(records[index]); const now = new Date().toISOString();
+    const updated: StudioExample = { ...records[index], status: 'pending-review', validation, updatedAt: now, versions: VERSIONS, history: [...records[index].history, { at: now, action: 'submitted', note: '从草稿提交为待复核人工示例；不改变生产资格。', validation }] };
+    records[index] = updated; this.records = records; this.writeChain = this.writeChain.then(() => this.persist()); await this.writeChain; return structuredClone(updated);
+  }
   async list(): Promise<StudioExampleSummary[]> { return (await this.load()).map(summary); }
-  async get(id: string): Promise<StudioExample | null> { const record = (await this.load()).find(item => item.id === id); if (!record) return null; const fixed = await this.part(record.fixedPartId).catch(() => null), moving = await this.part(record.movingPartId).catch(() => null); return { ...structuredClone(record), stale: !fixed || !moving || record.fixed.sourceSha256 !== nativePartSourceHash(fixed) || record.moving.sourceSha256 !== nativePartSourceHash(moving) }; }
+  async get(id: string): Promise<StudioExample | null> { const record = (await this.load()).find(item => item.id === id); if (!record) return null; const fixed = await this.part(record.fixedPartId).catch(() => null), moving = await this.part(record.movingPartId).catch(() => null); return { ...structuredClone(this.upgrade(record)), stale: !fixed || !moving || record.fixed.sourceSha256 !== nativePartSourceHash(fixed) || record.moving.sourceSha256 !== nativePartSourceHash(moving) }; }
+  async exportBundle(feedback: unknown[] = []): Promise<StudioExportBundle> {
+    const examples = await this.load();
+    const partIds = new Set(examples.flatMap(example => [example.fixedPartId, example.movingPartId]));
+    const sources = new Set(examples.flatMap(example => [example.fixed, example.moving].flatMap(part => part.connections.map(connection => connection.sourcePath).filter(Boolean))));
+    return {
+      format: 'bricklab-studio-bundle', bundleVersion: 1, generatedAt: new Date().toISOString(),
+      storage: { kind: 'server-json', path: this.file, note: '服务端 JSON 是主存储；导出包用于人工移交或独立复盘，不包含受限源模型。' },
+      schema: 'studio-example-2',
+      versions: VERSIONS,
+      instructions: [
+        '本包记录真实零件身份、来源版本、A/B 刚体变换、B 相对 A 的变换、关键帧、相机和人工说明。',
+        '复现时按 fixedInitial/movingInitial/movingFinal 和 keyframes 恢复姿态；不得从截图或鼠标位移反推。',
+        '规则、碰撞和路径结果均绑定当前版本；来源或版本变化后必须重新检查。',
+        '包内不包含 LDraw/LDCad 源模型；请按零件 sourceSha256、sourcePath 和 revision 从项目钉死来源获取。',
+        '人工示例不授予正式生成资格，不自动修改全局规则。',
+      ],
+      examples: structuredClone(examples), feedback,
+      sourceSummary: { parts: partIds.size, sources: sources.size, missingSourceModels: [] },
+    };
+  }
+
+  async importBundle(value: unknown): Promise<StudioImportResult> {
+    const raw = Array.isArray(value) ? value : (value && typeof value === 'object' && Array.isArray((value as { examples?: unknown }).examples) ? (value as { examples: unknown[] }).examples : null);
+    if (!raw) throw new StudioError('导入包必须包含 examples 数组。', 'STUDIO_IMPORT_INVALID');
+    if (!raw.length || raw.length > 200) throw new StudioError('导入包示例数量必须为 1..200。', 'STUDIO_IMPORT_INVALID');
+    const result: StudioImportResult = { imported: 0, skipped: 0, errors: [] };
+    for (const [index, item] of raw.entries()) {
+      try {
+        const input = this.normalize(item);
+        await this.save({ ...input, rootId: null, status: 'draft' });
+        result.imported++;
+      } catch (error) {
+        result.errors.push(`第 ${index + 1} 条：${error instanceof Error ? error.message : '格式无效'}`);
+      }
+    }
+    return result;
+  }
+
   async revalidate(id: string): Promise<StudioExample> {
     const records = await this.load(); const index = records.findIndex(item => item.id === id); if (index < 0) throw new StudioError('没有该拼搭示例。', 'STUDIO_NOT_FOUND', 404);
     const record = records[index]; const validation = await this.validate(record); const fixed = this.snapshot(await this.part(record.fixedPartId)), moving = this.snapshot(await this.part(record.movingPartId)); const now = new Date().toISOString();

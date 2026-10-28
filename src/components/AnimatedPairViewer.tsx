@@ -7,11 +7,14 @@ import type { NativeConnectionPoint, NativeMesh, NativeVector } from './NativePa
 export type PairTool = 'move' | 'rotate';
 export type PairView = 'free' | 'front' | 'side' | 'top';
 export interface PairTransform { rotation: [number, number, number, number, number, number, number, number, number]; translation: NativeVector }
+export interface PairCamera { position: NativeVector; target: NativeVector; view: PairView }
 export interface PairViewerHandle {
   capture(): string | null;
   capturePixels(width: number, height: number): { pixels: Uint8ClampedArray; width: number; height: number } | null;
   setView(view: PairView): void;
   resetView(): void;
+  getCamera(): PairCamera | null;
+  setCamera(camera: PairCamera): void;
 }
 
 function matrixFor(transform: PairTransform) {
@@ -75,7 +78,7 @@ const AnimatedPairViewer = forwardRef<PairViewerHandle, {
 }, ref) {
   const host = useRef<HTMLDivElement>(null);
   const [error, setError] = useState('');
-  const sceneRef = useRef<{ renderer: THREE.WebGLRenderer; scene: THREE.Scene; camera: THREE.PerspectiveCamera; controls: OrbitControls; root: THREE.Group; fixed: THREE.Group; moving: THREE.Group; ghost: THREE.Group | null; gizmo: TransformControls | null } | null>(null);
+  const sceneRef = useRef<{ renderer: THREE.WebGLRenderer; scene: THREE.Scene; camera: THREE.PerspectiveCamera; controls: OrbitControls; root: THREE.Group; fixed: THREE.Group; moving: THREE.Group; ghost: THREE.Group | null; gizmo: TransformControls | null; view: PairView } | null>(null);
   const callbackRef = useRef({ onTransformChange, onTransformCommit });
   callbackRef.current = { onTransformChange, onTransformCommit };
 
@@ -94,7 +97,7 @@ const AnimatedPairViewer = forwardRef<PairViewerHandle, {
     state.camera.up.set(0, 1, 0); if (view === 'top') state.camera.up.set(0, 0, -1);
     state.camera.position.copy(center).add(directions[view].multiplyScalar(radius * 2.8));
     state.camera.near = Math.max(0.5, radius / 100); state.camera.far = radius * 40; state.camera.updateProjectionMatrix();
-    state.controls.target.copy(center); state.controls.update();
+    state.controls.target.copy(center); state.view = view; state.controls.update();
   };
 
   useImperativeHandle(ref, () => ({
@@ -117,6 +120,8 @@ const AnimatedPairViewer = forwardRef<PairViewerHandle, {
     },
     setView(view) { fit(view); },
     resetView() { fit('free'); },
+    getCamera() { const state = sceneRef.current; if (!state) return null; return { position: state.camera.position.toArray() as NativeVector, target: state.controls.target.toArray() as NativeVector, view: state.view }; },
+    setCamera(value) { const state = sceneRef.current; if (!state) return; state.camera.position.set(value.position[0], value.position[1], value.position[2]); state.controls.target.set(value.target[0], value.target[1], value.target[2]); state.view = value.view; state.controls.update(); },
   }), []);
 
   useEffect(() => {
@@ -135,6 +140,7 @@ const AnimatedPairViewer = forwardRef<PairViewerHandle, {
       const camera = new THREE.PerspectiveCamera(38, 1, 1, 5000);
       const controls = new OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true; controls.dampingFactor = 0.08; controls.minDistance = 12; controls.maxDistance = 900;
+      controls.addEventListener('start', () => { const state = sceneRef.current; if (state) state.view = 'free'; });
       scene.add(new THREE.HemisphereLight(0xffffff, 0x6f756e, 2.1));
       const key = new THREE.DirectionalLight(0xffffff, 2.4); key.position.set(90, 140, 120); scene.add(key);
       const fill = new THREE.DirectionalLight(0xfff0cf, 0.9); fill.position.set(-100, -30, -80); scene.add(fill);
@@ -165,7 +171,7 @@ const AnimatedPairViewer = forwardRef<PairViewerHandle, {
       gizmo.addEventListener('dragging-changed', (event) => { controls.enabled = !(event as unknown as { value: boolean }).value; });
       gizmo.addEventListener('objectChange', () => { callbackRef.current.onTransformChange?.(transformFrom(moving)); });
       gizmo.addEventListener('mouseUp', () => { callbackRef.current.onTransformCommit?.(transformFrom(moving)); });
-      sceneRef.current = { renderer, scene, camera, controls, root, fixed, moving, ghost, gizmo };
+      sceneRef.current = { renderer, scene, camera, controls, root, fixed, moving, ghost, gizmo, view: 'free' };
       root.traverse((object) => { if (object.userData.marker === true) object.visible = showConnections; });
       const resize = () => { const width = container.clientWidth || 640, height = container.clientHeight || 420; renderer!.setSize(width, height, false); camera.aspect = width / height; camera.updateProjectionMatrix(); };
       observer = new ResizeObserver(resize); observer.observe(container); resize(); fit('free');

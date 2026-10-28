@@ -53,22 +53,49 @@
 
 路径检查只采样两件刚体的关键帧/四元数插值。它不验证形变、卡扣/轮胎弹性、保持力、环境或实物。当前 C01 示范的中间取样姿态无法绑定到合法 seat，页面显示“暂时无法判断”，不会把终点 clear 当成路径通过。
 
+## 数据驱动目录、双实例与版本化草稿（本轮）
+
+`我来拼搭` 不再只列三个固定配对，而是从真实零件索引和 15 条规则生成门类：
+
+- C01 2 个示例 / 239 零件；BAR_CLIP 3 / 3；PIN_HOLE 3 / 11。
+- BAR_RECEPTACLE 0 / 2、AXLE_KEYED 0 / 4 为条件缺口；AXLE_ROUND、HINGE、CLICK_HINGE、TURNTABLE、BALL_SOCKET、TOWBALL_SOCKET、WHEEL_MOUNT、TYRE_RIM、RAIL_GROOVE 为 0 零件的明确缺口。
+- GENERIC_GROUP 1 个未验证来源分组 / 90 零件；不作为生产规则。
+
+零件选择器使用真实几何 SVG 缩略图；A/B 可来自任意门类零件，并允许同一编号的两个实例。辅助模式调用正式 `prepare`/兼容性求解，给出分离初始姿态和就位姿态；自由示范不吸附、不纠正。
+
+保存模型：
+
+- `rootId` 标识同一条人工示例，`version`/`previousId` 记录版本链；同一 root 再保存不会覆盖旧版本。
+- 每条示例保存类别、A/B 实例、初始/最终刚体变换、A-local-to-B-local 相对变换、关键帧、相机、预览 PNG、说明、链接附件和四组检查结果。
+- 可选“候选连接位置”允许用户选择 A/B、填写局部 X/Y/Z 和说明；它作为人工候选信息保存，不冒充来源端点，也不参与规则资格。
+- 草稿、待复核、重开、`stale` 重检、导出/导入均有 API 与页面入口。
+- 存储仍是 `<data>/interface-library/studio-examples.json`；导出包只含身份/来源引用/姿态/版本，不含源模型。
+
 ## API
 
 | 方法 | 路径 | 说明 |
 | --- | --- | --- |
+| GET | `/api/interface-library/studio/catalog` | 真实门类、示例、零件和缺口 |
+| POST | `/api/interface-library/studio/prepare` | 选择 A/B，求解分离/就位姿态 |
 | POST | `/api/interface-library/studio/validate` | 检查当前输入，不保存 |
+| POST | `/api/interface-library/studio/drafts` | 保存草稿并生成版本 |
 | POST | `/api/interface-library/studio/examples` | 保存为 `pending-review` |
 | GET | `/api/interface-library/studio/examples` | 列出待验证示例 |
 | GET | `/api/interface-library/studio/examples/:id` | 重新打开并标记 stale |
+| POST | `/api/interface-library/studio/examples/:id/submit` | 草稿转待复核 |
 | POST | `/api/interface-library/studio/examples/:id/revalidate` | 按当前版本重新检查并追加历史 |
+| GET | `/api/interface-library/studio/export` | 导出 `bricklab-studio-bundle` |
+| POST | `/api/interface-library/studio/import` | 导入包，只创建草稿 |
+| GET | `/api/parts-foundation/parts/:id/thumbnail` | 真实几何 SVG 缩略图 |
 
-存储：`<data>/interface-library/studio-examples.json`，最多 1000 条，原子写入。来源 SHA 变化时 `stale:true`，可重新检查。
+存储：`<data>/interface-library/studio-examples.json`，最多 1000 条，原子写入。来源 SHA 变化时 `stale:true`，可重新检查。版本、rootId、相机、预览图、相对变换和导出/导入见 `artifacts/interface-library/CATALOG_STUDIO_REPORT.md`。
 
 ## 证据与限制
 
-- 浏览器流程：C01 3024→3070b，打开看示范、播放/暂停、导出 GIF、进入手动工作台、移动/撤销/重做/恢复、记录起始/完成、吸附、检查、保存、刷新后重开；桌面 1440×1100 与移动 390×844，0 控制台错误。
-- 截图与 GIF：`artifacts/interface-library/studio.png`、`studio-result.png`、`studio-saved.png`、`studio-reopen.png`、`studio-mobile.png`、`case-player.png`、`case-c01.gif`。
+- 数据驱动浏览器流程：15 门类、3024/3070b、同编号 3024/3024、BALL_SOCKET 缺口、保存失败内容保留、版本 1/2、刷新后重开（相机俯视、预览图）、导出 2 条/导入 2 条草稿；桌面 1440×1100 与移动 390×844。除故意触发的 503 外 0 控制台错误。
+- 截图与 GIF：`artifacts/interface-library/studio-catalog*.png`、`studio-part-picker.png`、`studio-same-part.png`、`studio-result-catalog.png`、`studio-catalog-mobile.png`、`case-player.png`、`case-c01.gif`；机器记录 `catalog-ui-check.json`、`catalog-verification.json`；报告 `CATALOG_STUDIO_REPORT.md`。
 - 人工示例不会获得正式生成资格；正式生产规则仍是 C01/BAR_CLIP/PIN_HOLE。
 - 安装路径的 seat 绑定目前只支持最终对齐姿态，因此 C01 路径检查显示“暂时无法判断”，不是通过。
 - 还没有覆盖所有接口族的真实示范；未支持的类别在接口库/复核队列中保持 UNKNOWN/PARTIAL。
+- 3 条历史用户示例仍在被 Git 忽略的 `data/interface-library/studio-examples.json`，读取时升级但不回写；本轮新增记录使用版本化 rootId。
+- 人工示范不会自动产生反馈处理状态；示例自身的 draft/pending/stale/version 状态可追踪，若需人工争议仍走接口库反馈队列。

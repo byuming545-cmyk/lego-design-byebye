@@ -271,3 +271,62 @@ export interface LibraryIndexSnapshot {
   connectors: Map<string, { connector: Connector; point: ImportedConnectionPoint; partId: string; partName: string }>;
 }
 
+
+export interface StudioCatalogPart {
+  partId: string;
+  name: string;
+  tags: string[];
+  featureCount: number;
+  maleCount: number;
+  femaleCount: number;
+  productionCount: number;
+}
+
+export interface StudioCatalogExample {
+  id: string;
+  ruleId: string;
+  label: string;
+  status: 'validated' | 'source-candidate' | 'blocked' | 'unverified';
+  fixedPartId: string;
+  movingPartId: string;
+  fixedConnectionId: string | null;
+  movingConnectionId: string | null;
+  caseId: string | null;
+  summary: string;
+  reason: string | null;
+}
+
+export interface StudioCatalogRule {
+  id: string;
+  label: string;
+  description: string;
+  status: string;
+  production: boolean;
+  maleFamilies: string[];
+  femaleFamilies: string[];
+  instanceCount: number;
+  partCount: number;
+  parts: StudioCatalogPart[];
+  examples: StudioCatalogExample[];
+  gap: string | null;
+}
+
+export interface StudioCatalogFamily {
+  id: string;
+  label: string;
+  description: string;
+  status: string;
+  instanceCount: number;
+  partCount: number;
+  parts: StudioCatalogPart[];
+  rules: string[];
+}
+
+export interface StudioCatalog {
+  generatedAt: string;
+  versions: LibraryVersions;
+  rules: StudioCatalogRule[];
+  families: StudioCatalogFamily[];
+  partTags: { id: string; label: string; partCount: number }[];
+  limitations: string[];
+}

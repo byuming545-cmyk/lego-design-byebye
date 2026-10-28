@@ -69,6 +69,30 @@ export function createInterfaceLibraryRouter(options: { library: InterfaceLibrar
   }));
   router.post('/feedback', handle(async (request, response) => { response.status(201).json(await library.addFeedback(request.body as FeedbackInput)); }));
   router.patch('/feedback/:id', handle(async (request, response) => { response.json(await library.patchFeedback(String(request.params.id), request.body as FeedbackPatch)); }));
+  router.get('/studio/catalog', handle(async (_request, response) => { response.json(await library.studioCatalog()); }));
+  router.post('/studio/prepare', handle(async (request, response) => {
+    if (!studio) { response.status(503).json({ error: '拼搭工作台服务未启用。', code: 'STUDIO_UNAVAILABLE' }); return; }
+    response.json(await studio.prepare(request.body));
+  }));
+  router.post('/studio/drafts', handle(async (request, response) => {
+    if (!studio) { response.status(503).json({ error: '拼搭工作台服务未启用。', code: 'STUDIO_UNAVAILABLE' }); return; }
+    response.status(201).json(await studio.saveDraft(request.body));
+  }));
+  router.get('/studio/export', handle(async (_request, response) => {
+    if (!studio) { response.status(503).json({ error: '拼搭工作台服务未启用。', code: 'STUDIO_UNAVAILABLE' }); return; }
+    const bundle = await studio.exportBundle(await library.listFeedback());
+    response.setHeader('Cache-Control', 'no-store');
+    response.attachment('bricklab-studio-bundle.json');
+    response.type('application/json').send(JSON.stringify(bundle, null, 2) + '\n');
+  }));
+  router.post('/studio/import', handle(async (request, response) => {
+    if (!studio) { response.status(503).json({ error: '拼搭工作台服务未启用。', code: 'STUDIO_UNAVAILABLE' }); return; }
+    response.status(201).json(await studio.importBundle(request.body));
+  }));
+  router.post('/studio/examples/:id/submit', handle(async (request, response) => {
+    if (!studio) { response.status(503).json({ error: '拼搭工作台服务未启用。', code: 'STUDIO_UNAVAILABLE' }); return; }
+    response.json(await studio.submit(String(request.params.id)));
+  }));
   router.post('/studio/validate', handle(async (request, response) => {
     if (!studio) { response.status(503).json({ error: '拼搭工作台服务未启用。', code: 'STUDIO_UNAVAILABLE' }); return; }
     response.json(await studio.validate(request.body));

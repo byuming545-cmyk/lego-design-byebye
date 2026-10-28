@@ -1,0 +1,1574 @@
+{
+  "format": "bricklab-studio-bundle",
+  "bundleVersion": 1,
+  "generatedAt": "2026-10-28T14:20:29.177Z",
+  "storage": {
+    "kind": "server-json",
+    "path": "data/interface-library/studio-examples.json",
+    "note": "服务端 JSON 是主存储；导出包用于人工移交或独立复盘，不包含受限源模型。"
+  },
+  "schema": "studio-example-2",
+  "versions": {
+    "schema": "connector-schema-2",
+    "grammar": "connector-grammar-2",
+    "admission": "source-connector-admission-2",
+    "partLibrary": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+    "assemblyEngine": "native-assembly-0.7.0-grammar",
+    "connectionRule": "source-stud-2.0.0-connector-grammar-2",
+    "collision": "native-open-surface-seat-2.0.0"
+  },
+  "instructions": [
+    "本包记录真实零件身份、来源版本、A/B 刚体变换、B 相对 A 的变换、关键帧、相机和人工说明。",
+    "复现时按 fixedInitial/movingInitial/movingFinal 和 keyframes 恢复姿态；不得从截图或鼠标位移反推。",
+    "规则、碰撞和路径结果均绑定当前版本；来源或版本变化后必须重新检查。",
+    "包内不包含 LDraw/LDCad 源模型；请按零件 sourceSha256、sourcePath 和 revision 从项目钉死来源获取。",
+    "人工示例不授予正式生成资格，不自动修改全局规则。"
+  ],
+  "examples": [
+    {
+      "mode": "assisted",
+      "caseId": "saved-example",
+      "fixedPartId": "3673",
+      "movingPartId": "32000",
+      "fixedConnectionId": "parts/3673.dat:10:2",
+      "movingConnectionId": "p/connhole.dat:8:4",
+      "fixedInitial": {
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "translation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "movingInitial": {
+        "rotation": [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "translation": [
+          52,
+          10,
+          -10
+        ]
+      },
+      "movingFinal": {
+        "rotation": [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "translation": [
+          9,
+          10,
+          -10
+        ]
+      },
+      "keyframes": [],
+      "userClaim": {
+        "connectionNote": "手工摆放",
+        "reason": "这个圆柱形零件只有一半可以插入圆孔，因为中间的凸出部分会阻挡继续插入，如果其他类似圆柱形零件，只要中部没有突出的圆环，就可以完全插入",
+        "physicallyBuilt": true,
+        "attachments": []
+      },
+      "id": "studio-9a693b55-9301-417a-b24c-8bb6cfebdb6d",
+      "createdAt": "2026-10-28T13:10:40.244Z",
+      "updatedAt": "2026-10-28T13:10:40.244Z",
+      "status": "pending-review",
+      "fixed": {
+        "partId": "3673",
+        "name": "Technic Pin",
+        "sourceSha256": "f29f619520c7c275e381cd7a537900be330e0298a893b78f2e7710c7584776ee",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "connections": [
+          {
+            "id": "parts/3673.dat:10:2",
+            "family": "cylinder",
+            "role": "MALE",
+            "sourceId": null,
+            "sourcePath": "parts/3673.dat",
+            "line": 10,
+            "raw": "0 !LDCAD SNAP_CYL [gender=M] [caps=none] [secs=L_ 6.25 2   R 6 16   R 8 4   R 6 16   _L 6.25 2] [center=true] [slide=true] [ori=0 -1 0 1 0 0 0 0 1]"
+          },
+          {
+            "id": "parts/3673.dat:11:3",
+            "family": "cylinder",
+            "role": "FEMALE",
+            "sourceId": null,
+            "sourcePath": "parts/3673.dat",
+            "line": 11,
+            "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=none] [secs=R 4 40] [center=true] [ori=0 -1 0 1 0 0 0 0 1]"
+          }
+        ]
+      },
+      "moving": {
+        "partId": "32000",
+        "name": "Technic Brick  1 x  2 with Holes",
+        "sourceSha256": "107dcbe5d9aab1638f01acba2a634fe452cae9dfcb398ed7b5f1f31165adb857",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "connections": [
+          {
+            "id": "p/stud2.dat:9:0",
+            "family": "stud",
+            "role": "MALE",
+            "sourceId": "studO",
+            "sourcePath": "p/stud2.dat",
+            "line": 9,
+            "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=M] [caps=one] [secs=R 6 4]"
+          },
+          {
+            "id": "p/stud2.dat:10:1",
+            "family": "cylinder",
+            "role": "FEMALE",
+            "sourceId": "studO",
+            "sourcePath": "p/stud2.dat",
+            "line": 10,
+            "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=F] [caps=one] [secs=R 4 4] [pos=0 -4 0] [ori=1 0 0 0 -1 0 0 0 -1]"
+          },
+          {
+            "id": "p/stud2.dat:9:2",
+            "family": "stud",
+            "role": "MALE",
+            "sourceId": "studO",
+            "sourcePath": "p/stud2.dat",
+            "line": 9,
+            "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=M] [caps=one] [secs=R 6 4]"
+          },
+          {
+            "id": "p/stud2.dat:10:3",
+            "family": "cylinder",
+            "role": "FEMALE",
+            "sourceId": "studO",
+            "sourcePath": "p/stud2.dat",
+            "line": 10,
+            "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=F] [caps=one] [secs=R 4 4] [pos=0 -4 0] [ori=1 0 0 0 -1 0 0 0 -1]"
+          },
+          {
+            "id": "p/connhole.dat:8:4",
+            "family": "pinHole",
+            "role": "FEMALE",
+            "sourceId": "connhole",
+            "sourcePath": "p/connhole.dat",
+            "line": 8,
+            "raw": "0 !LDCAD SNAP_CYL [id=connhole] [gender=F] [caps=none] [secs=R 8 2   R 6 16   R 8 2] [center=true] [slide=true]"
+          },
+          {
+            "id": "p/connhole.dat:8:5",
+            "family": "pinHole",
+            "role": "FEMALE",
+            "sourceId": "connhole",
+            "sourcePath": "p/connhole.dat",
+            "line": 8,
+            "raw": "0 !LDCAD SNAP_CYL [id=connhole] [gender=F] [caps=none] [secs=R 8 2   R 6 16   R 8 2] [center=true] [slide=true]"
+          },
+          {
+            "id": "parts/32000.dat:12:6",
+            "family": "cylinder",
+            "role": "FEMALE",
+            "sourceId": null,
+            "sourcePath": "parts/32000.dat",
+            "line": 12,
+            "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 24 0] [grid=C 2 1 20 0]"
+          },
+          {
+            "id": "parts/32000.dat:12:7",
+            "family": "cylinder",
+            "role": "FEMALE",
+            "sourceId": null,
+            "sourcePath": "parts/32000.dat",
+            "line": 12,
+            "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 24 0] [grid=C 2 1 20 0]"
+          }
+        ]
+      },
+      "validation": {
+        "rule": {
+          "status": "compatible",
+          "ruleId": "ldcad-source-declared-pin-hole-v1",
+          "reason": "Pinned multi-section Technic pin and pinned connector-hole title establish a round axial candidate; collision, retention, stress and physical build remain separate.",
+          "reasonCode": "source-declared-pin-hole",
+          "sourceIds": [
+            "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3673.dat",
+            "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhole.dat",
+            "https://www.melkert.net/LDCad/tech/meta",
+            "docs/grammar/PIN_PIN_HOLE.md"
+          ],
+          "allowedTwistsDeg": [
+            0,
+            90,
+            180,
+            270
+          ],
+          "poseAngleDeg": 0,
+          "poseDistanceLdu": 9
+        },
+        "finalCollision": {
+          "status": "blocked",
+          "reasonCode": "open-surface-zone-required",
+          "reason": "An open source shell requires a validated cylindrical seat bound to both placed endpoints; no generic open-surface exemption is granted.",
+          "witness": null
+        },
+        "path": {
+          "status": "not-provided",
+          "samples": 0,
+          "reason": "只提交了最终姿态，没有提供安装过程。",
+          "scope": "未检查安装轨迹。",
+          "witness": null
+        },
+        "userClaim": {
+          "connectionNote": "手工摆放",
+          "reason": "这个圆柱形零件只有一半可以插入圆孔，因为中间的凸出部分会阻挡继续插入，如果其他类似圆柱形零件，只要中部没有突出的圆环，就可以完全插入",
+          "physicallyBuilt": true,
+          "attachments": []
+        },
+        "suggestions": [
+          {
+            "transform": {
+              "rotation": [
+                0,
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              "translation": [
+                0,
+                10,
+                -10
+              ]
+            },
+            "twistDeg": 0,
+            "ruleId": "ldcad-source-declared-pin-hole-v1"
+          },
+          {
+            "transform": {
+              "rotation": [
+                0,
+                0,
+                1,
+                0,
+                -1,
+                0,
+                1,
+                0,
+                0
+              ],
+              "translation": [
+                0,
+                10,
+                10
+              ]
+            },
+            "twistDeg": 90,
+            "ruleId": "ldcad-source-declared-pin-hole-v1"
+          },
+          {
+            "transform": {
+              "rotation": [
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                -1,
+                0,
+                0
+              ],
+              "translation": [
+                0,
+                -10,
+                -10
+              ]
+            },
+            "twistDeg": 270,
+            "ruleId": "ldcad-source-declared-pin-hole-v1"
+          },
+          {
+            "transform": {
+              "rotation": [
+                0,
+                0,
+                1,
+                -1,
+                0,
+                0,
+                0,
+                -1,
+                0
+              ],
+              "translation": [
+                0,
+                -10,
+                10
+              ]
+            },
+            "twistDeg": 180,
+            "ruleId": "ldcad-source-declared-pin-hole-v1"
+          }
+        ],
+        "generationEligible": false,
+        "physicalBuildVerified": false,
+        "limitations": [
+          "自由示范和人工候选点只作为待复核信息，不冒充来源端点。",
+          "路径检查只覆盖两件零件的刚体刚体取样，不验证形变、轮胎/卡扣弹性、保持力或实物。",
+          "最终结果不会获得生产准入，也不会自动修改规则。",
+          "最终姿态与求解候选存在偏差；页面分别显示该偏差，不将用户摆放视为规则通过。"
+        ]
+      },
+      "versions": {
+        "schema": "connector-schema-2",
+        "grammar": "connector-grammar-2",
+        "admission": "source-connector-admission-2",
+        "partLibrary": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+        "assemblyEngine": "native-assembly-0.7.0-grammar",
+        "connectionRule": "source-stud-2.0.0-connector-grammar-2",
+        "collision": "native-open-surface-seat-2.0.0"
+      },
+      "stale": false,
+      "history": [
+        {
+          "at": "2026-10-28T13:10:40.244Z",
+          "action": "created",
+          "note": "保存为待验证人工示例；未获得正式生成资格。",
+          "validation": {
+            "rule": {
+              "status": "compatible",
+              "ruleId": "ldcad-source-declared-pin-hole-v1",
+              "reason": "Pinned multi-section Technic pin and pinned connector-hole title establish a round axial candidate; collision, retention, stress and physical build remain separate.",
+              "reasonCode": "source-declared-pin-hole",
+              "sourceIds": [
+                "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3673.dat",
+                "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhole.dat",
+                "https://www.melkert.net/LDCad/tech/meta",
+                "docs/grammar/PIN_PIN_HOLE.md"
+              ],
+              "allowedTwistsDeg": [
+                0,
+                90,
+                180,
+                270
+              ],
+              "poseAngleDeg": 0,
+              "poseDistanceLdu": 9
+            },
+            "finalCollision": {
+              "status": "blocked",
+              "reasonCode": "open-surface-zone-required",
+              "reason": "An open source shell requires a validated cylindrical seat bound to both placed endpoints; no generic open-surface exemption is granted.",
+              "witness": null
+            },
+            "path": {
+              "status": "not-provided",
+              "samples": 0,
+              "reason": "只提交了最终姿态，没有提供安装过程。",
+              "scope": "未检查安装轨迹。",
+              "witness": null
+            },
+            "userClaim": {
+              "connectionNote": "手工摆放",
+              "reason": "这个圆柱形零件只有一半可以插入圆孔，因为中间的凸出部分会阻挡继续插入，如果其他类似圆柱形零件，只要中部没有突出的圆环，就可以完全插入",
+              "physicallyBuilt": true,
+              "attachments": []
+            },
+            "suggestions": [
+              {
+                "transform": {
+                  "rotation": [
+                    0,
+                    0,
+                    1,
+                    1,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0
+                  ],
+                  "translation": [
+                    0,
+                    10,
+                    -10
+                  ]
+                },
+                "twistDeg": 0,
+                "ruleId": "ldcad-source-declared-pin-hole-v1"
+              },
+              {
+                "transform": {
+                  "rotation": [
+                    0,
+                    0,
+                    1,
+                    0,
+                    -1,
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  "translation": [
+                    0,
+                    10,
+                    10
+                  ]
+                },
+                "twistDeg": 90,
+                "ruleId": "ldcad-source-declared-pin-hole-v1"
+              },
+              {
+                "transform": {
+                  "rotation": [
+                    0,
+                    0,
+                    1,
+                    0,
+                    1,
+                    0,
+                    -1,
+                    0,
+                    0
+                  ],
+                  "translation": [
+                    0,
+                    -10,
+                    -10
+                  ]
+                },
+                "twistDeg": 270,
+                "ruleId": "ldcad-source-declared-pin-hole-v1"
+              },
+              {
+                "transform": {
+                  "rotation": [
+                    0,
+                    0,
+                    1,
+                    -1,
+                    0,
+                    0,
+                    0,
+                    -1,
+                    0
+                  ],
+                  "translation": [
+                    0,
+                    -10,
+                    10
+                  ]
+                },
+                "twistDeg": 180,
+                "ruleId": "ldcad-source-declared-pin-hole-v1"
+              }
+            ],
+            "generationEligible": false,
+            "physicalBuildVerified": false,
+            "limitations": [
+              "自由示范和人工候选点只作为待复核信息，不冒充来源端点。",
+              "路径检查只覆盖两件零件的刚体刚体取样，不验证形变、轮胎/卡扣弹性、保持力或实物。",
+              "最终结果不会获得生产准入，也不会自动修改规则。",
+              "最终姿态与求解候选存在偏差；页面分别显示该偏差，不将用户摆放视为规则通过。"
+            ]
+          }
+        }
+      ],
+      "rootId": "studio-9a693b55-9301-417a-b24c-8bb6cfebdb6d",
+      "version": 1,
+      "previousId": null,
+      "categoryId": "PIN_HOLE",
+      "fixedInstanceId": "A",
+      "movingInstanceId": "B",
+      "camera": {
+        "position": [
+          0,
+          0,
+          120
+        ],
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "view": "free"
+      },
+      "previewDataUrl": null,
+      "relativeTransform": {
+        "rotation": [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "translation": [
+          9,
+          10,
+          -10
+        ]
+      },
+      "relativeConvention": "A-local-to-B-local-rigid-v1"
+    },
+    {
+      "mode": "assisted",
+      "caseId": "saved-example",
+      "fixedPartId": "3673",
+      "movingPartId": "32000",
+      "fixedConnectionId": "parts/3673.dat:10:2",
+      "movingConnectionId": "p/connhole.dat:8:4",
+      "fixedInitial": {
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "translation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "movingInitial": {
+        "rotation": [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "translation": [
+          52,
+          10,
+          -10
+        ]
+      },
+      "movingFinal": {
+        "rotation": [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "translation": [
+          9,
+          10,
+          -10
+        ]
+      },
+      "keyframes": [],
+      "userClaim": {
+        "connectionNote": "手工摆放",
+        "reason": "这个圆柱形零件只有一半可以插入圆孔，因为中间的凸出部分会阻挡继续插入，如果其他类似圆柱形零件，只要中部没有突出的圆环，就可以完全插入",
+        "physicallyBuilt": true,
+        "attachments": []
+      },
+      "id": "studio-ec34904d-4ad9-4619-9549-7df79bc3a55b",
+      "createdAt": "2026-10-28T13:10:39.380Z",
+      "updatedAt": "2026-10-28T13:10:39.380Z",
+      "status": "pending-review",
+      "fixed": {
+        "partId": "3673",
+        "name": "Technic Pin",
+        "sourceSha256": "f29f619520c7c275e381cd7a537900be330e0298a893b78f2e7710c7584776ee",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "connections": [
+          {
+            "id": "parts/3673.dat:10:2",
+            "family": "cylinder",
+            "role": "MALE",
+            "sourceId": null,
+            "sourcePath": "parts/3673.dat",
+            "line": 10,
+            "raw": "0 !LDCAD SNAP_CYL [gender=M] [caps=none] [secs=L_ 6.25 2   R 6 16   R 8 4   R 6 16   _L 6.25 2] [center=true] [slide=true] [ori=0 -1 0 1 0 0 0 0 1]"
+          },
+          {
+            "id": "parts/3673.dat:11:3",
+            "family": "cylinder",
+            "role": "FEMALE",
+            "sourceId": null,
+            "sourcePath": "parts/3673.dat",
+            "line": 11,
+            "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=none] [secs=R 4 40] [center=true] [ori=0 -1 0 1 0 0 0 0 1]"
+          }
+        ]
+      },
+      "moving": {
+        "partId": "32000",
+        "name": "Technic Brick  1 x  2 with Holes",
+        "sourceSha256": "107dcbe5d9aab1638f01acba2a634fe452cae9dfcb398ed7b5f1f31165adb857",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "connections": [
+          {
+            "id": "p/stud2.dat:9:0",
+            "family": "stud",
+            "role": "MALE",
+            "sourceId": "studO",
+            "sourcePath": "p/stud2.dat",
+            "line": 9,
+            "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=M] [caps=one] [secs=R 6 4]"
+          },
+          {
+            "id": "p/stud2.dat:10:1",
+            "family": "cylinder",
+            "role": "FEMALE",
+            "sourceId": "studO",
+            "sourcePath": "p/stud2.dat",
+            "line": 10,
+            "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=F] [caps=one] [secs=R 4 4] [pos=0 -4 0] [ori=1 0 0 0 -1 0 0 0 -1]"
+          },
+          {
+            "id": "p/stud2.dat:9:2",
+            "family": "stud",
+            "role": "MALE",
+            "sourceId": "studO",
+            "sourcePath": "p/stud2.dat",
+            "line": 9,
+            "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=M] [caps=one] [secs=R 6 4]"
+          },
+          {
+            "id": "p/stud2.dat:10:3",
+            "family": "cylinder",
+            "role": "FEMALE",
+            "sourceId": "studO",
+            "sourcePath": "p/stud2.dat",
+            "line": 10,
+            "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=F] [caps=one] [secs=R 4 4] [pos=0 -4 0] [ori=1 0 0 0 -1 0 0 0 -1]"
+          },
+          {
+            "id": "p/connhole.dat:8:4",
+            "family": "pinHole",
+            "role": "FEMALE",
+            "sourceId": "connhole",
+            "sourcePath": "p/connhole.dat",
+            "line": 8,
+            "raw": "0 !LDCAD SNAP_CYL [id=connhole] [gender=F] [caps=none] [secs=R 8 2   R 6 16   R 8 2] [center=true] [slide=true]"
+          },
+          {
+            "id": "p/connhole.dat:8:5",
+            "family": "pinHole",
+            "role": "FEMALE",
+            "sourceId": "connhole",
+            "sourcePath": "p/connhole.dat",
+            "line": 8,
+            "raw": "0 !LDCAD SNAP_CYL [id=connhole] [gender=F] [caps=none] [secs=R 8 2   R 6 16   R 8 2] [center=true] [slide=true]"
+          },
+          {
+            "id": "parts/32000.dat:12:6",
+            "family": "cylinder",
+            "role": "FEMALE",
+            "sourceId": null,
+            "sourcePath": "parts/32000.dat",
+            "line": 12,
+            "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 24 0] [grid=C 2 1 20 0]"
+          },
+          {
+            "id": "parts/32000.dat:12:7",
+            "family": "cylinder",
+            "role": "FEMALE",
+            "sourceId": null,
+            "sourcePath": "parts/32000.dat",
+            "line": 12,
+            "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 24 0] [grid=C 2 1 20 0]"
+          }
+        ]
+      },
+      "validation": {
+        "rule": {
+          "status": "compatible",
+          "ruleId": "ldcad-source-declared-pin-hole-v1",
+          "reason": "Pinned multi-section Technic pin and pinned connector-hole title establish a round axial candidate; collision, retention, stress and physical build remain separate.",
+          "reasonCode": "source-declared-pin-hole",
+          "sourceIds": [
+            "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3673.dat",
+            "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhole.dat",
+            "https://www.melkert.net/LDCad/tech/meta",
+            "docs/grammar/PIN_PIN_HOLE.md"
+          ],
+          "allowedTwistsDeg": [
+            0,
+            90,
+            180,
+            270
+          ],
+          "poseAngleDeg": 0,
+          "poseDistanceLdu": 9
+        },
+        "finalCollision": {
+          "status": "blocked",
+          "reasonCode": "open-surface-zone-required",
+          "reason": "An open source shell requires a validated cylindrical seat bound to both placed endpoints; no generic open-surface exemption is granted.",
+          "witness": null
+        },
+        "path": {
+          "status": "not-provided",
+          "samples": 0,
+          "reason": "只提交了最终姿态，没有提供安装过程。",
+          "scope": "未检查安装轨迹。",
+          "witness": null
+        },
+        "userClaim": {
+          "connectionNote": "手工摆放",
+          "reason": "这个圆柱形零件只有一半可以插入圆孔，因为中间的凸出部分会阻挡继续插入，如果其他类似圆柱形零件，只要中部没有突出的圆环，就可以完全插入",
+          "physicallyBuilt": true,
+          "attachments": []
+        },
+        "suggestions": [
+          {
+            "transform": {
+              "rotation": [
+                0,
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              "translation": [
+                0,
+                10,
+                -10
+              ]
+            },
+            "twistDeg": 0,
+            "ruleId": "ldcad-source-declared-pin-hole-v1"
+          },
+          {
+            "transform": {
+              "rotation": [
+                0,
+                0,
+                1,
+                0,
+                -1,
+                0,
+                1,
+                0,
+                0
+              ],
+              "translation": [
+                0,
+                10,
+                10
+              ]
+            },
+            "twistDeg": 90,
+            "ruleId": "ldcad-source-declared-pin-hole-v1"
+          },
+          {
+            "transform": {
+              "rotation": [
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                -1,
+                0,
+                0
+              ],
+              "translation": [
+                0,
+                -10,
+                -10
+              ]
+            },
+            "twistDeg": 270,
+            "ruleId": "ldcad-source-declared-pin-hole-v1"
+          },
+          {
+            "transform": {
+              "rotation": [
+                0,
+                0,
+                1,
+                -1,
+                0,
+                0,
+                0,
+                -1,
+                0
+              ],
+              "translation": [
+                0,
+                -10,
+                10
+              ]
+            },
+            "twistDeg": 180,
+            "ruleId": "ldcad-source-declared-pin-hole-v1"
+          }
+        ],
+        "generationEligible": false,
+        "physicalBuildVerified": false,
+        "limitations": [
+          "自由示范和人工候选点只作为待复核信息，不冒充来源端点。",
+          "路径检查只覆盖两件零件的刚体刚体取样，不验证形变、轮胎/卡扣弹性、保持力或实物。",
+          "最终结果不会获得生产准入，也不会自动修改规则。",
+          "最终姿态与求解候选存在偏差；页面分别显示该偏差，不将用户摆放视为规则通过。"
+        ]
+      },
+      "versions": {
+        "schema": "connector-schema-2",
+        "grammar": "connector-grammar-2",
+        "admission": "source-connector-admission-2",
+        "partLibrary": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+        "assemblyEngine": "native-assembly-0.7.0-grammar",
+        "connectionRule": "source-stud-2.0.0-connector-grammar-2",
+        "collision": "native-open-surface-seat-2.0.0"
+      },
+      "stale": false,
+      "history": [
+        {
+          "at": "2026-10-28T13:10:39.380Z",
+          "action": "created",
+          "note": "保存为待验证人工示例；未获得正式生成资格。",
+          "validation": {
+            "rule": {
+              "status": "compatible",
+              "ruleId": "ldcad-source-declared-pin-hole-v1",
+              "reason": "Pinned multi-section Technic pin and pinned connector-hole title establish a round axial candidate; collision, retention, stress and physical build remain separate.",
+              "reasonCode": "source-declared-pin-hole",
+              "sourceIds": [
+                "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3673.dat",
+                "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhole.dat",
+                "https://www.melkert.net/LDCad/tech/meta",
+                "docs/grammar/PIN_PIN_HOLE.md"
+              ],
+              "allowedTwistsDeg": [
+                0,
+                90,
+                180,
+                270
+              ],
+              "poseAngleDeg": 0,
+              "poseDistanceLdu": 9
+            },
+            "finalCollision": {
+              "status": "blocked",
+              "reasonCode": "open-surface-zone-required",
+              "reason": "An open source shell requires a validated cylindrical seat bound to both placed endpoints; no generic open-surface exemption is granted.",
+              "witness": null
+            },
+            "path": {
+              "status": "not-provided",
+              "samples": 0,
+              "reason": "只提交了最终姿态，没有提供安装过程。",
+              "scope": "未检查安装轨迹。",
+              "witness": null
+            },
+            "userClaim": {
+              "connectionNote": "手工摆放",
+              "reason": "这个圆柱形零件只有一半可以插入圆孔，因为中间的凸出部分会阻挡继续插入，如果其他类似圆柱形零件，只要中部没有突出的圆环，就可以完全插入",
+              "physicallyBuilt": true,
+              "attachments": []
+            },
+            "suggestions": [
+              {
+                "transform": {
+                  "rotation": [
+                    0,
+                    0,
+                    1,
+                    1,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0
+                  ],
+                  "translation": [
+                    0,
+                    10,
+                    -10
+                  ]
+                },
+                "twistDeg": 0,
+                "ruleId": "ldcad-source-declared-pin-hole-v1"
+              },
+              {
+                "transform": {
+                  "rotation": [
+                    0,
+                    0,
+                    1,
+                    0,
+                    -1,
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  "translation": [
+                    0,
+                    10,
+                    10
+                  ]
+                },
+                "twistDeg": 90,
+                "ruleId": "ldcad-source-declared-pin-hole-v1"
+              },
+              {
+                "transform": {
+                  "rotation": [
+                    0,
+                    0,
+                    1,
+                    0,
+                    1,
+                    0,
+                    -1,
+                    0,
+                    0
+                  ],
+                  "translation": [
+                    0,
+                    -10,
+                    -10
+                  ]
+                },
+                "twistDeg": 270,
+                "ruleId": "ldcad-source-declared-pin-hole-v1"
+              },
+              {
+                "transform": {
+                  "rotation": [
+                    0,
+                    0,
+                    1,
+                    -1,
+                    0,
+                    0,
+                    0,
+                    -1,
+                    0
+                  ],
+                  "translation": [
+                    0,
+                    -10,
+                    10
+                  ]
+                },
+                "twistDeg": 180,
+                "ruleId": "ldcad-source-declared-pin-hole-v1"
+              }
+            ],
+            "generationEligible": false,
+            "physicalBuildVerified": false,
+            "limitations": [
+              "自由示范和人工候选点只作为待复核信息，不冒充来源端点。",
+              "路径检查只覆盖两件零件的刚体刚体取样，不验证形变、轮胎/卡扣弹性、保持力或实物。",
+              "最终结果不会获得生产准入，也不会自动修改规则。",
+              "最终姿态与求解候选存在偏差；页面分别显示该偏差，不将用户摆放视为规则通过。"
+            ]
+          }
+        }
+      ],
+      "rootId": "studio-ec34904d-4ad9-4619-9549-7df79bc3a55b",
+      "version": 1,
+      "previousId": null,
+      "categoryId": "PIN_HOLE",
+      "fixedInstanceId": "A",
+      "movingInstanceId": "B",
+      "camera": {
+        "position": [
+          0,
+          0,
+          120
+        ],
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "view": "free"
+      },
+      "previewDataUrl": null,
+      "relativeTransform": {
+        "rotation": [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "translation": [
+          9,
+          10,
+          -10
+        ]
+      },
+      "relativeConvention": "A-local-to-B-local-rigid-v1"
+    },
+    {
+      "mode": "assisted",
+      "caseId": "case-pin-hole-3673-32000",
+      "fixedPartId": "3673",
+      "movingPartId": "32000",
+      "fixedConnectionId": "parts/3673.dat:10:2",
+      "movingConnectionId": "p/connhole.dat:8:4",
+      "fixedInitial": {
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "translation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "movingInitial": {
+        "rotation": [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "translation": [
+          52,
+          10,
+          -10
+        ]
+      },
+      "movingFinal": {
+        "rotation": [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "translation": [
+          9,
+          10,
+          -10
+        ]
+      },
+      "keyframes": [],
+      "userClaim": {
+        "connectionNote": "手工摆放",
+        "reason": "这个圆柱形零件只有一半可以插入圆孔，因为中间的凸出部分会阻挡继续插入，如果其他类似圆柱形零件，只要中部没有突出的圆环，就可以完全插入",
+        "physicallyBuilt": true,
+        "attachments": []
+      },
+      "id": "studio-5bc5c26e-c041-4ba1-8e11-2e927294d842",
+      "createdAt": "2026-10-28T13:10:24.441Z",
+      "updatedAt": "2026-10-28T13:10:24.441Z",
+      "status": "pending-review",
+      "fixed": {
+        "partId": "3673",
+        "name": "Technic Pin",
+        "sourceSha256": "f29f619520c7c275e381cd7a537900be330e0298a893b78f2e7710c7584776ee",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "connections": [
+          {
+            "id": "parts/3673.dat:10:2",
+            "family": "cylinder",
+            "role": "MALE",
+            "sourceId": null,
+            "sourcePath": "parts/3673.dat",
+            "line": 10,
+            "raw": "0 !LDCAD SNAP_CYL [gender=M] [caps=none] [secs=L_ 6.25 2   R 6 16   R 8 4   R 6 16   _L 6.25 2] [center=true] [slide=true] [ori=0 -1 0 1 0 0 0 0 1]"
+          },
+          {
+            "id": "parts/3673.dat:11:3",
+            "family": "cylinder",
+            "role": "FEMALE",
+            "sourceId": null,
+            "sourcePath": "parts/3673.dat",
+            "line": 11,
+            "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=none] [secs=R 4 40] [center=true] [ori=0 -1 0 1 0 0 0 0 1]"
+          }
+        ]
+      },
+      "moving": {
+        "partId": "32000",
+        "name": "Technic Brick  1 x  2 with Holes",
+        "sourceSha256": "107dcbe5d9aab1638f01acba2a634fe452cae9dfcb398ed7b5f1f31165adb857",
+        "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+        "connections": [
+          {
+            "id": "p/stud2.dat:9:0",
+            "family": "stud",
+            "role": "MALE",
+            "sourceId": "studO",
+            "sourcePath": "p/stud2.dat",
+            "line": 9,
+            "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=M] [caps=one] [secs=R 6 4]"
+          },
+          {
+            "id": "p/stud2.dat:10:1",
+            "family": "cylinder",
+            "role": "FEMALE",
+            "sourceId": "studO",
+            "sourcePath": "p/stud2.dat",
+            "line": 10,
+            "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=F] [caps=one] [secs=R 4 4] [pos=0 -4 0] [ori=1 0 0 0 -1 0 0 0 -1]"
+          },
+          {
+            "id": "p/stud2.dat:9:2",
+            "family": "stud",
+            "role": "MALE",
+            "sourceId": "studO",
+            "sourcePath": "p/stud2.dat",
+            "line": 9,
+            "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=M] [caps=one] [secs=R 6 4]"
+          },
+          {
+            "id": "p/stud2.dat:10:3",
+            "family": "cylinder",
+            "role": "FEMALE",
+            "sourceId": "studO",
+            "sourcePath": "p/stud2.dat",
+            "line": 10,
+            "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=F] [caps=one] [secs=R 4 4] [pos=0 -4 0] [ori=1 0 0 0 -1 0 0 0 -1]"
+          },
+          {
+            "id": "p/connhole.dat:8:4",
+            "family": "pinHole",
+            "role": "FEMALE",
+            "sourceId": "connhole",
+            "sourcePath": "p/connhole.dat",
+            "line": 8,
+            "raw": "0 !LDCAD SNAP_CYL [id=connhole] [gender=F] [caps=none] [secs=R 8 2   R 6 16   R 8 2] [center=true] [slide=true]"
+          },
+          {
+            "id": "p/connhole.dat:8:5",
+            "family": "pinHole",
+            "role": "FEMALE",
+            "sourceId": "connhole",
+            "sourcePath": "p/connhole.dat",
+            "line": 8,
+            "raw": "0 !LDCAD SNAP_CYL [id=connhole] [gender=F] [caps=none] [secs=R 8 2   R 6 16   R 8 2] [center=true] [slide=true]"
+          },
+          {
+            "id": "parts/32000.dat:12:6",
+            "family": "cylinder",
+            "role": "FEMALE",
+            "sourceId": null,
+            "sourcePath": "parts/32000.dat",
+            "line": 12,
+            "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 24 0] [grid=C 2 1 20 0]"
+          },
+          {
+            "id": "parts/32000.dat:12:7",
+            "family": "cylinder",
+            "role": "FEMALE",
+            "sourceId": null,
+            "sourcePath": "parts/32000.dat",
+            "line": 12,
+            "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 24 0] [grid=C 2 1 20 0]"
+          }
+        ]
+      },
+      "validation": {
+        "rule": {
+          "status": "compatible",
+          "ruleId": "ldcad-source-declared-pin-hole-v1",
+          "reason": "Pinned multi-section Technic pin and pinned connector-hole title establish a round axial candidate; collision, retention, stress and physical build remain separate.",
+          "reasonCode": "source-declared-pin-hole",
+          "sourceIds": [
+            "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3673.dat",
+            "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhole.dat",
+            "https://www.melkert.net/LDCad/tech/meta",
+            "docs/grammar/PIN_PIN_HOLE.md"
+          ],
+          "allowedTwistsDeg": [
+            0,
+            90,
+            180,
+            270
+          ],
+          "poseAngleDeg": 0,
+          "poseDistanceLdu": 9
+        },
+        "finalCollision": {
+          "status": "blocked",
+          "reasonCode": "open-surface-zone-required",
+          "reason": "An open source shell requires a validated cylindrical seat bound to both placed endpoints; no generic open-surface exemption is granted.",
+          "witness": null
+        },
+        "path": {
+          "status": "not-provided",
+          "samples": 0,
+          "reason": "只提交了最终姿态，没有提供安装过程。",
+          "scope": "未检查安装轨迹。",
+          "witness": null
+        },
+        "userClaim": {
+          "connectionNote": "手工摆放",
+          "reason": "这个圆柱形零件只有一半可以插入圆孔，因为中间的凸出部分会阻挡继续插入，如果其他类似圆柱形零件，只要中部没有突出的圆环，就可以完全插入",
+          "physicallyBuilt": true,
+          "attachments": []
+        },
+        "suggestions": [
+          {
+            "transform": {
+              "rotation": [
+                0,
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              "translation": [
+                0,
+                10,
+                -10
+              ]
+            },
+            "twistDeg": 0,
+            "ruleId": "ldcad-source-declared-pin-hole-v1"
+          },
+          {
+            "transform": {
+              "rotation": [
+                0,
+                0,
+                1,
+                0,
+                -1,
+                0,
+                1,
+                0,
+                0
+              ],
+              "translation": [
+                0,
+                10,
+                10
+              ]
+            },
+            "twistDeg": 90,
+            "ruleId": "ldcad-source-declared-pin-hole-v1"
+          },
+          {
+            "transform": {
+              "rotation": [
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                -1,
+                0,
+                0
+              ],
+              "translation": [
+                0,
+                -10,
+                -10
+              ]
+            },
+            "twistDeg": 270,
+            "ruleId": "ldcad-source-declared-pin-hole-v1"
+          },
+          {
+            "transform": {
+              "rotation": [
+                0,
+                0,
+                1,
+                -1,
+                0,
+                0,
+                0,
+                -1,
+                0
+              ],
+              "translation": [
+                0,
+                -10,
+                10
+              ]
+            },
+            "twistDeg": 180,
+            "ruleId": "ldcad-source-declared-pin-hole-v1"
+          }
+        ],
+        "generationEligible": false,
+        "physicalBuildVerified": false,
+        "limitations": [
+          "自由示范和人工候选点只作为待复核信息，不冒充来源端点。",
+          "路径检查只覆盖两件零件的刚体刚体取样，不验证形变、轮胎/卡扣弹性、保持力或实物。",
+          "最终结果不会获得生产准入，也不会自动修改规则。",
+          "最终姿态与求解候选存在偏差；页面分别显示该偏差，不将用户摆放视为规则通过。"
+        ]
+      },
+      "versions": {
+        "schema": "connector-schema-2",
+        "grammar": "connector-grammar-2",
+        "admission": "source-connector-admission-2",
+        "partLibrary": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+        "assemblyEngine": "native-assembly-0.7.0-grammar",
+        "connectionRule": "source-stud-2.0.0-connector-grammar-2",
+        "collision": "native-open-surface-seat-2.0.0"
+      },
+      "stale": false,
+      "history": [
+        {
+          "at": "2026-10-28T13:10:24.441Z",
+          "action": "created",
+          "note": "保存为待验证人工示例；未获得正式生成资格。",
+          "validation": {
+            "rule": {
+              "status": "compatible",
+              "ruleId": "ldcad-source-declared-pin-hole-v1",
+              "reason": "Pinned multi-section Technic pin and pinned connector-hole title establish a round axial candidate; collision, retention, stress and physical build remain separate.",
+              "reasonCode": "source-declared-pin-hole",
+              "sourceIds": [
+                "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3673.dat",
+                "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhole.dat",
+                "https://www.melkert.net/LDCad/tech/meta",
+                "docs/grammar/PIN_PIN_HOLE.md"
+              ],
+              "allowedTwistsDeg": [
+                0,
+                90,
+                180,
+                270
+              ],
+              "poseAngleDeg": 0,
+              "poseDistanceLdu": 9
+            },
+            "finalCollision": {
+              "status": "blocked",
+              "reasonCode": "open-surface-zone-required",
+              "reason": "An open source shell requires a validated cylindrical seat bound to both placed endpoints; no generic open-surface exemption is granted.",
+              "witness": null
+            },
+            "path": {
+              "status": "not-provided",
+              "samples": 0,
+              "reason": "只提交了最终姿态，没有提供安装过程。",
+              "scope": "未检查安装轨迹。",
+              "witness": null
+            },
+            "userClaim": {
+              "connectionNote": "手工摆放",
+              "reason": "这个圆柱形零件只有一半可以插入圆孔，因为中间的凸出部分会阻挡继续插入，如果其他类似圆柱形零件，只要中部没有突出的圆环，就可以完全插入",
+              "physicallyBuilt": true,
+              "attachments": []
+            },
+            "suggestions": [
+              {
+                "transform": {
+                  "rotation": [
+                    0,
+                    0,
+                    1,
+                    1,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0
+                  ],
+                  "translation": [
+                    0,
+                    10,
+                    -10
+                  ]
+                },
+                "twistDeg": 0,
+                "ruleId": "ldcad-source-declared-pin-hole-v1"
+              },
+              {
+                "transform": {
+                  "rotation": [
+                    0,
+                    0,
+                    1,
+                    0,
+                    -1,
+                    0,
+                    1,
+                    0,
+                    0
+                  ],
+                  "translation": [
+                    0,
+                    10,
+                    10
+                  ]
+                },
+                "twistDeg": 90,
+                "ruleId": "ldcad-source-declared-pin-hole-v1"
+              },
+              {
+                "transform": {
+                  "rotation": [
+                    0,
+                    0,
+                    1,
+                    0,
+                    1,
+                    0,
+                    -1,
+                    0,
+                    0
+                  ],
+                  "translation": [
+                    0,
+                    -10,
+                    -10
+                  ]
+                },
+                "twistDeg": 270,
+                "ruleId": "ldcad-source-declared-pin-hole-v1"
+              },
+              {
+                "transform": {
+                  "rotation": [
+                    0,
+                    0,
+                    1,
+                    -1,
+                    0,
+                    0,
+                    0,
+                    -1,
+                    0
+                  ],
+                  "translation": [
+                    0,
+                    -10,
+                    10
+                  ]
+                },
+                "twistDeg": 180,
+                "ruleId": "ldcad-source-declared-pin-hole-v1"
+              }
+            ],
+            "generationEligible": false,
+            "physicalBuildVerified": false,
+            "limitations": [
+              "自由示范和人工候选点只作为待复核信息，不冒充来源端点。",
+              "路径检查只覆盖两件零件的刚体刚体取样，不验证形变、轮胎/卡扣弹性、保持力或实物。",
+              "最终结果不会获得生产准入，也不会自动修改规则。",
+              "最终姿态与求解候选存在偏差；页面分别显示该偏差，不将用户摆放视为规则通过。"
+            ]
+          }
+        }
+      ],
+      "rootId": "studio-5bc5c26e-c041-4ba1-8e11-2e927294d842",
+      "version": 1,
+      "previousId": null,
+      "categoryId": "PIN_HOLE",
+      "fixedInstanceId": "A",
+      "movingInstanceId": "B",
+      "camera": {
+        "position": [
+          0,
+          0,
+          120
+        ],
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "view": "free"
+      },
+      "previewDataUrl": null,
+      "relativeTransform": {
+        "rotation": [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "translation": [
+          9,
+          10,
+          -10
+        ]
+      },
+      "relativeConvention": "A-local-to-B-local-rigid-v1"
+    }
+  ],
+  "feedback": [],
+  "sourceSummary": {
+    "parts": 2,
+    "sources": 4,
+    "missingSourceModels": []
+  }
+}
