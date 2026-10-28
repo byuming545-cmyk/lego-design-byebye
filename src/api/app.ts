@@ -12,6 +12,7 @@ import { createPartsFoundationRouter } from '../parts/api.js';
 import { RealPartRegistry } from '../parts/registry.js';
 import { InterfaceLibrary } from '../parts/library/interfaceLibrary.js';
 import { createInterfaceLibraryRouter } from '../parts/library/api.js';
+import { AssemblyStudioService } from '../parts/library/studio.js';
 import { createLegacyAuthenticityGate, type LegacyGenerationPolicy } from '../parts/legacyPolicy.js';
 import { LEGACY_QUARANTINE } from '../parts/legacyStatus.js';
 
@@ -66,8 +67,9 @@ export function createApp(options: AppOptions = {}) {
   const dataDir = options.partsDataDir ?? process.env.BRICKLAB_DATA_DIR ?? 'data';
   const partsRegistry = new RealPartRegistry({ dataDir: options.partsDataDir });
   const interfaceLibrary = new InterfaceLibrary(partsRegistry, { libraryDataDir: dataDir });
+  const studio = new AssemblyStudioService(partsRegistry.repository, dataDir);
   app.use('/api/parts-foundation', createPartsFoundationRouter({ dataDir: options.partsDataDir, registry: partsRegistry }));
-  app.use('/api/interface-library', createInterfaceLibraryRouter({ library: interfaceLibrary }));
+  app.use('/api/interface-library', createInterfaceLibraryRouter({ library: interfaceLibrary, studio }));
   app.use(createLegacyAuthenticityGate(options.legacyGenerationPolicy));
   app.use('/api/speed', createSpeedRouter(provider));
   app.use('/api/automotive', createAutomotiveRouter());

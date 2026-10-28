@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "interface-library-studio-1",
+  "generatedAt": "2026-10-28T10:42:22.871060+00:00",
+  "branch": "codex/interface-library",
+  "baseline": "137bd40",
+  "sourceBoundary": {
+    "newParts": 0,
+    "geometryChanges": 0,
+    "productionRules": [
+      "C01",
+      "BAR_CLIP",
+      "PIN_HOLE"
+    ],
+    "productionEligible": 104,
+    "blocked": 149,
+    "manualExamplesCanAuthorize": false
+  },
+  "surfaces": {
+    "demonstration": true,
+    "manualStudio": true,
+    "validation": true,
+    "reviewPersistence": true,
+    "gif": true
+  },
+  "case": {
+    "id": "case-c01-standard-studs",
+    "fixed": "3024",
+    "moving": "3070b",
+    "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+    "ruleStatus": "compatible",
+    "finalCollision": "clear",
+    "pathStatus": "not-checked",
+    "pathSamples": 1,
+    "generationEligible": false,
+    "physicalBuildVerified": false
+  },
+  "browser": {
+    "desktop": {
+      "width": 1440,
+      "height": 1100,
+      "consoleErrors": 0,
+      "flow": [
+        "look",
+        "play",
+        "pause",
+        "gif",
+        "studio",
+        "move",
+        "undo",
+        "redo",
+        "reset",
+        "keyframes",
+        "snap",
+        "validate",
+        "save",
+        "reopen"
+      ]
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "consoleErrors": 0
+    }
+  },
+  "gif": {
+    "path": "artifacts/interface-library/case-c01.gif",
+    "bytes": 225962,
+    "header": "GIF89a",
+    "width": 800,
+    "height": 500
+  },
+  "screenshots": {
+    "overview.png": {
+      "path": "artifacts/interface-library/overview.png",
+      "bytes": 235528,
+      "sha256": "11a0253259996f6a2bb1be6f658a357509edb725d5688f4eff01899187daa842"
+    },
+    "case-player.png": {
+      "path": "artifacts/interface-library/case-player.png",
+      "bytes": 162575,
+      "sha256": "b5b1368fbcdd97824453a90841c44dd240961251b2d6b3ac97d2f5d7f486b21f"
+    },
+    "case-player-playing.png": {
+      "path": "artifacts/interface-library/case-player-playing.png",
+      "bytes": 163997,
+      "sha256": "b1cb11db986ac50377c8feb7ffd01726ea1e6a74fa8c0b83c9722fa5c54d0716"
+    },
+    "studio.png": {
+      "path": "artifacts/interface-library/studio.png",
+      "bytes": 147635,
+      "sha256": "1cca0ef20f5a2547d80e722838a6bcadee728d3919828297ba8857d7fa7d197b"
+    },
+    "studio-result.png": {
+      "path": "artifacts/interface-library/studio-result.png",
+      "bytes": 174536,
+      "sha256": "1cff361b1197c9c20bc9439d75fda2d412def564a851117006cd69a385f71b0e"
+    },
+    "studio-saved.png": {
+      "path": "artifacts/interface-library/studio-saved.png",
+      "bytes": 174635,
+      "sha256": "69e456744920ef71cd6c964eaa0b4078abf7048c47c91d8ec1607dc8640b03ec"
+    },
+    "studio-reopen.png": {
+      "path": "artifacts/interface-library/studio-reopen.png",
+      "bytes": 182475,
+      "sha256": "dda559963ed453845d96816e79255e235874f30414dccf4250f97c7156672537"
+    },
+    "studio-mobile.png": {
+      "path": "artifacts/interface-library/studio-mobile.png",
+      "bytes": 81273,
+      "sha256": "59fed7d30dd5532d96e30ea670fc5e774b8f8a1672c27bf75e755224479f665b"
+    },
+    "case-c01.gif": {
+      "path": "artifacts/interface-library/case-c01.gif",
+      "bytes": 225962,
+      "sha256": "cd638dee9f48d0a8e914aceaedc41553d31b1d37ab3cbcf116542d1b7658042e"
+    }
+  },
+  "tests": {
+    "focused": "6/6 tests/parts-interface-library.test.ts",
+    "full": "775/775 passed, 54 files, 87.61 s",
+    "typecheck": "pass",
+    "build": "pass",
+    "fullLog": "artifacts/interface-library/unit-studio.txt",
+    "buildLog": "artifacts/interface-library/build-studio.txt"
+  },
+  "limitations": [
+    "Installation-path seat binding covers only the seated endpoint; separated intermediate samples report not-checked.",
+    "No deformation, retention, environment or physical-build verification.",
+    "Photo/video upload is link-only; no binary attachment flow.",
+    "Manual examples never enter production generation.",
+    "Only C01/BAR_CLIP/PIN_HOLE are production rules; other families remain conditional or empty."
+  ]
+}

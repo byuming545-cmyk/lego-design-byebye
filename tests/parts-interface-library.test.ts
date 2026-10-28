@@ -80,6 +80,37 @@ describe('real interface and assembly library', () => {
     await expect(library.addFeedback({ kind: 'reasonable', message: 'x', target: { kind: 'interface', id: '../../etc/passwd' } })).rejects.toThrow();
   });
 
+  it('validates and persists a manual example through the formal engine without granting admission', async () => {
+    const caseResponse = await fetch(`${base}/case?id=${encodeURIComponent('case-c01-standard-studs')}`);
+    expect(caseResponse.ok).toBe(true);
+    const detail = await caseResponse.json() as {
+      id: string; fixedPartId: string; movingPartId: string;
+      edge: { fixedConnectionId: string; movingConnectionId: string } | null;
+      placements: { partId: string; transform: { rotation: number[]; translation: number[] } }[];
+    };
+    if (!detail.edge) throw new Error('C01 case has no edge.');
+    const fixed = detail.placements.find(item => item.partId === detail.fixedPartId)!.transform;
+    const seated = detail.placements.find(item => item.partId === detail.movingPartId)!.transform;
+    const start = { rotation: seated.rotation, translation: [seated.translation[0], seated.translation[1] + 40, seated.translation[2]] };
+    const claim = { connectionNote: '四个凸点全部进入凹槽', reason: '人工工作台回归：只调用同一装配规则和碰撞检查。', physicallyBuilt: false, attachments: [] };
+    const input = { mode: 'assisted', caseId: detail.id, fixedPartId: detail.fixedPartId, movingPartId: detail.movingPartId, fixedConnectionId: detail.edge.fixedConnectionId, movingConnectionId: detail.edge.movingConnectionId, fixedInitial: fixed, movingInitial: start, movingFinal: seated, keyframes: [], userClaim: claim };
+    const validationResponse = await fetch(`${base}/studio/validate`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(input) });
+    expect(validationResponse.ok).toBe(true);
+    const validation = await validationResponse.json() as { rule: { status: string; ruleId: string }; finalCollision: { status: string }; path: { status: string }; generationEligible: boolean; physicalBuildVerified: boolean };
+    expect(validation.rule).toMatchObject({ status: 'compatible', ruleId: 'ldcad-standard-stud-to-capped-underside-v1' });
+    expect(validation.finalCollision.status).toBe('clear');
+    expect(validation.path.status).toBe('not-provided');
+    expect(validation).toMatchObject({ generationEligible: false, physicalBuildVerified: false });
+    const savedResponse = await fetch(`${base}/studio/examples`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(input) });
+    expect(savedResponse.ok).toBe(true);
+    const saved = await savedResponse.json() as { id: string; status: string; keyframes: unknown[]; validation: { path: { status: string } } };
+    expect(saved).toMatchObject({ status: 'pending-review', keyframes: [], validation: { path: { status: 'not-provided' } } });
+    const reopened = await (await fetch(`${base}/studio/examples/${saved.id}`)).json() as { id: string; stale: boolean; fixedPartId: string; movingPartId: string };
+    expect(reopened).toMatchObject({ id: saved.id, stale: false, fixedPartId: detail.fixedPartId, movingPartId: detail.movingPartId });
+    const listed = await (await fetch(`${base}/studio/examples`)).json() as { id: string }[];
+    expect(listed.some(item => item.id === saved.id)).toBe(true);
+  }, 30000);
+
   it('serves the read/compare/feedback flow over HTTP', async () => {
     const get = async (part: string) => { const response = await fetch(base + part); expect(response.ok, part).toBe(true); return response.json(); };
     const overview = await get('/overview');

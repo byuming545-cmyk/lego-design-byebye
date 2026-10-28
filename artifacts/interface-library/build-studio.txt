@@ -1,0 +1,245 @@
+
+> bricklab@0.6.0 build
+> npm run typecheck && vite build && tsc -p tsconfig.server.json
+
+
+> bricklab@0.6.0 typecheck
+> tsc --noEmit
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 1868 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                     0.68 kB │ gzip:   0.48 kB
+dist/assets/space-grotesk-vietnamese-400-normal-B7xT_GF5.woff2      4.30 kB
+dist/assets/space-grotesk-vietnamese-600-normal-DUi7WF5p.woff2      4.31 kB
+dist/assets/space-grotesk-vietnamese-500-normal-BmEvtly_.woff2      4.32 kB
+dist/assets/noto-sans-sc-latin-ext-400-normal-KRK7eeLK.woff2        4.48 kB
+dist/assets/noto-sans-sc-91-400-normal-BdbNZCTz.woff2               4.70 kB
+dist/assets/noto-sans-sc-vietnamese-400-normal-Bi2eM1Po.woff2       4.71 kB
+dist/assets/noto-sans-sc-99-400-normal-BTAaudar.woff2               5.20 kB
+dist/assets/noto-sans-sc-87-400-normal-BGelIZWt.woff2               5.21 kB
+dist/assets/noto-sans-sc-cyrillic-400-normal-CgZvxLpU.woff2         5.30 kB
+dist/assets/noto-sans-sc-90-400-normal-DRuAc-VY.woff2               5.32 kB
+dist/assets/space-grotesk-vietnamese-600-normal-D6zpsUhD.woff       5.70 kB
+dist/assets/space-grotesk-vietnamese-500-normal-BTqKIpxg.woff       5.72 kB
+dist/assets/space-grotesk-vietnamese-400-normal-BIWiOVfw.woff       5.73 kB
+dist/assets/noto-sans-sc-89-400-normal-acup1U1Z.woff2               6.11 kB
+dist/assets/noto-sans-sc-latin-ext-400-normal-npFpPBUL.woff         6.16 kB
+dist/assets/noto-sans-sc-21-400-normal-Bfz3Xm1a.woff2               6.19 kB
+dist/assets/noto-sans-sc-88-400-normal-D3GwXLyo.woff2               6.24 kB
+dist/assets/noto-sans-sc-91-400-normal-chCAWjzR.woff                6.41 kB
+dist/assets/noto-sans-sc-6-400-normal-D73klzWF.woff2                6.47 kB
+dist/assets/noto-sans-sc-87-400-normal-DeZ_z0_V.woff                6.60 kB
+dist/assets/noto-sans-sc-vietnamese-400-normal-CtXxSNIx.woff        6.64 kB
+dist/assets/noto-sans-sc-cyrillic-400-normal-6v9-Ru6c.woff          6.86 kB
+dist/assets/noto-sans-sc-99-400-normal-BiJRGGRm.woff                7.08 kB
+dist/assets/noto-sans-sc-90-400-normal-ToGVgOhM.woff                7.08 kB
+dist/assets/noto-sans-sc-21-400-normal-BWSKkENd.woff                7.57 kB
+dist/assets/noto-sans-sc-88-400-normal-svYgw96M.woff                7.61 kB
+dist/assets/noto-sans-sc-89-400-normal-C2ReJj7i.woff                7.91 kB
+dist/assets/noto-sans-sc-6-400-normal-CXZtsxyd.woff                 8.62 kB
+dist/assets/noto-sans-sc-5-400-normal-3RzBeGhg.woff2               10.90 kB
+dist/assets/space-grotesk-latin-ext-400-normal-CfP_5XZW.woff2      12.26 kB
+dist/assets/space-grotesk-latin-ext-500-normal-DUe3BAxM.woff2      12.27 kB
+dist/assets/space-grotesk-latin-ext-600-normal-DxxdqCpr.woff2      12.29 kB
+dist/assets/space-grotesk-latin-600-normal-DjKNqYRj.woff2          13.28 kB
+dist/assets/noto-sans-sc-latin-400-normal-C8q2FS1w.woff2           13.30 kB
+dist/assets/space-grotesk-latin-500-normal-lFbtlQH6.woff2          13.31 kB
+dist/assets/noto-sans-sc-5-400-normal-CqGeNka7.woff                13.38 kB
+dist/assets/space-grotesk-latin-400-normal-CJ-V5oYT.woff2          13.39 kB
+dist/assets/noto-sans-sc-85-400-normal-CNc66YTY.woff2              14.60 kB
+dist/assets/space-grotesk-latin-ext-600-normal-VcznFIpX.woff       16.73 kB
+dist/assets/space-grotesk-latin-ext-500-normal-3dgZTiw9.woff       16.79 kB
+dist/assets/space-grotesk-latin-ext-400-normal-DRPE3kg4.woff       16.79 kB
+dist/assets/space-grotesk-latin-600-normal-BflQw4A9.woff           16.88 kB
+dist/assets/space-grotesk-latin-500-normal-CNSSEhBt.woff           16.99 kB
+dist/assets/space-grotesk-latin-400-normal-BnQMeOim.woff           17.00 kB
+dist/assets/noto-sans-sc-80-400-normal-psViYwkz.woff2              17.30 kB
+dist/assets/noto-sans-sc-latin-400-normal-C_7N1zz3.woff            17.40 kB
+dist/assets/noto-sans-sc-84-400-normal-BtmNIfry.woff2              17.54 kB
+dist/assets/noto-sans-sc-86-400-normal-Cs9yXoGU.woff2              17.91 kB
+dist/assets/noto-sans-sc-85-400-normal-F0L9JJpN.woff               18.57 kB
+dist/assets/noto-sans-sc-41-400-normal-CwF0ysup.woff2              19.41 kB
+dist/assets/noto-sans-sc-77-400-normal-CxYpJvkI.woff2              19.71 kB
+dist/assets/noto-sans-sc-73-400-normal-tzRZHUkU.woff2              20.84 kB
+dist/assets/noto-sans-sc-64-400-normal-9n4RwFjr.woff2              21.89 kB
+dist/assets/noto-sans-sc-79-400-normal-Bs84SZW2.woff2              21.94 kB
+dist/assets/noto-sans-sc-60-400-normal-BkgLo8ii.woff2              22.24 kB
+dist/assets/noto-sans-sc-68-400-normal-DhhAKUnY.woff2              22.24 kB
+dist/assets/noto-sans-sc-86-400-normal-CS8-1yH9.woff               22.29 kB
+dist/assets/noto-sans-sc-65-400-normal-Co4l6Z_j.woff2              22.38 kB
+dist/assets/noto-sans-sc-80-400-normal-CAD0vQqF.woff               22.42 kB
+dist/assets/noto-sans-sc-70-400-normal-BlWmkfgH.woff2              22.44 kB
+dist/assets/noto-sans-sc-84-400-normal-CvsacytZ.woff               22.48 kB
+dist/assets/noto-sans-sc-51-400-normal-BXmprHGd.woff2              22.50 kB
+dist/assets/noto-sans-sc-36-400-normal-BxBT42kb.woff2              22.65 kB
+dist/assets/noto-sans-sc-53-400-normal-DpzojyPN.woff2              23.08 kB
+dist/assets/noto-sans-sc-83-400-normal-cx8M2qMo.woff2              23.08 kB
+dist/assets/noto-sans-sc-75-400-normal-CUYSz9vA.woff2              23.67 kB
+dist/assets/noto-sans-sc-61-400-normal-ggoUFMmb.woff2              24.18 kB
+dist/assets/noto-sans-sc-82-400-normal-BZZDzro0.woff2              24.40 kB
+dist/assets/noto-sans-sc-42-400-normal-ZKOUmsTa.woff2              24.46 kB
+dist/assets/noto-sans-sc-40-400-normal-DcIMWQiP.woff2              24.70 kB
+dist/assets/noto-sans-sc-118-400-normal-CqQ_A8sl.woff2             24.72 kB
+dist/assets/noto-sans-sc-50-400-normal-BeYaGcbF.woff2              24.79 kB
+dist/assets/noto-sans-sc-43-400-normal-WDsqqjmk.woff2              24.95 kB
+dist/assets/noto-sans-sc-72-400-normal-BLx1zxYv.woff2              25.01 kB
+dist/assets/noto-sans-sc-41-400-normal-DciHGJUW.woff               25.03 kB
+dist/assets/noto-sans-sc-81-400-normal-BImDXGMr.woff2              25.12 kB
+dist/assets/noto-sans-sc-59-400-normal-D7wWmpIm.woff2              25.13 kB
+dist/assets/noto-sans-sc-34-400-normal-Djw1IAuw.woff2              25.29 kB
+dist/assets/noto-sans-sc-31-400-normal-Cngcbauu.woff2              25.40 kB
+dist/assets/noto-sans-sc-33-400-normal-CUXtFK-t.woff2              25.44 kB
+dist/assets/noto-sans-sc-27-400-normal-LzZF_NqI.woff2              25.45 kB
+dist/assets/noto-sans-sc-71-400-normal-HYJki_zr.woff2              25.54 kB
+dist/assets/noto-sans-sc-77-400-normal-CqkE2zzv.woff               25.63 kB
+dist/assets/noto-sans-sc-76-400-normal-JtvMmeCp.woff2              25.79 kB
+dist/assets/noto-sans-sc-55-400-normal-CYV3hjnq.woff2              25.82 kB
+dist/assets/noto-sans-sc-63-400-normal-BYQsjKYd.woff2              25.95 kB
+dist/assets/noto-sans-sc-78-400-normal-AGz1p3mV.woff2              26.12 kB
+dist/assets/noto-sans-sc-28-400-normal-CEc-bbYn.woff2              26.46 kB
+dist/assets/noto-sans-sc-73-400-normal-D0RqmG5Z.woff               26.55 kB
+dist/assets/noto-sans-sc-35-400-normal-Chgyqx1E.woff2              26.69 kB
+dist/assets/noto-sans-sc-48-400-normal-JHdMabvg.woff2              26.89 kB
+dist/assets/noto-sans-sc-26-400-normal-B306_DcA.woff2              27.22 kB
+dist/assets/noto-sans-sc-52-400-normal-D6TC2b36.woff2              27.40 kB
+dist/assets/noto-sans-sc-32-400-normal-BqAPF1tT.woff2              27.60 kB
+dist/assets/noto-sans-sc-39-400-normal-CNreqa8s.woff2              27.70 kB
+dist/assets/noto-sans-sc-54-400-normal-B9QLYnEh.woff2              27.74 kB
+dist/assets/noto-sans-sc-64-400-normal-CGUP102c.woff               27.77 kB
+dist/assets/noto-sans-sc-117-400-normal-QPrBdlQO.woff2             27.86 kB
+dist/assets/noto-sans-sc-66-400-normal-BELuybXz.woff2              27.96 kB
+dist/assets/noto-sans-sc-67-400-normal-BS_2ddPd.woff2              28.05 kB
+dist/assets/noto-sans-sc-49-400-normal-B43LfYL1.woff2              28.08 kB
+dist/assets/noto-sans-sc-116-400-normal-B9rv4EzF.woff2             28.12 kB
+dist/assets/noto-sans-sc-37-400-normal-CjshmOwp.woff2              28.16 kB
+dist/assets/noto-sans-sc-60-400-normal-GU4GKg2E.woff               28.45 kB
+dist/assets/noto-sans-sc-79-400-normal-EktYxXvd.woff               28.53 kB
+dist/assets/noto-sans-sc-70-400-normal-Cv6BJgqS.woff               28.54 kB
+dist/assets/noto-sans-sc-56-400-normal-B57fiM3p.woff2              28.55 kB
+dist/assets/noto-sans-sc-51-400-normal-CxEddk2i.woff               28.56 kB
+dist/assets/noto-sans-sc-65-400-normal-BnhE90fv.woff               28.56 kB
+dist/assets/noto-sans-sc-29-400-normal-CTMIENlc.woff2              28.68 kB
+dist/assets/noto-sans-sc-44-400-normal-wq9JI-iJ.woff2              28.75 kB
+dist/assets/noto-sans-sc-38-400-normal-D0ErwWLV.woff2              28.94 kB
+dist/assets/noto-sans-sc-30-400-normal-Dzb6Zn8O.woff2              29.16 kB
+dist/assets/noto-sans-sc-68-400-normal-BBVkJV-Y.woff               29.20 kB
+dist/assets/noto-sans-sc-69-400-normal-o5cK7hs4.woff2              29.56 kB
+dist/assets/noto-sans-sc-57-400-normal-0KJcqtwa.woff2              29.64 kB
+dist/assets/noto-sans-sc-36-400-normal-gXBiuGwd.woff               29.77 kB
+dist/assets/noto-sans-sc-47-400-normal-CZbI_HNG.woff2              29.78 kB
+dist/assets/noto-sans-sc-115-400-normal-BQfWDt6M.woff2             29.97 kB
+dist/assets/noto-sans-sc-74-400-normal-C40Ur-xi.woff2              30.04 kB
+dist/assets/noto-sans-sc-53-400-normal-mWVfdeO5.woff               30.11 kB
+dist/assets/noto-sans-sc-83-400-normal-DYXgq8kH.woff               30.17 kB
+dist/assets/noto-sans-sc-58-400-normal-DHIustpc.woff2              30.38 kB
+dist/assets/noto-sans-sc-112-400-normal-F9zvXQVU.woff2             30.47 kB
+dist/assets/noto-sans-sc-23-400-normal-D0XQUkMM.woff2              30.52 kB
+dist/assets/noto-sans-sc-61-400-normal-DO6eFcUD.woff               30.64 kB
+dist/assets/noto-sans-sc-42-400-normal-GDRkeAhh.woff               30.69 kB
+dist/assets/noto-sans-sc-114-400-normal-CZUMxNv_.woff2             30.71 kB
+dist/assets/noto-sans-sc-82-400-normal-D0Ku2zIg.woff               30.77 kB
+dist/assets/noto-sans-sc-113-400-normal-DZoqVzDv.woff2             31.00 kB
+dist/assets/noto-sans-sc-101-400-normal-DYFU5ahq.woff2             31.03 kB
+dist/assets/noto-sans-sc-72-400-normal-DPchTtEp.woff               31.09 kB
+dist/assets/noto-sans-sc-62-400-normal-ytbDME29.woff2              31.15 kB
+dist/assets/noto-sans-sc-25-400-normal-CD3JKveN.woff2              31.22 kB
+dist/assets/noto-sans-sc-40-400-normal-BpE33_aL.woff               31.87 kB
+dist/assets/noto-sans-sc-118-400-normal-Bv9FY4YJ.woff              31.93 kB
+dist/assets/noto-sans-sc-81-400-normal-CMDP0b8q.woff               31.96 kB
+dist/assets/noto-sans-sc-109-400-normal-ZEHPyOzB.woff2             32.06 kB
+dist/assets/noto-sans-sc-102-400-normal-lPQNp5DG.woff2             32.10 kB
+dist/assets/noto-sans-sc-43-400-normal-ptNFri_o.woff               32.12 kB
+dist/assets/noto-sans-sc-46-400-normal-DxQ4Lw-z.woff2              32.19 kB
+dist/assets/noto-sans-sc-50-400-normal-DmEmT5Xc.woff               32.22 kB
+dist/assets/noto-sans-sc-107-400-normal-DUS2YNa3.woff2             32.38 kB
+dist/assets/noto-sans-sc-71-400-normal-BcC9a3s7.woff               32.50 kB
+dist/assets/noto-sans-sc-59-400-normal-CTbjnxze.woff               32.54 kB
+dist/assets/noto-sans-sc-27-400-normal-CAcePaVb.woff               32.54 kB
+dist/assets/noto-sans-sc-104-400-normal-DbzfdvQ5.woff2             32.55 kB
+dist/assets/noto-sans-sc-110-400-normal-D1IYcvpb.woff2             32.68 kB
+dist/assets/noto-sans-sc-105-400-normal-BiKizsW3.woff2             32.76 kB
+dist/assets/noto-sans-sc-34-400-normal-DVjrmKwp.woff               32.80 kB
+dist/assets/noto-sans-sc-33-400-normal-71T9_H2W.woff               32.97 kB
+dist/assets/noto-sans-sc-28-400-normal-mlzUy5GG.woff               33.14 kB
+dist/assets/noto-sans-sc-111-400-normal-C5Xi9UGz.woff2             33.16 kB
+dist/assets/noto-sans-sc-106-400-normal-DDMMORp2.woff2             33.21 kB
+dist/assets/noto-sans-sc-24-400-normal-mI4tDgE1.woff2              33.33 kB
+dist/assets/noto-sans-sc-31-400-normal-Cyw6s5hq.woff               33.37 kB
+dist/assets/noto-sans-sc-35-400-normal-Dmi4TVAU.woff               33.38 kB
+dist/assets/noto-sans-sc-78-400-normal-B6-7Eoul.woff               33.40 kB
+dist/assets/noto-sans-sc-63-400-normal-Ce5ND-aB.woff               33.41 kB
+dist/assets/noto-sans-sc-76-400-normal-D8lD1-P8.woff               33.60 kB
+dist/assets/noto-sans-sc-75-400-normal-CRQovkGE.woff               33.63 kB
+dist/assets/noto-sans-sc-55-400-normal-DKj4nXau.woff               33.70 kB
+dist/assets/noto-sans-sc-103-400-normal-DrxRoDmn.woff2             33.84 kB
+dist/assets/noto-sans-sc-108-400-normal-D80tGT87.woff2             34.14 kB
+dist/assets/noto-sans-sc-32-400-normal-C2vok0E0.woff               34.22 kB
+dist/assets/noto-sans-sc-100-400-normal-CX-7pUk_.woff2             34.27 kB
+dist/assets/noto-sans-sc-22-400-normal-yOvQSDF6.woff2              34.55 kB
+dist/assets/noto-sans-sc-54-400-normal-0ORVgrbC.woff               34.96 kB
+dist/assets/noto-sans-sc-48-400-normal-GhZ7XIdg.woff               35.01 kB
+dist/assets/noto-sans-sc-39-400-normal-C0_-XaYb.woff               35.06 kB
+dist/assets/noto-sans-sc-26-400-normal-BcJtXd5l.woff               35.13 kB
+dist/assets/noto-sans-sc-52-400-normal-8kWwSH0T.woff               35.20 kB
+dist/assets/noto-sans-sc-117-400-normal-B90NeRlJ.woff              35.72 kB
+dist/assets/noto-sans-sc-49-400-normal-EZegvN0r.woff               35.77 kB
+dist/assets/noto-sans-sc-66-400-normal-BjhdbVrp.woff               35.90 kB
+dist/assets/noto-sans-sc-116-400-normal-CR11uof5.woff              35.93 kB
+dist/assets/noto-sans-sc-37-400-normal-Cmdsu9MW.woff               35.94 kB
+dist/assets/noto-sans-sc-29-400-normal-CHgMHmhc.woff               36.00 kB
+dist/assets/noto-sans-sc-67-400-normal-DSvKAqIC.woff               36.25 kB
+dist/assets/noto-sans-sc-44-400-normal-W3R_kary.woff               36.28 kB
+dist/assets/noto-sans-sc-45-400-normal-DdOuPp0S.woff2              36.84 kB
+dist/assets/noto-sans-sc-56-400-normal-Br4UG_Q9.woff               37.49 kB
+dist/assets/noto-sans-sc-115-400-normal-B23RwfZh.woff              37.77 kB
+dist/assets/noto-sans-sc-38-400-normal-8qeTo2XT.woff               37.82 kB
+dist/assets/noto-sans-sc-57-400-normal-7bULzP29.woff               37.89 kB
+dist/assets/noto-sans-sc-23-400-normal-VP8RQJAO.woff               38.20 kB
+dist/assets/noto-sans-sc-69-400-normal-h09eyRfk.woff               38.46 kB
+dist/assets/noto-sans-sc-30-400-normal-DueQZSV4.woff               38.71 kB
+dist/assets/noto-sans-sc-112-400-normal-atE7g4tE.woff              39.00 kB
+dist/assets/noto-sans-sc-58-400-normal-BGyguXZA.woff               39.08 kB
+dist/assets/noto-sans-sc-47-400-normal-DuXmX2I2.woff               39.10 kB
+dist/assets/noto-sans-sc-114-400-normal-ftueBgxn.woff              39.17 kB
+dist/assets/noto-sans-sc-62-400-normal-CyweeFJB.woff               39.39 kB
+dist/assets/noto-sans-sc-25-400-normal-Dr2sN31U.woff               39.60 kB
+dist/assets/noto-sans-sc-113-400-normal-CsjjXlxl.woff              39.60 kB
+dist/assets/noto-sans-sc-74-400-normal-BuGY1CEw.woff               39.71 kB
+dist/assets/noto-sans-sc-101-400-normal-CURPjalT.woff              39.82 kB
+dist/assets/noto-sans-sc-46-400-normal-BcJVrPW7.woff               39.99 kB
+dist/assets/noto-sans-sc-109-400-normal-BMfp9ISa.woff              40.82 kB
+dist/assets/noto-sans-sc-102-400-normal-CO48T6mp.woff              41.00 kB
+dist/assets/noto-sans-sc-110-400-normal-BOYCnhF2.woff              41.16 kB
+dist/assets/noto-sans-sc-107-400-normal-hiOgvem8.woff              41.18 kB
+dist/assets/noto-sans-sc-119-400-normal-flOVnW3A.woff2             41.29 kB
+dist/assets/noto-sans-sc-104-400-normal-TqOAdUro.woff              41.34 kB
+dist/assets/noto-sans-sc-105-400-normal-Cnb4WXCA.woff              41.89 kB
+dist/assets/noto-sans-sc-24-400-normal-BNcLancd.woff               42.04 kB
+dist/assets/noto-sans-sc-111-400-normal-hISf6pse.woff              42.40 kB
+dist/assets/noto-sans-sc-106-400-normal-Cl0nnNTx.woff              42.48 kB
+dist/assets/noto-sans-sc-108-400-normal-BASrmXAw.woff              43.14 kB
+dist/assets/noto-sans-sc-103-400-normal-DjYszr9r.woff              43.15 kB
+dist/assets/noto-sans-sc-22-400-normal-BKfopAEH.woff               43.28 kB
+dist/assets/noto-sans-sc-100-400-normal-BT1M_hxC.woff              43.88 kB
+dist/assets/noto-sans-sc-45-400-normal-odgwNltt.woff               45.75 kB
+dist/assets/noto-sans-sc-119-400-normal-DJUwOonj.woff              52.71 kB
+dist/assets/index-DnXBh3wm.css                                    270.79 kB │ gzip:  79.91 kB
+dist/assets/purify.es-18JuyMri.js                                  30.12 kB │ gzip:  11.51 kB
+dist/assets/index.es-VsLaTtod.js                                  158.96 kB │ gzip:  53.05 kB
+dist/assets/html2canvas.esm-DXEQVQnt.js                           201.04 kB │ gzip:  47.43 kB
+dist/assets/pdf-2YSut7sz.js                                       397.20 kB │ gzip: 131.12 kB
+dist/assets/index-B4DjMy4N.js                                   1,098.26 kB │ gzip: 312.09 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.99s
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

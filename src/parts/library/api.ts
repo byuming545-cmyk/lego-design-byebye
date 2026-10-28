@@ -1,6 +1,7 @@
 import { Router, type NextFunction, type Request, type Response } from 'express';
 import { FeedbackError } from './feedback.js';
 import type { InterfaceLibrary } from './interfaceLibrary.js';
+import { StudioError, type AssemblyStudioService } from './studio.js';
 import type { FeedbackInput, FeedbackPatch } from './types.js';
 
 const object = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -15,11 +16,16 @@ function feedbackFailure(response: Response, error: unknown): boolean {
 }
 
 /** Server-only API for the reviewable interface and assembly library. */
-export function createInterfaceLibraryRouter(options: { library: InterfaceLibrary }) {
+export function createInterfaceLibraryRouter(options: { library: InterfaceLibrary; studio?: AssemblyStudioService }) {
   const router = Router();
   const library = options.library;
+  const studio = options.studio;
   const handle = (work: (request: Request, response: Response) => Promise<void>) => async (request: Request, response: Response, next: NextFunction) => {
-    try { await work(request, response); } catch (error) { if (!feedbackFailure(response, error)) next(error); }
+    try { await work(request, response); } catch (error) {
+      if (feedbackFailure(response, error)) return;
+      if (error instanceof StudioError) { response.status(error.status).json({ error: error.message, code: error.code }); return; }
+      next(error);
+    }
   };
 
   router.get('/overview', handle(async (_request, response) => { response.json(await library.overview()); }));
@@ -63,5 +69,27 @@ export function createInterfaceLibraryRouter(options: { library: InterfaceLibrar
   }));
   router.post('/feedback', handle(async (request, response) => { response.status(201).json(await library.addFeedback(request.body as FeedbackInput)); }));
   router.patch('/feedback/:id', handle(async (request, response) => { response.json(await library.patchFeedback(String(request.params.id), request.body as FeedbackPatch)); }));
+  router.post('/studio/validate', handle(async (request, response) => {
+    if (!studio) { response.status(503).json({ error: '拼搭工作台服务未启用。', code: 'STUDIO_UNAVAILABLE' }); return; }
+    response.json(await studio.validate(request.body));
+  }));
+  router.post('/studio/examples', handle(async (request, response) => {
+    if (!studio) { response.status(503).json({ error: '拼搭工作台服务未启用。', code: 'STUDIO_UNAVAILABLE' }); return; }
+    response.status(201).json(await studio.save(request.body));
+  }));
+  router.get('/studio/examples', handle(async (_request, response) => {
+    if (!studio) { response.status(503).json({ error: '拼搭工作台服务未启用。', code: 'STUDIO_UNAVAILABLE' }); return; }
+    response.json(await studio.list());
+  }));
+  router.get('/studio/examples/:id', handle(async (request, response) => {
+    if (!studio) { response.status(503).json({ error: '拼搭工作台服务未启用。', code: 'STUDIO_UNAVAILABLE' }); return; }
+    const value = await studio.get(String(request.params.id));
+    if (!value) { response.status(404).json({ error: '没有该拼搭示例。', code: 'STUDIO_NOT_FOUND' }); return; }
+    response.json(value);
+  }));
+  router.post('/studio/examples/:id/revalidate', handle(async (request, response) => {
+    if (!studio) { response.status(503).json({ error: '拼搭工作台服务未启用。', code: 'STUDIO_UNAVAILABLE' }); return; }
+    response.json(await studio.revalidate(String(request.params.id)));
+  }));
   return router;
 }
