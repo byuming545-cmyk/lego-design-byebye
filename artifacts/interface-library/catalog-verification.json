@@ -1,6 +1,6 @@
 {
   "schemaVersion": "interface-library-studio-catalog-verification-1",
-  "generatedAt": "2026-10-28T14:28:18.607866+00:00",
+  "generatedAt": "2026-10-28T15:06:41.386817+00:00",
   "branch": "codex/interface-library",
   "baseline": "5db5e7c",
   "delivery": "local-only, not pushed",
@@ -66,7 +66,17 @@
       "console: Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
     ],
     "unexpectedErrors": [],
-    "revalidateHttpTested": true
+    "revalidateHttpTested": true,
+    "pickerScroll": {
+      "bodyOverflowDuringModal": "hidden",
+      "windowScrollYBefore": 0,
+      "windowScrollYAfter": 0,
+      "gridClientHeight": 632,
+      "gridScrollHeight": 4568,
+      "gridScrollTopAfterWheel": 500,
+      "bodyOverflowAfterClose": "",
+      "passed": true
+    }
   },
   "preservedUserData": {
     "path": "data/interface-library/studio-examples.json",
@@ -85,8 +95,8 @@
     "files": 54,
     "passed": 777,
     "failed": 0,
-    "durationSeconds": 87.26,
-    "log": "artifacts/interface-library/unit-catalog.log"
+    "durationSeconds": 89.86,
+    "log": "artifacts/interface-library/unit-scroll-fix.log"
   },
   "build": {
     "command": "npm run build",
@@ -101,7 +111,8 @@
     "studio-result-catalog.png": "ae4071c3b802921eefcaec19e20e5f97505c4f8e843c30f487a8e534124478f4",
     "studio-catalog-saved.png": "9c96b9157f972dbf11a780d4e779e531526aad3611fcbe773dc4c4e896439a7a",
     "studio-catalog-reopen.png": "457215a79a82ab500afe4d0146c98f9d580a830bd07bc746181f89ccb2c141be",
-    "studio-catalog-mobile.png": "49a341417787370d06803d467188afdd54d408a58a311bbf0fe204fffcf2e728"
+    "studio-catalog-mobile.png": "49a341417787370d06803d467188afdd54d408a58a311bbf0fe204fffcf2e728",
+    "studio-part-picker-scrolled.png": "60d3d2f7b926ab8ee16c8282c80defe95150e207f6de4a44371ae14b5ff751fb"
   },
   "limitations": [
     "Only C01/BAR_CLIP/PIN_HOLE are production families; other categories are explicit gaps or conditional kernels.",

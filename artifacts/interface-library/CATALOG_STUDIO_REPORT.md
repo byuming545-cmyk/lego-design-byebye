@@ -78,6 +78,7 @@ C01 另有来源候选 `2445 → 2431`，目录明确标记为“来源候选；
 - 保存失败时前端捕获错误，当前零件、姿态、说明、相机、关键帧不重置。
 - 刷新/重开后按记录恢复相机、姿态、关键帧、说明和检查结果。
 - `stale` 由零件来源 SHA 变化触发；重新检查会追加历史。
+- 零件选择器显示全部匹配项（不再截断 24 条），列表内部滚动；模态打开时锁定背景滚动，关闭后恢复。
 
 导出包：`bricklab-studio-bundle`，bundleVersion 1，schema `studio-example-2`，包含 examples、feedback、versions、sourceSummary 和复现说明；**不包含**源模型。导入时只创建草稿，不直接进入正式生成。
 
@@ -126,7 +127,7 @@ C01 另有来源候选 `2445 → 2431`，目录明确标记为“来源候选；
 ## 验证
 
 - `npm run typecheck`：通过。
-- `npm test -- --maxWorkers=2`：777/777，54 files，87.26 s，日志 `artifacts/interface-library/unit-catalog.log`。
+- `npm test -- --maxWorkers=2`：777/777，54 files，89.86 s，日志 `artifacts/interface-library/unit-scroll-fix.log`。
 - `npm run build`：通过，日志 `artifacts/interface-library/build-catalog.log`。
 - 浏览器（隔离数据目录，1440×1100 与 390×844）：
   - 目录 15 门类；C01 初始 A/B = `3024` / `3070b`。

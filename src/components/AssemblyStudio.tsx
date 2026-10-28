@@ -151,7 +151,7 @@ export default function AssemblyStudio({ onSaved, initialCaseId }: { onSaved?: (
   const parts = rule?.parts.length ? rule.parts : allParts;
   const filteredParts = useMemo(() => {
     const query = partSearch.trim().toLowerCase();
-    return (query ? parts.filter(part => `${part.partId} ${part.name} ${part.tags.join(' ')}`.toLowerCase().includes(query)) : parts).slice(0, 24);
+    return query ? parts.filter(part => `${part.partId} ${part.name} ${part.tags.join(' ')}`.toLowerCase().includes(query)) : parts;
   }, [parts, partSearch]);
 
   const loadExampleList = async () => { try { setExamples(await request<StudioExampleSummary[]>('/studio/examples')); } catch { /* optional */ } };
@@ -175,6 +175,13 @@ export default function AssemblyStudio({ onSaved, initialCaseId }: { onSaved?: (
     const timer = window.setTimeout(() => viewer.current?.setCamera(cameraRestore), 40);
     return () => window.clearTimeout(timer);
   }, [cameraRestore, viewerReady]);
+
+  useEffect(() => {
+    if (!picking && !previewOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = previous; };
+  }, [picking, previewOpen]);
 
   const loadPair = async (fixedId: string, movingId: string, category: CatalogRule | null): Promise<boolean> => {
     const [fixedPart, movingPart] = await Promise.all([partRequest<PartPayload>(fixedId), partRequest<PartPayload>(movingId)]);
