@@ -2,6 +2,7 @@ import type { LDrawPartResult } from '../ldraw/types.js';
 import type { ConnectionImportResult } from '../connections/types.js';
 import { CONNECTOR_GRAMMAR_VERSION } from '../grammar/schema.js';
 
+export type CollisionClass = 'structural' | 'exterior-shell';
 export type Vector3 = [number, number, number];
 export type Matrix3 = [number, number, number, number, number, number, number, number, number];
 /** Native LDraw coordinates and LDU. Only placement transforms change, never source vertices. */
@@ -15,6 +16,8 @@ export interface NativePlacement {
   instanceId: string;
   partId: string;
   transform: RigidTransform;
+  /** Optional for historical records; absent means structural. */
+  collisionClass?: CollisionClass;
 }
 export interface AssemblyVersions {
   partLibraryVersion: string;
@@ -51,6 +54,8 @@ export interface AssemblyAttachRequest {
   partId: string;
   candidateConnectionId: string;
   twistDegrees?: number;
+  /** Collision contract for the newly attached moving placement. */
+  collisionClass?: CollisionClass;
 }
 export interface AssemblyInterfaceCapability {
   partId: string;
@@ -66,6 +71,20 @@ export interface AssemblyInterfaceCapability {
   sourceReady?: boolean;
   collisionGeometryReady?: boolean;
   connectable?: boolean;
+  /** Exterior-shell surface validation is opt-in and never changes the structural count. */
+  exteriorGeneratable?: boolean;
+  exteriorCollisionGeometryReady?: boolean;
+  exteriorAllowedConnectionIds?: string[];
+  exteriorRuleIds?: string[];
+}
+
+
+export function isCollisionClass(value: unknown): value is CollisionClass {
+  return value === 'structural' || value === 'exterior-shell';
+}
+
+export function placementCollisionClass(placement: Pick<NativePlacement, 'collisionClass'>): CollisionClass {
+  return placement.collisionClass === 'exterior-shell' ? 'exterior-shell' : 'structural';
 }
 
 export function isGeneratableCapability(capability: AssemblyInterfaceCapability | undefined): boolean {
@@ -74,6 +93,18 @@ export function isGeneratableCapability(capability: AssemblyInterfaceCapability 
     capability.sourceReady === true && capability.collisionGeometryReady === true && capability.connectable === true;
   return capability.assemblyVerified === true;
 }
+
+export function isExteriorGeneratableCapability(capability: AssemblyInterfaceCapability | undefined): boolean {
+  if (!capability?.exteriorGeneratable || !(capability.exteriorAllowedConnectionIds?.length)) return false;
+  if (capability.admissionBasis === 'interface-grammar') return capability.grammarVersion === CONNECTOR_GRAMMAR_VERSION &&
+    capability.sourceReady === true && capability.exteriorCollisionGeometryReady === true && capability.connectable === true;
+  return false;
+}
+
+export function isGeneratableCapabilityFor(capability: AssemblyInterfaceCapability | undefined, collisionClass: CollisionClass): boolean {
+  return collisionClass === 'exterior-shell' ? isExteriorGeneratableCapability(capability) : isGeneratableCapability(capability);
+}
+
 
 /** Only unresolved dimensions on other endpoints can be isolated. Structural
  * include/clear, integrity or syntax failures still invalidate the whole scope. */

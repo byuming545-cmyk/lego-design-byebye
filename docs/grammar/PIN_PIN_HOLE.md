@@ -173,4 +173,4 @@ candidate and now also carries two source-declared PIN_HOLE endpoints.
 - serialized connector parser `ldcad-shadow-parser-2-clear-scope`
 - additive Shadow-title context `ldraw-root-description-1`
 - native rule `ldcad-source-declared-pin-hole-v1`
-- collision `native-open-surface-seat-2.0.0`
+- collision `native-exterior-shell-3.0.0`

@@ -25,8 +25,10 @@ export interface GrammarPartAdmission {
   sourceDigest: string;
   sourceReady: boolean;
   collisionGeometryReady: boolean;
+  exteriorCollisionGeometryReady: boolean;
   connectable: boolean;
   generationEligible: boolean;
+  exteriorGeneratable: boolean;
   /** A reusable connector rule is not an actually executed part assembly. */
   assemblyVerified: false;
   generatorSmokePassed: false;
@@ -34,6 +36,7 @@ export interface GrammarPartAdmission {
   ingestion: ConnectorIngestion;
   featureSupport: GrammarFeatureSupport[];
   proxy: Pick<ProxyBuildResult, 'status' | 'reasonCode' | 'reason'>;
+  exteriorProxy: Pick<ProxyBuildResult, 'status' | 'reasonCode' | 'reason'>;
   capability: AssemblyInterfaceCapability;
   reasonCodes: string[];
   reasons: string[];
@@ -73,27 +76,39 @@ export function assessGrammarAdmission(part: NativeAssemblyPart): GrammarPartAdm
   const nativeRuleIds = [...new Set(featureSupport.filter(feature => feature.supported).flatMap(feature => feature.ruleIds))];
   const connectable = supportedIds.length > 0;
   const proxy = buildNativeCollisionProxy(part, { instanceId: 'grammar-source', partId: part.partId, transform: IDENTITY_TRANSFORM });
+  const exteriorProxy = buildNativeCollisionProxy(part, { instanceId: 'grammar-exterior-source', partId: part.partId, transform: IDENTITY_TRANSFORM, collisionClass: 'exterior-shell' });
   const collisionGeometryReady = proxy.status === 'ready';
+  const exteriorCollisionGeometryReady = exteriorProxy.status === 'ready' && !collisionGeometryReady;
   const generationEligible = sourceReady && connectable && collisionGeometryReady;
+  const exteriorGeneratable = sourceReady && connectable && exteriorCollisionGeometryReady;
   const reasonCodes: string[] = [], reasons: string[] = [];
   if (!identityReady) { reasonCodes.push('grammar-source-identity-mismatch'); reasons.push('Part, geometry and connector source identities do not agree.'); }
   if (!geometryReady) { reasonCodes.push('grammar-native-geometry-unverified'); reasons.push('Complete hash-verified licensed native geometry is required.'); }
   if (!connectionSourceReady) { reasonCodes.push('grammar-source-interpretation-incomplete'); reasons.push('Connector source interpretation contains unresolved structural syntax or missing evidence.'); }
   if (!connectable) { reasonCodes.push('grammar-no-supported-connector'); reasons.push('No source feature satisfies an enabled native connector rule.'); }
-  if (!collisionGeometryReady) { reasonCodes.push('grammar-collision-' + proxy.reasonCode); reasons.push(proxy.reason); }
+  if (!collisionGeometryReady) {
+    reasonCodes.push('grammar-collision-' + proxy.reasonCode);
+    reasons.push(exteriorCollisionGeometryReady
+      ? `${proxy.reason} A separate exterior-shell surface proxy is available only when that placement contract is explicitly selected; this is not structural eligibility.`
+      : proxy.reason);
+  }
   const capability: AssemblyInterfaceCapability = {
     partId: part.partId, admissionBasis: 'interface-grammar', grammarVersion: CONNECTOR_GRAMMAR_VERSION,
-    sourceReady, collisionGeometryReady, connectable,
+    sourceReady, collisionGeometryReady, exteriorCollisionGeometryReady, connectable,
     assemblyVerified: false, generatable: generationEligible,
     allowedConnectionIds: generationEligible ? supportedIds : [],
     ruleIds: generationEligible ? nativeRuleIds : [],
+    exteriorGeneratable,
+    exteriorAllowedConnectionIds: exteriorGeneratable ? supportedIds : [],
+    exteriorRuleIds: exteriorGeneratable ? nativeRuleIds : [],
     reasonCodes, reasons,
   };
   return {
     partId: part.partId, admissionBasis: 'interface-grammar', grammarVersion: CONNECTOR_GRAMMAR_VERSION,
-    sourceDigest, sourceReady, collisionGeometryReady, connectable, generationEligible,
+    sourceDigest, sourceReady, collisionGeometryReady, exteriorCollisionGeometryReady, connectable, generationEligible, exteriorGeneratable,
     assemblyVerified: false, generatorSmokePassed: false, physicalBuildVerified: false,
     ingestion, featureSupport, proxy: { status: proxy.status, reasonCode: proxy.reasonCode, reason: proxy.reason },
+    exteriorProxy: { status: exteriorProxy.status, reasonCode: exteriorProxy.reasonCode, reason: exteriorProxy.reason },
     capability, reasonCodes, reasons,
   };
 }

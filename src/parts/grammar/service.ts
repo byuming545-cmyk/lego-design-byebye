@@ -63,8 +63,8 @@ export class GrammarAssemblyService extends AssemblyService {
   private makeEntry(root: Root, part?: NativeAssemblyPart, admission?: GrammarPartAdmission): AssemblyMigrationEntry {
     const capability: AssemblyInterfaceCapability = admission?.capability ?? {
       partId: root.partId, admissionBasis: 'interface-grammar', grammarVersion: CONNECTOR_GRAMMAR_VERSION,
-      sourceReady: false, collisionGeometryReady: false, connectable: false,
-      assemblyVerified: false, generatable: false, allowedConnectionIds: [], ruleIds: [],
+      sourceReady: false, collisionGeometryReady: false, exteriorCollisionGeometryReady: false, connectable: false,
+      assemblyVerified: false, generatable: false, exteriorGeneratable: false, allowedConnectionIds: [], ruleIds: [], exteriorAllowedConnectionIds: [], exteriorRuleIds: [],
       reasonCodes: ['grammar-source-unavailable'], reasons: ['The current original source could not be admitted.'],
     };
     const coverage = part ? buildPhysicalInterfaceCoverage(part, []) : undefined;
@@ -100,9 +100,12 @@ export class GrammarAssemblyService extends AssemblyService {
     const entry = this.grammarEntries.get(partId);
     return entry ? structuredClone({
       partId: entry.partId, admissionBasis: 'interface-grammar' as const, grammarVersion: CONNECTOR_GRAMMAR_VERSION,
-      sourceReady: entry.sourceReady, collisionGeometryReady: entry.collisionGeometryReady, connectable: entry.connectable,
-      assemblyVerified: false, generatable: entry.generatable,
-      allowedConnectionIds: entry.allowedConnectionIds, ruleIds: entry.ruleIds, reasonCodes: entry.reasonCodes, reasons: entry.reasons,
+      sourceReady: entry.sourceReady, collisionGeometryReady: entry.collisionGeometryReady,
+      exteriorCollisionGeometryReady: entry.exteriorCollisionGeometryReady, connectable: entry.connectable,
+      assemblyVerified: false, generatable: entry.generatable, exteriorGeneratable: entry.exteriorGeneratable,
+      allowedConnectionIds: entry.allowedConnectionIds, ruleIds: entry.ruleIds,
+      exteriorAllowedConnectionIds: entry.exteriorAllowedConnectionIds ?? [], exteriorRuleIds: entry.exteriorRuleIds ?? [],
+      reasonCodes: entry.reasonCodes, reasons: entry.reasons,
     }) : undefined;
   }
   override async getEntry(partId: string): Promise<AssemblyMigrationEntry | undefined> {

@@ -1,9 +1,12 @@
 # Assembly connection rule sources and scope
 
-Rule set version: `source-stud-1.0.0`.
+Rule set version: `source-stud-2.0.0-connector-grammar-2`.
 
-The first supported rule is
-`ldcad-standard-stud-to-capped-underside-v1`. It solves a **candidate** rigid
+The current production rules are C01
+`ldcad-standard-stud-to-capped-underside-v1`, BAR_CLIP
+`ldcad-source-declared-bar-clip-v1` and PIN_HOLE
+`ldcad-source-declared-pin-hole-v1`. C01 is the only pure standard-source
+rule; BAR_CLIP and PIN_HOLE use the `SOURCE_DECLARED_FIT` layer. It solves a **candidate** rigid
 attachment. Its success alone never sets `assemblyVerified` or `generatable`:
 native collision, graph occupancy, representative fixture tests and the batch
 smoke test still gate those capabilities.
@@ -104,9 +107,9 @@ entire pair because their connector volumes overlap.
 | Family | Current result | Specific missing proof |
 | --- | --- | --- |
 | Ordinary stud ↔ capped underside, including side studs/SNOT | Candidate solved; subsequent checks required | Whole-part collision, fixture and graph verification per interface |
-| Bar ↔ clip | `compatibilityUnknown` | Clip deformation, engagement and insertion path |
+| Bar ↔ clip | Source-declared subset enabled; real 30374+48729b model validated | 60470b still fails actual plate/80-LDU-bar collision; deformation, retention and path unverified |
 | Axle ↔ axle hole | `compatibilityUnknown` | Keyed frame, scaled length and insertion depth |
-| Pin ↔ pin hole | `compatibilityUnknown` | Multi-section shoulder/slide and insertion constraints; the current 3673 source also contains unparsed `L_` |
+| Pin ↔ pin hole | Source-declared subset enabled; real 3673+32000 model validated | Friction, retention, 18591 body collision and full path unverified |
 | Wheel ↔ holder/hub | `compatibilityUnknown` | Dedicated axle/hub seating and retention rule |
 | Tyre ↔ wheel | `compatibilityUnknown` | Matching group alone does not establish a verified seating transform and deformable-body fit |
 | Centered, sliding or multi-section sockets | `compatibilityUnknown` | Their anchor/depth/translation freedoms are outside the ordinary underside rule |
@@ -115,3 +118,10 @@ entire pair because their connector volumes overlap.
 Unsupported interfaces remain disabled even on a part that has a separately
 verified ordinary stud interface. An interface-level allowlist must be used by
 the generator; a part-level success is not permission to use every point.
+
+## 逐 placement 碰撞合同
+
+- `structural`：现有闭合实体/BVH/containment 路径，仍是默认合同。
+- `exterior-shell`：显式选择的真实表面合同；开边界保留，不封壳、不补厚度、不计算 signed volume/containment，只检查真实三角形交叉、壳顶点进入闭壳以及来源 seat 内接触。证明字段明确标记 `surfaceCrossingChecked:true`、`closedSourceProxies:false`、`containmentChecked:false`、`structuralSupport:false`、`wholePairExempted:false`。
+- 合同随 placement 进入 graph、JSON 导出、模型导入和 API；缺失字段按 structural 处理，不静默降级没有 structural 资格的零件。
+- 表面合同通过不等于安装路径、承重、保持力或实物通过。详见 [grammar/EXTERIOR_SHELL.md](grammar/EXTERIOR_SHELL.md)。

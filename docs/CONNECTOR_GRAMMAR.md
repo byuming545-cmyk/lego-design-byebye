@@ -103,7 +103,9 @@ RAIL, GROOVE, GENERIC_SPECIAL
 | RAIL_GROOVE | RAIL ↔ GROOVE | 实际行程与stop；PRISMATIC，不能自由旋转 | 未启用 |
 | GENERIC_GROUP | GENERIC_SPECIAL ↔ GENERIC_SPECIAL | group、角色及获证配合策略共同匹配 | 未启用 |
 
-C01、BAR_CLIP和PIN_HOLE的明确来源子集进入普通生产生成。BAR_CLIP新增`SOURCE_DECLARED_FIT`来源层：官方根LDraw描述提供BAR身份，LDCad `SNAP_CYL`/`SNAP_CLP`提供直径、seat长度、insertion与运动声明；开壳CLIP使用独立的`open-source-surface` seat证明，仍然只做姿态验证，不把表面接触当成闭合实体或实物认证。PIN_HOLE同属`SOURCE_DECLARED_FIT`：官方Technic Pin/Connector Hole标题与pinned `SNAP_CYL`提供多段销轴和seat；带销零件使用源销轴包络的seat证明，闭孔件仍按闭合实体检查。其余12条仍是**条件式算法kernel**，需要完整、经核定的真实fit数据。算法测试用的明确标记 `ALGORITHM_FIXTURE` 不能作为LEGO实配记录或生产override；默认规则不接纳此范围的证据。
+C01、BAR_CLIP和PIN_HOLE的明确来源子集进入普通生产生成。BAR_CLIP新增`SOURCE_DECLARED_FIT`来源层：官方根LDraw描述提供BAR身份，LDCad `SNAP_CYL`/`SNAP_CLP`提供直径、seat长度、insertion与运动声明；开壳CLIP使用独立的`open-source-surface` seat证明，仍然只做姿态验证，不把表面接触当成闭合实体或实物认证。PIN_HOLE同属`SOURCE_DECLARED_FIT`：官方Technic Pin/Connector Hole标题与pinned `SNAP_CYL`提供多段销轴和seat；带销零件使用源销轴包络的seat证明，闭孔件仍按闭合实体检查。新增逐 placement 的 `exterior-shell` 碰撞合同：只对显式选择的开壳真实表面做交叉/穿透与来源 seat 接触检查，不封壳、不补厚度、不做 containment，也不认证结构承重。详见 [EXTERIOR_SHELL.md](grammar/EXTERIOR_SHELL.md)。结构合同 `structural`、C01/BAR_CLIP/PIN_HOLE 的来源与生成路径不变。
+
+其余12条仍是**条件式算法kernel**，需要完整、经核定的真实fit数据。算法测试用的明确标记 `ALGORITHM_FIXTURE` 不能作为LEGO实配记录或生产override；默认规则不接纳此范围的证据。
 
 `VERIFIED_FIT` 需要双方共享经核定的接口profile/seat身份、有效来源证据、轴关系、座位偏移及真实范围。该profile身份表示可复用接口标准，不是零件A/B配对允许表。相同半径、family或group不会跳过此检查。
 

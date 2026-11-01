@@ -3,10 +3,11 @@ import type { ConnectionPenetrationZone } from './solver.js';
 import { createHash } from 'node:crypto';
 import { BAR_CLIP_RULE_ID, checkConnectionCompatibility, PIN_HOLE_RULE_ID, STANDARD_STUD_RULE_ID } from './compatibility.js';
 import { add, cross, distance, dot, isRigidTransform, length, normalize, rotate, scale, subtract, transformPoint } from './math.js';
+import { placementCollisionClass } from './types.js';
 import { boundsOverlap, buildNativeCollisionProxy, polygonArea, splitConvexPolygon, nativeBounds } from './proxy.js';
 import type { CollisionProxy, CollisionTriangle, MeshBounds, Plane, TriangleBvh } from './proxy.js';
 
-export const COLLISION_VERSION = 'native-open-surface-seat-2.0.0';
+export const COLLISION_VERSION = 'native-exterior-shell-3.0.0';
 /** A numerical surface-comparison tolerance, not modified LEGO geometry. */
 export const COLLISION_TOLERANCE_LDU = 0.0001;
 const EPS = COLLISION_TOLERANCE_LDU;
@@ -31,6 +32,12 @@ export interface PairCollisionResult {
     broadPhaseOnly: boolean;
     closedSourceProxies: boolean;
     openSourceSurfaces: boolean;
+    exteriorSourceSurfaces: boolean;
+    openSurface: boolean;
+    surfaceCrossingChecked: boolean;
+    structuralSupport: boolean;
+    degenerateTriangles: number;
+    coplanarContacts: number;
     openSurfaceSeatChecked: boolean;
     completeSurfacePartition: boolean;
     containmentChecked: boolean;
@@ -287,6 +294,14 @@ function segmentFace(start: Vector3, end: Vector3, face: CollisionTriangle): Vec
   return add(start, scale(direction, distance));
 }
 
+/** Only a strict sign change is a surface crossing. Endpoint contact is not penetration. */
+function properSegmentFace(start: Vector3, end: Vector3, face: CollisionTriangle): Vector3 | null {
+  const startDistance = dot(face.normal, subtract(start, face.vertices[0]));
+  const endDistance = dot(face.normal, subtract(end, face.vertices[0]));
+  if (!(startDistance * endDistance < -EPS * EPS)) return null;
+  return segmentFace(start, end, face);
+}
+
 function coplanarFaces(a: CollisionTriangle, b: CollisionTriangle): boolean {
   if (Math.abs(dot(a.normal, b.normal)) < 1 - 1e-6) return false;
   return b.vertices.every(vertex => Math.abs(dot(a.normal, subtract(vertex, a.vertices[0]))) <= EPS);
@@ -302,8 +317,8 @@ function coplanarFaces(a: CollisionTriangle, b: CollisionTriangle): boolean {
 function deriveNativePairCollision(fixedPart: NativeAssemblyPart, fixedPlacement: NativePlacement, movingPart: NativeAssemblyPart, movingPlacement: NativePlacement, penetrationZone?: ConnectionPenetrationZone): PairCollisionResult {
   let triangleTests = 0, checkedSurfacePatches = 0, spatialPartitionFallbacks = 0;
   const deadline = performance.now() + COLLISION_COMPUTATION_BUDGET_MS;
-  const proof: PairCollisionResult['proof'] = { broadPhaseOnly: false, closedSourceProxies: false, openSourceSurfaces: false, openSurfaceSeatChecked: false, completeSurfacePartition: false, containmentChecked: false, sourceEvidence: [], topology: [], penetrationZone: penetrationZone ?? null, penetrationZoneValidated: false, wholePairExempted: false };
-  const result = (status: PairCollisionResult['status'], reasonCode: string, reason: string, witness?: Vector3): PairCollisionResult => ({ status, reasonCode, reason, collisionVersion: COLLISION_VERSION, toleranceLdu: EPS, triangleTests, checkedSurfacePatches, spatialPartitionFallbacks, classification: status === 'collision' ? (proof.openSourceSurfaces ? 'OPEN_SURFACE_SEAT_OVERLAP' : 'SOLID_SOLID_OVERLAP') : status === 'clear' ? (proof.openSourceSurfaces ? (proof.broadPhaseOnly ? 'OPEN_SURFACE_SEAT_BROADPHASE' : 'OPEN_SURFACE_SEAT_CLEARANCE') : (proof.broadPhaseOnly ? 'BROAD_PHASE_SEPARATED' : 'NATIVE_SOLID_CLEARANCE')) : /limit|budget/.test(reasonCode) ? 'REQUIRES_HIGHER_RESOLUTION' : 'UNKNOWN_COMPLEX_GEOMETRY', proof, ...(witness ? { witness } : {}) });
+  const proof: PairCollisionResult['proof'] = { broadPhaseOnly: false, closedSourceProxies: false, openSourceSurfaces: false, exteriorSourceSurfaces: false, openSurface: false, surfaceCrossingChecked: false, structuralSupport: true, degenerateTriangles: 0, coplanarContacts: 0, openSurfaceSeatChecked: false, completeSurfacePartition: false, containmentChecked: false, sourceEvidence: [], topology: [], penetrationZone: penetrationZone ?? null, penetrationZoneValidated: false, wholePairExempted: false };
+  const result = (status: PairCollisionResult['status'], reasonCode: string, reason: string, witness?: Vector3): PairCollisionResult => ({ status, reasonCode, reason, collisionVersion: COLLISION_VERSION, toleranceLdu: EPS, triangleTests, checkedSurfacePatches, spatialPartitionFallbacks, classification: status === 'collision' ? (proof.exteriorSourceSurfaces ? 'EXTERIOR_SURFACE_COLLISION' : proof.openSourceSurfaces ? 'OPEN_SURFACE_SEAT_OVERLAP' : 'SOLID_SOLID_OVERLAP') : status === 'clear' ? (proof.exteriorSourceSurfaces ? 'EXTERIOR_SURFACE_CLEAR' : proof.openSourceSurfaces ? (proof.broadPhaseOnly ? 'OPEN_SURFACE_SEAT_BROADPHASE' : 'OPEN_SURFACE_SEAT_CLEARANCE') : (proof.broadPhaseOnly ? 'BROAD_PHASE_SEPARATED' : 'NATIVE_SOLID_CLEARANCE')) : (proof.exteriorSourceSurfaces ? 'EXTERIOR_SURFACE_UNKNOWN' : /limit|budget/.test(reasonCode) ? 'REQUIRES_HIGHER_RESOLUTION' : 'UNKNOWN_COMPLEX_GEOMETRY'), proof, ...(witness ? { witness } : {}) });
   if (!isRigidTransform(fixedPlacement.transform) || !isRigidTransform(movingPlacement.transform)) return result('blocked', 'non-rigid-transform', 'Only finite proper rigid placements are accepted.');
   const zone = penetrationZone ? validateZone(penetrationZone, [fixedPart, movingPart], [fixedPlacement, movingPlacement]) : { source: true, spatial: true };
   if (!zone.source) return result('blocked', 'unverified-penetration-zone', 'The local penetration zone is not backed by a compatible source endpoint from each of the two parts.');
@@ -316,9 +331,79 @@ function deriveNativePairCollision(fixedPart: NativeAssemblyPart, fixedPlacement
   }
   const a = fixed.proxy, b = moving.proxy;
   const openA = a.topology.status === 'open-source-surface', openB = b.topology.status === 'open-source-surface';
+  const exteriorA = placementCollisionClass(fixedPlacement) === 'exterior-shell' || a.topology.status === 'exterior-source-surface';
+  const exteriorB = placementCollisionClass(movingPlacement) === 'exterior-shell' || b.topology.status === 'exterior-source-surface';
   proof.openSourceSurfaces = openA || openB;
-  proof.closedSourceProxies = !proof.openSourceSurfaces;
+  proof.closedSourceProxies = !proof.openSourceSurfaces && !exteriorA && !exteriorB;
+  proof.structuralSupport = !exteriorA && !exteriorB;
   proof.sourceEvidence = [a.evidence, b.evidence]; proof.topology = [a.topology, b.topology];
+  proof.degenerateTriangles = (a.topology.degenerateTriangles ?? 0) + (b.topology.degenerateTriangles ?? 0);
+  if (exteriorA || exteriorB) {
+    // Explicit exterior contract. The source surface is never capped or thickened;
+    // only actual crossings/penetration are rejected, with the source seat as the
+    // sole local contact exception. This is not a closed-solid certificate.
+    proof.exteriorSourceSurfaces = true; proof.openSurface = true;
+    proof.closedSourceProxies = false; proof.containmentChecked = false; proof.structuralSupport = false;
+    if (exteriorA && exteriorB) {
+      if (openA || openB) return result('blocked', 'exterior-surface-pair-unresolved', 'An exterior shell cannot be paired with a structural open CLIP/PIN surface under the surface-only contract.');
+      if (!boundsOverlap(a.bounds, b.bounds, EPS)) { proof.broadPhaseOnly = true; return result('clear', 'exterior-surface-broadphase', 'The two exterior source surfaces have disjoint bounds; no crossing was checked.'); }
+      proof.surfaceCrossingChecked = true;
+      let contact: Vector3 | null = null;
+      for (const faceA of a.triangles) for (const faceB of b.triangles) {
+        if (!boundsOverlap(faceA.bounds, faceB.bounds, EPS)) continue;
+        if (++triangleTests > MAX_TRIANGLE_TESTS || triangleTests % 128 === 0 && performance.now() > deadline) return result('blocked', 'exterior-surface-resource-limit', 'The exterior surface crossing budget was exceeded; no clearance certificate is granted.');
+        if (coplanarFaces(faceA, faceB)) {
+          if (coplanarOverlap(faceA, faceB)) { proof.coplanarContacts++; contact = faceA.vertices[0]; break; }
+          continue;
+        }
+        for (let edge = 0; edge < 3; edge++) {
+          const hit = properSegmentFace(faceA.vertices[edge], faceA.vertices[(edge + 1) % 3], faceB) ?? properSegmentFace(faceB.vertices[edge], faceB.vertices[(edge + 1) % 3], faceA);
+          if (hit) { contact = hit; break; }
+        }
+        if (contact) break;
+      }
+      if (contact) return result('collision', 'exterior-surface-crossing', 'The two exterior source surfaces cross or overlap; open boundaries are not treated as walls and no whole-pair exemption is granted.', contact);
+      return result('clear', 'exterior-surface-clear', 'The two exterior source surfaces have no actual triangle crossing; this is a surface-only check, not a closed-solid certificate.');
+    }
+    if (openA || openB) return result('blocked', 'exterior-surface-pair-unresolved', 'An exterior shell cannot be paired with a structural open CLIP/PIN surface under the surface-only contract.');
+    const shell = exteriorA ? a : b, solid = exteriorA ? b : a;
+    if (!boundsOverlap(shell.bounds, solid.bounds, EPS)) { proof.broadPhaseOnly = true; return result('clear', 'exterior-surface-broadphase', 'The exterior shell and its closed counterpart have disjoint bounds; no seat is needed for a non-adjacent pair.'); }
+    if (!penetrationZone || !zone.spatial) return result('blocked', 'exterior-surface-seat-required', 'An exterior shell requires a validated source interface seat bound to both placed endpoints; no generic exemption is granted.');
+    proof.surfaceCrossingChecked = true;
+    let crossing: Vector3 | null = null;
+    const coplanarPoints: Vector3[] = [];
+    for (const shellFace of shell.triangles) {
+      const centroid = scale(add(add(shellFace.vertices[0], shellFace.vertices[1]), shellFace.vertices[2]), 1 / 3);
+      if (classifyPoint(solid, centroid) === 'inside' && !pointInSeat(centroid, penetrationZone)) {
+        return result('collision', 'exterior-surface-vertex-inside-solid', 'An exterior source surface has material inside its closed counterpart outside the source-declared interface seat.', centroid);
+      }
+      for (const solidFace of solid.triangles) {
+        if (!boundsOverlap(shellFace.bounds, solidFace.bounds, EPS)) continue;
+        if (++triangleTests > MAX_TRIANGLE_TESTS || triangleTests % 128 === 0 && performance.now() > deadline) return result('blocked', 'exterior-surface-resource-limit', 'The exterior surface crossing budget was exceeded; no clearance certificate is granted.');
+        if (coplanarFaces(shellFace, solidFace)) {
+          if (coplanarOverlap(shellFace, solidFace)) { proof.coplanarContacts++; if (coplanarPoints.length < 64) coplanarPoints.push(shellFace.vertices[0], shellFace.vertices[1], shellFace.vertices[2]); }
+          continue;
+        }
+        for (let edge = 0; edge < 3; edge++) {
+          const hit = properSegmentFace(shellFace.vertices[edge], shellFace.vertices[(edge + 1) % 3], solidFace) ?? properSegmentFace(solidFace.vertices[edge], solidFace.vertices[(edge + 1) % 3], shellFace);
+          if (hit && !pointInSeat(hit, penetrationZone)) {
+            const atContact = coplanarPoints.some((point) => distance(point, hit) <= 1);
+            if (!atContact) { crossing = hit; break; }
+            proof.coplanarContacts++;
+          }
+        }
+        if (crossing) break;
+      }
+      if (crossing) break;
+    }
+    if (crossing) return result('collision', 'exterior-surface-crossing', 'The exterior source surface crosses its closed counterpart outside the source-declared interface seat.', crossing);
+    for (const face of shell.triangles) for (const vertex of face.vertices) {
+      if (classifyPoint(solid, vertex) === 'inside' && !pointInSeat(vertex, penetrationZone)) {
+        return result('collision', 'exterior-surface-vertex-inside-solid', 'An exterior source surface has a vertex strictly inside its closed counterpart outside the source-declared interface seat.', vertex);
+      }
+    }
+    return result('clear', 'exterior-surface-clear', 'No exterior source crossing or out-of-seat solid penetration was found; this is a surface-only check, not a closed-solid certificate.');
+  }
   if (openA || openB) {
     if (openA && openB && penetrationZone?.ruleId !== PIN_HOLE_RULE_ID) return result('blocked', 'open-surface-pair-unresolved', 'Two open source shells cannot establish a surface-only clearance without a closed counterpart.');
     if (openA && openB && (!penetrationZone || !zone.spatial)) return result('blocked', 'open-surface-zone-required', 'An open pin/hole pair requires a validated cylindrical pin seat bound to both placed endpoints.');
@@ -450,7 +535,7 @@ const MAX_CERTIFICATES = 512;
 /** Reuse a complete certificate only when all geometric/source/placement inputs match. */
 export function checkNativePairCollision(fixedPart: NativeAssemblyPart, fixedPlacement: NativePlacement, movingPart: NativeAssemblyPart, movingPlacement: NativePlacement, penetrationZone?: ConnectionPenetrationZone): PairCollisionResult {
   const record = (part: NativeAssemblyPart, placement: NativePlacement) => ({
-    partId: part.partId, placedPartId: placement.partId, transform: placement.transform,
+    partId: part.partId, placedPartId: placement.partId, transform: placement.transform, collisionClass: placement.collisionClass ?? 'structural',
     geometryPartId: part.geometry.partId, status: part.geometry.status, source: part.geometry.source,
     mesh: part.geometry.mesh,
     // Connection metadata cannot change beneath a cached zone certificate.

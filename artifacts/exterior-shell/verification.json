@@ -1,0 +1,252 @@
+{
+  "schemaVersion": "exterior-shell-pilot-1",
+  "generatedAt": "2026-11-01T15:27:23.902Z",
+  "collisionVersion": "native-exterior-shell-3.0.0",
+  "structural": {
+    "accepted": false,
+    "rejectionCodes": [
+      "part-or-interface-blocked"
+    ]
+  },
+  "exterior": {
+    "accepted": true,
+    "placementClass": "exterior-shell",
+    "graphValid": true
+  },
+  "collision": {
+    "status": "clear",
+    "reasonCode": "exterior-surface-clear",
+    "classification": "EXTERIOR_SURFACE_CLEAR",
+    "triangleTests": 768,
+    "proof": {
+      "broadPhaseOnly": false,
+      "closedSourceProxies": false,
+      "openSourceSurfaces": false,
+      "exteriorSourceSurfaces": true,
+      "openSurface": true,
+      "surfaceCrossingChecked": true,
+      "structuralSupport": false,
+      "degenerateTriangles": 0,
+      "coplanarContacts": 83,
+      "openSurfaceSeatChecked": false,
+      "completeSurfacePartition": false,
+      "containmentChecked": false,
+      "sourceEvidence": [
+        {
+          "libraryRevision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "meshSha256": "eada6c39931a1ef0340865fc1bcae053ef68924dd8a490055d601169c8ee7ff4",
+          "sourceFiles": [
+            {
+              "path": "p/4-4cyli.dat",
+              "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4"
+            },
+            {
+              "path": "p/4-4disc.dat",
+              "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f"
+            },
+            {
+              "path": "p/4-4edge.dat",
+              "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da"
+            },
+            {
+              "path": "p/box4t.dat",
+              "sha256": "72c7629db2b741e680ad548b2cbec631e44f75cdde206001b423ccb0f3b60c1f"
+            },
+            {
+              "path": "p/box5.dat",
+              "sha256": "ccb7b8a1d36692335b10ea6aa196849afcad4b15331683ed8112a10b50977318"
+            },
+            {
+              "path": "p/stud.dat",
+              "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4"
+            },
+            {
+              "path": "parts/3024.dat",
+              "sha256": "e053af4f232374b0c8da2dc0f9620bedf0576ca43d7c3ceebc6676050ae61da8"
+            },
+            {
+              "path": "parts/s/3024s01.dat",
+              "sha256": "a706692e2c838f20f3b3e4bd5ff03c4ab6c5c0d5816b0944ac39d6100fd85275"
+            }
+          ]
+        },
+        {
+          "libraryRevision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+          "meshSha256": "a7de636f146f8314fb9926ef52e1c3fd3cc238a34815c8f920547e1f24e1c042",
+          "sourceFiles": [
+            {
+              "path": "p/1-4cyls2.dat",
+              "sha256": "77a3bf3859fa972a5d047721ef18603694f1a6f83543f955240990be9c9ee9bd"
+            },
+            {
+              "path": "p/2-4chrd.dat",
+              "sha256": "3b0dfcf2cb881fae0acfe1e53b703104768878636477e540d0c893fc3fd87f8f"
+            },
+            {
+              "path": "p/2-4edge.dat",
+              "sha256": "665400f76566b161c28303cdadce40d17d979a8ff9a8a133675af2d17fbe6763"
+            },
+            {
+              "path": "p/2-4ndis.dat",
+              "sha256": "7557eae598be3f530b840471535198e6b07b03486ffbcc18a00e862c3d25d925"
+            },
+            {
+              "path": "p/48/1-8chrd.dat",
+              "sha256": "282b0d7dd4e73d273b9cbcce88e30889cce3b44aa8574a25382fe526248d5426"
+            },
+            {
+              "path": "p/48/1-8cyli.dat",
+              "sha256": "494069ca353e41885bf8f5b6b3ddc9b62aabeca3eedfe6aa5597ac8f12ca12b9"
+            },
+            {
+              "path": "p/48/1-8edge.dat",
+              "sha256": "eec30153f06bac336ca71ae16b31c5d0c7ae432acb5e91befe37fdb7b6bb1c8e"
+            },
+            {
+              "path": "p/box2-5.dat",
+              "sha256": "8f297b754f87da1dbe19eec8704a5ce03a23b794ccd7cd015508e3758a206174"
+            },
+            {
+              "path": "p/box2-7.dat",
+              "sha256": "e0474c5ad7fb9ff77b67883a5b1e327d028e3eb4e59921a626b4215632dd9f00"
+            },
+            {
+              "path": "p/box2-9.dat",
+              "sha256": "4ebaa1a0a59a2e219b61d376e86cad06dbd36845a3c15bcde3e3d44cd3be473d"
+            },
+            {
+              "path": "p/box4-1.dat",
+              "sha256": "2ed58df5da841827dfc5f9ac11c0bd7ffd8a455e46f166638e635f61a014b44d"
+            },
+            {
+              "path": "p/rect.dat",
+              "sha256": "ffeb2dd3d9b83c38841f18f1f74800fbba9e90c5fb6badfff2a795f08a96cb71"
+            },
+            {
+              "path": "p/rect3.dat",
+              "sha256": "07ac46908b6668d993b6de0fb001a34cd996542106b80ebc7de63317d8dde865"
+            },
+            {
+              "path": "p/recte3.dat",
+              "sha256": "e7f5ccbb040191aaa4cd469a25b086299cba4a3eaa8d3b0fbf71240e3de0359a"
+            },
+            {
+              "path": "parts/11477.dat",
+              "sha256": "fed74af9f56bcb149a7f67af4b427c261b41d24d15ed7a3466e24170377a0ba6"
+            },
+            {
+              "path": "parts/s/11477s01.dat",
+              "sha256": "bc00e46f3d79f0569d3952eb20b91ae2402121d483945fce7e51f3322fdaea21"
+            }
+          ]
+        }
+      ],
+      "topology": [
+        {
+          "status": "closed-oriented-chain",
+          "sourceTriangles": 76,
+          "internalCaps": 14,
+          "sourceCoveredCapArea": 110.21508288,
+          "signedVolume": 3064.8603315200016,
+          "boundarySegments": 0,
+          "boundaryLoops": 0,
+          "degenerateTriangles": 0
+        },
+        {
+          "status": "exterior-source-surface",
+          "sourceTriangles": 152,
+          "internalCaps": 0,
+          "sourceCoveredCapArea": 0,
+          "signedVolume": null,
+          "boundarySegments": 8,
+          "boundaryLoops": 2,
+          "degenerateTriangles": 0
+        }
+      ],
+      "penetrationZone": {
+        "kind": "cylinder",
+        "center": [
+          0,
+          -2,
+          0
+        ],
+        "axis": [
+          0,
+          -1,
+          0
+        ],
+        "radius": 6,
+        "depth": 4,
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "sourceEvidence": [
+          {
+            "kind": "source-directive",
+            "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat",
+            "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+            "file": "p/stud.dat",
+            "line": 8,
+            "sha256": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+            "note": "0 !LDCAD SNAP_CYL [ID=studC] [gender=M] [caps=one] [secs=R 6 4]"
+          },
+          {
+            "kind": "source-directive",
+            "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/11477s01.dat",
+            "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+            "file": "parts/s/11477s01.dat",
+            "line": 8,
+            "sha256": "b604c88094ad1e25c1fb230ed4b241c80f7d18d623586f4a8f7711f3fb365fa7",
+            "note": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 6 4] [pos=0 0 -10]"
+          },
+          {
+            "kind": "source-document",
+            "url": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/CONTRIBUTING.md",
+            "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+            "file": "CONTRIBUTING.md",
+            "line": null,
+            "sha256": null,
+            "note": "Rotation: all information points into negative Y at rest. IDs: studC/studO are the normal closed/open stud. Source stud and underside sections establish their dimensions and seating planes."
+          },
+          {
+            "kind": "implementation-policy",
+            "url": "docs/ASSEMBLY_CONNECTION_RULES.md",
+            "revision": "source-stud-2.0.0-connector-grammar-2",
+            "file": "docs/ASSEMBLY_CONNECTION_RULES.md",
+            "line": null,
+            "sha256": null,
+            "note": "Quarter-turn candidates are a conservative grid-preserving subset. No continuous rotation, sliding, deformation allowance or manufactured clearance is granted."
+          }
+        ],
+        "toleranceLdu": 0.0001
+      },
+      "penetrationZoneValidated": true,
+      "wholePairExempted": false,
+      "certificateKey": "efad13ed3fd6ed88ed0b8239e099d4c76d108bb23014774d388acfc65cde95e2",
+      "reusedCertificate": true
+    }
+  },
+  "model": {
+    "module": "exterior-shell",
+    "placements": 2,
+    "edges": 1,
+    "jsonBytes": 19056,
+    "jsonSha256": "7840ac279b331910bb7c71769b0b8bcffb1ab7d0ca5793b13e171b8136c608df",
+    "warnings": [
+      "至少一个 placement 使用 exterior-shell 表面合同：只检查真实表面交叉/穿透与来源 seat 接触，不认证闭合实体、厚度、结构支撑或实物承重。",
+      "零件颜色使用 LDraw 当前色 16；具体零件颜色供应与个人库存尚未核实。"
+    ],
+    "sourceHashes": {
+      "3024": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+      "11477": "76e4f75447b3f042268b1febb7a79c7f57a823512994358e288165ce44594e03"
+    }
+  },
+  "reimport": {
+    "status": "VALID",
+    "reasons": [],
+    "collisionClass": "exterior-shell"
+  },
+  "limitations": [
+    "只验证最终姿态的真实表面交叉/穿透和来源 seat 接触；不认证闭合实体、厚度、结构支撑、保持力、材料或实物承重。",
+    "安装路径未检查；终点无交叉不等于整个安装过程可行。",
+    "18973 仍被 seat 外表面/接触策略阻塞，本轮不作为通过样例。"
+  ]
+}

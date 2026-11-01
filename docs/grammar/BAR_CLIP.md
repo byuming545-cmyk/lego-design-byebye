@@ -166,4 +166,4 @@ general Bar/Plate fit.
 - serialized connector parser `ldcad-shadow-parser-2-clear-scope`
 - additive root-description context `ldraw-root-description-1`
 - native rule `ldcad-source-declared-bar-clip-v1`
-- collision `native-open-surface-seat-2.0.0`
+- collision `native-exterior-shell-3.0.0`

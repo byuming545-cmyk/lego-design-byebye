@@ -142,6 +142,24 @@ describe('native assembly production HTTP boundaries', () => {
     expect(result.compatibility.sourceEvidence.filter((evidence: { kind: string }) => evidence.kind === 'source-directive')).toHaveLength(2);
   }, 15000);
 
+  it('accepts an explicit exterior-shell pair while the structural contract stays blocked', async () => {
+    const body = { partA: '3001', connectionA: 'p/stud.dat:8:0', partB: '11477', connectionB: 'parts/s/11477s01.dat:8:0', twistDegrees: 0 };
+    const structural = await post(`${prefix}/assembly/attach`, body);
+    expect(structural.status).toBe(200);
+    expect(await structural.json()).toMatchObject({ accepted: false, graph: { placements: [{ partId: '3001' }], edges: [] } });
+    const exterior = await post(`${prefix}/assembly/attach`, { ...body, collisionClass: 'exterior-shell' });
+    expect(exterior.status).toBe(200);
+    const result = await exterior.json();
+    expect(result.accepted).toBe(true);
+    expect(result.graph.placements.find((placement: any) => placement.partId === '11477')?.collisionClass).toBe('exterior-shell');
+    expect(result.collision?.proof).toMatchObject({ closedSourceProxies: false, structuralSupport: false, containmentChecked: false, wholePairExempted: false, openSurface: true });
+    const generated = await post(`${prefix}/assembly/generate`, { module: 'exterior-shell', requiredPartIds: ['3024', '11477'] });
+    expect(generated.status).toBe(200);
+    const model = (await generated.json() as NativeGenerationResult).model!;
+    expect(model.placements.find(placement => placement.partId === '11477')?.collisionClass).toBe('exterior-shell');
+    expect(model.warnings.some(warning => warning.includes('exterior-shell'))).toBe(true);
+  }, 30000);
+
   it('rejects a same-gender pair even when both source ports were separately admitted', async () => {
     const brick = await sourceRepository.getPart('3005');
     const admitted = status.capabilities.find((entry) => entry.partId === '3005')!;
@@ -157,7 +175,7 @@ describe('native assembly production HTTP boundaries', () => {
       expect((await post(`${prefix}/assembly/attach`, { ...status.defaultPair, ...extra })).status).toBe(400);
     }
     for (const body of [
-      { module: 'wall', partCount: 2 }, { module: 'wall', partCount: 33 }, { module: 'bar-clip', partCount: 3 }, { module: 'pin-hole', partCount: 3 }, { module: 'basic-snot', partCount: 4 },
+      { module: 'wall', partCount: 2 }, { module: 'wall', partCount: 33 }, { module: 'bar-clip', partCount: 3 }, { module: 'pin-hole', partCount: 3 }, { module: 'exterior-shell', partCount: 3 }, { module: 'basic-snot', partCount: 4 },
       { module: 'invent-a-car' }, { module: 'wall', kind: 'wall' }, { module: 'wall', mode: 'verification' }, { module: 'wall', placements: [] },
     ]) expect((await post(`${prefix}/assembly/generate`, body)).status).toBe(400);
     expect((await post(`${prefix}/assembly/attach`, { ...status.defaultPair, twistDegrees: 45 })).status).toBe(400);

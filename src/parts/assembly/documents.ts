@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import type { NativeGeneratedAssembly } from './generator.js';
 import { finiteVector, isRigidTransform } from './math.js';
+import { isCollisionClass } from './types.js';
 import { ASSEMBLY_ENGINE_VERSION } from './engine.js';
 import { CONNECTION_RULE_VERSION } from './compatibility.js';
 import { COLLISION_VERSION } from './collision.js';
@@ -26,7 +27,7 @@ function validateDocument(model: NativeGeneratedAssembly) {
   const files = new Map(manifest.files.map(file => [file.path, file.sha256]));
   const instances = new Map<string, number>(), quantities = new Map<string, number>();
   for (const placement of model.placements) {
-    if (!/^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,79}$/.test(placement.partId) || !isRigidTransform(placement.transform)) throw new Error('模型包含无效零件编号或非刚性变换，已阻止导出。');
+    if (!/^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,79}$/.test(placement.partId) || !isRigidTransform(placement.transform) || (placement.collisionClass !== undefined && !isCollisionClass(placement.collisionClass))) throw new Error('模型包含无效零件编号、非刚性变换或碰撞合同，已阻止导出。');
     if (typeof placement.instanceId !== 'string' || !placement.instanceId || instances.has(placement.instanceId)) throw new Error('模型包含重复或无效的零件实例。');
     instances.set(placement.instanceId, instances.size);
     quantities.set(placement.partId, (quantities.get(placement.partId) ?? 0) + 1);

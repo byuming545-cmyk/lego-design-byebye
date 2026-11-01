@@ -3,7 +3,7 @@ import { loadBundledLDrawManifest } from '../ldraw/index.js';
 import { physicalConnectionKey, physicalEndpointKey } from './multipoint.js';
 import { solveAttachment } from './solver.js';
 import { assessWheelAssemblySources } from './wheelAssessment.js';
-import { hasIsolatedUnknownDimensions, isGeneratableCapability } from './types.js';
+import { hasIsolatedUnknownDimensions, isExteriorGeneratableCapability, isGeneratableCapability, isGeneratableCapabilityFor, placementCollisionClass } from './types.js';
 import type { AttachmentEngine } from './engine.js';
 import { ConnectorRegistry } from '../grammar/library.js';
 import { adaptImportedConnection, isSourceDeclaredBarEndpoint, isSourceDeclaredClipEndpoint, isSourceDeclaredPinEndpoint, isSourceDeclaredPinHoleEndpoint } from '../grammar/sources.js';
@@ -14,7 +14,7 @@ import type {
   NativePlacement, RigidTransform, Vector3,
 } from './types.js';
 
-export const NATIVE_MODULE_TYPES = ['wall', 'platform', 'simple-chassis', 'simple-box', 'simple-roof', 'basic-snot', 'wheel-module', 'bar-clip', 'pin-hole'] as const;
+export const NATIVE_MODULE_TYPES = ['wall', 'platform', 'simple-chassis', 'simple-box', 'simple-roof', 'basic-snot', 'wheel-module', 'bar-clip', 'pin-hole', 'exterior-shell'] as const;
 export type NativeModuleType = typeof NATIVE_MODULE_TYPES[number];
 export interface NativeModuleRequest {
   module: NativeModuleType;
@@ -93,6 +93,7 @@ interface CatalogPart {
   z: number;
   area: number;
   points: ImportedConnectionPoint[];
+  exteriorPoints: ImportedConnectionPoint[];
 }
 interface Anchor { placement: NativePlacement; part: CatalogPart; point: ImportedConnectionPoint; position: Vector3; direction: Vector3 }
 
@@ -101,8 +102,9 @@ const MODULE_NAMES: Record<NativeModuleType, string> = {
   'simple-box': '真实零件开口盒体', 'simple-roof': '真实零件斜面屋顶', 'basic-snot': '真实零件侧向拼搭模块', 'wheel-module': '真实零件轮组模块',
   'bar-clip': '真实零件杆夹连接模块',
   'pin-hole': '真实零件销孔连接模块',
+  'exterior-shell': '真实来源表面合同模块',
 };
-const DEFAULT_COUNTS: Record<NativeModuleType, number> = { wall: 5, platform: 5, 'simple-chassis': 5, 'simple-box': 13, 'simple-roof': 5, 'basic-snot': 3, 'wheel-module': 4, 'bar-clip': 2, 'pin-hole': 2 };
+const DEFAULT_COUNTS: Record<NativeModuleType, number> = { wall: 5, platform: 5, 'simple-chassis': 5, 'simple-box': 13, 'simple-roof': 5, 'basic-snot': 3, 'wheel-module': 4, 'bar-clip': 2, 'pin-hole': 2, 'exterior-shell': 2 };
 const finite = (v: number[]) => v.every(Number.isFinite);
 function rotate(rotation: RigidTransform['rotation'], [x, y, z]: Vector3): Vector3 {
   return [rotation[0] * x + rotation[1] * y + rotation[2] * z, rotation[3] * x + rotation[4] * y + rotation[5] * z, rotation[6] * x + rotation[7] * y + rotation[8] * z];
@@ -193,13 +195,14 @@ function footprintContained(candidate: CatalogPart, placement: NativePlacement, 
   return [0, 2].every(axis => a.min[axis] >= b.min[axis] - 1e-5 && a.max[axis] <= b.max[axis] + 1e-5);
 }
 export function validateNativeModuleRequest(request: NativeModuleRequest) {
-  const minimum = request?.module === 'bar-clip' || request?.module === 'pin-hole' ? 2 : 3;
+  const minimum = request?.module === 'bar-clip' || request?.module === 'pin-hole' || request?.module === 'exterior-shell' ? 2 : 3;
   if (!request || !NATIVE_MODULE_TYPES.includes(request.module) || request.partCount !== undefined && (!Number.isSafeInteger(request.partCount) || request.partCount < minimum || request.partCount > 32)) {
     throw new Error(`请选择支持的基础结构；零件目标数量应为 ${minimum}–32 的整数。`);
   }
   if (request.module === 'basic-snot' && request.partCount !== undefined && request.partCount !== 3) throw new Error('当前基础侧向模块固定由 3 个真实零件组成。');
   if (request.module === 'bar-clip' && request.partCount !== undefined && request.partCount !== 2) throw new Error('当前杆夹连接模块固定由 2 个真实零件组成。');
   if (request.module === 'pin-hole' && request.partCount !== undefined && request.partCount !== 2) throw new Error('当前销孔连接模块固定由 2 个真实零件组成。');
+  if (request.module === 'exterior-shell' && request.partCount !== undefined && request.partCount !== 2) throw new Error('当前表面合同模块固定由 2 个真实零件组成。');
   if (request.requiredPartIds !== undefined && (!Array.isArray(request.requiredPartIds) || request.requiredPartIds.length > 8 ||
       request.requiredPartIds.length > (request.partCount ?? DEFAULT_COUNTS[request.module]) || new Set(request.requiredPartIds).size !== request.requiredPartIds.length ||
       request.requiredPartIds.some(id => typeof id !== 'string' || !/^[a-z0-9][a-z0-9_-]{0,79}$/.test(id)))) {
@@ -226,15 +229,16 @@ export class NativeAssemblyGenerator {
       const catalog: CatalogPart[] = [];
       for (const id of ids) {
         const capability = await this.engine.getCapability(id);
-        if (!capability || !isGeneratableCapability(capability)) continue;
+        if (!capability || (!isGeneratableCapability(capability) && !isExteriorGeneratableCapability(capability))) continue;
         const native = await this.engine.getPart(id), geometry = native?.geometry;
         if (!native || geometry?.status !== 'geometryReady' || !geometry.bounds || !geometry.mesh || geometry.source.integrity !== 'verified' || geometry.source.licenseStatus !== 'complete' || (native.connections.status !== 'ready' && !(capability?.admissionBasis === 'interface-grammar' && hasIsolatedUnknownDimensions(native)))) continue;
         const points = distinctPhysicalPoints(native.connections.points.filter(point => capability!.allowedConnectionIds.includes(point.id) && point.dimensionsResolved));
-        if (!points.length) continue;
-        this.connectorIndex.register(id, points.map(adaptImportedConnection));
+        const exteriorPoints = distinctPhysicalPoints(native.connections.points.filter(point => (capability!.exteriorAllowedConnectionIds ?? []).includes(point.id) && point.dimensionsResolved));
+        if (!points.length && !exteriorPoints.length) continue;
+        if (points.length) this.connectorIndex.register(id, points.map(adaptImportedConnection));
         const [x, y, z] = geometry.bounds.max.map((value, axis) => value - geometry.bounds!.min[axis]);
         if (!finite([x, y, z]) || [x, y, z].some(value => value <= 0)) continue;
-        catalog.push({ native, capability, name: geometry.name ?? native.partId, x, y, z, area: x * z, points });
+        catalog.push({ native, capability, name: geometry.name ?? native.partId, x, y, z, area: x * z, points, exteriorPoints });
       }
       return catalog.sort((a, b) => a.native.partId.localeCompare(b.native.partId));
     })();
@@ -276,6 +280,37 @@ export class NativeAssemblyGenerator {
     const required = new Set(request.requiredPartIds ?? []);
     const block = (reason: string): NativeGenerationResult => { finish(); return { status: 'blocked', module: request.module, model: null, reasons: [...new Set([reason, ...reasons])].slice(0, 20), search }; };
     if (!catalog.length) return block('当前没有同时通过装配验证、批次准入和来源校验的真实零件。');
+    if (request.module === 'exterior-shell') {
+      const roots = catalog.filter(part => part.capability.generatable && part.points.some(point => point.gender === 'M'));
+      const shells = catalog.filter(part => part.capability.exteriorGeneratable && part.exteriorPoints.some(point => point.gender === 'F'));
+      for (const root of roots) {
+        if (required.size && !required.has(root.native.partId)) continue;
+        search.testedRoots++;
+        let base: NativeAssembly;
+        try { base = await this.engine.createAssembly(root.native.partId); }
+        catch (error) { recordRejection('root-admission', error instanceof Error ? error.message : 'Exterior root was not admitted.'); continue; }
+        for (const candidate of shells) {
+          if (required.size && !required.has(candidate.native.partId)) continue;
+          if (candidate.native.partId === root.native.partId) continue;
+          for (const rootPoint of root.points.filter(point => point.gender === 'M')) for (const connection of candidate.exteriorPoints.filter(point => point.gender === 'F')) for (const twistDegrees of [0, 90, 180, 270]) {
+            if (budgetReached()) return block('合法表面合同搜索已达到预算，未移动或改造真实零件强行完成。');
+            search.attempts++; search.attachmentApiCalls++;
+            const result = await this.engine.attachPart(base, { anchorInstanceId: base.placements[0].instanceId, anchorConnectionId: rootPoint.id, partId: candidate.native.partId, candidateConnectionId: connection.id, twistDegrees, collisionClass: 'exterior-shell' });
+            if (!result.accepted) { rejectCandidate(result.rejections); continue; }
+            const edge = result.graph.edges.at(-1);
+            if (edge?.ruleId !== 'ldcad-standard-stud-to-capped-underside-v1') { recordRejection('exterior-contract-rule', 'The surface contract pilot only accepts the source standard stud/underside rule.'); continue; }
+            search.acceptedAttachments++;
+            const validation = await this.engine.validateGraph(result.graph);
+            if (!validation.valid) { recordRejection('final-graph-verification', validation.issues.join(' ')); continue; }
+            search.finalPlacements = result.graph.placements.length; search.finalConnectionEdges = result.graph.edges.length;
+            const model = createNativeAssemblyDocument(result.graph, 'exterior-shell', catalog);
+            finish();
+            return { status: 'generated', module: 'exterior-shell', model, reasons: [], search };
+          }
+        }
+      }
+      return block('当前没有通过来源接口、表面合同求解、碰撞与图验证的真实表面组合。');
+    }
     if (request.module === 'bar-clip') {
       const bars = catalog.filter(part => part.points.some(isSourceDeclaredBarEndpoint));
       const clips = catalog.filter(part => part.points.some(isSourceDeclaredClipEndpoint));
@@ -530,7 +565,7 @@ function createNativeAssemblyDocument(graph: NativeAssembly, module: NativeModul
   const lookup = new Map(catalog.map(part => [part.native.partId, part])), bom = new Map<string, NativeAssemblyBomRow>(), sources = new Map<string, NativeSourceReference>();
   for (const placement of graph.placements) {
     const part = lookup.get(placement.partId);
-    if (!part || !isGeneratableCapability(part.capability)) throw new Error('生成结果包含未通过准入的零件，拒绝导出。');
+    if (!part || !isGeneratableCapabilityFor(part.capability, placementCollisionClass(placement))) throw new Error('生成结果包含未通过准入的零件或碰撞合同，拒绝导出。');
     const previous = bom.get(placement.partId);
     if (previous) previous.quantity++;
     else bom.set(placement.partId, { partId: placement.partId, name: part.name, quantity: 1, ldrawColor: 16, colorAvailability: 'not-verified' });
@@ -544,7 +579,12 @@ function createNativeAssemblyDocument(graph: NativeAssembly, module: NativeModul
     ownership: 'virtual-design-not-owned' as const, colorAvailability: 'not-verified' as const,
     assemblyValidation: { checked: true as const, valid: true as const, issues: [] as [] },
     connectorAssessment: describeValidatedNativeModel(graph, new Map(catalog.map(part => [part.native.partId, part.native]))),
-    warnings: ['布局已通过当前真实源接口、刚体闭合和实体碰撞检查；材料应力、制造公差及实物承重仍未认证。', '零件颜色使用 LDraw 当前色 16；具体零件颜色供应与个人库存尚未核实。'],
+    warnings: [
+      graph.placements.some(placement => placementCollisionClass(placement) === 'exterior-shell')
+        ? '至少一个 placement 使用 exterior-shell 表面合同：只检查真实表面交叉/穿透与来源 seat 接触，不认证闭合实体、厚度、结构支撑或实物承重。'
+        : '布局已通过当前真实源接口、刚体闭合和实体碰撞检查；材料应力、制造公差及实物承重仍未认证。',
+      '零件颜色使用 LDraw 当前色 16；具体零件颜色供应与个人库存尚未核实。',
+    ],
   };
   return { ...model, contentSha256: createHash('sha256').update(JSON.stringify(model)).digest('hex') };
 }

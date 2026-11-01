@@ -7,6 +7,7 @@ import { createApp } from '../src/api/app.js';
 import { RealPartRegistry } from '../src/parts/registry.js';
 import { FeedbackStore } from '../src/parts/library/feedback.js';
 import { InterfaceLibrary } from '../src/parts/library/interfaceLibrary.js';
+import { COLLISION_VERSION } from '../src/parts/assembly/collision.js';
 
 let directory: string;
 let library: InterfaceLibrary;
@@ -69,7 +70,7 @@ describe('real interface and assembly library', () => {
   it('persists human observations with versions and review history without authorizing rules', async () => {
     const record = await library.addFeedback({ kind: 'position-direction-wrong', message: '观察：夹口方向需要复查。', author: 'builder', view: 'case', target: { kind: 'case', id: 'case-bar-clip-30374-48729b', caseId: 'case-bar-clip-30374-48729b' } });
     expect(record).toMatchObject({ status: 'open', humanObservation: true, canAuthorizeRule: false, target: { kind: 'case', caseId: 'case-bar-clip-30374-48729b' } });
-    expect(record.evidence).toMatchObject({ ruleId: 'BAR_CLIP', grammarVersion: 'connector-grammar-2', collisionVersion: 'native-open-surface-seat-2.0.0', interfaceStatus: 'validated' });
+    expect(record.evidence).toMatchObject({ ruleId: 'BAR_CLIP', grammarVersion: 'connector-grammar-2', collisionVersion: COLLISION_VERSION, interfaceStatus: 'validated' });
     expect(record.evidence.sourceIds.length).toBeGreaterThan(0);
     const reopened = new FeedbackStore(path.join(directory, 'interface-library'));
     const persisted = await reopened.get(record.id);

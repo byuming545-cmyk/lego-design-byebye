@@ -9,7 +9,7 @@ import { COLLISION_VERSION } from './collision.js';
 import { checkConnectionCompatibility, CONNECTION_RULE_VERSION } from './compatibility.js';
 import { solveAttachment } from './solver.js';
 import { distance, IDENTITY_TRANSFORM, isRigidTransform } from './math.js';
-import type { AssemblyInterfaceCapability, NativeAssemblyPart } from './types.js';
+import type { AssemblyInterfaceCapability, CollisionClass, NativeAssemblyPart } from './types.js';
 import type { ConnectionFixtureVerification, AssemblyVerificationCheckName } from './verification.js';
 import type { ImportedConnectionPoint } from '../connections/types.js';
 import type { BundledLDrawManifest } from '../ldraw/types.js';
@@ -30,7 +30,7 @@ export interface AssemblyDefaultPair {
   connectionB: string;
   twistDegrees: number;
 }
-export type AssemblyPairAttachRequest = Omit<AssemblyDefaultPair, 'twistDegrees'> & { twistDegrees?: number };
+export type AssemblyPairAttachRequest = Omit<AssemblyDefaultPair, 'twistDegrees'> & { twistDegrees?: number; collisionClass?: CollisionClass };
 
 export type RuntimeAssemblyStatus = Omit<AssemblyMigrationReport, 'generatedAt'> & {
   generatedAt: string | null;
@@ -271,7 +271,7 @@ export class AssemblyService {
 
   async getCapability(partId: string): Promise<AssemblyInterfaceCapability | undefined> {
     await this.ready(); const entry = this.entries.get(partId);
-    return entry ? { partId: entry.partId, assemblyVerified: entry.assemblyVerified, generatable: entry.generatable, allowedConnectionIds: [...entry.allowedConnectionIds], ruleIds: [...entry.ruleIds], reasonCodes: [...entry.reasonCodes], reasons: [...entry.reasons] } : undefined;
+    return entry ? { partId: entry.partId, assemblyVerified: entry.assemblyVerified, generatable: entry.generatable, exteriorGeneratable: entry.exteriorGeneratable, allowedConnectionIds: [...entry.allowedConnectionIds], ruleIds: [...entry.ruleIds], exteriorAllowedConnectionIds: [...(entry.exteriorAllowedConnectionIds ?? [])], exteriorRuleIds: [...(entry.exteriorRuleIds ?? [])], reasonCodes: [...entry.reasonCodes], reasons: [...entry.reasons] } : undefined;
   }
   async getEntry(partId: string): Promise<AssemblyMigrationEntry | undefined> { await this.ready(); const entry = this.entries.get(partId); return entry ? structuredClone(entry) : undefined; }
 
@@ -300,7 +300,7 @@ export class AssemblyService {
   async attach(request: AssemblyPairAttachRequest): Promise<AttachResult> {
     await this.ready();
     const graph = await this.engine.createAssembly(request.partA);
-    return this.engine.attachPart(graph, { anchorInstanceId: graph.placements[0].instanceId, anchorConnectionId: request.connectionA, partId: request.partB, candidateConnectionId: request.connectionB, ...(request.twistDegrees === undefined ? {} : { twistDegrees: request.twistDegrees }) });
+    return this.engine.attachPart(graph, { anchorInstanceId: graph.placements[0].instanceId, anchorConnectionId: request.connectionA, partId: request.partB, candidateConnectionId: request.connectionB, ...(request.twistDegrees === undefined ? {} : { twistDegrees: request.twistDegrees }), ...(request.collisionClass === undefined ? {} : { collisionClass: request.collisionClass }) });
   }
   async generate(request: NativeModuleRequest): Promise<NativeGenerationResult> {
     await this.ready(); this.generator ??= new NativeAssemblyGenerator(this.engine);

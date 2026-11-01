@@ -5,8 +5,8 @@ import { checkNativePairCollision, COLLISION_VERSION } from './collision.js';
 import { distance, finiteVector, IDENTITY_TRANSFORM, isRigidTransform } from './math.js';
 import { nativePartSourceHash, PART_LIBRARY_VERSION } from './source.js';
 import { checkMultiPointConnection, physicalMatingPairKey, sourceEndpointKey, validateConnectionOccupancy } from './multipoint.js';
-import type { AssemblyAttachRequest, AssemblyGraphEdge, AssemblyInterfaceCapability, NativeAssembly, NativeAssemblyPart, NativePlacement } from './types.js';
-import { hasIsolatedUnknownDimensions, isGeneratableCapability } from './types.js';
+import type { AssemblyAttachRequest, AssemblyGraphEdge, AssemblyInterfaceCapability, CollisionClass, NativeAssembly, NativeAssemblyPart, NativePlacement } from './types.js';
+import { hasIsolatedUnknownDimensions, isCollisionClass, isGeneratableCapabilityFor, placementCollisionClass } from './types.js';
 
 export const ASSEMBLY_ENGINE_VERSION = 'native-assembly-0.7.0-grammar';
 type PairCollision = Awaited<ReturnType<typeof checkNativePairCollision>>;
@@ -59,15 +59,17 @@ export class AttachmentEngine {
     this.acceptedGraphs.add(graphDigest(graph));
     if (this.acceptedGraphs.size > 2048) this.acceptedGraphs.delete(this.acceptedGraphs.values().next().value!);
   }
-  private async eligibility(part: NativeAssemblyPart, connectionId?: string, ruleId?: string): Promise<string[]> {
+  private async eligibility(part: NativeAssemblyPart, connectionId?: string, ruleId?: string, collisionClass: CollisionClass = 'structural'): Promise<string[]> {
     if (this.mode === 'verification') return sourceProblems(part);
     const capability = await this.getCapability(part.partId);
-    const problems = sourceProblems(part, capability?.admissionBasis === 'interface-grammar' && isGeneratableCapability(capability));
+    const allowedConnectionIds = collisionClass === 'exterior-shell' ? capability?.exteriorAllowedConnectionIds ?? [] : capability?.allowedConnectionIds ?? [];
+    const ruleIds = collisionClass === 'exterior-shell' ? capability?.exteriorRuleIds ?? [] : capability?.ruleIds ?? [];
+    const problems = sourceProblems(part, capability?.admissionBasis === 'interface-grammar' && isGeneratableCapabilityFor(capability, collisionClass));
     if (capability && capability.partId !== part.partId) problems.push('The capability record belongs to a different source part.');
-    if (!isGeneratableCapability(capability)) problems.push('The part has no current source-backed grammar eligibility or retained interface verification.');
-    if (!capability?.allowedConnectionIds.length) problems.push('No tested assembly interface is enabled for this part.');
-    if (connectionId && !capability?.allowedConnectionIds.includes(connectionId)) problems.push('This particular source interface is disabled or untested.');
-    if (ruleId && !capability?.ruleIds.includes(ruleId)) problems.push('This connection rule is not in the verified part scope.');
+    if (!isGeneratableCapabilityFor(capability, collisionClass)) problems.push(collisionClass === 'exterior-shell' ? 'The part has no current exterior-shell admission for this placement.' : 'The part has no current source-backed grammar eligibility or retained interface verification.');
+    if (!allowedConnectionIds.length) problems.push(collisionClass === 'exterior-shell' ? 'No exterior-shell interface is enabled for this part.' : 'No tested assembly interface is enabled for this part.');
+    if (connectionId && !allowedConnectionIds.includes(connectionId)) problems.push('This particular source interface is disabled or untested for the selected collision contract.');
+    if (ruleId && !ruleIds.includes(ruleId)) problems.push('This connection rule is not in the verified part scope.');
     return problems;
   }
   async createAssembly(partId: string): Promise<NativeAssembly> {
@@ -90,12 +92,12 @@ export class AttachmentEngine {
     if (Object.entries(this.versions).some(([key, value]) => graph[key as keyof typeof this.versions] !== value)) issues.push('Assembly version dependencies do not match the active engine.');
     const nodes = new Map<string, NativePlacement>(), parts = new Map<string, NativeAssemblyPart>();
     for (const placement of graph.placements) {
-      if (!placement || typeof placement.instanceId !== 'string' || nodes.has(placement.instanceId) || !isRigidTransform(placement.transform)) { issues.push('Duplicate instance or invalid rigid placement.'); continue; }
+      if (!placement || typeof placement.instanceId !== 'string' || nodes.has(placement.instanceId) || !isRigidTransform(placement.transform) || (placement.collisionClass !== undefined && !isCollisionClass(placement.collisionClass))) { issues.push('Duplicate instance or invalid rigid placement/collision class.'); continue; }
       nodes.set(placement.instanceId, placement);
       const part = await this.getPart(placement.partId);
       if (!part) { issues.push(`Unknown source part: ${placement.partId}`); continue; }
       parts.set(placement.instanceId, part);
-      issues.push(...await this.eligibility(part));
+      issues.push(...await this.eligibility(part, undefined, undefined, placementCollisionClass(placement)));
       if (nativePartSourceHash(part) !== graph.sourceHashes[part.partId]) issues.push(`Source hash changed for ${part.partId}.`);
     }
     if (issues.length) return { valid: false, issues: [...new Set(issues)] };
@@ -108,7 +110,7 @@ export class AttachmentEngine {
       const fixed = nodes.get(edge.fixedInstanceId), moving = nodes.get(edge.movingInstanceId);
       if (!fixed || !moving || fixed === moving) { issues.push('Graph edge refers to a missing or identical instance.'); continue; }
       const fixedPart = parts.get(fixed.instanceId)!, movingPart = parts.get(moving.instanceId)!;
-      issues.push(...await this.eligibility(fixedPart, edge.fixedConnectionId, edge.ruleId), ...await this.eligibility(movingPart, edge.movingConnectionId, edge.ruleId));
+      issues.push(...await this.eligibility(fixedPart, edge.fixedConnectionId, edge.ruleId, placementCollisionClass(fixed)), ...await this.eligibility(movingPart, edge.movingConnectionId, edge.ruleId, placementCollisionClass(moving)));
       const solved = solveAttachment({ fixedPart, fixedPlacement: fixed, fixedConnectionId: edge.fixedConnectionId, movingPart, movingConnectionId: edge.movingConnectionId, twistsDeg: [edge.twistDeg] });
       const candidate = solved.candidates.find(candidate => sameTransform(candidate.transform, moving.transform));
       if (!candidate || solved.compatibility.ruleId !== edge.ruleId || solved.compatibility.ruleVersion !== edge.ruleVersion || distance(candidate.anchor, edge.anchor) > 1e-5 || distance(candidate.axis, edge.axis) > 1e-5 || Math.abs((solved.compatibility.insertionDepthLdu ?? 0) - edge.insertionDepthLdu) > 1e-5) { issues.push('Graph edge is inconsistent with the source compatibility and transform solution.'); continue; }
@@ -130,14 +132,18 @@ export class AttachmentEngine {
       return physicalMatingPairKey(edge.fixedInstanceId, a, edge.movingInstanceId, b);
     }));
     const allowed = new Map<string, ReadonlySet<string>>();
-    if (this.mode === 'production') for (const [instanceId, part] of parts) allowed.set(instanceId, new Set((await this.getCapability(part.partId))?.allowedConnectionIds ?? []));
+    if (this.mode === 'production') for (const [instanceId, part] of parts) {
+      const capability = await this.getCapability(part.partId);
+      const collisionClass = placementCollisionClass(nodes.get(instanceId)!);
+      allowed.set(instanceId, new Set(collisionClass === 'exterior-shell' ? capability?.exteriorAllowedConnectionIds ?? [] : capability?.allowedConnectionIds ?? []));
+    }
     for (let i = 0; i < graph.placements.length; i++) for (let j = i + 1; j < graph.placements.length; j++) {
       const a = graph.placements[i], b = graph.placements[j];
       const partA = parts.get(a.instanceId)!, partB = parts.get(b.instanceId)!;
       const multipoint = checkMultiPointConnection({ fixedPart: partA, fixedPlacement: a, movingPart: partB, movingPlacement: b, allowedFixedConnectionIds: allowed.get(a.instanceId), allowedMovingConnectionIds: allowed.get(b.instanceId) });
       if (multipoint.status !== 'consistent') { issues.push(...multipoint.issues.map(issue => `Multi-point ${a.instanceId}/${b.instanceId}: ${issue.reason}`)); continue; }
       for (const match of multipoint.matches) {
-        issues.push(...await this.eligibility(partA, match.fixedConnectionId, match.compatibility.ruleId!), ...await this.eligibility(partB, match.movingConnectionId, match.compatibility.ruleId!));
+        issues.push(...await this.eligibility(partA, match.fixedConnectionId, match.compatibility.ruleId!, placementCollisionClass(a)), ...await this.eligibility(partB, match.movingConnectionId, match.compatibility.ruleId!, placementCollisionClass(b)));
         const pointA = partA.connections.points.find(point => point.id === match.fixedConnectionId)!, pointB = partB.connections.points.find(point => point.id === match.movingConnectionId)!;
         if (!recordedPhysicalPairs.has(physicalMatingPairKey(a.instanceId, pointA, b.instanceId, pointB))) issues.push('Graph omits a real supported coincident multi-point connection.');
       }
@@ -164,46 +170,51 @@ export class AttachmentEngine {
       const part = await this.getPart(placement.partId);
       if (!part || nativePartSourceHash(part) !== graph.sourceHashes[placement.partId]) return reject('graph-source-changed', 'An existing part source is unavailable or has changed.');
       existingParts.set(placement.instanceId, part);
-      const currentProblems = await this.eligibility(part);
+      const currentProblems = await this.eligibility(part, undefined, undefined, placementCollisionClass(placement));
       for (const edge of graph.edges) {
-        if (edge.fixedInstanceId === placement.instanceId) currentProblems.push(...await this.eligibility(part, edge.fixedConnectionId, edge.ruleId));
-        if (edge.movingInstanceId === placement.instanceId) currentProblems.push(...await this.eligibility(part, edge.movingConnectionId, edge.ruleId));
+        if (edge.fixedInstanceId === placement.instanceId) currentProblems.push(...await this.eligibility(part, edge.fixedConnectionId, edge.ruleId, placementCollisionClass(placement)));
+        if (edge.movingInstanceId === placement.instanceId) currentProblems.push(...await this.eligibility(part, edge.movingConnectionId, edge.ruleId, placementCollisionClass(placement)));
       }
       if (currentProblems.length) return reject('existing-part-eligibility-revoked', [...new Set(currentProblems)].join(' '));
     }
     if (graph.placements.length >= 64) return reject('assembly-limit', 'The assembly reached its 64 part limit.');
     const fixedPlacement = graph.placements.find(placement => placement.instanceId === request.anchorInstanceId);
     if (!fixedPlacement) return reject('missing-anchor', 'The selected anchor instance does not exist.');
+    if (request.collisionClass !== undefined && !isCollisionClass(request.collisionClass)) return reject('invalid-collision-class', 'The requested collision class is not a supported placement contract.');
     const fixedPart = await this.getPart(fixedPlacement.partId), movingPart = await this.getPart(request.partId);
     if (!fixedPart || !movingPart) return reject('unknown-part', 'Unknown source part; no fallback geometry will be created.');
-    const problems = [...await this.eligibility(fixedPart, request.anchorConnectionId), ...await this.eligibility(movingPart, request.candidateConnectionId)];
+    const requestedClass: CollisionClass = request.collisionClass === 'exterior-shell' ? 'exterior-shell' : 'structural';
+    const fixedClass = placementCollisionClass(fixedPlacement);
+    const problems = [...await this.eligibility(fixedPart, request.anchorConnectionId, undefined, fixedClass), ...await this.eligibility(movingPart, request.candidateConnectionId, undefined, requestedClass)];
     if (problems.length) return reject('part-or-interface-blocked', [...new Set(problems)].join(' '));
     const occupied = new Set(graph.edges.flatMap(edge => [endpointKey(edge.fixedInstanceId, edge.fixedConnectionId, existingParts.get(edge.fixedInstanceId)), endpointKey(edge.movingInstanceId, edge.movingConnectionId, existingParts.get(edge.movingInstanceId))]));
     if (occupied.has(endpointKey(fixedPlacement.instanceId, request.anchorConnectionId, fixedPart))) return reject('endpoint-occupied', 'The selected physical anchor connection, including its source aliases, is already occupied.');
     const solved = solveAttachment({ fixedPart, fixedPlacement, fixedConnectionId: request.anchorConnectionId, movingPart, movingConnectionId: request.candidateConnectionId, ...(request.twistDegrees === undefined ? {} : { twistsDeg: [request.twistDegrees] }) });
     if (solved.status !== 'solved') return reject(solved.compatibility.reasonCode, solved.reason, { compatibility: solved.compatibility });
     const ruleId = solved.compatibility.ruleId!;
-    const ruleProblems = [...await this.eligibility(fixedPart, request.anchorConnectionId, ruleId), ...await this.eligibility(movingPart, request.candidateConnectionId, ruleId)];
+    const ruleProblems = [...await this.eligibility(fixedPart, request.anchorConnectionId, ruleId, fixedClass), ...await this.eligibility(movingPart, request.candidateConnectionId, ruleId, requestedClass)];
     if (ruleProblems.length) return reject('rule-scope-blocked', [...new Set(ruleProblems)].join(' '), { compatibility: solved.compatibility });
     for (const candidate of solved.candidates) {
       let instanceId = `p-${graph.placements.length}`;
       while (graph.placements.some(part => part.instanceId === instanceId)) instanceId += '-new';
-      const movingPlacement: NativePlacement = { instanceId, partId: movingPart.partId, transform: structuredClone(candidate.transform) };
+      const movingPlacement: NativePlacement = { instanceId, partId: movingPart.partId, transform: structuredClone(candidate.transform), ...(requestedClass === 'exterior-shell' ? { collisionClass: requestedClass } : {}) };
       const newEdges: AssemblyGraphEdge[] = [];
       let multipointBlocked = false;
-      const movingAllowed = this.mode === 'production' ? new Set((await this.getCapability(movingPart.partId))?.allowedConnectionIds ?? []) : undefined;
+      const movingCapability = this.mode === 'production' ? await this.getCapability(movingPart.partId) : undefined;
+      const movingAllowed = this.mode === 'production' ? new Set((requestedClass === 'exterior-shell' ? movingCapability?.exteriorAllowedConnectionIds ?? [] : movingCapability?.allowedConnectionIds ?? [])) : undefined;
       const candidateOccupied = new Set(occupied);
       const collisionZones = new Map<string, AttachmentCandidate['penetrationZone']>();
       for (const existing of graph.placements) {
         const part = existingParts.get(existing.instanceId)!;
-        const fixedAllowed = this.mode === 'production' ? new Set((await this.getCapability(part.partId))?.allowedConnectionIds ?? []) : undefined;
+        const fixedCapability = this.mode === 'production' ? await this.getCapability(part.partId) : undefined;
+        const fixedAllowed = this.mode === 'production' ? new Set((placementCollisionClass(existing) === 'exterior-shell' ? fixedCapability?.exteriorAllowedConnectionIds ?? [] : fixedCapability?.allowedConnectionIds ?? [])) : undefined;
         const multipoint = checkMultiPointConnection({ fixedPart: part, fixedPlacement: existing, movingPart, movingPlacement,
           allowedFixedConnectionIds: fixedAllowed, allowedMovingConnectionIds: movingAllowed,
           ...(existing.instanceId === fixedPlacement.instanceId ? { preferredFixedConnectionId: request.anchorConnectionId, preferredMovingConnectionId: request.candidateConnectionId, requirePreferredPair: true } : {}),
         });
         if (multipoint.status !== 'consistent') { multipointBlocked = true; rejections.push(...multipoint.issues.map(issue => ({ code: `multi-point-${issue.code}`, reason: `${existing.instanceId}: ${issue.reason}` }))); break; }
         for (const match of multipoint.matches) {
-          const pairProblems = [...await this.eligibility(part, match.fixedConnectionId, match.compatibility.ruleId!), ...await this.eligibility(movingPart, match.movingConnectionId, match.compatibility.ruleId!)];
+          const pairProblems = [...await this.eligibility(part, match.fixedConnectionId, match.compatibility.ruleId!, placementCollisionClass(existing)), ...await this.eligibility(movingPart, match.movingConnectionId, match.compatibility.ruleId!, requestedClass)];
           if (pairProblems.length) { multipointBlocked = true; rejections.push({ code: 'multi-point-interface-blocked', reason: `${existing.instanceId}: every physically engaged source interface must be admitted: ${[...new Set(pairProblems)].join(' ')}` }); break; }
           const keys = [endpointKey(existing.instanceId, match.fixedConnectionId, part), endpointKey(instanceId, match.movingConnectionId, movingPart)];
           if (keys.some(key => candidateOccupied.has(key))) { multipointBlocked = true; rejections.push({ code: 'endpoint-occupied', reason: 'An additional physical mating endpoint is already occupied; source aliases cannot bypass occupancy.' }); break; }

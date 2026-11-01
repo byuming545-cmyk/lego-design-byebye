@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
-import type { NativeAssemblyPart, NativePlacement, Vector3 } from './types.js';
+import type { CollisionClass, NativeAssemblyPart, NativePlacement, Vector3 } from './types.js';
+import { placementCollisionClass } from './types.js';
 import { add, cross, dot, IDENTITY_TRANSFORM, isRigidTransform, normalize, rotate, scale, subtract, transformPoint } from './math.js';
 import { isSourceDeclaredClipEndpoint, isSourceDeclaredPinEndpoint } from '../grammar/sources.js';
 
@@ -14,7 +15,7 @@ export interface TriangleBvh { bounds: MeshBounds; triangles?: number[]; left?: 
 export interface CollisionProxy {
   partId: string; instanceId: string; triangles: CollisionTriangle[]; bvh: TriangleBvh; bounds: MeshBounds;
   topology: {
-    status: 'closed-oriented-chain' | 'open-source-surface';
+    status: 'closed-oriented-chain' | 'open-source-surface' | 'exterior-source-surface';
     sourceTriangles: number;
     internalCaps: number;
     sourceCoveredCapArea: number;
@@ -22,6 +23,7 @@ export interface CollisionProxy {
     /** Null means the source boundary graph was too branched to count. */
     boundarySegments: number | null;
     boundaryLoops: number | null;
+    degenerateTriangles: number;
   };
   evidence: { libraryRevision: string; meshSha256: string; sourceFiles: { path: string; sha256: string }[] };
 }
@@ -168,7 +170,8 @@ function deriveNativeCollisionProxy(part: NativeAssemblyPart, placement: NativeP
   if (mesh.coordinateSystem !== 'ldraw-native' || mesh.units !== 'LDU' || mesh.indices.length % 3 !== 0
       || mesh.positions.some(point => point.length !== 3 || !point.every(Number.isFinite))
       || mesh.indices.some(index => !Number.isSafeInteger(index) || index < 0 || index >= mesh.positions.length)) return blocked('invalid-native-mesh', 'The source mesh has invalid coordinates or indices.');
-  if (mesh.doubleSided.some(Boolean)) return blocked('uncertified-surface', 'Uncertified/double-sided native faces cannot establish a reliable solid winding.');
+  const collisionClass = placementCollisionClass(placement);
+  if (mesh.doubleSided.some(Boolean) && collisionClass === 'structural') return blocked('uncertified-surface', 'Uncertified/double-sided native faces cannot establish a reliable solid winding.');
   if (mesh.indices.length / 3 > MAX_PROXY_TRIANGLES) return blocked('proxy-resource-limit', 'The native mesh exceeds the bounded collision-proxy budget.');
   const vertices = mesh.positions.map(point => transformPoint(placement.transform, point));
   const triangles: CollisionTriangle[] = [];
@@ -178,9 +181,22 @@ function deriveNativeCollisionProxy(part: NativeAssemblyPart, placement: NativeP
   }
   if (triangles.length === 0) return blocked('empty-solid-mesh', 'No solid native triangles are available.');
   const sourceTriangleCount = triangles.length;
+  const degenerateTriangles = mesh.indices.length / 3 - triangles.length;
   const openSurface = part.connections.points.some(point => isSourceDeclaredClipEndpoint(point) || isSourceDeclaredPinEndpoint(point));
   const boundaries = boundaryEdges(triangles);
   const loops = boundaries ? boundaryLoops(boundaries) : null;
+  if (collisionClass === 'exterior-shell') {
+    // Explicitly selected exterior contract: keep every real source triangle,
+    // including open boundaries and double-sided faces. No caps, thickness,
+    // signed volume or containment are invented for this placement.
+    const bvh = buildBvh(triangles, triangles.map((_, index) => index));
+    const meshSha256 = createHash('sha256').update(JSON.stringify({ positions: mesh.positions, indices: mesh.indices, doubleSided: mesh.doubleSided })).digest('hex');
+    return { status: 'ready', reasonCode: 'source-exterior-surface', reason: 'Explicit exterior-shell placement: real source surface retained with open boundaries, no caps, thickness or containment.', proxy: {
+      partId: part.partId, instanceId: placement.instanceId, triangles, bvh, bounds: bvh.bounds,
+      topology: { status: 'exterior-source-surface', sourceTriangles: sourceTriangleCount, internalCaps: 0, sourceCoveredCapArea: 0, signedVolume: null, boundarySegments: boundaries?.length ?? null, boundaryLoops: loops?.length ?? null, degenerateTriangles },
+      evidence: { libraryRevision: geometry.source.revision, meshSha256, sourceFiles: geometry.source.files.map(file => ({ path: file.path, sha256: file.sha256 })) },
+    } };
+  }
   if (openSurface) {
     // A C-clip is an open plastic shell by construction. Its source triangles
     // are retained exactly; no cap, solid volume or winding is invented. The
@@ -189,7 +205,7 @@ function deriveNativeCollisionProxy(part: NativeAssemblyPart, placement: NativeP
     const meshSha256 = createHash('sha256').update(JSON.stringify({ positions: mesh.positions, indices: mesh.indices, doubleSided: mesh.doubleSided })).digest('hex');
     return { status: 'ready', reasonCode: 'source-open-surface-clip', reason: 'Source-declared CLIP shell retained as an open surface; collision is resolved by the sourced cylindrical seat, not by inventing a solid cap.', proxy: {
       partId: part.partId, instanceId: placement.instanceId, triangles, bvh, bounds: bvh.bounds,
-      topology: { status: 'open-source-surface', sourceTriangles: sourceTriangleCount, internalCaps: 0, sourceCoveredCapArea: 0, signedVolume: null, boundarySegments: boundaries?.length ?? null, boundaryLoops: loops?.length ?? null },
+      topology: { status: 'open-source-surface', sourceTriangles: sourceTriangleCount, internalCaps: 0, sourceCoveredCapArea: 0, signedVolume: null, boundarySegments: boundaries?.length ?? null, boundaryLoops: loops?.length ?? null, degenerateTriangles },
       evidence: { libraryRevision: geometry.source.revision, meshSha256, sourceFiles: geometry.source.files.map(file => ({ path: file.path, sha256: file.sha256 })) },
     } };
   }
@@ -217,12 +233,12 @@ function deriveNativeCollisionProxy(part: NativeAssemblyPart, placement: NativeP
   const meshSha256 = createHash('sha256').update(JSON.stringify({ positions: mesh.positions, indices: mesh.indices, doubleSided: mesh.doubleSided })).digest('hex');
   return { status: 'ready', reasonCode: 'source-closed-proxy', reason: 'Native closed oriented mesh with only fully source-covered internal caps.', proxy: {
     partId: part.partId, instanceId: placement.instanceId, triangles, bvh, bounds: bvh.bounds,
-    topology: { status: 'closed-oriented-chain', sourceTriangles: sourceTriangleCount, internalCaps: triangles.length - sourceTriangleCount, sourceCoveredCapArea: capArea, signedVolume, boundarySegments: 0, boundaryLoops: 0 },
+    topology: { status: 'closed-oriented-chain', sourceTriangles: sourceTriangleCount, internalCaps: triangles.length - sourceTriangleCount, sourceCoveredCapArea: capArea, signedVolume, boundarySegments: 0, boundaryLoops: 0, degenerateTriangles },
     evidence: { libraryRevision: geometry.source.revision, meshSha256, sourceFiles: geometry.source.files.map(file => ({ path: file.path, sha256: file.sha256 })) },
   } };
 }
 
-const nativeProxyCache = new WeakMap<NativeAssemblyPart['geometry'], { fingerprint: string; result: ProxyBuildResult }>();
+const nativeProxyCache = new WeakMap<NativeAssemblyPart['geometry'], Map<CollisionClass, { fingerprint: string; result: ProxyBuildResult }>>();
 
 /** Closure is established in native coordinates once; a rigid placement preserves it. */
 export function buildNativeCollisionProxy(part: NativeAssemblyPart, placement: NativePlacement): ProxyBuildResult {
@@ -230,12 +246,15 @@ export function buildNativeCollisionProxy(part: NativeAssemblyPart, placement: N
   const mesh = part.geometry.mesh;
   // Hash the current inputs even on a cache hit: callers cannot alter source
   // vertices/metadata and continue using an earlier clearance certificate.
-  const fingerprint = createHash('sha256').update(JSON.stringify({ partId: part.partId, status: part.geometry.status, source: part.geometry.source,
+  const fingerprint = createHash('sha256').update(JSON.stringify({ partId: part.partId, collisionClass: placementCollisionClass(placement), status: part.geometry.status, source: part.geometry.source,
     units: mesh?.units, coordinates: mesh?.coordinateSystem, positions: mesh?.positions, indices: mesh?.indices, doubleSided: mesh?.doubleSided })).digest('hex');
-  let cached = nativeProxyCache.get(part.geometry);
+  const collisionClass = placementCollisionClass(placement);
+  let cache = nativeProxyCache.get(part.geometry);
+  if (!cache) { cache = new Map(); nativeProxyCache.set(part.geometry, cache); }
+  let cached = cache.get(collisionClass);
   if (!cached || cached.fingerprint !== fingerprint) {
-    cached = { fingerprint, result: deriveNativeCollisionProxy(part, { instanceId: 'native-proxy', partId: part.partId, transform: IDENTITY_TRANSFORM }) };
-    nativeProxyCache.set(part.geometry, cached);
+    cached = { fingerprint, result: deriveNativeCollisionProxy(part, { instanceId: 'native-proxy', partId: part.partId, transform: IDENTITY_TRANSFORM, collisionClass }) };
+    cache.set(collisionClass, cached);
   }
   const base = cached.result;
   if (!base.proxy) return base;

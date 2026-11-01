@@ -51,22 +51,22 @@ export function createPartsFoundationRouter(options: { dataDir?: string; registr
   });
   router.post('/assembly/attach', async (request, response) => {
     const body = request.body;
-    const keys = ['partA', 'connectionA', 'partB', 'connectionB', 'twistDegrees'];
+    const keys = ['partA', 'connectionA', 'partB', 'connectionB', 'twistDegrees', 'collisionClass'];
     if (!object(body) || Object.keys(body).some(key => !keys.includes(key)) ||
         ['partA', 'partB'].some(key => typeof body[key] !== 'string' || !/^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,79}$/.test(body[key] as string)) ||
         ['connectionA', 'connectionB'].some(key => typeof body[key] !== 'string' || !(body[key] as string).length || (body[key] as string).length > 1000) ||
-        body.twistDegrees !== undefined && (typeof body.twistDegrees !== 'number' || ![0, 90, 180, 270].includes(body.twistDegrees))) bad('请选择真实零件、来源连接口和有效离散旋转。');
+        body.twistDegrees !== undefined && (typeof body.twistDegrees !== 'number' || ![0, 90, 180, 270].includes(body.twistDegrees)) || (body.collisionClass !== undefined && body.collisionClass !== 'structural' && body.collisionClass !== 'exterior-shell')) bad('请选择真实零件、来源连接口和有效离散旋转。');
     const capability = await assembly.getCapability(body.partA as string);
     if (!capability) throw new InventoryError('没有该原生零件来源。', 'FOUNDATION_PART_NOT_FOUND', 404);
     if (!await assembly.getCapability(body.partB as string)) throw new InventoryError('没有该候选原生零件来源。', 'FOUNDATION_PART_NOT_FOUND', 404);
     if (!isGeneratableCapability(capability)) throw new InventoryError(`该起始件尚未获得装配准入：${capability.reasons.join(' ')}`, 'ASSEMBLY_PART_BLOCKED', 409);
-    response.json(await assembly.attach({ partA: body.partA as string, connectionA: body.connectionA as string, partB: body.partB as string, connectionB: body.connectionB as string, ...(body.twistDegrees === undefined ? {} : { twistDegrees: body.twistDegrees as number }) }));
+    response.json(await assembly.attach({ partA: body.partA as string, connectionA: body.connectionA as string, partB: body.partB as string, connectionB: body.connectionB as string, ...(body.twistDegrees === undefined ? {} : { twistDegrees: body.twistDegrees as number }), ...(body.collisionClass === undefined ? {} : { collisionClass: body.collisionClass as 'structural' | 'exterior-shell' }) }));
   });
   router.post('/assembly/generate', async (request, response) => {
     const body = request.body;
     if (!object(body)) bad('请求内容无效。');
     const module = (body.kind ?? body.module) as NativeModuleType;
-    const minimum = module === 'bar-clip' || module === 'pin-hole' ? 2 : 3;
+    const minimum = module === 'bar-clip' || module === 'pin-hole' || module === 'exterior-shell' ? 2 : 3;
     if (Object.keys(body).some(key => !['kind', 'module', 'partCount', 'requiredPartIds'].includes(key)) ||
         body.kind !== undefined && body.module !== undefined ||
         !NATIVE_MODULE_TYPES.includes(module) ||
@@ -74,6 +74,7 @@ export function createPartsFoundationRouter(options: { dataDir?: string; registr
     if ((body.kind ?? body.module) === 'basic-snot' && body.partCount !== undefined && body.partCount !== 3) bad('当前基础侧向模块固定由 3 个真实零件组成。');
     if ((body.kind ?? body.module) === 'bar-clip' && body.partCount !== undefined && body.partCount !== 2) bad('当前杆夹模块固定由 2 个真实零件组成。');
     if ((body.kind ?? body.module) === 'pin-hole' && body.partCount !== undefined && body.partCount !== 2) bad('当前销孔模块固定由 2 个真实零件组成。');
+    if ((body.kind ?? body.module) === 'exterior-shell' && body.partCount !== undefined && body.partCount !== 2) bad('当前表面合同模块固定由 2 个真实零件组成。');
     const generationRequest: NativeModuleRequest = { module: (body.kind ?? body.module) as NativeModuleType, ...(body.partCount === undefined ? {} : { partCount: body.partCount as number }), ...(body.requiredPartIds === undefined ? {} : { requiredPartIds: body.requiredPartIds as string[] }) };
     try { validateNativeModuleRequest(generationRequest); }
     catch (error) { bad(error instanceof Error ? error.message : '生成目标无效。'); }
