@@ -2,29 +2,38 @@
   "schemaVersion": "bricklab-part-import-verification-1",
   "branch": "codex/part-import",
   "baselineCommit": "d68a0ad",
-  "status": "infrastructure-only",
+  "status": "hardened-no-real-bundle",
   "realBundlesValidated": 0,
   "realPartsPromoted": 0,
   "stagedOverlayWritesPinnedLibrary": false,
-  "tests": 10,
+  "tests": 17,
+  "transactionTests": 4,
+  "fixedClassTests": 3,
   "fullSuite": {
-    "files": 56,
-    "tests": 793,
-    "passed": 793,
-    "durationSeconds": 102.89,
-    "log": "artifacts/part-import/unit.log"
+    "files": 58,
+    "tests": 800,
+    "passed": 800,
+    "durationSeconds": 109.95,
+    "log": "artifacts/part-import/unit-hardened.txt"
   },
   "build": {
     "status": "passed",
-    "log": "artifacts/part-import/build.log"
+    "log": "artifacts/part-import/build-hardened.txt"
   },
-  "limitations": [
-    "No real new-part bundle was available; raw.githubusercontent.com connections were reset.",
-    "Candidate search covers C01, BAR_CLIP and PIN_HOLE, but no real positive bundle was exercised.",
-    "No installation path, retention, friction, deformation or physical build verification.",
-    "Promotion was not executed because no validated real bundle existed."
-  ],
   "promoteImplemented": true,
+  "transactionalPromote": true,
+  "journalRecovery": true,
+  "ledgerImplemented": true,
+  "injectableRoots": true,
+  "fixedCollisionClass": true,
+  "classFallback": true,
+  "postPromote": "repository-and-admission-reload-only",
+  "limitations": [
+    "No real new-part bundle was available; no real part was imported or promoted.",
+    "Post-promote full connector audit/coverage/report rebuild is not automatic.",
+    "Fixed exterior root has attach/graph validation but no production generation module.",
+    "Installation path, retention, friction, deformation and physical build remain unverified."
+  ],
   "typecheck": "passed",
-  "commit": "59425c147ce063936d34e5cdfc9c0f3c4ae02bab"
+  "commit": null
 }

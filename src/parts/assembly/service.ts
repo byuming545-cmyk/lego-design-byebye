@@ -30,7 +30,7 @@ export interface AssemblyDefaultPair {
   connectionB: string;
   twistDegrees: number;
 }
-export type AssemblyPairAttachRequest = Omit<AssemblyDefaultPair, 'twistDegrees'> & { twistDegrees?: number; collisionClass?: CollisionClass };
+export type AssemblyPairAttachRequest = Omit<AssemblyDefaultPair, 'twistDegrees'> & { twistDegrees?: number; collisionClass?: CollisionClass; fixedCollisionClass?: CollisionClass };
 
 export type RuntimeAssemblyStatus = Omit<AssemblyMigrationReport, 'generatedAt'> & {
   generatedAt: string | null;
@@ -299,7 +299,7 @@ export class AssemblyService {
 
   async attach(request: AssemblyPairAttachRequest): Promise<AttachResult> {
     await this.ready();
-    const graph = await this.engine.createAssembly(request.partA);
+    const graph = await this.engine.createAssembly(request.partA, request.fixedCollisionClass);
     return this.engine.attachPart(graph, { anchorInstanceId: graph.placements[0].instanceId, anchorConnectionId: request.connectionA, partId: request.partB, candidateConnectionId: request.connectionB, ...(request.twistDegrees === undefined ? {} : { twistDegrees: request.twistDegrees }), ...(request.collisionClass === undefined ? {} : { collisionClass: request.collisionClass }) });
   }
   async generate(request: NativeModuleRequest): Promise<NativeGenerationResult> {

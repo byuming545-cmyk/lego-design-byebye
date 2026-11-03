@@ -56,6 +56,8 @@ export interface AssemblyAttachRequest {
   twistDegrees?: number;
   /** Collision contract for the newly attached moving placement. */
   collisionClass?: CollisionClass;
+  /** Collision contract for a newly created fixed/root placement. */
+  fixedCollisionClass?: CollisionClass;
 }
 export interface AssemblyInterfaceCapability {
   partId: string;

@@ -1,4 +1,5 @@
-import { access, copyFile, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { NativePartRepository } from '../assembly/source.js';
 import type { CollisionClass, NativeAssemblyPart } from '../assembly/types.js';
@@ -6,10 +7,11 @@ import type { AssemblyPairAttachRequest } from '../assembly/service.js';
 import { GrammarAssemblyService } from '../grammar/service.js';
 import { adaptNativePartConnectors, type ConnectorIngestion } from '../grammar/sources.js';
 import type { GrammarPartAdmission } from '../grammar/admission.js';
-import { BUNDLED_LDRAW_DIRECTORY } from '../ldraw/bundled.js';
 import { exportNativeAssemblyJson } from '../assembly/documents.js';
 import type { NativeModuleType } from '../assembly/generator.js';
-import { readPartImportBundle, SHADOW_DIRECTORY, stagePartImport, type PartImportBundle } from './bundle.js';
+import { BUNDLED_LDRAW_DIRECTORY } from '../ldraw/bundled.js';
+import { readPartImportBundle, SHADOW_DIRECTORY, stagePartImport, type PartImportBundle, type PartImportRoots } from './bundle.js';
+import { transactionalPromote } from './transaction.js';
 
 export interface ImportedFeature { featureId: string; connectionId: string; family: string; role: string; ruleId: string | null; supported: boolean; ruleIds: string[]; reasonCodes: string[] }
 export interface ImportedCandidate {
@@ -51,6 +53,7 @@ export interface PartImportReport {
   generation: { attempted: boolean; status?: string; reasons: string[]; jsonBytes?: number; reimport?: string };
   limitations: string[];
 }
+export interface PartImportServiceOptions extends PartImportRoots { dataDir?: string }
 export interface PromotionRecord {
   partId: string;
   promotedAt: string;
@@ -58,6 +61,9 @@ export interface PromotionRecord {
   ldrawRevision: string;
   shadowRevision: string;
   validation: PartImportReport;
+  journalId?: string;
+  ledgerPath?: string;
+  promotionClass?: CollisionClass;
 }
 export class PartImportError extends Error {
   constructor(readonly code: string, message: string) { super(message); this.name = 'PartImportError'; }
@@ -65,7 +71,7 @@ export class PartImportError extends Error {
 
 const DECLARED_RULES = new Set(['C01', 'BAR_CLIP', 'PIN_HOLE']);
 const GENERATION_MODULES: Record<string, readonly NativeModuleType[]> = {
-  C01: ['wall', 'simple-chassis'],
+  C01: ['wall', 'simple-chassis', 'exterior-shell'],
   BAR_CLIP: ['bar-clip'],
   PIN_HOLE: ['pin-hole'],
 };
@@ -110,14 +116,16 @@ function summary(value: PartImportBundle): BundleSummary {
 }
 
 export class PartImportService {
-  constructor(private readonly dataDir?: string) {}
+  private readonly options: PartImportServiceOptions;
+  constructor(options: string | PartImportServiceOptions = {}) { this.options = typeof options === 'string' ? { dataDir: options } : options; }
+  private get roots(): PartImportRoots { return { ldrawRoot: this.options.ldrawRoot ?? BUNDLED_LDRAW_DIRECTORY, shadowRoot: this.options.shadowRoot ?? SHADOW_DIRECTORY }; }
 
   async validate(directory: string): Promise<PartImportReport> {
-    const bundle = await readPartImportBundle(directory);
-    const staged = await stagePartImport(directory, bundle);
+    const bundle = await readPartImportBundle(directory, this.roots);
+    const staged = await stagePartImport(directory, bundle, this.roots);
     try {
       const repository = new NativePartRepository({ geometryDirectory: staged.ldrawDirectory, shadowDirectory: staged.shadowDirectory });
-      const service = new GrammarAssemblyService({ repository, ...(this.dataDir ? { dataDir: this.dataDir } : {}) });
+      const service = new GrammarAssemblyService({ repository, ...(this.options.dataDir ? { dataDir: this.options.dataDir } : {}) });
       await service.ready();
       const part = await repository.getPart(bundle.partId);
       if (!part) throw new PartImportError('part-not-loaded', 'The staged part could not be loaded by the native repository.');
@@ -205,6 +213,73 @@ export class PartImportService {
             if (winning) break;
           }
         }
+        if (!winning && admission.exteriorGeneratable) {
+          // Structural candidates can fail generation; retry the new part as an exterior-shell moving placement.
+          const deadline = Date.now() + 45_000;
+          const movingFeatures = candidateFeatures(part, admission);
+          let attempts = 0;
+          for (const fixedId of await repository.listIds()) {
+            if (fixedId === part.partId || attempts >= 32 || Date.now() > deadline) continue;
+            const fixedPart = await repository.getPart(fixedId);
+            const fixedAdmission = fixedPart ? await service.getGrammarAdmission(fixedId) : undefined;
+            if (!fixedPart || !fixedAdmission || !fixedAdmission.generationEligible) continue;
+            const fixedFeatures = candidateFeatures(fixedPart, fixedAdmission);
+            for (const fixedFeature of fixedFeatures) for (const movingFeature of movingFeatures) {
+              if (attempts >= 32 || Date.now() > deadline) break;
+              if (fixedFeature.role === movingFeature.role || fixedFeature.matchingPolicy?.ruleId !== movingFeature.matchingPolicy?.ruleId) continue;
+              attempts++;
+              const ruleId = movingFeature.matchingPolicy!.ruleId;
+              const result = await service.attach({ partA: fixedId, connectionA: fixedFeature.sourceConnectionId!, partB: part.partId, connectionB: movingFeature.sourceConnectionId!, twistDegrees: 0, collisionClass: 'exterior-shell' });
+              const graphValid = result.graph ? (await service.engine.validateGraph(result.graph)).valid : false;
+              const candidate: ImportedCandidate = {
+                fixedPartId: fixedId, fixedConnectionId: fixedFeature.sourceConnectionId!,
+                movingPartId: part.partId, movingConnectionId: movingFeature.sourceConnectionId!,
+                direction: 'new-moving', ruleId, collisionClass: 'exterior-shell',
+                accepted: result.accepted, code: result.rejections[0]?.code ?? (result.accepted ? 'accepted' : 'unknown'),
+                reason: result.rejections[0]?.reason ?? (result.accepted ? 'accepted' : 'no graph'),
+                graphValid, placements: result.graph?.placements.length, edges: result.graph?.edges.length,
+              };
+              candidates.push(candidate);
+              if (result.accepted && graphValid && result.graph) {
+                const generated = await this.generate(service, fixedId, part.partId, ruleId, 'exterior-shell');
+                generation = generated.generation;
+                Object.assign(candidate, generated.candidate);
+                if (generated.ok) { winning = candidate; break; }
+              }
+            }
+            if (winning) break;
+          }
+        }
+        if (!winning && admission.exteriorGeneratable) {
+          // New part as fixed exterior root: attach can be checked, but no production generation module exists for an exterior root yet.
+          const deadline = Date.now() + 30_000;
+          const newFeatures = candidateFeatures(part, admission);
+          let attempts = 0;
+          for (const movingId of await repository.listIds()) {
+            if (movingId === part.partId || attempts >= 16 || Date.now() > deadline) continue;
+            const existing = await repository.getPart(movingId);
+            const existingAdmission = existing ? await service.getGrammarAdmission(movingId) : undefined;
+            if (!existing || !existingAdmission || !existingAdmission.generationEligible) continue;
+            const existingFeatures = candidateFeatures(existing, existingAdmission);
+            for (const newFeature of newFeatures) for (const existingFeature of existingFeatures) {
+              if (attempts >= 16 || Date.now() > deadline) break;
+              if (newFeature.role === existingFeature.role || newFeature.matchingPolicy?.ruleId !== existingFeature.matchingPolicy?.ruleId) continue;
+              attempts++;
+              const ruleId = newFeature.matchingPolicy!.ruleId;
+              const result = await service.attach({ partA: part.partId, connectionA: newFeature.sourceConnectionId!, partB: movingId, connectionB: existingFeature.sourceConnectionId!, twistDegrees: 0, fixedCollisionClass: 'exterior-shell' });
+              const graphValid = result.graph ? (await service.engine.validateGraph(result.graph)).valid : false;
+              candidates.push({
+                fixedPartId: part.partId, fixedConnectionId: newFeature.sourceConnectionId!,
+                movingPartId: movingId, movingConnectionId: existingFeature.sourceConnectionId!,
+                direction: 'existing-moving', ruleId, collisionClass: 'exterior-shell',
+                accepted: result.accepted, code: result.rejections[0]?.code ?? (result.accepted ? 'accepted' : 'unknown'),
+                reason: result.rejections[0]?.reason ?? (result.accepted ? 'accepted' : 'no graph'),
+                graphValid, placements: result.graph?.placements.length, edges: result.graph?.edges.length,
+                generated: false, generationStatus: 'fixed-exterior-generation-unsupported',
+              });
+            }
+          }
+        }
       }
       return {
         partId: bundle.partId, status: winning ? 'validated' : 'blocked', sourceReady: admission.sourceReady,
@@ -250,43 +325,43 @@ export class PartImportService {
     if (report.status !== 'validated') throw new PartImportError('promotion-blocked', 'Only a fully validated report can be promoted.');
     const fresh = await this.validate(directory);
     if (fresh.status !== 'validated') throw new PartImportError('promotion-revalidation-failed', 'Fresh validation did not pass.');
-    const bundle = await readPartImportBundle(directory);
+    const bundle = await readPartImportBundle(directory, this.roots);
     if (bundle.partId !== confirmPartId) throw new PartImportError('promotion-confirm-mismatch', 'Confirmed partId does not match the bundle.');
-    const staged = await stagePartImport(directory, bundle);
-    const ldrawManifestPath = path.join(BUNDLED_LDRAW_DIRECTORY, 'manifest.json');
-    const shadowManifestPath = path.join(SHADOW_DIRECTORY, 'manifest.json');
-    const ldrawBackup = await readFile(ldrawManifestPath);
-    const shadowBackup = await readFile(shadowManifestPath);
-    const copied: string[] = [];
+    const staged = await stagePartImport(directory, bundle, this.roots);
+    const roots = this.roots;
     try {
-      for (const file of bundle.geometry.files) {
-        const target = path.join(BUNDLED_LDRAW_DIRECTORY, 'files', file.path);
-        if (await access(target).then(() => true, () => false)) throw new PartImportError('promotion-target-exists', `Refusing to overwrite existing LDraw source: ${file.path}`);
-      }
-      for (const file of bundle.connections.files) {
-        const target = path.join(SHADOW_DIRECTORY, 'files', file.path);
-        if (await access(target).then(() => true, () => false)) throw new PartImportError('promotion-target-exists', `Refusing to overwrite existing Shadow source: ${file.path}`);
-      }
-      for (const file of bundle.geometry.files) {
-        const target = path.join(BUNDLED_LDRAW_DIRECTORY, 'files', file.path);
-        await mkdir(path.dirname(target), { recursive: true });
-        await copyFile(path.join(directory, 'ldraw', file.path), target);
-        copied.push(target);
-      }
-      for (const file of bundle.connections.files) {
-        const target = path.join(SHADOW_DIRECTORY, 'files', file.path);
-        await mkdir(path.dirname(target), { recursive: true });
-        await copyFile(path.join(directory, 'shadow', file.path), target);
-        copied.push(target);
-      }
-      await writeFile(ldrawManifestPath, await readFile(path.join(staged.ldrawDirectory, 'manifest.json')));
-      await writeFile(shadowManifestPath, await readFile(path.join(staged.shadowDirectory, 'manifest.json')));
-      return { partId: bundle.partId, promotedAt: new Date().toISOString(), files: copied, ldrawRevision: bundle.geometry.revision, shadowRevision: bundle.connections.revision, validation: fresh };
-    } catch (error) {
-      await writeFile(ldrawManifestPath, ldrawBackup).catch(() => undefined);
-      await writeFile(shadowManifestPath, shadowBackup).catch(() => undefined);
-      await Promise.all(copied.map(target => rm(target, { force: true }).catch(() => undefined)));
-      throw error;
+      const winning = fresh.candidates.find(candidate => candidate.generated) ?? fresh.candidates.find(candidate => candidate.accepted);
+      const promotionClass: CollisionClass = winning?.collisionClass ?? (fresh.generationEligible ? 'structural' : 'exterior-shell');
+      const bundleBytes = await readFile(path.join(directory, 'bundle.json'));
+      const bundleHash = createHash('sha256').update(bundleBytes).digest('hex');
+      const validationDigest = createHash('sha256').update(JSON.stringify(fresh)).digest('hex');
+      const files = [...bundle.geometry.files, ...bundle.connections.files].map(file => ({ path: file.path, sha256: file.sha256, bytes: file.bytes }));
+      const ledger = {
+        partId: bundle.partId, bundleHash, ldrawRevision: bundle.geometry.revision, shadowRevision: bundle.connections.revision,
+        sourceUrl: bundle.geometry.sourceUrl, license: bundle.geometry.license, author: bundle.author, files,
+        validationDigest, promotedAt: new Date().toISOString(), promotionClass,
+        codeCommit: process.env.GIT_COMMIT ?? null, reportPath: `artifacts/part-import/${bundle.partId}-report.json`,
+        validation: fresh,
+      };
+      const ldrawFiles = bundle.geometry.files.map(file => ({ path: file.path, source: path.join(staged.ldrawDirectory, 'files', file.path), target: path.join(roots.ldrawRoot!, 'files', file.path) }));
+      const shadowFiles = bundle.connections.files.map(file => ({ path: file.path, source: path.join(staged.shadowDirectory, 'files', file.path), target: path.join(roots.shadowRoot!, 'files', file.path) }));
+      const transaction = await transactionalPromote({
+        ldrawRoot: roots.ldrawRoot!, shadowRoot: roots.shadowRoot!, partId: bundle.partId,
+        ldrawFiles, shadowFiles,
+        ldrawManifest: await readFile(path.join(staged.ldrawDirectory, 'manifest.json'), 'utf8'),
+        shadowManifest: await readFile(path.join(staged.shadowDirectory, 'manifest.json'), 'utf8'),
+        ledger,
+        verify: async () => {
+          const repository = new NativePartRepository({ geometryDirectory: roots.ldrawRoot!, shadowDirectory: roots.shadowRoot! });
+          const promoted = await repository.getPart(bundle.partId);
+          if (!promoted) throw new PartImportError('post-promote-rebuild-failed', 'The promoted part did not load from the refreshed repository.');
+          const service = new GrammarAssemblyService({ repository, ...(this.options.dataDir ? { dataDir: this.options.dataDir } : {}) });
+          await service.ready();
+          const admission = await service.getGrammarAdmission(bundle.partId);
+          if (!admission?.sourceReady) throw new PartImportError('post-promote-rebuild-failed', 'The promoted part has no source-ready grammar admission after reload.');
+        },
+      });
+      return { partId: bundle.partId, promotedAt: ledger.promotedAt, files: transaction.files, ldrawRevision: bundle.geometry.revision, shadowRevision: bundle.connections.revision, validation: fresh, journalId: transaction.journalId, ledgerPath: transaction.ledgerPath, promotionClass };
     } finally {
       await staged.cleanup();
     }

@@ -10,7 +10,7 @@ import { BAR_CLIP_RULE_ID, PIN_HOLE_RULE_ID } from './assembly/compatibility.js'
 import { buildNativeCollisionProxy } from './assembly/proxy.js';
 import { IDENTITY_TRANSFORM } from './assembly/math.js';
 import { NativeModelImportError } from './assembly/modelImport.js';
-import { isGeneratableCapability } from './assembly/types.js';
+import { isGeneratableCapability, isGeneratableCapabilityFor } from './assembly/types.js';
 import { CONNECTOR_FAMILIES, CONNECTOR_GRAMMAR_VERSION } from './grammar/schema.js';
 import { CONNECTOR_GRAMMAR_RULES } from './grammar/rules.js';
 import { describeGrammarPart } from './grammar/library.js';
@@ -51,16 +51,17 @@ export function createPartsFoundationRouter(options: { dataDir?: string; registr
   });
   router.post('/assembly/attach', async (request, response) => {
     const body = request.body;
-    const keys = ['partA', 'connectionA', 'partB', 'connectionB', 'twistDegrees', 'collisionClass'];
+    const keys = ['partA', 'connectionA', 'partB', 'connectionB', 'twistDegrees', 'collisionClass', 'fixedCollisionClass'];
     if (!object(body) || Object.keys(body).some(key => !keys.includes(key)) ||
         ['partA', 'partB'].some(key => typeof body[key] !== 'string' || !/^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,79}$/.test(body[key] as string)) ||
         ['connectionA', 'connectionB'].some(key => typeof body[key] !== 'string' || !(body[key] as string).length || (body[key] as string).length > 1000) ||
-        body.twistDegrees !== undefined && (typeof body.twistDegrees !== 'number' || ![0, 90, 180, 270].includes(body.twistDegrees)) || (body.collisionClass !== undefined && body.collisionClass !== 'structural' && body.collisionClass !== 'exterior-shell')) bad('请选择真实零件、来源连接口和有效离散旋转。');
+        body.twistDegrees !== undefined && (typeof body.twistDegrees !== 'number' || ![0, 90, 180, 270].includes(body.twistDegrees)) || (body.collisionClass !== undefined && body.collisionClass !== 'structural' && body.collisionClass !== 'exterior-shell' || body.fixedCollisionClass !== undefined && body.fixedCollisionClass !== 'structural' && body.fixedCollisionClass !== 'exterior-shell')) bad('请选择真实零件、来源连接口和有效离散旋转。');
     const capability = await assembly.getCapability(body.partA as string);
     if (!capability) throw new InventoryError('没有该原生零件来源。', 'FOUNDATION_PART_NOT_FOUND', 404);
     if (!await assembly.getCapability(body.partB as string)) throw new InventoryError('没有该候选原生零件来源。', 'FOUNDATION_PART_NOT_FOUND', 404);
-    if (!isGeneratableCapability(capability)) throw new InventoryError(`该起始件尚未获得装配准入：${capability.reasons.join(' ')}`, 'ASSEMBLY_PART_BLOCKED', 409);
-    response.json(await assembly.attach({ partA: body.partA as string, connectionA: body.connectionA as string, partB: body.partB as string, connectionB: body.connectionB as string, ...(body.twistDegrees === undefined ? {} : { twistDegrees: body.twistDegrees as number }), ...(body.collisionClass === undefined ? {} : { collisionClass: body.collisionClass as 'structural' | 'exterior-shell' }) }));
+    const fixedClass = body.fixedCollisionClass === 'exterior-shell' ? 'exterior-shell' : 'structural';
+    if (!isGeneratableCapabilityFor(capability, fixedClass)) throw new InventoryError(`该起始件尚未获得装配准入：${capability.reasons.join(' ')}`, 'ASSEMBLY_PART_BLOCKED', 409);
+    response.json(await assembly.attach({ partA: body.partA as string, connectionA: body.connectionA as string, partB: body.partB as string, connectionB: body.connectionB as string, ...(body.twistDegrees === undefined ? {} : { twistDegrees: body.twistDegrees as number }), ...(body.collisionClass === undefined ? {} : { collisionClass: body.collisionClass as 'structural' | 'exterior-shell' }), ...(body.fixedCollisionClass === undefined ? {} : { fixedCollisionClass: body.fixedCollisionClass as 'structural' | 'exterior-shell' }) }));
   });
   router.post('/assembly/generate', async (request, response) => {
     const body = request.body;

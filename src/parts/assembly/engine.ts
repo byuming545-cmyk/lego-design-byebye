@@ -72,13 +72,13 @@ export class AttachmentEngine {
     if (ruleId && !ruleIds.includes(ruleId)) problems.push('This connection rule is not in the verified part scope.');
     return problems;
   }
-  async createAssembly(partId: string): Promise<NativeAssembly> {
+  async createAssembly(partId: string, collisionClass: CollisionClass = 'structural'): Promise<NativeAssembly> {
     const part = await this.getPart(partId);
     if (!part) throw new Error('Unknown source part; no placeholder can seed an assembly.');
-    const problems = await this.eligibility(part);
+    const problems = await this.eligibility(part, undefined, undefined, collisionClass);
     if (problems.length) throw new Error(problems.join(' '));
     const graph: NativeAssembly = { schemaVersion: 1, id: `assembly-${randomUUID()}`, ...this.versions,
-      placements: [{ instanceId: 'root', partId, transform: structuredClone(IDENTITY_TRANSFORM) }], edges: [],
+      placements: [{ instanceId: 'root', partId, transform: structuredClone(IDENTITY_TRANSFORM), ...(collisionClass === 'exterior-shell' ? { collisionClass } : {}) }], edges: [],
       sourceHashes: { [partId]: nativePartSourceHash(part) }, physicalBuildVerified: false };
     this.remember(graph);
     return graph;

@@ -1,0 +1,135 @@
+import { createHash, randomUUID } from 'node:crypto';
+import { copyFile, lstat, mkdir, open, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { PartImportError } from './bundle.js';
+
+export interface PromoteFile { path: string; source: string; target: string }
+export interface TransactionalPromoteInput {
+  ldrawRoot: string;
+  shadowRoot: string;
+  partId: string;
+  ldrawFiles: PromoteFile[];
+  shadowFiles: PromoteFile[];
+  ldrawManifest: string;
+  shadowManifest: string;
+  ledger: Record<string, unknown>;
+  verify?: () => Promise<void>;
+}
+export interface TransactionalPromoteResult {
+  journalId: string;
+  files: string[];
+  ledgerPath: string;
+  bundleHash: string;
+  validationDigest: string;
+}
+
+const journalRoot = (ldrawRoot: string) => path.join(ldrawRoot, '.import-journal');
+const importsRoot = (ldrawRoot: string) => path.join(ldrawRoot, 'imports');
+const sha256 = (value: string | Buffer) => createHash('sha256').update(value).digest('hex');
+
+async function atomicWrite(target: string, content: string | Buffer): Promise<void> {
+  const temporary = `${target}.tmp-${randomUUID()}`;
+  const handle = await open(temporary, 'w');
+  try { await handle.writeFile(content); await handle.sync(); } finally { await handle.close(); }
+  await rename(temporary, target);
+}
+
+async function acquireLock(ldrawRoot: string): Promise<() => Promise<void>> {
+  await mkdir(ldrawRoot, { recursive: true });
+  const lock = path.join(ldrawRoot, '.import.lock');
+  let handle;
+  try { handle = await open(lock, 'wx'); } catch {
+    const pid = Number(await readFile(lock, 'utf8').catch(() => ''));
+    let alive = false;
+    if (Number.isSafeInteger(pid) && pid > 0) { try { process.kill(pid, 0); alive = true; } catch { alive = false; } }
+    if (alive) throw new PartImportError('import-lock-held', `Another promote (pid ${pid}) holds ${lock}.`);
+    await rm(lock, { force: true });
+    try { handle = await open(lock, 'wx'); } catch { throw new PartImportError('import-lock-held', `Another promote holds ${lock}.`); }
+  }
+  await handle.writeFile(String(process.pid));
+  await handle.sync().catch(() => undefined);
+  return async () => { await handle!.close().catch(() => undefined); await rm(lock, { force: true }).catch(() => undefined); };
+}
+
+async function restoreBackup(backup: string, target: string): Promise<void> {
+  try { await atomicWrite(target, await readFile(backup)); } catch { /* absent journal backup means nothing was replaced */ }
+}
+
+/** Recover every journal not marked committed. Must be called while holding the import lock. */
+export async function recoverImportJournals(ldrawRoot: string): Promise<number> {
+  const root = journalRoot(ldrawRoot);
+  const entries = await readdir(root, { withFileTypes: true }).catch(() => []);
+  let recovered = 0;
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+    const directory = path.join(root, entry.name);
+    let journal: Record<string, unknown>;
+    try { journal = JSON.parse(await readFile(path.join(directory, 'journal.json'), 'utf8')) as Record<string, unknown>; } catch { await rm(directory, { recursive: true, force: true }); continue; }
+    if (journal.state === 'committed') { await rm(directory, { recursive: true, force: true }); continue; }
+    await restoreBackup(path.join(directory, 'ldraw-manifest.bak'), path.join(ldrawRoot, 'manifest.json'));
+    await restoreBackup(path.join(directory, 'shadow-manifest.bak'), path.join((journal.shadowRoot as string) ?? '', 'manifest.json'));
+    for (const target of (journal.copied as string[] | undefined) ?? []) await rm(target, { force: true });
+    if (typeof journal.ledgerPath === 'string') await rm(journal.ledgerPath, { force: true });
+    await rm(directory, { recursive: true, force: true });
+    recovered += 1;
+  }
+  return recovered;
+}
+
+export async function transactionalPromote(input: TransactionalPromoteInput): Promise<TransactionalPromoteResult> {
+  const release = await acquireLock(input.ldrawRoot);
+  let journalDirectory: string | undefined;
+  let copied: string[] = [];
+  try {
+    await recoverImportJournals(input.ldrawRoot);
+    const ldrawManifestPath = path.join(input.ldrawRoot, 'manifest.json');
+    const shadowManifestPath = path.join(input.shadowRoot, 'manifest.json');
+    const ldrawBackup = await readFile(ldrawManifestPath);
+    const shadowBackup = await readFile(shadowManifestPath);
+    const allFiles = [...input.ldrawFiles, ...input.shadowFiles];
+    for (const file of allFiles) {
+      const existing = await lstat(file.target).catch(() => undefined);
+      if (existing) throw new PartImportError('promotion-target-exists', `Refusing to overwrite existing source: ${file.target}`);
+    }
+    const journalId = randomUUID();
+    journalDirectory = path.join(journalRoot(input.ldrawRoot), journalId);
+    await mkdir(journalDirectory, { recursive: true });
+    await writeFile(path.join(journalDirectory, 'ldraw-manifest.bak'), ldrawBackup);
+    await writeFile(path.join(journalDirectory, 'shadow-manifest.bak'), shadowBackup);
+    const journal = { journalId, partId: input.partId, state: 'prepared', ldrawRoot: input.ldrawRoot, shadowRoot: input.shadowRoot, ledgerPath: path.join(importsRoot(input.ldrawRoot), `${input.partId}.json`), copied, createdAt: new Date().toISOString() };
+    await atomicWrite(path.join(journalDirectory, 'journal.json'), JSON.stringify(journal, null, 2));
+    journal.state = 'copying';
+    journal.copied = allFiles.map(file => file.target);
+    await atomicWrite(path.join(journalDirectory, 'journal.json'), JSON.stringify(journal, null, 2));
+    for (const file of allFiles) {
+      await mkdir(path.dirname(file.target), { recursive: true });
+      await copyFile(file.source, file.target);
+      copied.push(file.target);
+    }
+    await atomicWrite(ldrawManifestPath, input.ldrawManifest);
+    await atomicWrite(shadowManifestPath, input.shadowManifest);
+    const ledgerPath = journal.ledgerPath;
+    await mkdir(path.dirname(ledgerPath), { recursive: true });
+    await atomicWrite(ledgerPath, JSON.stringify(input.ledger, null, 2));
+    const readbackLdraw = JSON.parse(await readFile(ldrawManifestPath, 'utf8')) as { roots?: { partId?: string }[] };
+    const readbackShadow = JSON.parse(await readFile(shadowManifestPath, 'utf8')) as { files?: { path?: string }[] };
+    if (!readbackLdraw.roots?.some(root => root.partId === input.partId)) throw new PartImportError('promotion-readback-failed', 'LDraw manifest readback did not contain the promoted root.');
+    if (!readbackShadow.files?.some(file => file.path === `parts/${input.partId}.dat`)) throw new PartImportError('promotion-readback-failed', 'Shadow manifest readback did not contain the promoted root.');
+    await input.verify?.();
+    journal.state = 'committed';
+    await atomicWrite(path.join(journalDirectory, 'journal.json'), JSON.stringify(journal, null, 2));
+    await rm(journalDirectory, { recursive: true, force: true });
+    return { journalId, files: copied, ledgerPath, bundleHash: sha256(JSON.stringify(input.ledger)), validationDigest: sha256(JSON.stringify(input.ledger.validation ?? {})) };
+  } catch (error) {
+    if (journalDirectory) {
+      await restoreBackup(path.join(journalDirectory, 'ldraw-manifest.bak'), path.join(input.ldrawRoot, 'manifest.json'));
+      await restoreBackup(path.join(journalDirectory, 'shadow-manifest.bak'), path.join(input.shadowRoot, 'manifest.json'));
+      for (const target of copied) await rm(target, { force: true }).catch(() => undefined);
+      await rm(path.join(importsRoot(input.ldrawRoot), `${input.partId}.json`), { force: true }).catch(() => undefined);
+      await rm(journalDirectory, { recursive: true, force: true }).catch(() => undefined);
+    }
+    throw error;
+  } finally {
+    await release();
+  }
+}

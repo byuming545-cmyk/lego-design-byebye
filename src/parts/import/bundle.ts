@@ -11,6 +11,7 @@ import { ACCEPTED_LDRAW_LICENSES } from '../provenance.js';
 
 export const PART_IMPORT_SCHEMA = 'bricklab-part-import-bundle-1';
 export const SHADOW_DIRECTORY = fileURLToPath(new URL('../../../data/parts-foundation/shadow/', import.meta.url));
+export interface PartImportRoots { ldrawRoot?: string; shadowRoot?: string }
 const MAX_BUNDLE_JSON = 1_000_000;
 const MAX_FILES = 500;
 const MAX_FILE_BYTES = 4_000_000;
@@ -125,6 +126,10 @@ export function validatePartImportMetadata(value: unknown): PartImportBundle {
   };
 }
 
+function importRoots(options: PartImportRoots = {}) {
+  return { ldrawRoot: options.ldrawRoot ?? BUNDLED_LDRAW_DIRECTORY, shadowRoot: options.shadowRoot ?? SHADOW_DIRECTORY };
+}
+
 async function checkedFile(root: string, file: ImportSourceFile, side: 'ldraw' | 'shadow'): Promise<string> {
   const target = path.join(root, side, file.path);
   const stat = await lstat(target).catch(() => undefined);
@@ -135,18 +140,19 @@ async function checkedFile(root: string, file: ImportSourceFile, side: 'ldraw' |
   return target;
 }
 
-export async function readPartImportBundle(directory: string): Promise<PartImportBundle> {
+export async function readPartImportBundle(directory: string, options: PartImportRoots = {}): Promise<PartImportBundle> {
+  const roots = importRoots(options);
   const metadataPath = path.join(directory, 'bundle.json');
   const metadata = await readFile(metadataPath).catch(() => { throw new PartImportError('missing-bundle', 'bundle.json is missing.'); });
   if (metadata.length > MAX_BUNDLE_JSON) throw new PartImportError('bundle-too-large', 'bundle.json exceeds the metadata limit.');
   let parsed: unknown;
   try { parsed = JSON.parse(metadata.toString('utf8')); } catch { throw new PartImportError('invalid-bundle', 'bundle.json is not valid JSON.'); }
   const bundle = validatePartImportMetadata(parsed);
-  const base = await loadBundledLDrawManifest();
+  const base = await loadLDrawManifest(roots.ldrawRoot);
   if (base.revision !== bundle.geometry.revision) throw new PartImportError('source-revision-mismatch', 'LDraw bundle revision must equal the pinned repository revision.');
   if (SHADOW_REVISION !== bundle.connections.revision) throw new PartImportError('source-revision-mismatch', 'Shadow bundle revision must equal the pinned repository revision.');
   if (!bundle.allowStagingValidation) throw new PartImportError('staging-not-allowed', 'Bundle metadata does not allow staging validation.');
-  const shadowBase = await loadShadowManifest();
+  const shadowBase = await loadShadowManifest(roots.shadowRoot);
   if (base.roots.some(root => root.partId === bundle.partId)) throw new PartImportError('part-already-exists', `Part ${bundle.partId} is already in the pinned catalogue; use a new native ID.`);
   const basePaths = new Set([...base.files.map(file => file.path), ...shadowBase.files.map(file => file.path)]);
   for (const file of [...bundle.geometry.files, ...bundle.connections.files]) if (basePaths.has(file.path)) throw new PartImportError('source-path-already-in-base', `Bundle file would overlap the pinned source: ${file.path}`);
@@ -155,22 +161,28 @@ export async function readPartImportBundle(directory: string): Promise<PartImpor
   return bundle;
 }
 
-export async function loadShadowManifest(): Promise<ShadowManifest> {
-  const text = await readFile(path.join(SHADOW_DIRECTORY, 'manifest.json'), 'utf8');
+export async function loadLDrawManifest(root = BUNDLED_LDRAW_DIRECTORY) {
+  const text = await readFile(path.join(root, 'manifest.json'), 'utf8');
+  return validateBundledLDrawManifest(JSON.parse(text));
+}
+
+export async function loadShadowManifest(root = SHADOW_DIRECTORY): Promise<ShadowManifest> {
+  const text = await readFile(path.join(root, 'manifest.json'), 'utf8');
   return validateBundledShadowManifest(JSON.parse(text));
 }
 
-export async function stagePartImport(directory: string, bundle: PartImportBundle): Promise<StagedPartImport> {
+export async function stagePartImport(directory: string, bundle: PartImportBundle, options: PartImportRoots = {}): Promise<StagedPartImport> {
+  const roots = importRoots(options);
   if (!bundle.allowStagingValidation) throw new PartImportError('staging-not-allowed', 'Bundle metadata does not allow staging validation.');
-  const base = await loadBundledLDrawManifest();
-  const shadowBase = await loadShadowManifest();
+  const base = await loadLDrawManifest(roots.ldrawRoot);
+  const shadowBase = await loadShadowManifest(roots.shadowRoot);
   const basePaths = new Set([...base.files.map(file => file.path), ...shadowBase.files.map(file => file.path)]);
   for (const file of [...bundle.geometry.files, ...bundle.connections.files]) if (basePaths.has(file.path)) throw new PartImportError('source-path-already-in-base', `Bundle file would overlap the pinned source: ${file.path}`);
   const temp = await mkdtemp(path.join(tmpdir(), `bricklab-part-import-${bundle.partId}-`));
   const ldrawDirectory = path.join(temp, 'ldraw'), shadowDirectory = path.join(temp, 'shadow');
   try {
-    await cp(path.join(BUNDLED_LDRAW_DIRECTORY, 'files'), path.join(ldrawDirectory, 'files'), { recursive: true });
-    await cp(path.join(SHADOW_DIRECTORY, 'files'), path.join(shadowDirectory, 'files'), { recursive: true });
+    await cp(path.join(roots.ldrawRoot, 'files'), path.join(ldrawDirectory, 'files'), { recursive: true });
+    await cp(path.join(roots.shadowRoot, 'files'), path.join(shadowDirectory, 'files'), { recursive: true });
     for (const file of bundle.geometry.files) {
       const target = path.join(ldrawDirectory, 'files', file.path);
       await mkdir(path.dirname(target), { recursive: true });

@@ -1,30 +1,50 @@
-# 新零件暂存导入：本轮报告
+# 新零件暂存导入：硬化报告
 
 ## 结论
 
-本轮完成了受控暂存导入的代码、CLI 和来源包校验测试，但没有可用的真实新零件来源包，因此没有新增任何真实零件进入生产，也没有执行正式提升。
+本轮完成了 fixed-side exterior-shell、structural/exterior 尝试回退、可注入源库根、事务性 promote（锁/journal/原子 manifest/ledger/崩溃恢复），并补了正向事务、回滚和固定端 class 测试。
 
-## 已实现
+但当前没有可用的真实新零件来源包。因此：
 
-- `src/parts/import/bundle.ts`：`bricklab-part-import-bundle-1` 元数据、许可/revision/URL/SHA/大小/路径校验，临时 overlay staging。
-- `src/parts/import/service.ts`：暂存 part 经现有 `NativePartRepository`、`GrammarAssemblyService`、规则、`attachPart`、碰撞、图验证、生成/导出/重导入。
-- `src/cli/part-import.ts`：`npm run import:part -- --bundle ... [--output ...]`。
-- `tests/parts-part-import.test.ts`：10 个测试，覆盖未审许可、路径穿越、已存在 partId、缺失源文件、SHA 不匹配、未声明文件不进入 staging、base 文件覆盖拒绝、未批准 host、staging 未允许、promote 拒绝。
+- 真实 bundle 验证：0
+- 正式 promote：0
+- 新增真实生产零件：0
+- 固定 253 根件统计未改变
 
-## 本轮执行结果
+## 本轮代码
 
-- `npm run typecheck`: passed
-- `npm test -- --maxWorkers=2`: 793/793 passed, 56 files, 102.89 s (`unit.log`)
-- `npm run build`: passed (`build.log`)
-- 真实 bundle: 0；正式提升: 0
+- `src/parts/import/bundle.ts`：批准 host、base 路径拒绝、只复制声明文件、`allowStagingValidation`、可注入 LDraw/Shadow 根。
+- `src/parts/import/transaction.ts`：锁、journal、manifest 备份、原子写/readback、ledger、回滚、崩溃恢复。
+- `src/parts/import/service.ts`：C01/BAR_CLIP/PIN_HOLE 候选、moving/fixed 两种方向、structural 失败后 exterior 回退、事务 promote、post-promote repository/admission reload。
+- `src/parts/assembly/{types,service,engine}.ts`、`src/parts/api.ts`：`fixedCollisionClass` 透传；根 placement 保存 class；默认 structural。
+- `tests/parts-part-import.test.ts`：10 个 bundle/staging/promote 测试。
+- `tests/parts-part-import-transaction.test.ts`：4 个提交/目标存在/回滚/崩溃恢复测试。
+- `tests/parts-assembly-fixed-class.test.ts`：3 个 fixed exterior root、structural 默认、fixed exterior + moving structural 测试。
 
-## 未完成/阻塞
+## 实际执行
 
-- 没有真实的新零件 bundle。`3062b` 需要 LDraw + LDCad Shadow + 许可/作者/revision/SHA；当前 `raw.githubusercontent.com` 连接被重置。
-- 已实现受控 promote（显式 confirm、重新验证、目标存在拒绝、manifest 备份/回滚），但本轮没有 validated 的真实 bundle，因此没有执行 promote。
-- 暂存解析已覆盖 C01/BAR_CLIP/PIN_HOLE 候选，但没有真实正向样例。
-- 路径/保持力/摩擦/形变/实物验证不在本轮范围。
+- `npm run typecheck`：通过
+- `npm test -- --maxWorkers=2`：**800/800 passed，58 files，109.95 s**
+- `npm run build`：通过
+- 真实 bundle：0；真实 promote：0
 
-## 安全边界
+## Promote 语义
 
-未修改 `data/parts-foundation` 固定源，未按零件编号建规则，未删除碰撞或准入检查，未推送/合并/部署。
+- 只允许 validated report + confirm 匹配 + 重新验证通过。
+- 目标已存在、lock 占用、journal/readback/ledger 失败都会拒绝或回滚。
+- promote 后仅做 repository/grammar admission reload；完整 connector audit/coverage 重建未自动执行。
+
+## 真实 3062b 状态
+
+未获得 LDraw + LDCad Shadow 的真实来源包（host/revision/SHA/许可/作者齐全），因此没有导入、没有生成真实模型、没有 promote。当前 `raw.githubusercontent.com` 连接重置。
+
+## 边界
+
+未修改 `data/parts-foundation` 原始文件；未把阻塞件批量标为 exterior；未按零件编号建规则；未删除碰撞、准入、接口或图检查；未推送、合并或部署。
+
+## 未验证
+
+- 真实 bundle 的正向 validate/promote 证据。
+- post-promote 全量 audit/coverage/report 重建。
+- exterior root 的生产生成模块。
+- 安装路径、保持力、摩擦、形变、实物。
