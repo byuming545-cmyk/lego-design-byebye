@@ -56,16 +56,20 @@ describe('exterior shell collision contract', () => {
     expect(result.proof.topology[1]).toMatchObject({ status: 'exterior-source-surface', signedVolume: null, internalCaps: 0 });
   });
 
-  it('confirms the real 18973 exterior pose remains a collision, not a fake clearance', () => {
+  it('rejects the historical endpoint-extension false positive for the real 18973 surface pose', () => {
     const fixedPoint = brick.connections.points.find(point => point.id === 'p/stud.dat:8:0')!;
     const movingPoint = windscreen.connections.points.find(point => point.gender === 'F' && point.dimensionsResolved)!;
     const solved = solveAttachment({ fixedPart: brick, fixedPlacement: placement('3001'), fixedConnectionId: fixedPoint.id, movingPart: windscreen, movingConnectionId: movingPoint.id });
     expect(solved.status).toBe('solved');
     const result = checkNativePairCollision(brick, placement('3001'), windscreen, placement('18973', solved.candidates[0].transform, 'exterior-shell'), solved.candidates[0].penetrationZone);
-    expect(result.status).toBe('collision');
-    expect(result.classification).toBe('EXTERIOR_SURFACE_COLLISION');
-    expect(result.witness).toBeDefined();
+    // Historical witness y=-4 is the edge endpoint. The old probe at -3.75
+    // extends outside its actual [-8,-4] span into the stud, inventing a crossing.
+    expect(result.status).toBe('clear');
+    expect(result.classification).toBe('EXTERIOR_SURFACE_CLEAR');
+    expect(result.witness).toBeUndefined();
     expect(result.proof.surfaceCrossingChecked).toBe(true);
+    expect(result.proof.completeSurfacePartition).toBe(true);
+    expect(result.checkedSurfacePatches).toBeGreaterThan(0);
   });
 
   it('retains a genuine panel-through-brick collision and an exterior shell-shell crossing', () => {
@@ -74,7 +78,12 @@ describe('exterior shell collision contract', () => {
     const solved = solveAttachment({ fixedPart: brick, fixedPlacement: placement('3001'), fixedConnectionId: fixedPoint.id, movingPart: panel, movingConnectionId: movingPoint.id });
     expect(solved.status).toBe('solved');
     const candidate = solved.candidates[0];
-    const through = checkNativePairCollision(brick, placement('3001'), panel, placement('11477', candidate.transform, 'exterior-shell'), candidate.penetrationZone);
+    const contact = checkNativePairCollision(brick, placement('3001'), panel, placement('11477', candidate.transform, 'exterior-shell'), candidate.penetrationZone);
+    // Old reverse-hit probe used a line 1.315 LDU away from the actual hit.
+    expect(contact.status).toBe('clear');
+    expect(contact.proof.completeSurfacePartition).toBe(true);
+    const crossingPose = { ...candidate.transform, translation: candidate.transform.translation.map((value, axis) => value + (axis === 1 ? 8 : 0)) as [number, number, number] };
+    const through = checkNativePairCollision(brick, placement('3001'), panel, placement('11477', crossingPose, 'exterior-shell'));
     expect(through.status).toBe('collision');
     expect(through.classification).toBe('EXTERIOR_SURFACE_COLLISION');
     expect(through.witness).toBeDefined();

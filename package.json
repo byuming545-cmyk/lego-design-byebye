@@ -38,7 +38,8 @@
     "generate:bar-clip": "tsx src/cli/bar-clip-generate.ts",
     "generate:pin-hole": "tsx src/cli/pin-hole-generate.ts",
     "pilot:exterior-shell": "tsx src/cli/exterior-shell-pilot.ts",
-    "import:part": "tsx src/cli/part-import.ts"
+    "import:part": "tsx src/cli/part-import.ts",
+    "evidence:import-collision": "tsx src/cli/import-collision-evidence.ts"
   },
   "dependencies": {
     "@fontsource/noto-sans-sc": "^5.2.9",

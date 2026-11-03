@@ -106,7 +106,7 @@ export class AssemblyService {
   constructor(options: { repository?: NativePartRepository; dataDir?: string } = {}) {
     this.repository = options.repository ?? new NativePartRepository();
     this.reportDirectory = path.resolve(options.dataDir ?? ASSEMBLY_REPORT_DIRECTORY);
-    this.engine = new AttachmentEngine({ mode: 'production', loadPart: (id) => this.repository.getPart(id), getCapability: (id) => this.getCapability(id) });
+    this.engine = new AttachmentEngine({ mode: 'production', getSourceSnapshot: () => this.repository.snapshotDigest, loadPart: (id) => this.repository.getPart(id), getCapability: (id) => this.getCapability(id) });
   }
 
   ready(): Promise<void> { this.prepared ??= this.initialize(); return this.prepared; }
@@ -303,7 +303,7 @@ export class AssemblyService {
     return this.engine.attachPart(graph, { anchorInstanceId: graph.placements[0].instanceId, anchorConnectionId: request.connectionA, partId: request.partB, candidateConnectionId: request.connectionB, ...(request.twistDegrees === undefined ? {} : { twistDegrees: request.twistDegrees }), ...(request.collisionClass === undefined ? {} : { collisionClass: request.collisionClass }) });
   }
   async generate(request: NativeModuleRequest): Promise<NativeGenerationResult> {
-    await this.ready(); this.generator ??= new NativeAssemblyGenerator(this.engine);
+    await this.ready(); this.generator ??= new NativeAssemblyGenerator(this.engine, { partIds: await this.repository.listIds() });
     const result = await this.generator.generate(request);
     if (result.status === 'generated' && result.model) {
       this.models.set(result.model.id, structuredClone(result.model));

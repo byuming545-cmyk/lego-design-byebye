@@ -14,7 +14,7 @@ import type {
   NativePlacement, RigidTransform, Vector3,
 } from './types.js';
 
-export const NATIVE_MODULE_TYPES = ['wall', 'platform', 'simple-chassis', 'simple-box', 'simple-roof', 'basic-snot', 'wheel-module', 'bar-clip', 'pin-hole', 'exterior-shell'] as const;
+export const NATIVE_MODULE_TYPES = ['wall', 'platform', 'simple-chassis', 'simple-box', 'simple-roof', 'basic-snot', 'wheel-module', 'bar-clip', 'pin-hole', 'exterior-shell', 'interface-assembly'] as const;
 export type NativeModuleType = typeof NATIVE_MODULE_TYPES[number];
 export interface NativeModuleRequest {
   module: NativeModuleType;
@@ -103,8 +103,9 @@ const MODULE_NAMES: Record<NativeModuleType, string> = {
   'bar-clip': '真实零件杆夹连接模块',
   'pin-hole': '真实零件销孔连接模块',
   'exterior-shell': '真实来源表面合同模块',
+  'interface-assembly': '真实接口驱动组合',
 };
-const DEFAULT_COUNTS: Record<NativeModuleType, number> = { wall: 5, platform: 5, 'simple-chassis': 5, 'simple-box': 13, 'simple-roof': 5, 'basic-snot': 3, 'wheel-module': 4, 'bar-clip': 2, 'pin-hole': 2, 'exterior-shell': 2 };
+const DEFAULT_COUNTS: Record<NativeModuleType, number> = { wall: 5, platform: 5, 'simple-chassis': 5, 'simple-box': 13, 'simple-roof': 5, 'basic-snot': 3, 'wheel-module': 4, 'bar-clip': 2, 'pin-hole': 2, 'exterior-shell': 2, 'interface-assembly': 3 };
 const finite = (v: number[]) => v.every(Number.isFinite);
 function rotate(rotation: RigidTransform['rotation'], [x, y, z]: Vector3): Vector3 {
   return [rotation[0] * x + rotation[1] * y + rotation[2] * z, rotation[3] * x + rotation[4] * y + rotation[5] * z, rotation[6] * x + rotation[7] * y + rotation[8] * z];
@@ -195,7 +196,7 @@ function footprintContained(candidate: CatalogPart, placement: NativePlacement, 
   return [0, 2].every(axis => a.min[axis] >= b.min[axis] - 1e-5 && a.max[axis] <= b.max[axis] + 1e-5);
 }
 export function validateNativeModuleRequest(request: NativeModuleRequest) {
-  const minimum = request?.module === 'bar-clip' || request?.module === 'pin-hole' || request?.module === 'exterior-shell' ? 2 : 3;
+  const minimum = request?.module === 'bar-clip' || request?.module === 'pin-hole' || request?.module === 'exterior-shell' || request?.module === 'interface-assembly' ? 2 : 3;
   if (!request || !NATIVE_MODULE_TYPES.includes(request.module) || request.partCount !== undefined && (!Number.isSafeInteger(request.partCount) || request.partCount < minimum || request.partCount > 32)) {
     throw new Error(`请选择支持的基础结构；零件目标数量应为 ${minimum}–32 的整数。`);
   }
@@ -278,8 +279,63 @@ export class NativeAssemblyGenerator {
     };
     const target = request.partCount ?? DEFAULT_COUNTS[request.module];
     const required = new Set(request.requiredPartIds ?? []);
-    const block = (reason: string): NativeGenerationResult => { finish(); return { status: 'blocked', module: request.module, model: null, reasons: [...new Set([reason, ...reasons])].slice(0, 20), search }; };
+    const block = (reason: string): NativeGenerationResult => { search.exhausted = budgetReached(); finish(); return { status: 'blocked', module: request.module, model: null, reasons: [...new Set([reason, ...reasons])].slice(0, 20), search }; };
     if (!catalog.length) return block('当前没有同时通过装配验证、批次准入和来源校验的真实零件。');
+    if (request.module === 'interface-assembly') {
+      // A production structural goal: a connected source-backed graph. Frames,
+      // allowed twists, occupancy and collision are exclusively engine decisions.
+      const choices = catalog.filter(part => part.capability.generatable);
+      const available = new Set(choices.map(part => part.native.partId));
+      if ([...required].some(id => !available.has(id))) return block('A required source part has no structural interface admission.');
+      const grow = async (graph: NativeAssembly): Promise<NativeAssembly | null> => {
+        if (budgetReached()) return null;
+        const present = new Set(graph.placements.map(p => p.partId));
+        if (graph.placements.length === target) return [...required].every(id => present.has(id)) ? graph : null;
+        const missing = new Set([...required].filter(id => !present.has(id)));
+        const occupied = new Set<string>();
+        for (const edge of graph.edges) for (const [instanceId, connectionId] of [[edge.fixedInstanceId, edge.fixedConnectionId], [edge.movingInstanceId, edge.movingConnectionId]]) {
+          const placement = graph.placements.find(p => p.instanceId === instanceId)!;
+          const point = byId.get(placement.partId)!.native.connections.points.find(p => p.id === connectionId)!;
+          occupied.add(physicalEndpointKey(instanceId, point));
+        }
+        for (const placement of [...graph.placements].reverse()) {
+          const anchor = byId.get(placement.partId)!;
+          for (const point of anchor.points) {
+            if (occupied.has(physicalEndpointKey(placement.instanceId, point))) continue;
+            const matches = this.connectorIndex.findCompatible(adaptImportedConnection(point), available)
+              .sort((a, b) => Number(missing.has(b.partId)) - Number(missing.has(a.partId)) || Number(required.has(b.partId)) - Number(required.has(a.partId)) || a.partId.localeCompare(b.partId));
+            for (const match of matches) {
+              if (target - graph.placements.length <= missing.size && !missing.has(match.partId)) continue;
+              if (!match.connector.sourceConnectionId) continue;
+              const mate = byId.get(match.partId)!;
+              const solved = solveAttachment({ fixedPart: anchor.native, fixedPlacement: placement, fixedConnectionId: point.id, movingPart: mate.native, movingConnectionId: match.connector.sourceConnectionId });
+              for (const pose of solved.candidates) {
+                if (budgetReached()) return null;
+                search.attempts++; search.attachmentApiCalls++;
+                const result = await this.engine.attachPart(graph, { anchorInstanceId: placement.instanceId, anchorConnectionId: point.id, partId: match.partId, candidateConnectionId: match.connector.sourceConnectionId, twistDegrees: pose.twistDeg });
+                if (!result.accepted) { rejectCandidate(result.rejections); continue; }
+                search.acceptedAttachments++;
+                const next = await grow(result.graph);
+                if (next) return next;
+                search.backtracks++;
+              }
+            }
+          }
+        }
+        return null;
+      };
+      for (const root of choices.filter(part => !required.size || required.has(part.native.partId))) {
+        if (budgetReached()) break;
+        search.testedRoots++;
+        const graph = await grow(await this.engine.createAssembly(root.native.partId));
+        if (!graph) continue;
+        const validation = await this.engine.validateGraph(graph);
+        if (!validation.valid) { recordRejection('final-graph-verification', validation.issues.join(' ')); continue; }
+        search.finalPlacements = graph.placements.length; search.finalConnectionEdges = graph.edges.length;
+        finish(); return { status: 'generated', module: request.module, model: createNativeAssemblyDocument(graph, request.module, catalog), reasons: [], search };
+      }
+      return block('No complete source-interface assembly was found within the bounded structural search.');
+    }
     if (request.module === 'exterior-shell') {
       const roots = catalog.filter(part => part.capability.generatable && part.points.some(point => point.gender === 'M'));
       const shells = catalog.filter(part => part.capability.exteriorGeneratable && part.exteriorPoints.some(point => point.gender === 'F'));

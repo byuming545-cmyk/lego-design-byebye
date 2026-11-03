@@ -38,7 +38,7 @@ export class GrammarAssemblyService extends AssemblyService {
 
   constructor(options: { repository?: NativePartRepository; dataDir?: string } = {}) { super(options); }
 
-  override ready(): Promise<void> { return this.grammarPrepared ??= this.initializeGrammar(); }
+  override ready(): Promise<void> { this.repository.assertCurrentSnapshot(); return this.grammarPrepared ??= this.initializeGrammar(); }
 
   private async initializeGrammar(): Promise<void> {
     this.grammarCheckedAt = new Date().toISOString();

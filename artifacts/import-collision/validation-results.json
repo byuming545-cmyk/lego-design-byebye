@@ -1,0 +1,222 @@
+{
+  "baselineCommit": "a1e4210ba1389a19c8b83fccd328f8a6f2ece4de",
+  "branch": "codex/import-collision-closure",
+  "sourceCounts": {
+    "before": 253,
+    "after": 254,
+    "newSourceIdentities": 1,
+    "newEligibility": 1,
+    "newActuallyGenerated": 1,
+    "promoted": 1,
+    "newPartId": "3062b",
+    "structuralBefore": 104,
+    "structuralAfter": 105,
+    "structuralBlocked": 149,
+    "exteriorEligible": 128
+  },
+  "finalChecks": [
+    {
+      "command": "npm test -- --maxWorkers=2",
+      "files": 61,
+      "tests": 815,
+      "passed": 815,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 196.09,
+      "log": "logs/full-suite-final.txt"
+    },
+    {
+      "command": "npm run build",
+      "status": "PASS",
+      "includes": [
+        "typecheck",
+        "Vite client build",
+        "server TypeScript build"
+      ],
+      "log": "logs/build-final.txt"
+    },
+    {
+      "command": "CI=1 npm run test:e2e",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "log": "logs/browser-final.txt"
+    },
+    {
+      "command": "npm run test:preview",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0,
+      "log": "logs/preview-final.txt"
+    },
+    {
+      "command": "npm run audit:connectors -- --output artifacts/import-collision/final-catalogue",
+      "status": "PASS",
+      "totalParts": 254,
+      "generationEligible": 105,
+      "log": "logs/final-connector-audit.txt"
+    },
+    {
+      "command": "npm run import:part -- --recover",
+      "status": "PASS",
+      "recovered": 0,
+      "log": "logs/recovery-noop.txt"
+    },
+    {
+      "command": "npm run evidence:import-collision",
+      "models": 4,
+      "reimportValid": 4,
+      "status": "PASS",
+      "log": "logs/generated-models-final.txt"
+    }
+  ],
+  "models": [
+    {
+      "name": "round-brick-support",
+      "module": "interface-assembly",
+      "placements": 5,
+      "bom": [
+        {
+          "partId": "2431",
+          "quantity": 1
+        },
+        {
+          "partId": "3062b",
+          "quantity": 4
+        }
+      ],
+      "edges": 4,
+      "reimport": "VALID",
+      "physicalBuildVerified": false
+    },
+    {
+      "name": "brick-panel-control",
+      "module": "exterior-shell",
+      "placements": 2,
+      "bom": [
+        {
+          "partId": "11477",
+          "quantity": 1
+        },
+        {
+          "partId": "3001",
+          "quantity": 1
+        }
+      ],
+      "edges": 1,
+      "reimport": "VALID",
+      "physicalBuildVerified": false
+    },
+    {
+      "name": "plate-panel-contact",
+      "module": "exterior-shell",
+      "placements": 2,
+      "bom": [
+        {
+          "partId": "11477",
+          "quantity": 1
+        },
+        {
+          "partId": "3024",
+          "quantity": 1
+        }
+      ],
+      "edges": 1,
+      "reimport": "VALID",
+      "physicalBuildVerified": false
+    },
+    {
+      "name": "brick-windscreen-contact",
+      "module": "exterior-shell",
+      "placements": 2,
+      "bom": [
+        {
+          "partId": "18973",
+          "quantity": 1
+        },
+        {
+          "partId": "3001",
+          "quantity": 1
+        }
+      ],
+      "edges": 1,
+      "reimport": "VALID",
+      "physicalBuildVerified": false
+    }
+  ],
+  "intermediateFailures": [
+    {
+      "log": "logs/initial-surface-regression.txt",
+      "failed": 2,
+      "reason": "Historical endpoint/reverse-hit false-positive expectations; corrected with recorded finite-edge witnesses and complete source-surface checks; genuine penetration negatives retained."
+    },
+    {
+      "log": "logs/initial-full-suite.txt",
+      "tests": 813,
+      "failed": 7,
+      "reason": "New identity absent from historical ledger and old verification harness missing sourceSnapshot; updated harness and explicit history/new-root separation."
+    },
+    {
+      "log": "logs/intermediate-full-suite.txt",
+      "tests": 814,
+      "failed": 4,
+      "reason": "Three timeouts while browser/full checks overlapped; pending-lock assertion was added during that run. Frozen-source re-execution passed; no timeout limit was increased."
+    },
+    {
+      "log": "logs/initial-browser-http-minimum.txt",
+      "passed": 11,
+      "failed": 1,
+      "reason": "Normal HTTP route retained the old minimum part count; fixed and covered by a new API test and the final browser run."
+    },
+    {
+      "source": "Observed command output in task transcript; the initial CLI log was overwritten by its later successful execution.",
+      "command": "npm run evidence:import-collision",
+      "reason": "Initial five-part search exhausted its bounded search while revisiting occupied anchors. Physical endpoint prefiltering and requested-part ordering were added; the five-part structure then generated and reimported VALID."
+    }
+  ],
+  "notRun": [
+    "Physical build, stability, material stress, insertion trajectory, friction and retention certification.",
+    "Wheel/axle/hinge family production expansion.",
+    "Power-loss/filesystem-corruption fault simulation.",
+    "Bulk old part-pair migration; not used for source-derived grammar admission."
+  ],
+  "sourcePreservation": {
+    "originalFiles": 988,
+    "unchanged": 988,
+    "newFiles": 3,
+    "historyMigrationUnchanged": true,
+    "userPrivateExamples": "Not present in this checkout; not created, deleted or migrated."
+  },
+  "deployment": {
+    "pushed": false,
+    "merged": false,
+    "deployed": false
+  },
+  "limitations": [
+    "Only one 3062b endpoint is enabled; three other source features remain disabled.",
+    "Exterior models have surface-only certificates, not closed-solid or physical certification.",
+    "Runtime adoption uses explicit service restart and browser refresh; no automatic hot replacement.",
+    "The v1 bundle format still requires an existing same-ID Shadow root."
+  ],
+  "logSha256": {
+    "logs/preview-final.txt": "cc91099d19997971e1507f6d7cd147917233ba749808575e2354c4655b6f60df",
+    "logs/recovery-noop.txt": "7a7243b547e2239d4cdd0f50e262725762eec407b7cc356db0f7a5ec04f2f38a",
+    "logs/browser-final.txt": "ea989277b69dbb23daaade97f9006ce79d95d15ced4ee38161fdb009eef4a3d0",
+    "logs/real-import-lifecycle.txt": "ec3ea53298f006bd3ee0eeb13dfdb587147f258febc1ecb49c7875e43a41d28c",
+    "logs/full-suite-815-before-budget-metadata.txt": "3720cb8a5ae490bc6c0a1ad4c10cf5e81565dc54001e199464da6b429f126f09",
+    "logs/build-final.txt": "2b12dfec51a149d81838a83ad411d0adcedfaa1db1619399599ff84a85bd8c00",
+    "logs/connection-parse-audit.txt": "cbe80c13e2a9b393d9527015cac5b7b358411e45278d419308412cab08aa185a",
+    "logs/initial-browser-http-minimum.txt": "c0813293eb5dcbe851579f52ad05f7081a72ed56cc3379a06b19574bb23520be",
+    "logs/final-connector-audit.txt": "6985fea3c09d9a4af1cf231e41949cbeb4a7da3008ab5d9b69cc1c27e2e8aaf9",
+    "logs/generated-models.txt": "19f96055761e81f668a636681d35f772acdb8d43614291639b961c72adbd0c40",
+    "logs/generated-models-final.txt": "19f96055761e81f668a636681d35f772acdb8d43614291639b961c72adbd0c40",
+    "logs/intermediate-full-suite.txt": "71f3541cc86b4ae249732140e9df8bb1876b484cac2063ba1a26236bb0dbbea1",
+    "logs/initial-full-suite.txt": "f8ada56a36ba415337cead11c9562ade08ee6dd98c531b2e5f1717e8d4fbe02f",
+    "logs/import-and-surface-focused.txt": "c0e7e53c2adedd55955a9fff5c331c0fbd8b33f399660fea6c78445365897b22",
+    "logs/real-promotion.txt": "b972fe6dfe7bcc73f2ce997c7ac49f0678fc3f668754197610d0129a096f743a",
+    "logs/initial-surface-regression.txt": "7afcd637b461d4d603874c125d2df28fc7e1714547242663859fff512a49d75e",
+    "logs/full-suite-814-before-http-minimum.txt": "8b3d2c5ea8885430d92e103f38c3b712121ad9c588f2f3bcc2dc16138336347f",
+    "logs/full-suite-final.txt": "1e3d2783ea139a568429c7f0abd8280e143dc44f0d9f39c26e61260828cce5c9",
+    "logs/snapshot-and-library-focused.txt": "debcf8b7d434bb1a1f8928a90783e8b89773f18a5a49e36623067418658a4caa"
+  }
+}

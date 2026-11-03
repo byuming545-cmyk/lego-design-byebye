@@ -1,3 +1,4 @@
+import { SourceSnapshotGuard } from '../sourceSnapshot.js';
 import { createHash } from 'node:crypto';
 import { createBundledLDrawImporter, createBundledLDrawResolver, loadBundledLDrawManifest, type BundledLDrawManifest } from '../ldraw/index.js';
 import { createBundledConnectionImporter } from '../connections/index.js';
@@ -40,11 +41,18 @@ export class NativePartRepository {
   /** Explicit source-bundle selection for reviewed offline imports. Not request/env controlled. */
   constructor(private readonly sourceBundle: { geometryDirectory?: string; shadowDirectory?: string } = {}) {}
   private prepared?: Promise<void>;
+  private snapshot?: SourceSnapshotGuard;
+  get snapshotDigest() {
+    this.snapshot ??= new SourceSnapshotGuard({ ldrawRoot: this.sourceBundle.geometryDirectory, shadowRoot: this.sourceBundle.shadowDirectory });
+    return this.snapshot.digest;
+  }
   private manifest?: BundledLDrawManifest;
   private importer?: Awaited<ReturnType<typeof createBundledLDrawImporter>>;
   private connections?: ReturnType<typeof createBundledConnectionImporter>;
   private readonly cache = new Map<string, Promise<NativeAssemblyPart | undefined>>();
+  assertCurrentSnapshot() { void this.snapshotDigest; this.snapshot!.assertCurrent(); }
   private initialize() {
+    this.assertCurrentSnapshot();
     this.prepared ??= (async () => {
       this.manifest = await loadBundledLDrawManifest(this.sourceBundle.geometryDirectory);
       this.importer = await createBundledLDrawImporter(this.sourceBundle.geometryDirectory);

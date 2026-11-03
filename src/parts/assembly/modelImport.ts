@@ -80,7 +80,7 @@ export async function inspectNativeModelImport(value: unknown, engine: Attachmen
   const order = new Map(canonicalPlacements.map((placement, index) => [placement.instanceId, index]));
   const sourceHashes = Object.fromEntries(canonicalPlacements.map(placement => [placement.partId, model.sourceHashes[placement.partId]]));
   const trusted = {
-    schemaVersion: 1 as const, id: `assembly-import-${randomUUID()}`, ...engine.versions,
+    schemaVersion: 1 as const, id: `assembly-import-${randomUUID()}`, ...engine.versions, ...(model.sourceSnapshot ? { sourceSnapshot: model.sourceSnapshot } : {}),
     placements: canonicalPlacements, edges: canonicalEdges, sourceHashes, physicalBuildVerified: false as const,
     module: model.module, name: `已重新验证的真实装配（导入标签：${model.module}）`,
     bom: [...bom.values()].sort((a, b) => a.partId.localeCompare(b.partId)),

@@ -1,0 +1,48 @@
+
+ RUN  v5.0.5 /workspace/lego-import-collision
+
+ ❯ tests/parts-assembly-exterior-shell.test.ts (6 tests | 2 failed) 20259ms
+   ❯ exterior shell collision contract (6)
+     × confirms the real 18973 exterior pose remains a collision, not a fake clearance 34ms
+     × retains a genuine panel-through-brick collision and an exterior shell-shell crossing 23ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/parts-assembly-exterior-shell.test.ts > exterior shell collision contract > confirms the real 18973 exterior pose remains a collision, not a fake clearance
+AssertionError: expected 'clear' to be 'collision' // Object.is equality
+
+Expected: "collision"
+Received: "clear"
+
+ ❯ tests/parts-assembly-exterior-shell.test.ts:65:27
+     63|     expect(solved.status).toBe('solved');
+     64|     const result = checkNativePairCollision(brick, placement('3001'), …
+     65|     expect(result.status).toBe('collision');
+       |                           ^
+     66|     expect(result.classification).toBe('EXTERIOR_SURFACE_COLLISION');
+     67|     expect(result.witness).toBeDefined();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/parts-assembly-exterior-shell.test.ts > exterior shell collision contract > retains a genuine panel-through-brick collision and an exterior shell-shell crossing
+AssertionError: expected 'clear' to be 'collision' // Object.is equality
+
+Expected: "collision"
+Received: "clear"
+
+ ❯ tests/parts-assembly-exterior-shell.test.ts:78:28
+     76|     const candidate = solved.candidates[0];
+     77|     const through = checkNativePairCollision(brick, placement('3001'),…
+     78|     expect(through.status).toBe('collision');
+       |                            ^
+     79|     expect(through.classification).toBe('EXTERIOR_SURFACE_COLLISION');
+     80|     expect(through.witness).toBeDefined();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 4 passed (6)
+   Start at  15:41:48
+   Duration  20.96s (tests 97%, transform 2%)
+

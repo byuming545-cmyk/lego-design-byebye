@@ -1,0 +1,12 @@
+
+ RUN  v5.0.5 /workspace/lego-import-collision
+
+
+ Test Files  5 passed (5)
+      Tests  27 passed (27)
+   Start at  15:58:29
+   Duration  5.82s (tests 88%, import 8%, transform 4%)
+
+    Isolate  5 workers spawned · ~218ms startup each (spawn + environment, per file)
+             at least ~326ms faster with isolate: false — reuses workers across files instead of one per file
+

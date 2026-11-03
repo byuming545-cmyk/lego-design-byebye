@@ -4,7 +4,7 @@ import path from 'node:path';
 import { expectCoverageMatches } from './assemblyChecks.js';
 import type { InterfaceCoverageData } from '../../src/components/InterfaceCoverage.js';
 
-const artifactDirectory = path.resolve('artifacts/connector-grammar/screenshots/parts');
+const artifactDirectory = path.resolve('artifacts/import-collision/screenshots/parts');
 const pathname = (response: Response) => decodeURIComponent(new URL(response.url()).pathname);
 const pageErrors = new WeakMap<Page, string[]>();
 

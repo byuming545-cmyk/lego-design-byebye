@@ -87,7 +87,7 @@ describe('real source assembly generation and exports', () => {
       const part = (await repository.getPart(id))!;
       capabilities.set(id, await verifyNativePartAssembly(part, part.geometry.name ?? id, fixtures, verification));
     }
-    production = new AttachmentEngine({ loadPart: id => repository.getPart(id), getCapability: id => capabilities.get(id) });
+    production = new AttachmentEngine({ getSourceSnapshot: () => repository.snapshotDigest, loadPart: id => repository.getPart(id), getCapability: id => capabilities.get(id) });
     generator = new NativeAssemblyGenerator(production, { partIds: sourceIds, maxAttempts: 1200, maxBacktracks: 30 });
   }, 120_000);
 

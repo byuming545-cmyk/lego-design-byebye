@@ -1,0 +1,34 @@
+{
+  "graph": {
+    "valid": true,
+    "issues": []
+  },
+  "reimport": "VALID",
+  "sourceSnapshot": "19f826ea45a00fd22e687d16bf6effdd663f04c7c2f667e5b82c0f7e1c226bcd",
+  "search": {
+    "attempts": 4,
+    "attachmentApiCalls": 4,
+    "acceptedAttachments": 4,
+    "rejectedAttachments": 0,
+    "transformFailures": 0,
+    "compatibilityFailures": 0,
+    "collisionFailures": 0,
+    "occupancyFailures": 0,
+    "designGoalFailures": 0,
+    "backtracks": 0,
+    "testedRoots": 1,
+    "exhausted": false,
+    "timeBudgetExceeded": false,
+    "catalogTimeMs": 212.122,
+    "searchTimeMs": 851.232,
+    "budget": {
+      "maxAttempts": 1800,
+      "maxBacktracks": 120,
+      "maxSearchTimeMs": 10000
+    },
+    "finalPlacements": 5,
+    "finalConnectionEdges": 4,
+    "rejectionCounts": {},
+    "rejectionReasons": []
+  }
+}

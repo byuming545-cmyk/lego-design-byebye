@@ -1,0 +1,129 @@
+
+> bricklab@0.6.0 test
+> vitest run --maxWorkers=2
+
+
+ RUN  v5.0.5 /workspace/lego-import-collision
+
+ ❯ tests/parts-assembly-api.test.ts (12 tests | 1 failed) 25247ms
+   ❯ native assembly production HTTP boundaries (12)
+     × reports every actual source root and only counts runtime-validated admission decisions 23ms
+ ❯ tests/parts-assembly-generator.test.ts (19 tests | 2 failed) 18589ms
+   ❯ real source assembly generation and exports (12)
+     × retains source versions, graph, real DAT references and BOM on export, and rejects edited models 8ms
+     × exports a real plate bridging two placed source parts with multiple new edges and one BOM/step addition 354ms
+ ❯ tests/parts-native-model-import.test.ts (10 tests | 4 failed) 7062ms
+   ❯ current native model revalidation and import (10)
+     × revalidates a real multi-edge assembly and rebuilds trusted BOM, steps and native source references 29ms
+     × assigns rebuilt multi-point steps to the later placement even when an uploaded node order is reversed 232ms
+     × retains only VALID adopted models in the actual runtime service and keeps returned copies isolated 6ms
+     × exposes revalidation through HTTP and exports the retained adopted model, never the uploaded original 58ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/parts-assembly-api.test.ts > native assembly production HTTP boundaries > reports every actual source root and only counts runtime-validated admission decisions
+TypeError: Cannot read properties of undefined (reading 'source')
+ ❯ tests/parts-assembly-api.test.ts:124:46
+    122|     for (const entry of status.entries) {
+    123|       const saved = byId.get(entry.partId)!;
+    124|       expect(entry.source.digest).toBe(saved.source.digest);
+       |                                              ^
+    125|       expect(saved.allowedConnectionIds.every(id => entry.allowedConne…
+    126|       expect(entry.assemblyVerified).toBe(false);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  tests/parts-assembly-generator.test.ts > real source assembly generation and exports > retains source versions, graph, real DAT references and BOM on export, and rejects edited models
+Error: Source catalogue snapshot changed or is missing; model revalidation is required before export.
+ ❯ validateDocument src/parts/assembly/documents.ts:20:83
+
+ ❯ exportNativeAssemblyJson src/parts/assembly/documents.ts:70:3
+ ❯ tests/parts-assembly-generator.test.ts:136:29
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  tests/parts-assembly-generator.test.ts > real source assembly generation and exports > exports a real plate bridging two placed source parts with multiple new edges and one BOM/step addition
+Error: Source catalogue snapshot changed or is missing; model revalidation is required before export.
+ ❯ validateDocument src/parts/assembly/documents.ts:20:83
+
+ ❯ exportNativeAssemblyJson src/parts/assembly/documents.ts:70:3
+ ❯ tests/parts-assembly-generator.test.ts:192:23
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  tests/parts-native-model-import.test.ts > current native model revalidation and import > revalidates a real multi-edge assembly and rebuilds trusted BOM, steps and native source references
+AssertionError: expected [Function] to not throw an error but 'Error: Source catalogue snapshot chan…' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"Error: Source catalogue snapshot changed or is missing; model revalidation is required before export."
+
+ ❯ tests/parts-native-model-import.test.ts:88:55
+     86|     expect(model.steps).toHaveLength(2); expect(model.steps[0].connect…
+     87|     expect(model.sources.some((source) => source.library === 'LDraw' &…
+     88|     expect(() => exportNativeAssemblyJson(model)).not.toThrow();
+       |                                                       ^
+     89|     expect((await production.validateGraph(model)).valid).toBe(true);
+     90|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  tests/parts-native-model-import.test.ts > current native model revalidation and import > assigns rebuilt multi-point steps to the later placement even when an uploaded node order is reversed
+AssertionError: expected [Function] to not throw an error but 'Error: Source catalogue snapshot chan…' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"Error: Source catalogue snapshot changed or is missing; model revalidation is required before export."
+
+ ❯ tests/parts-native-model-import.test.ts:97:63
+     95|     expect(result.model!.steps[0].connectionEdgeIds).toEqual([]);
+     96|     expect(result.model!.steps[1].connectionEdgeIds).toHaveLength(2);
+     97|     expect(() => exportNativeAssemblyJson(result.model!)).not.toThrow(…
+       |                                                               ^
+     98|   });
+     99|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  tests/parts-native-model-import.test.ts > current native model revalidation and import > retains only VALID adopted models in the actual runtime service and keeps returned copies isolated
+AssertionError: expected 'NEEDS_REVALIDATION' to be 'VALID' // Object.is equality
+
+Expected: "VALID"
+Received: "NEEDS_REVALIDATION"
+
+ ❯ tests/parts-native-model-import.test.ts:156:27
+    154|   it('retains only VALID adopted models in the actual runtime service …
+    155|     const result = await service.importModel(incoming);
+    156|     expect(result.status).toBe('VALID'); const saved = service.getMode…
+       |                           ^
+    157|     expect(saved).toBeDefined(); expect(saved.id).not.toBe(incoming.id…
+    158|     saved.placements[0].partId = 'edited-client-copy';
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  tests/parts-native-model-import.test.ts > current native model revalidation and import > exposes revalidation through HTTP and exports the retained adopted model, never the uploaded original
+AssertionError: expected 'NEEDS_REVALIDATION' to be 'VALID' // Object.is equality
+
+Expected: "VALID"
+Received: "NEEDS_REVALIDATION"
+
+ ❯ tests/parts-native-model-import.test.ts:168:100
+    166|   it('exposes revalidation through HTTP and exports the retained adopt…
+    167|     const response = await post({ content: JSON.stringify(incoming) });
+    168|     expect(response.status).toBe(200); const result = await response.j…
+       |                                                                                                    ^
+    169|     const exported = await fetch(`${base}${prefix}/assembly/models/${r…
+    170|     expect(exported.status).toBe(200); expect((await exported.json()).…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  3 failed | 58 passed (61)
+      Tests  7 failed | 806 passed (813)
+   Start at  15:52:14
+   Duration  203.06s (tests 98%, import 1%, transform 1%)
+

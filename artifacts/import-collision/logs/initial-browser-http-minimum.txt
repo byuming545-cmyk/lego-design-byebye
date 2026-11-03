@@ -1,0 +1,47 @@
+
+> bricklab@0.6.0 test:e2e
+> playwright test --config playwright.config.ts
+
+[WebServer] (node:24921) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 12 tests using 1 worker
+(node:25005) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+······F(node:25678) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+·····
+
+  1) [chromium] › tests/e2e/assembly.spec.ts:271:1 › uses newly imported 3062b from the ordinary interface generator and reimports its exported model 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      275 |   const generatedResponse=page.waitForResponse(r=>r.url().endsWith('/api/parts-foundation/assembly/generate')&&r.request().method()==='POST');
+      276 |   await page.getByRole('button',{name:'接口驱动组合',exact:true}).click();
+    > 277 |   const response=await generatedResponse;expect(response.ok()).toBe(true);
+          |                                                                ^
+      278 |   const result=await response.json();expect(result.status,result.reasons?.join('; ')).toBe('generated');
+      279 |   expect(result.model.placements.some((p:{partId:string})=>p.partId==='3062b')).toBe(true);
+      280 |   expect(result.model.bom.some((p:{partId:string;quantity:number})=>p.partId==='3062b'&&p.quantity>0)).toBe(true);
+        at /workspace/lego-import-collision/tests/e2e/assembly.spec.ts:277:64
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/assembly-uses-newly-import-9cd78-eimports-its-exported-model-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/assembly-uses-newly-import-9cd78-eimports-its-exported-model-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/e2e/assembly-uses-newly-import-9cd78-eimports-its-exported-model-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/e2e/assembly-uses-newly-import-9cd78-eimports-its-exported-model-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › tests/e2e/assembly.spec.ts:271:1 › uses newly imported 3062b from the ordinary interface generator and reimports its exported model 
+  11 passed (2.2m)

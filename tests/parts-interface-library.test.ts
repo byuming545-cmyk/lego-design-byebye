@@ -30,7 +30,7 @@ afterAll(async () => { await new Promise<void>(resolve => server.close(() => res
 describe('real interface and assembly library', () => {
   it('indexes every real connector instance from the source-bound registry', async () => {
     const overview = await library.overview();
-    expect(overview.counts).toMatchObject({ parts: 253, interfaces: 5085, types: 25, rules: 15, productionRules: 3, cases: 4, validatedCases: 3, blockedCases: 1 });
+    expect(overview.counts).toMatchObject({ parts: 254, interfaces: 5089, types: 25, rules: 15, productionRules: 3, cases: 4, validatedCases: 3, blockedCases: 1 });
     expect(overview.types.find(type => type.id === 'BAR')).toMatchObject({ productionRules: ['BAR_CLIP'] });
     const bar = await library.instance('30374', 'parts/30374.dat:8:0');
     expect(bar).toMatchObject({ partId: '30374', family: 'BAR', role: 'MALE', coverage: 'COMPLETE', enabled: true });
@@ -163,7 +163,7 @@ describe('real interface and assembly library', () => {
   it('serves the read/compare/feedback flow over HTTP', async () => {
     const get = async (part: string) => { const response = await fetch(base + part); expect(response.ok, part).toBe(true); return response.json(); };
     const overview = await get('/overview');
-    expect(overview.counts.interfaces).toBe(5085);
+    expect(overview.counts.interfaces).toBe(5089);
     const comparison = await (await fetch(`${base}/compare`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ partId: '3673', targetPartId: '32000' }) })).json() as { recognition: { generationAdmission: boolean } };
     expect(comparison.recognition.generationAdmission).toBe(false);
     const created = await (await fetch(`${base}/feedback`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ kind: 'insufficient-evidence', message: 'HTTP 复核记录', author: 'api', view: 'review', target: { kind: 'rule', id: 'PIN_HOLE', ruleId: 'PIN_HOLE' } }) })).json() as { id: string; status: string; canAuthorizeRule: boolean };

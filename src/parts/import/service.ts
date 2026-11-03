@@ -1,3 +1,5 @@
+import { sourceSnapshotDigest } from '../sourceSnapshot.js';
+import { buildConnectorLibraryAudit } from '../grammar/audit.js';
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -7,7 +9,7 @@ import type { AssemblyPairAttachRequest } from '../assembly/service.js';
 import { GrammarAssemblyService } from '../grammar/service.js';
 import { adaptNativePartConnectors, type ConnectorIngestion } from '../grammar/sources.js';
 import type { GrammarPartAdmission } from '../grammar/admission.js';
-import { exportNativeAssemblyJson } from '../assembly/documents.js';
+import { exportNativeAssemblyJson, exportNativeAssemblyLDraw, exportNativeAssemblyBomCsv } from '../assembly/documents.js';
 import type { NativeModuleType } from '../assembly/generator.js';
 import { BUNDLED_LDRAW_DIRECTORY } from '../ldraw/bundled.js';
 import { readPartImportBundle, SHADOW_DIRECTORY, stagePartImport, type PartImportBundle, type PartImportRoots } from './bundle.js';
@@ -50,7 +52,15 @@ export interface PartImportReport {
   bundle: BundleSummary;
   supportedFeatures: ImportedFeature[];
   candidates: ImportedCandidate[];
-  generation: { attempted: boolean; status?: string; reasons: string[]; jsonBytes?: number; reimport?: string };
+  generation: { attempted: boolean; status?: string; reasons: string[]; jsonBytes?: number; reimport?: string; budgetExhausted?: boolean };
+  stages: {
+    source: 'IMPORTED_STAGING'; geometry: 'READY' | 'FAILED';
+    connectors: string; admission: 'STRUCTURAL' | 'EXTERIOR_ONLY' | 'BLOCKED';
+    collisionGeometry: { structural: boolean; exterior: boolean; reason: string };
+    generation: 'COVERED' | 'NOT_FOUND' | 'NOT_ATTEMPTED' | 'BUDGET_EXHAUSTED';
+    promotion: 'NOT_REQUESTED';
+  };
+  search: { candidateAttempts: number; limited: boolean };
   limitations: string[];
 }
 export interface PartImportServiceOptions extends PartImportRoots { dataDir?: string; artifactsDirectory?: string }
@@ -82,7 +92,7 @@ export class PartImportError extends Error {
 
 const DECLARED_RULES = new Set(['C01', 'BAR_CLIP', 'PIN_HOLE']);
 const GENERATION_MODULES: Record<string, readonly NativeModuleType[]> = {
-  C01: ['wall', 'simple-chassis', 'exterior-shell'],
+  C01: ['interface-assembly', 'wall', 'simple-chassis', 'exterior-shell'],
   BAR_CLIP: ['bar-clip'],
   PIN_HOLE: ['pin-hole'],
 };
@@ -164,6 +174,7 @@ export class PartImportService {
       const movingClass = classFor(admission);
       const candidates: ImportedCandidate[] = [];
       let winning: ImportedCandidate | undefined;
+      let limited = false;
       let generation: PartImportReport['generation'] = { attempted: false, reasons: [] };
       if (movingClass) {
         const deadline = Date.now() + 45_000;
@@ -177,7 +188,7 @@ export class PartImportService {
           if (!fixedPart || !fixedAdmission || fixedClass !== 'structural') continue;
           const fixedFeatures = candidateFeatures(fixedPart, fixedAdmission);
           for (const fixedFeature of fixedFeatures) for (const movingFeature of movingFeatures) {
-            if (attempts >= 64 || Date.now() > deadline) break;
+            if (attempts >= 64 || Date.now() > deadline) { limited = true; break; }
             if (fixedFeature.role === movingFeature.role || fixedFeature.matchingPolicy?.ruleId !== movingFeature.matchingPolicy?.ruleId) continue;
             attempts++;
             const ruleId = movingFeature.matchingPolicy!.ruleId;
@@ -198,8 +209,9 @@ export class PartImportService {
             };
             candidates.push(candidate);
             if (result.accepted && graphValid && result.graph) {
-              const generated = await this.generate(service, fixedId, part.partId, ruleId, movingClass);
+              const generated = await this.generate(service, fixedId, part.partId, ruleId, movingClass, part.partId);
               generation = generated.generation;
+              limited ||= generation.budgetExhausted === true;
               Object.assign(candidate, generated.candidate);
               if (generated.ok) { winning = candidate; break; }
             }
@@ -216,7 +228,7 @@ export class PartImportService {
             const newFeatures = candidateFeatures(part, admission);
             const existingFeatures = candidateFeatures(existing, existingAdmission);
             for (const newFeature of newFeatures) for (const existingFeature of existingFeatures) {
-              if (attempts >= 64 || Date.now() > deadline) break;
+              if (attempts >= 64 || Date.now() > deadline) { limited = true; break; }
               if (newFeature.role === existingFeature.role || newFeature.matchingPolicy?.ruleId !== existingFeature.matchingPolicy?.ruleId) continue;
               attempts++;
               const ruleId = newFeature.matchingPolicy!.ruleId;
@@ -232,8 +244,9 @@ export class PartImportService {
               };
               candidates.push(candidate);
               if (result.accepted && graphValid) {
-                const generated = await this.generate(service, part.partId, movingId, ruleId, 'structural');
+                const generated = await this.generate(service, part.partId, movingId, ruleId, 'structural', part.partId);
                 generation = generated.generation;
+              limited ||= generation.budgetExhausted === true;
                 Object.assign(candidate, generated.candidate);
                 if (generated.ok) { winning = candidate; break; }
               }
@@ -253,7 +266,7 @@ export class PartImportService {
             if (!fixedPart || !fixedAdmission || !fixedAdmission.generationEligible) continue;
             const fixedFeatures = candidateFeatures(fixedPart, fixedAdmission);
             for (const fixedFeature of fixedFeatures) for (const movingFeature of movingFeatures) {
-              if (attempts >= 32 || Date.now() > deadline) break;
+              if (attempts >= 32 || Date.now() > deadline) { limited = true; break; }
               if (fixedFeature.role === movingFeature.role || fixedFeature.matchingPolicy?.ruleId !== movingFeature.matchingPolicy?.ruleId) continue;
               attempts++;
               const ruleId = movingFeature.matchingPolicy!.ruleId;
@@ -269,8 +282,9 @@ export class PartImportService {
               };
               candidates.push(candidate);
               if (result.accepted && graphValid && result.graph) {
-                const generated = await this.generate(service, fixedId, part.partId, ruleId, 'exterior-shell');
+                const generated = await this.generate(service, fixedId, part.partId, ruleId, 'exterior-shell', part.partId);
                 generation = generated.generation;
+              limited ||= generation.budgetExhausted === true;
                 Object.assign(candidate, generated.candidate);
                 if (generated.ok) { winning = candidate; break; }
               }
@@ -290,7 +304,7 @@ export class PartImportService {
             if (!existing || !existingAdmission || !existingAdmission.generationEligible) continue;
             const existingFeatures = candidateFeatures(existing, existingAdmission);
             for (const newFeature of newFeatures) for (const existingFeature of existingFeatures) {
-              if (attempts >= 16 || Date.now() > deadline) break;
+              if (attempts >= 16 || Date.now() > deadline) { limited = true; break; }
               if (newFeature.role === existingFeature.role || newFeature.matchingPolicy?.ruleId !== existingFeature.matchingPolicy?.ruleId) continue;
               attempts++;
               const ruleId = newFeature.matchingPolicy!.ruleId;
@@ -314,6 +328,15 @@ export class PartImportService {
         geometryStatus: part.geometry.status, connectionStatus: part.connections.status,
         generationEligible: admission.generationEligible, exteriorGeneratable: admission.exteriorGeneratable,
         bundle: summary(bundle), supportedFeatures, candidates, generation,
+        stages: {
+          source: 'IMPORTED_STAGING', geometry: part.geometry.status === 'geometryReady' ? 'READY' : 'FAILED',
+          connectors: part.connections.status,
+          admission: admission.generationEligible ? 'STRUCTURAL' : admission.exteriorGeneratable ? 'EXTERIOR_ONLY' : 'BLOCKED',
+          collisionGeometry: { structural: admission.collisionGeometryReady, exterior: admission.exteriorCollisionGeometryReady, reason: admission.proxy.reasonCode },
+          generation: winning ? 'COVERED' : limited ? 'BUDGET_EXHAUSTED' : generation.attempted || candidates.length ? 'NOT_FOUND' : 'NOT_ATTEMPTED',
+          promotion: 'NOT_REQUESTED',
+        },
+        search: { candidateAttempts: candidates.length, limited },
         limitations: [
           'This is staging validation only. It does not modify the pinned catalogue or promote the part.',
           'Only explicitly declared source interfaces and the current rules are checked; no appearance-based inference is used.',
@@ -326,19 +349,31 @@ export class PartImportService {
     }
   }
 
-  private async generate(service: GrammarAssemblyService, fixedId: string, movingId: string, ruleId: string, collisionClass: CollisionClass): Promise<{ ok: boolean; generation: PartImportReport['generation']; candidate: Partial<ImportedCandidate> }> {
+  private async generate(service: GrammarAssemblyService, fixedId: string, movingId: string, ruleId: string, collisionClass: CollisionClass, importedPartId: string): Promise<{ ok: boolean; generation: PartImportReport['generation']; candidate: Partial<ImportedCandidate> }> {
     const generation: PartImportReport['generation'] = { attempted: true, reasons: [] };
     const modules = GENERATION_MODULES[ruleId] ?? [];
     for (const module of modules) {
       try {
-        const result = await service.generate({ module, requiredPartIds: [fixedId, movingId] });
+        const result = await service.generate({ module, ...(module === 'interface-assembly' ? { partCount: 2 } : {}), requiredPartIds: [fixedId, movingId] });
         generation.status = result.status;
+        generation.budgetExhausted ||= result.search.exhausted || result.search.timeBudgetExceeded;
         generation.reasons = result.reasons;
         if (result.model) {
-          const json = exportNativeAssemblyJson(result.model);
+          const json = exportNativeAssemblyJson(result.model, await service.repository.getManifest());
           generation.jsonBytes = json.length;
           generation.reimport = (await service.importModel(JSON.parse(json))).status;
-          if (generation.reimport === 'VALID') return { ok: true, generation, candidate: { generated: true, generationStatus: result.status, reimport: generation.reimport } };
+          if (generation.reimport === 'VALID') {
+            const output = path.join(this.options.artifactsDirectory ?? 'artifacts/part-import', importedPartId, 'generated');
+            const manifest = await service.repository.getManifest();
+            await mkdir(output, { recursive: true });
+            await writeFile(path.join(output, 'model.json'), json);
+            await writeFile(path.join(output, 'model.ldr'), exportNativeAssemblyLDraw(result.model, manifest));
+            await writeFile(path.join(output, 'bom.csv'), exportNativeAssemblyBomCsv(result.model, manifest));
+            await writeFile(path.join(output, 'steps.json'), JSON.stringify(result.model.steps, null, 2));
+            await writeFile(path.join(output, 'sources.json'), JSON.stringify(result.model.sources, null, 2));
+            await writeFile(path.join(output, 'validation.json'), JSON.stringify({ graph: await service.engine.validateGraph(result.model), reimport: generation.reimport, search: result.search }, null, 2));
+            return { ok: true, generation, candidate: { generated: true, generationStatus: result.status, reimport: generation.reimport } };
+          }
         }
       } catch (error) {
         generation.status = 'error';
@@ -355,37 +390,41 @@ export class PartImportService {
     if (fresh.status !== 'validated') throw new PartImportError('promotion-revalidation-failed', 'Fresh validation did not pass.');
     const bundle = await readPartImportBundle(directory, this.roots);
     if (bundle.partId !== confirmPartId) throw new PartImportError('promotion-confirm-mismatch', 'Confirmed partId does not match the bundle.');
-    const staged = await stagePartImport(directory, bundle, this.roots);
     const roots = this.roots;
+    const expectedSourceSnapshot = sourceSnapshotDigest(roots);
+    const staged = await stagePartImport(directory, bundle, roots);
     try {
+      if (sourceSnapshotDigest(roots) !== expectedSourceSnapshot) throw new PartImportError('promotion-source-snapshot-changed', 'Source catalogue changed while constructing the staging overlay.');
       const winning = fresh.candidates.find(candidate => candidate.generated) ?? fresh.candidates.find(candidate => candidate.accepted);
       const promotionClass: CollisionClass = winning?.collisionClass ?? (fresh.generationEligible ? 'structural' : 'exterior-shell');
       const bundleBytes = await readFile(path.join(directory, 'bundle.json'));
       const bundleHash = createHash('sha256').update(bundleBytes).digest('hex');
       const validationDigest = createHash('sha256').update(JSON.stringify(fresh)).digest('hex');
-      const files = [...bundle.geometry.files, ...bundle.connections.files].map(file => ({ path: file.path, sha256: file.sha256, bytes: file.bytes }));
+      const files = [...bundle.geometry.files.map(file => ({ library: 'LDraw', ...file })), ...bundle.connections.files.map(file => ({ library: 'LDCadShadowLibrary', ...file }))];
       const beforeRepository = new NativePartRepository({ geometryDirectory: roots.ldrawRoot!, shadowDirectory: roots.shadowRoot! });
       const beforeService = new GrammarAssemblyService({ repository: beforeRepository, ...(this.options.dataDir ? { dataDir: this.options.dataDir } : {}) });
       await beforeService.ready();
       const beforeAudit = await auditSnapshot(beforeService, bundle.partId);
       let postAudit: PromotionAudit | undefined;
       let auditArtifact: string | undefined;
+      let publications: { target: string; content: string }[] = [];
       const ledger = {
         partId: bundle.partId, bundleHash, ldrawRevision: bundle.geometry.revision, shadowRevision: bundle.connections.revision,
         sourceUrl: bundle.geometry.sourceUrl, license: bundle.geometry.license, author: bundle.author, files,
         validationDigest, promotedAt: new Date().toISOString(), promotionClass,
-        codeCommit: process.env.GIT_COMMIT ?? null, reportPath: `artifacts/part-import/${bundle.partId}-report.json`,
+        codeCommit: process.env.GIT_COMMIT ?? null, reportPath: path.join(this.options.artifactsDirectory ?? 'artifacts/part-import', `${bundle.partId}-report.json`),
         validation: fresh,
         audit: { before: beforeAudit } as unknown as Record<string, unknown>,
       };
-      const ldrawFiles = bundle.geometry.files.map(file => ({ path: file.path, source: path.join(staged.ldrawDirectory, 'files', file.path), target: path.join(roots.ldrawRoot!, 'files', file.path) }));
-      const shadowFiles = bundle.connections.files.map(file => ({ path: file.path, source: path.join(staged.shadowDirectory, 'files', file.path), target: path.join(roots.shadowRoot!, 'files', file.path) }));
+      const ldrawFiles = bundle.geometry.files.filter(file => !file.reuse).map(file => ({ path: file.path, source: path.join(staged.ldrawDirectory, 'files', file.path), target: path.join(roots.ldrawRoot!, 'files', file.path) }));
+      const shadowFiles = bundle.connections.files.filter(file => !file.reuse).map(file => ({ path: file.path, source: path.join(staged.shadowDirectory, 'files', file.path), target: path.join(roots.shadowRoot!, 'files', file.path) }));
       const transaction = await transactionalPromote({
-        ldrawRoot: roots.ldrawRoot!, shadowRoot: roots.shadowRoot!, partId: bundle.partId,
+        ldrawRoot: roots.ldrawRoot!, shadowRoot: roots.shadowRoot!, partId: bundle.partId, expectedSourceSnapshot,
         ldrawFiles, shadowFiles,
         ldrawManifest: await readFile(path.join(staged.ldrawDirectory, 'manifest.json'), 'utf8'),
         shadowManifest: await readFile(path.join(staged.shadowDirectory, 'manifest.json'), 'utf8'),
         ledger,
+        publications: async () => publications,
         verify: async () => {
           const repository = new NativePartRepository({ geometryDirectory: roots.ldrawRoot!, shadowDirectory: roots.shadowRoot! });
           const promoted = await repository.getPart(bundle.partId);
@@ -401,9 +440,31 @@ export class PartImportService {
           postAudit = { before: beforeAudit, after };
           (ledger.audit as unknown as PromotionAudit) = postAudit;
           const artifacts = this.options.artifactsDirectory ?? 'artifacts/part-import';
-          await mkdir(artifacts, { recursive: true });
           auditArtifact = path.join(artifacts, `${bundle.partId}-post-promote.json`);
-          await writeFile(auditArtifact, JSON.stringify({ schemaVersion: 'part-import-post-promote-1', generatedAt: new Date().toISOString(), partId: bundle.partId, before: beforeAudit, after }, null, 2));
+          const connectorAudit = await buildConnectorLibraryAudit(service);
+          const snapshot = repository.snapshotDigest;
+          const snapshotDirectory = path.join(artifacts, 'catalogue', snapshot);
+          const runtime = await service.status();
+          const refreshed = {
+            schemaVersion: 'part-import-catalogue-refresh-1', snapshot, partId: bundle.partId,
+            strategy: 'immutable-process-snapshot-restart-required',
+            reportDirectory: snapshotDirectory, before: beforeAudit, after,
+            sourceAndRuleRevalidationRequired: true,
+            physicalBuildVerified: false,
+          };
+          const coverage = connectorAudit.parts.map(part => ({ partId: part.part_id, coverage: part.coverage, connectors: part.connector_count, enabledEndpoints: part.enabled_source_endpoint_count, structural: part.generation_eligible, collision: part.collision_geometry_reason }));
+          publications = [
+            { target: ledger.reportPath, content: JSON.stringify(fresh, null, 2) },
+            { target: auditArtifact, content: JSON.stringify({ schemaVersion: 'part-import-post-promote-2', partId: bundle.partId, snapshot, before: beforeAudit, after }, null, 2) },
+            { target: path.join(snapshotDirectory, 'connector-audit.json'), content: JSON.stringify(connectorAudit, null, 2) },
+            { target: path.join(snapshotDirectory, 'runtime.json'), content: JSON.stringify(runtime, null, 2) },
+            { target: path.join(snapshotDirectory, 'coverage.json'), content: JSON.stringify(coverage, null, 2) },
+            { target: path.join(snapshotDirectory, 'verification.json'), content: JSON.stringify(refreshed, null, 2) },
+            { target: path.join(snapshotDirectory, 'REPORT.md'), content: `# Promoted catalogue snapshot\n\nSnapshot: ${snapshot}\n\nRoots: ${after.totalRoots}; structural eligible: ${after.counts.generatable}; exterior-only eligible: ${after.exteriorGeneratable}.\n\nSource/connector audit only; model generation evidence is recorded separately. Existing processes must restart; API responses use no-store and reject changed snapshots. No physical certification.\n` },
+            // The active pointer is published last and rolls back with the source manifests.
+            { target: path.join(artifacts, 'catalogue-current.json'), content: JSON.stringify(refreshed, null, 2) },
+          ];
+          Object.assign(ledger, { sourceSnapshot: snapshot, refresh: refreshed });
         },
       });
       return { partId: bundle.partId, promotedAt: ledger.promotedAt, files: transaction.files, ldrawRevision: bundle.geometry.revision, shadowRevision: bundle.connections.revision, validation: fresh, journalId: transaction.journalId, ledgerPath: transaction.ledgerPath, promotionClass, ...(postAudit ? { audit: postAudit } : {}), ...(auditArtifact ? { auditArtifact } : {}) };

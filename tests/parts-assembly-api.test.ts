@@ -89,40 +89,47 @@ afterAll(async () => {
 
 describe('native assembly production HTTP boundaries', () => {
   it('reports every actual source root and only counts runtime-validated admission decisions', async () => {
-    expect(status.counts.total).toBe(253);
-    expect(status.queue).toHaveLength(253);
-    expect(new Set(status.queue.map(entry => entry.partId)).size).toBe(253);
+    expect(status.counts.total).toBe(254);
+    expect(status.queue).toHaveLength(254);
+    expect(new Set(status.queue.map(entry => entry.partId)).size).toBe(254);
     expect(status.admissionBasis).toBe('interface-grammar');
-    expect(status.counts).toMatchObject({ assemblyVerified: 0, generatable: 104, blocked: 149, verifiedInterfaces: 0, testedPhysicalInterfaces: 0 });
+    expect(status.counts).toMatchObject({ assemblyVerified: 0, generatable: 105, blocked: 149, verifiedInterfaces: 0, testedPhysicalInterfaces: 0 });
     expect(report.counts.generatable).toBe(87); // Retained historical evidence, not current admission authority.
-    expect(status.sourceCounts).toEqual(report.sourceCounts);
-    expect(status.sourceCounts).toEqual({ totalRoots: 253, geometryReady: 253, connectionReady: 206, connectionPartial: 43, connectionMissing: 4 });
+    expect(report.sourceCounts).toEqual({ totalRoots: 253, geometryReady: 253, connectionReady: 206, connectionPartial: 43, connectionMissing: 4 }); // Historical report remains unchanged.
+    expect(status.sourceCounts).toEqual({ totalRoots: 254, geometryReady: 254, connectionReady: 206, connectionPartial: 44, connectionMissing: 4 });
     expect(status.counts.assemblyVerified).toBe(status.queue.filter((entry) => entry.assemblyVerified).length);
     expect(status.counts.generatable).toBe(status.queue.filter((entry) => entry.generatable).length);
-    expect(status.counts.blocked + status.counts.generatable).toBe(253);
+    expect(status.counts.blocked + status.counts.generatable).toBe(254);
     expect(status.counts.generatable).toBeGreaterThan(0);
     expect(status.grammar.counts.enabledNativeEndpoints).toBe(status.queue.reduce((sum, entry) => sum + entry.allowedConnectionIds.length, 0));
     expect(status.runtimeValidation.issues).toEqual([]);
     const coverage = status.interfaceCoverage!;
     expect(coverage).toBeDefined();
     expect(coverage).toMatchObject({ verifiedPass: 0, verifiedBlocked: 0, requiresAstraReview: 0 });
-    expect(coverage.physicalInterfacesDiscovered).toBe(5020);
+    expect(coverage.physicalInterfacesDiscovered).toBe(5024);
     expect(coverage.physicalInterfacesDiscovered).toBe(coverage.verifiedPass + coverage.verifiedBlocked + coverage.requiresAstraReview + coverage.pending);
     expect(coverage.verifiedPhysicalInterfaces).toBe(coverage.verifiedPass);
     expect(coverage.enabledPhysicalInterfaces).toBeLessThanOrEqual(coverage.verifiedPass);
     expect(coverage.enabledRawConnectionIds).toBe(status.counts.verifiedInterfaces);
-    expect(coverage.pending).toBe(5020);
+    expect(coverage.pending).toBe(5024);
     expect(coverage.processedCoveragePercent).toBe(0);
     expect(coverage.verifiedCoveragePercent).toBe(Number((100 * coverage.verifiedPass / coverage.physicalInterfacesDiscovered).toFixed(4)));
-    expect(coverage.fullyAssemblyVerified + coverage.partiallyGeneratable + coverage.blockedParts + coverage.unresolvedParts).toBe(253);
+    expect(coverage.fullyAssemblyVerified + coverage.partiallyGeneratable + coverage.blockedParts + coverage.unresolvedParts).toBe(254);
     expect(status.deferredRun).toBeUndefined();
     expect(status.grammar.counts).toMatchObject({ historicalFixtureProofsRequired: 0, executedPartFixtureTests: 0 });
     expect(status.runtimeValidation.reportLoaded).toBe(false);
     const byId = new Map(report.entries.map(entry => [entry.partId, entry]));
     for (const entry of status.entries) {
-      const saved = byId.get(entry.partId)!;
-      expect(entry.source.digest).toBe(saved.source.digest);
-      expect(saved.allowedConnectionIds.every(id => entry.allowedConnectionIds.includes(id))).toBe(true);
+      const saved = byId.get(entry.partId);
+      if (saved) {
+        expect(entry.source.digest).toBe(saved.source.digest);
+        expect(saved.allowedConnectionIds.every(id => entry.allowedConnectionIds.includes(id))).toBe(true);
+      } else {
+        expect(entry.partId).toBe('3062b');
+        expect(entry.allowedConnectionIds).toEqual(['p/stud2a.dat:11:0']);
+        expect(entry.source.digest).toMatch(/^[a-f0-9]{64}$/);
+        expect(entry.assemblyVerified).toBe(false); // No historical part fixture inheritance.
+      }
       expect(entry.assemblyVerified).toBe(false);
       expect(entry.fixtureTestsTotal).toBe(0);
       expect(entry.interfaceCoverage?.decisions.every(decision => decision.status === 'PENDING')).toBe(true);
@@ -332,5 +339,20 @@ describe('native assembly production HTTP boundaries', () => {
       expect(await response.json()).toMatchObject({ code: 'REAL_PARTS_FOUNDATION_REQUIRED', authenticity: { generatable: false, verified: false, nativeMeshImported: false } });
     }
     expect((await fetch(`${base}/api/speed/models/saved-legacy-model/export?format=ldr`)).status).toBe(409);
+  });
+});
+
+
+describe('new source normal HTTP generation', () => {
+  it('accepts the two-part interface goal and exports/reimports 3062b through production routes', async () => {
+    const response = await fetch(`${base}${prefix}/assembly/generate`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ kind: 'interface-assembly', partCount: 2, requiredPartIds: ['2431', '3062b'] }) });
+    expect(response.status).toBe(200);
+    const generated = await response.json();expect(generated.status).toBe('generated');
+    expect(generated.model.bom.some((row: {partId:string}) => row.partId === '3062b')).toBe(true);
+    expect(generated.model.steps).toHaveLength(2);
+    const exported = await fetch(`${base}${prefix}/assembly/models/${generated.model.id}/export?format=json`);
+    expect(exported.status).toBe(200);
+    const imported = await fetch(`${base}${prefix}/assembly/models/import`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ content: await exported.text() }) });
+    expect(imported.status).toBe(200);expect((await imported.json()).status).toBe('VALID');
   });
 });

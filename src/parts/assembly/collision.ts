@@ -7,7 +7,7 @@ import { placementCollisionClass } from './types.js';
 import { boundsOverlap, buildNativeCollisionProxy, polygonArea, splitConvexPolygon, nativeBounds } from './proxy.js';
 import type { CollisionProxy, CollisionTriangle, MeshBounds, Plane, TriangleBvh } from './proxy.js';
 
-export const COLLISION_VERSION = 'native-exterior-shell-3.0.0';
+export const COLLISION_VERSION = 'native-exterior-shell-4.0.0';
 /** A numerical surface-comparison tolerance, not modified LEGO geometry. */
 export const COLLISION_TOLERANCE_LDU = 0.0001;
 const EPS = COLLISION_TOLERANCE_LDU;
@@ -48,6 +48,7 @@ export interface PairCollisionResult {
     wholePairExempted: false;
     certificateKey?: string;
     reusedCertificate?: boolean;
+    surfaceDiagnostic?: { triangle: Vector3[]; sourceTriangle: number | null; cell: Vector3[]; probe: Vector3; classification: string; outsideSeat: boolean };
   };
 }
 type Classification = 'inside' | 'outside' | 'boundary' | 'unknown';
@@ -130,6 +131,14 @@ function classifyPoint(proxy: CollisionProxy, point: Vector3, tolerance = EPS): 
     if (accepted >= 3) return value ? 'inside' : 'outside';
   }
   return 'unknown';
+}
+
+/** The classifier is supplied by the closed-source winding implementation.
+ * Exposed for algorithm fixtures; no production request can replace it. */
+export function assessSourceSurfaceCell(cell: Vector3[], classify: (point: Vector3) => Classification, inSeat: (point: Vector3) => boolean) {
+  const probe = centroid(cell), classification = classify(probe);
+  const outsideSeat = !cell.every(inSeat);
+  return { probe, classification, outsideSeat, status: classification === 'unknown' ? 'blocked' as const : classification === 'inside' && outsideSeat ? 'collision' as const : 'clear' as const };
 }
 
 function planeCut(face: CollisionTriangle, plane: Plane): Vector3[] {
@@ -378,46 +387,30 @@ function deriveNativePairCollision(fixedPart: NativeAssemblyPart, fixedPlacement
     if (openA || openB) return result('blocked', 'exterior-surface-pair-unresolved', 'An exterior shell cannot be paired with a structural open CLIP/PIN surface under the surface-only contract.');
     const shell = exteriorA ? a : b, solid = exteriorA ? b : a;
     if (!boundsOverlap(shell.bounds, solid.bounds, EPS)) { proof.broadPhaseOnly = true; return result('clear', 'exterior-surface-broadphase', 'The exterior shell and its closed counterpart have disjoint bounds; no seat is needed for a non-adjacent pair.'); }
-    if (!penetrationZone || !zone.spatial) return result('blocked', 'exterior-surface-seat-required', 'An exterior shell requires a validated source interface seat bound to both placed endpoints; no generic exemption is granted.');
+    if (penetrationZone && !zone.spatial) return result('blocked', 'exterior-surface-seat-required', 'The claimed source seat is not aligned with both endpoints.');
     proof.surfaceCrossingChecked = true;
-    let crossing: Vector3 | null = null;
-    const coplanarPoints: Vector3[] = [];
-    for (const shellFace of shell.triangles) {
-      const centroid = scale(add(add(shellFace.vertices[0], shellFace.vertices[1]), shellFace.vertices[2]), 1 / 3);
-      if (classifyPoint(solid, centroid) === 'inside' && !pointInSeat(centroid, penetrationZone)) {
-        return result('collision', 'exterior-surface-vertex-inside-solid', 'An exterior source surface has material inside its closed counterpart outside the source-declared interface seat.', centroid);
-      }
-      for (const solidFace of solid.triangles) {
-        if (!boundsOverlap(shellFace.bounds, solidFace.bounds, EPS)) continue;
-        if (++triangleTests > MAX_TRIANGLE_TESTS || triangleTests % 128 === 0 && performance.now() > deadline) return result('blocked', 'exterior-surface-resource-limit', 'The exterior surface crossing budget was exceeded; no clearance certificate is granted.');
-        if (coplanarFaces(shellFace, solidFace)) {
-          if (coplanarOverlap(shellFace, solidFace)) { proof.coplanarContacts++; if (coplanarPoints.length < 64) coplanarPoints.push(shellFace.vertices[0], shellFace.vertices[1], shellFace.vertices[2]); }
-          continue;
+    const consume = () => ++triangleTests <= MAX_TRIANGLE_TESTS && performance.now() <= deadline;
+    // Partition the entire unchanged source face by all closed-solid face cuts.
+    // Each open cell has a constant inside/outside classification. A sampled
+    // edge in either direction is not a substitute for this complete partition.
+    for (const face of shell.triangles) {
+      if (!consume()) return result('blocked', 'exterior-surface-resource-limit', 'The complete source-surface partition budget was exceeded.');
+      const cells = adaptivePartition(face, solid, deadline, consume);
+      if (!cells) return result('blocked', 'exterior-surface-partition-unresolved', 'A complete source-face partition could not be established; no clearance certificate is granted.');
+      for (const cell of cells) {
+        checkedSurfacePatches++;
+        if (checkedSurfacePatches > MAX_TOTAL_PATCHES) return result('blocked', 'exterior-surface-resource-limit', 'The source-surface cell budget was exceeded.');
+        const { probe, classification, outsideSeat } = assessSourceSurfaceCell(cell, point => classifyPoint(solid, point), point => !!penetrationZone && pointInSeat(point, penetrationZone));
+        if (classification === 'unknown' || classification === 'inside' && outsideSeat) {
+          proof.surfaceDiagnostic = { triangle: face.vertices, sourceTriangle: face.sourceTriangle, cell, probe, classification, outsideSeat };
+          if (classification === 'unknown') return result('blocked', 'exterior-point-classification-unknown', 'A partition cell has unresolved solid classification; UNKNOWN cannot certify clearance.', probe);
+          return result('collision', 'exterior-surface-crossing', 'A complete exterior source-surface cell enters closed material outside the validated seat.', cell.find(vertex => !penetrationZone || !pointInSeat(vertex, penetrationZone)) ?? probe);
         }
-        for (let edge = 0; edge < 3; edge++) {
-          const start = shellFace.vertices[edge], end = shellFace.vertices[(edge + 1) % 3];
-          const hit = properSegmentFace(start, end, solidFace) ?? properSegmentFace(solidFace.vertices[edge], solidFace.vertices[(edge + 1) % 3], shellFace);
-          if (hit && !pointInSeat(hit, penetrationZone)) {
-            // A face crossing alone is not enough: a tangent/grazing edge can touch
-            // a closed surface without entering its material. A hit that is itself
-            // part of an observed coplanar contact is surface contact, not a
-            // penetration; every other hit must independently probe into the solid.
-            if (segmentEntersSolid(solid, start, end, hit)) { crossing = hit; break; }
-            const atContact = coplanarPoints.some((point) => distance(point, hit) <= 0.05);
-            if (atContact) proof.coplanarContacts++;
-          }
-        }
-        if (crossing) break;
-      }
-      if (crossing) break;
-    }
-    if (crossing) return result('collision', 'exterior-surface-crossing', 'The exterior source surface crosses its closed counterpart outside the source-declared interface seat.', crossing);
-    for (const face of shell.triangles) for (const vertex of face.vertices) {
-      if (classifyPoint(solid, vertex) === 'inside' && !pointInSeat(vertex, penetrationZone)) {
-        return result('collision', 'exterior-surface-vertex-inside-solid', 'An exterior source surface has a vertex strictly inside its closed counterpart outside the source-declared interface seat.', vertex);
+        if (classification === 'boundary') proof.coplanarContacts++;
       }
     }
-    return result('clear', 'exterior-surface-clear', 'No exterior source crossing or out-of-seat solid penetration was found; this is a surface-only check, not a closed-solid certificate.');
+    proof.completeSurfacePartition = true;
+    return result('clear', 'exterior-surface-clear', 'Every source-surface cell was classified against the closed counterpart; no out-of-seat penetration was found. This remains a surface-only certificate.');
   }
   if (openA || openB) {
     if (openA && openB && penetrationZone?.ruleId !== PIN_HOLE_RULE_ID) return result('blocked', 'open-surface-pair-unresolved', 'Two open source shells cannot establish a surface-only clearance without a closed counterpart.');
@@ -564,8 +557,8 @@ export function checkNativePairCollision(fixedPart: NativeAssemblyPart, fixedPla
     return copy;
   }
   const result = deriveNativePairCollision(fixedPart, fixedPlacement, movingPart, movingPlacement, penetrationZone);
-  result.proof.certificateKey = key; result.proof.reusedCertificate = false;
-  certificateCache.set(key, structuredClone(result));
+  result.proof.reusedCertificate = false;
+  if (result.status !== 'blocked') { result.proof.certificateKey = key; certificateCache.set(key, structuredClone(result)); }
   if (certificateCache.size > MAX_CERTIFICATES) certificateCache.delete(certificateCache.keys().next().value!);
   return result;
 }

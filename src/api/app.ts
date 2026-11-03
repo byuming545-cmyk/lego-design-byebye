@@ -1,3 +1,4 @@
+import { SourceSnapshotGuard, sourceSnapshotMiddleware } from '../parts/sourceSnapshot.js';
 import express, { type ErrorRequestHandler } from 'express';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
@@ -69,6 +70,8 @@ export function createApp(options: AppOptions = {}) {
   const partsRegistry = new RealPartRegistry({ dataDir: options.partsDataDir });
   const interfaceLibrary = new InterfaceLibrary(partsRegistry, { libraryDataDir: dataDir });
   const studio = new AssemblyStudioService(partsRegistry.repository, dataDir);
+  const sourceSnapshot = new SourceSnapshotGuard();
+  app.use(['/api/parts-foundation', '/api/interface-library'], sourceSnapshotMiddleware(sourceSnapshot));
   app.use('/api/parts-foundation', createPartsFoundationRouter({ dataDir: options.partsDataDir, registry: partsRegistry }));
   app.use('/api/interface-library', createInterfaceLibraryRouter({ library: interfaceLibrary, studio }));
   app.use(createLegacyAuthenticityGate(options.legacyGenerationPolicy));

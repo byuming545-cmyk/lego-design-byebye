@@ -39,8 +39,8 @@ test('uses an admitted 32000 through normal UI generation, exports it and valida
   expect(imported.model.placements.some((part: { partId: string }) => part.partId === '32000')).toBe(true);
   expectGrammarAssessment(imported.model);
   await expect(page.locator('.assembly-import-status')).toContainText('VALID');
-  await mkdir('artifacts/connector-grammar/screenshots', { recursive: true });
-  await page.locator('.assembly-native-stage').screenshot({ path: 'artifacts/connector-grammar/screenshots/32000-production-and-reimport.png' });
+  await mkdir('artifacts/import-collision/screenshots', { recursive: true });
+  await page.locator('.assembly-native-stage').screenshot({ path: 'artifacts/import-collision/screenshots/32000-production-and-reimport.png' });
 });
 
 interface DefaultPair { partA: string; connectionA: string; partB: string; connectionB: string; twistDegrees?: number }
@@ -266,4 +266,28 @@ test('mobile assembly mode keeps source controls, accepted rendering and debug d
   const dimensions = await page.evaluate(() => ({ page: document.documentElement.scrollWidth, viewport: document.documentElement.clientWidth }));
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1);
   await page.locator('.assembly-result').screenshot({ path: testInfo.outputPath('mobile-assembly.png') });
+});
+
+test('uses newly imported 3062b from the ordinary interface generator and reimports its exported model', async ({ page }) => {
+  await open(page);
+  await page.getByLabel('生成时包含的零件', { exact: true }).selectOption('3062b');
+  await page.getByLabel('生成零件数量', { exact: true }).fill('2');
+  const generatedResponse=page.waitForResponse(r=>r.url().endsWith('/api/parts-foundation/assembly/generate')&&r.request().method()==='POST');
+  await page.getByRole('button',{name:'接口驱动组合',exact:true}).click();
+  const response=await generatedResponse;expect(response.ok()).toBe(true);
+  const result=await response.json();expect(result.status,result.reasons?.join('; ')).toBe('generated');
+  expect(result.model.placements.some((p:{partId:string})=>p.partId==='3062b')).toBe(true);
+  expect(result.model.bom.some((p:{partId:string;quantity:number})=>p.partId==='3062b'&&p.quantity>0)).toBe(true);
+  expect(result.model.steps).toHaveLength(2);expect(result.model.sourceSnapshot).toMatch(/^[a-f0-9]{64}$/);
+  expect(result.model.sources.some((s:{path:string})=>s.path==='parts/3062b.dat')).toBe(true);
+  await expectRealCanvas(page);
+  const exported=await page.request.get(`/api/parts-foundation/assembly/models/${result.model.id}/export?format=json`);
+  expect(exported.ok()).toBe(true);
+  await page.getByLabel('选择真实装配模型 JSON',{exact:true}).setInputFiles({name:'native-3062b.json',mimeType:'application/json',buffer:await exported.body()});
+  const importedResponse=page.waitForResponse(r=>r.url().endsWith('/api/parts-foundation/assembly/models/import')&&r.request().method()==='POST');
+  await page.getByRole('button',{name:'验证导入模型',exact:true}).click();
+  const imported=await (await importedResponse).json();expect(imported.status).toBe('VALID');
+  expect(imported.model.placements.some((p:{partId:string})=>p.partId==='3062b')).toBe(true);
+  await mkdir('artifacts/import-collision/screenshots',{recursive:true});
+  await page.locator('.assembly-native-stage').screenshot({path:'artifacts/import-collision/screenshots/3062b-generation-reimport.png'});
 });

@@ -1,3 +1,5 @@
+> Current implementation: see [IMPORT_COLLISION_DELIVERY.md](IMPORT_COLLISION_DELIVERY.md). The sections below retain the original staging design and historical measurements. Current production includes 3062b; do not treat the old zero-import or source-unreachable statements as current. The source policy now uses the existing pinned pybricks mirror. Bundles may explicitly reuse byte/hash-identical base dependencies, and per-file attribution is preserved. Promotion publishes derived reports transactionally and requires service restart/browser refresh for runtime adoption.
+
 # 新零件暂存导入合同
 
 本页描述 `codex/part-import` 分支上的受控暂存导入链路。它只读取新的来源包，在临时 overlay 上验证，不修改 `data/parts-foundation` 固定源库，也不自动提升到正式目录。

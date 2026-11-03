@@ -67,7 +67,7 @@ export function createPartsFoundationRouter(options: { dataDir?: string; registr
     const body = request.body;
     if (!object(body)) bad('请求内容无效。');
     const module = (body.kind ?? body.module) as NativeModuleType;
-    const minimum = module === 'bar-clip' || module === 'pin-hole' || module === 'exterior-shell' ? 2 : 3;
+    const minimum = module === 'bar-clip' || module === 'pin-hole' || module === 'exterior-shell' || module === 'interface-assembly' ? 2 : 3;
     if (Object.keys(body).some(key => !['kind', 'module', 'partCount', 'requiredPartIds'].includes(key)) ||
         body.kind !== undefined && body.module !== undefined ||
         !NATIVE_MODULE_TYPES.includes(module) ||

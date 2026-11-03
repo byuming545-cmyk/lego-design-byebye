@@ -1,0 +1,26 @@
+
+> bricklab@0.6.0 audit:connectors
+> tsx src/cli/connector-audit.ts --output artifacts/import-collision/final-catalogue
+
+{
+  "output": "/workspace/lego-import-collision/artifacts/import-collision/final-catalogue",
+  "totalParts": 254,
+  "coverage": {
+    "COMPLETE": 102,
+    "PARTIAL": 148,
+    "NONE": 4
+  },
+  "rawParserCoverage": {
+    "ready": 206,
+    "partial": 44,
+    "missing": 4
+  },
+  "generationEligible": 105,
+  "executedPartPairTrials": 0,
+  "physicalBuildsVerified": 0,
+  "files": [
+    "report.json",
+    "parts.csv",
+    "REPORT.md"
+  ]
+}

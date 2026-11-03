@@ -105,9 +105,9 @@ describe('source-backed canonical connector ingestion', () => {
     expect(hinge.connectors.every(feature => feature.family !== 'HINGE_FINGER')).toBe(true);
   });
 
-  it('accounts for every source point in the complete real 253-root library without any part-ID mapping list', async () => {
+  it('accounts for every source point in the complete real 254-root library without any part-ID mapping list', async () => {
     let points = 0, features = 0;
-    const ids = await repository.listIds(); expect(ids).toHaveLength(253);
+    const ids = await repository.listIds(); expect(ids).toHaveLength(254);
     for (const id of ids) {
       const part = await native(id), ingestion = adaptNativePartConnectors(part);
       expect(ingestion.connectors.map(feature => feature.sourceConnectionId)).toEqual(part.connections.points.map(point => point.id));
@@ -117,7 +117,7 @@ describe('source-backed canonical connector ingestion', () => {
       // Changing a display/part identifier cannot confer or remove interface knowledge.
       if (id === '3001') expect(adaptNativePartConnectors({ ...part, partId: 'test-only-unseen-id' }).connectors).toEqual(ingestion.connectors);
     }
-    expect(points).toBe(5085); expect(features).toBe(points);
+    expect(points).toBe(5089); expect(features).toBe(points);
   }, 30000);
 });
 

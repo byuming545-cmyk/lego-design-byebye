@@ -1,3 +1,5 @@
+> 本轮本地开发交付：真实新增 3062b、完整表面分区碰撞检查及事务晋升后的快照更新。详见 [交付报告](docs/IMPORT_COLLISION_DELIVERY.md)。工作分支 `codex/import-collision-closure` 尚未推送；下文旧分支和旧计数属于历史记录。
+
 # BRICKLAB · Interface-first Connector Grammar
 
 当前默认生产链路已切换到接口语法准入：真实来源 → canonical Connector → 通用规则与拓扑 → 接口帧求姿态 → 多点精确闭合 → 原生实体碰撞 → 模型、BOM、步骤 → 导出后重新导入。新件不再依赖每件保留一份与指定夹具试拼成功的记录。

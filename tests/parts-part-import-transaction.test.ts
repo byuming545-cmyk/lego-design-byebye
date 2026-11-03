@@ -1,6 +1,7 @@
 import { access, mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
+import { sourceSnapshotDigest } from '../src/parts/sourceSnapshot.js';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { recoverImportJournals, transactionalPromote, type TransactionalPromoteInput } from '../src/parts/import/transaction.js';
 
@@ -82,5 +83,29 @@ describe('transactional part promotion', () => {
     expect(await readFile(path.join(ldrawRoot, 'manifest.json'), 'utf8')).toBe(originalLdraw);
     expect(await exists(target)).toBe(false);
     expect(await exists(journal)).toBe(false);
+  });
+});
+
+describe('source and derived catalogue publication transaction', () => {
+  it('rejects a stale staged catalogue under the promotion lock without losing a newer manifest', async () => {
+    const digest = sourceSnapshotDigest({ ldrawRoot, shadowRoot });
+    await writeFile(path.join(ldrawRoot, 'manifest.json'), originalLdraw + '\n');
+    await expect(transactionalPromote(await input({ expectedSourceSnapshot: digest }))).rejects.toMatchObject({ code: 'promotion-source-snapshot-changed' });
+    expect(await readFile(path.join(ldrawRoot, 'manifest.json'), 'utf8')).toBe(originalLdraw + '\n');
+  });
+  it('publishes reports and the active pointer with the source transaction', async () => {
+    const pointer = path.join(root, 'reports/current.json');
+    await transactionalPromote(await input({ publications: async () => [{ target: pointer, content: '{"snapshot":"new"}' }] }));
+    expect(await readFile(pointer, 'utf8')).toBe('{"snapshot":"new"}');
+  });
+  it('restores existing reports and source files if a later publication fails', async () => {
+    const pointer = path.join(root, 'current.json'), notDirectory = path.join(root, 'not-a-directory');
+    await writeFile(pointer, 'old pointer'); await writeFile(notDirectory, 'file');
+    const value = await input({ publications: async () => [{ target: pointer, content: 'new pointer' }, { target: path.join(notDirectory, 'report.json'), content: 'fail' }] });
+    await expect(transactionalPromote(value)).rejects.toBeDefined();
+    expect(await readFile(pointer, 'utf8')).toBe('old pointer');
+    expect(await readFile(path.join(ldrawRoot, 'manifest.json'), 'utf8')).toBe(originalLdraw);
+    expect(await exists(value.ldrawFiles[0].target)).toBe(false);
+    expect(await exists(path.join(ldrawRoot, 'imports/testonly1.json'))).toBe(false);
   });
 });

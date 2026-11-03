@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "part-import-post-promote-2",
+  "partId": "3062b",
+  "snapshot": "19f826ea45a00fd22e687d16bf6effdd663f04c7c2f667e5b82c0f7e1c226bcd",
+  "before": {
+    "totalRoots": 253,
+    "counts": {
+      "total": 253,
+      "generatable": 104,
+      "blocked": 149,
+      "disabledInterfaces": 2540
+    },
+    "sourceCounts": {
+      "totalRoots": 253,
+      "geometryReady": 253,
+      "connectionReady": 206,
+      "connectionPartial": 43,
+      "connectionMissing": 4
+    },
+    "blockedReasons": {
+      "geometry": 0,
+      "connection": 12,
+      "collision": 134,
+      "special-assembly": 3,
+      "other": 0
+    },
+    "exteriorGeneratable": 128,
+    "newPart": null
+  },
+  "after": {
+    "totalRoots": 254,
+    "counts": {
+      "total": 254,
+      "generatable": 105,
+      "blocked": 149,
+      "disabledInterfaces": 2543
+    },
+    "sourceCounts": {
+      "totalRoots": 254,
+      "geometryReady": 254,
+      "connectionReady": 206,
+      "connectionPartial": 44,
+      "connectionMissing": 4
+    },
+    "blockedReasons": {
+      "geometry": 0,
+      "connection": 12,
+      "collision": 134,
+      "special-assembly": 3,
+      "other": 0
+    },
+    "exteriorGeneratable": 128,
+    "newPart": {
+      "partId": "3062b",
+      "sourceReady": true,
+      "generatable": true,
+      "exteriorGeneratable": false,
+      "connectionSourceStatus": "partial",
+      "allowedConnectionIds": [
+        "p/stud2a.dat:11:0"
+      ],
+      "exteriorAllowedConnectionIds": []
+    }
+  }
+}

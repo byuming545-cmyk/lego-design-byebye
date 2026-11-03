@@ -1,0 +1,1 @@
+Pinned native source bundle. Each author, licence, URL and digest is recorded per file in bundle.json. Reused dependencies require the matching reviewed base library. Licence texts are in LICENSES. No application-wide or third-party Studio/PDF licence is granted.

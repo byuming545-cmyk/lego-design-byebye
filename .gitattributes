@@ -13,3 +13,12 @@ artifacts/generation-expansion/models/**/model.ldr -text whitespace=cr-at-eol
 artifacts/generation-expansion/logs/*.txt -text -whitespace
 artifacts/connector-grammar/logs/*.txt -text -whitespace
 artifacts/connector-grammar/**/model.ldr -text whitespace=cr-at-eol
+# Source catalogue snapshots and acquisition copies bind original bytes across platforms.
+data/parts-foundation/ldraw/manifest.json -text
+data/parts-foundation/shadow/manifest.json -text
+artifacts/import-collision/bundles/**/*.dat -text -whitespace
+artifacts/import-collision/bundles/**/LICENSES/* -text -whitespace
+artifacts/import-collision/**/model.ldr -text whitespace=cr-at-eol
+artifacts/part-import/**/model.ldr -text whitespace=cr-at-eol
+artifacts/import-collision/logs/*.txt -text -whitespace
+artifacts/import-collision/failures/api-minimum/error-context.md -text -whitespace

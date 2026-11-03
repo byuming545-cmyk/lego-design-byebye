@@ -16,9 +16,9 @@ const report = () => reportPromise ??= loadAudit();
 describe('complete pinned Connection Parse Audit', () => {
   it('accounts for all roots and every remaining issue with literal source evidence or an explicit missing-evidence outcome', async () => {
     const audit = await report();
-    expect(audit.counts).toMatchObject({ roots: 253, ready: 206, partial: 43, missing: 4, retainedRawConnectionRecords: 5085, activeFailureInstances: 113, discardedDimensionWarnings: 3 });
-    expect(audit.failures).toHaveLength(113);
-    expect(new Set(audit.parts.map(part => part.partId)).size).toBe(253);
+    expect(audit.counts).toMatchObject({ roots: 254, ready: 206, partial: 44, missing: 4, retainedRawConnectionRecords: 5089, activeFailureInstances: 114, discardedDimensionWarnings: 3 });
+    expect(audit.failures).toHaveLength(114);
+    expect(new Set(audit.parts.map(part => part.partId)).size).toBe(254);
     for (const failure of audit.failures) {
       expect(failure.expectedInterpretation.status).toBe('EXPECTED_UNKNOWN');
       expect(failure.sourceClosureSha256).toMatch(/^[a-f0-9]{64}$/);
@@ -34,7 +34,7 @@ describe('complete pinned Connection Parse Audit', () => {
         expect(failure.instruction).toMatch(/^0 !LDCAD SNAP_/);
       }
     }
-    expect(audit.categories).toEqual({ CONNECTION_EVIDENCE_MISSING: 4, FINGER_JOINT_GRAMMAR: 9, GRID_GRAMMAR: 2, INCLUDE_OVERRIDE: 4, INHERITED_SCALING: 94 });
+    expect(audit.categories).toEqual({ CONNECTION_EVIDENCE_MISSING: 4, FINGER_JOINT_GRAMMAR: 9, GRID_GRAMMAR: 2, INCLUDE_OVERRIDE: 4, INHERITED_SCALING: 95 });
   });
   it('preserves every pre-fix point/source record except the documented 3673 PIN reclassification, and retires only the three explicit CLEAR warnings', async () => {
     const audit = await report();
@@ -55,9 +55,9 @@ describe('complete pinned Connection Parse Audit', () => {
     }
     const oldIds = new Set(before.parts.map(part => part.partId));
     const added = audit.parts.filter(part => !oldIds.has(part.partId));
-    expect(new Set(added.map(part => part.partId))).toEqual(new Set(['32000', '3623', '60479', '78329', '3456', '69729', '6934', '41539']));
+    expect(new Set(added.map(part => part.partId))).toEqual(new Set(['32000', '3623', '60479', '78329', '3456', '69729', '6934', '41539', '3062b']));
     for (const part of added) {
-      expect(part.status).toBe('ready');
+      expect(part.status).toBe(part.partId === '3062b' ? 'partial' : 'ready');
       expect(part.pointCount).toBeGreaterThan(0);
       expect(part.pointSha256).toMatch(/^[a-f0-9]{64}$/);
       expect(part.sourceClosureSha256).toMatch(/^[a-f0-9]{64}$/);

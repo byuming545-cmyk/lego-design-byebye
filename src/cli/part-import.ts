@@ -1,8 +1,14 @@
+import { recoverPartImports } from '../parts/import/transaction.js';
+import { BUNDLED_LDRAW_DIRECTORY } from '../parts/ldraw/bundled.js';
 import path from 'node:path';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { PartImportService } from '../parts/import/service.js';
 
 const args = process.argv.slice(2);
+if (args.length === 1 && args[0] === '--recover') {
+  try { console.log(JSON.stringify({ recovered: await recoverPartImports(BUNDLED_LDRAW_DIRECTORY) })); process.exit(0); }
+  catch (error) { console.error(error instanceof Error ? error.message : String(error)); process.exit(1); }
+}
 const value = (name: string) => { const index = args.indexOf(name); return index >= 0 ? args[index + 1] : undefined; };
 const bundle = value('--bundle');
 const promote = args.includes('--promote');

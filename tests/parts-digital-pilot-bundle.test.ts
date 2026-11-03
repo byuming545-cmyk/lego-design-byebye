@@ -42,7 +42,7 @@ describe('independent reviewed pilot source bundle', () => {
 
   it('retains independent staging bytes while only reviewed roots are promoted to the production source set', async () => {
     const production = new NativePartRepository();
-    expect(await production.listIds()).toHaveLength(253);
+    expect(await production.listIds()).toHaveLength(254);
     for (const id of ['3705', '2780', '32054']) expect(await production.getPart(id)).toBeUndefined();
     for (const id of ['3001', '3024', '87087', '3641', '32000']) {
       expect(nativePartSourceHash((await staged.getPart(id))!)).toBe(nativePartSourceHash((await production.getPart(id))!));

@@ -1,3 +1,5 @@
+> Current correction: `native-exterior-shell-4.0.0` replaces shell/solid edge probes with complete source-face partition checks. Historical rejection claims and 1 LDU contact descriptions below are not the current algorithm. Recorded endpoint-extension/reverse-edge false positives were corrected; 3024+11477 and 3001+18973 now have surface-only generated/reimported witnesses. See [delivery and evidence](../IMPORT_COLLISION_DELIVERY.md). No physical certification or structural upgrade follows.
+
 # 外表面碰撞合同（外表面碰撞，非闭合实体认证）
 
 ## 1. 为什么需要单独的合同

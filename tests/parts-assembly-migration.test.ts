@@ -33,8 +33,9 @@ describe('all-native-root assembly migration', () => {
 
   it('includes every pinned root with an explicit source-bound verified or blocked result', async () => {
     const ids = await repository.listIds();
-    expect(ids).toHaveLength(253);
-    expect(report.entries.map(entry => entry.partId).sort()).toEqual([...ids].sort());
+    expect(ids).toHaveLength(254);
+    expect(report.entries.map(entry => entry.partId).sort()).toEqual(ids.filter(id => id !== '3062b').sort());
+    expect(report.entries.some(entry => entry.partId === '3062b')).toBe(false); // New source cannot inherit a historical fixture PASS.
     expect(report.sourceCounts).toEqual({ totalRoots: 253, geometryReady: 253, connectionReady: 206, connectionPartial: 43, connectionMissing: 4 });
     expect(report.counts.total).toBe(253);
     expect(report.counts.assemblyVerified + report.counts.blocked).toBe(253);

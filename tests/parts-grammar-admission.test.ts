@@ -113,7 +113,7 @@ describe('source-derived interface grammar admission', () => {
     const status = await service.status();
     expect(status.admissionBasis).toBe('interface-grammar');
     expect(status.runtimeValidation).toMatchObject({ status: 'ready', reportLoaded: false });
-    expect(status.counts.total).toBe(253);
+    expect(status.counts.total).toBe(254);
     expect(status.counts.generatable).toBeGreaterThan(0);
     expect(status.counts.assemblyVerified).toBe(0);
     expect(status.counts.verifiedInterfaces).toBe(0);

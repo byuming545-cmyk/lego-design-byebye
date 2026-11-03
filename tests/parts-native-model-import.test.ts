@@ -47,7 +47,7 @@ beforeAll(async () => {
   // Production permissions come from real current-version source/physics tests,
   // rather than hand-authored success flags or fabricated parts.
   capabilities = new Map(migration.entries.map((entry) => [entry.partId, capabilityFromMigration(entry)]));
-  production = new AttachmentEngine({ mode: 'production', loadPart: (id) => repository.getPart(id), getCapability: (id) => capabilities.get(id) });
+  production = new AttachmentEngine({ getSourceSnapshot: () => repository.snapshotDigest, mode: 'production', loadPart: (id) => repository.getPart(id), getCapability: (id) => capabilities.get(id) });
   const source = (await repository.getPart('3023b'))!;
   const male = source.connections.points.find((point) => point.gender === 'M' && point.sourceId === 'studC' && point.position[0] === -10)!;
   const female = source.connections.points.find((point) => point.gender === 'F' && point.sections[0]?.radius === 6 && point.position[0] === -10)!;

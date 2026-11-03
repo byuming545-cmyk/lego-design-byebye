@@ -41,6 +41,7 @@ export interface AssemblyGraphEdge {
 }
 export interface NativeAssembly extends AssemblyVersions {
   schemaVersion: 1;
+  sourceSnapshot?: string;
   id: string;
   placements: NativePlacement[];
   /** Every coincident supported mating pair is recorded, including multi-part bridges. */

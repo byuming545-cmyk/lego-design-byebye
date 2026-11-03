@@ -1,0 +1,84 @@
+
+> bricklab@0.6.0 test
+> vitest run --maxWorkers=2
+
+
+ RUN  v5.0.5 /workspace/lego-import-collision
+
+ ❯ tests/speed-engine.test.ts (56 tests | 1 failed) 56740ms
+   ❯ Speed Phase 8 independently buildable subassemblies and rotation instructions (6)
+     × uses each physical part once and installs every subassembly onto all existing legal anchors 5402ms
+ ❯ tests/parts-interface-library.test.ts (8 tests | 2 failed) 62307ms
+   ❯ real interface and assembly library (8)
+     × indexes every real connector instance from the source-bound registry 31674ms
+     × validates and persists a manual example through the formal engine without granting admission 30231ms
+ ❯ tests/parts-source-snapshot.test.ts (1 test | 1 failed) 117ms
+   ❯ immutable runtime catalogue snapshot (1)
+     × rejects old repository caches and HTTP requests after a source change; restart adopts the new snapshot 115ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/parts-interface-library.test.ts > real interface and assembly library > indexes every real connector instance from the source-bound registry
+Error: Test timed out in 30000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/parts-interface-library.test.ts:31:3
+     29|
+     30| describe('real interface and assembly library', () => {
+     31|   it('indexes every real connector instance from the source-bound regi…
+       |   ^
+     32|     const overview = await library.overview();
+     33|     expect(overview.counts).toMatchObject({ parts: 254, interfaces: 50…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/parts-interface-library.test.ts > real interface and assembly library > validates and persists a manual example through the formal engine without granting admission
+Error: Test timed out in 30000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/parts-interface-library.test.ts:84:3
+     82|   });
+     83|
+     84|   it('validates and persists a manual example through the formal engin…
+       |   ^
+     85|     const caseResponse = await fetch(`${base}/case?id=${encodeURICompo…
+     86|     expect(caseResponse.ok).toBe(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/parts-source-snapshot.test.ts > immutable runtime catalogue snapshot > rejects old repository caches and HTTP requests after a source change; restart adopts the new snapshot
+AssertionError: expected 200 to be 503 // Object.is equality
+
+- Expected
++ Received
+
+- 503
++ 200
+
+ ❯ tests/parts-source-snapshot.test.ts:25:41
+     23|       const before=await fetch(url);expect(before.status).toBe(200);ex…
+     24|       const lock=path.join(roots.ldrawRoot,'.import.lock');await write…
+     25|       expect((await fetch(url)).status).toBe(503);await rm(lock);
+       |                                         ^
+     26|       const manifest=path.join(roots.ldrawRoot,'manifest.json');await …
+     27|       const changed=await fetch(url);expect(changed.status).toBe(503);…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/speed-engine.test.ts > Speed Phase 8 independently buildable subassemblies and rotation instructions > uses each physical part once and installs every subassembly onto all existing legal anchors
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tests/speed-engine.test.ts:355:3
+    353|     expect(physical(main)).toEqual(physical(candidate.model.parts));
+    354|   };
+    355|   it('uses each physical part once and installs every subassembly onto…
+       |   ^
+    356|     expect(candidates).toHaveLength(3);
+    357|     for (const candidate of candidates) { audit(candidate); expect(val…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  3 failed | 58 passed (61)
+      Tests  4 failed | 810 passed (814)
+   Start at  15:56:28
+   Duration  210.16s (tests 99%, import 1%)
+

@@ -8,7 +8,7 @@ import { checkMultiPointConnection, physicalMatingPairKey, sourceEndpointKey, va
 import type { AssemblyAttachRequest, AssemblyGraphEdge, AssemblyInterfaceCapability, CollisionClass, NativeAssembly, NativeAssemblyPart, NativePlacement } from './types.js';
 import { hasIsolatedUnknownDimensions, isCollisionClass, isGeneratableCapabilityFor, placementCollisionClass } from './types.js';
 
-export const ASSEMBLY_ENGINE_VERSION = 'native-assembly-0.7.0-grammar';
+export const ASSEMBLY_ENGINE_VERSION = 'native-assembly-0.8.0-import-snapshot';
 type PairCollision = Awaited<ReturnType<typeof checkNativePairCollision>>;
 export interface AttachResult {
   accepted: boolean;
@@ -21,6 +21,7 @@ export interface AttachResult {
   debug?: AttachmentCandidate & { coordinateSystem: 'ldraw-native'; insertionPathVerification: 'source-axis-seating-path' };
 }
 export interface AttachmentEngineOptions {
+  getSourceSnapshot?(): string;
   loadPart(partId: string): Promise<NativeAssemblyPart | undefined>;
   getCapability?(partId: string): Promise<AssemblyInterfaceCapability | undefined> | AssemblyInterfaceCapability | undefined;
   /** Internal verification harness only; this is never read from requests or environment. */
@@ -77,7 +78,7 @@ export class AttachmentEngine {
     if (!part) throw new Error('Unknown source part; no placeholder can seed an assembly.');
     const problems = await this.eligibility(part, undefined, undefined, collisionClass);
     if (problems.length) throw new Error(problems.join(' '));
-    const graph: NativeAssembly = { schemaVersion: 1, id: `assembly-${randomUUID()}`, ...this.versions,
+    const graph: NativeAssembly = { schemaVersion: 1, id: `assembly-${randomUUID()}`, ...this.versions, ...(this.options.getSourceSnapshot ? { sourceSnapshot: this.options.getSourceSnapshot() } : {}),
       placements: [{ instanceId: 'root', partId, transform: structuredClone(IDENTITY_TRANSFORM), ...(collisionClass === 'exterior-shell' ? { collisionClass } : {}) }], edges: [],
       sourceHashes: { [partId]: nativePartSourceHash(part) }, physicalBuildVerified: false };
     this.remember(graph);
@@ -88,8 +89,9 @@ export class AttachmentEngine {
    * A copied or edited graph is never blessed merely because it has edges. */
   async validateGraph(graph: NativeAssembly): Promise<{ valid: boolean; issues: string[] }> {
     const issues: string[] = [];
+    if (this.options.getSourceSnapshot && graph?.sourceSnapshot !== this.options.getSourceSnapshot()) issues.push('Source catalogue snapshot changed or is missing; current model revalidation is required.');
     if (!graph || graph.schemaVersion !== 1 || !Array.isArray(graph.placements) || !Array.isArray(graph.edges) || !graph.sourceHashes || graph.placements.length < 1 || graph.placements.length > 64 || graph.edges.length > 4096 || graph.physicalBuildVerified !== false) return { valid: false, issues: ['Invalid or unbounded assembly graph, or unsupported physical verification claim.'] };
-    if (Object.entries(this.versions).some(([key, value]) => graph[key as keyof typeof this.versions] !== value)) issues.push('Assembly version dependencies do not match the active engine.');
+    if (Object.entries(this.versions).some(([key, value]) => graph[key as 'partLibraryVersion' | 'assemblyEngineVersion' | 'connectionRuleVersion' | 'collisionVersion'] !== value)) issues.push('Assembly version dependencies do not match the active engine.');
     const nodes = new Map<string, NativePlacement>(), parts = new Map<string, NativeAssemblyPart>();
     for (const placement of graph.placements) {
       if (!placement || typeof placement.instanceId !== 'string' || nodes.has(placement.instanceId) || !isRigidTransform(placement.transform) || (placement.collisionClass !== undefined && !isCollisionClass(placement.collisionClass))) { issues.push('Duplicate instance or invalid rigid placement/collision class.'); continue; }
