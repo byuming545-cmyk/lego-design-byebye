@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "bricklab-part-import-verification-1",
+  "branch": "codex/part-import",
+  "baselineCommit": "d68a0ad",
+  "status": "infrastructure-only",
+  "realBundlesValidated": 0,
+  "realPartsPromoted": 0,
+  "stagedOverlayWritesPinnedLibrary": false,
+  "tests": 5,
+  "fullSuite": {
+    "files": 56,
+    "tests": 788,
+    "passed": 788,
+    "durationSeconds": 102.68,
+    "log": "artifacts/part-import/unit.log"
+  },
+  "build": {
+    "status": "passed",
+    "log": "artifacts/part-import/build.log"
+  },
+  "limitations": [
+    "No real new-part bundle was available; raw.githubusercontent.com connections were reset.",
+    "Only C01 candidates are attempted by the staging service.",
+    "No installation path, retention, friction, deformation or physical build verification.",
+    "No promotion was executed."
+  ]
+}
