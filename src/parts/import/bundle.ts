@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { cp, lstat, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { copyFile, cp, lstat, mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -15,6 +15,10 @@ const MAX_BUNDLE_JSON = 1_000_000;
 const MAX_FILES = 500;
 const MAX_FILE_BYTES = 4_000_000;
 const MAX_TOTAL_BYTES = 50_000_000;
+export const APPROVED_IMPORT_SOURCES: Record<ImportLibraryName, readonly string[]> = {
+  LDraw: ['https://raw.githubusercontent.com/ldraw/ldraw/'],
+  LDCadShadowLibrary: ['https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/'],
+};
 
 export type ImportLibraryName = 'LDraw' | 'LDCadShadowLibrary';
 export interface ImportSourceFile { path: string; sha256: string; bytes: number }
@@ -80,6 +84,7 @@ function validateLibrary(value: unknown, expected: ImportLibraryName, partId: st
   if (expected === 'LDraw' && !ACCEPTED_LDRAW_LICENSES.has(license)) throw new PartImportError('invalid-license', `Unreviewed LDraw license: ${license}`);
   if (expected === 'LDCadShadowLibrary' && license !== 'CC-BY-SA-4.0') throw new PartImportError('invalid-license', `Unreviewed Shadow license: ${license}`);
   const sourceUrl = https(raw.sourceUrl, 'sourceUrl');
+  if (!APPROVED_IMPORT_SOURCES[expected].some(prefix => sourceUrl.startsWith(prefix))) throw new PartImportError('unapproved-source', `Source host is not approved for ${expected}.`);
   if (!sourceUrl.endsWith(`/${revision}/`)) throw new PartImportError('invalid-bundle', 'sourceUrl must end with the pinned revision.');
   const root = text(raw.root, 'root', 200);
   if (canonicalLDrawPath(root) !== root || root !== `parts/${partId}.dat`) throw new PartImportError('invalid-bundle', 'Root must be parts/<partId>.dat.');
@@ -104,8 +109,9 @@ function validateLibrary(value: unknown, expected: ImportLibraryName, partId: st
 export function validatePartImportMetadata(value: unknown): PartImportBundle {
   const raw = object(value);
   if (raw.schemaVersion !== PART_IMPORT_SCHEMA) throw new PartImportError('invalid-bundle', 'Unsupported bundle schema.');
-  const partId = text(raw.partId, 'partId', 80).toLowerCase();
-  if (!/^[a-z0-9][a-z0-9_-]{0,79}$/.test(partId) || partId !== text(raw.partId, 'partId', 80).toLowerCase()) throw new PartImportError('invalid-part-id', 'partId must be a lowercase native ID.');
+  const rawPartId = text(raw.partId, 'partId', 80);
+  const partId = rawPartId.toLowerCase();
+  if (rawPartId !== partId || !/^[a-z0-9][a-z0-9_-]{0,79}$/.test(partId)) throw new PartImportError('invalid-part-id', 'partId must be a lowercase native ID.');
   const geometry = validateLibrary(raw.geometry, 'LDraw', partId);
   const connections = validateLibrary(raw.connections, 'LDCadShadowLibrary', partId);
   return {
@@ -139,23 +145,42 @@ export async function readPartImportBundle(directory: string): Promise<PartImpor
   const base = await loadBundledLDrawManifest();
   if (base.revision !== bundle.geometry.revision) throw new PartImportError('source-revision-mismatch', 'LDraw bundle revision must equal the pinned repository revision.');
   if (SHADOW_REVISION !== bundle.connections.revision) throw new PartImportError('source-revision-mismatch', 'Shadow bundle revision must equal the pinned repository revision.');
+  if (!bundle.allowStagingValidation) throw new PartImportError('staging-not-allowed', 'Bundle metadata does not allow staging validation.');
+  const shadowBase = await loadShadowManifest();
   if (base.roots.some(root => root.partId === bundle.partId)) throw new PartImportError('part-already-exists', `Part ${bundle.partId} is already in the pinned catalogue; use a new native ID.`);
+  const basePaths = new Set([...base.files.map(file => file.path), ...shadowBase.files.map(file => file.path)]);
+  for (const file of [...bundle.geometry.files, ...bundle.connections.files]) if (basePaths.has(file.path)) throw new PartImportError('source-path-already-in-base', `Bundle file would overlap the pinned source: ${file.path}`);
   for (const file of bundle.geometry.files) await checkedFile(directory, file, 'ldraw');
   for (const file of bundle.connections.files) await checkedFile(directory, file, 'shadow');
   return bundle;
 }
 
+export async function loadShadowManifest(): Promise<ShadowManifest> {
+  const text = await readFile(path.join(SHADOW_DIRECTORY, 'manifest.json'), 'utf8');
+  return validateBundledShadowManifest(JSON.parse(text));
+}
+
 export async function stagePartImport(directory: string, bundle: PartImportBundle): Promise<StagedPartImport> {
+  if (!bundle.allowStagingValidation) throw new PartImportError('staging-not-allowed', 'Bundle metadata does not allow staging validation.');
   const base = await loadBundledLDrawManifest();
-  const shadowText = await readFile(path.join(SHADOW_DIRECTORY, 'manifest.json'), 'utf8');
-  const shadowBase = validateBundledShadowManifest(JSON.parse(shadowText));
+  const shadowBase = await loadShadowManifest();
+  const basePaths = new Set([...base.files.map(file => file.path), ...shadowBase.files.map(file => file.path)]);
+  for (const file of [...bundle.geometry.files, ...bundle.connections.files]) if (basePaths.has(file.path)) throw new PartImportError('source-path-already-in-base', `Bundle file would overlap the pinned source: ${file.path}`);
   const temp = await mkdtemp(path.join(tmpdir(), `bricklab-part-import-${bundle.partId}-`));
   const ldrawDirectory = path.join(temp, 'ldraw'), shadowDirectory = path.join(temp, 'shadow');
   try {
     await cp(path.join(BUNDLED_LDRAW_DIRECTORY, 'files'), path.join(ldrawDirectory, 'files'), { recursive: true });
     await cp(path.join(SHADOW_DIRECTORY, 'files'), path.join(shadowDirectory, 'files'), { recursive: true });
-    await cp(path.join(directory, 'ldraw'), path.join(ldrawDirectory, 'files'), { recursive: true });
-    await cp(path.join(directory, 'shadow'), path.join(shadowDirectory, 'files'), { recursive: true });
+    for (const file of bundle.geometry.files) {
+      const target = path.join(ldrawDirectory, 'files', file.path);
+      await mkdir(path.dirname(target), { recursive: true });
+      await copyFile(path.join(directory, 'ldraw', file.path), target);
+    }
+    for (const file of bundle.connections.files) {
+      const target = path.join(shadowDirectory, 'files', file.path);
+      await mkdir(path.dirname(target), { recursive: true });
+      await copyFile(path.join(directory, 'shadow', file.path), target);
+    }
     const ldraw = structuredClone(base);
     ldraw.files.push(...bundle.geometry.files.map(file => ({ ...file, author: bundle.author, license: bundle.geometry.license, sourceUrl: `${ldraw.sourceRoot}${file.path}` })));
     ldraw.roots.push({ partId: bundle.partId, path: bundle.geometry.root, name: bundle.name, selectionBasis: `part-import: ${bundle.selectionBasis}` });

@@ -4,6 +4,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import { PART_IMPORT_SCHEMA, readPartImportBundle, stagePartImport, validatePartImportMetadata } from '../src/parts/import/bundle.js';
+import { PartImportService, type PartImportReport } from '../src/parts/import/service.js';
 
 const LDRAW_REVISION = 'c43ed06a128a10ed65675166bf42eb6fd608b9b0';
 const SHADOW_REVISION = '9b1131fb1991f8c0bfc072325e4e12f6271aba35';
@@ -14,8 +15,8 @@ afterEach(async () => { await Promise.all(tempDirs.splice(0).map(directory => rm
 function bundle(partId = '9999') {
   return {
     schemaVersion: PART_IMPORT_SCHEMA, partId, name: 'Synthetic metadata fixture', author: 'fixture',
-    geometry: { library: 'LDraw', revision: LDRAW_REVISION, license: 'Licensed under CC BY 4.0 : see CAreadme.txt', sourceUrl: `https://example.invalid/ldraw/${LDRAW_REVISION}/`, root: `parts/${partId}.dat`, files: [{ path: `parts/${partId}.dat`, sha256: sha('geometry'), bytes: 8 }] },
-    connections: { library: 'LDCadShadowLibrary', revision: SHADOW_REVISION, license: 'CC-BY-SA-4.0', sourceUrl: `https://example.invalid/shadow/${SHADOW_REVISION}/`, root: `parts/${partId}.dat`, files: [{ path: `parts/${partId}.dat`, sha256: sha('connections'), bytes: 11 }] },
+    geometry: { library: 'LDraw', revision: LDRAW_REVISION, license: 'Licensed under CC BY 4.0 : see CAreadme.txt', sourceUrl: `https://raw.githubusercontent.com/ldraw/ldraw/${LDRAW_REVISION}/`, root: `parts/${partId}.dat`, files: [{ path: `parts/${partId}.dat`, sha256: sha('geometry'), bytes: 8 }] },
+    connections: { library: 'LDCadShadowLibrary', revision: SHADOW_REVISION, license: 'CC-BY-SA-4.0', sourceUrl: `https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/${SHADOW_REVISION}/`, root: `parts/${partId}.dat`, files: [{ path: `parts/${partId}.dat`, sha256: sha('connections'), bytes: 11 }] },
     selectionBasis: 'fixture', importBasis: 'fixture', reviewer: 'fixture', allowStagingValidation: true,
   };
 }
@@ -40,6 +41,25 @@ describe('part import bundle staging contract', () => {
     await expect(readPartImportBundle(directory)).rejects.toMatchObject({ code: 'part-already-exists' });
   });
 
+  it('rejects an unapproved source host', () => {
+    const badHost = structuredClone(bundle());
+    badHost.geometry.sourceUrl = `https://example.invalid/ldraw/${LDRAW_REVISION}/`;
+    expect(() => validatePartImportMetadata(badHost)).toThrow(/not approved/);
+  });
+
+  it('rejects a bundle file that would overlap the pinned base', async () => {
+    const overlap = structuredClone(bundle());
+    overlap.geometry.files.push({ path: 'p/stud.dat', sha256: sha('base'), bytes: 8 });
+    const directory = await writeBundle(overlap);
+    await expect(readPartImportBundle(directory)).rejects.toMatchObject({ code: 'source-path-already-in-base' });
+  });
+
+  it('rejects a bundle that does not allow staging validation', async () => {
+    const blocked = structuredClone(bundle()); blocked.allowStagingValidation = false;
+    const directory = await writeBundle(blocked);
+    await expect(readPartImportBundle(directory)).rejects.toMatchObject({ code: 'staging-not-allowed' });
+  });
+
   it('reports a missing source file instead of inventing geometry', async () => {
     const directory = await writeBundle(bundle());
     await expect(readPartImportBundle(directory)).rejects.toMatchObject({ code: 'missing-source-file' });
@@ -53,8 +73,10 @@ describe('part import bundle staging contract', () => {
     await writeFile(path.join(directory, 'ldraw', 'parts', '9999.dat'), 'geometry');
     await writeFile(path.join(directory, 'shadow', 'parts', '9999.dat'), 'connections');
     const parsed = await readPartImportBundle(directory);
+    await writeFile(path.join(directory, 'ldraw', 'parts', 'undeclared.dat'), 'not-declared');
     const staged = await stagePartImport(directory, parsed);
     await expect(access(path.join(staged.ldrawDirectory, 'files', 'parts', '9999.dat'))).resolves.toBeUndefined();
+    await expect(access(path.join(staged.ldrawDirectory, 'files', 'parts', 'undeclared.dat'))).rejects.toMatchObject({ code: 'ENOENT' });
     await staged.cleanup();
   });
 
@@ -65,5 +87,20 @@ describe('part import bundle staging contract', () => {
     await writeFile(path.join(directory, 'ldraw', 'parts', '9999.dat'), 'tampered');
     await writeFile(path.join(directory, 'shadow', 'parts', '9999.dat'), 'connections');
     await expect(readPartImportBundle(directory)).rejects.toMatchObject({ code: 'source-integrity' });
+  });
+});
+
+
+describe('part import promotion guards', () => {
+  const blockedReport = (partId = '9999', status: 'blocked' | 'validated' = 'blocked') => ({ partId, status } as PartImportReport);
+
+  it('refuses to promote a blocked report', async () => {
+    const service = new PartImportService();
+    await expect(service.promote('/nonexistent', blockedReport(), '9999')).rejects.toMatchObject({ code: 'promotion-blocked' });
+  });
+
+  it('refuses a confirmation that does not match the report', async () => {
+    const service = new PartImportService();
+    await expect(service.promote('/nonexistent', blockedReport('9999', 'validated'), '3001')).rejects.toMatchObject({ code: 'promotion-confirm-mismatch' });
   });
 });

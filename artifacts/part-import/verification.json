@@ -6,12 +6,12 @@
   "realBundlesValidated": 0,
   "realPartsPromoted": 0,
   "stagedOverlayWritesPinnedLibrary": false,
-  "tests": 5,
+  "tests": 10,
   "fullSuite": {
     "files": 56,
-    "tests": 788,
-    "passed": 788,
-    "durationSeconds": 102.68,
+    "tests": 793,
+    "passed": 793,
+    "durationSeconds": 102.89,
     "log": "artifacts/part-import/unit.log"
   },
   "build": {
@@ -20,8 +20,11 @@
   },
   "limitations": [
     "No real new-part bundle was available; raw.githubusercontent.com connections were reset.",
-    "Only C01 candidates are attempted by the staging service.",
+    "Candidate search covers C01, BAR_CLIP and PIN_HOLE, but no real positive bundle was exercised.",
     "No installation path, retention, friction, deformation or physical build verification.",
-    "No promotion was executed."
-  ]
+    "Promotion was not executed because no validated real bundle existed."
+  ],
+  "promoteImplemented": true,
+  "typecheck": "passed",
+  "commit": null
 }
