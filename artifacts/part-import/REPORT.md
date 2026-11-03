@@ -40,7 +40,7 @@
 
 ## 本地提交
 
-`2e7c812 fix: harden part import audit and exterior soundness`（基线 `6825b4c`）。
+代码提交 `062c49e fix: harden part import audit and exterior soundness`（基线 `6825b4c`）；本报告在随后的小提交中记录该哈希。
 
 ## 边界
 
