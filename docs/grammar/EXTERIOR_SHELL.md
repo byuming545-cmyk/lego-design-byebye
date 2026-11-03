@@ -83,15 +83,15 @@ EXTERIOR_SURFACE_UNKNOWN
 
 ## 7. 真实样例
 
-`3024`（structural plate）+ `11477`（exterior slope）：
+`3001`（structural brick）+ `11477`（exterior slope）：
 
 - structural attach：拒绝 `part-or-interface-blocked`；
 - exterior attach：接受，graph `valid`；
 - clear：验收姿态为 `exterior-surface-clear` / `EXTERIOR_SURFACE_CLEAR`；若交叉点落在距共面接触片 1 LDU 内，才按接触处理；其他交叉仍是 collision。
 - 2 placements、1 edge；
-- JSON 19,056 bytes，重导入 `VALID`，placement 保留 `exterior-shell`。
+- JSON 19,878 bytes，重导入 `VALID`，placement 保留 `exterior-shell`。
 
-`3024` + `11477` 是本轮验收模型；`3001` + `11477` 也通过 attach/碰撞检查但未单独生成。`3024` + `18973`、`3001` + `18973` 仍在来源 seat 外的表面/接触判定中失败；只记为 blocked/UNKNOWN，不用于通过样例。
+`3001` + `11477` 是本轮验收模型。更严格的逐穿透过滤后，`3024` + `11477` 被判定为 seat 外真实表面交叉，保留失败；`3001` + `18973`、`3024` + `18973` 同样失败；只记为 blocked/UNKNOWN，不用于通过样例。
 
 ## 8. 边界
 

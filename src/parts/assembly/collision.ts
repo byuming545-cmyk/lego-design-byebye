@@ -268,6 +268,16 @@ function validateZone(zone: ConnectionPenetrationZone, parts: NativeAssemblyPart
 /** The validated seat is the only place an open clip surface may contact the
  * closed bar. It comes from the matched SNAP_CLP/SNAP_CYL endpoints, not from
  * a guessed envelope around the part. */
+function segmentEntersSolid(proxy: CollisionProxy, start: Vector3, end: Vector3, hit: Vector3): boolean {
+  const dx = end[0] - start[0], dy = end[1] - start[1], dz = end[2] - start[2];
+  const length = Math.hypot(dx, dy, dz);
+  if (length <= EPS) return classifyPoint(proxy, hit) === 'inside';
+  const step = Math.min(0.25, length / 8);
+  const before: Vector3 = [hit[0] - dx / length * step, hit[1] - dy / length * step, hit[2] - dz / length * step];
+  const after: Vector3 = [hit[0] + dx / length * step, hit[1] + dy / length * step, hit[2] + dz / length * step];
+  return classifyPoint(proxy, before) === 'inside' || classifyPoint(proxy, after) === 'inside';
+}
+
 function pointInSeat(point: Vector3, zone: ConnectionPenetrationZone): boolean {
   const delta = subtract(point, zone.center);
   const along = dot(delta, zone.axis);
@@ -385,11 +395,16 @@ function deriveNativePairCollision(fixedPart: NativeAssemblyPart, fixedPlacement
           continue;
         }
         for (let edge = 0; edge < 3; edge++) {
-          const hit = properSegmentFace(shellFace.vertices[edge], shellFace.vertices[(edge + 1) % 3], solidFace) ?? properSegmentFace(solidFace.vertices[edge], solidFace.vertices[(edge + 1) % 3], shellFace);
+          const start = shellFace.vertices[edge], end = shellFace.vertices[(edge + 1) % 3];
+          const hit = properSegmentFace(start, end, solidFace) ?? properSegmentFace(solidFace.vertices[edge], solidFace.vertices[(edge + 1) % 3], shellFace);
           if (hit && !pointInSeat(hit, penetrationZone)) {
-            const atContact = coplanarPoints.some((point) => distance(point, hit) <= 1);
-            if (!atContact) { crossing = hit; break; }
-            proof.coplanarContacts++;
+            // A face crossing alone is not enough: a tangent/grazing edge can touch
+            // a closed surface without entering its material. A hit that is itself
+            // part of an observed coplanar contact is surface contact, not a
+            // penetration; every other hit must independently probe into the solid.
+            if (segmentEntersSolid(solid, start, end, hit)) { crossing = hit; break; }
+            const atContact = coplanarPoints.some((point) => distance(point, hit) <= 0.05);
+            if (atContact) proof.coplanarContacts++;
           }
         }
         if (crossing) break;

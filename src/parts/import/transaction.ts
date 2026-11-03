@@ -109,13 +109,13 @@ export async function transactionalPromote(input: TransactionalPromoteInput): Pr
     await atomicWrite(ldrawManifestPath, input.ldrawManifest);
     await atomicWrite(shadowManifestPath, input.shadowManifest);
     const ledgerPath = journal.ledgerPath;
-    await mkdir(path.dirname(ledgerPath), { recursive: true });
-    await atomicWrite(ledgerPath, JSON.stringify(input.ledger, null, 2));
     const readbackLdraw = JSON.parse(await readFile(ldrawManifestPath, 'utf8')) as { roots?: { partId?: string }[] };
     const readbackShadow = JSON.parse(await readFile(shadowManifestPath, 'utf8')) as { files?: { path?: string }[] };
     if (!readbackLdraw.roots?.some(root => root.partId === input.partId)) throw new PartImportError('promotion-readback-failed', 'LDraw manifest readback did not contain the promoted root.');
     if (!readbackShadow.files?.some(file => file.path === `parts/${input.partId}.dat`)) throw new PartImportError('promotion-readback-failed', 'Shadow manifest readback did not contain the promoted root.');
     await input.verify?.();
+    await mkdir(path.dirname(ledgerPath), { recursive: true });
+    await atomicWrite(ledgerPath, JSON.stringify(input.ledger, null, 2));
     journal.state = 'committed';
     await atomicWrite(path.join(journalDirectory, 'journal.json'), JSON.stringify(journal, null, 2));
     await rm(journalDirectory, { recursive: true, force: true });

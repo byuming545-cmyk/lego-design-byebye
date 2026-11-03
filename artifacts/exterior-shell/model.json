@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "assembly-de6b2df7-70c7-44ed-a19f-6db8592d1ffe",
+  "id": "assembly-942ab15c-7b03-435c-a71f-486be6050d1a",
   "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
   "assemblyEngineVersion": "native-assembly-0.7.0-grammar",
   "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-2",
@@ -8,7 +8,7 @@
   "placements": [
     {
       "instanceId": "root",
-      "partId": "3024",
+      "partId": "3001",
       "transform": {
         "rotation": [
           1,
@@ -33,20 +33,20 @@
       "partId": "11477",
       "transform": {
         "rotation": [
+          1,
+          0,
           0,
           0,
           1,
           0,
-          1,
           0,
-          -1,
           0,
-          0
+          1
         ],
         "translation": [
-          10,
+          30,
           0,
-          0
+          20
         ]
       },
       "collisionClass": "exterior-shell"
@@ -68,15 +68,15 @@
         0
       ],
       "anchor": [
+        30,
         0,
-        0,
-        0
+        10
       ],
       "insertionDepthLdu": 4
     }
   ],
   "sourceHashes": {
-    "3024": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+    "3001": "53e7b58a1b849de6dc74f0677736d2b69ed3d32fa1390b7ba84cec4078a7775c",
     "11477": "76e4f75447b3f042268b1febb7a79c7f57a823512994358e288165ce44594e03"
   },
   "physicalBuildVerified": false,
@@ -91,8 +91,8 @@
       "colorAvailability": "not-verified"
     },
     {
-      "partId": "3024",
-      "name": "Plate  1 x  1",
+      "partId": "3001",
+      "name": "Brick  2 x  4",
       "quantity": 1,
       "ldrawColor": 16,
       "colorAvailability": "not-verified"
@@ -102,7 +102,7 @@
     {
       "step": 1,
       "addedInstanceId": "root",
-      "partId": "3024",
+      "partId": "3001",
       "connectionEdgeIds": []
     },
     {
@@ -125,11 +125,11 @@
     },
     {
       "library": "LDCadShadowLibrary",
-      "path": "parts/3024.dat",
+      "path": "p/stud4.dat",
       "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
-      "sha256": "91df6bb9521e8b381ccc6555c3ae24fed4d65d9ea4641f272b4a74277f041db7",
+      "sha256": "46ea6518da00e1da088ff71b86b326d435982b9f7ce39372fffd9ee99df38f2d",
       "license": "CC-BY-SA-4.0",
-      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3024.dat"
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud4.dat"
     },
     {
       "library": "LDCadShadowLibrary",
@@ -141,11 +141,11 @@
     },
     {
       "library": "LDCadShadowLibrary",
-      "path": "parts/s/3024s01.dat",
+      "path": "parts/s/3001s01.dat",
       "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
-      "sha256": "e8db69689a7decbf37f498bd7b6f1f7154ee7eaee662dced4c125816ddcd6d01",
+      "sha256": "a6ad960237eb80e563d3316d0f8e9af3b0a8220232af6d90997ebfe3c587a24f",
       "license": "CC-BY-SA-4.0",
-      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3024s01.dat"
+      "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3001s01.dat"
     },
     {
       "library": "LDraw",
@@ -205,6 +205,14 @@
     },
     {
       "library": "LDraw",
+      "path": "p/4-4ring3.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "1f2835ac308154edc2d6f479d8e742a55be981f6167b20bfa100c195bc0731dd",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/4-4ring3.dat"
+    },
+    {
+      "library": "LDraw",
       "path": "p/48/1-8chrd.dat",
       "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
       "sha256": "282b0d7dd4e73d273b9cbcce88e30889cce3b44aa8574a25382fe526248d5426",
@@ -253,19 +261,19 @@
     },
     {
       "library": "LDraw",
+      "path": "p/box3u2p.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "df73118b95f23d693c3b7d25c57c483db3bf61ae017d757848119955d28d59e0",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box3u2p.dat"
+    },
+    {
+      "library": "LDraw",
       "path": "p/box4-1.dat",
       "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
       "sha256": "2ed58df5da841827dfc5f9ac11c0bd7ffd8a455e46f166638e635f61a014b44d",
       "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
       "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box4-1.dat"
-    },
-    {
-      "library": "LDraw",
-      "path": "p/box4t.dat",
-      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
-      "sha256": "72c7629db2b741e680ad548b2cbec631e44f75cdde206001b423ccb0f3b60c1f",
-      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
-      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/box4t.dat"
     },
     {
       "library": "LDraw",
@@ -309,6 +317,14 @@
     },
     {
       "library": "LDraw",
+      "path": "p/stud4.dat",
+      "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
+      "sha256": "871cdcab26e7f5113488a24c453d6fabda75b275b06de592e0bfaad4292c12a3",
+      "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/p/stud4.dat"
+    },
+    {
+      "library": "LDraw",
       "path": "parts/11477.dat",
       "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
       "sha256": "fed74af9f56bcb149a7f67af4b427c261b41d24d15ed7a3466e24170377a0ba6",
@@ -317,11 +333,11 @@
     },
     {
       "library": "LDraw",
-      "path": "parts/3024.dat",
+      "path": "parts/3001.dat",
       "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
-      "sha256": "e053af4f232374b0c8da2dc0f9620bedf0576ca43d7c3ceebc6676050ae61da8",
+      "sha256": "70968cb5e4baa92dc6a1939aca7526b8566a17dbea49da9b91182aa864e412c4",
       "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
-      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3024.dat"
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3001.dat"
     },
     {
       "library": "LDraw",
@@ -333,11 +349,11 @@
     },
     {
       "library": "LDraw",
-      "path": "parts/s/3024s01.dat",
+      "path": "parts/s/3001s01.dat",
       "revision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
-      "sha256": "a706692e2c838f20f3b3e4bd5ff03c4ab6c5c0d5816b0944ac39d6100fd85275",
+      "sha256": "bee662925490666aa5956d301b7abc46df88b3cc35737326765441585c720047",
       "license": "Licensed under CC BY 4.0 : see CAreadme.txt",
-      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3024s01.dat"
+      "sourceUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/s/3001s01.dat"
     }
   ],
   "ownership": "virtual-design-not-owned",
@@ -361,9 +377,9 @@
             0
           ],
           "pivotLdu": [
+            30,
             0,
-            0,
-            0
+            10
           ],
           "collisionEnvelope": {
             "sourceIds": [
@@ -414,21 +430,21 @@
           "state": "TOPOLOGY_POTENTIAL",
           "featureIds": [
             "root/p/stud.dat:8:0",
-            "root/parts/s/3024s01.dat:8:1"
+            "root/parts/s/3001s01.dat:9:8"
           ],
           "sourceIds": [
             "policy:ldcad-standard-stud-to-capped-underside-v1",
             "shadow:p/stud.dat:8:15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
-            "shadow:parts/s/3024s01.dat:8:e8db69689a7decbf37f498bd7b6f1f7154ee7eaee662dced4c125816ddcd6d01"
+            "shadow:parts/s/3001s01.dat:9:a6ad960237eb80e563d3316d0f8e9af3b0a8220232af6d90997ebfe3c587a24f"
           ],
-          "occurrences": 4,
+          "occurrences": 80,
           "notes": [
             "Parallel male/receiving stud-system axes transmit the build direction; fit and collision remain separate."
           ],
           "offsetLdu": [
-            "0",
-            "8",
-            "0"
+            "-60",
+            "24",
+            "-20"
           ]
         },
         {
@@ -436,21 +452,21 @@
           "state": "TOPOLOGY_POTENTIAL",
           "featureIds": [
             "root/p/stud.dat:8:0",
-            "root/parts/s/3024s01.dat:8:1"
+            "root/parts/s/3001s01.dat:9:8"
           ],
           "sourceIds": [
             "policy:ldcad-standard-stud-to-capped-underside-v1",
             "shadow:p/stud.dat:8:15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
-            "shadow:parts/s/3024s01.dat:8:e8db69689a7decbf37f498bd7b6f1f7154ee7eaee662dced4c125816ddcd6d01"
+            "shadow:parts/s/3001s01.dat:9:a6ad960237eb80e563d3316d0f8e9af3b0a8220232af6d90997ebfe3c587a24f"
           ],
-          "occurrences": 3,
+          "occurrences": 72,
           "notes": [
             "An input/output axial separation is an exact nonzero multiple of 8 LDU; 24 LDU equals one brick."
           ],
           "offsetLdu": [
-            "0",
-            "8",
-            "0"
+            "-60",
+            "24",
+            "-20"
           ]
         }
       ],
@@ -492,5 +508,5 @@
     "至少一个 placement 使用 exterior-shell 表面合同：只检查真实表面交叉/穿透与来源 seat 接触，不认证闭合实体、厚度、结构支撑或实物承重。",
     "零件颜色使用 LDraw 当前色 16；具体零件颜色供应与个人库存尚未核实。"
   ],
-  "contentSha256": "91d1e3873117fa7593155386f4625eb31cb749d1ef70664f1549d7aed6528522"
+  "contentSha256": "4128b2cd2693f061c7d78bb65ae7dce28d2ca31a1d907f2f2a13407f517afce1"
 }

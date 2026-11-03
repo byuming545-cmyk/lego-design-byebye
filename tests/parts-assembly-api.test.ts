@@ -153,7 +153,7 @@ describe('native assembly production HTTP boundaries', () => {
     expect(result.accepted).toBe(true);
     expect(result.graph.placements.find((placement: any) => placement.partId === '11477')?.collisionClass).toBe('exterior-shell');
     expect(result.collision?.proof).toMatchObject({ closedSourceProxies: false, structuralSupport: false, containmentChecked: false, wholePairExempted: false, openSurface: true });
-    const generated = await post(`${prefix}/assembly/generate`, { module: 'exterior-shell', requiredPartIds: ['3024', '11477'] });
+    const generated = await post(`${prefix}/assembly/generate`, { module: 'exterior-shell', requiredPartIds: ['3001', '11477'] });
     expect(generated.status).toBe(200);
     const model = (await generated.json() as NativeGenerationResult).model!;
     expect(model.placements.find(placement => placement.partId === '11477')?.collisionClass).toBe('exterior-shell');

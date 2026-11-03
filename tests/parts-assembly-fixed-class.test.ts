@@ -14,10 +14,10 @@ describe('fixed-side collision class', () => {
 
   it('attaches a structural moving part to an exterior fixed root and preserves both classes', async () => {
     const fixedPart = await service.repository.getPart('11477');
-    const movingPart = await service.repository.getPart('3024');
+    const movingPart = await service.repository.getPart('3001');
     const female = fixedPart!.connections.points.find(point => point.gender === 'F' && point.sections[0]?.radius === 6)!;
     const male = movingPart!.connections.points.find(point => point.gender === 'M' && point.sourceId === 'studC')!;
-    const result = await service.attach({ partA: '11477', connectionA: female.id, partB: '3024', connectionB: male.id, fixedCollisionClass: 'exterior-shell' });
+    const result = await service.attach({ partA: '11477', connectionA: female.id, partB: '3001', connectionB: male.id, fixedCollisionClass: 'exterior-shell' });
     expect(result.accepted).toBe(true);
     expect(result.graph?.placements.map(placement => placement.collisionClass)).toEqual(['exterior-shell', undefined]);
   });

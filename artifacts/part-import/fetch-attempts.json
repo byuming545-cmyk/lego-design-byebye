@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "part-import-fetch-attempts-1",
+  "generatedAt": "2026-11-03T23:00:00.000Z",
+  "targetPartId": "3062b",
+  "targetPresentInPinnedLibrary": false,
+  "attempts": [
+    {
+      "source": "LDraw",
+      "url": "https://raw.githubusercontent.com/ldraw/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3062b.dat",
+      "method": "curl",
+      "command": "curl -fsSL --max-time 25 -o .import-cache/3062b/3062b.dat <url>",
+      "result": "failed",
+      "exitCode": 35,
+      "error": "curl: (35) Recv failure: Connection reset by peer",
+      "retried": false
+    },
+    {
+      "source": "LDraw",
+      "url": "https://raw.githubusercontent.com/ldraw/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3062b.dat",
+      "method": "web_fetch",
+      "result": "failed",
+      "error": "TypeError: fetch failed",
+      "retried": false
+    }
+  ],
+  "realBundles": 0,
+  "realPromotions": 0,
+  "newProductionParts": 0,
+  "note": "The approved public source was unreachable from this environment. No file, hash, author or license was fabricated."
+}

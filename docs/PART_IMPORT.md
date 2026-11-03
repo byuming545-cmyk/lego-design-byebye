@@ -58,7 +58,7 @@ promote 必须重新验证为 `validated`、confirm 一致、源文件/SHA/licen
 - 成功写 `<ldrawRoot>/imports/<partId>.json` ledger；失败恢复备份、删除已复制文件和 ledger。
 - 启动/下一次 promote 前扫描未完成 journal：未提交则恢复，已提交则清理。
 
-post-promote 目前会重新加载 `NativePartRepository`、重建 `GrammarAssemblyService` 并重新读取 admission；**不会自动执行完整 connector audit/coverage/report 重生成**。如果这些派生数据需要更新，必须另跑项目命令；在完成前不得把 promote 结果当作全库覆盖证明。
+post-promote 在事务 verify 中重新加载 `NativePartRepository`、重建 `GrammarAssemblyService`，计算 promote 前后的总根件/结构计数/来源计数/阻塞原因/exterior 计数和新零件 admission，并将 `{before,after}` 写入 ledger 和 `artifacts/part-import/<partId>-post-promote.json`。只有根件数 = 旧数 + 1、新零件 source-ready、且 structural 或 exterior 至少一种可生产时，ledger 才会提交；失败会回滚。该审计是运行时 audit，不是完整 connector parse/coverage/report 文件重生成；完整派生报告仍需另跑项目命令，旧模型也不会自动重新认证。
 
 ## 错误码
 
@@ -66,12 +66,18 @@ post-promote 目前会重新加载 `NativePartRepository`、重建 `GrammarAssem
 
 ## 当前状态
 
-- 17 个新增测试：10 bundle/staging/promote 负向与清理、4 transactional promote/rollback/journal recovery、3 fixed-class。
-- 当前整套：800/800 tests，58 files，109.95 s；typecheck/build 通过。
+- 18 个新增/相关测试：10 bundle/staging/promote 负向与清理、5 transactional promote/rollback/journal/ledger、3 fixed-class；exterior soundness 回归 6 个。
+- 最近一次完整套件：802/802 tests，58 files，112.30 s；typecheck/build 通过。
 - 真实 bundle：0；正式 promote：0；新增真实零件：0。
 - 固定 253 根件、structural 104 generatable、exteriorGeneratable 128 的既有统计未改变。
 
 没有真实来源包时，不创建 3062b 的伪造 .dat/Shadow/哈希/接口，不写“已验证”，不执行 promote。
+
+## 真实来源拉取记录（2026-11-03）
+
+- `3062b` 不在固定 LDraw 数据中。
+- 对已批准 LDraw raw URL 的一次 `curl` 返回 `curl: (35) Recv failure: Connection reset by peer`；一次 `web_fetch` 返回 `TypeError: fetch failed`。
+- 未重试、未绕过访问控制、未伪造文件；`.import-cache/3062b` 为空。记录见 `artifacts/part-import/fetch-attempts.json`。
 
 ## 未验证/限制
 

@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { readFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { NativePartRepository } from '../assembly/source.js';
 import type { CollisionClass, NativeAssemblyPart } from '../assembly/types.js';
@@ -53,7 +53,16 @@ export interface PartImportReport {
   generation: { attempted: boolean; status?: string; reasons: string[]; jsonBytes?: number; reimport?: string };
   limitations: string[];
 }
-export interface PartImportServiceOptions extends PartImportRoots { dataDir?: string }
+export interface PartImportServiceOptions extends PartImportRoots { dataDir?: string; artifactsDirectory?: string }
+export interface PromotionAuditSnapshot {
+  totalRoots: number;
+  counts: { total: number; generatable: number; blocked: number; disabledInterfaces: number };
+  sourceCounts: { totalRoots: number; geometryReady: number; connectionReady: number; connectionPartial: number; connectionMissing: number };
+  blockedReasons: Record<string, number>;
+  exteriorGeneratable: number;
+  newPart: { partId: string; sourceReady: boolean; generatable: boolean; exteriorGeneratable: boolean; connectionSourceStatus: string; allowedConnectionIds: string[]; exteriorAllowedConnectionIds: string[] } | null;
+}
+export interface PromotionAudit { before: PromotionAuditSnapshot; after: PromotionAuditSnapshot }
 export interface PromotionRecord {
   partId: string;
   promotedAt: string;
@@ -64,6 +73,8 @@ export interface PromotionRecord {
   journalId?: string;
   ledgerPath?: string;
   promotionClass?: CollisionClass;
+  audit?: PromotionAudit;
+  auditArtifact?: string;
 }
 export class PartImportError extends Error {
   constructor(readonly code: string, message: string) { super(message); this.name = 'PartImportError'; }
@@ -105,6 +116,23 @@ function classFor(admission: GrammarPartAdmission | undefined): CollisionClass |
   if (admission?.generationEligible) return 'structural';
   if (admission?.exteriorGeneratable) return 'exterior-shell';
   return null;
+}
+
+async function auditSnapshot(service: GrammarAssemblyService, partId: string): Promise<PromotionAuditSnapshot> {
+  const status = await service.status();
+  const entry = status.entries.find(item => item.partId === partId);
+  return {
+    totalRoots: status.sourceCounts.totalRoots,
+    counts: { total: status.counts.total, generatable: status.counts.generatable, blocked: status.counts.blocked, disabledInterfaces: status.counts.disabledInterfaces },
+    sourceCounts: status.sourceCounts,
+    blockedReasons: status.blockedReasons,
+    exteriorGeneratable: status.entries.filter(item => item.exteriorGeneratable).length,
+    newPart: entry ? {
+      partId: entry.partId, sourceReady: entry.sourceReady ?? false, generatable: entry.generatable,
+      exteriorGeneratable: entry.exteriorGeneratable ?? false, connectionSourceStatus: entry.connectionSourceStatus,
+      allowedConnectionIds: entry.allowedConnectionIds, exteriorAllowedConnectionIds: entry.exteriorAllowedConnectionIds ?? [],
+    } : null,
+  };
 }
 
 function summary(value: PartImportBundle): BundleSummary {
@@ -336,12 +364,19 @@ export class PartImportService {
       const bundleHash = createHash('sha256').update(bundleBytes).digest('hex');
       const validationDigest = createHash('sha256').update(JSON.stringify(fresh)).digest('hex');
       const files = [...bundle.geometry.files, ...bundle.connections.files].map(file => ({ path: file.path, sha256: file.sha256, bytes: file.bytes }));
+      const beforeRepository = new NativePartRepository({ geometryDirectory: roots.ldrawRoot!, shadowDirectory: roots.shadowRoot! });
+      const beforeService = new GrammarAssemblyService({ repository: beforeRepository, ...(this.options.dataDir ? { dataDir: this.options.dataDir } : {}) });
+      await beforeService.ready();
+      const beforeAudit = await auditSnapshot(beforeService, bundle.partId);
+      let postAudit: PromotionAudit | undefined;
+      let auditArtifact: string | undefined;
       const ledger = {
         partId: bundle.partId, bundleHash, ldrawRevision: bundle.geometry.revision, shadowRevision: bundle.connections.revision,
         sourceUrl: bundle.geometry.sourceUrl, license: bundle.geometry.license, author: bundle.author, files,
         validationDigest, promotedAt: new Date().toISOString(), promotionClass,
         codeCommit: process.env.GIT_COMMIT ?? null, reportPath: `artifacts/part-import/${bundle.partId}-report.json`,
         validation: fresh,
+        audit: { before: beforeAudit } as unknown as Record<string, unknown>,
       };
       const ldrawFiles = bundle.geometry.files.map(file => ({ path: file.path, source: path.join(staged.ldrawDirectory, 'files', file.path), target: path.join(roots.ldrawRoot!, 'files', file.path) }));
       const shadowFiles = bundle.connections.files.map(file => ({ path: file.path, source: path.join(staged.shadowDirectory, 'files', file.path), target: path.join(roots.shadowRoot!, 'files', file.path) }));
@@ -359,9 +394,19 @@ export class PartImportService {
           await service.ready();
           const admission = await service.getGrammarAdmission(bundle.partId);
           if (!admission?.sourceReady) throw new PartImportError('post-promote-rebuild-failed', 'The promoted part has no source-ready grammar admission after reload.');
+          const after = await auditSnapshot(service, bundle.partId);
+          if (after.totalRoots !== beforeAudit.totalRoots + 1) throw new PartImportError('post-promote-rebuild-failed', `Post-promote audit root count ${after.totalRoots} is not ${beforeAudit.totalRoots + 1}.`);
+          if (!after.newPart?.sourceReady) throw new PartImportError('post-promote-rebuild-failed', 'Post-promote audit does not contain the new source-ready part.');
+          if (!after.newPart.generatable && !after.newPart.exteriorGeneratable) throw new PartImportError('post-promote-rebuild-failed', 'Post-promote audit does not show a production-capable new part.');
+          postAudit = { before: beforeAudit, after };
+          (ledger.audit as unknown as PromotionAudit) = postAudit;
+          const artifacts = this.options.artifactsDirectory ?? 'artifacts/part-import';
+          await mkdir(artifacts, { recursive: true });
+          auditArtifact = path.join(artifacts, `${bundle.partId}-post-promote.json`);
+          await writeFile(auditArtifact, JSON.stringify({ schemaVersion: 'part-import-post-promote-1', generatedAt: new Date().toISOString(), partId: bundle.partId, before: beforeAudit, after }, null, 2));
         },
       });
-      return { partId: bundle.partId, promotedAt: ledger.promotedAt, files: transaction.files, ldrawRevision: bundle.geometry.revision, shadowRevision: bundle.connections.revision, validation: fresh, journalId: transaction.journalId, ledgerPath: transaction.ledgerPath, promotionClass };
+      return { partId: bundle.partId, promotedAt: ledger.promotedAt, files: transaction.files, ldrawRevision: bundle.geometry.revision, shadowRevision: bundle.connections.revision, validation: fresh, journalId: transaction.journalId, ledgerPath: transaction.ledgerPath, promotionClass, ...(postAudit ? { audit: postAudit } : {}), ...(auditArtifact ? { auditArtifact } : {}) };
     } finally {
       await staged.cleanup();
     }

@@ -4,7 +4,7 @@
 
 新增了**逐 placement 显式选择**的 `exterior-shell` 表面碰撞合同。默认 `structural` 闭合实体路径没有被替换；同一个零件可以在不同 placement 使用不同合同。
 
-真实来源样例 `3024`（structural）+ `11477`（exterior）已经走通：
+真实来源样例 `3001`（structural）+ `11477`（exterior）已经走通：
 
 ```text
 C01 COMPATIBLE
@@ -13,7 +13,7 @@ C01 COMPATIBLE
 → engine.attachPart 接受
 → engine.validateGraph valid
 → exterior-shell 模块生成 2 placements / 1 edge
-→ JSON 导出（19,056 bytes）
+→ JSON 导出（19,878 bytes）
 → 重导入 VALID
 → placement 保留 collisionClass: "exterior-shell"
 ```
@@ -43,18 +43,17 @@ C01 COMPATIBLE
 | structural 阻塞 | 149（不变） |
 | `exteriorGeneratable` | 0 → 128 |
 | 两者都不可生成 | 21 |
-| 真实外表面模型 | 0 → 1（3024 + 11477） |
+| 真实外表面模型 | 0 → 1（3001 + 11477） |
 | 真实导出/重导入 | 1 个模型 VALID |
 | 物理搭建 | 0，未认证 |
 
-`exteriorGeneratable` 是“该零件可以建立真实外表面代理，并且有来源接口”，**不是**“已经通过某个真实配对”。本轮验收模型为 `3024+11477`；`3001+11477` 的 attach/碰撞检查也通过，但未作为本轮生成模型。
+`exteriorGeneratable` 是“该零件可以建立真实外表面代理，并且有来源接口”，**不是**“已经通过某个真实配对”。本轮验收模型为 `3001+11477`。更严格的逐穿透过滤后，`3024+11477` 被判定为 seat 外真实交叉并保留失败；`3001+18973`、`3024+18973` 仍失败。
 
 ## 真实配对
 
 | 固定 | 移动 | structural | exterior | 说明 |
 |---|---|---|---|---|
-| 3024 | 11477 | 拒绝 `part-or-interface-blocked` | 接受 | 验收模型 + 导出 + 重导入 VALID |
-| 3001 | 11477 | 拒绝 | 接受最终姿态 | 仅 attach/碰撞检查 |
+| 3001 | 11477 | 拒绝 `part-or-interface-blocked` | 接受 | 验收模型 + 导出 + 重导入 VALID |
 | 3001/3024 | 18973 | 拒绝 | 仍阻塞 | seat 边界接触策略未完成；不作为通过样例 |
 | 30374 | — | — | 不再获得外表面资格 | 闭壳零件不自动降级；无 C01 接口不被外表面合同补造 |
 
@@ -101,7 +100,7 @@ degenerateTriangles / coplanarContacts
 
 - `npm run typecheck`：通过。
 - `npm run pilot:exterior-shell`：生成、导出、重导入通过。
-- 全量测试（本轮最终代码）：783/783，55 files，103.01 s；详见 `artifacts/exterior-shell/logs/unit.txt`。
+- 全量测试（本轮最终代码）：802/802，58 files，112.30 s；详见 `artifacts/part-import/unit-hardened.txt`。
 - 外表面专项：`tests/parts-assembly-exterior-shell.test.ts` 5/5。
 - API 专项：`tests/parts-assembly-api.test.ts` 12/12。
 - `npm run build`：见 `artifacts/exterior-shell/logs/build.txt`。
@@ -112,5 +111,5 @@ degenerateTriangles / coplanarContacts
 2. 18973 的 seat 边界/rim 接触仍未通过；当前 1 LDU 共面容差只处理已识别的贴合，不覆盖该类真实边界接触。
 3. 外表面 ↔ structural open CLIP/PIN 仍 blocked。
 4. `verification.ts` 旧夹具路径仍以 structural 为主；外表面使用 attach/graph/model 流程，不冒充夹具 PASS。
-5. 生成模块自动搜索可能达到预算；验收样例显式传入 `requiredPartIds:['3024','11477']`。
+5. 生成模块自动搜索可能达到预算；验收样例显式传入 `requiredPartIds:['3001','11477']`。
 6. 没有物理样件、保持力、摩擦或材料证据。

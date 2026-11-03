@@ -42,6 +42,15 @@ describe('transactional part promotion', () => {
     expect(result.files).toHaveLength(2);
   });
 
+  it('writes the ledger only after verification and persists post-promote audit data', async () => {
+    const value = await input({
+      verify: async () => { (value.ledger as Record<string, unknown>).postPromoteAudit = { totalRoots: 2 }; },
+    });
+    const result = await transactionalPromote(value);
+    const ledger = JSON.parse(await readFile(result.ledgerPath, 'utf8'));
+    expect(ledger.postPromoteAudit).toEqual({ totalRoots: 2 });
+  });
+
   it('refuses an existing target before changing manifests', async () => {
     const value = await input();
     await mkdir(path.dirname(value.ldrawFiles[0].target), { recursive: true });

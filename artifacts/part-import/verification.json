@@ -1,19 +1,19 @@
 {
   "schemaVersion": "bricklab-part-import-verification-1",
-  "branch": "codex/part-import",
-  "baselineCommit": "d68a0ad",
+  "branch": "codex/part-import-production",
+  "baselineCommit": "6825b4c",
   "status": "hardened-no-real-bundle",
   "realBundlesValidated": 0,
   "realPartsPromoted": 0,
   "stagedOverlayWritesPinnedLibrary": false,
-  "tests": 17,
-  "transactionTests": 4,
+  "tests": 18,
+  "transactionTests": 5,
   "fixedClassTests": 3,
   "fullSuite": {
     "files": 58,
-    "tests": 800,
-    "passed": 800,
-    "durationSeconds": 109.95,
+    "tests": 802,
+    "passed": 802,
+    "durationSeconds": 112.3,
     "log": "artifacts/part-import/unit-hardened.txt"
   },
   "build": {
@@ -27,13 +27,15 @@
   "injectableRoots": true,
   "fixedCollisionClass": true,
   "classFallback": true,
-  "postPromote": "repository-and-admission-reload-only",
+  "postPromote": "repository-admission-runtime-audit-and-json-artifact",
   "limitations": [
     "No real new-part bundle was available; no real part was imported or promoted.",
-    "Post-promote full connector audit/coverage/report rebuild is not automatic.",
+    "Post-promote runtime audit is implemented, but full connector audit/coverage/report file regeneration is not automatic.",
     "Fixed exterior root has attach/graph validation but no production generation module.",
     "Installation path, retention, friction, deformation and physical build remain unverified."
   ],
   "typecheck": "passed",
-  "commit": "6f4aacf"
+  "commit": "2e7c812",
+  "exteriorSoundnessTests": 6,
+  "postPromoteAuditArtifact": "artifacts/part-import/<partId>-post-promote.json"
 }

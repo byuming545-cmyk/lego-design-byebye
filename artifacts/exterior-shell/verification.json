@@ -1,6 +1,6 @@
 {
   "schemaVersion": "exterior-shell-pilot-1",
-  "generatedAt": "2026-11-01T15:27:23.902Z",
+  "generatedAt": "2026-11-03T15:07:19.240Z",
   "collisionVersion": "native-exterior-shell-3.0.0",
   "structural": {
     "accepted": false,
@@ -17,7 +17,7 @@
     "status": "clear",
     "reasonCode": "exterior-surface-clear",
     "classification": "EXTERIOR_SURFACE_CLEAR",
-    "triangleTests": 768,
+    "triangleTests": 722,
     "proof": {
       "broadPhaseOnly": false,
       "closedSourceProxies": false,
@@ -27,14 +27,14 @@
       "surfaceCrossingChecked": true,
       "structuralSupport": false,
       "degenerateTriangles": 0,
-      "coplanarContacts": 83,
+      "coplanarContacts": 73,
       "openSurfaceSeatChecked": false,
       "completeSurfacePartition": false,
       "containmentChecked": false,
       "sourceEvidence": [
         {
           "libraryRevision": "c43ed06a128a10ed65675166bf42eb6fd608b9b0",
-          "meshSha256": "eada6c39931a1ef0340865fc1bcae053ef68924dd8a490055d601169c8ee7ff4",
+          "meshSha256": "007ffb39c0da8a57558fb11f8ac5d1c50a7ea38f8bcdeec37564fe8f04683868",
           "sourceFiles": [
             {
               "path": "p/4-4cyli.dat",
@@ -49,8 +49,12 @@
               "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da"
             },
             {
-              "path": "p/box4t.dat",
-              "sha256": "72c7629db2b741e680ad548b2cbec631e44f75cdde206001b423ccb0f3b60c1f"
+              "path": "p/4-4ring3.dat",
+              "sha256": "1f2835ac308154edc2d6f479d8e742a55be981f6167b20bfa100c195bc0731dd"
+            },
+            {
+              "path": "p/box3u2p.dat",
+              "sha256": "df73118b95f23d693c3b7d25c57c483db3bf61ae017d757848119955d28d59e0"
             },
             {
               "path": "p/box5.dat",
@@ -61,12 +65,16 @@
               "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4"
             },
             {
-              "path": "parts/3024.dat",
-              "sha256": "e053af4f232374b0c8da2dc0f9620bedf0576ca43d7c3ceebc6676050ae61da8"
+              "path": "p/stud4.dat",
+              "sha256": "871cdcab26e7f5113488a24c453d6fabda75b275b06de592e0bfaad4292c12a3"
             },
             {
-              "path": "parts/s/3024s01.dat",
-              "sha256": "a706692e2c838f20f3b3e4bd5ff03c4ab6c5c0d5816b0944ac39d6100fd85275"
+              "path": "parts/3001.dat",
+              "sha256": "70968cb5e4baa92dc6a1939aca7526b8566a17dbea49da9b91182aa864e412c4"
+            },
+            {
+              "path": "parts/s/3001s01.dat",
+              "sha256": "bee662925490666aa5956d301b7abc46df88b3cc35737326765441585c720047"
             }
           ]
         },
@@ -144,10 +152,10 @@
       "topology": [
         {
           "status": "closed-oriented-chain",
-          "sourceTriangles": 76,
-          "internalCaps": 14,
-          "sourceCoveredCapArea": 110.21508288,
-          "signedVolume": 3064.8603315200016,
+          "sourceTriangles": 700,
+          "internalCaps": 196,
+          "sourceCoveredCapArea": 1800.179687039998,
+          "signedVolume": 39390.253186559894,
           "boundarySegments": 0,
           "boundaryLoops": 0,
           "degenerateTriangles": 0
@@ -166,9 +174,9 @@
       "penetrationZone": {
         "kind": "cylinder",
         "center": [
-          0,
+          30,
           -2,
-          0
+          10
         ],
         "axis": [
           0,
@@ -220,7 +228,7 @@
       },
       "penetrationZoneValidated": true,
       "wholePairExempted": false,
-      "certificateKey": "efad13ed3fd6ed88ed0b8239e099d4c76d108bb23014774d388acfc65cde95e2",
+      "certificateKey": "e8dfef2ab7cabb725aaa387f3eb71322e8550c956e405f45d5f27bf680adc948",
       "reusedCertificate": true
     }
   },
@@ -228,14 +236,14 @@
     "module": "exterior-shell",
     "placements": 2,
     "edges": 1,
-    "jsonBytes": 19056,
-    "jsonSha256": "7840ac279b331910bb7c71769b0b8bcffb1ab7d0ca5793b13e171b8136c608df",
+    "jsonBytes": 19878,
+    "jsonSha256": "0ad37e129f71e6e4d2343e5f24cb9f0c198fe2fc4ec837ce52561a43df577d22",
     "warnings": [
       "至少一个 placement 使用 exterior-shell 表面合同：只检查真实表面交叉/穿透与来源 seat 接触，不认证闭合实体、厚度、结构支撑或实物承重。",
       "零件颜色使用 LDraw 当前色 16；具体零件颜色供应与个人库存尚未核实。"
     ],
     "sourceHashes": {
-      "3024": "8fdd32d0856e9ac5b2a8da8aadfcb3552c496804bef805640aa83fcb8258b7a5",
+      "3001": "53e7b58a1b849de6dc74f0677736d2b69ed3d32fa1390b7ba84cec4078a7775c",
       "11477": "76e4f75447b3f042268b1febb7a79c7f57a823512994358e288165ce44594e03"
     }
   },

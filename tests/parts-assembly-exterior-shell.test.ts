@@ -12,11 +12,13 @@ const repository = new NativePartRepository();
 const service = new GrammarAssemblyService({ repository, dataDir: '/tmp/exterior-shell-test-data' });
 const identity: RigidTransform = { rotation: [1, 0, 0, 0, 1, 0, 0, 0, 1], translation: [0, 0, 0] };
 const placement = (partId: string, transform: RigidTransform = identity, collisionClass?: 'exterior-shell'): NativePlacement => ({ instanceId: partId, partId, transform: { rotation: [...transform.rotation], translation: [...transform.translation] }, ...(collisionClass ? { collisionClass } : {}) });
-let brick: NativeAssemblyPart, panel: NativeAssemblyPart, windscreen: NativeAssemblyPart;
+let brick: NativeAssemblyPart, plate: NativeAssemblyPart, tile: NativeAssemblyPart, panel: NativeAssemblyPart, windscreen: NativeAssemblyPart;
 beforeAll(async () => {
   await service.ready();
-  [brick, panel, windscreen] = await Promise.all([
+  [brick, plate, tile, panel, windscreen] = await Promise.all([
     repository.getPart('3001').then(part => part!),
+    repository.getPart('3024').then(part => part!),
+    repository.getPart('3070b').then(part => part!),
     repository.getPart('11477').then(part => part!),
     repository.getPart('18973').then(part => part!),
   ]);
@@ -54,6 +56,18 @@ describe('exterior shell collision contract', () => {
     expect(result.proof.topology[1]).toMatchObject({ status: 'exterior-source-surface', signedVolume: null, internalCaps: 0 });
   });
 
+  it('confirms the real 18973 exterior pose remains a collision, not a fake clearance', () => {
+    const fixedPoint = brick.connections.points.find(point => point.id === 'p/stud.dat:8:0')!;
+    const movingPoint = windscreen.connections.points.find(point => point.gender === 'F' && point.dimensionsResolved)!;
+    const solved = solveAttachment({ fixedPart: brick, fixedPlacement: placement('3001'), fixedConnectionId: fixedPoint.id, movingPart: windscreen, movingConnectionId: movingPoint.id });
+    expect(solved.status).toBe('solved');
+    const result = checkNativePairCollision(brick, placement('3001'), windscreen, placement('18973', solved.candidates[0].transform, 'exterior-shell'), solved.candidates[0].penetrationZone);
+    expect(result.status).toBe('collision');
+    expect(result.classification).toBe('EXTERIOR_SURFACE_COLLISION');
+    expect(result.witness).toBeDefined();
+    expect(result.proof.surfaceCrossingChecked).toBe(true);
+  });
+
   it('retains a genuine panel-through-brick collision and an exterior shell-shell crossing', () => {
     const fixedPoint = brick.connections.points.find(point => point.id === 'p/stud.dat:8:4')!;
     const movingPoint = panel.connections.points.find(point => point.gender === 'F' && point.dimensionsResolved)!;
@@ -64,6 +78,7 @@ describe('exterior shell collision contract', () => {
     expect(through.status).toBe('collision');
     expect(through.classification).toBe('EXTERIOR_SURFACE_COLLISION');
     expect(through.witness).toBeDefined();
+    expect(through.proof.coplanarContacts).toBeGreaterThan(0);
 
     const overlapping = placement('11477', { rotation: identity.rotation, translation: [0, 2, 0] }, 'exterior-shell');
     const shellShell = checkNativePairCollision(panel, placement('11477', identity, 'exterior-shell'), panel, overlapping);
@@ -77,7 +92,7 @@ describe('exterior shell collision contract', () => {
   });
 
   it('uses the surface contract for generation, export and reimport without upgrading the structural certificate', async () => {
-    const result = await service.generate({ module: 'exterior-shell', requiredPartIds: ['3024', '11477'] });
+    const result = await service.generate({ module: 'exterior-shell', requiredPartIds: ['3001', '11477'] });
     expect(result.status).toBe('generated');
     const model = result.model!;
     expect(model.placements.find(item => item.partId === '11477')?.collisionClass).toBe('exterior-shell');
