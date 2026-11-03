@@ -38,6 +38,10 @@
 
 未获得 LDraw + LDCad Shadow 的真实来源包（host/revision/SHA/许可/作者齐全），因此没有导入、没有生成真实模型、没有 promote。当前 `raw.githubusercontent.com` 连接重置。
 
+## 本地提交
+
+`6f4aacf fix: harden staged part import promotion`
+
 ## 边界
 
 未修改 `data/parts-foundation` 原始文件；未把阻塞件批量标为 exterior；未按零件编号建规则；未删除碰撞、准入、接口或图检查；未推送、合并或部署。
