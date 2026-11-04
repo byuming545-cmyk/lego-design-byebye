@@ -4,7 +4,7 @@ import path from 'node:path';
 import { expectCoverageMatches } from './assemblyChecks.js';
 import type { InterfaceCoverageData } from '../../src/components/InterfaceCoverage.js';
 
-const artifactDirectory = path.resolve('artifacts/import-collision/screenshots/parts');
+const artifactDirectory = path.resolve('artifacts/source-guided-production/screenshots/parts');
 const pathname = (response: Response) => decodeURIComponent(new URL(response.url()).pathname);
 const pageErrors = new WeakMap<Page, string[]>();
 
@@ -21,6 +21,7 @@ interface FoundationStatus {
   elementMapping: { mappedBySource: number; mappingStatusCounts: Record<string, number> };
 }
 interface NativePartDetail {
+  connectionImpact?: { isolatedConnectionIds: string[]; wholePartUnknown: boolean };
   part: { id: string; status: string; geometryReady: boolean; catalogOnly: boolean; assemblyVerified: boolean; generatable: boolean; verified: boolean; interfaceCoverage: InterfaceCoverageData; mapping?: { status: string; mappingStatus: string; geometryPipelineAllowed: boolean; partId: string | null; designId: string | null; ldrawPartId: string | null; color: { id: string; name: string } | null; source: { trust: string; independentlyVerifiedOfficial: boolean } | null } };
   geometry: null | {
     status: string;
@@ -281,4 +282,17 @@ test.describe('real parts foundation with actual bundled sources and WebGL', () 
     expect(restoreRequests).toEqual([]);
     expect(await page.evaluate(() => localStorage.getItem('bricklab-speed-last-model-id'))).toBe('quarantined-history');
   });
+});
+
+
+test('explains the source-scoped 3062b parse issue without widening admission', async ({page}) => {
+  await openLab(page);
+  const detail=await searchPart(page,'3062b');
+  expect(detail.connectionImpact).toMatchObject({wholePartUnknown:false,isolatedConnectionIds:['p/stud4od.dat:8:1']});
+  const region=page.getByRole('region',{name:'解析问题影响范围',exact:true});
+  await expect(region).toContainText('不授予生成资格');
+  await region.getByText('查看来源行与影响范围',{exact:true}).click();
+  await expect(region.locator('pre')).toContainText('p/stud4od.dat:8:1');
+  await page.setViewportSize({width:390,height:844});
+  await noHorizontalOverflow(page);
 });

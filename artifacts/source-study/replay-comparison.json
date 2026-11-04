@@ -1,0 +1,595 @@
+{
+  "privatePresent": false,
+  "origin": "DEVELOPMENT_TEST_EXAMPLE",
+  "current": {
+    "schema": "studio-readonly-replay-1",
+    "inputSha256": "4556589ad7f416a8ebb9b2a02667f17d34e915515290db64ed97dfba3d1d6c6f",
+    "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0",
+    "versions": {
+      "schema": "connector-schema-2",
+      "grammar": "connector-grammar-2",
+      "admission": "source-connector-admission-3-impact",
+      "partLibrary": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+      "assemblyEngine": "native-assembly-0.8.0-import-snapshot",
+      "connectionRule": "source-stud-2.0.0-connector-grammar-2",
+      "collision": "native-exterior-shell-4.0.0",
+      "studioValidation": "studio-validation-2-rigid"
+    },
+    "examples": [
+      {
+        "id": "studio-03af79cb-7d34-4a58-bc00-14a40e5d42b8",
+        "status": "CURRENT_MATCH",
+        "reasons": [],
+        "fixedPartId": "3001",
+        "movingPartId": "3024",
+        "fixedInstanceId": "A",
+        "movingInstanceId": "B",
+        "sourceMatch": true,
+        "versionMatch": true,
+        "relativeMatch": true,
+        "savedChecks": {
+          "rule": "compatible",
+          "collision": "clear",
+          "path": "not-provided"
+        },
+        "currentChecks": {
+          "rule": "compatible",
+          "collision": "clear",
+          "path": "not-provided"
+        },
+        "poses": {
+          "fixed": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          "moving": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              30,
+              -8,
+              10
+            ]
+          },
+          "relative": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              30,
+              -8,
+              10
+            ]
+          }
+        },
+        "validation": {
+          "rule": {
+            "status": "compatible",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+            "reason": "Explicit standard stud and capped underside source sections permit a fully seated candidate; collision and assembly verification are still required.",
+            "reasonCode": "standard-stud-source-rule",
+            "sourceIds": [
+              "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat",
+              "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3024s01.dat",
+              "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/CONTRIBUTING.md",
+              "docs/ASSEMBLY_CONNECTION_RULES.md"
+            ],
+            "allowedTwistsDeg": [
+              0,
+              90,
+              180,
+              270
+            ],
+            "poseAngleDeg": 0,
+            "poseDistanceLdu": 0
+          },
+          "finalCollision": {
+            "status": "clear",
+            "reasonCode": "native-solid-clearance",
+            "reason": "All native face intersections and resulting surface cells passed closed-solid containment tests. Contact is allowed; solid penetration is not.",
+            "witness": null
+          },
+          "path": {
+            "status": "not-provided",
+            "samples": 0,
+            "reason": "只提交了最终姿态，没有提供安装过程。",
+            "scope": "未检查安装轨迹。",
+            "witness": null
+          },
+          "userClaim": {
+            "connectionNote": "明确标注的开发测试示例，不是用户记录或实物证据。",
+            "reason": "Read-only replay experiment",
+            "physicallyBuilt": false,
+            "attachments": []
+          },
+          "suggestions": [
+            {
+              "transform": {
+                "rotation": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "translation": [
+                  30,
+                  -8,
+                  10
+                ]
+              },
+              "twistDeg": 0,
+              "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+            },
+            {
+              "transform": {
+                "rotation": [
+                  0,
+                  0,
+                  -1,
+                  0,
+                  1,
+                  0,
+                  1,
+                  0,
+                  0
+                ],
+                "translation": [
+                  30,
+                  -8,
+                  10
+                ]
+              },
+              "twistDeg": 90,
+              "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+            },
+            {
+              "transform": {
+                "rotation": [
+                  0,
+                  0,
+                  1,
+                  0,
+                  1,
+                  0,
+                  -1,
+                  0,
+                  0
+                ],
+                "translation": [
+                  30,
+                  -8,
+                  10
+                ]
+              },
+              "twistDeg": 270,
+              "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+            },
+            {
+              "transform": {
+                "rotation": [
+                  -1,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  -1
+                ],
+                "translation": [
+                  30,
+                  -8,
+                  10
+                ]
+              },
+              "twistDeg": 180,
+              "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+            }
+          ],
+          "generationEligible": false,
+          "physicalBuildVerified": false,
+          "limitations": [
+            "自由示范和人工候选点只作为待复核信息，不冒充来源端点。",
+            "路径检查只覆盖两件零件的刚体刚体取样，不验证形变、轮胎/卡扣弹性、保持力或实物。",
+            "最终结果不会获得生产准入，也不会自动修改规则。"
+          ]
+        },
+        "formal": {
+          "status": "accepted",
+          "matchingPose": true,
+          "graphValid": true,
+          "reasons": []
+        },
+        "impact": {
+          "fixed": {
+            "version": "connection-impact-1",
+            "partId": "3001",
+            "parserVersion": "ldcad-shadow-parser-2-clear-scope",
+            "parserStatus": "ready",
+            "wholePartUnknown": false,
+            "issues": [],
+            "isolatedConnectionIds": [],
+            "locallyUnaffectedConnectionIds": [
+              "p/stud.dat:8:0",
+              "p/stud.dat:8:1",
+              "p/stud.dat:8:2",
+              "p/stud.dat:8:3",
+              "p/stud.dat:8:4",
+              "p/stud.dat:8:5",
+              "p/stud.dat:8:6",
+              "p/stud.dat:8:7",
+              "parts/s/3001s01.dat:9:8",
+              "parts/s/3001s01.dat:9:9",
+              "parts/s/3001s01.dat:9:10",
+              "parts/s/3001s01.dat:9:11",
+              "parts/s/3001s01.dat:9:12",
+              "parts/s/3001s01.dat:9:13",
+              "parts/s/3001s01.dat:9:14",
+              "parts/s/3001s01.dat:9:15"
+            ],
+            "canIsolateDimensionFailures": false,
+            "discardedBySourceClear": [],
+            "scope": "Diagnostic scope only. Unaffected features still require source, grammar, collision and whole-model checks."
+          },
+          "moving": {
+            "version": "connection-impact-1",
+            "partId": "3024",
+            "parserVersion": "ldcad-shadow-parser-2-clear-scope",
+            "parserStatus": "ready",
+            "wholePartUnknown": false,
+            "issues": [],
+            "isolatedConnectionIds": [],
+            "locallyUnaffectedConnectionIds": [
+              "p/stud.dat:8:0",
+              "parts/s/3024s01.dat:8:1",
+              "parts/3024.dat:8:2"
+            ],
+            "canIsolateDimensionFailures": false,
+            "discardedBySourceClear": [],
+            "scope": "Diagnostic scope only. Unaffected features still require source, grammar, collision and whole-model checks."
+          }
+        },
+        "generationAdmission": false,
+        "physicalBuildVerified": false
+      }
+    ],
+    "writesPerformed": false,
+    "generationAdmission": false,
+    "physicalBuildVerified": false,
+    "scope": "Replays literal saved poses with current checks. CURRENT_MATCH means reproducible observations, not legal fit, continuous path, physical validation or permission promotion."
+  },
+  "changedVersion": {
+    "schema": "studio-readonly-replay-1",
+    "inputSha256": "dfeeac12604035a7b826bc116a5dc2152fb99fb1565ff1187daf63ed43bf41bb",
+    "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0",
+    "versions": {
+      "schema": "connector-schema-2",
+      "grammar": "connector-grammar-2",
+      "admission": "source-connector-admission-3-impact",
+      "partLibrary": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+      "assemblyEngine": "native-assembly-0.8.0-import-snapshot",
+      "connectionRule": "source-stud-2.0.0-connector-grammar-2",
+      "collision": "native-exterior-shell-4.0.0",
+      "studioValidation": "studio-validation-2-rigid"
+    },
+    "examples": [
+      {
+        "id": "studio-03af79cb-7d34-4a58-bc00-14a40e5d42b8",
+        "status": "NEEDS_REVIEW",
+        "reasons": [
+          "检查版本缺失或变化；需要复核。"
+        ],
+        "fixedPartId": "3001",
+        "movingPartId": "3024",
+        "fixedInstanceId": "A",
+        "movingInstanceId": "B",
+        "sourceMatch": true,
+        "versionMatch": false,
+        "relativeMatch": true,
+        "savedChecks": {
+          "rule": "compatible",
+          "collision": "clear",
+          "path": "not-provided"
+        },
+        "currentChecks": {
+          "rule": "compatible",
+          "collision": "clear",
+          "path": "not-provided"
+        },
+        "poses": {
+          "fixed": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          "moving": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              30,
+              -8,
+              10
+            ]
+          },
+          "relative": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              30,
+              -8,
+              10
+            ]
+          }
+        },
+        "validation": {
+          "rule": {
+            "status": "compatible",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+            "reason": "Explicit standard stud and capped underside source sections permit a fully seated candidate; collision and assembly verification are still required.",
+            "reasonCode": "standard-stud-source-rule",
+            "sourceIds": [
+              "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat",
+              "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3024s01.dat",
+              "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/CONTRIBUTING.md",
+              "docs/ASSEMBLY_CONNECTION_RULES.md"
+            ],
+            "allowedTwistsDeg": [
+              0,
+              90,
+              180,
+              270
+            ],
+            "poseAngleDeg": 0,
+            "poseDistanceLdu": 0
+          },
+          "finalCollision": {
+            "status": "clear",
+            "reasonCode": "native-solid-clearance",
+            "reason": "All native face intersections and resulting surface cells passed closed-solid containment tests. Contact is allowed; solid penetration is not.",
+            "witness": null
+          },
+          "path": {
+            "status": "not-provided",
+            "samples": 0,
+            "reason": "只提交了最终姿态，没有提供安装过程。",
+            "scope": "未检查安装轨迹。",
+            "witness": null
+          },
+          "userClaim": {
+            "connectionNote": "明确标注的开发测试示例，不是用户记录或实物证据。",
+            "reason": "Read-only replay experiment",
+            "physicallyBuilt": false,
+            "attachments": []
+          },
+          "suggestions": [
+            {
+              "transform": {
+                "rotation": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "translation": [
+                  30,
+                  -8,
+                  10
+                ]
+              },
+              "twistDeg": 0,
+              "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+            },
+            {
+              "transform": {
+                "rotation": [
+                  0,
+                  0,
+                  -1,
+                  0,
+                  1,
+                  0,
+                  1,
+                  0,
+                  0
+                ],
+                "translation": [
+                  30,
+                  -8,
+                  10
+                ]
+              },
+              "twistDeg": 90,
+              "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+            },
+            {
+              "transform": {
+                "rotation": [
+                  0,
+                  0,
+                  1,
+                  0,
+                  1,
+                  0,
+                  -1,
+                  0,
+                  0
+                ],
+                "translation": [
+                  30,
+                  -8,
+                  10
+                ]
+              },
+              "twistDeg": 270,
+              "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+            },
+            {
+              "transform": {
+                "rotation": [
+                  -1,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  -1
+                ],
+                "translation": [
+                  30,
+                  -8,
+                  10
+                ]
+              },
+              "twistDeg": 180,
+              "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+            }
+          ],
+          "generationEligible": false,
+          "physicalBuildVerified": false,
+          "limitations": [
+            "自由示范和人工候选点只作为待复核信息，不冒充来源端点。",
+            "路径检查只覆盖两件零件的刚体刚体取样，不验证形变、轮胎/卡扣弹性、保持力或实物。",
+            "最终结果不会获得生产准入，也不会自动修改规则。"
+          ]
+        },
+        "formal": {
+          "status": "accepted",
+          "matchingPose": true,
+          "graphValid": true,
+          "reasons": []
+        },
+        "impact": {
+          "fixed": {
+            "version": "connection-impact-1",
+            "partId": "3001",
+            "parserVersion": "ldcad-shadow-parser-2-clear-scope",
+            "parserStatus": "ready",
+            "wholePartUnknown": false,
+            "issues": [],
+            "isolatedConnectionIds": [],
+            "locallyUnaffectedConnectionIds": [
+              "p/stud.dat:8:0",
+              "p/stud.dat:8:1",
+              "p/stud.dat:8:2",
+              "p/stud.dat:8:3",
+              "p/stud.dat:8:4",
+              "p/stud.dat:8:5",
+              "p/stud.dat:8:6",
+              "p/stud.dat:8:7",
+              "parts/s/3001s01.dat:9:8",
+              "parts/s/3001s01.dat:9:9",
+              "parts/s/3001s01.dat:9:10",
+              "parts/s/3001s01.dat:9:11",
+              "parts/s/3001s01.dat:9:12",
+              "parts/s/3001s01.dat:9:13",
+              "parts/s/3001s01.dat:9:14",
+              "parts/s/3001s01.dat:9:15"
+            ],
+            "canIsolateDimensionFailures": false,
+            "discardedBySourceClear": [],
+            "scope": "Diagnostic scope only. Unaffected features still require source, grammar, collision and whole-model checks."
+          },
+          "moving": {
+            "version": "connection-impact-1",
+            "partId": "3024",
+            "parserVersion": "ldcad-shadow-parser-2-clear-scope",
+            "parserStatus": "ready",
+            "wholePartUnknown": false,
+            "issues": [],
+            "isolatedConnectionIds": [],
+            "locallyUnaffectedConnectionIds": [
+              "p/stud.dat:8:0",
+              "parts/s/3024s01.dat:8:1",
+              "parts/3024.dat:8:2"
+            ],
+            "canIsolateDimensionFailures": false,
+            "discardedBySourceClear": [],
+            "scope": "Diagnostic scope only. Unaffected features still require source, grammar, collision and whole-model checks."
+          }
+        },
+        "generationAdmission": false,
+        "physicalBuildVerified": false
+      }
+    ],
+    "writesPerformed": false,
+    "generationAdmission": false,
+    "physicalBuildVerified": false,
+    "scope": "Replays literal saved poses with current checks. CURRENT_MATCH means reproducible observations, not legal fit, continuous path, physical validation or permission promotion."
+  },
+  "storeUnchanged": true
+}

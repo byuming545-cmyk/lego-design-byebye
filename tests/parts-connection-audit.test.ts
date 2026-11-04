@@ -16,9 +16,9 @@ const report = () => reportPromise ??= loadAudit();
 describe('complete pinned Connection Parse Audit', () => {
   it('accounts for all roots and every remaining issue with literal source evidence or an explicit missing-evidence outcome', async () => {
     const audit = await report();
-    expect(audit.counts).toMatchObject({ roots: 254, ready: 206, partial: 44, missing: 4, retainedRawConnectionRecords: 5089, activeFailureInstances: 114, discardedDimensionWarnings: 3 });
+    expect(audit.counts).toMatchObject({ roots: 255, ready: 207, partial: 44, missing: 4, retainedRawConnectionRecords: 5091, activeFailureInstances: 114, discardedDimensionWarnings: 3 });
     expect(audit.failures).toHaveLength(114);
-    expect(new Set(audit.parts.map(part => part.partId)).size).toBe(254);
+    expect(new Set(audit.parts.map(part => part.partId)).size).toBe(255);
     for (const failure of audit.failures) {
       expect(failure.expectedInterpretation.status).toBe('EXPECTED_UNKNOWN');
       expect(failure.sourceClosureSha256).toMatch(/^[a-f0-9]{64}$/);
@@ -55,7 +55,7 @@ describe('complete pinned Connection Parse Audit', () => {
     }
     const oldIds = new Set(before.parts.map(part => part.partId));
     const added = audit.parts.filter(part => !oldIds.has(part.partId));
-    expect(new Set(added.map(part => part.partId))).toEqual(new Set(['32000', '3623', '60479', '78329', '3456', '69729', '6934', '41539', '3062b']));
+    expect(new Set(added.map(part => part.partId))).toEqual(new Set(['32000', '3623', '60479', '78329', '3456', '69729', '6934', '41539', '3062b', '14716']));
     for (const part of added) {
       expect(part.status).toBe(part.partId === '3062b' ? 'partial' : 'ready');
       expect(part.pointCount).toBeGreaterThan(0);

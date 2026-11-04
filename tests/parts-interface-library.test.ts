@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import type { Server } from 'node:http';
-import { mkdtemp, rm } from 'node:fs/promises';
+import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { createApp } from '../src/api/app.js';
@@ -30,7 +30,7 @@ afterAll(async () => { await new Promise<void>(resolve => server.close(() => res
 describe('real interface and assembly library', () => {
   it('indexes every real connector instance from the source-bound registry', async () => {
     const overview = await library.overview();
-    expect(overview.counts).toMatchObject({ parts: 254, interfaces: 5089, types: 25, rules: 15, productionRules: 3, cases: 4, validatedCases: 3, blockedCases: 1 });
+    expect(overview.counts).toMatchObject({ parts: 255, interfaces: 5091, types: 25, rules: 15, productionRules: 3, cases: 4, validatedCases: 3, blockedCases: 1 });
     expect(overview.types.find(type => type.id === 'BAR')).toMatchObject({ productionRules: ['BAR_CLIP'] });
     const bar = await library.instance('30374', 'parts/30374.dat:8:0');
     expect(bar).toMatchObject({ partId: '30374', family: 'BAR', role: 'MALE', coverage: 'COMPLETE', enabled: true });
@@ -121,7 +121,7 @@ describe('real interface and assembly library', () => {
     expect(catalog.rules.find(item => item.id === 'BAR_CLIP')!.examples.length).toBeGreaterThanOrEqual(3);
     expect(catalog.rules.find(item => item.id === 'PIN_HOLE')!.examples.length).toBeGreaterThanOrEqual(3);
     expect(catalog.rules.find(item => item.id === 'BALL_SOCKET')).toMatchObject({ parts: [], examples: [], gap: expect.any(String) });
-    expect(catalog.families.find(item => item.id === 'STUD')!.partCount).toBe(194);
+    expect(catalog.families.find(item => item.id === 'STUD')!.partCount).toBe(195);
     expect(catalog.families.reduce((sum, family) => sum + family.partCount, 0)).toBeGreaterThan(0);
   }, 30000);
 
@@ -150,6 +150,16 @@ describe('real interface and assembly library', () => {
     expect(bundle).toMatchObject({ format: 'bricklab-studio-bundle', bundleVersion: 1 });
     expect(bundle.examples.length).toBeGreaterThanOrEqual(2);
     expect(bundle.sourceSummary.parts).toBeGreaterThan(0);
+    const stored=path.join(directory,'interface-library/studio-examples.json'), beforeReplay=await readFile(stored);
+    const replayResponse=await fetch(`${base}/studio/replay`, {method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(bundle)});
+    expect(replayResponse.status).toBe(200);
+    const replay=await replayResponse.json();
+    expect(replay).toMatchObject({writesPerformed:false,generationAdmission:false});
+    expect(replay.examples).toContainEqual(expect.objectContaining({id:first.id,status:'CURRENT_MATCH',formal:expect.objectContaining({status:'accepted',graphValid:true})}));
+    expect(await readFile(stored)).toEqual(beforeReplay);
+    const invalidReplay=await fetch(`${base}/studio/replay`, {method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({format:'wrong',examples:[]})});
+    expect(invalidReplay.status).toBe(400);
+    expect(await readFile(stored)).toEqual(beforeReplay);
     const imported = await (await fetch(`${base}/studio/import`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ examples: [bundle.examples[0]] }) })).json() as { imported: number; skipped: number };
     expect(imported).toMatchObject({ imported: 1, skipped: 0 });
     const rechecked = await (await fetch(`${base}/studio/examples/${first.id}/revalidate`, { method: 'POST' })).json() as { stale: boolean; history: unknown[] };
@@ -163,7 +173,7 @@ describe('real interface and assembly library', () => {
   it('serves the read/compare/feedback flow over HTTP', async () => {
     const get = async (part: string) => { const response = await fetch(base + part); expect(response.ok, part).toBe(true); return response.json(); };
     const overview = await get('/overview');
-    expect(overview.counts.interfaces).toBe(5089);
+    expect(overview.counts.interfaces).toBe(5091);
     const comparison = await (await fetch(`${base}/compare`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ partId: '3673', targetPartId: '32000' }) })).json() as { recognition: { generationAdmission: boolean } };
     expect(comparison.recognition.generationAdmission).toBe(false);
     const created = await (await fetch(`${base}/feedback`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ kind: 'insufficient-evidence', message: 'HTTP 复核记录', author: 'api', view: 'review', target: { kind: 'rule', id: 'PIN_HOLE', ruleId: 'PIN_HOLE' } }) })).json() as { id: string; status: string; canAuthorizeRule: boolean };

@@ -93,6 +93,10 @@ export function createInterfaceLibraryRouter(options: { library: InterfaceLibrar
     if (!studio) { response.status(503).json({ error: '拼搭工作台服务未启用。', code: 'STUDIO_UNAVAILABLE' }); return; }
     response.json(await studio.submit(String(request.params.id)));
   }));
+  router.post('/studio/replay', handle(async (request, response) => {
+    if (!studio) { response.status(503).json({ error: '拼搭工作台服务未启用。', code: 'STUDIO_UNAVAILABLE' }); return; }
+    response.json(await studio.replayBundle(request.body));
+  }));
   router.post('/studio/validate', handle(async (request, response) => {
     if (!studio) { response.status(503).json({ error: '拼搭工作台服务未启用。', code: 'STUDIO_UNAVAILABLE' }); return; }
     response.json(await studio.validate(request.body));

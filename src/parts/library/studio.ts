@@ -1,4 +1,8 @@
+import { createHash } from 'node:crypto';
+import { GrammarAssemblyService } from '../grammar/service.js';
+import { analyzeConnectionImpact } from '../connections/impact.js';
 import { randomUUID } from 'node:crypto';
+import { isRigidTransform } from '../assembly/math.js';
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { NativePartRepository } from '../assembly/source.js';
@@ -81,7 +85,7 @@ export interface StudioExample extends StudioBuildInput {
   relativeTransform: StudioTransform; relativeConvention: 'A-local-to-B-local-rigid-v1';
   fixed: StudioPartSnapshot; moving: StudioPartSnapshot;
   validation: StudioValidation;
-  versions: { schema: string; grammar: string; admission: string; partLibrary: string; assemblyEngine: string; connectionRule: string; collision: string };
+  versions: { schema: string; grammar: string; admission: string; partLibrary: string; assemblyEngine: string; connectionRule: string; collision: string; studioValidation?: string };
   stale: boolean;
   history: { at: string; action: string; note: string; validation: StudioValidation }[];
 }
@@ -101,7 +105,7 @@ export class StudioError extends Error {
   constructor(message: string, readonly code: string, readonly status = 400) { super(message); }
 }
 
-const VERSIONS = { schema: CONNECTOR_SCHEMA_VERSION, grammar: CONNECTOR_GRAMMAR_VERSION, admission: GRAMMAR_ADMISSION_VERSION, partLibrary: PART_LIBRARY_VERSION, assemblyEngine: ASSEMBLY_ENGINE_VERSION, connectionRule: CONNECTION_RULE_VERSION, collision: COLLISION_VERSION };
+const VERSIONS = { schema: CONNECTOR_SCHEMA_VERSION, grammar: CONNECTOR_GRAMMAR_VERSION, admission: GRAMMAR_ADMISSION_VERSION, partLibrary: PART_LIBRARY_VERSION, assemblyEngine: ASSEMBLY_ENGINE_VERSION, connectionRule: CONNECTION_RULE_VERSION, collision: COLLISION_VERSION, studioValidation: 'studio-validation-2-rigid' };
 const ID = /^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,79}$/;
 const FEATURE = /^[a-zA-Z0-9][a-zA-Z0-9_.:/-]{0,999}$/;
 const MAX_RECORDS = 1000;
@@ -130,12 +134,7 @@ const isCamera = (value: unknown): value is StudioCamera => {
     && ['free', 'front', 'side', 'top'].includes(String(item.view));
 };
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
-const isTransform = (value: unknown): value is StudioTransform => {
-  if (!value || typeof value !== 'object') return false;
-  const item = value as { rotation?: unknown; translation?: unknown };
-  return Array.isArray(item.rotation) && item.rotation.length === 9 && item.rotation.every(Number.isFinite)
-    && Array.isArray(item.translation) && item.translation.length === 3 && item.translation.every(Number.isFinite);
-};
+const isTransform = (value: unknown): value is StudioTransform => isRigidTransform(value);
 const copyTransform = (value: StudioTransform): StudioTransform => ({ rotation: [...value.rotation] as Matrix3, translation: [...value.translation] as Vector3 });
 const placement = (instanceId: string, partId: string, transform: StudioTransform): NativePlacement => ({ instanceId, partId, transform: copyTransform(transform) });
 const angleOf = (a: Matrix3, b: Matrix3) => {
@@ -188,6 +187,7 @@ function interpolateMatrix(a: Matrix3, b: Matrix3, t: number): Matrix3 {
 /** Source-bound, review-only store. It never imports into production or grants admission. */
 export class AssemblyStudioService {
   private records: StudioExample[] | null = null;
+  private replayAssembly?: GrammarAssemblyService;
   private writeChain: Promise<void> = Promise.resolve();
   constructor(private readonly repository: NativePartRepository, private readonly directory: string) {}
   private get directoryPath() { return path.join(this.directory, 'interface-library'); }
@@ -207,6 +207,10 @@ export class AssemblyStudioService {
   private async persist() { await mkdir(this.directoryPath, { recursive: true }); const temp = `${this.file}.${process.pid}.${randomUUID()}.tmp`; await writeFile(temp, JSON.stringify(this.records, null, 2) + '\n', { mode: 0o600 }); await rename(temp, this.file); }
   private async part(partId: string) { const value = await this.repository.getPart(partId); if (!value) throw new StudioError(`没有真实零件 ${partId}。`, 'STUDIO_PART_NOT_FOUND', 404); return value; }
   private snapshot(part: NativeAssemblyPart): StudioPartSnapshot { return { partId: part.partId, name: part.geometry.name ?? part.partId, sourceSha256: nativePartSourceHash(part), revision: part.geometry.source.revision, connections: part.connections.points.map(point => ({ id: point.id, family: point.family ?? 'unknown', role: point.gender === 'M' ? 'MALE' : point.gender === 'F' ? 'FEMALE' : 'UNKNOWN', sourceId: point.sourceId ?? null, sourcePath: point.source.path, line: point.source.line, raw: point.source.raw })) }; }
+  private snapshotMatches(snapshot: StudioPartSnapshot | undefined, part: NativeAssemblyPart | null): boolean {
+    return !!part && snapshot?.partId === part.partId && snapshot.revision === part.geometry.source.revision
+      && snapshot.sourceSha256 === nativePartSourceHash(part);
+  }
   private upgrade(record: StudioExample): StudioExample {
     const camera = isCamera(record.camera) ? record.camera : { ...DEFAULT_CAMERA, position: [...DEFAULT_CAMERA.position] as Vector3, target: [...DEFAULT_CAMERA.target] as Vector3 };
     const previewDataUrl = typeof record.previewDataUrl === 'string' && /^data:image\/(png|jpeg|webp);base64,/.test(record.previewDataUrl) ? record.previewDataUrl : null;
@@ -355,8 +359,21 @@ export class AssemblyStudioService {
     const updated: StudioExample = { ...records[index], status: 'pending-review', validation, updatedAt: now, versions: VERSIONS, history: [...records[index].history, { at: now, action: 'submitted', note: '从草稿提交为待复核人工示例；不改变生产资格。', validation }] };
     records[index] = updated; this.records = records; this.writeChain = this.writeChain.then(() => this.persist()); await this.writeChain; return structuredClone(updated);
   }
-  async list(): Promise<StudioExampleSummary[]> { return (await this.load()).map(summary); }
-  async get(id: string): Promise<StudioExample | null> { const record = (await this.load()).find(item => item.id === id); if (!record) return null; const fixed = await this.part(record.fixedPartId).catch(() => null), moving = await this.part(record.movingPartId).catch(() => null); return { ...structuredClone(this.upgrade(record)), stale: !fixed || !moving || record.fixed.sourceSha256 !== nativePartSourceHash(fixed) || record.moving.sourceSha256 !== nativePartSourceHash(moving) }; }
+  private async withCurrentState(record: StudioExample): Promise<StudioExample> {
+    const [fixed, moving] = await Promise.all([
+      this.part(record.fixedPartId).catch(() => null), this.part(record.movingPartId).catch(() => null),
+    ]);
+    const stale = Object.entries(VERSIONS).some(([key, value]) => record.versions?.[key as keyof typeof VERSIONS] !== value)
+      || !this.snapshotMatches(record.fixed, fixed) || !this.snapshotMatches(record.moving, moving);
+    return { ...structuredClone(record), stale };
+  }
+  async list(): Promise<StudioExampleSummary[]> {
+    return Promise.all((await this.load()).map(async record => summary(await this.withCurrentState(record))));
+  }
+  async get(id: string): Promise<StudioExample | null> {
+    const record = (await this.load()).find(item => item.id === id);
+    return record ? this.withCurrentState(record) : null;
+  }
   async exportBundle(feedback: unknown[] = []): Promise<StudioExportBundle> {
     const examples = await this.load();
     const partIds = new Set(examples.flatMap(example => [example.fixedPartId, example.movingPartId]));
@@ -393,6 +410,64 @@ export class AssemblyStudioService {
       }
     }
     return result;
+  }
+
+  /** Read-only transfer inspection. It neither imports observations nor promotes rules. */
+  async replayBundle(value: unknown) {
+    if (!value || typeof value !== 'object' || Array.isArray(value)) throw new StudioError('复盘需要完整工作台导出包。', 'STUDIO_REPLAY_INVALID');
+    const bundle = value as Record<string, unknown>;
+    if (bundle.format !== 'bricklab-studio-bundle' || bundle.bundleVersion !== 1 || !Array.isArray(bundle.examples) || bundle.examples.length < 1 || bundle.examples.length > 20) throw new StudioError('复盘包版本不支持或示例数量不在 1..20 范围。', 'STUDIO_REPLAY_INVALID');
+    const inputSha256 = createHash('sha256').update(JSON.stringify(value)).digest('hex');
+    const assembly = this.replayAssembly ??= new GrammarAssemblyService({ repository: this.repository });
+    const examples = [];
+    for (const item of bundle.examples) {
+      const reasons: string[] = [];
+      try {
+        const input = this.normalize(item);
+        const saved = item as StudioExample;
+        const fixed = await this.part(input.fixedPartId), moving = await this.part(input.movingPartId);
+        const sourceMatch = this.snapshotMatches(saved.fixed, fixed) && this.snapshotMatches(saved.moving, moving);
+        const versionMatch = Object.entries(VERSIONS).every(([key, value]) => saved.versions?.[key as keyof typeof VERSIONS] === value);
+        const poseEqual = (a: StudioTransform | undefined, b: StudioTransform) => !!a && a.translation.length === 3 && a.rotation.length === 9 && a.translation.every((v, i) => Math.abs(v - b.translation[i]) <= 1e-5) && a.rotation.every((v, i) => Math.abs(v - b.rotation[i]) <= 1e-6);
+        const relative = relativeTransformOf(input.fixedInitial, input.movingFinal);
+        const relativeMatch = saved.relativeConvention === 'A-local-to-B-local-rigid-v1' && poseEqual(saved.relativeTransform, relative);
+        if (!sourceMatch) reasons.push('来源指纹缺失或变化；不能沿用原检查结论。');
+        if (!versionMatch) reasons.push('检查版本缺失或变化；需要复核。');
+        if (!relativeMatch) reasons.push('相对变换与保存的绝对姿态不一致，或坐标约定缺失。');
+        const validation = await this.validate(input);
+        let formal: { status: string; reasons: string[]; graphValid?: boolean; matchingPose?: boolean } = { status: 'blocked', reasons: ['未选择两端来源接口。'] };
+        if (input.fixedConnectionId && input.movingConnectionId) {
+          try {
+            await assembly.ready();
+            const base = await assembly.engine.createAssembly(input.fixedPartId);
+            base.placements[0].transform = copyTransform(input.fixedInitial);
+            const solved = solveAttachment({ fixedPart: fixed, fixedPlacement: base.placements[0], fixedConnectionId: input.fixedConnectionId, movingPart: moving, movingConnectionId: input.movingConnectionId });
+            const exact = solved.candidates.find(candidate => poseEqual(candidate.transform, input.movingFinal));
+            if (!exact) formal = { status: 'rejected', matchingPose: false, reasons: ['保存姿态不等于任何来源规则候选；复盘不自动吸附。'] };
+            else {
+              const result = await assembly.engine.attachPart(base, { anchorInstanceId: base.placements[0].instanceId, anchorConnectionId: input.fixedConnectionId, partId: input.movingPartId, candidateConnectionId: input.movingConnectionId, twistDegrees: exact.twistDeg });
+              const graphValid = result.accepted && (await assembly.engine.validateGraph(result.graph)).valid;
+              formal = { status: graphValid ? 'accepted' : 'rejected', matchingPose: true, graphValid, reasons: result.rejections.map(r => `${r.code}: ${r.reason}`) };
+            }
+          } catch (error) { formal = { status: 'blocked', reasons: [error instanceof Error ? error.message : String(error)] }; }
+        }
+        const savedChecks = saved.validation ? { rule: saved.validation.rule?.status, collision: saved.validation.finalCollision?.status, path: saved.validation.path?.status } : null;
+        const currentChecks = { rule: validation.rule.status, collision: validation.finalCollision.status, path: validation.path.status };
+        const checksMatch = !!savedChecks && JSON.stringify(savedChecks) === JSON.stringify(currentChecks);
+        if (!checksMatch) reasons.push('保存的检查状态与本轮复盘不同或缺失。');
+        examples.push({ id: typeof saved.id === 'string' ? saved.id : null, status: reasons.length ? 'NEEDS_REVIEW' : 'CURRENT_MATCH', reasons,
+          fixedPartId: fixed.partId, movingPartId: moving.partId, fixedInstanceId: input.fixedInstanceId, movingInstanceId: input.movingInstanceId,
+          sourceMatch, versionMatch, relativeMatch, savedChecks, currentChecks,
+          poses: { fixed: input.fixedInitial, moving: input.movingFinal, relative }, validation, formal,
+          impact: { fixed: analyzeConnectionImpact(fixed.connections), moving: analyzeConnectionImpact(moving.connections) },
+          generationAdmission: false, physicalBuildVerified: false,
+        });
+      } catch (error) { examples.push({ id: null, status: 'INVALID', reasons: [error instanceof Error ? error.message : String(error)], generationAdmission: false, physicalBuildVerified: false }); }
+    }
+    return { schema: 'studio-readonly-replay-1', inputSha256, sourceSnapshot: this.repository.snapshotDigest, versions: VERSIONS, examples,
+      writesPerformed: false, generationAdmission: false, physicalBuildVerified: false,
+      scope: 'Replays literal saved poses with current checks. CURRENT_MATCH means reproducible observations, not legal fit, continuous path, physical validation or permission promotion.',
+    };
   }
 
   async revalidate(id: string): Promise<StudioExample> {

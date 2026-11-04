@@ -1,0 +1,69 @@
+{
+  "revision": "0635308c5e0876de20633fecd7eb718ebd554b7c",
+  "parser": [
+    {
+      "partId": "3001",
+      "externalPoints": 0,
+      "diagnostics": [
+        "Warning: Could not find shadow file: parts/3001.dat"
+      ],
+      "scope": "Only this reference shadow parser, not its full checker."
+    },
+    {
+      "partId": "3024",
+      "externalPoints": 1,
+      "diagnostics": [],
+      "scope": "Only this reference shadow parser, not its full checker."
+    },
+    {
+      "partId": "3062b",
+      "externalPoints": 2,
+      "diagnostics": [],
+      "scope": "Only this reference shadow parser, not its full checker."
+    },
+    {
+      "partId": "11477",
+      "externalPoints": 0,
+      "diagnostics": [
+        "Warning: Could not find shadow file: parts/11477.dat"
+      ],
+      "scope": "Only this reference shadow parser, not its full checker."
+    },
+    {
+      "partId": "18975",
+      "externalPoints": 9,
+      "diagnostics": [],
+      "scope": "Only this reference shadow parser, not its full checker."
+    },
+    {
+      "partId": "66727",
+      "externalPoints": 0,
+      "diagnostics": [
+        "Warning: Could not find shadow file: parts/66727.dat"
+      ],
+      "scope": "Only this reference shadow parser, not its full checker."
+    },
+    {
+      "partId": "14716",
+      "externalPoints": 1,
+      "diagnostics": [],
+      "scope": "Only this reference shadow parser, not its full checker."
+    }
+  ],
+  "connections": [
+    {
+      "case": "real stud/antistud source features at coincident anchors",
+      "externalAccepts": true,
+      "ourResult": "compatible",
+      "scope": "Interface check only; no source admission, geometry or collision assertion."
+    },
+    {
+      "case": "real Stud/Technic pin-hole features at coincident anchors (illegal counterexample)",
+      "externalAccepts": true,
+      "ourResult": "incompatible",
+      "scope": "Interface check only; no source admission, geometry or collision assertion."
+    }
+  ],
+  "executed": "Only two reviewed AST definitions, no package install or repository script entrypoint.",
+  "productionAuthority": false
+}

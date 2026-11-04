@@ -1,0 +1,141 @@
+
+> bricklab@0.6.0 evidence:source-production
+> tsx src/cli/source-production-evidence.ts
+
+{
+  "models": [
+    {
+      "name": "tall-brick-support",
+      "request": {
+        "module": "interface-assembly",
+        "partCount": 5,
+        "requiredPartIds": [
+          "2431",
+          "14716"
+        ]
+      },
+      "placements": 5,
+      "edges": 4,
+      "bom": [
+        {
+          "partId": "14716",
+          "name": "Brick  1 x  1 x  3",
+          "quantity": 4,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "2431",
+          "name": "Tile  1 x  4 with Groove",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "steps": 5,
+      "reimport": "VALID",
+      "used14716Ports": [
+        "p/stud.dat:8:0",
+        "parts/14716.dat:8:1"
+      ],
+      "physicalBuildVerified": false,
+      "installationPathVerified": false
+    },
+    {
+      "name": "tall-brick-column",
+      "request": {
+        "module": "interface-assembly",
+        "partCount": 4,
+        "requiredPartIds": [
+          "14716"
+        ]
+      },
+      "placements": 4,
+      "edges": 3,
+      "bom": [
+        {
+          "partId": "14716",
+          "name": "Brick  1 x  1 x  3",
+          "quantity": 4,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "steps": 4,
+      "reimport": "VALID",
+      "used14716Ports": [
+        "p/stud.dat:8:0",
+        "parts/14716.dat:8:1"
+      ],
+      "physicalBuildVerified": false,
+      "installationPathVerified": false
+    },
+    {
+      "name": "bar-clip-control",
+      "request": {
+        "module": "bar-clip",
+        "requiredPartIds": [
+          "30374",
+          "48729b"
+        ]
+      },
+      "placements": 2,
+      "edges": 1,
+      "bom": [
+        {
+          "partId": "30374",
+          "name": "Bar  4L Lightsaber Blade",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "48729b",
+          "name": "Bar  1.5L with Clip with Truncated Sides and Hole in Shaft",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "steps": 2,
+      "reimport": "VALID",
+      "used14716Ports": [],
+      "physicalBuildVerified": false,
+      "installationPathVerified": false
+    },
+    {
+      "name": "pin-hole-control",
+      "request": {
+        "module": "pin-hole",
+        "requiredPartIds": [
+          "3673",
+          "32000"
+        ]
+      },
+      "placements": 2,
+      "edges": 1,
+      "bom": [
+        {
+          "partId": "32000",
+          "name": "Technic Brick  1 x  2 with Holes",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3673",
+          "name": "Technic Pin",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "steps": 2,
+      "reimport": "VALID",
+      "used14716Ports": [],
+      "physicalBuildVerified": false,
+      "installationPathVerified": false
+    }
+  ],
+  "originalSourceFilesUnchanged": 991
+}

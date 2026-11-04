@@ -1,3 +1,4 @@
+import type { ConnectionImpact } from '../parts/connections/impact.js';
 import { useEffect, useState } from 'react';
 import { ArrowUpRight, BookOpen, Box, Check, CircleHelp, Database, FileText, Layers3, LoaderCircle, Search, ShieldCheck } from 'lucide-react';
 import NativePartViewer, { type NativeConnectionPoint, type NativeMesh, type NativeVector } from '../components/NativePartViewer.js';
@@ -60,6 +61,7 @@ interface Source {
   files?: SourceFile[];
 }
 interface PartDetail {
+  connectionImpact?: ConnectionImpact;
   part: PartSummary;
   geometry?: { mesh?: NativeMesh; bounds?: { min: NativeVector; max: NativeVector }; source?: Source; issues?: { code: string; message: string }[] } | null;
   connections?: { points: NativeConnectionPoint[]; source?: Source; sourceFiles?: SourceFile[]; license?: string; issues?: { code: string; message: string }[] } | null;
@@ -285,6 +287,7 @@ export default function PartLab() {
           {!!detail.part.issues.length && <div className="part-issues"><h3><CircleHelp size={15} />尚待完成</h3><ul>{detail.part.issues.map((issue, index) => <li key={index}>{issue}</li>)}</ul></div>}
           {!!detail.part.checks?.length && <section className="part-tests"><h3>验证记录</h3>{detail.part.checks.map((test) => <div key={test.id}><span>{test.id}</span><Badge ready={test.outcome === 'passed'}>{test.outcome === 'passed' ? '通过' : test.outcome === 'failed' ? '未通过' : test.outcome === 'not-applicable' ? '不适用' : '未执行'}</Badge><small>{grammarMode && test.outcome === 'not-run' ? '在生成、拼接或重新导入模型时检查；当前无本件独立装配记录。' : test.description}</small></div>)}</section>}
           {!!points.length && <details className="part-connection-records"><summary>查看 {points.length} 条原始来源连接记录</summary><p>连接方向与位置来自源指令；已导入连接点不自动获得装配准入，只有明确开放的接口可用于生成。</p><div className="part-table-wrap"><table className="part-table"><thead><tr><th>源类型</th><th>性别</th><th>位置 LDU</th><th>装配准入</th><th>来源行</th></tr></thead><tbody>{points.slice(0, 100).map((point, index) => <tr key={point.id ?? index}><td>{point.family ?? point.type ?? '未分类'}</td><td>{point.gender === 'M' ? '公' : point.gender === 'F' ? '母' : '未指定'}</td><td className="part-mono">{point.position.map((value) => Number(value.toFixed(2))).join(', ')}</td><td>{point.id && detail.part.enabledConnectionIds?.includes(point.id) ? '已开放' : '未开放'}</td><td><span title={point.source?.raw}>{point.source?.path ?? '—'}{point.source?.line ? `:${point.source.line}` : ''}</span></td></tr>)}</tbody></table></div>{points.length > 100 && <p>表格显示前 100 个连接点；三维视图保留全部点。</p>}</details>}
+          {detail.connectionImpact && <section className="part-assembly-scope" aria-label="解析问题影响范围"><h3>解析问题影响范围</h3><p>{detail.connectionImpact.wholePartUnknown ? '有问题的影响范围尚未安全隔离，整件保持阻止。' : detail.connectionImpact.issues.length ? `已定位 ${detail.connectionImpact.isolatedConnectionIds.length} 个受影响原始接口；其余 ${detail.connectionImpact.locallyUnaffectedConnectionIds.length} 个的定位与尺寸未受本次解析问题影响。` : '当前没有活跃解析问题。' } 此结果不授予生成资格，接口仍需通过语法与实际装配检查。</p><details><summary>查看来源行与影响范围</summary><pre className="part-wrap">{JSON.stringify(detail.connectionImpact, null, 2)}</pre></details></section>}
           <div className="part-sources"><SourceList title="原生几何来源" source={detail.geometry?.source} /><SourceList title="连接数据来源" source={connectionSource} /></div>
         </>}
       </div>

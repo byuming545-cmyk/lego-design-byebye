@@ -1,0 +1,81 @@
+
+> bricklab@0.6.0 evidence:import-collision
+> tsx src/cli/import-collision-evidence.ts artifacts/source-guided-production/collision-regression
+
+{
+  "models": [
+    {
+      "name": "round-brick-support",
+      "module": "interface-assembly",
+      "placements": 5,
+      "bom": [
+        {
+          "partId": "2431",
+          "quantity": 1
+        },
+        {
+          "partId": "3062b",
+          "quantity": 4
+        }
+      ],
+      "edges": 4,
+      "reimport": "VALID",
+      "physicalBuildVerified": false
+    },
+    {
+      "name": "brick-panel-control",
+      "module": "exterior-shell",
+      "placements": 2,
+      "bom": [
+        {
+          "partId": "11477",
+          "quantity": 1
+        },
+        {
+          "partId": "3001",
+          "quantity": 1
+        }
+      ],
+      "edges": 1,
+      "reimport": "VALID",
+      "physicalBuildVerified": false
+    },
+    {
+      "name": "plate-panel-contact",
+      "module": "exterior-shell",
+      "placements": 2,
+      "bom": [
+        {
+          "partId": "11477",
+          "quantity": 1
+        },
+        {
+          "partId": "3024",
+          "quantity": 1
+        }
+      ],
+      "edges": 1,
+      "reimport": "VALID",
+      "physicalBuildVerified": false
+    },
+    {
+      "name": "brick-windscreen-contact",
+      "module": "exterior-shell",
+      "placements": 2,
+      "bom": [
+        {
+          "partId": "18973",
+          "quantity": 1
+        },
+        {
+          "partId": "3001",
+          "quantity": 1
+        }
+      ],
+      "edges": 1,
+      "reimport": "VALID",
+      "physicalBuildVerified": false
+    }
+  ],
+  "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0"
+}

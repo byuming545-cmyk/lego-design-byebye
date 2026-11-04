@@ -35,22 +35,22 @@ describe('real source foundation HTTP API', () => {
     const migration = await (await get('/assembly/status')).json() as RuntimeAssemblyStatus;
     const report = JSON.parse(await readFile(new URL('../data/parts-foundation/assembly/migration.json', import.meta.url), 'utf8')) as AssemblyMigrationReport;
     expect(status.version).toBe('0.6.0');
-    expect(status.counts).toMatchObject({ readableDocuments: 6, ldrawPartIds: 254, observedElementIds: 531, geometryReady: 254, connectionReady: 206, catalogOnly: 531 });
-    expect(migration.sourceCounts).toEqual({ totalRoots: 254, geometryReady: 254, connectionReady: 206, connectionPartial: 44, connectionMissing: 4 });
+    expect(status.counts).toMatchObject({ readableDocuments: 6, ldrawPartIds: 255, observedElementIds: 531, geometryReady: 255, connectionReady: 207, catalogOnly: 531 });
+    expect(migration.sourceCounts).toEqual({ totalRoots: 255, geometryReady: 255, connectionReady: 207, connectionPartial: 44, connectionMissing: 4 });
     expect(report.sourceCounts).toEqual({ totalRoots: 253, geometryReady: 253, connectionReady: 206, connectionPartial: 43, connectionMissing: 4 }); // Historical report remains unchanged.
-    expect(migration.counts).toMatchObject({ total: 254, assemblyVerified: 0, generatable: 105, blocked: 149, testedPhysicalInterfaces: 0 });
+    expect(migration.counts).toMatchObject({ total: 255, assemblyVerified: 0, generatable: 106, blocked: 149, testedPhysicalInterfaces: 0 });
     expect(report.counts.generatable).toBe(87);
     expect(migration.runtimeValidation).toMatchObject({ status: 'ready', reportLoaded: false, issues: [] });
     expect(status.assembly.counts).toEqual(migration.counts);
     expect(status.assembly.interfaceCoverage).toEqual(migration.interfaceCoverage);
-    expect(migration.interfaceCoverage?.physicalInterfacesDiscovered).toBe(5024);
-    expect(migration.interfaceCoverage).toMatchObject({ verifiedPass: 0, pending: 5024, enabledRawConnectionIds: 0 });
+    expect(migration.interfaceCoverage?.physicalInterfacesDiscovered).toBe(5026);
+    expect(migration.interfaceCoverage).toMatchObject({ verifiedPass: 0, pending: 5026, enabledRawConnectionIds: 0 });
     const nativeCatalog = (await (await get('/parts')).json()).parts.filter((part: { identitySystem: string }) => part.identitySystem === 'ldraw');
     expect(status.counts.collisionReady).toBe(nativeCatalog.filter((part: { collisionReady: boolean }) => part.collisionReady).length);
     expect(status.counts.assemblyVerified).toBe(migration.counts.assemblyVerified);
     expect(status.counts.generatable).toBe(migration.counts.generatable);
     expect(status.counts.generatable).toBeGreaterThan(0);
-    expect(migration.counts.generatable + migration.counts.blocked).toBe(254);
+    expect(migration.counts.generatable + migration.counts.blocked).toBe(255);
     expect(status.instructions).toHaveLength(8);
     expect(status.instructions.filter((item: { status: string }) => item.status === 'transfer-limit')).toHaveLength(2);
     expect(status.referenceSets).toHaveLength(6);

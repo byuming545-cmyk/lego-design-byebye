@@ -1,0 +1,35 @@
+
+> bricklab@0.6.0 test
+> vitest run tests/parts-connection-impact.test.ts tests/parts-studio-replay.test.ts tests/parts-interface-library.test.ts --maxWorkers=1
+
+
+ RUN  v5.0.5 /workspace/lego-import-collision
+
+ ❯ tests/parts-studio-replay.test.ts (3 tests | 1 failed) 39364ms
+   ❯ read-only source-bound manual feedback replay (3)
+     × does not grant formal acceptance to disabled source features or forged rigid poses 17902ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/parts-studio-replay.test.ts > read-only source-bound manual feedback replay > does not grant formal acceptance to disabled source features or forged rigid poses
+AssertionError: expected 'NEEDS_REVIEW' to be 'INVALID' // Object.is equality
+
+Expected: "INVALID"
+Received: "NEEDS_REVIEW"
+
+ ❯ tests/parts-studio-replay.test.ts:72:70
+     70|       expect(result.generationAdmission).toBe(false);
+     71|       const scaled=structuredClone(bundle);scaled.examples[0].movingFi…
+     72|       expect((await studio.replayBundle(scaled)).examples[0].status).t…
+       |                                                                      ^
+     73|     }finally{await rm(directory,{recursive:true,force:true});}
+     74|   },45000);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 14 passed (15)
+   Start at  07:45:55
+   Duration  79.65s (tests 99%)
+

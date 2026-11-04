@@ -22,3 +22,8 @@ artifacts/import-collision/**/model.ldr -text whitespace=cr-at-eol
 artifacts/part-import/**/model.ldr -text whitespace=cr-at-eol
 artifacts/import-collision/logs/*.txt -text -whitespace
 artifacts/import-collision/failures/api-minimum/error-context.md -text -whitespace
+# This round's pinned acquisition bytes and reproducible evidence.
+artifacts/source-guided-production/bundles/**/*.dat -text -whitespace
+artifacts/source-guided-production/bundles/**/LICENSES/* -text -whitespace
+artifacts/source-guided-production/**/model.ldr -text whitespace=cr-at-eol
+artifacts/source-guided-production/logs/*.log -text -whitespace

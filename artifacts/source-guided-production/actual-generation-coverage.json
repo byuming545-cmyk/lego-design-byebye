@@ -1,0 +1,125 @@
+{
+  "models": [
+    {
+      "kind": "production",
+      "name": "bar-clip-control",
+      "sha256": "3a4dc659de213091d559b50998226b4e040409d0639cdd646bcced4245eebee5",
+      "identities": [
+        "30374",
+        "48729b"
+      ],
+      "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0"
+    },
+    {
+      "kind": "production",
+      "name": "pin-hole-control",
+      "sha256": "a819a0284c932d681387d291d097ee6d13eb6e51c70c432c857a2c69381e030f",
+      "identities": [
+        "32000",
+        "3673"
+      ],
+      "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0"
+    },
+    {
+      "kind": "production",
+      "name": "tall-brick-column",
+      "sha256": "f3ebda10c807de8096735300e4e4c98baa228b8341fef36f8fc308e763f8f42c",
+      "identities": [
+        "14716"
+      ],
+      "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0"
+    },
+    {
+      "kind": "production",
+      "name": "tall-brick-support",
+      "sha256": "29a96f8e82110e535f0a0f6d04bb7cf43f3e350c39fb3dd6db0367dc6a62b93a",
+      "identities": [
+        "14716",
+        "2431"
+      ],
+      "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0"
+    },
+    {
+      "kind": "collision-regression",
+      "name": "brick-panel-control",
+      "sha256": "11a6dad618f3bd0139c56d2fc6720c718f5c3f4c31c80cba58cae01d78c99f38",
+      "identities": [
+        "11477",
+        "3001"
+      ],
+      "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0"
+    },
+    {
+      "kind": "collision-regression",
+      "name": "brick-windscreen-contact",
+      "sha256": "20d5bad12f42adb68b812052997e455ed1a55c8fdc3bf5d26bf4a058c5436914",
+      "identities": [
+        "18973",
+        "3001"
+      ],
+      "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0"
+    },
+    {
+      "kind": "collision-regression",
+      "name": "plate-panel-contact",
+      "sha256": "6487fc10401cda21236d6d123546ace80b1d816ac8a865a768cef3ec13bb4837",
+      "identities": [
+        "11477",
+        "3024"
+      ],
+      "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0"
+    },
+    {
+      "kind": "collision-regression",
+      "name": "round-brick-support",
+      "sha256": "a214ceda7c4657655f2d98a39dcfc6f1b0715c11a11a3d3180111f87c79c0146",
+      "identities": [
+        "2431",
+        "3062b"
+      ],
+      "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0"
+    }
+  ],
+  "identityCount": 11,
+  "identities": [
+    "11477",
+    "14716",
+    "18973",
+    "2431",
+    "3001",
+    "3024",
+    "30374",
+    "3062b",
+    "32000",
+    "3673",
+    "48729b"
+  ],
+  "newIdentityCount": 1,
+  "newIdentities": [
+    "14716"
+  ],
+  "scope": "Only models actually regenerated and reimported this round. Not full-library generation coverage. Qualification is counted separately.",
+  "byCollisionClass": {
+    "structural": {
+      "count": 9,
+      "identities": [
+        "14716",
+        "2431",
+        "3001",
+        "3024",
+        "30374",
+        "3062b",
+        "32000",
+        "3673",
+        "48729b"
+      ]
+    },
+    "exterior-shell": {
+      "count": 2,
+      "identities": [
+        "11477",
+        "18973"
+      ]
+    }
+  }
+}

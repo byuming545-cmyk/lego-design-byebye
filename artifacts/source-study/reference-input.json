@@ -1,0 +1,114 @@
+{
+  "shadowDirectory": "/workspace/lego-import-collision/data/parts-foundation/shadow/files",
+  "parts": [
+    "3001",
+    "3024",
+    "3062b",
+    "11477",
+    "18975",
+    "66727",
+    "14716"
+  ],
+  "connections": [
+    {
+      "case": "real stud/antistud source features at coincident anchors",
+      "a": {
+        "type": "SNAP_CYL",
+        "gender": "M",
+        "world_pos": [
+          0,
+          0,
+          0
+        ],
+        "source": {
+          "id": "p/stud.dat:8:0",
+          "position": [
+            30,
+            0,
+            10
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "raw": "0 !LDCAD SNAP_CYL [ID=studC] [gender=M] [caps=one] [secs=R 6 4]"
+        }
+      },
+      "b": {
+        "type": "SNAP_CYL",
+        "gender": "F",
+        "world_pos": [
+          0,
+          0,
+          0
+        ],
+        "source": {
+          "id": "parts/s/3024s01.dat:8:1",
+          "position": [
+            0,
+            8,
+            0
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0]"
+        }
+      },
+      "ourResult": "compatible"
+    },
+    {
+      "case": "real Stud/Technic pin-hole features at coincident anchors (illegal counterexample)",
+      "a": {
+        "type": "SNAP_CYL",
+        "gender": "M",
+        "world_pos": [
+          0,
+          0,
+          0
+        ],
+        "source": {
+          "id": "p/stud.dat:8:0",
+          "position": [
+            30,
+            0,
+            10
+          ],
+          "direction": [
+            0,
+            -1,
+            0
+          ],
+          "raw": "0 !LDCAD SNAP_CYL [ID=studC] [gender=M] [caps=one] [secs=R 6 4]"
+        }
+      },
+      "b": {
+        "type": "SNAP_CYL",
+        "gender": "F",
+        "world_pos": [
+          0,
+          0,
+          0
+        ],
+        "source": {
+          "id": "p/connhole.dat:8:4",
+          "position": [
+            -10,
+            10,
+            0
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "raw": "0 !LDCAD SNAP_CYL [id=connhole] [gender=F] [caps=none] [secs=R 8 2   R 6 16   R 8 2] [center=true] [slide=true]"
+        }
+      },
+      "ourResult": "incompatible"
+    }
+  ]
+}

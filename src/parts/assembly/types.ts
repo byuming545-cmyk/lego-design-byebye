@@ -1,3 +1,4 @@
+import { analyzeConnectionImpact } from '../connections/impact.js';
 import type { LDrawPartResult } from '../ldraw/types.js';
 import type { ConnectionImportResult } from '../connections/types.js';
 import { CONNECTOR_GRAMMAR_VERSION } from '../grammar/schema.js';
@@ -112,6 +113,5 @@ export function isGeneratableCapabilityFor(capability: AssemblyInterfaceCapabili
 /** Only unresolved dimensions on other endpoints can be isolated. Structural
  * include/clear, integrity or syntax failures still invalidate the whole scope. */
 export function hasIsolatedUnknownDimensions(part: NativeAssemblyPart): boolean {
-  return part.connections.status === 'partial' && part.connections.issues.length > 0 &&
-    part.connections.issues.every(issue => issue.code === 'unsupported-scaling');
+  return analyzeConnectionImpact(part.connections).canIsolateDimensionFailures;
 }

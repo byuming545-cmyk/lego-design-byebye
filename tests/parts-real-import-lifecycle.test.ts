@@ -12,10 +12,13 @@ import { exportNativeAssemblyJson } from '../src/parts/assembly/documents.js';
 // Real, unmodified pinned files. The small catalogue is a test-only source
 // subset; it does not fabricate geometry, interfaces, hashes or author names.
 describe('real-source staged import, promotion and runtime adoption', () => {
-  it('imports 3062b through the normal generator, publishes reports and revokes old snapshots', async () => {
+  it.each([
+    {partId:'3062b', bundlePath:'artifacts/import-collision/bundles/3062b', parserStatus:'partial', allowed:['p/stud2a.dat:11:0']},
+    {partId:'14716', bundlePath:'artifacts/source-guided-production/bundles/14716', parserStatus:'ready', allowed:['p/stud.dat:8:0','parts/14716.dat:8:1']},
+  ])('imports $partId through the normal generator, publishes reports and revokes old snapshots', async ({partId,bundlePath,parserStatus,allowed}) => {
     const root=await mkdtemp(path.join(tmpdir(),'real-import-lifecycle-'));
     try {
-      const bundleDirectory=path.resolve('artifacts/import-collision/bundles/3062b');
+      const bundleDirectory=path.resolve(bundlePath);
       const bundle=JSON.parse(await readFile(path.join(bundleDirectory,'bundle.json'),'utf8'));
       const roots={ldrawRoot:path.join(root,'ldraw'),shadowRoot:path.join(root,'shadow')};
       for(const [side,field,target] of [['ldraw','geometry',roots.ldrawRoot],['shadow','connections',roots.shadowRoot]] as const){
@@ -36,10 +39,10 @@ describe('real-source staged import, promotion and runtime adoption', () => {
       const importer=new PartImportService({...roots,artifactsDirectory});
       const report=await importer.validate(bundleDirectory);
       expect(report.status).toBe('validated');expect(report.stages.source).toBe('IMPORTED_STAGING');
-      expect(report.stages.connectors).toBe('partial');expect(report.stages.generation).toBe('COVERED');
-      const promotion=await importer.promote(bundleDirectory,report,'3062b');
+      expect(report.stages.connectors).toBe(parserStatus);expect(report.stages.generation).toBe('COVERED');
+      const promotion=await importer.promote(bundleDirectory,report,partId);
       expect(promotion.audit?.before.totalRoots).toBe(2);expect(promotion.audit?.after.totalRoots).toBe(3);
-      expect(promotion.audit?.after.newPart?.allowedConnectionIds).toEqual(['p/stud2a.dat:11:0']);
+      expect(promotion.audit?.after.newPart?.allowedConnectionIds).toEqual(allowed);
       const active=JSON.parse(await readFile(path.join(artifactsDirectory,'catalogue-current.json'),'utf8'));
       const audit=JSON.parse(await readFile(path.join(active.reportDirectory,'connector-audit.json'),'utf8'));
       expect(audit.summary.totalParts).toBe(3);
@@ -49,17 +52,17 @@ describe('real-source staged import, promotion and runtime adoption', () => {
       await expect(oldService.getGrammarAdmission('3001')).rejects.toMatchObject({code:'SOURCE_SNAPSHOT_RESTART_REQUIRED'});
       const fresh=new GrammarAssemblyService({repository:new NativePartRepository({geometryDirectory:roots.ldrawRoot,shadowDirectory:roots.shadowRoot})});
       expect((await fresh.importModel(before.model)).status).toBe('NEEDS_REVALIDATION');
-      const support=await fresh.generate({module:'interface-assembly',partCount:5,requiredPartIds:['2431','3062b']});
+      const support=await fresh.generate({module:'interface-assembly',partCount:5,requiredPartIds:['2431',partId]});
       expect(support.status).toBe('generated');
-      expect(support.model?.bom.find(r=>r.partId==='3062b')?.quantity).toBe(4);
+      expect(support.model?.bom.find(r=>r.partId===partId)?.quantity).toBe(4);
       expect((await fresh.engine.validateGraph(support.model!)).valid).toBe(true);
-      const bounded = await new NativeAssemblyGenerator(fresh.engine,{partIds:['2431','3062b'],maxAttempts:1,maxBacktracks:10}).generate({module:'interface-assembly',partCount:3,requiredPartIds:['2431','3062b']});
+      const bounded = await new NativeAssemblyGenerator(fresh.engine,{partIds:['2431',partId],maxAttempts:1,maxBacktracks:10}).generate({module:'interface-assembly',partCount:3,requiredPartIds:['2431',partId]});
       expect(bounded.status).toBe('blocked');expect(bounded.search.exhausted).toBe(true);expect(bounded.model).toBeNull();
-      const model=JSON.parse(await readFile(path.join(artifactsDirectory,'3062b/generated/model.json'),'utf8'));
+      const model=JSON.parse(await readFile(path.join(artifactsDirectory,partId,'generated/model.json'),'utf8'));
       expect((await fresh.importModel(model)).status).toBe('VALID');
       expect(()=>exportNativeAssemblyJson(model,JSON.parse('{}'))).toThrow();
-      const newInstance=model.placements.find((p:any)=>p.partId==='3062b');
-      for(const edge of model.edges){if(edge.fixedInstanceId===newInstance.instanceId)edge.fixedConnectionId='p/stud4od.dat:8:1';if(edge.movingInstanceId===newInstance.instanceId)edge.movingConnectionId='p/stud4od.dat:8:1';}
+      const newInstance=model.placements.find((p:any)=>p.partId===partId);
+      for(const edge of model.edges){if(edge.fixedInstanceId===newInstance.instanceId)edge.fixedConnectionId=partId==='3062b'?'p/stud4od.dat:8:1':'unknown-source-port';if(edge.movingInstanceId===newInstance.instanceId)edge.movingConnectionId=partId==='3062b'?'p/stud4od.dat:8:1':'unknown-source-port';}
       const {contentSha256:_old,...content}=model;model.contentSha256=createHash('sha256').update(JSON.stringify(content)).digest('hex');
       const rejected=await fresh.importModel(model);expect(rejected.status).toBe('NEEDS_REVALIDATION');
       expect(rejected.reasons.some(r=>/接口|interface|disabled/.test(r))).toBe(true);

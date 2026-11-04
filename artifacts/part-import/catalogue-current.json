@@ -1,35 +1,10 @@
 {
   "schemaVersion": "part-import-catalogue-refresh-1",
-  "snapshot": "19f826ea45a00fd22e687d16bf6effdd663f04c7c2f667e5b82c0f7e1c226bcd",
-  "partId": "3062b",
+  "snapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0",
+  "partId": "14716",
   "strategy": "immutable-process-snapshot-restart-required",
-  "reportDirectory": "artifacts/part-import/catalogue/19f826ea45a00fd22e687d16bf6effdd663f04c7c2f667e5b82c0f7e1c226bcd",
+  "reportDirectory": "artifacts/part-import/catalogue/d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0",
   "before": {
-    "totalRoots": 253,
-    "counts": {
-      "total": 253,
-      "generatable": 104,
-      "blocked": 149,
-      "disabledInterfaces": 2540
-    },
-    "sourceCounts": {
-      "totalRoots": 253,
-      "geometryReady": 253,
-      "connectionReady": 206,
-      "connectionPartial": 43,
-      "connectionMissing": 4
-    },
-    "blockedReasons": {
-      "geometry": 0,
-      "connection": 12,
-      "collision": 134,
-      "special-assembly": 3,
-      "other": 0
-    },
-    "exteriorGeneratable": 128,
-    "newPart": null
-  },
-  "after": {
     "totalRoots": 254,
     "counts": {
       "total": 254,
@@ -52,14 +27,40 @@
       "other": 0
     },
     "exteriorGeneratable": 128,
+    "newPart": null
+  },
+  "after": {
+    "totalRoots": 255,
+    "counts": {
+      "total": 255,
+      "generatable": 106,
+      "blocked": 149,
+      "disabledInterfaces": 2543
+    },
+    "sourceCounts": {
+      "totalRoots": 255,
+      "geometryReady": 255,
+      "connectionReady": 207,
+      "connectionPartial": 44,
+      "connectionMissing": 4
+    },
+    "blockedReasons": {
+      "geometry": 0,
+      "connection": 12,
+      "collision": 134,
+      "special-assembly": 3,
+      "other": 0
+    },
+    "exteriorGeneratable": 128,
     "newPart": {
-      "partId": "3062b",
+      "partId": "14716",
       "sourceReady": true,
       "generatable": true,
       "exteriorGeneratable": false,
-      "connectionSourceStatus": "partial",
+      "connectionSourceStatus": "ready",
       "allowedConnectionIds": [
-        "p/stud2a.dat:11:0"
+        "p/stud.dat:8:0",
+        "parts/14716.dat:8:1"
       ],
       "exteriorAllowedConnectionIds": []
     }

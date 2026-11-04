@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "part-import-catalogue-refresh-1",
+  "snapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0",
+  "partId": "14716",
+  "strategy": "immutable-process-snapshot-restart-required",
+  "reportDirectory": "artifacts/part-import/catalogue/d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0",
+  "before": {
+    "totalRoots": 254,
+    "counts": {
+      "total": 254,
+      "generatable": 105,
+      "blocked": 149,
+      "disabledInterfaces": 2543
+    },
+    "sourceCounts": {
+      "totalRoots": 254,
+      "geometryReady": 254,
+      "connectionReady": 206,
+      "connectionPartial": 44,
+      "connectionMissing": 4
+    },
+    "blockedReasons": {
+      "geometry": 0,
+      "connection": 12,
+      "collision": 134,
+      "special-assembly": 3,
+      "other": 0
+    },
+    "exteriorGeneratable": 128,
+    "newPart": null
+  },
+  "after": {
+    "totalRoots": 255,
+    "counts": {
+      "total": 255,
+      "generatable": 106,
+      "blocked": 149,
+      "disabledInterfaces": 2543
+    },
+    "sourceCounts": {
+      "totalRoots": 255,
+      "geometryReady": 255,
+      "connectionReady": 207,
+      "connectionPartial": 44,
+      "connectionMissing": 4
+    },
+    "blockedReasons": {
+      "geometry": 0,
+      "connection": 12,
+      "collision": 134,
+      "special-assembly": 3,
+      "other": 0
+    },
+    "exteriorGeneratable": 128,
+    "newPart": {
+      "partId": "14716",
+      "sourceReady": true,
+      "generatable": true,
+      "exteriorGeneratable": false,
+      "connectionSourceStatus": "ready",
+      "allowedConnectionIds": [
+        "p/stud.dat:8:0",
+        "parts/14716.dat:8:1"
+      ],
+      "exteriorAllowedConnectionIds": []
+    }
+  },
+  "sourceAndRuleRevalidationRequired": true,
+  "physicalBuildVerified": false
+}

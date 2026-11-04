@@ -1,0 +1,133 @@
+{
+  "capturedAt": "2026-11-04T08:16:28.090620+00:00",
+  "branch": "codex/source-guided-production",
+  "baseline": "d3b6299b65bc8bb77c52b989177d3e2b43dc423b",
+  "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0",
+  "checks": [
+    {
+      "command": "npm run typecheck",
+      "status": "PASS"
+    },
+    {
+      "command": "npm test -- tests/parts-connection-impact.test.ts tests/parts-studio-replay.test.ts tests/parts-interface-library.test.ts tests/parts-real-import-lifecycle.test.ts --maxWorkers=1",
+      "status": "PASS",
+      "passed": 17,
+      "scope": "Intermediate targeted run; final added impact case is covered by the complete run."
+    },
+    {
+      "command": "npm test -- --maxWorkers=1 --reporter=default --reporter=json --outputFile=artifacts/source-guided-production/unit-results.json",
+      "status": "PASS",
+      "files": 63,
+      "passed": 824,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "npm run build",
+      "status": "PASS",
+      "warnings": [
+        "Existing application bundle chunk exceeds 500 kB; no new dependency was introduced."
+      ]
+    },
+    {
+      "command": "CI=1 npm run test:e2e",
+      "status": "PASS",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": "npm run test:preview",
+      "status": "PASS",
+      "passed": 3,
+      "failed": 0
+    },
+    {
+      "command": "npm run evidence:source-production",
+      "status": "PASS",
+      "generatedAndReimportedModels": 4
+    },
+    {
+      "command": "npm run evidence:import-collision -- artifacts/source-guided-production/collision-regression",
+      "status": "PASS",
+      "generatedAndReimportedModels": 4,
+      "note": "Current regression of the baseline collision fix, not a new collision algorithm change."
+    },
+    {
+      "command": "npm run study:sources",
+      "status": "PASS",
+      "geometryCases": 7,
+      "note": "Rendering bounds only. Missing colour 16 material configuration warnings do not establish appearance or fit."
+    },
+    {
+      "command": "python scripts/study/validator-reference.py /tmp/lego-source-round-validator artifacts/source-study/reference-input.json artifacts/source-study/validator-comparison.json",
+      "status": "COMPARISON_COMPLETED",
+      "productionAuthority": false
+    },
+    {
+      "command": "npm run replay:studio -- --input artifacts/source-study/development-example.json --output artifacts/source-guided-production/development-replay.json",
+      "status": "PASS",
+      "writesToUserStore": false
+    }
+  ],
+  "intermediateFailures": [
+    {
+      "record": "logs/targeted-initial.log",
+      "passed": 14,
+      "failed": 1,
+      "cause": "Workbench accepted finite non-rigid matrices. Fixed by the shared rigid validator; assertion retained."
+    },
+    {
+      "record": "unit-initial-results.json",
+      "passed": 821,
+      "failed": 2,
+      "cause": "Two exact catalogue regression oracles lacked the newly promoted 14716. Added its exact identity/port expectations; historical evidence and all other assertions retained."
+    }
+  ],
+  "generationCoverage": {
+    "models": 8,
+    "identities": 11,
+    "byCollisionClass": {
+      "structural": {
+        "count": 9,
+        "identities": [
+          "14716",
+          "2431",
+          "3001",
+          "3024",
+          "30374",
+          "3062b",
+          "32000",
+          "3673",
+          "48729b"
+        ]
+      },
+      "exterior-shell": {
+        "count": 2,
+        "identities": [
+          "11477",
+          "18973"
+        ]
+      }
+    },
+    "newIdentities": [
+      "14716"
+    ],
+    "wholeLibraryCurrentGenerationCoverage": "NOT_ESTABLISHED"
+  },
+  "notVerified": [
+    "Physical build, stress, retention and stability",
+    "Continuous installation trajectories",
+    "Wheel/tyre compatibility and rotational clearance",
+    "All 106 structurally eligible identities generating under current versions"
+  ],
+  "preservation": {
+    "originalSourceFiles": 991,
+    "changedOriginalFiles": 0,
+    "changedOriginalManifestFileRecords": 0,
+    "newRawFiles": 2,
+    "newIdentities": 1,
+    "privateExampleStoreReadOrOverwritten": false
+  },
+  "pushMergeDeploy": false,
+  "artifactPackaging": "Removed duplicate export terminators in the evidence writer; regenerated four production examples and reran build successfully. Engine, grammar and collision implementations unchanged after final full suite."
+}

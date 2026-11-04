@@ -1,0 +1,21 @@
+{
+  "candidates": [
+    {
+      "partId": "3037",
+      "observedName": "Slope Brick 45  2 x  4",
+      "geometryRootHttp": 200,
+      "shadowRootHttp": 404,
+      "geometryUrl": "https://raw.githubusercontent.com/pybricks/ldraw/c43ed06a128a10ed65675166bf42eb6fd608b9b0/parts/3037.dat",
+      "shadowUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/3037.dat",
+      "status": "NOT_IMPORTED",
+      "reason": "Current import bundle requires same-ID Shadow root. Primitive-only import schema not implemented; full dependency closure not acquired. No substitute Shadow file created."
+    },
+    {
+      "partId": "14716",
+      "observedName": "Brick  1 x  1 x  3",
+      "status": "PROMOTED_STRUCTURAL",
+      "evidence": "14716-validation.json",
+      "promotionEvidence": "14716-promotion.json"
+    }
+  ]
+}

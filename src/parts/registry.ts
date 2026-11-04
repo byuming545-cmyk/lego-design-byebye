@@ -1,3 +1,4 @@
+import { analyzeConnectionImpact } from './connections/impact.js';
 import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -52,6 +53,7 @@ export interface FoundationPartDetail {
   part: FoundationPart;
   geometry: GeometryResult | null;
   connections: ConnectionsResult | null;
+  connectionImpact?: ReturnType<typeof analyzeConnectionImpact>;
 }
 
 async function readJson(filename: string): Promise<unknown> {
@@ -172,7 +174,7 @@ export class RealPartRegistry {
         enabledConnectionIds: entry?.allowedConnectionIds ?? [], ...(entry ? { assemblyReport: entry } : {}),
         ...(entry?.interfaceCoverage ? { interfaceCoverage: entry.interfaceCoverage } : {}),
       },
-      geometry, connections,
+      geometry, connections, connectionImpact: analyzeConnectionImpact(connections),
     };
   }
   async list(query = ''): Promise<FoundationPart[]> {

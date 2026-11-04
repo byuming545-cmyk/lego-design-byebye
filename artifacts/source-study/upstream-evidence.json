@@ -1,0 +1,128 @@
+{
+  "sources": [
+    {
+      "name": "LDCadShadowLibrary",
+      "repository": "https://github.com/RolandMelkert/LDCadShadowLibrary",
+      "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+      "license": "CC-BY-SA-4.0",
+      "reviewedFiles": [
+        {
+          "path": "LICENSE.md",
+          "sha256": "23ee78c8bae49cf08ea2f0c84945c66b987ebe4520881fb51b3dad4fb43d07c2"
+        },
+        {
+          "path": "parts/14716.dat",
+          "sha256": "7f94712ca4f86d5424419d1807a7f9e1bb0bbdcaaf1865d6184d6f00f5579a14"
+        },
+        {
+          "path": "parts/3062b.dat",
+          "sha256": "01ed093b30d40066ff7cbb2947338d4618190cf31b791d34a12441b09efdc0b1"
+        },
+        {
+          "path": "p/stud4od.dat",
+          "sha256": "f6f68296cefa64a731eaeedcee5ad5493e970dd25b09e5b0da2969e97809d8aa"
+        }
+      ],
+      "codeMigrated": false
+    },
+    {
+      "name": "ldraw-validator",
+      "repository": "https://github.com/ffollett/ldraw-validator",
+      "revision": "0635308c5e0876de20633fecd7eb718ebd554b7c",
+      "license": "MIT",
+      "reviewedFiles": [
+        {
+          "path": "LICENSE",
+          "sha256": "ba60adb9b9c40107c39877a18d50b4733c3661e181e87e0796c8fb50e87f6d3d"
+        },
+        {
+          "path": "src/validator/shadow_parser.py",
+          "sha256": "81c3849bbce504f562141a669038a960fd9187f33bc4393258235d8a67c3948b"
+        },
+        {
+          "path": "src/validator/connections.py",
+          "sha256": "dccb8059a6d632b3bd1269a1ea58ec696f11a821aa9c67173338c432a136f10f"
+        },
+        {
+          "path": "src/validator/collision.py",
+          "sha256": "b26bd4d4707e0ec186751dc1313a2d916d41bf0c690408e028317de3f90b9402"
+        }
+      ],
+      "codeMigrated": false
+    },
+    {
+      "name": "ldraw-nova",
+      "repository": "https://github.com/anteloc/ldraw-nova",
+      "revision": "b176f02b7355ca1d6cb2c4585df2d7d5a95439ad",
+      "license": "AGPL-3.0",
+      "reviewedFiles": [
+        {
+          "path": "LICENSE",
+          "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef"
+        },
+        {
+          "path": "ldraw_tools/common.py",
+          "sha256": "6c241ef91165fd2bac50fa0a1b486f3ec98dd67281d336b877aac6674c8801b6"
+        },
+        {
+          "path": "ldraw_tools/validation.py",
+          "sha256": "4d1827860f076509c36310dce56a8052a238a78e99dfef83d992d4133bd09e23"
+        },
+        {
+          "path": "ldraw_tools/connectivity.py",
+          "sha256": "f1ab8b4dfd8d3a14d6097c343f3fd4934473301b6a4b88f0b30cbd43dc8b8ffd"
+        },
+        {
+          "path": "ldraw_tools/connection_adapter.py",
+          "sha256": "4e3fce97e1b1a6b34d17dffd4da3ff64e9c818b8d3e5b54c4b5ef25d13040841"
+        },
+        {
+          "path": "tests/test_connectivity.py",
+          "sha256": "53b903370434a3a405d9bb231211aa8ea891cd987a7aecb9d426431ed8bb337e"
+        },
+        {
+          "path": "tests/test_validation.py",
+          "sha256": "626074876f94c7c7705c094ed2b62f9c3e23a513e4fecf15388e4a381d6947fe"
+        }
+      ],
+      "codeMigrated": false
+    },
+    {
+      "name": "Three.js",
+      "repository": "https://github.com/mrdoob/three.js",
+      "revision": "0af9729d0c143a86a1d725d6e2c3ad83301f3f34",
+      "tag": "r180",
+      "installedVersion": "0.180.0",
+      "license": "MIT",
+      "reviewedFiles": [
+        {
+          "path": "examples/jsm/loaders/LDrawLoader.js",
+          "sha256": "af4ceb50966e1d45ad9620924aff95821fb0aed0a38173a0f7e0e9e786e8b02b"
+        },
+        {
+          "path": "examples/jsm/controls/TransformControls.js",
+          "sha256": "621fb8894c0f748c2be2a6ff8a6bdd72c18a22b24ddfe21d506514544df5c84e"
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+        }
+      ],
+      "codeMigrated": false,
+      "usage": "Existing installed dependency; LDrawLoader comparison adapter is experimental only."
+    }
+  ],
+  "reviewPolicy": "Read code and licences; no installers or repository entrypoints executed. Only reviewed MIT AST definitions used by standalone comparison.",
+  "unavailableDocumentation": [
+    {
+      "url": "https://www.melkert.net/LDCad/tech/meta",
+      "observedPreviousAttempt": "proxy HTTP 403",
+      "handling": "No bypass and no newly guessed syntax semantics."
+    }
+  ],
+  "deferred": [
+    "LeoCAD",
+    "LPub3D",
+    "brick-instructions-skill"
+  ]
+}

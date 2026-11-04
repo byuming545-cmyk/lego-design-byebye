@@ -1,0 +1,120 @@
+{
+  "capturedBeforeDeliveryCommit": true,
+  "baseline": "d3b6299b65bc8bb77c52b989177d3e2b43dc423b",
+  "branch": "codex/source-guided-production",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "b0302adb547620166ce968dded980384d5091eefc8674d73ef43c07c4867294e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "ca1396376533d7130838c4f262be022c73c7a34ffd43001f75bdc7e2d6311784"
+    },
+    {
+      "path": "scripts/study/validator-reference.py",
+      "sha256": "65a09a2e1b475c41ade8af7a16f3ca358f86701c6b47645a7e133af8b2b6f4b9"
+    },
+    {
+      "path": "src/cli/source-production-evidence.ts",
+      "sha256": "9cff57a6f6540ff13a26b0dc5d3854d7d4d340f2803887f2c2b9b4d45c856e67"
+    },
+    {
+      "path": "src/cli/source-study.ts",
+      "sha256": "528dac402110a5417b5cab4810f371d3d5b057fe62339aba6d9b6547fc518bea"
+    },
+    {
+      "path": "src/cli/studio-replay.ts",
+      "sha256": "dcff96962bc30c1c1d56abeb05dcc1e1abf5b7907be451faf1a213e7a7360d93"
+    },
+    {
+      "path": "src/pages/PartLab.tsx",
+      "sha256": "3aa5569ce0396b42f198996b7e8fa661dfae3f6bf157944ff5a113f31abc3336"
+    },
+    {
+      "path": "src/pages/part-lab.css",
+      "sha256": "477123563ec8a76707e79fed177c9d6cc3bb9dedd5b1946523c3233a31349879"
+    },
+    {
+      "path": "src/parts/assembly/types.ts",
+      "sha256": "e9128722d94f7cb15761afbef741b1b2075b2451822131d82eac4abf023a4d54"
+    },
+    {
+      "path": "src/parts/connections/impact.ts",
+      "sha256": "d9bcbc45828158587d368551e29f4f3393a704ea8fe56145fdf7f200b810ce2d"
+    },
+    {
+      "path": "src/parts/grammar/admission.ts",
+      "sha256": "fd99bec52d0b977878bcbad4fbd5e0d7e53849f1a28683cffde1fdffd9d4d3ec"
+    },
+    {
+      "path": "src/parts/library/api.ts",
+      "sha256": "24054e375a6dc94be632dfb07509262abc2c66a6fb3c61f32d245bc0764b3de5"
+    },
+    {
+      "path": "src/parts/library/studio.ts",
+      "sha256": "ef40756e8230cd8f17a84979725dc70faebca7d00c87af96e62972f0f670302e"
+    },
+    {
+      "path": "src/parts/registry.ts",
+      "sha256": "a4b5dc935c59300ec558537d7e0b7a6d01f95d3bfa17bcb5428866492a0cc79c"
+    },
+    {
+      "path": "tests/e2e/assembly.spec.ts",
+      "sha256": "3c51032e4b49ba549d7aa1fe63ed832644508d8fd7b42d4eb88e2e4395584b47"
+    },
+    {
+      "path": "tests/e2e/parts-foundation.spec.ts",
+      "sha256": "669a943fdec44c071f1bc6336cccbdac2949cab05b1eefb6414a701ae52eeaba"
+    },
+    {
+      "path": "tests/parts-assembly-api.test.ts",
+      "sha256": "69f70454873817af39e9cb601d25c83457dc504a1346f04dd7ecbedc0fa8f381"
+    },
+    {
+      "path": "tests/parts-assembly-migration.test.ts",
+      "sha256": "06f69e9cc24628718da589c6fb37b25bd1361a6f4c8ac36904ed861ef57ffbb1"
+    },
+    {
+      "path": "tests/parts-connection-audit.test.ts",
+      "sha256": "e2cbe0ef239a2d9d0b92b754fbe92f8d9cc1c0515d0d529f24ec426b1a992cae"
+    },
+    {
+      "path": "tests/parts-connection-impact.test.ts",
+      "sha256": "2658a4022e7936354ff5148b69d997f3b3986eb85382f1497042d67998e22703"
+    },
+    {
+      "path": "tests/parts-digital-pilot-bundle.test.ts",
+      "sha256": "563ddda525461687b91df6a92a8066a87df6ba50adfa834507153f9618be99dc"
+    },
+    {
+      "path": "tests/parts-foundation-api.test.ts",
+      "sha256": "932e6bfff2e1c892baaa3fe33790fee593b14b1e6e25826e4186be212e702328"
+    },
+    {
+      "path": "tests/parts-grammar-admission.test.ts",
+      "sha256": "a458c47ff3247393e119a35602dda4c3c73822731dca3c22f8884017402a16ee"
+    },
+    {
+      "path": "tests/parts-grammar-sources.test.ts",
+      "sha256": "297cca4f0b1940eabe75995f3989d51de5a676885abadbc4c7576234c156474c"
+    },
+    {
+      "path": "tests/parts-interface-library.test.ts",
+      "sha256": "765fe1b6fa8bdbab91bcfbb4a9542bab65ba6e84131603ba50ab19739e6eb41e"
+    },
+    {
+      "path": "tests/parts-real-import-lifecycle.test.ts",
+      "sha256": "ca83ecfbd834e38e3061cb0c6375671d1588a42e9f2daa1d1a748b7bc4e7fc56"
+    },
+    {
+      "path": "tests/parts-studio-replay.test.ts",
+      "sha256": "ff52ded1529375cc730ee298a110834d675d496d236e75865ed88a5a9fe82292"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "4849107eba74e5cada3787430860b16852575ab4e8d2b7b233ff3f86d0302344"
+    }
+  ],
+  "packageLockSha256": "ce76cc5deeffe3a1238b49414e8b7c068bcd0ee38911187ba5247dc9387aca86"
+}

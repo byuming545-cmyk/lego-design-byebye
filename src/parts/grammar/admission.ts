@@ -8,7 +8,7 @@ import { CONNECTOR_GRAMMAR_VERSION, type Connector } from './schema.js';
 import { inspectConnectorSupport } from './rules.js';
 import { adaptNativePartConnectors, supportsStandardStudEndpoint, type ConnectorIngestion } from './sources.js';
 
-export const GRAMMAR_ADMISSION_VERSION = 'source-connector-admission-2';
+export const GRAMMAR_ADMISSION_VERSION = 'source-connector-admission-3-impact';
 
 export interface GrammarFeatureSupport {
   featureId: string;

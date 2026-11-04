@@ -89,32 +89,32 @@ afterAll(async () => {
 
 describe('native assembly production HTTP boundaries', () => {
   it('reports every actual source root and only counts runtime-validated admission decisions', async () => {
-    expect(status.counts.total).toBe(254);
-    expect(status.queue).toHaveLength(254);
-    expect(new Set(status.queue.map(entry => entry.partId)).size).toBe(254);
+    expect(status.counts.total).toBe(255);
+    expect(status.queue).toHaveLength(255);
+    expect(new Set(status.queue.map(entry => entry.partId)).size).toBe(255);
     expect(status.admissionBasis).toBe('interface-grammar');
-    expect(status.counts).toMatchObject({ assemblyVerified: 0, generatable: 105, blocked: 149, verifiedInterfaces: 0, testedPhysicalInterfaces: 0 });
+    expect(status.counts).toMatchObject({ assemblyVerified: 0, generatable: 106, blocked: 149, verifiedInterfaces: 0, testedPhysicalInterfaces: 0 });
     expect(report.counts.generatable).toBe(87); // Retained historical evidence, not current admission authority.
     expect(report.sourceCounts).toEqual({ totalRoots: 253, geometryReady: 253, connectionReady: 206, connectionPartial: 43, connectionMissing: 4 }); // Historical report remains unchanged.
-    expect(status.sourceCounts).toEqual({ totalRoots: 254, geometryReady: 254, connectionReady: 206, connectionPartial: 44, connectionMissing: 4 });
+    expect(status.sourceCounts).toEqual({ totalRoots: 255, geometryReady: 255, connectionReady: 207, connectionPartial: 44, connectionMissing: 4 });
     expect(status.counts.assemblyVerified).toBe(status.queue.filter((entry) => entry.assemblyVerified).length);
     expect(status.counts.generatable).toBe(status.queue.filter((entry) => entry.generatable).length);
-    expect(status.counts.blocked + status.counts.generatable).toBe(254);
+    expect(status.counts.blocked + status.counts.generatable).toBe(255);
     expect(status.counts.generatable).toBeGreaterThan(0);
     expect(status.grammar.counts.enabledNativeEndpoints).toBe(status.queue.reduce((sum, entry) => sum + entry.allowedConnectionIds.length, 0));
     expect(status.runtimeValidation.issues).toEqual([]);
     const coverage = status.interfaceCoverage!;
     expect(coverage).toBeDefined();
     expect(coverage).toMatchObject({ verifiedPass: 0, verifiedBlocked: 0, requiresAstraReview: 0 });
-    expect(coverage.physicalInterfacesDiscovered).toBe(5024);
+    expect(coverage.physicalInterfacesDiscovered).toBe(5026);
     expect(coverage.physicalInterfacesDiscovered).toBe(coverage.verifiedPass + coverage.verifiedBlocked + coverage.requiresAstraReview + coverage.pending);
     expect(coverage.verifiedPhysicalInterfaces).toBe(coverage.verifiedPass);
     expect(coverage.enabledPhysicalInterfaces).toBeLessThanOrEqual(coverage.verifiedPass);
     expect(coverage.enabledRawConnectionIds).toBe(status.counts.verifiedInterfaces);
-    expect(coverage.pending).toBe(5024);
+    expect(coverage.pending).toBe(5026);
     expect(coverage.processedCoveragePercent).toBe(0);
     expect(coverage.verifiedCoveragePercent).toBe(Number((100 * coverage.verifiedPass / coverage.physicalInterfacesDiscovered).toFixed(4)));
-    expect(coverage.fullyAssemblyVerified + coverage.partiallyGeneratable + coverage.blockedParts + coverage.unresolvedParts).toBe(254);
+    expect(coverage.fullyAssemblyVerified + coverage.partiallyGeneratable + coverage.blockedParts + coverage.unresolvedParts).toBe(255);
     expect(status.deferredRun).toBeUndefined();
     expect(status.grammar.counts).toMatchObject({ historicalFixtureProofsRequired: 0, executedPartFixtureTests: 0 });
     expect(status.runtimeValidation.reportLoaded).toBe(false);
@@ -125,8 +125,12 @@ describe('native assembly production HTTP boundaries', () => {
         expect(entry.source.digest).toBe(saved.source.digest);
         expect(saved.allowedConnectionIds.every(id => entry.allowedConnectionIds.includes(id))).toBe(true);
       } else {
-        expect(entry.partId).toBe('3062b');
-        expect(entry.allowedConnectionIds).toEqual(['p/stud2a.dat:11:0']);
+        const promotedPorts: Record<string, string[]> = {
+          '3062b': ['p/stud2a.dat:11:0'],
+          '14716': ['p/stud.dat:8:0', 'parts/14716.dat:8:1'],
+        };
+        expect(Object.keys(promotedPorts)).toContain(entry.partId);
+        expect(entry.allowedConnectionIds).toEqual(promotedPorts[entry.partId]);
         expect(entry.source.digest).toMatch(/^[a-f0-9]{64}$/);
         expect(entry.assemblyVerified).toBe(false); // No historical part fixture inheritance.
       }

@@ -1,0 +1,462 @@
+{
+  "cases": [
+    {
+      "partId": "3001",
+      "rawParser": "ready",
+      "sourceGeometry": "geometryReady",
+      "impact": {
+        "version": "connection-impact-1",
+        "partId": "3001",
+        "parserVersion": "ldcad-shadow-parser-2-clear-scope",
+        "parserStatus": "ready",
+        "wholePartUnknown": false,
+        "issues": [],
+        "isolatedConnectionIds": [],
+        "locallyUnaffectedConnectionIds": [
+          "p/stud.dat:8:0",
+          "p/stud.dat:8:1",
+          "p/stud.dat:8:2",
+          "p/stud.dat:8:3",
+          "p/stud.dat:8:4",
+          "p/stud.dat:8:5",
+          "p/stud.dat:8:6",
+          "p/stud.dat:8:7",
+          "parts/s/3001s01.dat:9:8",
+          "parts/s/3001s01.dat:9:9",
+          "parts/s/3001s01.dat:9:10",
+          "parts/s/3001s01.dat:9:11",
+          "parts/s/3001s01.dat:9:12",
+          "parts/s/3001s01.dat:9:13",
+          "parts/s/3001s01.dat:9:14",
+          "parts/s/3001s01.dat:9:15"
+        ],
+        "canIsolateDimensionFailures": false,
+        "discardedBySourceClear": [],
+        "scope": "Diagnostic scope only. Unaffected features still require source, grammar, collision and whole-model checks."
+      },
+      "qualification": {
+        "structural": true,
+        "exterior": false,
+        "enabled": [
+          "p/stud.dat:8:0",
+          "p/stud.dat:8:1",
+          "p/stud.dat:8:2",
+          "p/stud.dat:8:3",
+          "p/stud.dat:8:4",
+          "p/stud.dat:8:5",
+          "p/stud.dat:8:6",
+          "p/stud.dat:8:7",
+          "parts/s/3001s01.dat:9:8",
+          "parts/s/3001s01.dat:9:9",
+          "parts/s/3001s01.dat:9:10",
+          "parts/s/3001s01.dat:9:11",
+          "parts/s/3001s01.dat:9:12",
+          "parts/s/3001s01.dat:9:13",
+          "parts/s/3001s01.dat:9:14",
+          "parts/s/3001s01.dat:9:15"
+        ],
+        "collision": {
+          "status": "ready",
+          "reasonCode": "source-closed-proxy",
+          "reason": "Native closed oriented mesh with only fully source-covered internal caps."
+        }
+      },
+      "threeLDrawLoader": {
+        "status": "loaded",
+        "min": [
+          -40,
+          -4,
+          -20
+        ],
+        "max": [
+          40,
+          24,
+          20
+        ],
+        "maxBoundsDeltaLdu": 0,
+        "scope": "Rendering geometry bounds only; no interface, collision, fit or physical proof."
+      }
+    },
+    {
+      "partId": "3024",
+      "rawParser": "ready",
+      "sourceGeometry": "geometryReady",
+      "impact": {
+        "version": "connection-impact-1",
+        "partId": "3024",
+        "parserVersion": "ldcad-shadow-parser-2-clear-scope",
+        "parserStatus": "ready",
+        "wholePartUnknown": false,
+        "issues": [],
+        "isolatedConnectionIds": [],
+        "locallyUnaffectedConnectionIds": [
+          "p/stud.dat:8:0",
+          "parts/s/3024s01.dat:8:1",
+          "parts/3024.dat:8:2"
+        ],
+        "canIsolateDimensionFailures": false,
+        "discardedBySourceClear": [],
+        "scope": "Diagnostic scope only. Unaffected features still require source, grammar, collision and whole-model checks."
+      },
+      "qualification": {
+        "structural": true,
+        "exterior": false,
+        "enabled": [
+          "p/stud.dat:8:0",
+          "parts/s/3024s01.dat:8:1",
+          "parts/3024.dat:8:2"
+        ],
+        "collision": {
+          "status": "ready",
+          "reasonCode": "source-closed-proxy",
+          "reason": "Native closed oriented mesh with only fully source-covered internal caps."
+        }
+      },
+      "threeLDrawLoader": {
+        "status": "loaded",
+        "min": [
+          -10,
+          -4,
+          -10
+        ],
+        "max": [
+          10,
+          8,
+          10
+        ],
+        "maxBoundsDeltaLdu": 0,
+        "scope": "Rendering geometry bounds only; no interface, collision, fit or physical proof."
+      }
+    },
+    {
+      "partId": "3062b",
+      "rawParser": "partial",
+      "sourceGeometry": "geometryReady",
+      "impact": {
+        "version": "connection-impact-1",
+        "partId": "3062b",
+        "parserVersion": "ldcad-shadow-parser-2-clear-scope",
+        "parserStatus": "partial",
+        "wholePartUnknown": false,
+        "issues": [
+          {
+            "code": "unsupported-scaling",
+            "file": "p/stud4od.dat",
+            "line": 8,
+            "raw": "0 !LDCAD SNAP_CYL [ID=aStud] [gender=F] [caps=A] [secs=R 6 4] [scale=YOnly]",
+            "scope": "SOURCE_FEATURES",
+            "affectedConnectionIds": [
+              "p/stud4od.dat:8:1"
+            ],
+            "source": {
+              "library": "LDCadShadowLibrary",
+              "path": "p/stud4od.dat",
+              "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+              "sha256": "f6f68296cefa64a731eaeedcee5ad5493e970dd25b09e5b0da2969e97809d8aa",
+              "license": "CC-BY-SA-4.0",
+              "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud4od.dat"
+            },
+            "transforms": [
+              {
+                "file": "parts/3062b.dat",
+                "line": 21,
+                "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3062bs01.dat",
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "matrix": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  1
+                ]
+              },
+              {
+                "file": "parts/s/3062bs01.dat",
+                "line": 24,
+                "directive": "1 16 0 4 0 1 0 0 0 -5 0 0 0 -1 stud4od.dat",
+                "position": [
+                  0,
+                  4,
+                  0
+                ],
+                "matrix": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  -5,
+                  0,
+                  0,
+                  0,
+                  -1
+                ]
+              }
+            ],
+            "reason": "The exact source line, digest and inherited occurrence identify these unresolved features."
+          }
+        ],
+        "isolatedConnectionIds": [
+          "p/stud4od.dat:8:1"
+        ],
+        "locallyUnaffectedConnectionIds": [
+          "p/stud2a.dat:11:0",
+          "parts/3062b.dat:9:2",
+          "parts/3062b.dat:10:3"
+        ],
+        "canIsolateDimensionFailures": true,
+        "discardedBySourceClear": [],
+        "scope": "Diagnostic scope only. Unaffected features still require source, grammar, collision and whole-model checks."
+      },
+      "qualification": {
+        "structural": true,
+        "exterior": false,
+        "enabled": [
+          "p/stud2a.dat:11:0"
+        ],
+        "collision": {
+          "status": "ready",
+          "reasonCode": "source-closed-proxy",
+          "reason": "Native closed oriented mesh with only fully source-covered internal caps."
+        }
+      },
+      "threeLDrawLoader": {
+        "status": "loaded",
+        "min": [
+          -10,
+          -4,
+          -10
+        ],
+        "max": [
+          10,
+          24,
+          10
+        ],
+        "maxBoundsDeltaLdu": 0,
+        "scope": "Rendering geometry bounds only; no interface, collision, fit or physical proof."
+      }
+    },
+    {
+      "partId": "11477",
+      "rawParser": "ready",
+      "sourceGeometry": "geometryReady",
+      "impact": {
+        "version": "connection-impact-1",
+        "partId": "11477",
+        "parserVersion": "ldcad-shadow-parser-2-clear-scope",
+        "parserStatus": "ready",
+        "wholePartUnknown": false,
+        "issues": [],
+        "isolatedConnectionIds": [],
+        "locallyUnaffectedConnectionIds": [
+          "parts/s/11477s01.dat:8:0",
+          "parts/s/11477s01.dat:9:1"
+        ],
+        "canIsolateDimensionFailures": false,
+        "discardedBySourceClear": [],
+        "scope": "Diagnostic scope only. Unaffected features still require source, grammar, collision and whole-model checks."
+      },
+      "qualification": {
+        "structural": false,
+        "exterior": true,
+        "enabled": [],
+        "collision": {
+          "status": "blocked",
+          "reasonCode": "open-external-shell",
+          "reason": "An open native boundary is not fully covered by original coplanar source faces. No missing plastic is invented."
+        }
+      },
+      "threeLDrawLoader": {
+        "status": "loaded",
+        "min": [
+          -10,
+          -16.00006103515625,
+          -20
+        ],
+        "max": [
+          10,
+          0,
+          20
+        ],
+        "maxBoundsDeltaLdu": 5.515624934560037e-8,
+        "scope": "Rendering geometry bounds only; no interface, collision, fit or physical proof."
+      }
+    },
+    {
+      "partId": "18975",
+      "rawParser": "partial",
+      "sourceGeometry": "geometryReady",
+      "impact": {
+        "version": "connection-impact-1",
+        "partId": "18975",
+        "parserVersion": "ldcad-shadow-parser-2-clear-scope",
+        "parserStatus": "partial",
+        "wholePartUnknown": true,
+        "issues": [
+          {
+            "code": "invalid-directive",
+            "file": "parts/18975.dat",
+            "line": 10,
+            "raw": "0 !LDCAD SNAP_INCL [ref=connhole.dat] [pos=0 10 0] [ori=0 -1 0 1 0 0 0 0 1] [grid=1 C 2 1 0 60 0]",
+            "scope": "WHOLE_PART_UNKNOWN",
+            "affectedConnectionIds": [],
+            "source": {
+              "library": "LDCadShadowLibrary",
+              "path": "parts/18975.dat",
+              "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+              "sha256": "0f6561c5682d32174bd8b5af9a61e4ad276d8d36521c8e7110e5caff75d48f21",
+              "license": "CC-BY-SA-4.0",
+              "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/18975.dat"
+            },
+            "transforms": [],
+            "reason": "This issue lacks safely isolatable feature evidence or may change inheritance, clearing, completeness or source integrity; the part remains blocked."
+          }
+        ],
+        "isolatedConnectionIds": [],
+        "locallyUnaffectedConnectionIds": [],
+        "canIsolateDimensionFailures": false,
+        "discardedBySourceClear": [],
+        "scope": "Diagnostic scope only. Unaffected features still require source, grammar, collision and whole-model checks."
+      },
+      "qualification": {
+        "structural": false,
+        "exterior": false,
+        "enabled": [],
+        "collision": {
+          "status": "blocked",
+          "reasonCode": "unresolved-boundary-cap",
+          "reason": "A nonconvex native boundary needs a more capable source-backed proxy."
+        }
+      },
+      "threeLDrawLoader": {
+        "status": "loaded",
+        "min": [
+          -40,
+          -4,
+          -20
+        ],
+        "max": [
+          40,
+          32,
+          20
+        ],
+        "maxBoundsDeltaLdu": 0,
+        "scope": "Rendering geometry bounds only; no interface, collision, fit or physical proof."
+      }
+    },
+    {
+      "partId": "66727",
+      "rawParser": "ready",
+      "sourceGeometry": "geometryReady",
+      "impact": {
+        "version": "connection-impact-1",
+        "partId": "66727",
+        "parserVersion": "ldcad-shadow-parser-2-clear-scope",
+        "parserStatus": "ready",
+        "wholePartUnknown": false,
+        "issues": [],
+        "isolatedConnectionIds": [],
+        "locallyUnaffectedConnectionIds": [
+          "p/connhol2.dat:8:0",
+          "p/stud2a.dat:11:1"
+        ],
+        "canIsolateDimensionFailures": false,
+        "discardedBySourceClear": [],
+        "scope": "Diagnostic scope only. Unaffected features still require source, grammar, collision and whole-model checks."
+      },
+      "qualification": {
+        "structural": false,
+        "exterior": true,
+        "enabled": [],
+        "collision": {
+          "status": "blocked",
+          "reasonCode": "branched-native-boundary",
+          "reason": "The source mesh has open/branched boundary chains."
+        }
+      },
+      "threeLDrawLoader": {
+        "status": "loaded",
+        "min": [
+          -22,
+          -22.00055694580078,
+          -20
+        ],
+        "max": [
+          22,
+          22,
+          10
+        ],
+        "maxBoundsDeltaLdu": 5.271992193911501e-7,
+        "scope": "Rendering geometry bounds only; no interface, collision, fit or physical proof."
+      }
+    },
+    {
+      "partId": "14716",
+      "rawParser": "ready",
+      "sourceGeometry": "geometryReady",
+      "impact": {
+        "version": "connection-impact-1",
+        "partId": "14716",
+        "parserVersion": "ldcad-shadow-parser-2-clear-scope",
+        "parserStatus": "ready",
+        "wholePartUnknown": false,
+        "issues": [],
+        "isolatedConnectionIds": [],
+        "locallyUnaffectedConnectionIds": [
+          "p/stud.dat:8:0",
+          "parts/14716.dat:8:1"
+        ],
+        "canIsolateDimensionFailures": false,
+        "discardedBySourceClear": [],
+        "scope": "Diagnostic scope only. Unaffected features still require source, grammar, collision and whole-model checks."
+      },
+      "qualification": {
+        "structural": true,
+        "exterior": false,
+        "enabled": [
+          "p/stud.dat:8:0",
+          "parts/14716.dat:8:1"
+        ],
+        "collision": {
+          "status": "ready",
+          "reasonCode": "source-closed-proxy",
+          "reason": "Native closed oriented mesh with only fully source-covered internal caps."
+        }
+      },
+      "threeLDrawLoader": {
+        "status": "loaded",
+        "min": [
+          -10,
+          -4,
+          -10
+        ],
+        "max": [
+          10,
+          72,
+          10
+        ],
+        "maxBoundsDeltaLdu": 0,
+        "scope": "Rendering geometry bounds only; no interface, collision, fit or physical proof."
+      }
+    }
+  ],
+  "qualification": {
+    "before": 105,
+    "after": 106,
+    "changedExistingIdentities": [],
+    "addedIdentities": [
+      {
+        "partId": "14716",
+        "generationEligible": true
+      }
+    ]
+  },
+  "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0"
+}
