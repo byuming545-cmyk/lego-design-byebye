@@ -1,4 +1,6 @@
-> 本轮本地开发交付：真实新增 3062b、完整表面分区碰撞检查及事务晋升后的快照更新。详见 [交付报告](docs/IMPORT_COLLISION_DELIVERY.md)。工作分支 `codex/import-collision-closure` 尚未推送；下文旧分支和旧计数属于历史记录。
+> 当前最终目标：**以真实 LEGO 零件自动生成独立设计的跑车**。不再指定 S63 或其他现实车型作为必须复现的成品。后续开发先读 [当前目标与验收标准](docs/CURRENT_GOAL.md)。
+>
+> 最近实现与证据见 [真实零件晋升及示例复盘交付](docs/SOURCE_GUIDED_PRODUCTION_DELIVERY.md) 和 [曲面风挡核对](artifacts/car-canopy-review/README.md)。下文早期分支、计数和生产规则说明保留为历史，当前状态以这些较新记录及运行时审计为准。
 
 # BRICKLAB · Interface-first Connector Grammar
 
