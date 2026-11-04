@@ -1,0 +1,47 @@
+{
+  "graph": {
+    "valid": true,
+    "issues": []
+  },
+  "reimport": "VALID",
+  "search": {
+    "attempts": 2,
+    "attachmentApiCalls": 2,
+    "acceptedAttachments": 1,
+    "rejectedAttachments": 1,
+    "transformFailures": 0,
+    "compatibilityFailures": 0,
+    "collisionFailures": 1,
+    "occupancyFailures": 0,
+    "designGoalFailures": 0,
+    "backtracks": 0,
+    "testedRoots": 1,
+    "exhausted": false,
+    "timeBudgetExceeded": false,
+    "catalogTimeMs": 0.206,
+    "searchTimeMs": 94.163,
+    "budget": {
+      "maxAttempts": 1800,
+      "maxBacktracks": 120,
+      "maxSearchTimeMs": 10000
+    },
+    "finalPlacements": 2,
+    "finalConnectionEdges": 2,
+    "rejectionCounts": {
+      "native-plastic-collision": 1,
+      "no-collision-free-transform": 1
+    },
+    "rejectionReasons": [
+      {
+        "code": "native-plastic-collision",
+        "reason": "root: A complete exterior source-surface cell enters closed material outside the validated seat.",
+        "count": 1
+      },
+      {
+        "code": "no-collision-free-transform",
+        "reason": "Every permitted source-derived placement was rejected by native collision checks.",
+        "count": 1
+      }
+    ]
+  }
+}
