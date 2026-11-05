@@ -133,3 +133,17 @@ test('compiled module paths retain reviewed data, design credit and full JSON re
   expect(checked.status).toBe('VALID');
   expect(checked.model.moduleComposition).toEqual(result.model.moduleComposition);
 });
+
+test('compiled generator installs two different modules with current multi-point evidence', async ({ request }) => {
+  const generated = await request.post('/api/parts-foundation/assembly/generate', {
+    data: { kind: 'module-assembly', requiredPartIds: ['3035'], requiredModuleIds: ['76897-hood-core', '76897-rear-panel-core'] },
+  });
+  expect(generated.ok()).toBe(true);
+  const result = await generated.json(); expect(result.status, result.reasons.join(' ')).toBe('generated');
+  expect(result.model.placements).toHaveLength(9);
+  expect(result.model.moduleComposition.instances.map((instance: { installationSupport: { independentPoints: number } }) => instance.installationSupport.independentPoints)).toEqual([8, 6]);
+  const exported = await request.get(`/api/parts-foundation/assembly/models/${result.model.id}/export?format=json`);
+  const imported = await request.post('/api/parts-foundation/assembly/models/import', { data: { content: await exported.text() } });
+  expect(imported.ok()).toBe(true); const model = await imported.json(); expect(model.status).toBe('VALID');
+  expect(model.model.moduleComposition).toEqual(result.model.moduleComposition);
+});

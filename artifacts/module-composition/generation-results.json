@@ -1,0 +1,1061 @@
+{
+  "baseline": "3fb3f03",
+  "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0",
+  "counts": {
+    "total": 255,
+    "assemblyVerified": 0,
+    "generatable": 106,
+    "blocked": 149,
+    "verifiedInterfaces": 0,
+    "disabledInterfaces": 2543,
+    "testedPhysicalInterfaces": 0,
+    "deferredPhysicalInterfaces": 5026,
+    "deferredRawConnectionIds": 5091,
+    "wheelModulesVerified": 0,
+    "physicalBuildsVerified": 0
+  },
+  "sourceCounts": {
+    "totalRoots": 255,
+    "geometryReady": 255,
+    "connectionReady": 207,
+    "connectionPartial": 44,
+    "connectionMissing": 4
+  },
+  "blockedReasons": {
+    "geometry": 0,
+    "connection": 12,
+    "collision": 134,
+    "special-assembly": 3,
+    "other": 0
+  },
+  "qualificationCounts": {
+    "structural": 106,
+    "exteriorShell": 128
+  },
+  "models": [
+    {
+      "name": "76897-hood-core-3001",
+      "request": {
+        "module": "module-assembly",
+        "requiredPartIds": [
+          "3001"
+        ],
+        "requiredModuleIds": [
+          "76897-hood-core"
+        ]
+      },
+      "placements": 6,
+      "edges": 14,
+      "steps": 6,
+      "support": [
+        {
+          "moduleId": "76897-hood-core",
+          "instanceId": "module-1",
+          "independentPoints": 4,
+          "anchorsLdu": [
+            [
+              30,
+              0,
+              10
+            ],
+            [
+              10,
+              0,
+              10
+            ],
+            [
+              -10,
+              0,
+              10
+            ],
+            [
+              -30,
+              0,
+              10
+            ]
+          ],
+          "spanLdu": 60,
+          "status": "multi-point",
+          "scope": "current-final-pose-interfaces-only",
+          "physicalStability": "not-verified"
+        }
+      ],
+      "bom": [
+        {
+          "partId": "2412b",
+          "name": "Tile  1 x  2 Grille with Groove",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3001",
+          "name": "Brick  2 x  4",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3460",
+          "name": "Plate  1 x  8",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3666",
+          "name": "Plate  1 x  6",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "54200",
+          "name": "Slope Brick 31  1 x  1 x  0.667",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "reimport": "VALID",
+      "search": {
+        "attempts": 205,
+        "modulePoseEvaluations": 200,
+        "attachmentApiCalls": 5,
+        "acceptedAttachments": 5,
+        "rejectedAttachments": 0,
+        "transformFailures": 0,
+        "compatibilityFailures": 0,
+        "collisionFailures": 0,
+        "occupancyFailures": 0,
+        "designGoalFailures": 0,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "timeBudgetExceeded": false,
+        "catalogTimeMs": 301.778,
+        "searchTimeMs": 2023.68,
+        "budget": {
+          "maxAttempts": 1800,
+          "maxBacktracks": 120,
+          "maxSearchTimeMs": 10000
+        },
+        "finalPlacements": 6,
+        "finalConnectionEdges": 14,
+        "rejectionCounts": {},
+        "rejectionReasons": []
+      }
+    },
+    {
+      "name": "76897-hood-core-3020",
+      "request": {
+        "module": "module-assembly",
+        "requiredPartIds": [
+          "3020"
+        ],
+        "requiredModuleIds": [
+          "76897-hood-core"
+        ]
+      },
+      "placements": 6,
+      "edges": 14,
+      "steps": 6,
+      "support": [
+        {
+          "moduleId": "76897-hood-core",
+          "instanceId": "module-1",
+          "independentPoints": 4,
+          "anchorsLdu": [
+            [
+              30,
+              0,
+              10
+            ],
+            [
+              10,
+              0,
+              10
+            ],
+            [
+              -10,
+              0,
+              10
+            ],
+            [
+              -30,
+              0,
+              10
+            ]
+          ],
+          "spanLdu": 60,
+          "status": "multi-point",
+          "scope": "current-final-pose-interfaces-only",
+          "physicalStability": "not-verified"
+        }
+      ],
+      "bom": [
+        {
+          "partId": "2412b",
+          "name": "Tile  1 x  2 Grille with Groove",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3020",
+          "name": "Plate  2 x  4",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3460",
+          "name": "Plate  1 x  8",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3666",
+          "name": "Plate  1 x  6",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "54200",
+          "name": "Slope Brick 31  1 x  1 x  0.667",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "reimport": "VALID",
+      "search": {
+        "attempts": 205,
+        "modulePoseEvaluations": 200,
+        "attachmentApiCalls": 5,
+        "acceptedAttachments": 5,
+        "rejectedAttachments": 0,
+        "transformFailures": 0,
+        "compatibilityFailures": 0,
+        "collisionFailures": 0,
+        "occupancyFailures": 0,
+        "designGoalFailures": 0,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "timeBudgetExceeded": false,
+        "catalogTimeMs": 0.267,
+        "searchTimeMs": 889.264,
+        "budget": {
+          "maxAttempts": 1800,
+          "maxBacktracks": 120,
+          "maxSearchTimeMs": 10000
+        },
+        "finalPlacements": 6,
+        "finalConnectionEdges": 14,
+        "rejectionCounts": {},
+        "rejectionReasons": []
+      }
+    },
+    {
+      "name": "76897-hood-adapted-3001",
+      "request": {
+        "module": "module-assembly",
+        "requiredPartIds": [
+          "3001"
+        ],
+        "requiredModuleIds": [
+          "76897-hood-adapted"
+        ]
+      },
+      "placements": 8,
+      "edges": 18,
+      "steps": 8,
+      "support": [
+        {
+          "moduleId": "76897-hood-adapted",
+          "instanceId": "module-1",
+          "independentPoints": 4,
+          "anchorsLdu": [
+            [
+              30,
+              0,
+              10
+            ],
+            [
+              10,
+              0,
+              10
+            ],
+            [
+              -10,
+              0,
+              10
+            ],
+            [
+              -30,
+              0,
+              10
+            ]
+          ],
+          "spanLdu": 60,
+          "status": "multi-point",
+          "scope": "current-final-pose-interfaces-only",
+          "physicalStability": "not-verified"
+        }
+      ],
+      "bom": [
+        {
+          "partId": "2412b",
+          "name": "Tile  1 x  2 Grille with Groove",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3001",
+          "name": "Brick  2 x  4",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3069b",
+          "name": "Tile  1 x  2 with Groove",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3460",
+          "name": "Plate  1 x  8",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3666",
+          "name": "Plate  1 x  6",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "54200",
+          "name": "Slope Brick 31  1 x  1 x  0.667",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "reimport": "VALID",
+      "search": {
+        "attempts": 123,
+        "modulePoseEvaluations": 116,
+        "attachmentApiCalls": 7,
+        "acceptedAttachments": 7,
+        "rejectedAttachments": 0,
+        "transformFailures": 0,
+        "compatibilityFailures": 0,
+        "collisionFailures": 0,
+        "occupancyFailures": 0,
+        "designGoalFailures": 0,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "timeBudgetExceeded": false,
+        "catalogTimeMs": 0.232,
+        "searchTimeMs": 674.789,
+        "budget": {
+          "maxAttempts": 1800,
+          "maxBacktracks": 120,
+          "maxSearchTimeMs": 10000
+        },
+        "finalPlacements": 8,
+        "finalConnectionEdges": 18,
+        "rejectionCounts": {},
+        "rejectionReasons": []
+      }
+    },
+    {
+      "name": "76897-hood-adapted-3020",
+      "request": {
+        "module": "module-assembly",
+        "requiredPartIds": [
+          "3020"
+        ],
+        "requiredModuleIds": [
+          "76897-hood-adapted"
+        ]
+      },
+      "placements": 8,
+      "edges": 18,
+      "steps": 8,
+      "support": [
+        {
+          "moduleId": "76897-hood-adapted",
+          "instanceId": "module-1",
+          "independentPoints": 4,
+          "anchorsLdu": [
+            [
+              30,
+              0,
+              10
+            ],
+            [
+              10,
+              0,
+              10
+            ],
+            [
+              -10,
+              0,
+              10
+            ],
+            [
+              -30,
+              0,
+              10
+            ]
+          ],
+          "spanLdu": 60,
+          "status": "multi-point",
+          "scope": "current-final-pose-interfaces-only",
+          "physicalStability": "not-verified"
+        }
+      ],
+      "bom": [
+        {
+          "partId": "2412b",
+          "name": "Tile  1 x  2 Grille with Groove",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3020",
+          "name": "Plate  2 x  4",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3069b",
+          "name": "Tile  1 x  2 with Groove",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3460",
+          "name": "Plate  1 x  8",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3666",
+          "name": "Plate  1 x  6",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "54200",
+          "name": "Slope Brick 31  1 x  1 x  0.667",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "reimport": "VALID",
+      "search": {
+        "attempts": 123,
+        "modulePoseEvaluations": 116,
+        "attachmentApiCalls": 7,
+        "acceptedAttachments": 7,
+        "rejectedAttachments": 0,
+        "transformFailures": 0,
+        "compatibilityFailures": 0,
+        "collisionFailures": 0,
+        "occupancyFailures": 0,
+        "designGoalFailures": 0,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "timeBudgetExceeded": false,
+        "catalogTimeMs": 0.148,
+        "searchTimeMs": 417.682,
+        "budget": {
+          "maxAttempts": 1800,
+          "maxBacktracks": 120,
+          "maxSearchTimeMs": 10000
+        },
+        "finalPlacements": 8,
+        "finalConnectionEdges": 18,
+        "rejectionCounts": {},
+        "rejectionReasons": []
+      }
+    },
+    {
+      "name": "hood-rear-3035",
+      "request": {
+        "module": "module-assembly",
+        "requiredPartIds": [
+          "3035"
+        ],
+        "requiredModuleIds": [
+          "76897-hood-core",
+          "76897-rear-panel-core"
+        ]
+      },
+      "placements": 9,
+      "edges": 36,
+      "steps": 9,
+      "support": [
+        {
+          "moduleId": "76897-hood-core",
+          "instanceId": "module-1",
+          "independentPoints": 8,
+          "anchorsLdu": [
+            [
+              70,
+              0,
+              30
+            ],
+            [
+              50,
+              0,
+              30
+            ],
+            [
+              30,
+              0,
+              30
+            ],
+            [
+              10,
+              0,
+              30
+            ],
+            [
+              -10,
+              0,
+              30
+            ],
+            [
+              -30,
+              0,
+              30
+            ],
+            [
+              -50,
+              0,
+              30
+            ],
+            [
+              -70,
+              0,
+              30
+            ]
+          ],
+          "spanLdu": 140,
+          "status": "multi-point",
+          "scope": "current-final-pose-interfaces-only",
+          "physicalStability": "not-verified"
+        },
+        {
+          "moduleId": "76897-rear-panel-core",
+          "instanceId": "module-6",
+          "independentPoints": 6,
+          "anchorsLdu": [
+            [
+              70,
+              0,
+              10
+            ],
+            [
+              50,
+              0,
+              10
+            ],
+            [
+              30,
+              0,
+              10
+            ],
+            [
+              10,
+              0,
+              10
+            ],
+            [
+              -10,
+              0,
+              10
+            ],
+            [
+              -30,
+              0,
+              10
+            ]
+          ],
+          "spanLdu": 100,
+          "status": "multi-point",
+          "scope": "current-final-pose-interfaces-only",
+          "physicalStability": "not-verified"
+        }
+      ],
+      "bom": [
+        {
+          "partId": "2412b",
+          "name": "Tile  1 x  2 Grille with Groove",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3035",
+          "name": "Plate  4 x  8",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3460",
+          "name": "Plate  1 x  8",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3666",
+          "name": "Plate  1 x  6",
+          "quantity": 3,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "54200",
+          "name": "Slope Brick 31  1 x  1 x  0.667",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "6636",
+          "name": "Tile  1 x  6",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "reimport": "VALID",
+      "search": {
+        "attempts": 828,
+        "modulePoseEvaluations": 820,
+        "attachmentApiCalls": 8,
+        "acceptedAttachments": 8,
+        "rejectedAttachments": 0,
+        "transformFailures": 0,
+        "compatibilityFailures": 0,
+        "collisionFailures": 0,
+        "occupancyFailures": 0,
+        "designGoalFailures": 0,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "timeBudgetExceeded": false,
+        "catalogTimeMs": 0.163,
+        "searchTimeMs": 6234.817,
+        "budget": {
+          "maxAttempts": 1800,
+          "maxBacktracks": 120,
+          "maxSearchTimeMs": 10000
+        },
+        "finalPlacements": 9,
+        "finalConnectionEdges": 36,
+        "rejectionCounts": {},
+        "rejectionReasons": []
+      }
+    },
+    {
+      "name": "hood-rear-3031",
+      "request": {
+        "module": "module-assembly",
+        "requiredPartIds": [
+          "3031"
+        ],
+        "requiredModuleIds": [
+          "76897-hood-core",
+          "76897-rear-panel-core"
+        ]
+      },
+      "placements": 9,
+      "edges": 30,
+      "steps": 9,
+      "support": [
+        {
+          "moduleId": "76897-hood-core",
+          "instanceId": "module-1",
+          "independentPoints": 4,
+          "anchorsLdu": [
+            [
+              30,
+              0,
+              30
+            ],
+            [
+              10,
+              0,
+              30
+            ],
+            [
+              -10,
+              0,
+              30
+            ],
+            [
+              -30,
+              0,
+              30
+            ]
+          ],
+          "spanLdu": 60,
+          "status": "multi-point",
+          "scope": "current-final-pose-interfaces-only",
+          "physicalStability": "not-verified"
+        },
+        {
+          "moduleId": "76897-rear-panel-core",
+          "instanceId": "module-6",
+          "independentPoints": 4,
+          "anchorsLdu": [
+            [
+              30,
+              0,
+              10
+            ],
+            [
+              10,
+              0,
+              10
+            ],
+            [
+              -10,
+              0,
+              10
+            ],
+            [
+              -30,
+              0,
+              10
+            ]
+          ],
+          "spanLdu": 60,
+          "status": "multi-point",
+          "scope": "current-final-pose-interfaces-only",
+          "physicalStability": "not-verified"
+        }
+      ],
+      "bom": [
+        {
+          "partId": "2412b",
+          "name": "Tile  1 x  2 Grille with Groove",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3031",
+          "name": "Plate  4 x  4",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3460",
+          "name": "Plate  1 x  8",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3666",
+          "name": "Plate  1 x  6",
+          "quantity": 3,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "54200",
+          "name": "Slope Brick 31  1 x  1 x  0.667",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "6636",
+          "name": "Tile  1 x  6",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "reimport": "VALID",
+      "search": {
+        "attempts": 516,
+        "modulePoseEvaluations": 508,
+        "attachmentApiCalls": 8,
+        "acceptedAttachments": 8,
+        "rejectedAttachments": 0,
+        "transformFailures": 0,
+        "compatibilityFailures": 0,
+        "collisionFailures": 0,
+        "occupancyFailures": 0,
+        "designGoalFailures": 0,
+        "backtracks": 0,
+        "testedRoots": 1,
+        "exhausted": false,
+        "timeBudgetExceeded": false,
+        "catalogTimeMs": 0.251,
+        "searchTimeMs": 3732.684,
+        "budget": {
+          "maxAttempts": 1800,
+          "maxBacktracks": 120,
+          "maxSearchTimeMs": 10000
+        },
+        "finalPlacements": 9,
+        "finalConnectionEdges": 30,
+        "rejectionCounts": {},
+        "rejectionReasons": []
+      }
+    }
+  ],
+  "failures": [],
+  "beforeAfter": [
+    {
+      "name": "76897-hood-core-3001",
+      "previous": {
+        "independentPoints": 1,
+        "anchorsLdu": [
+          [
+            30,
+            0,
+            10
+          ]
+        ],
+        "spanLdu": 0,
+        "status": "single-point",
+        "scope": "current-final-pose-interfaces-only",
+        "physicalStability": "not-verified"
+      },
+      "current": {
+        "moduleId": "76897-hood-core",
+        "instanceId": "module-1",
+        "independentPoints": 4,
+        "anchorsLdu": [
+          [
+            30,
+            0,
+            10
+          ],
+          [
+            10,
+            0,
+            10
+          ],
+          [
+            -10,
+            0,
+            10
+          ],
+          [
+            -30,
+            0,
+            10
+          ]
+        ],
+        "spanLdu": 60,
+        "status": "multi-point",
+        "scope": "current-final-pose-interfaces-only",
+        "physicalStability": "not-verified"
+      }
+    },
+    {
+      "name": "76897-hood-core-3020",
+      "previous": {
+        "independentPoints": 1,
+        "anchorsLdu": [
+          [
+            30,
+            0,
+            10
+          ]
+        ],
+        "spanLdu": 0,
+        "status": "single-point",
+        "scope": "current-final-pose-interfaces-only",
+        "physicalStability": "not-verified"
+      },
+      "current": {
+        "moduleId": "76897-hood-core",
+        "instanceId": "module-1",
+        "independentPoints": 4,
+        "anchorsLdu": [
+          [
+            30,
+            0,
+            10
+          ],
+          [
+            10,
+            0,
+            10
+          ],
+          [
+            -10,
+            0,
+            10
+          ],
+          [
+            -30,
+            0,
+            10
+          ]
+        ],
+        "spanLdu": 60,
+        "status": "multi-point",
+        "scope": "current-final-pose-interfaces-only",
+        "physicalStability": "not-verified"
+      }
+    },
+    {
+      "name": "76897-hood-adapted-3001",
+      "previous": {
+        "independentPoints": 1,
+        "anchorsLdu": [
+          [
+            30,
+            0,
+            10
+          ]
+        ],
+        "spanLdu": 0,
+        "status": "single-point",
+        "scope": "current-final-pose-interfaces-only",
+        "physicalStability": "not-verified"
+      },
+      "current": {
+        "moduleId": "76897-hood-adapted",
+        "instanceId": "module-1",
+        "independentPoints": 4,
+        "anchorsLdu": [
+          [
+            30,
+            0,
+            10
+          ],
+          [
+            10,
+            0,
+            10
+          ],
+          [
+            -10,
+            0,
+            10
+          ],
+          [
+            -30,
+            0,
+            10
+          ]
+        ],
+        "spanLdu": 60,
+        "status": "multi-point",
+        "scope": "current-final-pose-interfaces-only",
+        "physicalStability": "not-verified"
+      }
+    },
+    {
+      "name": "76897-hood-adapted-3020",
+      "previous": {
+        "independentPoints": 1,
+        "anchorsLdu": [
+          [
+            30,
+            0,
+            10
+          ]
+        ],
+        "spanLdu": 0,
+        "status": "single-point",
+        "scope": "current-final-pose-interfaces-only",
+        "physicalStability": "not-verified"
+      },
+      "current": {
+        "moduleId": "76897-hood-adapted",
+        "instanceId": "module-1",
+        "independentPoints": 4,
+        "anchorsLdu": [
+          [
+            30,
+            0,
+            10
+          ],
+          [
+            10,
+            0,
+            10
+          ],
+          [
+            -10,
+            0,
+            10
+          ],
+          [
+            -30,
+            0,
+            10
+          ]
+        ],
+        "spanLdu": 60,
+        "status": "multi-point",
+        "scope": "current-final-pose-interfaces-only",
+        "physicalStability": "not-verified"
+      }
+    }
+  ],
+  "originalSources": {
+    "unchanged": 993,
+    "changed": []
+  },
+  "originalModuleRecipesUnchanged": 3,
+  "newSourceParts": 0,
+  "newQualifications": 0,
+  "newModuleRecipes": 1,
+  "usableRecipes": 3,
+  "actualCoverage": {
+    "uniquePartIds": [
+      "2412b",
+      "3001",
+      "3020",
+      "3031",
+      "3035",
+      "3069b",
+      "3460",
+      "3666",
+      "54200",
+      "6636"
+    ],
+    "differentDesignFunctions": [
+      "hood",
+      "rear-panel"
+    ],
+    "allModulesMultiPoint": true
+  },
+  "interpretation": "Two small source design functions on real bases, not a complete car or physical stability certificate."
+}

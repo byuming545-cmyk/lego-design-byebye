@@ -1,0 +1,225 @@
+{
+  "schema": "source-module-assembly-2-ranked-support",
+  "libraryDigest": "030b7bf93dc10733d2799b8daeb000c2b1c7be4e17917426f6ab21c84d73e2b7",
+  "policy": {
+    "module": "source-module-assembly-2-ranked-support",
+    "validationSuite": "source-module-suite-2-multipoint-composition",
+    "parser": "ldcad-shadow-parser-2-clear-scope",
+    "admission": "source-connector-admission-3-impact",
+    "schema": "connector-schema-2",
+    "grammar": "connector-grammar-2",
+    "ingestion": "native-connector-adapter-2-source-declared-bar-clip"
+  },
+  "modules": [
+    {
+      "id": "76897-hood-core",
+      "name": "76897 车头上盖结构核心",
+      "role": "hood",
+      "status": "VALIDATED",
+      "parts": 5,
+      "ports": [
+        {
+          "localId": "source-0",
+          "connectionId": "parts/3460.dat:8:15"
+        },
+        {
+          "localId": "source-0",
+          "connectionId": "parts/3460.dat:8:16"
+        },
+        {
+          "localId": "source-0",
+          "connectionId": "parts/3460.dat:8:17"
+        },
+        {
+          "localId": "source-0",
+          "connectionId": "parts/3460.dat:8:18"
+        },
+        {
+          "localId": "source-0",
+          "connectionId": "parts/3460.dat:8:19"
+        },
+        {
+          "localId": "source-0",
+          "connectionId": "parts/3460.dat:8:20"
+        },
+        {
+          "localId": "source-0",
+          "connectionId": "parts/3460.dat:8:21"
+        },
+        {
+          "localId": "source-0",
+          "connectionId": "parts/3460.dat:8:22"
+        },
+        {
+          "localId": "source-1",
+          "connectionId": "p/stud.dat:8:5"
+        },
+        {
+          "localId": "source-1",
+          "connectionId": "p/stud.dat:8:6"
+        },
+        {
+          "localId": "source-1",
+          "connectionId": "p/stud.dat:8:9"
+        },
+        {
+          "localId": "source-1",
+          "connectionId": "p/stud.dat:8:10"
+        }
+      ],
+      "reasons": [],
+      "source": {
+        "kind": "licensed-set-reconstruction",
+        "setNumber": "76897",
+        "author": "Adrien Pennamen [Adrien Pennamen]",
+        "license": "CC-BY-2.0",
+        "repository": "https://github.com/vdirienzo/ldrawomr",
+        "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+        "upstreamPath": "corpus/mpds_licensed/76897-1.mpd",
+        "sourceUrl": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/76897-1.mpd",
+        "originalSha256": "73e7d39acc7b9f00948f5e2ad7ba1cffaf08febcfd8eda60494a849eac7b0032",
+        "note": "Third-party reconstruction of the official set design; not LEGO-authored CAD. Only explicitly licensed source sections redistributed. Source model omits stickers.",
+        "file": "source/76897-hood.ldr",
+        "sha256": "f37b4e5fd9cd9ef730bdf32811b3ee1d4a63be5d16530763c7622ba8c105733c",
+        "section": "76897 - Hood.ldr"
+      },
+      "adaptation": "Extracted unchanged source subassembly; source placements outside selectedOrdinals are excluded, not silently substituted."
+    },
+    {
+      "id": "76897-hood-adapted",
+      "name": "76897 车头上盖（明确换件版）",
+      "role": "hood",
+      "status": "VALIDATED",
+      "parts": 7,
+      "ports": [
+        {
+          "localId": "source-0",
+          "connectionId": "parts/3460.dat:8:15"
+        },
+        {
+          "localId": "source-0",
+          "connectionId": "parts/3460.dat:8:16"
+        },
+        {
+          "localId": "source-0",
+          "connectionId": "parts/3460.dat:8:17"
+        },
+        {
+          "localId": "source-0",
+          "connectionId": "parts/3460.dat:8:18"
+        },
+        {
+          "localId": "source-0",
+          "connectionId": "parts/3460.dat:8:19"
+        },
+        {
+          "localId": "source-0",
+          "connectionId": "parts/3460.dat:8:20"
+        },
+        {
+          "localId": "source-0",
+          "connectionId": "parts/3460.dat:8:21"
+        },
+        {
+          "localId": "source-0",
+          "connectionId": "parts/3460.dat:8:22"
+        }
+      ],
+      "reasons": [],
+      "source": {
+        "kind": "licensed-set-reconstruction",
+        "setNumber": "76897",
+        "author": "Adrien Pennamen [Adrien Pennamen]",
+        "license": "CC-BY-2.0",
+        "repository": "https://github.com/vdirienzo/ldrawomr",
+        "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+        "upstreamPath": "corpus/mpds_licensed/76897-1.mpd",
+        "sourceUrl": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/76897-1.mpd",
+        "originalSha256": "73e7d39acc7b9f00948f5e2ad7ba1cffaf08febcfd8eda60494a849eac7b0032",
+        "note": "Third-party reconstruction of the official set design; not LEGO-authored CAD. Only explicitly licensed source sections redistributed. Source model omits stickers.",
+        "file": "source/76897-hood.ldr",
+        "sha256": "f37b4e5fd9cd9ef730bdf32811b3ee1d4a63be5d16530763c7622ba8c105733c",
+        "section": "76897 - Hood.ldr"
+      },
+      "adaptation": "Two 3069a source tiles replaced explicitly by actual 3069b; no alias or exact-identity claim."
+    },
+    {
+      "id": "76897-spoiler-blade",
+      "name": "76897 尾翼翼面（待验证）",
+      "role": "rear-wing",
+      "status": "BLOCKED",
+      "parts": 8,
+      "ports": [],
+      "reasons": [
+        "native-plastic-collision: root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption. no-collision-free-transform: Every permitted source-derived placement was rejected by native collision checks. No current legal attachment reproduces the remaining source placements."
+      ],
+      "source": {
+        "kind": "licensed-set-reconstruction",
+        "setNumber": "76897",
+        "author": "Adrien Pennamen [Adrien Pennamen]",
+        "license": "CC-BY-2.0",
+        "repository": "https://github.com/vdirienzo/ldrawomr",
+        "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+        "upstreamPath": "corpus/mpds_licensed/76897-1.mpd",
+        "sourceUrl": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/76897-1.mpd",
+        "originalSha256": "73e7d39acc7b9f00948f5e2ad7ba1cffaf08febcfd8eda60494a849eac7b0032",
+        "note": "Third-party reconstruction of the official set design; not LEGO-authored CAD. Only explicitly licensed source sections redistributed. Source model omits stickers.",
+        "file": "source/76897-spoiler.ldr",
+        "sha256": "efa075c78aad6045ee2acc078f407941b5bf1925a2f7f70074f3bafa5d1941a9",
+        "section": "76897 - Spoiler.ldr"
+      },
+      "adaptation": "Extracted unchanged source subassembly; source placements outside selectedOrdinals are excluded, not silently substituted."
+    },
+    {
+      "id": "76897-rear-panel-core",
+      "name": "76897 后部面板核心",
+      "role": "rear-panel",
+      "status": "VALIDATED",
+      "parts": 3,
+      "ports": [
+        {
+          "localId": "source-5",
+          "connectionId": "parts/3666.dat:8:11"
+        },
+        {
+          "localId": "source-5",
+          "connectionId": "parts/3666.dat:8:12"
+        },
+        {
+          "localId": "source-5",
+          "connectionId": "parts/3666.dat:8:13"
+        },
+        {
+          "localId": "source-5",
+          "connectionId": "parts/3666.dat:8:14"
+        },
+        {
+          "localId": "source-5",
+          "connectionId": "parts/3666.dat:8:15"
+        },
+        {
+          "localId": "source-5",
+          "connectionId": "parts/3666.dat:8:16"
+        }
+      ],
+      "reasons": [],
+      "source": {
+        "kind": "licensed-set-reconstruction",
+        "setNumber": "76897",
+        "author": "Adrien Pennamen [Adrien Pennamen]",
+        "license": "CC-BY-2.0",
+        "repository": "https://github.com/vdirienzo/ldrawomr",
+        "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+        "upstreamPath": "corpus/mpds_licensed/76897-1.mpd",
+        "sourceUrl": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/76897-1.mpd",
+        "originalSha256": "73e7d39acc7b9f00948f5e2ad7ba1cffaf08febcfd8eda60494a849eac7b0032",
+        "note": "Third-party reconstruction of the official set design; not LEGO-authored CAD. Only explicitly licensed source sections redistributed. Source model omits stickers.",
+        "file": "source/76897-rear-panel.ldr",
+        "sha256": "4c2a9e60ef117a746039426965adbf4a79ab27ede2e2726bb981037a85d8af92",
+        "section": "76897 - Back trunk.ldr"
+      },
+      "adaptation": "Extracted source rear-panel stack: two 3666 plates and one 6636 tile at unchanged source poses; remaining trunk members and sticker are outside this core."
+    }
+  ],
+  "physicalBuildVerified": false
+}

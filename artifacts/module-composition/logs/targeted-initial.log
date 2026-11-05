@@ -1,0 +1,38 @@
+
+> bricklab@0.6.0 test
+> vitest run tests/parts-module-reuse.test.ts tests/parts-assembly-generator.test.ts tests/parts-assembly-api.test.ts --maxWorkers=1
+
+
+ RUN  v5.0.5 /workspace/lego-import-collision
+
+ ❯ tests/parts-assembly-api.test.ts (15 tests | 1 failed) 30257ms
+   ❯ reviewed source modules over the normal production API (2)
+     × rejects unsupported module request shapes and cannot accept client module definitions or trust flags 3699ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/parts-assembly-api.test.ts > reviewed source modules over the normal production API > rejects unsupported module request shapes and cannot accept client module definitions or trust flags
+AssertionError: expected 200 to be 400 // Object.is equality
+
+- Expected
++ Received
+
+- 400
++ 200
+
+ ❯ tests/parts-assembly-api.test.ts:391:74
+    389|       {kind:'module-assembly',moduleDefinition:{generatable:true}},
+    390|       {kind:'module-assembly',requiredModuleIds:[{}]},
+    391|     ])expect((await post(`${prefix}/assembly/generate`,request)).statu…
+       |                                                                          ^
+    392|     const unknown=await post(`${prefix}/assembly/generate`,{kind:'modu…
+    393|     expect(await unknown.json()).toMatchObject({status:'blocked',model…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 62 passed (63)
+   Start at  10:04:47
+   Duration  79.03s (tests 99%)
+

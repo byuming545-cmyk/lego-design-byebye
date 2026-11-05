@@ -5,6 +5,8 @@ import { solveAttachment } from '../assembly/solver.js';
 import { checkMultiPointConnection, physicalEndpointKey, sourceEndpointKey } from '../assembly/multipoint.js';
 import { isGeneratableCapabilityFor, placementCollisionClass, type AssemblyInterfaceCapability, type NativeAssembly, type NativePlacement, type RigidTransform } from '../assembly/types.js';
 import type { NativeGeneratorEngine } from '../assembly/generator.js';
+import { rankModulePoses, type ModuleSelection } from './candidates.js';
+import { moduleSupport, type InstallationSupport } from './support.js';
 
 export function sameModulePose(a: RigidTransform, b: RigidTransform): boolean {
   return a.rotation.every((v, i) => Math.abs(v - b.rotation[i]) <= 1e-6) && a.translation.every((v, i) => Math.abs(v - b.translation[i]) <= 1e-5);
@@ -14,6 +16,7 @@ const allowed = (capability: AssemblyInterfaceCapability | undefined, member: Pi
 export interface ModuleInstance {
   id: string; moduleId: string; version: string; recipeDigest: string; source: ModuleRecipe['source']; adaptation: string;
   transform: RigidTransform; members: { localId: string; instanceId: string; sourcePartId: string; actualPartId: string; sourceColor: string }[];
+  installationSupport: InstallationSupport;
 }
 export interface ModuleComposition {
   schema: 'native-module-composition-1'; libraryDigest: string; policy: ReturnType<typeof policy>; instances: ModuleInstance[];
@@ -22,7 +25,18 @@ export interface VerifiedModule extends ModuleDefinition {
   graph: NativeAssembly; memberInstances: Map<string, string>;
   ports: { localId: string; connectionId: string }[];
 }
-export interface ModuleAttemptBudget { take(): boolean; record?(accepted: boolean, rejections: { code: string; reason: string }[]): void; }
+export interface ModuleAttemptBudget {
+  take(): boolean;
+  /** Ranked pose evaluation shares the generator's existing attempt/time budget. */
+  consider?(): boolean;
+  record?(accepted: boolean, rejections: { code: string; reason: string }[]): void;
+}
+export interface ModuleInstallationResult {
+  accepted: boolean;
+  graph: NativeAssembly & { moduleComposition?: ModuleComposition };
+  composition?: ModuleComposition;
+  reasons: string[];
+}
 interface ReplayResult { graph: NativeAssembly; map: Map<string, string>; reasons: string[]; complete: boolean; }
 
 /** Replays a source layout, never searches arbitrary coordinates or moves a
@@ -72,6 +86,9 @@ export class ModuleAssembler {
     const cached = this.verified.get(id);
     if (cached) {
       if (!(await this.engine.validateGraph(cached.graph)).valid) { this.verified.delete(id); throw new Error('Cached module admission is no longer current.'); }
+      // An unused port can be revoked while the internal graph remains valid.
+      // Recompute published ports against current permissions on every hit.
+      cached.ports = await this.availablePorts(cached, cached.graph, cached.memberInstances);
       return structuredClone(cached);
     }
     const root = definition.members[0];
@@ -83,13 +100,19 @@ export class ModuleAssembler {
     graph = result.graph;
     const validation = await this.engine.validateGraph(graph);
     if (!validation.valid) throw new Error(validation.issues.join(' '));
+    const ports = await this.availablePorts(definition, graph, result.map);
+    const verified = { ...definition, graph, memberInstances: result.map, ports };
+    this.verified.set(id, structuredClone(verified));
+    return verified;
+  }
+  private async availablePorts(definition: ModuleDefinition, graph: NativeAssembly, instances: Map<string, string>) {
     const occupied = new Set<string>(), ports: VerifiedModule['ports'] = [], seen = new Set<string>();
     for (const edge of graph.edges) for (const [instance, port] of [[edge.fixedInstanceId, edge.fixedConnectionId], [edge.movingInstanceId, edge.movingConnectionId]]) {
       const p = graph.placements.find(p => p.instanceId === instance)!;
       occupied.add(sourceEndpointKey(instance, port, (await this.engine.getPart(p.partId))!));
     }
     for (const member of definition.members) {
-      const instance = result.map.get(member.localId)!, part = (await this.engine.getPart(member.partId))!, cap = await this.engine.getCapability(member.partId);
+      const instance = instances.get(member.localId)!, part = (await this.engine.getPart(member.partId))!, cap = await this.engine.getCapability(member.partId);
       for (const point of part.connections.points) {
         if (!allowed(cap, member).has(point.id)) continue;
         const key = physicalEndpointKey(instance, point);
@@ -98,9 +121,7 @@ export class ModuleAssembler {
       }
     }
     if (!ports.length) throw new Error('Module has no unoccupied current source interface.');
-    const verified = { ...definition, graph, memberInstances: result.map, ports };
-    this.verified.set(id, structuredClone(verified));
-    return verified;
+    return ports;
   }
   async list() {
     const rows = [];
@@ -110,52 +131,56 @@ export class ModuleAssembler {
     }
     return { schema: MODULE_ASSEMBLY_VERSION, libraryDigest: MODULE_LIBRARY_DIGEST, policy: policy(), modules: rows, physicalBuildVerified: false };
   }
-  async attach(graph: NativeAssembly, id: string, budget: ModuleAttemptBudget, selection?: { anchorInstanceId: string; anchorConnectionId: string; localId: string; connectionId: string; twistDegrees?: number }) {
+  /** Yield ranked, fully validated alternatives so multi-module search can
+   * backtrack without mutating the accepted input graph or publishing partials. */
+  async *installations(graph: NativeAssembly, id: string, budget: ModuleAttemptBudget, selection?: ModuleSelection): AsyncGenerator<ModuleInstallationResult, ModuleInstallationResult> {
     const module = await this.compile(id), reasons: string[] = [];
+    const blocked = (reason: string): ModuleInstallationResult => ({ accepted: false, graph, reasons: [...new Set([...reasons, reason])].slice(0, 20) });
     let prior: ModuleComposition | undefined;
     try { prior = checkModuleEnvelope(graph); }
-    catch(error) { return {accepted:false,graph,reasons:[error instanceof Error?error.message:String(error)]}; }
-    if ((prior?.instances.length ?? 0) >= 3) return {accepted:false,graph,reasons:['Module provenance instance limit reached.']};
-    if (graph.placements.length + module.members.length > 32) return { accepted: false, graph, reasons: ['Module composition exceeds the unchanged 32-placement document limit.'] };
+    catch (error) { return blocked(error instanceof Error ? error.message : String(error)); }
+    if ((prior?.instances.length ?? 0) >= 3) return blocked('Module provenance instance limit reached.');
+    if (graph.placements.length + module.members.length > 32) return blocked('Module composition exceeds the unchanged 32-placement document limit.');
     const inputValidation = await this.engine.validateGraph(graph);
-    if (!inputValidation.valid) return { accepted: false, graph, reasons: inputValidation.issues };
-    for (const fixed of graph.placements) {
-      if (selection && selection.anchorInstanceId !== fixed.instanceId) continue;
-      const fixedPart = (await this.engine.getPart(fixed.partId))!, cap = await this.engine.getCapability(fixed.partId);
-      for (const anchor of fixedPart.connections.points) {
-        if (!allowed(cap, { collisionClass: placementCollisionClass(fixed) }).has(anchor.id) || selection && selection.anchorConnectionId !== anchor.id) continue;
-        for (const port of module.ports) {
-          if (selection && (selection.localId !== port.localId || selection.connectionId !== port.connectionId)) continue;
-          const entry = module.members.find(m => m.localId === port.localId)!, movingPart = (await this.engine.getPart(entry.partId))!;
-          const solved = solveAttachment({ fixedPart, fixedPlacement: fixed, fixedConnectionId: anchor.id, movingPart, movingConnectionId: port.connectionId,
-            ...(selection?.twistDegrees === undefined ? {} : { twistsDeg: [selection.twistDegrees] }) });
-          for (const pose of solved.candidates) {
-            if (!budget.take()) return { accepted: false, graph, reasons: ['Module attachment search budget exhausted.'] };
-            const rootTransform = composeTransforms(pose.transform, inverseTransform(entry.transform));
-            const attached = await this.engine.attachPart(graph, { anchorInstanceId: fixed.instanceId, anchorConnectionId: anchor.id, partId: entry.partId,
-              candidateConnectionId: port.connectionId, twistDegrees: pose.twistDeg, collisionClass: entry.collisionClass });
-            budget.record?.(attached.accepted, attached.rejections);
-            if (!attached.accepted) { reasons.push(...attached.rejections.map(r => `${r.code}: ${r.reason}`)); continue; }
-            const added = attached.graph.placements.find(p => !graph.placements.some(q => q.instanceId === p.instanceId))!;
-            if (!sameModulePose(added.transform, pose.transform)) throw new Error('Engine and source solver disagree about module entry pose.');
-            const targets = module.members.map(member => ({ ...member, transform: composeTransforms(rootTransform, member.transform) }));
-            const assembled = await replay(this.engine, attached.graph, targets, new Map([[entry.localId, added.instanceId]]), budget);
-            if (!assembled.complete) { reasons.push(...assembled.reasons); continue; }
-            const validation = await this.engine.validateGraph(assembled.graph);
-            if (!validation.valid) { reasons.push(...validation.issues); continue; }
-            let instanceId = `module-${graph.placements.length}`;
-            while (prior?.instances.some(instance => instance.id === instanceId)) instanceId += '-new';
-            const instance: ModuleInstance = { id: instanceId, moduleId: id, version: module.recipe.version,
-              recipeDigest: module.recipeDigest, source: structuredClone(module.recipe.source), adaptation: module.recipe.adaptation, transform: rootTransform,
-              members: module.members.map(m => ({ localId: m.localId, instanceId: assembled.map.get(m.localId)!, sourcePartId: m.sourcePartId, actualPartId: m.partId, sourceColor: m.sourceColor })) };
-            const composition: ModuleComposition = { schema: 'native-module-composition-1', libraryDigest: MODULE_LIBRARY_DIGEST, policy: policy(), instances: [...(prior?.instances ?? []), instance] };
-            return { accepted: true, graph: { ...assembled.graph, moduleComposition: composition }, composition, reasons: [] };
-          }
-        }
-      }
+    if (!inputValidation.valid) { reasons.push(...inputValidation.issues); return blocked('Input graph is not currently valid.'); }
+    const poses = await rankModulePoses(this.engine, graph, module, budget, selection);
+    for (const pose of poses) {
+      if (!budget.take()) return blocked('Module attachment search budget exhausted.');
+      const port = pose.selection, entry = module.members.find(m => m.localId === port.localId)!;
+      const attached = await this.engine.attachPart(graph, { anchorInstanceId: port.anchorInstanceId, anchorConnectionId: port.anchorConnectionId,
+        partId: entry.partId, candidateConnectionId: port.connectionId, twistDegrees: port.twistDegrees, collisionClass: entry.collisionClass });
+      budget.record?.(attached.accepted, attached.rejections);
+      if (!attached.accepted) { reasons.push(...attached.rejections.map(r => `${r.code}: ${r.reason}`)); continue; }
+      const added = attached.graph.placements.find(p => !graph.placements.some(q => q.instanceId === p.instanceId))!;
+      const targets = module.members.map(member => ({ ...member, transform: composeTransforms(pose.transform, member.transform) }));
+      if (!sameModulePose(added.transform, targets.find(m => m.localId === entry.localId)!.transform)) throw new Error('Engine and source solver disagree about module entry pose.');
+      const assembled = await replay(this.engine, attached.graph, targets, new Map([[entry.localId, added.instanceId]]), budget);
+      if (!assembled.complete) { reasons.push(...assembled.reasons); continue; }
+      const validation = await this.engine.validateGraph(assembled.graph);
+      if (!validation.valid) { reasons.push(...validation.issues); continue; }
+      const support = moduleSupport(assembled.graph, new Set(assembled.map.values()));
+      if (support.independentPoints !== pose.support.independentPoints) { reasons.push('Actual production contacts differ from predicted source-interface support.'); continue; }
+      let instanceId = `module-${graph.placements.length}`;
+      while (prior?.instances.some(instance => instance.id === instanceId)) instanceId += '-new';
+      const instance: ModuleInstance = { id: instanceId, moduleId: id, version: module.recipe.version,
+        recipeDigest: module.recipeDigest, source: structuredClone(module.recipe.source), adaptation: module.recipe.adaptation, transform: pose.transform,
+        members: module.members.map(m => ({ localId: m.localId, instanceId: assembled.map.get(m.localId)!, sourcePartId: m.sourcePartId, actualPartId: m.partId, sourceColor: m.sourceColor })),
+        installationSupport: support };
+      const instances = [...(prior?.instances ?? []), instance].map(record => ({ ...record,
+        installationSupport: moduleSupport(assembled.graph, new Set(record.members.map(member => member.instanceId))) }));
+      const composition: ModuleComposition = { schema: 'native-module-composition-1', libraryDigest: MODULE_LIBRARY_DIGEST, policy: policy(), instances };
+      yield { accepted: true, graph: { ...assembled.graph, moduleComposition: composition }, composition, reasons: [] };
     }
-    return { accepted: false, graph, reasons: [...new Set(reasons)].slice(0, 20).concat('No admissible source-interface placement for this module.') };
+    return blocked('No further unoccupied admissible source-interface placement for this module.');
   }
+
+  async attach(graph: NativeAssembly, id: string, budget: ModuleAttemptBudget, selection?: ModuleSelection): Promise<ModuleInstallationResult> {
+    const alternatives = this.installations(graph, id, budget, selection);
+    const first = await alternatives.next();
+    await alternatives.return(first.value);
+    return first.value;
+  }
+
 }
 
 const assemblers = new WeakMap<NativeGeneratorEngine, ModuleAssembler>();

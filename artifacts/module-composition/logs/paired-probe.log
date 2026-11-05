@@ -1,0 +1,138 @@
+3035 generated [] {
+  attempts: 828,
+  modulePoseEvaluations: 820,
+  attachmentApiCalls: 8,
+  acceptedAttachments: 8,
+  rejectedAttachments: 0,
+  transformFailures: 0,
+  compatibilityFailures: 0,
+  collisionFailures: 0,
+  occupancyFailures: 0,
+  designGoalFailures: 0,
+  backtracks: 0,
+  testedRoots: 1,
+  exhausted: false,
+  timeBudgetExceeded: false,
+  catalogTimeMs: 264.353,
+  searchTimeMs: 8789.902,
+  budget: { maxAttempts: 1800, maxBacktracks: 120, maxSearchTimeMs: 10000 },
+  finalPlacements: 9,
+  finalConnectionEdges: 36,
+  rejectionCounts: {},
+  rejectionReasons: []
+} [
+  {
+    id: '76897-hood-core',
+    support: {
+      independentPoints: 8,
+      anchorsLdu: [Array],
+      spanLdu: 140,
+      status: 'multi-point',
+      scope: 'current-final-pose-interfaces-only',
+      physicalStability: 'not-verified'
+    }
+  },
+  {
+    id: '76897-rear-panel-core',
+    support: {
+      independentPoints: 6,
+      anchorsLdu: [Array],
+      spanLdu: 100,
+      status: 'multi-point',
+      scope: 'current-final-pose-interfaces-only',
+      physicalStability: 'not-verified'
+    }
+  }
+]
+3031 generated [] {
+  attempts: 516,
+  modulePoseEvaluations: 508,
+  attachmentApiCalls: 8,
+  acceptedAttachments: 8,
+  rejectedAttachments: 0,
+  transformFailures: 0,
+  compatibilityFailures: 0,
+  collisionFailures: 0,
+  occupancyFailures: 0,
+  designGoalFailures: 0,
+  backtracks: 0,
+  testedRoots: 1,
+  exhausted: false,
+  timeBudgetExceeded: false,
+  catalogTimeMs: 0.2,
+  searchTimeMs: 3735.407,
+  budget: { maxAttempts: 1800, maxBacktracks: 120, maxSearchTimeMs: 10000 },
+  finalPlacements: 9,
+  finalConnectionEdges: 30,
+  rejectionCounts: {},
+  rejectionReasons: []
+} [
+  {
+    id: '76897-hood-core',
+    support: {
+      independentPoints: 4,
+      anchorsLdu: [Array],
+      spanLdu: 60,
+      status: 'multi-point',
+      scope: 'current-final-pose-interfaces-only',
+      physicalStability: 'not-verified'
+    }
+  },
+  {
+    id: '76897-rear-panel-core',
+    support: {
+      independentPoints: 4,
+      anchorsLdu: [Array],
+      spanLdu: 60,
+      status: 'multi-point',
+      scope: 'current-final-pose-interfaces-only',
+      physicalStability: 'not-verified'
+    }
+  }
+]
+3036 generated [] {
+  attempts: 1088,
+  modulePoseEvaluations: 1080,
+  attachmentApiCalls: 8,
+  acceptedAttachments: 8,
+  rejectedAttachments: 0,
+  transformFailures: 0,
+  compatibilityFailures: 0,
+  collisionFailures: 0,
+  occupancyFailures: 0,
+  designGoalFailures: 0,
+  backtracks: 0,
+  testedRoots: 1,
+  exhausted: false,
+  timeBudgetExceeded: false,
+  catalogTimeMs: 0.309,
+  searchTimeMs: 8212.541,
+  budget: { maxAttempts: 1800, maxBacktracks: 120, maxSearchTimeMs: 10000 },
+  finalPlacements: 9,
+  finalConnectionEdges: 36,
+  rejectionCounts: {},
+  rejectionReasons: []
+} [
+  {
+    id: '76897-hood-core',
+    support: {
+      independentPoints: 8,
+      anchorsLdu: [Array],
+      spanLdu: 140,
+      status: 'multi-point',
+      scope: 'current-final-pose-interfaces-only',
+      physicalStability: 'not-verified'
+    }
+  },
+  {
+    id: '76897-rear-panel-core',
+    support: {
+      independentPoints: 6,
+      anchorsLdu: [Array],
+      spanLdu: 100,
+      status: 'multi-point',
+      scope: 'current-final-pose-interfaces-only',
+      physicalStability: 'not-verified'
+    }
+  }
+]

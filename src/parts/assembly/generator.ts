@@ -60,6 +60,7 @@ export interface NativeGeneratedAssembly extends NativeAssembly {
 export interface NativeGeneratorSearch {
   /** Candidate endpoint / quarter-turn attempts, including source-solver prechecks. */
   attempts: number;
+  modulePoseEvaluations: number;
   attachmentApiCalls: number;
   /** Accepted and rejected branch placements; backtracked placements remain counted. */
   acceptedAttachments: number;
@@ -209,7 +210,7 @@ export function validateNativeModuleRequest(request: NativeModuleRequest) {
   if (request.module === 'bar-clip' && request.partCount !== undefined && request.partCount !== 2) throw new Error('当前杆夹连接模块固定由 2 个真实零件组成。');
   if (request.module === 'pin-hole' && request.partCount !== undefined && request.partCount !== 2) throw new Error('当前销孔连接模块固定由 2 个真实零件组成。');
   if (request.module === 'exterior-shell' && request.partCount !== undefined && request.partCount !== 2) throw new Error('当前表面合同模块固定由 2 个真实零件组成。');
-  if (request.requiredModuleIds !== undefined && (request.module !== 'module-assembly' || !Array.isArray(request.requiredModuleIds) || request.requiredModuleIds.length !== 1 || request.requiredModuleIds.some(id => typeof id !== 'string' || !/^[a-z0-9][a-z0-9_-]{0,79}$/.test(id)))) throw new Error('模块组合仅接受一个已审查模块编号。');
+  if (request.requiredModuleIds !== undefined && (request.module !== 'module-assembly' || !Array.isArray(request.requiredModuleIds) || request.requiredModuleIds.length < 1 || request.requiredModuleIds.length > 2 || new Set(request.requiredModuleIds).size !== request.requiredModuleIds.length || request.requiredModuleIds.some(id => typeof id !== 'string' || !/^[a-z0-9][a-z0-9_-]{0,79}$/.test(id)))) throw new Error('模块组合仅接受一至两个不重复的已审查模块编号。');
   if (request.module === 'module-assembly' && (request.requiredPartIds?.length ?? 0) > 1) throw new Error('当前模块组合以一个真实基座零件开始。');
   if (request.requiredPartIds !== undefined && (!Array.isArray(request.requiredPartIds) || request.requiredPartIds.length > 8 ||
       request.requiredPartIds.length > (request.partCount ?? DEFAULT_COUNTS[request.module]) || new Set(request.requiredPartIds).size !== request.requiredPartIds.length ||
@@ -255,7 +256,7 @@ export class NativeAssemblyGenerator {
   async generate(request: NativeModuleRequest): Promise<NativeGenerationResult> {
     validateNativeModuleRequest(request);
     const started = performance.now();
-    const search: NativeGeneratorSearch = { attempts: 0, attachmentApiCalls: 0, acceptedAttachments: 0, rejectedAttachments: 0, transformFailures: 0, compatibilityFailures: 0, collisionFailures: 0, occupancyFailures: 0, designGoalFailures: 0, backtracks: 0, testedRoots: 0, exhausted: false, timeBudgetExceeded: false, catalogTimeMs: 0, searchTimeMs: 0, budget: { maxAttempts: this.maxAttempts, maxBacktracks: this.maxBacktracks, maxSearchTimeMs: this.maxSearchTimeMs }, finalPlacements: 0, finalConnectionEdges: 0, rejectionCounts: {}, rejectionReasons: [] };
+    const search: NativeGeneratorSearch = { attempts: 0, modulePoseEvaluations: 0, attachmentApiCalls: 0, acceptedAttachments: 0, rejectedAttachments: 0, transformFailures: 0, compatibilityFailures: 0, collisionFailures: 0, occupancyFailures: 0, designGoalFailures: 0, backtracks: 0, testedRoots: 0, exhausted: false, timeBudgetExceeded: false, catalogTimeMs: 0, searchTimeMs: 0, budget: { maxAttempts: this.maxAttempts, maxBacktracks: this.maxBacktracks, maxSearchTimeMs: this.maxSearchTimeMs }, finalPlacements: 0, finalConnectionEdges: 0, rejectionCounts: {}, rejectionReasons: [] };
     const reasons = new Set<string>();
     const recordRejection = (code: string, reason: string) => {
       search.rejectionCounts[code] = (search.rejectionCounts[code] ?? 0) + 1;
@@ -291,23 +292,44 @@ export class NativeAssemblyGenerator {
     if (request.module === 'module-assembly') {
       const assembler = moduleAssemblerFor(this.engine);
       try {
-        const id = request.requiredModuleIds?.[0] ?? assembler.catalog.list()[0]?.id;
-        if (!id) return block('No reviewed reusable module is available.');
-        const module = await assembler.compile(id);
-        if (module.members.some(member => !byId.has(member.partId))) return block('A module member is outside the generator source pool.');
-        if (request.partCount !== undefined && request.partCount !== module.members.length + 1) return block(`This reviewed recipe plus its base contains ${module.members.length + 1} actual parts.`);
+        const ids = request.requiredModuleIds ?? [assembler.catalog.list()[0]?.id];
+        if (ids.some(id => !id)) return block('No reviewed reusable module is available.');
+        const modules = await Promise.all(ids.map(id => assembler.compile(id)));
+        if (modules.some(module => module.members.some(member => !byId.has(member.partId)))) return block('A module member is outside the generator source pool.');
+        const actualCount = 1 + modules.reduce((sum, module) => sum + module.members.length, 0);
+        if (actualCount > 32) return block('Reviewed modules and base exceed the unchanged 32-placement document limit.');
+        if (request.partCount !== undefined && request.partCount !== actualCount) return block(`These reviewed recipes plus their base contain ${actualCount} actual parts.`);
+        const budget = {
+          consider: () => { if (budgetReached()) return false; search.attempts++; search.modulePoseEvaluations++; return true; },
+          take: () => { if (budgetReached()) return false; search.attempts++; search.attachmentApiCalls++; return true; },
+          record: (accepted: boolean, rejections: { code: string; reason: string }[]) => { if (accepted) search.acceptedAttachments++; else rejectCandidate(rejections); },
+        };
+        const growModules = async (graph: NativeAssembly & { moduleComposition?: ModuleComposition }, index: number): Promise<(NativeAssembly & { moduleComposition?: ModuleComposition }) | null> => {
+          if (index === ids.length) return graph;
+          if (budgetReached()) return null;
+          const alternatives = assembler.installations(graph, ids[index], budget);
+          try {
+            let next = await alternatives.next();
+            while (!next.done) {
+              const completed = await growModules(next.value.graph, index + 1);
+              if (completed) return completed;
+              search.backtracks++;
+              if (budgetReached()) break;
+              next = await alternatives.next();
+            }
+            if (next.done) for (const reason of next.value.reasons) recordRejection('module-placement-blocked', ids[index] + ': ' + reason);
+          } finally { await alternatives.return({ accepted: false, graph, reasons: [] }); }
+          return null;
+        };
         const roots = catalog.filter(part => part.capability.generatable && (!required.size || required.has(part.native.partId)));
         for (const root of roots) {
           if (budgetReached()) break;
           search.testedRoots++;
           const graph = await this.engine.createAssembly(root.native.partId);
-          const result = await assembler.attach(graph, id, {
-            take: () => { if (budgetReached()) return false; search.attempts++; search.attachmentApiCalls++; return true; },
-            record: (accepted, rejections) => { if (accepted) search.acceptedAttachments++; else rejectCandidate(rejections); },
-          });
-          if (!result.accepted || !result.composition) { for (const reason of result.reasons) recordRejection('module-placement-blocked', reason); continue; }
-          search.finalPlacements = result.graph.placements.length; search.finalConnectionEdges = result.graph.edges.length;
-          const model = createNativeAssemblyDocument(result.graph, request.module, catalog, result.composition);
+          const completed = await growModules(graph, 0);
+          if (!completed?.moduleComposition) continue;
+          search.finalPlacements = completed.placements.length; search.finalConnectionEdges = completed.edges.length;
+          const model = createNativeAssemblyDocument(completed, request.module, catalog, completed.moduleComposition);
           finish(); return { status: 'generated', module: request.module, model, reasons: [], search };
         }
         return block('No legal source-module installation was found within the unchanged generator budget.');

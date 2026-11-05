@@ -4,7 +4,7 @@ This is an assembly-design library, separate from native part geometry and
 connector truth. Runtime status is computed by the production engine, not stored
 as a `generatable` flag in the recipes.
 
-The two unchanged source sections are from the licensed reconstruction of set
+The three unchanged source sections are from the licensed reconstruction of set
 76897 by **Adrien Pennamen [Adrien Pennamen]**, pinned in
 `vdirienzo/ldrawomr@99a10d3d5ec094277793eb5919f13163d279cf2e`, file
 `corpus/mpds_licensed/76897-1.mpd`. Each section explicitly declares
@@ -31,9 +31,22 @@ Recipes:
 - `76897-spoiler-blade`: eight unchanged source placements, excluding the two
   3665b mounting supports unavailable in the current native catalogue. This is a
   blade subset, not the complete original spoiler. Current validation blocks it.
+- `76897-rear-panel-core`: three unchanged placements (source ordinals 5, 6, 7)
+  from `76897 - Back trunk.ldr`: two 3666 plates and one 6636 tile. The remaining
+  trunk parts and sticker are outside this extracted panel core; this is not a
+  complete rear body. It is a different source design function from the hood.
 
 Reference colour numbers are retained in module provenance. Model BOM uses
 unspecified LDraw colour 16; physical colour availability is not asserted.
+
+Ranked installation counts noncoincident current source contact locations,
+prefers greater span, then uses the native bounding-box centre as a tie breaker.
+It does not estimate centre of mass or certify stability. `installationSupport`
+is rebuilt from the currently validated graph; uploaded scores are not trusted.
+One or two reviewed module IDs can now be composed through the normal generator,
+with branch alternatives sharing the existing attempt, time and document limits.
+Earlier module-policy/library receipts remain historical and require current
+revalidation or regeneration; their saved source models are not rewritten.
 
 Production geometry and connectivity still come exclusively from the separately
 reviewed native LDraw/Shadow library. These files do not override native part

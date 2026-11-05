@@ -21,8 +21,8 @@ test('normal assembly UI generates a credited source module and reimports its co
   await page.getByRole('button',{name:'验证导入模型',exact:true}).click();
   const imported=await(await importedResponse).json();expect(imported.status).toBe('VALID');expect(imported.model.moduleComposition).toEqual(result.model.moduleComposition);
   await expect(credit).toContainText('76897');
-  await mkdir('artifacts/module-reuse/screenshots',{recursive:true});
-  await page.locator('.assembly-native-stage').screenshot({path:'artifacts/module-reuse/screenshots/source-hood-reimport.png'});
+  await mkdir('artifacts/module-composition/screenshots',{recursive:true});
+  await page.locator('.assembly-native-stage').screenshot({path:'artifacts/module-composition/screenshots/source-hood-reimport.png'});
 });
 
 test('production HTTP preserves explicit adaptations and rejects resigned module provenance',async({request})=>{
@@ -34,4 +34,25 @@ test('production HTTP preserves explicit adaptations and rejects resigned module
   const {contentSha256:_old,...content}=result.model;result.model.contentSha256=createHash('sha256').update(JSON.stringify(content)).digest('hex');
   const imported=await request.post('/api/parts-foundation/assembly/models/import',{data:{content:JSON.stringify(result.model)}});
   expect(imported.ok()).toBe(true);expect(await imported.json()).toMatchObject({status:'NEEDS_REVALIDATION',model:null});
+});
+
+test('normal UI composes two different source functions with multi-point mounts and reimports both credits',async({page})=>{
+  await page.goto('/part-lab?mode=assembly');
+  const base=page.getByLabel('生成时包含的零件',{exact:true});await expect(base).toBeVisible();await base.selectOption('3035');
+  const generated=page.waitForResponse(r=>r.url().endsWith('/api/parts-foundation/assembly/generate')&&r.request().method()==='POST');
+  await page.getByRole('button',{name:'组合车头与后部面板',exact:true}).click();
+  const result=await(await generated).json();expect(result.status,result.reasons.join(' ')).toBe('generated');
+  expect(result.model.placements).toHaveLength(9);
+  expect(result.model.moduleComposition.instances.map((instance:{installationSupport:{independentPoints:number}})=>instance.installationSupport.independentPoints)).toEqual([8,6]);
+  const credits=page.getByLabel('复用模块来源',{exact:true});await expect(credits).toContainText('76897-hood-core');await expect(credits).toContainText('76897-rear-panel-core');
+  await expect(credits).toContainText('对外连接位置 8 处');await expect(credits).toContainText('对外连接位置 6 处');
+  await expect(page.locator('.assembly-native-stage canvas')).toBeVisible();
+  const exported=await page.request.get(`/api/parts-foundation/assembly/models/${result.model.id}/export?format=json`);expect(exported.ok()).toBe(true);
+  await page.getByLabel('选择真实装配模型 JSON',{exact:true}).setInputFiles({name:'two-source-modules.json',mimeType:'application/json',buffer:await exported.body()});
+  const reimport=page.waitForResponse(r=>r.url().endsWith('/api/parts-foundation/assembly/models/import')&&r.request().method()==='POST');
+  await page.getByRole('button',{name:'验证导入模型',exact:true}).click();
+  const checked=await(await reimport).json();expect(checked.status).toBe('VALID');expect(checked.model.moduleComposition).toEqual(result.model.moduleComposition);
+  await expect(credits).toContainText('76897-rear-panel-core');
+  await mkdir('artifacts/module-composition/screenshots',{recursive:true});
+  await page.locator('.assembly-native-stage').screenshot({path:'artifacts/module-composition/screenshots/hood-rear-3035.png'});
 });

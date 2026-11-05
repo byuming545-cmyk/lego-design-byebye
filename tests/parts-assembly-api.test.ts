@@ -385,11 +385,21 @@ describe('reviewed source modules over the normal production API',()=>{
   it('rejects unsupported module request shapes and cannot accept client module definitions or trust flags',async()=>{
     for(const request of [
       {kind:'wall',requiredModuleIds:['76897-hood-core']},
-      {kind:'module-assembly',requiredModuleIds:['76897-hood-core','76897-hood-adapted']},
+      {kind:'module-assembly',requiredModuleIds:['76897-hood-core','76897-hood-adapted','76897-rear-panel-core']},
+      {kind:'module-assembly',requiredModuleIds:['76897-hood-core','76897-hood-core']},
       {kind:'module-assembly',moduleDefinition:{generatable:true}},
       {kind:'module-assembly',requiredModuleIds:[{}]},
     ])expect((await post(`${prefix}/assembly/generate`,request)).status).toBe(400);
     const unknown=await post(`${prefix}/assembly/generate`,{kind:'module-assembly',requiredModuleIds:['no-reviewed-source']});
     expect(await unknown.json()).toMatchObject({status:'blocked',model:null});
   });
+  it('generates two different source modules with independently rebuilt support, BOM and provenance',async()=>{
+    const response=await post(`${prefix}/assembly/generate`,{kind:'module-assembly',requiredPartIds:['3035'],requiredModuleIds:['76897-hood-core','76897-rear-panel-core']});
+    expect(response.status).toBe(200);const generated=await response.json();expect(generated.status,generated.reasons.join(' ')).toBe('generated');
+    expect(generated.model.placements).toHaveLength(9);expect(generated.model.steps).toHaveLength(9);
+    expect(generated.model.moduleComposition.instances.map((instance:{installationSupport:{independentPoints:number}})=>instance.installationSupport.independentPoints)).toEqual([8,6]);
+    const exported=await fetch(`${base}${prefix}/assembly/models/${generated.model.id}/export?format=json`);expect(exported.status).toBe(200);
+    const imported=await post(`${prefix}/assembly/models/import`,{content:await exported.text()});
+    expect(await imported.json()).toMatchObject({status:'VALID',model:{moduleComposition:generated.model.moduleComposition,bom:generated.model.bom}});
+  },30000);
 });

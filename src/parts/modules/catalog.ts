@@ -7,8 +7,9 @@ import type { CollisionClass, RigidTransform } from '../assembly/types.js';
 import { modulePolicy } from './policy.js';
 import type { ModuleComposition } from './assembly.js';
 import type { NativeAssembly } from '../assembly/types.js';
+import { moduleSupport } from './support.js';
 
-export const MODULE_LIBRARY_DIGEST = 'dc127bd11bb141bb3eaed63792c507bcf50533d8f824e450f62a7f8f7c2f7908';
+export const MODULE_LIBRARY_DIGEST = '030b7bf93dc10733d2799b8daeb000c2b1c7be4e17917426f6ab21c84d73e2b7';
 export const MODULE_DIRECTORY = fileURLToPath(new URL('../../../data/parts-foundation/modules/', import.meta.url));
 export const digest = (value: string | Buffer) => createHash('sha256').update(value).digest('hex');
 export interface ModuleSource {
@@ -89,6 +90,7 @@ export function checkModuleEnvelope(model: NativeAssembly & { module?: string; m
     if (!model.edges.some(e => ids.has(e.fixedInstanceId) !== ids.has(e.movingInstanceId))) throw new Error('Module has no installation connection to the rest of the model.');
     instances.push({ id: instance.id, moduleId: recipe.id, version: recipe.version, recipeDigest: definition.recipeDigest,
       source: structuredClone(recipe.source), adaptation: recipe.adaptation, transform: structuredClone(instance.transform),
+      installationSupport: moduleSupport(model, ids),
       members: definition.members.map(member => ({ localId: member.localId,
         instanceId: instance.members.find(m => m.localId === member.localId)!.instanceId,
         sourcePartId: member.sourcePartId, actualPartId: member.partId, sourceColor: member.sourceColor })) });

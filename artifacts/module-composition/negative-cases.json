@@ -1,0 +1,125 @@
+{
+  "graph": {
+    "schemaVersion": 1,
+    "id": "assembly-86fb9cb0-0f6d-498d-9eb3-60a2c7314c03",
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+    "assemblyEngineVersion": "native-assembly-0.8.0-import-snapshot",
+    "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-2",
+    "collisionVersion": "native-exterior-shell-4.0.0",
+    "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0",
+    "placements": [
+      {
+        "instanceId": "root",
+        "partId": "3001",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "instanceId": "p-1",
+        "partId": "11211",
+        "transform": {
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "translation": [
+            20,
+            -24,
+            -10
+          ]
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge-1",
+        "fixedInstanceId": "root",
+        "fixedConnectionId": "p/stud.dat:8:4",
+        "movingInstanceId": "p-1",
+        "movingConnectionId": "parts/s/3004s01.dat:8:5",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+        "twistDeg": 180,
+        "axis": [
+          0,
+          -1,
+          0
+        ],
+        "anchor": [
+          30,
+          0,
+          -10
+        ],
+        "insertionDepthLdu": 4
+      },
+      {
+        "id": "edge-2",
+        "fixedInstanceId": "root",
+        "fixedConnectionId": "p/stud.dat:8:5",
+        "movingInstanceId": "p-1",
+        "movingConnectionId": "parts/s/3004s01.dat:8:6",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+        "twistDeg": 180,
+        "axis": [
+          0,
+          -1,
+          0
+        ],
+        "anchor": [
+          10,
+          0,
+          -10
+        ],
+        "insertionDepthLdu": 4
+      }
+    ],
+    "sourceHashes": {
+      "3001": "53e7b58a1b849de6dc74f0677736d2b69ed3d32fa1390b7ba84cec4078a7775c",
+      "11211": "c579a92dd057469086e00fa48eae2c21d5f6620eb118d68554a010323ce1f4c7"
+    },
+    "physicalBuildVerified": false
+  },
+  "selection": {
+    "anchorInstanceId": "root",
+    "anchorConnectionId": "p/stud.dat:8:0",
+    "localId": "source-0",
+    "connectionId": "parts/3460.dat:8:15",
+    "twistDegrees": 0
+  },
+  "moduleId": "76897-hood-core",
+  "result": {
+    "accepted": false,
+    "reasons": [
+      "native-plastic-collision: p-1: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption.",
+      "no-collision-free-transform: Every permitted source-derived placement was rejected by native collision checks.",
+      "No current legal attachment reproduces the remaining source placements.",
+      "No further unoccupied admissible source-interface placement for this module."
+    ],
+    "attempts": 6,
+    "inputUnchanged": true
+  }
+}

@@ -34,3 +34,5 @@ data/parts-foundation/modules/LICENSE* -text -whitespace
 data/parts-foundation/modules/library.json -text
 artifacts/module-reuse/**/model.ldr -text whitespace=cr-at-eol
 artifacts/module-reuse/logs/*.log -text -whitespace
+artifacts/module-composition/**/model.ldr -text whitespace=cr-at-eol
+artifacts/module-composition/logs/*.log -text -whitespace

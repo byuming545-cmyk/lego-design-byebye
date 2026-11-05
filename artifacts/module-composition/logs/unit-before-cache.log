@@ -1,0 +1,251 @@
+
+> bricklab@0.6.0 test
+> vitest run --maxWorkers=1 --reporter=default --reporter=json --outputFile=artifacts/module-composition/unit-results.json
+
+
+ RUN  v5.0.5 /workspace/lego-import-collision
+
+ ✓ tests/parts-interface-library.test.ts (8 tests) 43804ms
+   ✓ real interface and assembly library (8)
+     ✓ indexes every real connector instance from the source-bound registry 18759ms
+     ✓ validates and persists a manual example through the formal engine without granting admission 21005ms
+     ✓ prepares same-part dual instances and versions drafts/export bundles over HTTP 3809ms
+ ✓ tests/speed-engine.test.ts (56 tests) 41678ms
+   ✓ Speed Phase 4 chassis-first modular generation (10)
+     ✓ builds real supercar / maximize false from stock 307ms
+     ✓ builds real gt / maximize false from stock 395ms
+     ✓ builds real gt / maximize true from stock 384ms
+   ✓ Speed Phase 5 independent structure and publication gate (12)
+     ✓ publishes supercar only after all five independent validators pass 1352ms
+     ✓ publishes sports-car only after all five independent validators pass 1327ms
+     ✓ publishes gt only after all five independent validators pass 1298ms
+     ✓ publishes concept only after all five independent validators pass 1298ms
+     ✓ rejects use of the wheel bearing exemption to smuggle structural plates into wheel modules 1499ms
+     ✓ rejects a long single-stud tile branch even when its aero module already has other strong anchors 1695ms
+     ✓ never exempts a large compound slope staircase merely because it is labeled details 1511ms
+     ✓ does not treat a frictionless wheel pin as a rigid bridge between chassis sections 1437ms
+     ✓ checks real quantities, dimensions, usage and module metadata independently 1411ms
+     ✓ returns an explicit invalid result for NaN or extreme rotations without hanging or throwing 1485ms
+     ✓ starts with the chassis and keeps every main or independent assembly prefix connected 2025ms
+   ✓ Speed Phase 8 independently buildable subassemblies and rotation instructions (6)
+     ✓ uses each physical part once and installs every subassembly onto all existing legal anchors 3159ms
+     ✓ does not label a disconnected wide wing as a standalone subassembly 1352ms
+     ✓ builds a wing in place when a later detail would otherwise create circular assembly prerequisites 1030ms
+     ✓ rebuilds valid instructions after local geometry edits and keeps independent snapshots immutable 1095ms
+   ✓ Speed Phase 6 real structural alternatives and preferences (5)
+     ✓ provides three independently buildable designs with distinct geometry, not recolors 1705ms
+     ✓ lowers actual futuristic roofs and adds supported stock-colored roof and side finishes 772ms
+     ✓ gives sports-car, GT and supercar different physical proportions 878ms
+     ✓ changes real wing dimensions for structural preference and explicit small/big wing prompts 1175ms
+     ✓ uses Tile for minimal style and enforces the actual dominant finish palette for color priority 783ms
+   ✓ Speed Phase 7 transactional local redesign (10)
+     ✓ changes only front geometry, preserves model ID, increments version and reruns every hard validator 481ms
+     ✓ keeps a locked cockpit intact during front changes and rolls back a cockpit request byte-for-byte 513ms
+     ✓ locks and unlocks without changing physical parts, stock usage or structural version 611ms
+     ✓ parses separated lock scopes safely and never turns a negated edit into a positive edit 2461ms
+     ✓ binds each physical action to its own clause without cross-module keyword leakage 1021ms
+     ✓ shrinks a wing with real freed stock and rejects further no-op shrinking at the minimum 628ms
+     ✓ lowers wing height without narrowing it and never interprets minimum-width narrowing as lowering 830ms
+     ✓ lowers the original roof and cockpit together while preserving wheels and chassis 409ms
+     ✓ changes only rear fins for an aggressive rear and never regenerates the entire car 334ms
+     ✓ rolls back true target-module shortages and unsupported intent without altering the original 751ms
+ ✓ tests/parts-studio-replay.test.ts (3 tests) 47604ms
+   ✓ read-only source-bound manual feedback replay (3)
+     ✓ replays literal real poses and detects stale sources, versions and off-grid observations without saving 23326ms
+     ✓ does not grant formal acceptance to disabled source features or forged rigid poses 24123ms
+ ✓ tests/parts-module-composition.test.ts (12 tests) 42257ms
+   ✓ ranked real module installation and two-function composition (12)
+     ✓ keeps a legal forced single-point installation separate from multi-point coverage 1113ms
+     ✓ generates and reimports a nine-part assembly with both source credits and all mounting edges 319ms
+     ✓ reuses the two functions on another native base without namespace collisions 3440ms
+     ✓ backtracks after an explicitly injected test-only slot rejection, keeping all accepted geometry real 4292ms
+ ✓ tests/parts-assembly-api.test.ts (16 tests) 31875ms
+   ✓ native assembly production HTTP boundaries (12)
+     ✓ accepts an explicit exterior-shell pair while the structural contract stays blocked 307ms
+     ✓ returns 404 for unknown source IDs and 400 for invalid model export formats 1589ms
+     ✓ generates actual wall and simple chassis models and exports only server-retained source-bound documents 482ms
+   ✓ reviewed source modules over the normal production API (3)
+     ✓ reports current validation and installs one source module on two distinct real bases 6135ms
+     ✓ generates two different source modules with independently rebuilt support, BOM and provenance 6172ms
+ ✓ tests/parts-module-reuse.test.ts (29 tests) 28553ms
+   ✓ reviewed source module compilation and normal generation (11)
+     ✓ reuses the same source module on 3001 with full outputs and reimport 583ms
+     ✓ reuses the same source module on 3020 with full outputs and reimport 936ms
+     ✓ reuses the declared adapted recipe without misidentifying its source tiles 873ms
+     ✓ keeps the original-source spoiler blocked and never inherits official design authority 1491ms
+     ✓ rejects unsupported goals, unknown sources and exhausted search without returning a partial model 319ms
+     ✓ rejects a real out-of-seat side-stud obstruction and keeps the original base graph intact 1114ms
+     ✓ namespaces repeated module instances and preserves earlier module provenance 2830ms
+   ✓ module model integrity and current authority (18)
+     ✓ rejects outdated edges after a whole-graph rotation and accepts fully transformed source frames 1317ms
+ ✓ tests/automotive-generator.test.ts (26 tests) 23669ms
+   ✓ generic automotive coarse planning (5)
+     ✓ derives a generic class layout without inspecting the model identity 484ms
+   ✓ generic module assembly pipeline (18)
+     ✓ assembles S63 at 8 studs with real physics and bounded instructions 783ms
+     ✓ assembles S63 at 10 studs with real physics and bounded instructions 1603ms
+     ✓ assembles S63 at 12 studs with real physics and bounded instructions 2860ms
+     ✓ assembles M4 at 8 studs with real physics and bounded instructions 460ms
+     ✓ assembles M4 at 10 studs with real physics and bounded instructions 1181ms
+     ✓ assembles M4 at 12 studs with real physics and bounded instructions 3269ms
+     ✓ assembles 911 at 8 studs with real physics and bounded instructions 430ms
+     ✓ assembles 911 at 10 studs with real physics and bounded instructions 749ms
+     ✓ assembles 911 at 12 studs with real physics and bounded instructions 2514ms
+     ✓ assembles Roma at 8 studs with real physics and bounded instructions 428ms
+     ✓ assembles Roma at 10 studs with real physics and bounded instructions 1146ms
+     ✓ assembles Roma at 12 studs with real physics and bounded instructions 1809ms
+     ✓ assembles Revuelto at 8 studs with real physics and bounded instructions 454ms
+     ✓ assembles Revuelto at 10 studs with real physics and bounded instructions 1006ms
+     ✓ assembles Revuelto at 12 studs with real physics and bounded instructions 1445ms
+     ✓ returns all physically valid alternatives before quality selection 2066ms
+ ✓ tests/parts-foundation-api.test.ts (7 tests) 18616ms
+   ✓ real source foundation HTTP API (6)
+     ✓ reports source observations, scoped assembly admission and evidence-backed mapping recovery 17943ms
+ ✓ tests/parts-assembly-fixed-class.test.ts (3 tests) 17810ms
+ ✓ tests/parts-grammar-admission.test.ts (15 tests) 16301ms
+   ✓ source-derived interface grammar admission (15)
+     ✓ the production service works without migration.json and does not relabel grammar admission as executed assembly PASS 15285ms
+     ✓ generates a source-backed Pin-PinHole model and reimports its exported JSON 379ms
+ ✓ tests/parts-assembly-exterior-shell.test.ts (6 tests) 15496ms
+ ✓ tests/parts-assembly-generator.test.ts (19 tests) 14279ms
+   ✓ real source assembly generation and exports (12)
+     ✓ builds simple-box exclusively through real source-backed attachments 735ms
+     ✓ backtracks from an actual valid attachment when a later design constraint closes that branch 659ms
+     ✓ selects geometry and qualified ports independently of source display titles 511ms
+     ✓ fulfils a generic requested source-part goal in real generation and blocks an unknown requested ID 779ms
+ ✓ tests/speed-api.test.ts (13 tests) 14019ms
+   ✓ trusted Speed generation and design sessions (3)
+     ✓ generates from server-reconstructed extra stock and keeps unknown extras out of the car 2835ms
+     ✓ independently validates generated cars and records a server-owned session 1805ms
+   ✓ Speed module locking and atomic design history (3)
+     ✓ enforces candidate ownership and strict module locks at the session boundary 2108ms
+     ✓ commits only valid local changes, keeps locked geometry, rolls back failures and restores undo 3802ms
+     ✓ treats text-only lock changes as configuration, keeping structure version and undo depth 3286ms
+ ✓ tests/parts-assembly-service.test.ts (19 tests) 7720ms
+   ✓ runtime assembly service admission (19)
+     ✓ keeps every native root blocked when the report is missing and never runs migration from ready() 3549ms
+     ✓ fails closed for malformed, duplicated or source-mismatched coverage decisions without breaking status() 450ms
+     ✓ downgrades cached PASS decisions when their fixture proof is absent or revoked 363ms
+ ✓ tests/parts-native-model-import.test.ts (10 tests) 5823ms
+ ✓ tests/parts-assembly-migration.test.ts (8 tests) 5465ms
+   ✓ all-native-root assembly migration (8)
+     ✓ retains source-bound historical proof but revokes its obsolete engine, rule and collision versions 3935ms
+     ✓ gives every former deferred port a source-bound terminal decision and preserves representative source prioritization 494ms
+     ✓ restricts SNOT qualification to tested ports and never reports untested wheel / tyre, clip or axle modules as verified 310ms
+ ✓ tests/parts-real-import-lifecycle.test.ts (2 tests) 4616ms
+   ✓ real-source staged import, promotion and runtime adoption (2)
+     ✓ imports 3062b through the normal generator, publishes reports and revokes old snapshots 2748ms
+     ✓ imports 14716 through the normal generator, publishes reports and revokes old snapshots 1865ms
+ ✓ tests/speed-documents.test.ts (12 tests) 4637ms
+   ✓ versioned Speed JSON persistence (5)
+     ✓ restores an exact model and stable version metadata after a server restart 735ms
+     ✓ preserves the exact pre-edit revision for feedback while lock and undo advance server revision 703ms
+     ✓ does not change the active model or undo stack when saving fails 396ms
+     ✓ serializes concurrent updates and rejects stale tabs without overwriting the latest revision 810ms
+ ✓ tests/automotive-quality.test.ts (18 tests) 4337ms
+   ✓ Automotive independent physical gate (4)
+     ✓ rejects a real solid collision, stale graph, inventory overrun and unsupported pose independently 303ms
+   ✓ Automotive transparent design scoring (14)
+     ✓ ranks accepted models deterministically with recomputed reports and rejects an empty pool 574ms
+     ✓ retains all candidate assessments beyond the selected output limit without copying model or step payloads 754ms
+     ✓ supports explicit normalized ranking weights without allowing quality gates to be disabled 353ms
+     ✓ checks complete real instruction plans and blocks incomplete or altered snapshots 638ms
+     ✓ rejects disconnected intermediate assemblies even when the bounded step format is internally consistent 316ms
+ ✓ tests/speed-validation-api.test.ts (4 tests) 4240ms
+   ✓ Validation Edition HTTP persistence boundaries (synthetic fixtures) (4)
+     ✓ restores saved geometry and instructions through a new application instance 393ms
+     ✓ allows large model imports only through the import route and reruns validation 422ms
+     ✓ rejects altered geometry without creating an archive or replacing the original 598ms
+     ✓ keeps fixture feedback attached to its exact older revision 687ms
+ ✓ tests/parts-grammar-sources.test.ts (11 tests) 4085ms
+   ✓ source-backed canonical connector ingestion (7)
+     ✓ accounts for every source point in the complete real 255-root library without any part-ID mapping list 3890ms
+ ✓ tests/parts-digital-import-boundary.test.ts (9 tests) 3648ms
+   ✓ digital source import boundary (9)
+     ✓ accepts all current pinned native models without promoting partial connectors 3494ms
+ ✓ tests/engine.test.ts (60 tests) 2851ms
+   ✓ inventory-constrained template generation (52)
+     ✓ generates one real assembly for 机器人 / large / substitute / maximize false 391ms
+     ✓ generates one real assembly for 机器人 / large / substitute / maximize true 413ms
+     ✓ generates one real assembly for 汽车 / large / preserve / maximize false 456ms
+     ✓ generates one real assembly for 汽车 / large / preserve / maximize true 468ms
+ ✓ tests/speed-step-codec.test.ts (9 tests) 3081ms
+   ✓ Speed compact instruction snapshots (3)
+     ✓ keeps the full public JSON shape while returning independent snapshots on every access 696ms
+     ✓ clones and packs an already compact candidate without materializing its snapshots 445ms
+   ✓ Speed part-ID instruction storage codec (6)
+     ✓ round-trips compact disk JSON and legacy complete snapshots without changing exports 505ms
+ ✓ tests/parts-assembly-collision.test.ts (18 tests) 2182ms
+   ✓ connection-aware native solid collision (12)
+     ✓ accepts true SNOT/bracket side studs for 87087 without exempting its whole body 793ms
+     ✓ accepts true SNOT/bracket side studs for 99780 without exempting its whole body 727ms
+ ✓ tests/parts-assembly-multipoint.test.ts (7 tests) 1929ms
+   ✓ native multi-point consistency (7)
+     ✓ certifies the formerly partition-limited native pair with all eight mates and full solid proof 1421ms
+ ✓ tests/parts-collision-local-partition.test.ts (4 tests) 1629ms
+   ✓ spatially local native surface partitions (4)
+     ✓ handles another large native plate pair at all source quarter turns 854ms
+     ✓ certifies a complete multi-stud pair and the reverse query without a part exception 558ms
+ ✓ tests/parts-ldraw.test.ts (23 tests) 1700ms
+   ✓ pinned native source snapshot (3)
+     ✓ imports every catalogued root and its complete hash-checked recursive closure 1666ms
+ ✓ tests/parts-astra-handoff.test.ts (24 tests) 1329ms
+   ✓ source-bound Astra diagnostic handoff (24)
+     ✓ replays one real source-bound 3005 fixture PASS as a diagnostic without promoting a model or production permission 1017ms
+ ✓ tests/parts-connection-audit.test.ts (2 tests) 1175ms
+   ✓ complete pinned Connection Parse Audit (2)
+     ✓ accounts for all roots and every remaining issue with literal source evidence or an explicit missing-evidence outcome 1163ms
+ ✓ tests/parts-deferred-runner.test.ts (8 tests) 1359ms
+   ✓ source-bound deferred interface runner (8)
+     ✓ retests a tampered persisted PASS and replaces it with actual fresh evidence 515ms
+ ✓ tests/speed-benchmark.test.ts (9 tests) 1241ms
+   ✓ Speed benchmark evidence and execution states (9)
+     ✓ runs the real generator and all five validators in explicit mock mode without counting a real acceptance 439ms
+     ✓ reports PASS only when support and actual validators all pass 363ms
+     ✓ records actual validator failures independently when a generated model is invalid 377ms
+ ✓ tests/speed-wheel-registry.test.ts (9 tests) 1030ms
+   ✓ registry driven generation and independent validation (3)
+     ✓ keeps unique model identities even when the clock does not advance 534ms
+ ✓ tests/automotive-api.test.ts (12 tests) 599ms
+ ✓ tests/parts-governance-boundary.test.ts (5 tests) 553ms
+   ✓ production digital-part architecture boundary (5)
+     ✓ G: src/parts/api.ts has no transitive runtime dependency on legacy constructors, providers or generators 327ms
+ ✓ tests/parts-part-import.test.ts (13 tests) 605ms
+ ✓ tests/parts-digital-pilot-bundle.test.ts (5 tests) 583ms
+   ✓ independent reviewed pilot source bundle (5)
+     ✓ imports all 26 exact source roots and four genuinely new IDs without old constructors 494ms
+ ✓ tests/parts-wheel-assessment.test.ts (8 tests) 474ms
+ ✓ tests/parts-assembly-engine.test.ts (11 tests) 389ms
+ ✓ tests/parts-assembly-connections.test.ts (16 tests) 366ms
+ ✓ tests/parts-recovery.test.ts (19 tests) 330ms
+ ✓ tests/automotive-research.test.ts (15 tests) 201ms
+ ✓ tests/parts-grammar-library.test.ts (6 tests) 199ms
+ ✓ tests/automotive-reference.test.ts (19 tests) 160ms
+ ✓ tests/api.test.ts (16 tests) 144ms
+ ✓ tests/parts-grammar-patterns.test.ts (20 tests) 159ms
+ ✓ tests/parts-surface-partition.test.ts (4 tests) 137ms
+ ✓ tests/parts-connection-impact.test.ts (5 tests) 153ms
+ ✓ tests/automotive-patterns.test.ts (11 tests) 102ms
+ ✓ tests/parts-grammar-core.test.ts (46 tests) 108ms
+ ✓ tests/parts-source-snapshot.test.ts (1 test) 111ms
+ ✓ tests/parts-part-import-transaction.test.ts (8 tests) 57ms
+ ✓ tests/parts-digital-pipeline.test.ts (11 tests) 196ms
+ ✓ tests/parts-authenticity-policy.test.ts (5 tests) 99ms
+ ✓ tests/legacy-isolation-routes.test.ts (3 tests) 98ms
+ ✓ tests/parts-connection-clear-scope.test.ts (6 tests) 85ms
+ ✓ tests/inventory-snapshot.test.ts (6 tests) 47ms
+ ✓ tests/inventory.test.ts (14 tests) 70ms
+ ✓ tests/parts-digital-demand.test.ts (8 tests) 41ms
+ ✓ tests/parts-inventory.test.ts (21 tests) 34ms
+ ✓ tests/parts-grammar-validation.test.ts (21 tests) 25ms
+ ✓ tests/parts-connections.test.ts (8 tests) 30ms
+ ✓ tests/speed-inventory.test.ts (23 tests) 30ms
+ ✓ tests/automotive-benchmark.test.ts (18 tests) 16ms
+ ✓ tests/parts-digital-sources.test.ts (5 tests) 6ms
+
+ Test Files  65 passed (65)
+      Tests  868 passed (868)
+   Start at  10:15:48
+   Duration  438.25s (tests 99%, import 1%)
+
+JSON report written to /workspace/lego-import-collision/artifacts/module-composition/unit-results.json

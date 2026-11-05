@@ -107,6 +107,36 @@
         6
       ],
       "adaptation": "Extracted unchanged source subassembly; source placements outside selectedOrdinals are excluded, not silently substituted."
+    },
+    {
+      "id": "76897-rear-panel-core",
+      "version": "1",
+      "name": "76897 后部面板核心",
+      "role": "rear-panel",
+      "source": {
+        "kind": "licensed-set-reconstruction",
+        "setNumber": "76897",
+        "author": "Adrien Pennamen [Adrien Pennamen]",
+        "license": "CC-BY-2.0",
+        "repository": "https://github.com/vdirienzo/ldrawomr",
+        "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+        "upstreamPath": "corpus/mpds_licensed/76897-1.mpd",
+        "sourceUrl": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/76897-1.mpd",
+        "originalSha256": "73e7d39acc7b9f00948f5e2ad7ba1cffaf08febcfd8eda60494a849eac7b0032",
+        "note": "Third-party reconstruction of the official set design; not LEGO-authored CAD. Only explicitly licensed source sections redistributed. Source model omits stickers.",
+        "file": "source/76897-rear-panel.ldr",
+        "sha256": "4c2a9e60ef117a746039426965adbf4a79ab27ede2e2726bb981037a85d8af92",
+        "section": "76897 - Back trunk.ldr"
+      },
+      "selectedOrdinals": [
+        5,
+        6,
+        7
+      ],
+      "entryOrdinal": 5,
+      "replacements": {},
+      "exteriorOrdinals": [],
+      "adaptation": "Extracted source rear-panel stack: two 3666 plates and one 6636 tile at unchanged source poses; remaining trunk members and sticker are outside this core."
     }
   ]
 }

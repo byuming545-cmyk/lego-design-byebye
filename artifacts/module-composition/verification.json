@@ -1,0 +1,58 @@
+{
+  "baseline": "3fb3f03",
+  "branch": "codex/multipoint-module-composition",
+  "unit": {
+    "files": 65,
+    "passed": 869,
+    "failed": 0,
+    "skipped": 0,
+    "startedAtEpochMs": 1793874262560
+  },
+  "browser": {
+    "passed": 17,
+    "failed": 0
+  },
+  "compiledPreview": {
+    "passed": 5,
+    "failed": 0
+  },
+  "typecheck": "passed",
+  "build": "passed-existing-large-chunk-notice",
+  "generatedModels": 6,
+  "allReimported": "VALID",
+  "originalNativeFilesUnchanged": 993,
+  "originalModuleRecipesUnchanged": 3,
+  "newNativeIdentities": 0,
+  "newQualifications": 0,
+  "moduleRecipes": {
+    "total": 4,
+    "usable": 3,
+    "blocked": 1,
+    "differentFunctions": 2
+  },
+  "spoilerAdmitted": false,
+  "notExecuted": [
+    "physical build",
+    "holding force and material stress",
+    "installation path",
+    "wheel module",
+    "complete car"
+  ],
+  "logSha256": {
+    "logs/browser.log": "1826a38ec063919c6ef8ad12400e47be2d349cd3bd7ce2abaa61c0c9d7f44f89",
+    "logs/build.log": "244915be817759f9d4974e88eaad72334a45c3c251db8173450eb201ddae2258",
+    "logs/generation.log": "00d5f19f9697a71860c0422d97481ea9c4b82514a0c047314cf8ad352a0622a1",
+    "logs/mount-probe.log": "1d83913f787e39d5fe150111c692a72048ec2ad34075524969f2a4aad1bc4fa6",
+    "logs/paired-probe.log": "60557bd5d666835feb5fd87114542a41579243d1a3354816fcdd4028c00ac8d5",
+    "logs/preview.log": "a70308212f440c30f86182d9abb74778c18e044c6d50d6ea008326cb7af27ed3",
+    "logs/probe.log": "2b35532385c6cb6327b37a1d0b94365a76e95d93641dcbfee545fdc5985c2369",
+    "logs/source-acquisition.log": "5cc7e2689fa5cd4ebf095355819effc64688fdf318eee930410d7702d20b191e",
+    "logs/spoiler-diagnosis.log": "c1f2c439d3f44e6670e7ca62af12634cfa248e1b2f33532c9d613e994653f62a",
+    "logs/targeted-initial.log": "098a826ba342da61168d47ddfbe93254761c09e29fd659530e80094259537aff",
+    "logs/targeted.log": "dae3836d5cf64d17f74e23242ce55eeb7e858eb0c8c6f926dc5991bbfc6749e4",
+    "logs/typecheck-initial.log": "3592444819dfae518a74ac126e0821691a41ef43bcdef4e828322c64beaaf938",
+    "logs/typecheck.log": "3592444819dfae518a74ac126e0821691a41ef43bcdef4e828322c64beaaf938",
+    "logs/unit-before-cache.log": "f5697c63c43c40c86d7b60d0b5ceecaa78a436c03939e0bb42df4c572ff40017",
+    "logs/unit.log": "501cd53f451252f8958d5d07ad9553446fe1478fee443ca13be0c433587b4bdf"
+  }
+}
