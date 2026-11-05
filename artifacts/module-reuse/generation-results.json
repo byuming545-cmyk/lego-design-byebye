@@ -1,0 +1,254 @@
+{
+  "baseline": "fb250f3",
+  "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0",
+  "counts": {
+    "total": 255,
+    "assemblyVerified": 0,
+    "generatable": 106,
+    "blocked": 149,
+    "verifiedInterfaces": 0,
+    "disabledInterfaces": 2543,
+    "testedPhysicalInterfaces": 0,
+    "deferredPhysicalInterfaces": 5026,
+    "deferredRawConnectionIds": 5091,
+    "wheelModulesVerified": 0,
+    "physicalBuildsVerified": 0
+  },
+  "sourceCounts": {
+    "totalRoots": 255,
+    "geometryReady": 255,
+    "connectionReady": 207,
+    "connectionPartial": 44,
+    "connectionMissing": 4
+  },
+  "blockedReasons": {
+    "geometry": 0,
+    "connection": 12,
+    "collision": 134,
+    "special-assembly": 3,
+    "other": 0
+  },
+  "models": [
+    {
+      "moduleId": "76897-hood-core",
+      "base": "3001",
+      "placements": 6,
+      "edges": 11,
+      "steps": 6,
+      "bom": [
+        {
+          "partId": "2412b",
+          "name": "Tile  1 x  2 Grille with Groove",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3001",
+          "name": "Brick  2 x  4",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3460",
+          "name": "Plate  1 x  8",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3666",
+          "name": "Plate  1 x  6",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "54200",
+          "name": "Slope Brick 31  1 x  1 x  0.667",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "reimport": "VALID"
+    },
+    {
+      "moduleId": "76897-hood-core",
+      "base": "3020",
+      "placements": 6,
+      "edges": 11,
+      "steps": 6,
+      "bom": [
+        {
+          "partId": "2412b",
+          "name": "Tile  1 x  2 Grille with Groove",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3020",
+          "name": "Plate  2 x  4",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3460",
+          "name": "Plate  1 x  8",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3666",
+          "name": "Plate  1 x  6",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "54200",
+          "name": "Slope Brick 31  1 x  1 x  0.667",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "reimport": "VALID"
+    },
+    {
+      "moduleId": "76897-hood-adapted",
+      "base": "3001",
+      "placements": 8,
+      "edges": 15,
+      "steps": 8,
+      "bom": [
+        {
+          "partId": "2412b",
+          "name": "Tile  1 x  2 Grille with Groove",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3001",
+          "name": "Brick  2 x  4",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3069b",
+          "name": "Tile  1 x  2 with Groove",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3460",
+          "name": "Plate  1 x  8",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3666",
+          "name": "Plate  1 x  6",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "54200",
+          "name": "Slope Brick 31  1 x  1 x  0.667",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "reimport": "VALID"
+    },
+    {
+      "moduleId": "76897-hood-adapted",
+      "base": "3020",
+      "placements": 8,
+      "edges": 15,
+      "steps": 8,
+      "bom": [
+        {
+          "partId": "2412b",
+          "name": "Tile  1 x  2 Grille with Groove",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3020",
+          "name": "Plate  2 x  4",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3069b",
+          "name": "Tile  1 x  2 with Groove",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3460",
+          "name": "Plate  1 x  8",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3666",
+          "name": "Plate  1 x  6",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "54200",
+          "name": "Slope Brick 31  1 x  1 x  0.667",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "reimport": "VALID"
+    }
+  ],
+  "qualificationCounts": {
+    "structural": 106,
+    "exteriorShell": 128
+  },
+  "originalSources": {
+    "unchanged": 993,
+    "changed": []
+  },
+  "sourceImports": 0,
+  "qualificationChanges": 0,
+  "actualGenerationCoverage": {
+    "models": 4,
+    "uniquePartIds": [
+      "2412b",
+      "3001",
+      "3020",
+      "3069b",
+      "3460",
+      "3666",
+      "54200"
+    ],
+    "reviewedDesigns": 1,
+    "usableRecipes": 2,
+    "blockedRecipes": 1,
+    "newPartIdentityCoverage": 0
+  },
+  "interpretation": "One set-source hood design, two reviewed extraction/adaptation recipes, four generated installations. Spoiler remains blocked. No physical or full-car claim."
+}

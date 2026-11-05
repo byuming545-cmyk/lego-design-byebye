@@ -36,6 +36,7 @@ interface AssemblyStatus {
   interfaceCoverage?: AggregateInterfaceCoverageData;
 }
 interface NativeAssemblyModel {
+  moduleComposition?: { instances: { id: string; moduleId: string; source: { setNumber: string; author: string; license: string }; adaptation: string }[] };
   id?: string;
   placements: AssemblyPlacement[];
   edges?: { id: string; fixedInstanceId: string; movingInstanceId: string; ruleId: string; axis: NativeVector; anchor: NativeVector }[];
@@ -76,6 +77,7 @@ interface LoadedModel { assembly: NativeAssemblyModel; assets: Record<string, As
 interface ImportedModelResult extends AssemblyResponse { status: 'VALID' | 'NEEDS_REVALIDATION'; reasons: string[]; originalModelId: string | null; model: NativeAssemblyModel | null; physicalBuildVerified: false }
 
 const modules = [
+  { id: 'module-assembly', label: '复用车头模块' },
   { id: 'interface-assembly', label: '接口驱动组合' }, { id: 'wall', label: '墙体' }, { id: 'platform', label: '平台' }, { id: 'simple-chassis', label: '简单车架' }, { id: 'simple-box', label: '箱体' }, { id: 'simple-roof', label: '屋顶' }, { id: 'basic-snot', label: 'SNOT 模块' }, { id: 'wheel-module', label: '轮组模块' }, { id: 'bar-clip', label: '杆夹模块' }, { id: 'pin-hole', label: '销孔模块' }, { id: 'exterior-shell', label: '表面合同模块' },
 ];
 
@@ -225,7 +227,8 @@ export default function AssemblyLab() {
   async function generate(kind: string) {
     setBusy(kind); setError(''); setResponse(null); setModel(null); setImportResult(null);
     try {
-      const result = await post<AssemblyResponse>('/assembly/generate', { kind, ...(requiredPartId ? { requiredPartIds: [requiredPartId] } : {}), ...(generationPartCount ? { partCount: Number(generationPartCount) } : {}) });
+      const result = await post<AssemblyResponse>('/assembly/generate', { kind, ...(requiredPartId ? { requiredPartIds: [requiredPartId] } : {}), ...(kind !== 'module-assembly' && generationPartCount ? { partCount: Number(generationPartCount) } : {}) });
+      if (kind === 'module-assembly' && result.model?.placements) setGenerationPartCount(String(result.model.placements.length));
       setResponse(result);
       await loadModel(result);
     } catch (reason) { setError(message(reason)); }
@@ -301,6 +304,7 @@ export default function AssemblyLab() {
         <ResultData title="兼容规则与来源" value={response.compatibility} /><ResultData title="碰撞检查与局部合法插入区域" value={response.collision} /><ResultData title="插入路径与可视化调试数据" value={response.debug} />
         <ResultData title="真实生成运行记录" value={response.search} />
         {model && <ResultData title="实际碰撞代理的闭合性与来源" value={Object.entries(model.assets).map(([partId, asset]) => ({ partId, status: asset.collisionProxy?.status, reason: asset.collisionProxy?.reason, topology: asset.collisionProxy?.topology, evidence: asset.collisionProxy?.evidence }))} />}
+        {model?.assembly.moduleComposition && <div aria-label="复用模块来源"><p>本组合包含来源明确的套装重建子模块，保留原作者署名；并非全部独创或实物认证。</p>{model.assembly.moduleComposition.instances.map(instance => <p key={instance.id}>套装 {instance.source.setNumber} · {instance.moduleId} · {instance.source.author} · {instance.source.license}</p>)}<ResultData title="模块来源与改动记录" value={model.assembly.moduleComposition} /></div>}
         {model && <><ResultData title={`连接图 · ${model.assembly.edges?.length ?? 0} 条边`} value={model.assembly.edges} /><p className="assembly-versions">零件库 {model.assembly.partLibraryVersion ?? '未返回'} · 装配引擎 {model.assembly.assemblyEngineVersion ?? '未返回'} · 规则 {model.assembly.connectionRuleVersion ?? '未返回'} · 碰撞 {model.assembly.collisionVersion ?? '未返回'}</p></>}
       </div>}
       {!response && !!selectedPoints.filter(Boolean).length && <div className="assembly-selected-connections">{selectedPoints.map((point, index) => point && <p key={index}><strong>{index === 0 ? 'A' : 'B'} 来源连接</strong><span>{point.family} · {point.gender ?? '未指定'} · 位置 [{point.position.join(', ')}]</span>{point.source?.path && <small>{point.source.path}:{point.source.line}</small>}</p>)}</div>}

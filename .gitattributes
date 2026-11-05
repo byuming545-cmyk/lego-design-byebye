@@ -28,3 +28,9 @@ artifacts/source-guided-production/bundles/**/LICENSES/* -text -whitespace
 artifacts/source-guided-production/**/model.ldr -text whitespace=cr-at-eol
 artifacts/source-guided-production/logs/*.log -text -whitespace
 artifacts/car-canopy-review/**/model.ldr -text whitespace=cr-at-eol
+# Reviewed assembly recipes preserve their original section bytes and licences.
+data/parts-foundation/modules/source/** -text -whitespace
+data/parts-foundation/modules/LICENSE* -text -whitespace
+data/parts-foundation/modules/library.json -text
+artifacts/module-reuse/**/model.ldr -text whitespace=cr-at-eol
+artifacts/module-reuse/logs/*.log -text -whitespace

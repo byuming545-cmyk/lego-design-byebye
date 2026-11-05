@@ -360,3 +360,36 @@ describe('new source normal HTTP generation', () => {
     expect(imported.status).toBe(200);expect((await imported.json()).status).toBe('VALID');
   });
 });
+
+describe('reviewed source modules over the normal production API',()=>{
+  it('reports current validation and installs one source module on two distinct real bases',async()=>{
+    const catalogue=await fetch(`${base}${prefix}/assembly/modules`);expect(catalogue.status).toBe(200);
+    const entries=await catalogue.json();
+    expect(entries.modules.find((m:{id:string})=>m.id==='76897-hood-core')).toMatchObject({status:'VALIDATED',parts:5});
+    expect(entries.modules.find((m:{id:string})=>m.id==='76897-spoiler-blade')).toMatchObject({status:'BLOCKED',ports:[]});
+    for(const basePart of ['3001','3020']){
+      const response=await post(`${prefix}/assembly/generate`,{kind:'module-assembly',requiredModuleIds:['76897-hood-core'],requiredPartIds:[basePart]});
+      expect(response.status).toBe(200);const generated=await response.json();expect(generated.status,generated.reasons.join(' ')).toBe('generated');
+      expect(generated.model.placements).toHaveLength(6);expect(generated.model.steps).toHaveLength(6);
+      expect(generated.model.moduleComposition.instances[0]).toMatchObject({moduleId:'76897-hood-core',source:{setNumber:'76897',license:'CC-BY-2.0'}});
+      const exported=await fetch(`${base}${prefix}/assembly/models/${generated.model.id}/export?format=json`);expect(exported.status).toBe(200);
+      const model=JSON.parse(await exported.text());
+      const accepted=await post(`${prefix}/assembly/models/import`,{content:JSON.stringify(model)});expect(accepted.status).toBe(200);
+      expect(await accepted.json()).toMatchObject({status:'VALID',model:{moduleComposition:model.moduleComposition}});
+      model.moduleComposition.instances[0].recipeDigest='0'.repeat(64);
+      const {contentSha256:_old,...content}=model;model.contentSha256=createHash('sha256').update(JSON.stringify(content)).digest('hex');
+      const denied=await post(`${prefix}/assembly/models/import`,{content:JSON.stringify(model)});
+      expect(await denied.json()).toMatchObject({status:'NEEDS_REVALIDATION',model:null});
+    }
+  },30000);
+  it('rejects unsupported module request shapes and cannot accept client module definitions or trust flags',async()=>{
+    for(const request of [
+      {kind:'wall',requiredModuleIds:['76897-hood-core']},
+      {kind:'module-assembly',requiredModuleIds:['76897-hood-core','76897-hood-adapted']},
+      {kind:'module-assembly',moduleDefinition:{generatable:true}},
+      {kind:'module-assembly',requiredModuleIds:[{}]},
+    ])expect((await post(`${prefix}/assembly/generate`,request)).status).toBe(400);
+    const unknown=await post(`${prefix}/assembly/generate`,{kind:'module-assembly',requiredModuleIds:['no-reviewed-source']});
+    expect(await unknown.json()).toMatchObject({status:'blocked',model:null});
+  });
+});

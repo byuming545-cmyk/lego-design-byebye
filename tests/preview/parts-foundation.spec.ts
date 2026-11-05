@@ -103,3 +103,33 @@ test('compiled assembly API derives source grammar attachment and exports a curr
   expect(invalidated.ok(), await invalidated.text()).toBe(true);
   expect(await invalidated.json()).toMatchObject({ status: 'NEEDS_REVALIDATION', model: null, physicalBuildVerified: false });
 });
+
+test('compiled module paths retain reviewed data, design credit and full JSON revalidation', async ({ request }) => {
+  const catalogue = await request.get('/api/parts-foundation/assembly/modules');
+  expect(catalogue.ok()).toBe(true);
+  expect((await catalogue.json()).modules).toEqual(expect.arrayContaining([
+    expect.objectContaining({ id: '76897-hood-core', status: 'VALIDATED' }),
+    expect.objectContaining({ id: '76897-spoiler-blade', status: 'BLOCKED' }),
+  ]));
+  const response = await request.post('/api/parts-foundation/assembly/generate', {
+    data: { kind: 'module-assembly', requiredPartIds: ['3020'], requiredModuleIds: ['76897-hood-adapted'] },
+  });
+  expect(response.ok()).toBe(true);
+  const result = await response.json();
+  expect(result.status, result.reasons.join(' ')).toBe('generated');
+  expect(result.model.placements).toHaveLength(8);
+  expect(result.model.bom.find((row: { partId: string }) => row.partId === '3069b').quantity).toBe(2);
+  const ldraw = await request.get(`/api/parts-foundation/assembly/models/${result.model.id}/export?format=ldr`);
+  expect(ldraw.ok()).toBe(true);
+  const text = await ldraw.text();
+  expect(text).toContain('Adrien Pennamen');
+  expect(text).toContain('https://creativecommons.org/licenses/by/2.0/');
+  expect(text).toContain('Two 3069a source tiles replaced explicitly by actual 3069b');
+  const exported = await request.get(`/api/parts-foundation/assembly/models/${result.model.id}/export?format=json`);
+  expect(exported.ok()).toBe(true);
+  const imported = await request.post('/api/parts-foundation/assembly/models/import', { data: { content: await exported.text() } });
+  expect(imported.ok()).toBe(true);
+  const checked = await imported.json();
+  expect(checked.status).toBe('VALID');
+  expect(checked.model.moduleComposition).toEqual(result.model.moduleComposition);
+});

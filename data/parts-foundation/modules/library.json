@@ -1,0 +1,112 @@
+{
+  "schema": "native-module-library-1",
+  "modules": [
+    {
+      "id": "76897-hood-core",
+      "version": "1",
+      "name": "76897 车头上盖结构核心",
+      "role": "hood",
+      "source": {
+        "kind": "licensed-set-reconstruction",
+        "setNumber": "76897",
+        "author": "Adrien Pennamen [Adrien Pennamen]",
+        "license": "CC-BY-2.0",
+        "repository": "https://github.com/vdirienzo/ldrawomr",
+        "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+        "upstreamPath": "corpus/mpds_licensed/76897-1.mpd",
+        "sourceUrl": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/76897-1.mpd",
+        "originalSha256": "73e7d39acc7b9f00948f5e2ad7ba1cffaf08febcfd8eda60494a849eac7b0032",
+        "note": "Third-party reconstruction of the official set design; not LEGO-authored CAD. Only explicitly licensed source sections redistributed. Source model omits stickers.",
+        "file": "source/76897-hood.ldr",
+        "sha256": "f37b4e5fd9cd9ef730bdf32811b3ee1d4a63be5d16530763c7622ba8c105733c",
+        "section": "76897 - Hood.ldr"
+      },
+      "selectedOrdinals": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "entryOrdinal": 0,
+      "replacements": {},
+      "exteriorOrdinals": [],
+      "adaptation": "Extracted unchanged source subassembly; source placements outside selectedOrdinals are excluded, not silently substituted."
+    },
+    {
+      "id": "76897-hood-adapted",
+      "version": "1",
+      "name": "76897 车头上盖（明确换件版）",
+      "role": "hood",
+      "source": {
+        "kind": "licensed-set-reconstruction",
+        "setNumber": "76897",
+        "author": "Adrien Pennamen [Adrien Pennamen]",
+        "license": "CC-BY-2.0",
+        "repository": "https://github.com/vdirienzo/ldrawomr",
+        "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+        "upstreamPath": "corpus/mpds_licensed/76897-1.mpd",
+        "sourceUrl": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/76897-1.mpd",
+        "originalSha256": "73e7d39acc7b9f00948f5e2ad7ba1cffaf08febcfd8eda60494a849eac7b0032",
+        "note": "Third-party reconstruction of the official set design; not LEGO-authored CAD. Only explicitly licensed source sections redistributed. Source model omits stickers.",
+        "file": "source/76897-hood.ldr",
+        "sha256": "f37b4e5fd9cd9ef730bdf32811b3ee1d4a63be5d16530763c7622ba8c105733c",
+        "section": "76897 - Hood.ldr"
+      },
+      "selectedOrdinals": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "entryOrdinal": 0,
+      "replacements": {
+        "5": "3069b",
+        "6": "3069b"
+      },
+      "exteriorOrdinals": [],
+      "adaptation": "Two 3069a source tiles replaced explicitly by actual 3069b; no alias or exact-identity claim."
+    },
+    {
+      "id": "76897-spoiler-blade",
+      "version": "1",
+      "name": "76897 尾翼翼面（待验证）",
+      "role": "rear-wing",
+      "source": {
+        "kind": "licensed-set-reconstruction",
+        "setNumber": "76897",
+        "author": "Adrien Pennamen [Adrien Pennamen]",
+        "license": "CC-BY-2.0",
+        "repository": "https://github.com/vdirienzo/ldrawomr",
+        "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+        "upstreamPath": "corpus/mpds_licensed/76897-1.mpd",
+        "sourceUrl": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/76897-1.mpd",
+        "originalSha256": "73e7d39acc7b9f00948f5e2ad7ba1cffaf08febcfd8eda60494a849eac7b0032",
+        "note": "Third-party reconstruction of the official set design; not LEGO-authored CAD. Only explicitly licensed source sections redistributed. Source model omits stickers.",
+        "file": "source/76897-spoiler.ldr",
+        "sha256": "efa075c78aad6045ee2acc078f407941b5bf1925a2f7f70074f3bafa5d1941a9",
+        "section": "76897 - Spoiler.ldr"
+      },
+      "selectedOrdinals": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "entryOrdinal": 0,
+      "replacements": {},
+      "exteriorOrdinals": [
+        5,
+        6
+      ],
+      "adaptation": "Extracted unchanged source subassembly; source placements outside selectedOrdinals are excluded, not silently substituted."
+    }
+  ]
+}

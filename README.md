@@ -1,6 +1,6 @@
 > 当前最终目标：**学习并复用成熟拼搭模块，以真实 LEGO 零件生成新的跑车整车组合**。允许直接采用来源明确、可使用的官方车头、车尾、尾翼等设计；不再指定 S63 作为必须复现的成品。后续开发先读 [当前目标与验收标准](docs/CURRENT_GOAL.md)。
 >
-> 最近实现与证据见 [真实零件晋升及示例复盘交付](docs/SOURCE_GUIDED_PRODUCTION_DELIVERY.md) 和 [曲面风挡核对](artifacts/car-canopy-review/README.md)。下文早期分支、计数和生产规则说明保留为历史，当前状态以这些较新记录及运行时审计为准。
+> 最近实现与证据见 [成熟设计模块复用交付](docs/MODULE_REUSE_DELIVERY.md)、[真实零件晋升及示例复盘交付](docs/SOURCE_GUIDED_PRODUCTION_DELIVERY.md) 和 [曲面风挡核对](artifacts/car-canopy-review/README.md)。模块复用保持 255 种来源、106 种结构资格，新增两个有来源配方和四个生成/重导入组合；尚非完整跑车。下文早期分支、计数和生产规则说明保留为历史，当前状态以这些较新记录及运行时审计为准。
 
 # BRICKLAB · Interface-first Connector Grammar
 

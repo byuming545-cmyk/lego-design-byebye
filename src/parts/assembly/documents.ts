@@ -1,4 +1,5 @@
 import { sourceSnapshotDigest } from '../sourceSnapshot.js';
+import { checkModuleEnvelope } from '../modules/catalog.js';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
@@ -22,6 +23,7 @@ function validateDocument(model: NativeGeneratedAssembly, providedManifest?: Bun
   const { contentSha256, ...document } = model;
   if (createHash('sha256').update(JSON.stringify(document)).digest('hex') !== contentSha256) throw new Error('装配文档已修改，请重新从真实装配引擎生成。');
   if (model.partLibraryVersion !== PART_LIBRARY_VERSION || model.assemblyEngineVersion !== ASSEMBLY_ENGINE_VERSION || model.connectionRuleVersion !== CONNECTION_RULE_VERSION || model.collisionVersion !== COLLISION_VERSION) throw new Error('装配文档来源或验证版本已失效，必须重新验证后才能导出。');
+  checkModuleEnvelope(model);
   if (model.physicalBuildVerified !== false || model.ownership !== 'virtual-design-not-owned' || model.colorAvailability !== 'not-verified' || model.assemblyValidation?.checked !== true || model.assemblyValidation.valid !== true || model.assemblyValidation.issues.length !== 0) throw new Error('模型缺少当前真实装配验证或包含未经验证的实物声明。');
   const roots = new Map(manifest.roots.map(root => [root.partId, root]));
   const files = new Map(manifest.files.map(file => [file.path, file.sha256]));
@@ -80,6 +82,15 @@ export function exportNativeAssemblyLDraw(model: NativeGeneratedAssembly, manife
     `0 // connectionRuleVersion: ${model.connectionRuleVersion}`, `0 // collisionVersion: ${model.collisionVersion}`,
     '0 // Unspecified LDraw current colour 16; physical build and colour availability are unverified.',
   ];
+  // A geometry exchange file must retain design attribution too, even though it
+  // cannot represent the complete JSON source/validation contract.
+  for (const instance of model.moduleComposition?.instances ?? []) {
+    lines.push(`0 // Module: ${instance.moduleId} version ${instance.version}; source set ${instance.source.setNumber}`,
+      `0 // Design reconstruction author: ${instance.source.author}`,
+      `0 // Design source: ${instance.source.sourceUrl}; SHA-256 ${instance.source.originalSha256}`,
+      `0 // Design licence: ${instance.source.license}; https://creativecommons.org/licenses/by/2.0/`,
+      `0 // Adaptation: ${instance.adaptation}`);
+  }
   for (const placement of model.placements) {
     if (lines.some(line => line.startsWith('1 '))) lines.push('0 STEP');
     const { translation, rotation } = placement.transform;

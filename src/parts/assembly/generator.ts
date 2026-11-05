@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { moduleAssemblerFor, type ModuleComposition } from '../modules/assembly.js';
 import { loadBundledLDrawManifest } from '../ldraw/index.js';
 import { physicalConnectionKey, physicalEndpointKey } from './multipoint.js';
 import { solveAttachment } from './solver.js';
@@ -14,19 +15,21 @@ import type {
   NativePlacement, RigidTransform, Vector3,
 } from './types.js';
 
-export const NATIVE_MODULE_TYPES = ['wall', 'platform', 'simple-chassis', 'simple-box', 'simple-roof', 'basic-snot', 'wheel-module', 'bar-clip', 'pin-hole', 'exterior-shell', 'interface-assembly'] as const;
+export const NATIVE_MODULE_TYPES = ['wall', 'platform', 'simple-chassis', 'simple-box', 'simple-roof', 'basic-snot', 'wheel-module', 'bar-clip', 'pin-hole', 'exterior-shell', 'interface-assembly', 'module-assembly'] as const;
 export type NativeModuleType = typeof NATIVE_MODULE_TYPES[number];
 export interface NativeModuleRequest {
   module: NativeModuleType;
   partCount?: number;
   /** Generic structural goal; never a permission, placement or source override. */
   requiredPartIds?: string[];
+  /** Reviewed reusable module identity. Does not authorize a source or pose. */
+  requiredModuleIds?: string[];
 }
 
 /** A structural port keeps generation independent of filesystem/registry initialization.
  * The production AttachmentEngine enforces its own source/capability checks as well. */
 export interface NativeGeneratorEngine {
-  createAssembly(partId: string): Promise<NativeAssembly>;
+  createAssembly(partId: string, collisionClass?: import('./types.js').CollisionClass): Promise<NativeAssembly>;
   attachPart(assembly: NativeAssembly, request: AssemblyAttachRequest): Promise<{
     accepted: boolean;
     graph: NativeAssembly;
@@ -41,6 +44,7 @@ export interface NativeAssemblyBomRow { partId: string; name: string; quantity: 
 export interface NativeAssemblyStep { step: number; addedInstanceId: string; partId: string; connectionEdgeIds: string[] }
 export interface NativeSourceReference { library: string; path: string; revision: string; sha256: string; license: string | null; sourceUrl: string }
 export interface NativeGeneratedAssembly extends NativeAssembly {
+  moduleComposition?: ModuleComposition;
   module: NativeModuleType;
   name: string;
   bom: NativeAssemblyBomRow[];
@@ -104,8 +108,9 @@ const MODULE_NAMES: Record<NativeModuleType, string> = {
   'pin-hole': '真实零件销孔连接模块',
   'exterior-shell': '真实来源表面合同模块',
   'interface-assembly': '真实接口驱动组合',
+  'module-assembly': '来源模块复用组合',
 };
-const DEFAULT_COUNTS: Record<NativeModuleType, number> = { wall: 5, platform: 5, 'simple-chassis': 5, 'simple-box': 13, 'simple-roof': 5, 'basic-snot': 3, 'wheel-module': 4, 'bar-clip': 2, 'pin-hole': 2, 'exterior-shell': 2, 'interface-assembly': 3 };
+const DEFAULT_COUNTS: Record<NativeModuleType, number> = { wall: 5, platform: 5, 'simple-chassis': 5, 'simple-box': 13, 'simple-roof': 5, 'basic-snot': 3, 'wheel-module': 4, 'bar-clip': 2, 'pin-hole': 2, 'exterior-shell': 2, 'interface-assembly': 3, 'module-assembly': 6 };
 const finite = (v: number[]) => v.every(Number.isFinite);
 function rotate(rotation: RigidTransform['rotation'], [x, y, z]: Vector3): Vector3 {
   return [rotation[0] * x + rotation[1] * y + rotation[2] * z, rotation[3] * x + rotation[4] * y + rotation[5] * z, rotation[6] * x + rotation[7] * y + rotation[8] * z];
@@ -204,6 +209,8 @@ export function validateNativeModuleRequest(request: NativeModuleRequest) {
   if (request.module === 'bar-clip' && request.partCount !== undefined && request.partCount !== 2) throw new Error('当前杆夹连接模块固定由 2 个真实零件组成。');
   if (request.module === 'pin-hole' && request.partCount !== undefined && request.partCount !== 2) throw new Error('当前销孔连接模块固定由 2 个真实零件组成。');
   if (request.module === 'exterior-shell' && request.partCount !== undefined && request.partCount !== 2) throw new Error('当前表面合同模块固定由 2 个真实零件组成。');
+  if (request.requiredModuleIds !== undefined && (request.module !== 'module-assembly' || !Array.isArray(request.requiredModuleIds) || request.requiredModuleIds.length !== 1 || request.requiredModuleIds.some(id => typeof id !== 'string' || !/^[a-z0-9][a-z0-9_-]{0,79}$/.test(id)))) throw new Error('模块组合仅接受一个已审查模块编号。');
+  if (request.module === 'module-assembly' && (request.requiredPartIds?.length ?? 0) > 1) throw new Error('当前模块组合以一个真实基座零件开始。');
   if (request.requiredPartIds !== undefined && (!Array.isArray(request.requiredPartIds) || request.requiredPartIds.length > 8 ||
       request.requiredPartIds.length > (request.partCount ?? DEFAULT_COUNTS[request.module]) || new Set(request.requiredPartIds).size !== request.requiredPartIds.length ||
       request.requiredPartIds.some(id => typeof id !== 'string' || !/^[a-z0-9][a-z0-9_-]{0,79}$/.test(id)))) {
@@ -281,6 +288,31 @@ export class NativeAssemblyGenerator {
     const required = new Set(request.requiredPartIds ?? []);
     const block = (reason: string): NativeGenerationResult => { search.exhausted = budgetReached(); finish(); return { status: 'blocked', module: request.module, model: null, reasons: [...new Set([reason, ...reasons])].slice(0, 20), search }; };
     if (!catalog.length) return block('当前没有同时通过装配验证、批次准入和来源校验的真实零件。');
+    if (request.module === 'module-assembly') {
+      const assembler = moduleAssemblerFor(this.engine);
+      try {
+        const id = request.requiredModuleIds?.[0] ?? assembler.catalog.list()[0]?.id;
+        if (!id) return block('No reviewed reusable module is available.');
+        const module = await assembler.compile(id);
+        if (module.members.some(member => !byId.has(member.partId))) return block('A module member is outside the generator source pool.');
+        if (request.partCount !== undefined && request.partCount !== module.members.length + 1) return block(`This reviewed recipe plus its base contains ${module.members.length + 1} actual parts.`);
+        const roots = catalog.filter(part => part.capability.generatable && (!required.size || required.has(part.native.partId)));
+        for (const root of roots) {
+          if (budgetReached()) break;
+          search.testedRoots++;
+          const graph = await this.engine.createAssembly(root.native.partId);
+          const result = await assembler.attach(graph, id, {
+            take: () => { if (budgetReached()) return false; search.attempts++; search.attachmentApiCalls++; return true; },
+            record: (accepted, rejections) => { if (accepted) search.acceptedAttachments++; else rejectCandidate(rejections); },
+          });
+          if (!result.accepted || !result.composition) { for (const reason of result.reasons) recordRejection('module-placement-blocked', reason); continue; }
+          search.finalPlacements = result.graph.placements.length; search.finalConnectionEdges = result.graph.edges.length;
+          const model = createNativeAssemblyDocument(result.graph, request.module, catalog, result.composition);
+          finish(); return { status: 'generated', module: request.module, model, reasons: [], search };
+        }
+        return block('No legal source-module installation was found within the unchanged generator budget.');
+      } catch (error) { return block(error instanceof Error ? error.message : String(error)); }
+    }
     if (request.module === 'interface-assembly') {
       // A production structural goal: a connected source-backed graph. Frames,
       // allowed twists, occupancy and collision are exclusively engine decisions.
@@ -617,7 +649,7 @@ export class NativeAssemblyGenerator {
   }
 }
 
-function createNativeAssemblyDocument(graph: NativeAssembly, module: NativeModuleType, catalog: readonly CatalogPart[]): NativeGeneratedAssembly {
+function createNativeAssemblyDocument(graph: NativeAssembly, module: NativeModuleType, catalog: readonly CatalogPart[], moduleComposition?: ModuleComposition): NativeGeneratedAssembly {
   const lookup = new Map(catalog.map(part => [part.native.partId, part])), bom = new Map<string, NativeAssemblyBomRow>(), sources = new Map<string, NativeSourceReference>();
   for (const placement of graph.placements) {
     const part = lookup.get(placement.partId);
@@ -629,7 +661,7 @@ function createNativeAssemblyDocument(graph: NativeAssembly, module: NativeModul
     for (const file of part.native.connections.sourceFiles) sources.set(`${file.library}:${file.path}`, { ...file });
   }
   const model = {
-    ...structuredClone(graph), module, name: MODULE_NAMES[module], bom: [...bom.values()].sort((a, b) => a.partId.localeCompare(b.partId)),
+    ...structuredClone(graph), module, ...(moduleComposition ? { moduleComposition } : {}), name: MODULE_NAMES[module], bom: [...bom.values()].sort((a, b) => a.partId.localeCompare(b.partId)),
     steps: graph.placements.map((placement, index) => ({ step: index + 1, addedInstanceId: placement.instanceId, partId: placement.partId, connectionEdgeIds: graph.edges.filter(edge => edge.movingInstanceId === placement.instanceId).map(edge => edge.id) })),
     sources: [...sources.values()].sort((a, b) => `${a.library}:${a.path}`.localeCompare(`${b.library}:${b.path}`)),
     ownership: 'virtual-design-not-owned' as const, colorAvailability: 'not-verified' as const,

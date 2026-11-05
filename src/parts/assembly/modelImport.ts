@@ -1,4 +1,5 @@
 import { createHash, randomUUID } from 'node:crypto';
+import { inspectModuleComposition } from '../modules/assembly.js';
 import type { AttachmentEngine } from './engine.js';
 import { NATIVE_MODULE_TYPES, type NativeGeneratedAssembly, type NativeSourceReference } from './generator.js';
 import { isRigidTransform } from './math.js';
@@ -61,6 +62,8 @@ export async function inspectNativeModelImport(value: unknown, engine: Attachmen
   }
   const validation = await engine.validateGraph(model);
   reasons.push(...validation.issues);
+  const moduleCheck = await inspectModuleComposition(model, engine);
+  reasons.push(...moduleCheck.reasons);
   if (reasons.length) return { status: 'NEEDS_REVALIDATION', reasons: [...new Set(reasons)], originalModelId: model.id, model: null, physicalBuildVerified: false, validationScope: 'source-interfaces-final-pose-graph-only' };
 
   // Rebuild all presentation/export claims from current server sources, including BOM and steps.
@@ -82,7 +85,7 @@ export async function inspectNativeModelImport(value: unknown, engine: Attachmen
   const trusted = {
     schemaVersion: 1 as const, id: `assembly-import-${randomUUID()}`, ...engine.versions, ...(model.sourceSnapshot ? { sourceSnapshot: model.sourceSnapshot } : {}),
     placements: canonicalPlacements, edges: canonicalEdges, sourceHashes, physicalBuildVerified: false as const,
-    module: model.module, name: `已重新验证的真实装配（导入标签：${model.module}）`,
+    module: model.module, ...(moduleCheck.composition ? { moduleComposition: moduleCheck.composition } : {}), name: `已重新验证的真实装配（导入标签：${model.module}）`,
     bom: [...bom.values()].sort((a, b) => a.partId.localeCompare(b.partId)),
     steps: canonicalPlacements.map((placement, index) => ({ step: index + 1, addedInstanceId: placement.instanceId, partId: placement.partId, connectionEdgeIds: canonicalEdges.filter(edge => Math.max(order.get(edge.fixedInstanceId)!, order.get(edge.movingInstanceId)!) === index).map(edge => edge.id) })),
     sources: [...sources.values()].sort((a, b) => `${a.library}:${a.path}`.localeCompare(`${b.library}:${b.path}`)),

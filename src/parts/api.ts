@@ -63,12 +63,13 @@ export function createPartsFoundationRouter(options: { dataDir?: string; registr
     if (!isGeneratableCapabilityFor(capability, fixedClass)) throw new InventoryError(`该起始件尚未获得装配准入：${capability.reasons.join(' ')}`, 'ASSEMBLY_PART_BLOCKED', 409);
     response.json(await assembly.attach({ partA: body.partA as string, connectionA: body.connectionA as string, partB: body.partB as string, connectionB: body.connectionB as string, ...(body.twistDegrees === undefined ? {} : { twistDegrees: body.twistDegrees as number }), ...(body.collisionClass === undefined ? {} : { collisionClass: body.collisionClass as 'structural' | 'exterior-shell' }), ...(body.fixedCollisionClass === undefined ? {} : { fixedCollisionClass: body.fixedCollisionClass as 'structural' | 'exterior-shell' }) }));
   });
+  router.get('/assembly/modules', async (_request, response) => { response.json(await assembly.reusableModules()); });
   router.post('/assembly/generate', async (request, response) => {
     const body = request.body;
     if (!object(body)) bad('请求内容无效。');
     const module = (body.kind ?? body.module) as NativeModuleType;
     const minimum = module === 'bar-clip' || module === 'pin-hole' || module === 'exterior-shell' || module === 'interface-assembly' ? 2 : 3;
-    if (Object.keys(body).some(key => !['kind', 'module', 'partCount', 'requiredPartIds'].includes(key)) ||
+    if (Object.keys(body).some(key => !['kind', 'module', 'partCount', 'requiredPartIds', 'requiredModuleIds'].includes(key)) ||
         body.kind !== undefined && body.module !== undefined ||
         !NATIVE_MODULE_TYPES.includes(module) ||
         body.partCount !== undefined && (!Number.isInteger(body.partCount) || (body.partCount as number) < minimum || (body.partCount as number) > 32)) bad(`请选择受支持的基础结构，零件数量应为 ${minimum}–32。`);
@@ -76,7 +77,7 @@ export function createPartsFoundationRouter(options: { dataDir?: string; registr
     if ((body.kind ?? body.module) === 'bar-clip' && body.partCount !== undefined && body.partCount !== 2) bad('当前杆夹模块固定由 2 个真实零件组成。');
     if ((body.kind ?? body.module) === 'pin-hole' && body.partCount !== undefined && body.partCount !== 2) bad('当前销孔模块固定由 2 个真实零件组成。');
     if ((body.kind ?? body.module) === 'exterior-shell' && body.partCount !== undefined && body.partCount !== 2) bad('当前表面合同模块固定由 2 个真实零件组成。');
-    const generationRequest: NativeModuleRequest = { module: (body.kind ?? body.module) as NativeModuleType, ...(body.partCount === undefined ? {} : { partCount: body.partCount as number }), ...(body.requiredPartIds === undefined ? {} : { requiredPartIds: body.requiredPartIds as string[] }) };
+    const generationRequest: NativeModuleRequest = { module: (body.kind ?? body.module) as NativeModuleType, ...(body.partCount === undefined ? {} : { partCount: body.partCount as number }), ...(body.requiredPartIds === undefined ? {} : { requiredPartIds: body.requiredPartIds as string[] }), ...(body.requiredModuleIds === undefined ? {} : { requiredModuleIds: body.requiredModuleIds as string[] }) };
     try { validateNativeModuleRequest(generationRequest); }
     catch (error) { bad(error instanceof Error ? error.message : '生成目标无效。'); }
     response.json(await assembly.generate(generationRequest));

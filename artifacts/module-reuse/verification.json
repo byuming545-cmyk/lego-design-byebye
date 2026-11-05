@@ -1,0 +1,49 @@
+{
+  "baseline": "fb250f3",
+  "workBranch": "codex/verified-module-reuse",
+  "unit": {
+    "files": 64,
+    "passed": 855,
+    "failed": 0,
+    "skipped": 0,
+    "startedAtEpochMs": 1793871838692
+  },
+  "browser": {
+    "passed": 16,
+    "failed": 0
+  },
+  "compiledPreview": {
+    "passed": 4,
+    "failed": 0
+  },
+  "typecheck": "passed",
+  "build": "passed-existing-large-chunk-notice",
+  "generation": {
+    "models": 4,
+    "allReimported": "VALID",
+    "newSourceParts": 0,
+    "newQualifications": 0,
+    "reviewedDesigns": 1,
+    "usableRecipes": 2,
+    "blockedRecipes": 1
+  },
+  "notExecuted": [
+    "physical build",
+    "retention and material stress",
+    "installation path",
+    "complete car"
+  ],
+  "logSha256": {
+    "logs/browser.log": "352890eadcb46ca711d905c0b012211095b74a4208538d09a7f4298f7e421d30",
+    "logs/build.log": "f70fd96aff5921e9fa0b352935003a55035d6438b166f178738e7495cbc14f43",
+    "logs/generation.log": "8ca434594c02bb90e1e08c4e6d1b3d48f71287b0b3b0c379ed44a35d70a74fb6",
+    "logs/module-final-targeted.log": "f8e817ff105b0f5d0ede7ccf0b6874c44dd848dd6252d31a8df8ca4dcfbcac3f",
+    "logs/preview.log": "4fe099b15e42a8ab14e690fb611590990cb61150422455d34a0db49d8ce6e097",
+    "logs/source-acquisition.log": "a0b75b6bacb07a3c730ef0a8a2d80eb5124bf1145e13cf735182b653087c544c",
+    "logs/targeted-initial.log": "4330e1e7204e4fa98d29a29957de3bb2185f9879266a71bb5ce7f38c9f3fb802",
+    "logs/targeted.log": "b57598c8af2dcf511f03109ccc04a3b3f1c5c1c215104496dca5783aaa616d02",
+    "logs/typecheck-initial.log": "3592444819dfae518a74ac126e0821691a41ef43bcdef4e828322c64beaaf938",
+    "logs/typecheck.log": "3592444819dfae518a74ac126e0821691a41ef43bcdef4e828322c64beaaf938",
+    "logs/unit.log": "8390c5e37bf5b83cc2e0c7a2efdfb6ca54c7450ee7044a3713cbdcb7602e5fe6"
+  }
+}

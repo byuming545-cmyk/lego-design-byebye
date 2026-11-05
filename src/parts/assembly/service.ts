@@ -1,4 +1,5 @@
 import { readFile, stat } from 'node:fs/promises';
+import { moduleAssemblerFor } from '../modules/assembly.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { AttachmentEngine, ASSEMBLY_ENGINE_VERSION, type AttachResult } from './engine.js';
@@ -302,6 +303,7 @@ export class AssemblyService {
     const graph = await this.engine.createAssembly(request.partA, request.fixedCollisionClass);
     return this.engine.attachPart(graph, { anchorInstanceId: graph.placements[0].instanceId, anchorConnectionId: request.connectionA, partId: request.partB, candidateConnectionId: request.connectionB, ...(request.twistDegrees === undefined ? {} : { twistDegrees: request.twistDegrees }), ...(request.collisionClass === undefined ? {} : { collisionClass: request.collisionClass }) });
   }
+  async reusableModules() { await this.ready(); return moduleAssemblerFor(this.engine).list(); }
   async generate(request: NativeModuleRequest): Promise<NativeGenerationResult> {
     await this.ready(); this.generator ??= new NativeAssemblyGenerator(this.engine, { partIds: await this.repository.listIds() });
     const result = await this.generator.generate(request);

@@ -1,0 +1,13 @@
+
+> bricklab@0.6.0 test
+> vitest run tests/parts-module-reuse.test.ts tests/parts-assembly-generator.test.ts tests/parts-assembly-api.test.ts --maxWorkers=1
+
+
+ RUN  v5.0.5 /workspace/lego-import-collision
+
+
+ Test Files  3 passed (3)
+      Tests  62 passed (62)
+   Start at  09:31:45
+   Duration  60.03s (tests 99%, import 1%, transform 1%)
+

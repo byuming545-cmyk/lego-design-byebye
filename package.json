@@ -42,7 +42,8 @@
     "evidence:import-collision": "tsx src/cli/import-collision-evidence.ts",
     "replay:studio": "tsx src/cli/studio-replay.ts",
     "study:sources": "tsx src/cli/source-study.ts",
-    "evidence:source-production": "tsx src/cli/source-production-evidence.ts"
+    "evidence:source-production": "tsx src/cli/source-production-evidence.ts",
+    "evidence:modules": "tsx src/cli/module-reuse.ts"
   },
   "dependencies": {
     "@fontsource/noto-sans-sc": "^5.2.9",
