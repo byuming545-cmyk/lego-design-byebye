@@ -1,0 +1,20 @@
+0 来源模块复用组合
+0 Name: bricklab-native-assembly.ldr
+0 Author: BRICKLAB source-backed assembly engine
+0 // partLibraryVersion: ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1
+0 // assemblyEngineVersion: native-assembly-0.8.0-import-snapshot
+0 // connectionRuleVersion: source-stud-2.0.0-connector-grammar-2
+0 // collisionVersion: native-exterior-shell-4.1.0-contact-regions
+0 // Unspecified LDraw current colour 16; physical build and colour availability are unverified.
+0 // Module: 75878-curved-cover-right version 1; source set 75878
+0 // Design reconstruction author: Magnus Forsberg [MagFors]
+0 // Design source: https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/75878-1.mpd; SHA-256 86cbff6fcbfc1966d503155fc754e1ae97219f0ccf85cfa0a5c2b3982aa3e4b2
+0 // Design licence: CC-BY-2.0; https://creativecommons.org/licenses/by/2.0/
+0 // Adaptation: Three unchanged source records: 3022 structural carrier, 15068 exterior curved cover, 3069b structural trim. Parent placement orientation is normalized by a single rigid transform. This is a local body-cover core, not a complete car side or cockpit.
+1 16 0 0 0 1 0 0 0 1 0 0 0 1 3020.dat
+0 STEP
+1 16 20 -8 0 0 0 -1 0 1 0 1 0 0 3022.dat
+0 STEP
+1 16 0 0 0 0 0 1 0 1 0 -1 0 0 15068.dat
+0 STEP
+1 16 30 -16 0 0 0 1 0 1 0 -1 0 0 3069b.dat

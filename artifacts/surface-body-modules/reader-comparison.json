@@ -1,0 +1,118 @@
+{
+  "baseline": "ba619e9",
+  "baselineSourceSha256": "6acc934e2fc233372e877c64123125c9b1cb094db3a2f75fa8605412e53c3b37",
+  "comparisonAdapter": "Same reviewed new library digest supplied to both readers; relative imports relocated. Baseline parsing unchanged.",
+  "before": {
+    "status": "blocked",
+    "reason": "Unsupported, nested or non-rigid module source placement."
+  },
+  "current": {
+    "status": "parsed",
+    "members": [
+      {
+        "localId": "source-99",
+        "ordinal": 99,
+        "sourcePartId": "3022",
+        "sourceColor": "1",
+        "partId": "3022",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        "collisionClass": "structural"
+      },
+      {
+        "localId": "source-100",
+        "ordinal": 100,
+        "sourcePartId": "15068",
+        "sourceColor": "1",
+        "partId": "15068",
+        "transform": {
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "translation": [
+            0,
+            8,
+            20
+          ]
+        },
+        "collisionClass": "exterior-shell"
+      },
+      {
+        "localId": "source-101",
+        "ordinal": 101,
+        "sourcePartId": "3069b",
+        "sourceColor": "1",
+        "partId": "3069b",
+        "transform": {
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "translation": [
+            0,
+            -8,
+            -10
+          ]
+        },
+        "collisionClass": "structural"
+      }
+    ]
+  },
+  "selectedFailures": [
+    {
+      "ordinal": 32,
+      "reason": "Unsupported or missing selected native source placement: 32"
+    },
+    {
+      "ordinal": 119,
+      "reason": "Non-rigid or invalid selected source placement: 119"
+    }
+  ],
+  "source": {
+    "kind": "licensed-set-reconstruction",
+    "setNumber": "75878",
+    "author": "Magnus Forsberg [MagFors]",
+    "license": "CC-BY-2.0",
+    "repository": "https://github.com/vdirienzo/ldrawomr",
+    "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+    "upstreamPath": "corpus/mpds_licensed/75878-1.mpd",
+    "sourceUrl": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/75878-1.mpd",
+    "originalSha256": "86cbff6fcbfc1966d503155fc754e1ae97219f0ccf85cfa0a5c2b3982aa3e4b2",
+    "note": "Third-party reconstruction of the official set design; not LEGO-authored CAD. Literal three-record extraction; original relative poses unchanged. Other parent members, stickers, wheels and driver excluded.",
+    "file": "source/75878-body.ldr",
+    "sha256": "b9f465dcced41726f002626c52287caedc7c777bf31561fed9430bd2da0e62d7",
+    "section": "75878 - body-1.ldr"
+  },
+  "interpretation": "Excluded nested/rounded records remain in exact source bytes. Selected nested, approximate, non-rigid or missing records are still rejected."
+}

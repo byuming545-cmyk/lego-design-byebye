@@ -4,6 +4,8 @@
 >
 > 最近实现与证据见 [多点支撑和双功能模块交付](docs/MODULE_COMPOSITION_DELIVERY.md)、[成熟设计模块复用](docs/MODULE_REUSE_DELIVERY.md)、[真实零件晋升](docs/SOURCE_GUIDED_PRODUCTION_DELIVERY.md) 和 [曲面风挡核对](artifacts/car-canopy-review/README.md)。保持 255 种来源、106 种结构资格；现有上盖实现四点安装，两个不同功能模块在真实基座形成九件组合并重导入。尾翼仍阻止，尚非完整跑车。下文早期分支、计数和生产规则说明保留为历史，当前状态以这些较新记录及运行时审计为准。
 
+> 最新曲面功能模块见 [本轮交付](docs/SURFACE_BODY_MODULES_DELIVERY.md)：15068 接入三件覆盖核心，复用到多个基座，并与既有上盖组合。来源与资格数量不变，未完成完整座舱或跑车。
+
 # BRICKLAB · Interface-first Connector Grammar
 
 当前默认生产链路已切换到接口语法准入：真实来源 → canonical Connector → 通用规则与拓扑 → 接口帧求姿态 → 多点精确闭合 → 原生实体碰撞 → 模型、BOM、步骤 → 导出后重新导入。新件不再依赖每件保留一份与指定夹具试拼成功的记录。

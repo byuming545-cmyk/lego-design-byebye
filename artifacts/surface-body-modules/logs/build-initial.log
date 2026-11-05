@@ -1,0 +1,10 @@
+
+> bricklab@0.6.0 build
+> npm run typecheck && vite build && tsc -p tsconfig.server.json
+
+
+> bricklab@0.6.0 typecheck
+> tsc --noEmit
+
+src/cli/surface-body-modules.ts(70,9): error TS7034: Variable 'models' implicitly has type 'any[]' in some locations where its type cannot be determined.
+src/cli/surface-body-modules.ts(86,85): error TS7005: Variable 'models' implicitly has an 'any[]' type.

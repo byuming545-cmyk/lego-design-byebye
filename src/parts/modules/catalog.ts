@@ -2,14 +2,15 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { composeTransforms, inverseTransform, isRigidTransform } from '../assembly/math.js';
+import { composeTransforms, isRigidTransform } from '../assembly/math.js';
 import type { CollisionClass, RigidTransform } from '../assembly/types.js';
 import { modulePolicy } from './policy.js';
 import type { ModuleComposition } from './assembly.js';
 import type { NativeAssembly } from '../assembly/types.js';
 import { moduleSupport } from './support.js';
+import { readSelectedModuleMembers } from './source.js';
 
-export const MODULE_LIBRARY_DIGEST = '030b7bf93dc10733d2799b8daeb000c2b1c7be4e17917426f6ab21c84d73e2b7';
+export const MODULE_LIBRARY_DIGEST = '0814bc20fa2ef748da1c000d2d34e05869b9e0abaad79eeb00372eee1798f6df';
 export const MODULE_DIRECTORY = fileURLToPath(new URL('../../../data/parts-foundation/modules/', import.meta.url));
 export const digest = (value: string | Buffer) => createHash('sha256').update(value).digest('hex');
 export interface ModuleSource {
@@ -45,24 +46,7 @@ export class ModuleCatalog {
     const text = raw.toString('utf8');
     if (!text.startsWith(`0 FILE ${recipe.source.section}\r\n`) && !text.startsWith(`0 FILE ${recipe.source.section}\n`)) throw new Error('Module source section identity differs.');
     if (!text.includes(`0 Author: ${recipe.source.author}`) || !text.includes('0 !LICENSE Redistributable under CCAL version 2.0 : see CAreadme.txt')) throw new Error('Module author or licence evidence missing.');
-    const rows = text.split(/\r?\n/).filter(line => line.startsWith('1 ')).map(line => {
-      const t = line.trim().split(/\s+/);
-      const transform = { translation: t.slice(2, 5).map(Number), rotation: t.slice(5, 14).map(Number) };
-      if (!/^[a-z0-9_-]+\.dat$/i.test(t[14] ?? '') || t.length !== 15 || !isRigidTransform(transform)) throw new Error('Unsupported, nested or non-rigid module source placement.');
-      return { partId: t[14].slice(0, -4).toLowerCase(), sourceColor: t[1], transform };
-    });
-    const entry = rows[recipe.entryOrdinal];
-    if (!entry || !recipe.selectedOrdinals.includes(recipe.entryOrdinal) || recipe.selectedOrdinals.length < 2 || recipe.selectedOrdinals.length > 24 || new Set(recipe.selectedOrdinals).size !== recipe.selectedOrdinals.length) throw new Error('Invalid module selection.');
-    const inverse = inverseTransform(entry.transform);
-    const members = recipe.selectedOrdinals.map(ordinal => {
-      const row = rows[ordinal];
-      if (!row) throw new Error('Module references a missing source placement.');
-      return { localId: `source-${ordinal}`, ordinal, sourcePartId: row.partId, sourceColor: row.sourceColor,
-        partId: recipe.replacements[String(ordinal)] ?? row.partId, transform: composeTransforms(inverse, row.transform),
-        collisionClass: recipe.exteriorOrdinals.includes(ordinal) ? 'exterior-shell' as const : 'structural' as const };
-    });
-    // Internal order starts at the reviewed canonical entry; no source coordinates are guessed.
-    members.sort((a, b) => Number(b.ordinal === recipe.entryOrdinal) - Number(a.ordinal === recipe.entryOrdinal) || a.ordinal - b.ordinal);
+    const members = readSelectedModuleMembers(text, recipe);
     return { recipe, recipeDigest: digest(JSON.stringify(recipe)), members };
   }
 }

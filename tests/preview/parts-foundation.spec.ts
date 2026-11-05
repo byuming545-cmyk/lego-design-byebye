@@ -4,6 +4,15 @@ import { expectConnectedAssembly, expectCoverageMatches, expectGrammarAssessment
 
 test.setTimeout(180_000);
 
+test('compiled generator uses current multi-piece surface cover recipes and reimports both credits',async({request})=>{
+  const response=await request.post('/api/parts-foundation/assembly/generate',{data:{kind:'module-assembly',requiredPartIds:['3035'],requiredModuleIds:['75878-curved-cover-right','75878-curved-cover-left']}});
+  expect(response.ok()).toBe(true);const result=await response.json();expect(result.status,result.reasons.join(' ')).toBe('generated');
+  expect(result.model.placements).toHaveLength(7);expect(result.model.bom.find((row:{partId:string})=>row.partId==='15068').quantity).toBe(2);
+  const exported=await request.get(`/api/parts-foundation/assembly/models/${result.model.id}/export?format=json`);expect(exported.ok()).toBe(true);
+  const imported=await request.post('/api/parts-foundation/assembly/models/import',{data:{content:await exported.text()}});
+  expect(await imported.json()).toMatchObject({status:'VALID',model:{moduleComposition:result.model.moduleComposition}});
+});
+
 test('compiled preview serves Part Lab, bundled native geometry, fonts and API on one origin', async ({ page, request }) => {
   const badResponses: string[] = [];
   page.on('response', response => { if (response.status() >= 400) badResponses.push(`${response.status()} ${new URL(response.url()).pathname}`); });

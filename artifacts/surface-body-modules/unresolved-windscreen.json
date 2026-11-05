@@ -1,0 +1,18 @@
+{
+  "status": "UNRESOLVED_NOT_REGISTERED",
+  "source": {
+    "url": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/75892-1.mpd",
+    "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+    "http": 200,
+    "sha256": "2fa4965e567117984bb19a968f5d96e236cc4704f032961f7714d12c484bfe9c",
+    "section": "75892 - Car.ldr"
+  },
+  "sourceReference": "75892 - 18973p01.dat",
+  "sourceOrdinal": 62,
+  "provisionalReplacement": "18973",
+  "identityMappingStatus": "NOT_VERIFIED",
+  "qualificationGranted": false,
+  "publishedRecipe": false,
+  "notes": "A provisional explicit deprinted replacement was explored at source poses; it did not establish a complete legal module. No alias, datum equality or full cockpit claim. No source bytes from this candidate added to the production library.",
+  "experimentOutput": "{\"selection\":[59,60,62],\"status\":\"blocked-root-admission\",\"root\":\"11291\"}\n{\"selection\":[60,59,62],\"placed\":[\"3794b\",\"11291\"],\"pending\":[\"18973\"],\"rejections\":[],\"valid\":false}\n{\"selection\":[60,62],\"placed\":[\"3794b\"],\"pending\":[\"18973\"],\"rejections\":[],\"valid\":false}\n{\"selection\":[45,59,60,62,63],\"placed\":[\"3020\",\"11291\",\"3794b\"],\"pending\":[\"18973\",\"30602\"],\"rejections\":[{\"part\":\"30602\",\"rejections\":[{\"code\":\"native-plastic-collision\",\"reason\":\"p-1: The two exterior source surfaces cross or overlap; open boundaries are not treated as walls and no whole-pair exemption is granted.\"},{\"code\":\"no-collision-free-transform\",\"reason\":\"Every permitted source-derived placement was rejected by native collision checks.\"}]},{\"part\":\"30602\",\"rejections\":[{\"code\":\"native-plastic-collision\",\"reason\":\"p-1: The two exterior source surfaces cross or overlap; open boundaries are not treated as walls and no whole-pair exemption is granted.\"},{\"code\":\"no-collision-free-transform\",\"reason\":\"Every permitted source-derived placement was rejected by native collision checks.\"}]}],\"valid\":false}\n"
+}

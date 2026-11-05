@@ -4,7 +4,7 @@ This is an assembly-design library, separate from native part geometry and
 connector truth. Runtime status is computed by the production engine, not stored
 as a `generatable` flag in the recipes.
 
-The three unchanged source sections are from the licensed reconstruction of set
+The original three unchanged source sections are from the licensed reconstruction of set
 76897 by **Adrien Pennamen [Adrien Pennamen]**, pinned in
 `vdirienzo/ldrawomr@99a10d3d5ec094277793eb5919f13163d279cf2e`, file
 `corpus/mpds_licensed/76897-1.mpd`. Each section explicitly declares
@@ -38,6 +38,35 @@ Recipes:
 
 Reference colour numbers are retained in module provenance. Model BOM uses
 unspecified LDraw colour 16; physical colour availability is not asserted.
+
+Two further recipes, `75878-curved-cover-right` and `75878-curved-cover-left`,
+reuse three unchanged placements each from **Magnus Forsberg [MagFors]**'s
+licensed reconstruction of set 75878 in the same fixed upstream revision.
+Original `corpus/mpds_licensed/75878-1.mpd` SHA-256:
+`86cbff6fcbfc1966d503155fc754e1ae97219f0ccf85cfa0a5c2b3982aa3e4b2`.
+The complete, explicitly CCAL 2.0 section `75878 - body-1.ldr` is preserved
+verbatim as `source/75878-body.ldr` (SHA-256
+`b9f465dcced41726f002626c52287caedc7c777bf31561fed9430bd2da0e62d7`).
+Only ordinals 99/100/101 or 102/103/104 belong to a recipe: 3022 carrier,
+15068 exterior curved cover, 3069b trim. No identities or source poses changed.
+These are local side-cover cores, not complete sides, cockpits or cars.
+Left/right denotes the original extraction location, not a final vehicle axis.
+The 15068 members retain the restricted surface-only contract.
+
+The reader now validates only selected literal native type-1 placements.
+Excluded nested/rounded records are retained in the immutable parent bytes but
+not expanded or used as dependencies of the extracted module. Selecting one of
+those unsupported records still fails. Changing even an excluded record fails
+the full source hash check. No connectivity is inferred from this design data.
+The module policy is version 3 and the reviewed library digest has changed;
+restart the service and refresh the page after updating. Old module receipts
+require revalidation; the native collision version remains 4.1.0. Earlier models
+and sources remain untouched.
+
+`scripts/check-module-source.py` independently pins both original URLs/hashes,
+checks each section author/licence and exact bytes, and downloads each original
+only once. `--source-directory` supports offline copies named `<set>-1.mpd`;
+the legacy `--source-file` applies to 76897 only. No arbitrary URL is accepted.
 
 Ranked installation counts noncoincident current source contact locations,
 prefers greater span, then uses the native bounding-box centre as a tie breaker.

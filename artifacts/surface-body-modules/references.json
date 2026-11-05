@@ -1,0 +1,42 @@
+{
+  "absorption": [
+    {
+      "problem": "Missing functional use of existing curved surface parts",
+      "repository": "https://github.com/vdirienzo/ldrawomr",
+      "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+      "files": [
+        "corpus/mpds_licensed/75878-1.mpd:75878 - body-1.ldr"
+      ],
+      "records": [
+        [
+          99,
+          100,
+          101
+        ],
+        [
+          102,
+          103,
+          104
+        ]
+      ],
+      "method": "B: reuse explicitly licensed assembly design records through existing production adapters",
+      "licence": "CC-BY-2.0 / CCAL 2.0 per preserved section",
+      "author": "Magnus Forsberg [MagFors]",
+      "modifiedSourceBytes": false,
+      "newDependencies": []
+    },
+    {
+      "problem": "Excluded parent records incorrectly blocked literal selected extraction",
+      "repository": "this project",
+      "revision": "ba619e9",
+      "files": [
+        "src/parts/modules/catalog.ts:ModuleCatalog.get"
+      ],
+      "method": "A: independent implementation within existing module catalogue; no third-party parser transplanted",
+      "productionImplementation": "src/parts/modules/source.ts:readSelectedModuleMembers"
+    }
+  ],
+  "existingCollisionStudy": "../collision-method-review/references.json",
+  "collisionAlgorithmChangedThisRound": false,
+  "thirdPartyCodeExecuted": false
+}

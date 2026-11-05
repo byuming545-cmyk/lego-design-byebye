@@ -81,6 +81,8 @@ interface ImportedModelResult extends AssemblyResponse { status: 'VALID' | 'NEED
 const modules = [
   { id: 'module-assembly', label: '复用车头模块' },
   { id: 'paired-modules', label: '组合车头与后部面板' },
+  { id: 'curved-cover', label: '复用曲面覆盖模块' },
+  { id: 'paired-curved-covers', label: '组合双曲面覆盖' },
   { id: 'interface-assembly', label: '接口驱动组合' }, { id: 'wall', label: '墙体' }, { id: 'platform', label: '平台' }, { id: 'simple-chassis', label: '简单车架' }, { id: 'simple-box', label: '箱体' }, { id: 'simple-roof', label: '屋顶' }, { id: 'basic-snot', label: 'SNOT 模块' }, { id: 'wheel-module', label: '轮组模块' }, { id: 'bar-clip', label: '杆夹模块' }, { id: 'pin-hole', label: '销孔模块' }, { id: 'exterior-shell', label: '表面合同模块' },
 ];
 
@@ -231,11 +233,16 @@ export default function AssemblyLab() {
   async function generate(kind: string) {
     setBusy(kind); setError(''); setResponse(null); setModel(null); setImportResult(null);
     try {
-      const paired = kind === 'paired-modules', sourceModule = paired || kind === 'module-assembly';
+      const selectedModules: Record<string, string[]> = {
+        'paired-modules': ['76897-hood-core', '76897-rear-panel-core'],
+        'curved-cover': ['75878-curved-cover-right'],
+        'paired-curved-covers': ['75878-curved-cover-right', '75878-curved-cover-left'],
+      };
+      const moduleIds = selectedModules[kind], sourceModule = !!moduleIds || kind === 'module-assembly';
       const fixedPair = ['bar-clip', 'pin-hole', 'exterior-shell'].includes(kind);
       const requiredIds = [requiredPartId, ...(kind === 'exterior-shell' ? [requiredSurfaceId] : [])].filter(Boolean);
-      const result = await post<AssemblyResponse>('/assembly/generate', { kind: paired ? 'module-assembly' : kind,
-        ...(paired ? { requiredModuleIds: ['76897-hood-core', '76897-rear-panel-core'] } : {}),
+      const result = await post<AssemblyResponse>('/assembly/generate', { kind: sourceModule ? 'module-assembly' : kind,
+        ...(moduleIds ? { requiredModuleIds: moduleIds } : {}),
         ...(requiredIds.length ? { requiredPartIds: requiredIds } : {}),
         ...(fixedPair ? { partCount: 2 } : !sourceModule && generationPartCount ? { partCount: Number(generationPartCount) } : {}) });
       if ((sourceModule || fixedPair) && result.model?.placements) setGenerationPartCount(String(result.model.placements.length));

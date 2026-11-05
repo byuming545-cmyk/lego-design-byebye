@@ -137,6 +137,70 @@
       "replacements": {},
       "exteriorOrdinals": [],
       "adaptation": "Extracted source rear-panel stack: two 3666 plates and one 6636 tile at unchanged source poses; remaining trunk members and sticker are outside this core."
+    },
+    {
+      "id": "75878-curved-cover-right",
+      "version": "1",
+      "name": "75878 右侧曲面覆盖核心",
+      "role": "body-cover",
+      "source": {
+        "kind": "licensed-set-reconstruction",
+        "setNumber": "75878",
+        "author": "Magnus Forsberg [MagFors]",
+        "license": "CC-BY-2.0",
+        "repository": "https://github.com/vdirienzo/ldrawomr",
+        "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+        "upstreamPath": "corpus/mpds_licensed/75878-1.mpd",
+        "sourceUrl": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/75878-1.mpd",
+        "originalSha256": "86cbff6fcbfc1966d503155fc754e1ae97219f0ccf85cfa0a5c2b3982aa3e4b2",
+        "note": "Third-party reconstruction of the official set design; not LEGO-authored CAD. Literal three-record extraction; original relative poses unchanged. Other parent members, stickers, wheels and driver excluded.",
+        "file": "source/75878-body.ldr",
+        "sha256": "b9f465dcced41726f002626c52287caedc7c777bf31561fed9430bd2da0e62d7",
+        "section": "75878 - body-1.ldr"
+      },
+      "selectedOrdinals": [
+        99,
+        100,
+        101
+      ],
+      "entryOrdinal": 99,
+      "replacements": {},
+      "exteriorOrdinals": [
+        100
+      ],
+      "adaptation": "Three unchanged source records: 3022 structural carrier, 15068 exterior curved cover, 3069b structural trim. Parent placement orientation is normalized by a single rigid transform. This is a local body-cover core, not a complete car side or cockpit."
+    },
+    {
+      "id": "75878-curved-cover-left",
+      "version": "1",
+      "name": "75878 左侧曲面覆盖核心",
+      "role": "body-cover",
+      "source": {
+        "kind": "licensed-set-reconstruction",
+        "setNumber": "75878",
+        "author": "Magnus Forsberg [MagFors]",
+        "license": "CC-BY-2.0",
+        "repository": "https://github.com/vdirienzo/ldrawomr",
+        "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+        "upstreamPath": "corpus/mpds_licensed/75878-1.mpd",
+        "sourceUrl": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/75878-1.mpd",
+        "originalSha256": "86cbff6fcbfc1966d503155fc754e1ae97219f0ccf85cfa0a5c2b3982aa3e4b2",
+        "note": "Third-party reconstruction of the official set design; not LEGO-authored CAD. Literal three-record extraction; original relative poses unchanged. Other parent members, stickers, wheels and driver excluded.",
+        "file": "source/75878-body.ldr",
+        "sha256": "b9f465dcced41726f002626c52287caedc7c777bf31561fed9430bd2da0e62d7",
+        "section": "75878 - body-1.ldr"
+      },
+      "selectedOrdinals": [
+        102,
+        103,
+        104
+      ],
+      "entryOrdinal": 102,
+      "replacements": {},
+      "exteriorOrdinals": [
+        103
+      ],
+      "adaptation": "Three unchanged source records: 3022 structural carrier, 15068 exterior curved cover, 3069b structural trim. Parent placement orientation is normalized by a single rigid transform. This is a local body-cover core, not a complete car side or cockpit."
     }
   ]
 }

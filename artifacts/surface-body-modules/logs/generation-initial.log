@@ -1,0 +1,15 @@
+
+> bricklab@0.6.0 evidence:surface-modules
+> tsx src/cli/surface-body-modules.ts
+
+/workspace/lego-import-collision/src/parts/modules/source.ts:16
+    if (!tokens || tokens.length !== 15 || !/^[a-z0-9_-]+\.dat$/i.test(tokens[14])) throw new Error(`Unsupported or missing selected native source placement: ${ordinal}`);
+                                                                                          ^
+
+Error: Unsupported or missing selected native source placement: 32
+    at <anonymous> (/workspace/lego-import-collision/src/parts/modules/source.ts:16:91)
+    at Array.map (<anonymous>)
+    at readSelectedModuleMembers (/workspace/lego-import-collision/src/parts/modules/source.ts:14:29)
+    at <anonymous> (/workspace/lego-import-collision/src/cli/surface-body-modules.ts:54:11)
+
+Node.js v24.19.0

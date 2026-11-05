@@ -1,0 +1,32 @@
+
+> bricklab@0.6.0 test:e2e
+> playwright test --config playwright.config.ts --reporter=list
+
+[WebServer] (node:169206) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 19 tests using 1 worker
+
+(node:169302) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [chromium] › tests/e2e/assembly.spec.ts:7:1 › uses an admitted 32000 through normal UI generation, exports it and validates the uploaded model (26.9s)
+  ✓   2 [chromium] › tests/e2e/assembly.spec.ts:105:1 › separates source grammar eligibility from actual assembly evidence for every real part (57.2s)
+  ✓   3 [chromium] › tests/e2e/assembly.spec.ts:152:1 › attaches a source-backed grammar pair and rejects the same mating gender (14.4s)
+  ✓   4 [chromium] › tests/e2e/assembly.spec.ts:177:1 › generates source-bound wall and chassis modules and preserves unsupported wheel reasons (8.9s)
+  ✓   5 [chromium] › tests/e2e/assembly.spec.ts:208:1 › imports exported real models through current validation and prevents export after version or occupancy invalidation (7.2s)
+  ✓   6 [chromium] › tests/e2e/assembly.spec.ts:257:1 › mobile assembly mode keeps source controls, accepted rendering and debug data within the viewport (4.5s)
+  ✓   7 [chromium] › tests/e2e/assembly.spec.ts:271:42 › uses 3062b from the ordinary interface generator and reimports its exported model (6.2s)
+  ✓   8 [chromium] › tests/e2e/assembly.spec.ts:271:42 › uses 14716 from the ordinary interface generator and reimports its exported model (5.2s)
+  ✓   9 [chromium] › tests/e2e/module-reuse.spec.ts:5:1 › normal UI reuses the multi-piece curved cover and composes both variants with current roundtrip (11.3s)
+  ✓  10 [chromium] › tests/e2e/module-reuse.spec.ts:31:1 › normal assembly UI generates a credited source module and reimports its complete model (8.9s)
+  ✓  11 [chromium] › tests/e2e/module-reuse.spec.ts:54:1 › production HTTP preserves explicit adaptations and rejects resigned module provenance (3.3s)
+  ✓  12 [chromium] › tests/e2e/module-reuse.spec.ts:65:1 › normal UI composes two different source functions with multi-point mounts and reimports both credits (19.5s)
+  ✓  13 [chromium] › tests/e2e/module-reuse.spec.ts:86:1 › existing surface parts can be selected and generated without granting structural eligibility (7.1s)
+  ✓  14 [chromium] › tests/e2e/parts-foundation.spec.ts:122:3 › real parts foundation with actual bundled sources and WebGL › opens the real library by default and renders native 3001 mesh plus source markers (9.9s)
+  ✓  15 [chromium] › tests/e2e/parts-foundation.spec.ts:176:3 › real parts foundation with actual bundled sources and WebGL › retains source-observed external mapping without inventing an LDraw cross-reference or generation eligibility (4.9s)
+  ✓  16 [chromium] › tests/e2e/parts-foundation.spec.ts:201:3 › real parts foundation with actual bundled sources and WebGL › shows six readable PDFs, two transfer failures and evidence-based element frequency without invented design coverage (3.8s)
+  ✓  17 [chromium] › tests/e2e/parts-foundation.spec.ts:238:3 › real parts foundation with actual bundled sources and WebGL › supports mobile inspection and keeps legacy UI and actual HTTP generation/export blocked (5.6s)
+  ✓  18 [chromium] › tests/e2e/parts-foundation.spec.ts:269:3 › real parts foundation with actual bundled sources and WebGL › does not restore quarantined browser history or enable legacy file import (1.2s)
+  ✓  19 [chromium] › tests/e2e/parts-foundation.spec.ts:288:1 › explains the source-scoped 3062b parse issue without widening admission (3.9s)
+
+  19 passed (3.6m)

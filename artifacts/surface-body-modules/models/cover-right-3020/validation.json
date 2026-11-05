@@ -1,0 +1,34 @@
+{
+  "graph": {
+    "valid": true,
+    "issues": []
+  },
+  "search": {
+    "attempts": 79,
+    "modulePoseEvaluations": 76,
+    "attachmentApiCalls": 3,
+    "acceptedAttachments": 3,
+    "rejectedAttachments": 0,
+    "transformFailures": 0,
+    "compatibilityFailures": 0,
+    "collisionFailures": 0,
+    "occupancyFailures": 0,
+    "designGoalFailures": 0,
+    "backtracks": 0,
+    "testedRoots": 1,
+    "exhausted": false,
+    "timeBudgetExceeded": false,
+    "catalogTimeMs": 0.214,
+    "searchTimeMs": 579.969,
+    "budget": {
+      "maxAttempts": 1800,
+      "maxBacktracks": 120,
+      "maxSearchTimeMs": 10000
+    },
+    "finalPlacements": 4,
+    "finalConnectionEdges": 10,
+    "rejectionCounts": {},
+    "rejectionReasons": []
+  },
+  "reimport": "VALID"
+}

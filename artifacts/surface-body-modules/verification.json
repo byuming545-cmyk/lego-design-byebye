@@ -1,0 +1,196 @@
+{
+  "recordedAt": "2026-11-05T11:49:27.618976+00:00",
+  "baseline": "ba619e9e711160650deea3264dcbaac9e94d3955",
+  "workBranch": "codex/surface-body-modules",
+  "finalChecks": {
+    "unit": {
+      "command": "npm test -- --maxWorkers=1 --reporter=default --reporter=json --outputFile=artifacts/surface-body-modules/unit-results.json",
+      "exitCode": 0,
+      "testFiles": 67,
+      "passed": 903,
+      "failed": 0,
+      "skipped": 0
+    },
+    "moduleTargeted": {
+      "command": "npm test -- tests/parts-surface-modules.test.ts tests/parts-module-reuse.test.ts tests/parts-module-composition.test.ts --maxWorkers=1",
+      "exitCode": 0,
+      "passed": 59
+    },
+    "browser": {
+      "command": "CI=1 npm run test:e2e -- --reporter=list",
+      "exitCode": 0,
+      "passed": 19
+    },
+    "compiledPreview": {
+      "command": "npm run test:preview",
+      "exitCode": 0,
+      "passed": 7,
+      "rebuiltOnStartup": true
+    },
+    "finalTypecheck": {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "log": "logs/typecheck-final.log"
+    },
+    "finalBuild": {
+      "command": "npm run build",
+      "exitCode": 0,
+      "advisory": "existing large chunk warning"
+    },
+    "sourceAcquisition": {
+      "command": "python scripts/check-module-source.py --output artifacts/surface-body-modules/source-acquisition.json",
+      "exitCode": 0,
+      "fixedOriginals": 2,
+      "http": [
+        200,
+        200
+      ],
+      "recipes": 6
+    },
+    "formalGeneration": {
+      "command": "npm run evidence:surface-modules",
+      "exitCode": 0,
+      "models": 6,
+      "allGraphValidAndReimportValid": true,
+      "preciseRejectedSourceRouteRecorded": true
+    }
+  },
+  "initialFailuresRetained": [
+    {
+      "scope": "evidence script expected-error recording",
+      "exitCode": 1,
+      "log": "logs/generation-initial.log",
+      "resolution": "Allow native in the expected selected-record rejection message; validation unchanged."
+    },
+    {
+      "scope": "CLI summary implicit array typing",
+      "exitCode": 2,
+      "logs": [
+        "logs/typecheck-cli-initial.log",
+        "logs/build-initial.log",
+        "logs/preview-initial.log"
+      ],
+      "resolution": "Explicit summary type; typecheck, build and compiled preview rerun and pass."
+    }
+  ],
+  "countsBeforeAndAfter": {
+    "nativeSourceIdentities": [
+      255,
+      255
+    ],
+    "structuralEligibility": [
+      106,
+      106
+    ],
+    "independentSurfaceEligibility": [
+      128,
+      128
+    ],
+    "reviewedRecipes": [
+      4,
+      6
+    ],
+    "internallyValidatedRecipes": [
+      3,
+      5
+    ],
+    "newNativeImports": 0,
+    "newQualifications": 0,
+    "newAssemblySourceSections": 1,
+    "newCoverFunction": 1,
+    "newSourceVariants": 2,
+    "currentEvidenceModels": 6,
+    "currentEvidenceUniquePartIds": 11,
+    "warning": "Separate eligibility contracts must not be summed. Evidence coverage is not a reliable all-library cumulative delta."
+  },
+  "unchangedNativeFiles": 993,
+  "oldRecipesUnchanged": 4,
+  "historicalSourcesModelsAndReportsPreserved": true,
+  "historicalScreenshotRestored": true,
+  "userExamplesFileDirectlyReadOrWritten": false,
+  "collisionAlgorithmChanged": false,
+  "collisionVersion": "native-exterior-shell-4.1.0-contact-regions",
+  "historicalVersionChecks": [
+    {
+      "file": "artifacts/collision-method-review/models/hood-rear-3035/model.json",
+      "sha256": "73ab7f496e99ff4f322d97ec5f751ef492d54e1b55b5220cbb4ebdc72dd8efe2",
+      "currentImport": "NEEDS_REVALIDATION",
+      "reasons": [
+        "Module source/validation versions are missing, unsupported or stale."
+      ],
+      "bytesPreserved": true
+    },
+    {
+      "file": "artifacts/collision-method-review/models/15068/model.json",
+      "sha256": "e5d947a26aea08c7a7915362973fb6b23b9143556e5d94f85b455f8819723cd3",
+      "currentImport": "VALID",
+      "reasons": [],
+      "bytesPreserved": true
+    }
+  ],
+  "notExecuted": [
+    "physical build",
+    "material/retention forces",
+    "installation trajectory",
+    "complete cockpit",
+    "wheel module validation",
+    "full sports car validation"
+  ],
+  "newDependencies": [],
+  "thirdPartyCodeExecuted": false,
+  "pushMergeDeploy": false,
+  "logFiles": {
+    "browser.log": {
+      "sha256": "7a942c40c2e38c2a5d6c60cb2f0508d2a12c09ea90981d165346f4a94e1f7007",
+      "bytes": 3929
+    },
+    "build-initial.log": {
+      "sha256": "661b9e86b8603c965687ab3142ce0803b7ffa1c8c2bc1209f0d0faa81fb82f33",
+      "bytes": 392
+    },
+    "build.log": {
+      "sha256": "b0818254b72867cc3e4bc66b355e036a130e437fd49a18e80f62868cf0b2a31d",
+      "bytes": 17568
+    },
+    "generation-initial.log": {
+      "sha256": "c07bc3371ccf8f89090ec720de8a4ec689868321e40f56e014e1dbec37a88b31",
+      "bytes": 809
+    },
+    "generation.log": {
+      "sha256": "685f40676ab2dec80129e800edac03989beeb57d677645cc8098b40b449445e4",
+      "bytes": 5126
+    },
+    "preview-initial.log": {
+      "sha256": "d579d3c3ca62215f1d2ed0905ba83f92050840c38b5f5d9bceb746c5ae49ecda",
+      "bytes": 162
+    },
+    "preview.log": {
+      "sha256": "19723f0dd1a9b073978bef1286650b5413fc08d6f20e1388b07d9108e128b778",
+      "bytes": 2306
+    },
+    "source-acquisition.log": {
+      "sha256": "4602975b7543fe4cc9355d5e48b1519ebad8aafb52cbfc5e2158fb0b2a23567d",
+      "bytes": 69
+    },
+    "targeted.log": {
+      "sha256": "a5b37c695d2a610dc120dffc7ea14e881863c8f76892d95af14789113f027689",
+      "bytes": 319
+    },
+    "typecheck-cli-initial.log": {
+      "sha256": "75744542cbbe31203eac44b5e0631326fab880065368707527bbce63757fc2cb",
+      "bytes": 302
+    },
+    "typecheck-final.log": {
+      "sha256": "3592444819dfae518a74ac126e0821691a41ef43bcdef4e828322c64beaaf938",
+      "bytes": 44
+    },
+    "typecheck.log": {
+      "sha256": "3592444819dfae518a74ac126e0821691a41ef43bcdef4e828322c64beaaf938",
+      "bytes": 44
+    },
+    "unit.log": {
+      "sha256": "1d4f785adc74ab48a63efa226262537a803c034eca24c51e4ce4d8c48ea54012",
+      "bytes": 20265
+    }
+  }
+}

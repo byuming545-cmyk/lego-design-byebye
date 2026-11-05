@@ -362,6 +362,16 @@ describe('new source normal HTTP generation', () => {
 });
 
 describe('reviewed source modules over the normal production API',()=>{
+  it('generates multi-piece surface covers through the ordinary module API',async()=>{
+    const response=await post(`${prefix}/assembly/generate`,{kind:'module-assembly',requiredPartIds:['3035'],requiredModuleIds:['75878-curved-cover-right','75878-curved-cover-left']});
+    expect(response.status).toBe(200);const result=await response.json();expect(result.status,result.reasons.join(' ')).toBe('generated');
+    expect(result.model.placements).toHaveLength(7);expect(result.model.steps).toHaveLength(7);
+    expect(result.model.placements.filter((p:{collisionClass:string})=>p.collisionClass==='exterior-shell')).toHaveLength(2);
+    expect(result.model.bom.find((row:{partId:string})=>row.partId==='15068')).toMatchObject({quantity:2});
+    const exported=await fetch(`${base}${prefix}/assembly/models/${result.model.id}/export?format=json`);expect(exported.status).toBe(200);
+    const imported=await post(`${prefix}/assembly/models/import`,{content:await exported.text()});
+    expect(await imported.json()).toMatchObject({status:'VALID',model:{moduleComposition:result.model.moduleComposition}});
+  },30000);
   it('reports current validation and installs one source module on two distinct real bases',async()=>{
     const catalogue=await fetch(`${base}${prefix}/assembly/modules`);expect(catalogue.status).toBe(200);
     const entries=await catalogue.json();

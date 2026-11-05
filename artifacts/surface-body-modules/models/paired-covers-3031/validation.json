@@ -1,0 +1,48 @@
+{
+  "graph": {
+    "valid": true,
+    "issues": []
+  },
+  "search": {
+    "attempts": 236,
+    "modulePoseEvaluations": 216,
+    "attachmentApiCalls": 20,
+    "acceptedAttachments": 10,
+    "rejectedAttachments": 10,
+    "transformFailures": 0,
+    "compatibilityFailures": 0,
+    "collisionFailures": 10,
+    "occupancyFailures": 0,
+    "designGoalFailures": 0,
+    "backtracks": 0,
+    "testedRoots": 1,
+    "exhausted": false,
+    "timeBudgetExceeded": false,
+    "catalogTimeMs": 0.149,
+    "searchTimeMs": 3562.704,
+    "budget": {
+      "maxAttempts": 1800,
+      "maxBacktracks": 120,
+      "maxSearchTimeMs": 10000
+    },
+    "finalPlacements": 7,
+    "finalConnectionEdges": 18,
+    "rejectionCounts": {
+      "native-plastic-collision": 10,
+      "no-collision-free-transform": 10
+    },
+    "rejectionReasons": [
+      {
+        "code": "native-plastic-collision",
+        "reason": "p-2: The two exterior source surfaces cross or overlap; open boundaries are not treated as walls and no whole-pair exemption is granted.",
+        "count": 10
+      },
+      {
+        "code": "no-collision-free-transform",
+        "reason": "Every permitted source-derived placement was rejected by native collision checks.",
+        "count": 10
+      }
+    ]
+  },
+  "reimport": "VALID"
+}

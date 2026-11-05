@@ -2,6 +2,32 @@ import { test, expect } from '@playwright/test';
 import { createHash } from 'node:crypto';
 import { mkdir } from 'node:fs/promises';
 
+test('normal UI reuses the multi-piece curved cover and composes both variants with current roundtrip',async({page})=>{
+  await page.goto('/part-lab?mode=assembly');
+  const base=page.getByLabel('生成时包含的零件',{exact:true});await expect(base).toBeVisible();
+  await base.selectOption('3001');await page.getByLabel('生成零件数量',{exact:true}).fill('9');
+  const single=page.waitForResponse(r=>r.url().endsWith('/api/parts-foundation/assembly/generate')&&r.request().method()==='POST');
+  await page.getByRole('button',{name:'复用曲面覆盖模块',exact:true}).click();
+  const first=await(await single).json();expect(first.status,first.reasons.join(' ')).toBe('generated');expect(first.model.placements).toHaveLength(4);
+  await expect(page.getByLabel('生成零件数量',{exact:true})).toHaveValue('4');
+  await base.selectOption('3035');
+  const pair=page.waitForResponse(r=>r.url().endsWith('/api/parts-foundation/assembly/generate')&&r.request().method()==='POST');
+  await page.getByRole('button',{name:'组合双曲面覆盖',exact:true}).click();
+  const result=await(await pair).json();expect(result.status,result.reasons.join(' ')).toBe('generated');expect(result.model.placements).toHaveLength(7);
+  expect(result.model.placements.filter((p:{collisionClass:string})=>p.collisionClass==='exterior-shell')).toHaveLength(2);
+  await expect(page.getByLabel('生成零件数量',{exact:true})).toHaveValue('7');
+  const credits=page.getByLabel('复用模块来源',{exact:true});await expect(credits).toContainText('75878');await expect(credits).toContainText('Magnus Forsberg');
+  await expect(credits).toContainText('75878-curved-cover-left');await expect(credits).toContainText('75878-curved-cover-right');
+  const exported=await page.request.get(`/api/parts-foundation/assembly/models/${result.model.id}/export?format=json`);expect(exported.ok()).toBe(true);
+  await page.getByLabel('选择真实装配模型 JSON',{exact:true}).setInputFiles({name:'curved-covers.json',mimeType:'application/json',buffer:await exported.body()});
+  const imported=page.waitForResponse(r=>r.url().endsWith('/api/parts-foundation/assembly/models/import')&&r.request().method()==='POST');
+  await page.getByRole('button',{name:'验证导入模型',exact:true}).click();
+  expect((await(await imported).json()).status).toBe('VALID');await expect(credits).toContainText('Magnus Forsberg');
+  await expect(page.locator('.assembly-native-stage canvas')).toBeVisible();
+  await mkdir('artifacts/surface-body-modules/screenshots',{recursive:true});
+  await page.locator('.assembly-native-stage').screenshot({path:'artifacts/surface-body-modules/screenshots/paired-curved-covers.png'});
+});
+
 test('normal assembly UI generates a credited source module and reimports its complete model',async({page})=>{
   await page.goto('/part-lab?mode=assembly');
   await expect(page.getByLabel('生成时包含的零件',{exact:true})).toBeVisible();

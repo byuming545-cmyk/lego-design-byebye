@@ -45,7 +45,8 @@
     "evidence:source-production": "tsx src/cli/source-production-evidence.ts",
     "evidence:modules": "tsx src/cli/module-reuse.ts",
     "evidence:module-composition": "tsx src/cli/module-composition.ts",
-    "review:collision-methods": "tsx src/cli/collision-method-review.ts"
+    "review:collision-methods": "tsx src/cli/collision-method-review.ts",
+    "evidence:surface-modules": "tsx src/cli/surface-body-modules.ts"
   },
   "dependencies": {
     "@fontsource/noto-sans-sc": "^5.2.9",

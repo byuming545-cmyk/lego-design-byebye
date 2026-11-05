@@ -1,0 +1,429 @@
+{
+  "baseline": "ba619e9",
+  "branch": "codex/surface-body-modules",
+  "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0",
+  "versions": {
+    "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+    "assemblyEngineVersion": "native-assembly-0.8.0-import-snapshot",
+    "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-2",
+    "collisionVersion": "native-exterior-shell-4.1.0-contact-regions"
+  },
+  "counts": {
+    "total": 255,
+    "assemblyVerified": 0,
+    "generatable": 106,
+    "blocked": 149,
+    "verifiedInterfaces": 0,
+    "disabledInterfaces": 2543,
+    "testedPhysicalInterfaces": 0,
+    "deferredPhysicalInterfaces": 5026,
+    "deferredRawConnectionIds": 5091,
+    "wheelModulesVerified": 0,
+    "physicalBuildsVerified": 0
+  },
+  "qualifications": {
+    "structural": 106,
+    "exterior": 128
+  },
+  "sourceImports": 0,
+  "qualificationChanges": 0,
+  "unchangedNativeFiles": 993,
+  "models": [
+    {
+      "name": "cover-right-3001",
+      "request": {
+        "module": "module-assembly",
+        "requiredPartIds": [
+          "3001"
+        ],
+        "requiredModuleIds": [
+          "75878-curved-cover-right"
+        ]
+      },
+      "placements": 4,
+      "edges": 10,
+      "steps": 4,
+      "bom": [
+        {
+          "partId": "15068",
+          "name": "Slope Brick Curved  2 x  2 x  0.667",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3001",
+          "name": "Brick  2 x  4",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3022",
+          "name": "Plate  2 x  2",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3069b",
+          "name": "Tile  1 x  2 with Groove",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "moduleIds": [
+        "75878-curved-cover-right"
+      ],
+      "supportPoints": [
+        6
+      ],
+      "graphValid": true,
+      "reimport": "VALID"
+    },
+    {
+      "name": "cover-right-3020",
+      "request": {
+        "module": "module-assembly",
+        "requiredPartIds": [
+          "3020"
+        ],
+        "requiredModuleIds": [
+          "75878-curved-cover-right"
+        ]
+      },
+      "placements": 4,
+      "edges": 10,
+      "steps": 4,
+      "bom": [
+        {
+          "partId": "15068",
+          "name": "Slope Brick Curved  2 x  2 x  0.667",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3020",
+          "name": "Plate  2 x  4",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3022",
+          "name": "Plate  2 x  2",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3069b",
+          "name": "Tile  1 x  2 with Groove",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "moduleIds": [
+        "75878-curved-cover-right"
+      ],
+      "supportPoints": [
+        6
+      ],
+      "graphValid": true,
+      "reimport": "VALID"
+    },
+    {
+      "name": "cover-left-3001",
+      "request": {
+        "module": "module-assembly",
+        "requiredPartIds": [
+          "3001"
+        ],
+        "requiredModuleIds": [
+          "75878-curved-cover-left"
+        ]
+      },
+      "placements": 4,
+      "edges": 10,
+      "steps": 4,
+      "bom": [
+        {
+          "partId": "15068",
+          "name": "Slope Brick Curved  2 x  2 x  0.667",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3001",
+          "name": "Brick  2 x  4",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3022",
+          "name": "Plate  2 x  2",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3069b",
+          "name": "Tile  1 x  2 with Groove",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "moduleIds": [
+        "75878-curved-cover-left"
+      ],
+      "supportPoints": [
+        6
+      ],
+      "graphValid": true,
+      "reimport": "VALID"
+    },
+    {
+      "name": "paired-covers-3035",
+      "request": {
+        "module": "module-assembly",
+        "requiredPartIds": [
+          "3035"
+        ],
+        "requiredModuleIds": [
+          "75878-curved-cover-right",
+          "75878-curved-cover-left"
+        ]
+      },
+      "placements": 7,
+      "edges": 20,
+      "steps": 7,
+      "bom": [
+        {
+          "partId": "15068",
+          "name": "Slope Brick Curved  2 x  2 x  0.667",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3022",
+          "name": "Plate  2 x  2",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3035",
+          "name": "Plate  4 x  8",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3069b",
+          "name": "Tile  1 x  2 with Groove",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "moduleIds": [
+        "75878-curved-cover-right",
+        "75878-curved-cover-left"
+      ],
+      "supportPoints": [
+        6,
+        6
+      ],
+      "graphValid": true,
+      "reimport": "VALID"
+    },
+    {
+      "name": "paired-covers-3031",
+      "request": {
+        "module": "module-assembly",
+        "requiredPartIds": [
+          "3031"
+        ],
+        "requiredModuleIds": [
+          "75878-curved-cover-right",
+          "75878-curved-cover-left"
+        ]
+      },
+      "placements": 7,
+      "edges": 18,
+      "steps": 7,
+      "bom": [
+        {
+          "partId": "15068",
+          "name": "Slope Brick Curved  2 x  2 x  0.667",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3022",
+          "name": "Plate  2 x  2",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3031",
+          "name": "Plate  4 x  4",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3069b",
+          "name": "Tile  1 x  2 with Groove",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "moduleIds": [
+        "75878-curved-cover-right",
+        "75878-curved-cover-left"
+      ],
+      "supportPoints": [
+        6,
+        4
+      ],
+      "graphValid": true,
+      "reimport": "VALID"
+    },
+    {
+      "name": "hood-cover-3035",
+      "request": {
+        "module": "module-assembly",
+        "requiredPartIds": [
+          "3035"
+        ],
+        "requiredModuleIds": [
+          "76897-hood-core",
+          "75878-curved-cover-right"
+        ]
+      },
+      "placements": 9,
+      "edges": 28,
+      "steps": 9,
+      "bom": [
+        {
+          "partId": "15068",
+          "name": "Slope Brick Curved  2 x  2 x  0.667",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "2412b",
+          "name": "Tile  1 x  2 Grille with Groove",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3022",
+          "name": "Plate  2 x  2",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3035",
+          "name": "Plate  4 x  8",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3069b",
+          "name": "Tile  1 x  2 with Groove",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3460",
+          "name": "Plate  1 x  8",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "3666",
+          "name": "Plate  1 x  6",
+          "quantity": 1,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        },
+        {
+          "partId": "54200",
+          "name": "Slope Brick 31  1 x  1 x  0.667",
+          "quantity": 2,
+          "ldrawColor": 16,
+          "colorAvailability": "not-verified"
+        }
+      ],
+      "moduleIds": [
+        "76897-hood-core",
+        "75878-curved-cover-right"
+      ],
+      "supportPoints": [
+        8,
+        6
+      ],
+      "graphValid": true,
+      "reimport": "VALID"
+    }
+  ],
+  "failures": [],
+  "histories": [
+    {
+      "file": "artifacts/collision-method-review/models/hood-rear-3035/model.json",
+      "sha256": "73ab7f496e99ff4f322d97ec5f751ef492d54e1b55b5220cbb4ebdc72dd8efe2",
+      "currentImport": "NEEDS_REVALIDATION",
+      "reasons": [
+        "Module source/validation versions are missing, unsupported or stale."
+      ],
+      "bytesPreserved": true
+    },
+    {
+      "file": "artifacts/collision-method-review/models/15068/model.json",
+      "sha256": "e5d947a26aea08c7a7915362973fb6b23b9143556e5d94f85b455f8819723cd3",
+      "currentImport": "VALID",
+      "reasons": [],
+      "bytesPreserved": true
+    }
+  ],
+  "actualCoverage": {
+    "models": 6,
+    "partIds": [
+      "15068",
+      "2412b",
+      "3001",
+      "3020",
+      "3022",
+      "3031",
+      "3035",
+      "3069b",
+      "3460",
+      "3666",
+      "54200"
+    ],
+    "newlyUsedCoverIdentity": "15068",
+    "newFunctionalRecipes": 2,
+    "newSourceDesignFunctions": 1,
+    "fullCockpits": 0,
+    "fullCars": 0
+  },
+  "interpretation": "Two source variants of one body-cover function, reused with existing native parts. No structural upgrade, tyre/wheel, installation path or physical stability certification."
+}
