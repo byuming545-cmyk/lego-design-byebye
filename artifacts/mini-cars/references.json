@@ -1,0 +1,29 @@
+{
+  "adoption": "Reuse current repository components and current source records; no external implementation transplanted.",
+  "nativeGeometry": {
+    "implementation": "src/parts/assembly/source.ts: NativePartRepository, accessed through MiniCatalog",
+    "records": "models/*/sources.json",
+    "identities": 15,
+    "newSourceFiles": 0,
+    "licensing": "Per-file source licence, author, fixed revision, size and hash remain in the source records; no Studio or PDF data packaged."
+  },
+  "renderer": {
+    "component": "src/components/NativeAssemblyViewer.tsx",
+    "dependency": "three",
+    "version": "0.180.0",
+    "licence": "MIT",
+    "change": "Optional design colour and view inputs; existing defaults retained."
+  },
+  "layout": {
+    "authorship": "Project-designed appearance layouts",
+    "geometryCreation": false,
+    "thirdPartyVehicleRecipeCopied": false
+  },
+  "userReferences": {
+    "use": "Silhouette, layered body coverage, ordinary black window band and colour layout only",
+    "hiddenInterfacesInferred": false,
+    "partIdsInferredFromScreenshots": false
+  },
+  "newDependencies": [],
+  "sourceOfTruth": "The existing fixed LDraw/Shadow library. No duplicate native part catalogue."
+}

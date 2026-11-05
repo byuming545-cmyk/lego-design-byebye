@@ -1,0 +1,41 @@
+{
+  "checks": {
+    "version": "mini-appearance-checks-1",
+    "rigidTransforms": true,
+    "sourceIntegrity": true,
+    "wheelCount": 4,
+    "bilateralBounds": true,
+    "bodyWidthLdu": 120,
+    "bodyBounds": {
+      "min": [
+        -60,
+        -60,
+        -150
+      ],
+      "max": [
+        60,
+        24,
+        150
+      ]
+    },
+    "scope": "layout-and-source-only",
+    "collision": "UNKNOWN",
+    "connections": "NOT_VERIFIED",
+    "wheelFit": "UNKNOWN",
+    "physicalBuildVerified": false
+  },
+  "expectedRoles": [
+    "chassis",
+    "body",
+    "window",
+    "roof",
+    "wheel"
+  ],
+  "reproducible": true,
+  "savedAndReopened": true,
+  "idempotentSave": true,
+  "formalImport": "REJECTED",
+  "generateMs": 68.99374900000112,
+  "triangles": 39192,
+  "visualInspection": "See actual browser side/top/perspective images. Automatic checks cover layout and source, not solid collision or support."
+}

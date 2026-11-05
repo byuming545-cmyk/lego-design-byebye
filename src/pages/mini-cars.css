@@ -1,0 +1,38 @@
+.mini-cars { padding: 40px 48px 60px; max-width: 1440px; margin: auto; }
+.mini-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+.mini-eyebrow { font: 10px var(--mono); letter-spacing: 2px; color: #7c8b73; }
+.mini-heading h1 { font-size: 27px; letter-spacing: -1px; margin: 10px 0; }
+.mini-heading p { color: #7a8376; line-height: 1.9; margin: 0; font-size: 12px; }
+.mini-draft-badge { border: 1px solid #d9dfd0; border-radius: 30px; padding: 10px 15px; color: #66725f; font-size: 10px; white-space: nowrap; }
+.mini-workspace { display: grid; grid-template-columns: 245px minmax(0,1fr); gap: 22px; }
+.mini-controls { padding: 25px; background: #fff; border: 1px solid #e2e6db; border-radius: 15px; display: flex; flex-direction: column; gap: 24px; }
+.mini-controls label:not(.mini-check) { display: grid; gap: 10px; font-size: 12px; font-weight: 600; }
+.mini-controls select, .mini-controls input:not([type=checkbox]) { width: 100%; min-width: 0; padding: 11px; background: #f7f8f3; border: 1px solid #dfe5d6; border-radius: 7px; color: #384530; }
+.mini-controls small { font-weight: 400; font-size: 10px; color: #88927f; line-height: 1.7; }
+.mini-controls fieldset { border: 0; padding: 0; margin: 0; }
+.mini-controls legend { font-size: 12px; font-weight: 600; margin-bottom: 12px; }
+.mini-swatches { display: flex; gap: 12px; }
+.mini-swatches button { height: 31px; width: 31px; border-radius: 50%; border: 1px solid #cdd4c5; display: grid; place-items: center; }
+.mini-swatches button[aria-pressed=true] { outline: 2px solid #65775a; outline-offset: 3px; }
+.mini-check { display: flex; align-items: center; gap: 8px; font-size: 12px; }.mini-check input { accent-color: #52684c; }
+.mini-primary, .mini-secondary { display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 42px; border-radius: 8px; font-size: 12px; }
+.mini-primary { background: #3f5a37; color: #fff; border: 0; }.mini-secondary { background: #f5f7ef; color: #5c6e50; border: 1px solid #dee5d3; margin-top: -14px; }
+.mini-cars button:disabled { opacity: .45; cursor: not-allowed; }.mini-scope { font-size: 10px; color: #87917d; line-height: 1.9; margin: auto 0 0; }
+.mini-preview { overflow: hidden; border: 1px solid #e0e6d7; border-radius: 15px; background: #fff; min-width: 0; }
+.mini-preview-bar { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 20px 24px; }
+.mini-preview-bar strong { display: block; font-size: 14px; }.mini-preview-bar span { display: block; margin-top: 7px; color: #8a947f; font-size: 10px; }
+.mini-views { display: flex; border: 1px solid #e2e7da; border-radius: 6px; overflow: hidden; flex-shrink: 0; }
+.mini-views button { border: 0; border-right: 1px solid #e2e7da; padding: 8px 11px; font-size: 10px; color: #718064; background: #fff; }.mini-views button:last-child { border-right: 0; }.mini-views button[aria-pressed=true] { color: #344c2c; background: #eaf0e0; }
+.mini-preview .assembly-native-stage, .mini-empty { height: 490px; background: radial-gradient(ellipse at 50% 70%,#e8ede2,#fafbf7 75%); position: relative; }
+.mini-preview .assembly-native-canvas { position: absolute; inset: 0; }.mini-preview .assembly-native-canvas canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+.mini-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; color: #a0ad91; gap: 15px; }.mini-empty p { color: #78876c; margin: 0; font-size: 13px; }.mini-empty span { font-size: 10px; }
+.mini-export { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding: 18px 24px; }
+.mini-export button, .mini-records button { display: inline-flex; align-items: center; gap: 7px; background: #fff; color: #506149; border: 1px solid #dce3d3; border-radius: 7px; padding: 9px 12px; font-size: 11px; }
+.mini-export span { margin-left: auto; color: #8a947e; font-size: 10px; }
+.mini-error, .mini-notice { padding: 14px 20px; border-radius: 8px; line-height: 1.8; }.mini-error { color: #9b493a; background: #f9eee8; }.mini-notice { color: #4a633b; background: #edf4e4; }
+.mini-records { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 24px; }.mini-records section { min-width: 0; border: 1px solid #e0e6d7; background: #fff; border-radius: 12px; padding: 22px; }
+.mini-records h2 { display: flex; align-items: center; gap: 9px; font-size: 13px; margin: 0 0 15px; }.mini-records p { font-size: 11px; line-height: 1.8; color: #8a947f; }.mini-records form { display: flex; gap: 8px; flex-wrap: wrap; }.mini-records input { font-size: 11px; max-width: 100%; }
+.mini-saved { display: flex; gap: 8px; flex-wrap: wrap; max-height: 170px; overflow: auto; }.mini-saved button { flex-direction: column; gap: 5px; }.mini-saved small { font-size: 9px; color: #939b8a; }
+.mini-bom { background: #fff; border: 1px solid #e0e6d7; border-radius: 12px; padding: 20px 24px; margin-top: 22px; }.mini-bom summary { cursor: pointer; font-size: 12px; color: #526549; }.mini-bom p { color: #87917c; line-height: 1.8; font-size: 10px; }.mini-table-scroll { overflow-x: auto; }.mini-bom table { width: 100%; text-align: left; font-size: 11px; border-collapse: collapse; margin: 15px 0; }.mini-bom th, .mini-bom td { padding: 10px 8px; border-bottom: 1px solid #edf0e6; }.mini-bom th { color: #829177; font-size: 10px; }.mini-bom a { color: #53694a; }
+@media(max-width:1000px) { .mini-cars { padding: 28px; }.mini-workspace { grid-template-columns: 210px minmax(0,1fr); gap: 15px; }.mini-controls { padding: 20px; }.mini-preview-bar { flex-wrap: wrap; }.mini-preview .assembly-native-stage,.mini-empty { height: 420px; } }
+@media(max-width:680px) { .mini-cars { padding: 22px 16px 40px; }.mini-heading { flex-wrap: wrap; gap: 14px; }.mini-heading h1 { font-size: 22px; }.mini-heading p { font-size: 11px; }.mini-workspace { grid-template-columns: minmax(0,1fr); }.mini-controls { gap: 18px; }.mini-preview-bar { padding: 16px; }.mini-preview .assembly-native-stage,.mini-empty { height: 350px; }.mini-export { padding: 14px; gap: 7px; }.mini-export button { padding: 9px; font-size: 10px; }.mini-export span { width: 100%; margin: 3px 0 0; }.mini-records { grid-template-columns: minmax(0,1fr); gap: 15px; }.mini-bom { padding: 16px; }.mini-bom td { font-size: 10px; } }

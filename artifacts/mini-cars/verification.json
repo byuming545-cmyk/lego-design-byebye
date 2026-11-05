@@ -1,0 +1,266 @@
+{
+  "date": "2026-11-05T13:42:39.896809+00:00",
+  "baseline": "3cbf8ace4a804f1a0d5c90816e19c1bacb37e6e3",
+  "branch": "codex/mini-car-appearance",
+  "result": "PASS_FOR_APPEARANCE_WORKSPACE",
+  "commands": [
+    {
+      "command": "npm test -- tests/mini-cars.test.ts tests/mini-cars-api.test.ts --maxWorkers=1",
+      "exitCode": 0,
+      "passed": 35,
+      "failed": 0,
+      "log": "logs/targeted-final.log"
+    },
+    {
+      "command": "npm test -- --maxWorkers=1 --reporter=default --reporter=json --outputFile=artifacts/mini-cars/unit-results.json",
+      "exitCode": 0,
+      "files": 69,
+      "passed": 938,
+      "failed": 0,
+      "skipped": 0,
+      "log": "logs/unit.log",
+      "report": "unit-results.json"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "log": "logs/typecheck.log"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "includes": [
+        "typecheck",
+        "vite build",
+        "server compilation"
+      ],
+      "log": "logs/build-final.log"
+    },
+    {
+      "command": "npm run test:e2e -- --reporter=list",
+      "exitCode": 0,
+      "passed": 21,
+      "failed": 0,
+      "log": "logs/browser.log",
+      "scope": "All configured browser tests; before the final save-protection change."
+    },
+    {
+      "command": "npm run test:e2e -- mini-cars.spec.ts --reporter=list",
+      "exitCode": 0,
+      "passed": 2,
+      "failed": 0,
+      "log": "logs/browser-final-mini.log",
+      "scope": "Affected desktop/mobile mini page rerun after final save-protection change."
+    },
+    {
+      "command": "npm run test:preview",
+      "exitCode": 0,
+      "passed": 8,
+      "failed": 0,
+      "log": "logs/preview.log",
+      "scope": "Compiled app, new mini route and related existing routes after save-protection change."
+    },
+    {
+      "command": "npm run evidence:mini-cars",
+      "exitCode": 0,
+      "models": 4,
+      "sourceFilesUnchanged": 993,
+      "log": "logs/generation-final.log"
+    }
+  ],
+  "initialFailuresRetained": [
+    {
+      "command": "npm run typecheck",
+      "result": "FAILED_THEN_FIXED",
+      "log": "logs/typecheck-initial.log",
+      "reason": "Literal schema/state types inferred too broadly; explicit document type added."
+    },
+    {
+      "command": "npm test -- --maxWorkers=1 --reporter=default --reporter=json --outputFile=artifacts/mini-cars/unit-results.json",
+      "result": "FAILED_THEN_RERUN",
+      "passed": 937,
+      "failed": 1,
+      "log": "logs/unit-initial.log",
+      "report": "unit-initial-results.json",
+      "reason": "Conflict regression added while the first full process still had the earlier save implementation. Preserve this failure; accept only the later frozen-business-code 938/938 run."
+    }
+  ],
+  "sourceCounts": {
+    "before": {
+      "native": 255,
+      "structural": 106,
+      "exterior": 128
+    },
+    "after": {
+      "native": 255,
+      "structural": 106,
+      "exterior": 128
+    },
+    "categoriesNotAdditive": true
+  },
+  "appearance": {
+    "modelCount": 4,
+    "existingIdentitiesUsed": 15,
+    "instances": [
+      68,
+      79,
+      65,
+      79
+    ],
+    "bodyWidthLdu": 120,
+    "wheelCountPerModel": 4,
+    "roundtrip": "4/4 VALID_APPEARANCE",
+    "formalImport": "4/4 REJECTED"
+  },
+  "visualInspection": {
+    "browser": "Chromium/WebGL",
+    "views": [
+      "perspective",
+      "side",
+      "top",
+      "mobile"
+    ],
+    "compiledGalleryModelIdsExact": true,
+    "pageErrors": [],
+    "humanReview": "Reviewed final images including all four variants, fixed early visible side gaps with real side-cover pieces. Shape remains angular; no precision collision claim."
+  },
+  "proofLimits": {
+    "collision": "UNKNOWN",
+    "connections": "NOT_VERIFIED",
+    "wheelFit": "UNKNOWN",
+    "physicalBuild": false,
+    "formalWholeCarCertificates": 0,
+    "buildInstructionsDelivered": false,
+    "colorAvailability": "NOT_VERIFIED",
+    "notVerified": [
+      "tyre-rim mechanics",
+      "wheel-to-chassis connection",
+      "insertion path",
+      "retention force",
+      "physical stability",
+      "exact mesh symmetry",
+      "arbitrary vehicle reproduction"
+    ]
+  },
+  "preservation": {
+    "originalNativeFilesUnchanged": 993,
+    "formalPipelinesUnchanged": true,
+    "historicalScreenshotsRestored": 4,
+    "userExampleFileCreatedOrOverwritten": false,
+    "newThirdPartyDependencies": 0,
+    "automaticPushMergeDeploy": false
+  },
+  "notExecuted": [
+    "Physical assembly tests",
+    "Full mechanical wheel/rotation and solid-collision certification",
+    "Automatic image search or model-specific reconstruction (outside scope)"
+  ],
+  "remainingTechnicalIssue": "Existing Vite main bundle size warning above 500 kB; build succeeds. No new dependency introduced.",
+  "digests": [
+    {
+      "path": "logs/browser-final-mini.log",
+      "bytes": 821,
+      "sha256": "2de67fc379e3f50b5913a508f4743bf1a19a272c9bca8eac758ddd5a208e086d"
+    },
+    {
+      "path": "logs/browser-initial.log",
+      "bytes": 821,
+      "sha256": "e5854681673bc000214b87dc99ac9c2776b5fdd88bc4911bd8b31a1b8b1869cf"
+    },
+    {
+      "path": "logs/browser-layout.log",
+      "bytes": 821,
+      "sha256": "bb8f8bde7ca47dc81ff3824019eeaca5df038acbdf039e1c1861262623513a5b"
+    },
+    {
+      "path": "logs/browser.log",
+      "bytes": 4235,
+      "sha256": "57b312e72d49fcfd70a6fb9df0859179cc52539b16db4d90c58c766b6ae683ae"
+    },
+    {
+      "path": "logs/build-final.log",
+      "bytes": 17568,
+      "sha256": "8ca6cba2520344d478674c3f14ad9a9fa94426215089c5209cd411bef5357b31"
+    },
+    {
+      "path": "logs/build.log",
+      "bytes": 17568,
+      "sha256": "4960a38ff196c4312a3007ac36b0bb640c0f4740c47139d765bb5a74a601e054"
+    },
+    {
+      "path": "logs/gallery.log",
+      "bytes": 58,
+      "sha256": "cc8425f17b3ac2ae45f59c02cdf87a65a8ea6c2719382c016956f9d24ecd803e"
+    },
+    {
+      "path": "logs/generation-final.log",
+      "bytes": 1750,
+      "sha256": "e530a635a1c23e9b775587f7f44014bc424be9480ad3660781835eb8c1a3771d"
+    },
+    {
+      "path": "logs/generation.log",
+      "bytes": 1752,
+      "sha256": "4366bf5c80012b4f45371518c56e8b495ad778565a6ad2b05ad917bec4f1c2a0"
+    },
+    {
+      "path": "logs/preview.log",
+      "bytes": 2489,
+      "sha256": "a448f35977d844d31910f3634a5586fe20db3ce1124de0eeb3faf04725d596c3"
+    },
+    {
+      "path": "logs/targeted-final.log",
+      "bytes": 287,
+      "sha256": "278dcb613cd3090adcd6743da6b8a35e57567b6ad8e93b95d6a2acac09f8fca1"
+    },
+    {
+      "path": "logs/targeted-initial.log",
+      "bytes": 287,
+      "sha256": "b54a9947d7b6890493d7a16a4f3c20d7423fb6c6c8378667778cc4b548eba750"
+    },
+    {
+      "path": "logs/targeted.log",
+      "bytes": 287,
+      "sha256": "f70aad5a803710568e25a99217d383bbf4206ab1c48fd68943a4264051c01e62"
+    },
+    {
+      "path": "logs/typecheck-initial.log",
+      "bytes": 496,
+      "sha256": "3175aa1a4c40945e135fe608ddc8aa8a4d8d2c2c474e37d6033e9dbd8eb7951a"
+    },
+    {
+      "path": "logs/typecheck.log",
+      "bytes": 44,
+      "sha256": "3592444819dfae518a74ac126e0821691a41ef43bcdef4e828322c64beaaf938"
+    },
+    {
+      "path": "logs/unit-initial.log",
+      "bytes": 24832,
+      "sha256": "f34d8d776a04d73579ba361ae672abe6f2e306424e7b8a2d7d67f6aa39669671"
+    },
+    {
+      "path": "logs/unit.log",
+      "bytes": 20382,
+      "sha256": "9a82ebd4969898a348918cf66763417bc0fd878fa1fb88cf894f8c8e94c4dd04"
+    },
+    {
+      "path": "unit-results.json",
+      "bytes": 381818,
+      "sha256": "dadad7d5f9e51da2c3f4c7c34bd3df58eb5a6d26457b27bbd826bdbdd45d08b8"
+    },
+    {
+      "path": "unit-initial-results.json",
+      "bytes": 382408,
+      "sha256": "b9fc4f8079e047c12c987b158404894575e6ddc9e276c5499c617d1d72f35664"
+    },
+    {
+      "path": "generation-results.json",
+      "bytes": 4244,
+      "sha256": "57d5359299f596c48cd0e83efb9cfefd758c25902a1366e5ecb1d89a1bf58039"
+    },
+    {
+      "path": "gallery.json",
+      "bytes": 1141,
+      "sha256": "699e65fe06c6a2e214314023bc79d8fdd628992f4e468c29f1327b31e0deaabc"
+    }
+  ]
+}

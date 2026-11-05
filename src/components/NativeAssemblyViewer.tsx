@@ -49,7 +49,7 @@ function disposeScene(scene: THREE.Scene) {
 }
 
 /** Meshes and solved transforms are supplied by the assembly API, with no shape fallback. */
-export default function NativeAssemblyViewer({ placements, assets, debug, showConnections, showProxies, showPath, showZones }: {
+export default function NativeAssemblyViewer({ placements, assets, debug, showConnections, showProxies, showPath, showZones, designColors, view = 'perspective' }: {
   placements: AssemblyPlacement[];
   assets: Record<string, AssemblyAsset>;
   debug?: AssemblyDebugView;
@@ -57,6 +57,9 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
   showProxies: boolean;
   showPath: boolean;
   showZones: boolean;
+  /** Optional design colours for independent appearance documents. */
+  designColors?: Record<string, string>;
+  view?: 'perspective' | 'side' | 'top';
 }) {
   const host = useRef<HTMLDivElement>(null);
   const [error, setError] = useState('');
@@ -75,7 +78,7 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power', preserveDrawingBuffer: true });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.outputColorSpace = THREE.SRGBColorSpace;
-      renderer.domElement.setAttribute('aria-label', '原生网格与装配求解结果三维视图');
+      renderer.domElement.setAttribute('aria-label', designColors ? '迷你跑车三维预览' : '原生网格与装配求解结果三维视图');
       renderer.domElement.setAttribute('role', 'img');
       container.appendChild(renderer.domElement);
       const native = new THREE.Group();
@@ -83,7 +86,7 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
       scene.add(native);
       const geometryCache = new Map<string, THREE.BufferGeometry>();
       const colors = ['#a5ba83', '#84b8b5', '#d6b480', '#ada5cb', '#d2927f'];
-      const partMaterials = new Map<number, THREE.MeshStandardMaterial>();
+      const partMaterials = new Map<string, THREE.MeshStandardMaterial>();
       placements.forEach((placement, index) => {
         const asset = assets[placement.partId];
         if (!asset?.mesh.positions.length || !asset.mesh.indices.length) throw new Error(`零件 ${placement.partId} 缺少可显示的真实网格。`);
@@ -101,11 +104,11 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
         instance.name = placement.instanceId;
         instance.matrix.copy(matrixFor(placement.transform));
         instance.matrixAutoUpdate = false;
-        const colorIndex = index % colors.length;
-        let material = partMaterials.get(colorIndex);
+        const designColor = designColors?.[placement.instanceId] ?? colors[index % colors.length];
+        let material = partMaterials.get(designColor);
         if (!material) {
-          material = new THREE.MeshStandardMaterial({ color: colors[colorIndex], roughness: 0.48, metalness: 0.02, side: THREE.DoubleSide });
-          partMaterials.set(colorIndex, material);
+          material = new THREE.MeshStandardMaterial({ color: designColor, roughness: 0.48, metalness: 0.02, side: THREE.DoubleSide });
+          partMaterials.set(designColor, material);
         }
         instance.add(new THREE.Mesh(geometry, material));
         if (showConnections && asset.connections?.length) {
@@ -158,7 +161,9 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
       });
       const center = bounds.getCenter(new THREE.Vector3());
       const camera = new THREE.PerspectiveCamera(38, 1, Math.max(extent / 1000, 0.01), extent * 100);
-      camera.position.copy(center).add(new THREE.Vector3(extent, extent * 0.8, extent * 1.2));
+      const offset = view === 'side' ? new THREE.Vector3(extent * 1.55, 0, 0) : view === 'top' ? new THREE.Vector3(0, extent * 1.55, 0.01) : new THREE.Vector3(extent, extent * 0.8, extent * 1.2);
+      if (view === 'top') camera.up.set(0, 0, -1);
+      camera.position.copy(center).add(offset);
       controls = new OrbitControls(camera, renderer.domElement);
       controls.target.copy(center);
       controls.enableDamping = true;
@@ -179,7 +184,7 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
       animate();
     } catch (reason) { release(); setError(reason instanceof Error ? reason.message : '无法显示三维装配结果。'); }
     return release;
-  }, [placements, assets, debug, showConnections, showProxies, showPath, showZones, revision]);
+  }, [placements, assets, debug, showConnections, showProxies, showPath, showZones, designColors, view, revision]);
 
-  return <div className="assembly-native-stage"><div ref={host} className="assembly-native-canvas" />{error && <div className="assembly-viewer-error" role="status"><strong>装配三维视图暂不可用</strong><p>{error}</p><p>变换、检查结果和失败原因仍可在下方查看。</p></div>}<span className="assembly-stage-hint">真实源网格 · LDraw LDU 坐标 · 拖动旋转</span><button className="part-reset-view" onClick={() => setRevision((value) => value + 1)}><RotateCcw size={13} />重置视角</button></div>;
+  return <div className="assembly-native-stage"><div ref={host} className="assembly-native-canvas" />{error && <div className="assembly-viewer-error" role="status"><strong>装配三维视图暂不可用</strong><p>{error}</p><p>变换、检查结果和失败原因仍可在下方查看。</p></div>}<span className="assembly-stage-hint">{designColors ? '真实零件外观草稿 · 拖动旋转' : '真实源网格 · LDraw LDU 坐标 · 拖动旋转'}</span><button className="part-reset-view" onClick={() => setRevision((value) => value + 1)}><RotateCcw size={13} />重置视角</button></div>;
 }

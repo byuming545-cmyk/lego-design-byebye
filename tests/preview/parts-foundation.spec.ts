@@ -4,6 +4,17 @@ import { expectConnectedAssembly, expectCoverageMatches, expectGrammarAssessment
 
 test.setTimeout(180_000);
 
+test('compiled mini car workspace remains independent and roundtrips its coloured appearance document',async({request,page})=>{
+  await page.goto('/mini-cars');await expect(page.getByRole('heading',{name:'小比例，也有跑车的轮廓。'})).toBeVisible();
+  const response=await request.post('/api/mini-cars/generate',{data:{style:'sprint',color:'yellow',seed:'compiled',spoiler:true}});
+  expect(response.ok()).toBe(true);const result=await response.json();expect(result.model.state).toBe('APPEARANCE_DRAFT');expect(result.model.wheels).toHaveLength(4);
+  expect(result.model.placements.length).toBeGreaterThan(32);
+  expect((await request.post('/api/mini-cars/models',{data:{model:result.model}})).ok()).toBe(true);
+  const exported=await request.get(`/api/mini-cars/models/${result.model.id}/export`);expect(exported.ok()).toBe(true);
+  const imported=await request.post('/api/mini-cars/models/import',{data:{content:await exported.text()}});expect((await imported.json()).model).toEqual(result.model);
+  expect((await request.post('/api/speed/generate',{data:{}})).status()).toBe(409);
+});
+
 test('compiled generator uses current multi-piece surface cover recipes and reimports both credits',async({request})=>{
   const response=await request.post('/api/parts-foundation/assembly/generate',{data:{kind:'module-assembly',requiredPartIds:['3035'],requiredModuleIds:['75878-curved-cover-right','75878-curved-cover-left']}});
   expect(response.ok()).toBe(true);const result=await response.json();expect(result.status,result.reasons.join(' ')).toBe('generated');

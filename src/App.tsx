@@ -29,6 +29,7 @@ import SpeedCreative from "./pages/SpeedCreative.js";
 import AutomotiveDesigner from "./pages/AutomotiveDesigner.js";
 import PartLab from "./pages/PartLab.js";
 import InterfaceLibrary from "./pages/InterfaceLibrary.js";
+import MiniCars from "./pages/MiniCars.js";
 import { LEGACY_OPERATIONS_BLOCKED } from "./parts/legacyStatus.js";
 import type {
   GenerationOptions,
@@ -128,10 +129,10 @@ function Toggle({
 }
 
 export default function App() {
-  type Area = 'general' | 'speed' | 'automotive' | 'automotive-lab' | 'part-lab' | 'interface-library';
+  type Area = 'general' | 'speed' | 'automotive' | 'automotive-lab' | 'part-lab' | 'interface-library' | 'mini-cars';
   const currentArea = (): Area => {
     const route = (window.location.hash ? window.location.hash.slice(1) : window.location.pathname).split('?')[0];
-    return route === '/automotive-lab' ? 'automotive-lab' : route === '/automotive' ? 'automotive' : route === '/speed' ? 'speed' : route === '/general' ? 'general' : route === '/interface-library' ? 'interface-library' : 'part-lab';
+    return route === '/mini-cars' ? 'mini-cars' : route === '/automotive-lab' ? 'automotive-lab' : route === '/automotive' ? 'automotive' : route === '/speed' ? 'speed' : route === '/general' ? 'general' : route === '/interface-library' ? 'interface-library' : 'part-lab';
   };
   const [area, setArea] = useState<Area>(currentArea);
   const automotiveActive = area === 'automotive' || area === 'automotive-lab';
@@ -321,6 +322,7 @@ export default function App() {
         <nav aria-label="主导航">
           <button className={area === 'part-lab' ? 'nav-link active' : 'nav-link'} onClick={() => { window.location.hash = '/part-lab'; setArea('part-lab'); }}>真实零件库</button>
           <button className={area === 'interface-library' ? 'nav-link active' : 'nav-link'} onClick={() => { window.location.hash = '/interface-library'; setArea('interface-library'); }}>接口与拼接库</button>
+          <button className={area === 'mini-cars' ? 'nav-link active' : 'nav-link'} onClick={() => { window.location.hash = '/mini-cars'; setArea('mini-cars'); }}>迷你跑车</button>
           <button
             className={area === 'general' && view === "model" ? "nav-link active" : "nav-link"}
             onClick={() => { window.location.hash = '/general'; setArea('general'); setView("model"); }}
@@ -338,14 +340,15 @@ export default function App() {
           </button>
         </nav>
         <button className="version-button" onClick={() => setAboutOpen(true)}>
-          <span className="status-dot" /> {area === 'interface-library' ? 'INTERFACE LIBRARY' : area === 'part-lab' ? 'PART LAB' : area === 'speed' ? 'V0.2.1' : 'V0.1'}{" "}
-          <span className="version-label">· {area === 'interface-library' ? '来源绑定' : area === 'part-lab' ? '来源核验中' : '历史原型'}</span>
+          <span className="status-dot" /> {area === 'mini-cars' ? 'MINI CARS' : area === 'interface-library' ? 'INTERFACE LIBRARY' : area === 'part-lab' ? 'PART LAB' : area === 'speed' ? 'V0.2.1' : 'V0.1'}{" "}
+          <span className="version-label">· {area === 'mini-cars' ? '外观草稿' : area === 'interface-library' ? '来源绑定' : area === 'part-lab' ? '来源核验中' : '历史原型'}</span>
           <ArrowUpRight size={14} />
         </button>
       </header>
 
-      {area !== 'part-lab' && area !== 'interface-library' && <div className="legacy-foundation-banner" role="status"><ShieldCheck size={18} /><p><strong>历史版本 · 参数化零件尚未验证</strong>当前优先建立真实零件基础，旧版生成与模型导出已暂停。已有检查结果不代表真实乐高零件验证。</p><a href="#/part-lab">查看真实零件库 <ArrowRight size={14} /></a></div>}
+      {area !== 'part-lab' && area !== 'interface-library' && area !== 'mini-cars' && <div className="legacy-foundation-banner" role="status"><ShieldCheck size={18} /><p><strong>历史版本 · 参数化零件尚未验证</strong>当前优先建立真实零件基础，旧版生成与模型导出已暂停。已有检查结果不代表真实乐高零件验证。</p><a href="#/part-lab">查看真实零件库 <ArrowRight size={14} /></a></div>}
       {area === 'part-lab' && <PartLab />}
+      {area === 'mini-cars' && <MiniCars />}
       {area === 'interface-library' && <InterfaceLibrary />}
       {(speedOpened || area === 'speed') && <div hidden={area !== 'speed'}><SpeedCreative /></div>}
       {(automotiveOpened || automotiveActive) && <div hidden={!automotiveActive}><AutomotiveDesigner lab={area === 'automotive-lab'} /></div>}
@@ -975,7 +978,7 @@ export default function App() {
         </section>
       </main>
 
-      <footer hidden={automotiveActive || area === 'part-lab' || area === 'interface-library'}>
+      <footer hidden={automotiveActive || area === 'part-lab' || area === 'interface-library' || area === 'mini-cars'}>
         <span className="footer-brand">bricklab.</span>
         <span>为每一块积木，寻找下一种可能。</span>
         <span>独立创意原型 · 与 LEGO® 集团无关联</span>
@@ -1011,30 +1014,30 @@ export default function App() {
         <span className="brand-icon">
           <Box size={26} />
         </span>
-        <div className="eyebrow">BRICKLAB · {area === 'part-lab' ? 'PART LAB · REAL PARTS FOUNDATION' : area === 'speed' ? 'SPEED CREATIVE V0.2.1 · VALIDATION EDITION' : 'V0.1'}</div>
+        <div className="eyebrow">BRICKLAB · {area === 'mini-cars' ? 'MINI CARS · APPEARANCE STUDIO' : area === 'part-lab' ? 'PART LAB · REAL PARTS FOUNDATION' : area === 'speed' ? 'SPEED CREATIVE V0.2.1 · VALIDATION EDITION' : 'V0.1'}</div>
         <h2>
-          {area === 'part-lab' ? '从真实资料，' : '让已有的积木，'}
+          {area === 'mini-cars' ? '从真实零件，' : area === 'part-lab' ? '从真实资料，' : '让已有的积木，'}
           <br />
-          {area === 'part-lab' ? '到可信零件。' : '遇见新的想象。'}
+          {area === 'mini-cars' ? '到迷你跑车。' : area === 'part-lab' ? '到可信零件。' : '遇见新的想象。'}
         </h2>
         <p>
-          {area === 'part-lab'
+          {area === 'mini-cars' ? '迷你跑车是独立的六格宽外观工作区，使用现有真实数字零件，提供短轴与长轴车身、配色和方案保存。' : area === 'part-lab'
             ? '真实零件库整理本地说明书中的观测记录，导入有版本和许可来源的 LDraw 几何与连接数据，并逐项显示验证范围。'
             : area === 'speed'
             ? 'Speed Creative 是独立的原创汽车工作台，按实际库存生成约 8 stud 宽的模块化小车。设计与文字修改由有限规则驱动。'
             : '这是一个规则驱动的创意重拼原型，目前支持机器人、汽车、房子与小动物四种基础模板。'}
         </p>
-        <h3>{area === 'part-lab' ? '关于资料与编号' : '关于演示数据'}</h3>
+        <h3>{area === 'mini-cars' ? '关于零件与颜色' : area === 'part-lab' ? '关于资料与编号' : '关于演示数据'}</h3>
         <p>
-          {area === 'part-lab'
+          {area === 'mini-cars' ? '几何来自固定版本、许可及哈希可核对的 LDraw 数据。配色是设计指定色，尚未核实每种零件的实物颜色供应。' : area === 'part-lab'
             ? '说明书附录的 Element ID 与 Design ID、LDraw 编号分别登记。缺少可靠映射、颜色或备件信息时，资料保留为待核对，不使用猜测补全。'
             : area === 'speed'
             ? 'DEMO-SPEED 是人工合成的独立零件池，不代表任何官方套装。真实套装需要在服务器配置 Rebrickable API Key，缺少 Key 时不会用演示零件替代。'
             : '未配置 Rebrickable 时，10696 与 11013 使用人工编写的演示库存，并非对应官方套装的真实零件清单。真实数据由服务器端的 Rebrickable 数据源提供。'}
         </p>
-        <h3>{area === 'part-lab' ? '关于生成准入' : '关于拼搭校验'}</h3>
+        <h3>{area === 'mini-cars' ? '关于外观草稿' : area === 'part-lab' ? '关于生成准入' : '关于拼搭校验'}</h3>
         <p>
-          {area === 'part-lab'
+          {area === 'mini-cars' ? '外观检查关注比例、四轮布局和来源。轮胎轮毂、车轴、碰撞与实物稳定性尚未验证，不作为正式装配通过或实拼说明书。' : area === 'part-lab'
             ? '几何或连接导入成功，不表示零件已完成拼接与净空验证。当前旧版生成及导出暂停；PDF 观测也不代表神经网络训练或整车三维还原。'
             : area === 'speed'
             ? '自动校验检查库存、连接、碰撞、轮组与规则式结构支撑。它不证明真实积木一定可以拼出。实拼反馈由用户实际尝试后自报，并关联具体模型版本；未实拼为 untested。'

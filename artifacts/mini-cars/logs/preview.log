@@ -1,0 +1,28 @@
+
+> bricklab@0.6.0 test:preview
+> playwright test --config playwright.preview.config.ts
+
+[WebServer] (node:196150) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[WebServer] (node:196178) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+(node:196186) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [preview-chromium] › tests/preview/parts-foundation.spec.ts:7:1 › compiled mini car workspace remains independent and roundtrips its coloured appearance document (1.8s)
+  ✓  2 [preview-chromium] › tests/preview/parts-foundation.spec.ts:18:1 › compiled generator uses current multi-piece surface cover recipes and reimports both credits (20.8s)
+  ✓  3 [preview-chromium] › tests/preview/parts-foundation.spec.ts:27:1 › compiled preview serves Part Lab, bundled native geometry, fonts and API on one origin (5.5s)
+  ✓  4 [preview-chromium] › tests/preview/parts-foundation.spec.ts:58:1 › compiled routes preserve source evidence and generation restrictions (303ms)
+  ✓  5 [preview-chromium] › tests/preview/parts-foundation.spec.ts:85:1 › compiled assembly API derives source grammar attachment and exports a currently validated real wall (336ms)
+  ✓  6 [preview-chromium] › tests/preview/parts-foundation.spec.ts:127:1 › compiled module paths retain reviewed data, design credit and full JSON revalidation (5.0s)
+  ✓  7 [preview-chromium] › tests/preview/parts-foundation.spec.ts:157:1 › compiled generator installs two different modules with current multi-point evidence (6.3s)
+  ✓  8 [preview-chromium] › tests/preview/parts-foundation.spec.ts:171:1 › compiled generator interprets a single required exterior identity as a goal, not both mating roles (52ms)
+
+  8 passed (1.1m)
