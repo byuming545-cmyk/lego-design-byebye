@@ -1,0 +1,67 @@
+{
+  "references": [
+    {
+      "repository": "https://github.com/gkjohnson/three-mesh-bvh",
+      "revision": "247a4202865dfe1f0864de4996e8191b3bd693bb",
+      "licence": "MIT",
+      "absorption": "A: study methods; independently implement using existing project math. No source code transplanted or installed.",
+      "functions": [
+        "ExtendedTriangle.intersectsTriangle",
+        "coplanarIntersectsTriangle",
+        "intersectsGeometry"
+      ],
+      "files": [
+        {
+          "path": "src/math/ExtendedTriangle.js",
+          "url": "https://github.com/gkjohnson/three-mesh-bvh/blob/247a4202865dfe1f0864de4996e8191b3bd693bb/src/math/ExtendedTriangle.js",
+          "sha256": "20e6af81044d9c5d095da0e838ea7d9f1c1ecb129f1280bc7ddd71ff43c8f6c5"
+        },
+        {
+          "path": "src/core/cast/intersectsGeometry.template.js",
+          "url": "https://github.com/gkjohnson/three-mesh-bvh/blob/247a4202865dfe1f0864de4996e8191b3bd693bb/src/core/cast/intersectsGeometry.template.js",
+          "sha256": "ce885fe7080c417abc6d28a03c12a88df7f7c3b51066abf1f300f974f241bb31"
+        },
+        {
+          "path": "test/Math.TriangleIntersections.test.js",
+          "url": "https://github.com/gkjohnson/three-mesh-bvh/blob/247a4202865dfe1f0864de4996e8191b3bd693bb/test/Math.TriangleIntersections.test.js",
+          "sha256": "3ea732ec4dc91d012478f3597d7ea523ab8ce59ecbb6a565cc00b82200022a92"
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/libigl/libigl",
+      "revision": "b41f1944a703653ae0da81e6588650ba14c270ea",
+      "licence": "MPL-2.0 for reviewed winding core files",
+      "absorption": "A: study methods; independently implement using existing project math. No source code transplanted or installed.",
+      "functions": [
+        "igl::winding_number",
+        "WindingNumberAABB",
+        "tutorial interior-tet threshold"
+      ],
+      "files": [
+        {
+          "path": "include/igl/winding_number.h",
+          "url": "https://github.com/libigl/libigl/blob/b41f1944a703653ae0da81e6588650ba14c270ea/include/igl/winding_number.h",
+          "sha256": "3652dc30c490d0ef7522867b25edd793eebb675a1b384ae7794cd574cd3eb02d"
+        },
+        {
+          "path": "include/igl/winding_number.cpp",
+          "url": "https://github.com/libigl/libigl/blob/b41f1944a703653ae0da81e6588650ba14c270ea/include/igl/winding_number.cpp",
+          "sha256": "792408d116acd0c22864703425c6d0c8ace5007539b1c2bf41f81c19ce147e26"
+        },
+        {
+          "path": "include/igl/WindingNumberAABB.h",
+          "url": "https://github.com/libigl/libigl/blob/b41f1944a703653ae0da81e6588650ba14c270ea/include/igl/WindingNumberAABB.h",
+          "sha256": "90bdef7bec38d03cd8f4fa82d20d0a618bf8be60d8eaeef032a38c57e936b811"
+        },
+        {
+          "path": "tutorial/702_WindingNumber/main.cpp",
+          "url": "https://github.com/libigl/libigl/blob/b41f1944a703653ae0da81e6588650ba14c270ea/tutorial/702_WindingNumber/main.cpp",
+          "sha256": "25663e44351cc276db1ebe0655f349afbc86ea048d3a3a9e34da5addd7c598cd"
+        }
+      ]
+    }
+  ],
+  "thirdPartyCodeExecuted": false,
+  "newDependencies": []
+}

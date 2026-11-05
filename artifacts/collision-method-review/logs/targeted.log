@@ -1,0 +1,16 @@
+
+> bricklab@0.6.0 test
+> vitest run tests/parts-surface-contact.test.ts tests/parts-assembly-connections.test.ts tests/parts-assembly-collision.test.ts tests/parts-collision-local-partition.test.ts --maxWorkers=1
+
+
+ RUN  v5.0.5 /workspace/lego-import-collision
+
+
+ Test Files  4 passed (4)
+      Tests  48 passed (48)
+   Start at  10:51:10
+   Duration  6.69s (tests 94%, transform 3%, import 2%)
+
+    Isolate  4 workers spawned · ~122ms startup each (spawn + environment, per file)
+             at least ~366ms faster with isolate: false — reuses workers across files instead of one per file
+

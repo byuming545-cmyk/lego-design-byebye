@@ -1,0 +1,27 @@
+
+> bricklab@0.6.0 review:collision-methods
+> tsx src/cli/collision-method-review.ts
+
+{"selection":{"module":"exterior-shell","requiredPartIds":["11477"]},"before":"blocked","current":"generated","reimport":"VALID"}
+{"selection":{"module":"exterior-shell","requiredPartIds":["3001"]},"before":"blocked","current":"generated","reimport":"VALID"}
+{"selection":{"module":"bar-clip","requiredPartIds":["30374"]},"before":"blocked","current":"generated","reimport":"VALID"}
+{"selection":{"module":"pin-hole","requiredPartIds":["3673"]},"before":"blocked","current":"generated","reimport":"VALID"}
+{"name":"30374+48729b/0","before":"clear","current":"clear","reason":"open-surface-seat-clearance"}
+{"name":"30374+48729b/90","before":"clear","current":"clear","reason":"open-surface-seat-clearance"}
+{"name":"30374+48729b/180","before":"clear","current":"clear","reason":"open-surface-seat-clearance"}
+{"name":"30374+48729b/270","before":"clear","current":"clear","reason":"open-surface-seat-clearance"}
+{"name":"30374+60470b/0","before":"collision","current":"collision","reason":"open-surface-contact-outside-seat"}
+{"name":"30374+60470b/90","before":"collision","current":"collision","reason":"open-surface-contact-outside-seat"}
+{"name":"30374+60470b/180","before":"collision","current":"collision","reason":"open-surface-contact-outside-seat"}
+{"name":"30374+60470b/270","before":"collision","current":"collision","reason":"open-surface-contact-outside-seat"}
+{"name":"3673+32000/0","before":"clear","current":"clear","reason":"open-surface-seat-clearance"}
+{"name":"3673+32000/90","before":"clear","current":"clear","reason":"open-surface-seat-clearance"}
+{"name":"3673+32000/180","before":"clear","current":"clear","reason":"open-surface-seat-clearance"}
+{"name":"3673+32000/270","before":"clear","current":"clear","reason":"open-surface-seat-clearance"}
+{"name":"C01-legal","before":"clear","current":"clear","reason":"native-solid-clearance"}
+{"name":"C01-real-intrusion","before":"collision","current":"collision","reason":"solid-volume-intersection"}
+{"name":"source-spoiler-unchanged","before":"collision","current":"collision","reason":"solid-volume-intersection"}
+{"name":"generated-exterior-11477","before":"clear","current":"clear","reason":"exterior-surface-clear"}
+{"name":"generated-exterior-15068","before":"clear","current":"clear","reason":"exterior-surface-clear"}
+{"name":"generated-exterior-18973","before":"clear","current":"clear","reason":"exterior-surface-clear"}
+{"name":"generated-exterior-65633","before":"clear","current":"clear","reason":"exterior-surface-clear"}

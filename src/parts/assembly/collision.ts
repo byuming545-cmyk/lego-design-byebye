@@ -6,8 +6,9 @@ import { add, cross, distance, dot, isRigidTransform, length, normalize, rotate,
 import { placementCollisionClass } from './types.js';
 import { boundsOverlap, buildNativeCollisionProxy, polygonArea, splitConvexPolygon, nativeBounds } from './proxy.js';
 import type { CollisionProxy, CollisionTriangle, MeshBounds, Plane, TriangleBvh } from './proxy.js';
+import { intersectCoplanarSourceTriangles } from './surfaceContact.js';
 
-export const COLLISION_VERSION = 'native-exterior-shell-4.0.0';
+export const COLLISION_VERSION = 'native-exterior-shell-4.1.0-contact-regions';
 /** A numerical surface-comparison tolerance, not modified LEGO geometry. */
 export const COLLISION_TOLERANCE_LDU = 0.0001;
 const EPS = COLLISION_TOLERANCE_LDU;
@@ -431,7 +432,15 @@ function deriveNativePairCollision(fixedPart: NativeAssemblyPart, fixedPlacement
         if (!boundsOverlap(openFace.bounds, closedFace.bounds, EPS)) continue;
         if (++triangleTests > MAX_TRIANGLE_TESTS || triangleTests % 128 === 0 && performance.now() > deadline) return result('blocked', 'collision-resource-limit', 'The open-surface face-pair budget was exceeded; no clearance certificate is granted.');
         if (coplanarFaces(openFace, closedFace)) {
-          for (const vertex of [...openFace.vertices, ...closedFace.vertices]) if (consider(vertex)) break outer;
+          const contact = intersectCoplanarSourceTriangles(openFace, closedFace, EPS);
+          if (contact.status === 'unknown') return result('blocked', 'open-surface-coplanar-unresolved', contact.reason);
+          if (contact.status === 'disjoint') continue;
+          proof.coplanarContacts++;
+          for (const point of contact.points) if (consider(point)) {
+            proof.surfaceDiagnostic = { triangle: openFace.vertices, sourceTriangle: openFace.sourceTriangle,
+              cell: contact.points, probe: point, classification: 'coplanar-contact-outside-seat', outsideSeat: true };
+            break outer;
+          }
           continue;
         }
         for (let edge = 0; edge < 3; edge++) {
@@ -447,8 +456,15 @@ function deriveNativePairCollision(fixedPart: NativeAssemblyPart, fixedPlacement
     if (outsideSeat) return result('collision', 'open-surface-contact-outside-seat', 'An open source shell intersects its closed counterpart outside the source-declared cylindrical seat; the local connection zone grants no exemption.', outsideSeat);
     for (const face of open.triangles) for (const vertex of face.vertices) {
       if (++triangleTests > MAX_TRIANGLE_TESTS) return result('blocked', 'collision-resource-limit', 'The open-surface containment budget was exceeded; no clearance certificate is granted.');
+      if (triangleTests % 128 === 0 && performance.now() > deadline) return result('blocked', 'collision-computation-budget', 'The open-surface point-classification budget was exceeded; no clearance certificate is granted.');
       const seatExceptions = zone.spatial && penetrationZone && penetrationZone.ruleId === PIN_HOLE_RULE_ID && pointInSeat(vertex, penetrationZone);
-      if (classifyPoint(closed, vertex) === 'inside' && !seatExceptions) { openVertexInsideClosed = vertex; break; }
+      const decision = assessSourceSurfaceCell([vertex], point => classifyPoint(closed, point), () => !!seatExceptions);
+      if (decision.status === 'blocked') {
+        proof.surfaceDiagnostic = { triangle: face.vertices, sourceTriangle: face.sourceTriangle, cell: [vertex], probe: vertex,
+          classification: decision.classification, outsideSeat: decision.outsideSeat };
+        return result('blocked', 'open-surface-point-classification-unknown', 'An open-source vertex has unresolved counterpart occupancy; UNKNOWN cannot certify clearance.', vertex);
+      }
+      if (decision.status === 'collision') { openVertexInsideClosed = vertex; break; }
     }
     if (openVertexInsideClosed) return result('collision', 'open-surface-vertex-inside-solid', 'An open source shell has a vertex strictly inside the closed counterpart; surface contact inside the seat cannot justify solid penetration.', openVertexInsideClosed);
     proof.openSurfaceSeatChecked = true; proof.completeSurfacePartition = false; proof.containmentChecked = false;

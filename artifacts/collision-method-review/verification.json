@@ -1,0 +1,135 @@
+{
+  "recordedAt": "2026-11-05T11:21:02.004870+00:00",
+  "baseline": "548b5feeb9d58b689c10d253899b734cd81c73aa",
+  "workBranch": "codex/collision-method-review",
+  "finalChecks": {
+    "unit": {
+      "command": "npm test -- --maxWorkers=1 --reporter=default --reporter=json --outputFile=artifacts/collision-method-review/unit-results.json",
+      "exitCode": 0,
+      "testFiles": 66,
+      "passed": 885,
+      "failed": 0,
+      "skipped": 0
+    },
+    "browser": {
+      "command": "CI=1 npm run test:e2e -- --reporter=list",
+      "exitCode": 0,
+      "passed": 18
+    },
+    "compiledPreview": {
+      "command": "npm run test:preview",
+      "exitCode": 0,
+      "passed": 6,
+      "buildOnStartup": true
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "repeatedByFinalBuild": true
+    },
+    "build": {
+      "command": "npm run build",
+      "exitCode": 0,
+      "existingBundleSizeAdvisory": true
+    },
+    "realCases": {
+      "command": "npm run review:collision-methods",
+      "exitCode": 0,
+      "samePoseCollisionComparisons": 19,
+      "unchangedOverallVerdicts": 19,
+      "singleIdentitySelectionFixes": 4,
+      "currentExportReimportExamples": 5,
+      "allValid": true
+    }
+  },
+  "countsBeforeAndAfter": {
+    "sourceIdentities": [
+      255,
+      255
+    ],
+    "structuralEligibility": [
+      106,
+      106
+    ],
+    "independentExteriorEligibility": [
+      128,
+      128
+    ],
+    "newSources": 0,
+    "newEligibility": 0,
+    "promotions": 0,
+    "warning": "Eligibility counts describe separate contracts, not physical verification or actual generator coverage. Do not add them as disjoint sets."
+  },
+  "nativeSourceFilesUnchanged": 993,
+  "trackedDataUnchanged": true,
+  "collisionVersions": {
+    "before": "native-exterior-shell-4.0.0",
+    "current": "native-exterior-shell-4.1.0-contact-regions"
+  },
+  "oldModelImportStatus": "NEEDS_REVALIDATION",
+  "contactCorrectionScope": "12 local face-pair false positives removed for 30374/60470b, but 12 actual out-of-seat contacts remain; whole pair still rejects.",
+  "physicalBuildsVerified": 0,
+  "notExecuted": [
+    "physical build",
+    "installation trajectory",
+    "retention forces",
+    "wheel module validation",
+    "full sports car validation"
+  ],
+  "thirdPartyCodeExecuted": false,
+  "newDependencies": [],
+  "logFiles": {
+    "browser-before-selection.log": {
+      "sha256": "e500a421a73a658a72adfb7dc666f6d474fed66b5d143cb8b34e7ebcba70d4a1",
+      "bytes": 3594
+    },
+    "browser.log": {
+      "sha256": "b53a376ddc04049ac10f5857d28670cfbb0c1e08f36a84ec7d75293f2d4640b7",
+      "bytes": 3758
+    },
+    "build-before-selection.log": {
+      "sha256": "2eb6d9367e31cd7f36e24ceaed1250c36cf71d20982ee3f206a5190b2fced190",
+      "bytes": 17568
+    },
+    "build.log": {
+      "sha256": "37771ea0ee017145adf8955b5e5839befb1fe5039482cf57f57221faebf49f9d",
+      "bytes": 17568
+    },
+    "comparison.log": {
+      "sha256": "afb09684a11248d1b019873967716018b3ef48dbdccf924707fdf78ab44755b2",
+      "bytes": 2590
+    },
+    "contact-initial.log": {
+      "sha256": "e39d38f04be93a823040f44ebedc904ff3e12d983e313360eb8de6a08593d0f7",
+      "bytes": 282
+    },
+    "preview-before-selection.log": {
+      "sha256": "8a7d3d07d0a5f36bd36affe35db1ea2a2215d747ee8b2b5523b923b8ed65f584",
+      "bytes": 1955
+    },
+    "preview.log": {
+      "sha256": "c203d076c36cb013899481c3d827319f1c535ebe0be410617eb05b62c537e4d4",
+      "bytes": 2127
+    },
+    "selection-targeted.log": {
+      "sha256": "f1375d7e19d7dd79a2a1c03d98ec0de67bd3689c1b668345b9619a9e94597393",
+      "bytes": 342
+    },
+    "targeted.log": {
+      "sha256": "37cc3ec0198734bd98ca69728ed2891da14673db88908f511e397148ccb4c91e",
+      "bytes": 595
+    },
+    "typecheck.log": {
+      "sha256": "3592444819dfae518a74ac126e0821691a41ef43bcdef4e828322c64beaaf938",
+      "bytes": 44
+    },
+    "unit-before-selection.log": {
+      "sha256": "515353081a2db811377dbe0ad1a3b406732ca0a9e6f8d67ae148b666a6448f7b",
+      "bytes": 20024
+    },
+    "unit.log": {
+      "sha256": "4e91a5d0a24b2447e36c112c69cda0590e71ca8888af73c7d9dcf30094fb1cc1",
+      "bytes": 19741
+    }
+  }
+}

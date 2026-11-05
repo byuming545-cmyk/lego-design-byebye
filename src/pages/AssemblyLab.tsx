@@ -13,10 +13,12 @@ interface PartSourceDetail {
 }
 interface MigrationEntry {
   partId: string;
+  name?: string;
   admissionBasis?: 'interface-grammar';
   status?: string;
   assemblyVerified: boolean;
   generatable: boolean;
+  exteriorGeneratable?: boolean;
   reasons?: string[];
   reasonCodes?: string[];
   interfaceCoverage?: InterfaceCoverageData;
@@ -132,6 +134,7 @@ export default function AssemblyLab() {
   const [importFile, setImportFile] = useState<File | null>(null);
   const [importResult, setImportResult] = useState<ImportedModelResult | null>(null);
   const [requiredPartId, setRequiredPartId] = useState('');
+  const [requiredSurfaceId, setRequiredSurfaceId] = useState('');
   const [generationPartCount, setGenerationPartCount] = useState('');
   const userSelected = useRef(false);
   const defaultApplied = useRef(false);
@@ -229,10 +232,13 @@ export default function AssemblyLab() {
     setBusy(kind); setError(''); setResponse(null); setModel(null); setImportResult(null);
     try {
       const paired = kind === 'paired-modules', sourceModule = paired || kind === 'module-assembly';
+      const fixedPair = ['bar-clip', 'pin-hole', 'exterior-shell'].includes(kind);
+      const requiredIds = [requiredPartId, ...(kind === 'exterior-shell' ? [requiredSurfaceId] : [])].filter(Boolean);
       const result = await post<AssemblyResponse>('/assembly/generate', { kind: paired ? 'module-assembly' : kind,
         ...(paired ? { requiredModuleIds: ['76897-hood-core', '76897-rear-panel-core'] } : {}),
-        ...(requiredPartId ? { requiredPartIds: [requiredPartId] } : {}), ...(!sourceModule && generationPartCount ? { partCount: Number(generationPartCount) } : {}) });
-      if (sourceModule && result.model?.placements) setGenerationPartCount(String(result.model.placements.length));
+        ...(requiredIds.length ? { requiredPartIds: requiredIds } : {}),
+        ...(fixedPair ? { partCount: 2 } : !sourceModule && generationPartCount ? { partCount: Number(generationPartCount) } : {}) });
+      if ((sourceModule || fixedPair) && result.model?.placements) setGenerationPartCount(String(result.model.placements.length));
       setResponse(result);
       await loadModel(result);
     } catch (reason) { setError(message(reason)); }
@@ -314,7 +320,7 @@ export default function AssemblyLab() {
       {!response && !!selectedPoints.filter(Boolean).length && <div className="assembly-selected-connections">{selectedPoints.map((point, index) => point && <p key={index}><strong>{index === 0 ? 'A' : 'B'} 来源连接</strong><span>{point.family} · {point.gender ?? '未指定'} · 位置 [{point.position.join(', ')}]</span>{point.source?.path && <small>{point.source.path}:{point.source.line}</small>}</p>)}</div>}
     </div>
 
-    <section className="assembly-smoke-tests"><div className="part-section-heading"><Layers3 size={18} /><div><h2>真实基础结构生成</h2><p>只使用当前获得生成准入的零件与连接；信息不足时返回具体阻塞原因。表面合同模块显式选择开壳外表面检查：只检查最终姿态的真实表面交叉与来源 seat 接触，不认证闭合实体、厚度、承重、安装路径或实物。</p></div></div><label className="assembly-field"><span>生成时包含的零件（可选）</span><select aria-label="生成时包含的零件" value={requiredPartId} disabled={!!busy || loading} onChange={event => setRequiredPartId(event.target.value)}><option value="">自动选件</option>{parts.filter(part => part.identitySystem === 'ldraw' && part.generatable).map(part => <option key={part.id} value={part.id}>{part.id} · {part.name}</option>)}</select></label><label className="assembly-field"><span>零件数量（可选，2–32；杆夹/销孔/表面合同模块固定 2，接口驱动组合至少 2，其他模块至少 3）</span><input aria-label="生成零件数量" type="number" min="2" max="32" placeholder="按结构默认数量" value={generationPartCount} disabled={!!busy || loading} onChange={event => setGenerationPartCount(event.target.value)} /></label><div className="assembly-module-buttons">{modules.map((module) => <button key={module.id} onClick={() => void generate(module.id)} disabled={!!busy || loading}>{busy === module.id ? <LoaderCircle size={14} className="part-spin" /> : <Play size={13} />}{module.label}</button>)}</div></section>
+    <section className="assembly-smoke-tests"><div className="part-section-heading"><Layers3 size={18} /><div><h2>真实基础结构生成</h2><p>只使用当前获得生成准入的零件与连接；信息不足时返回具体阻塞原因。表面合同模块显式选择开壳外表面检查：只检查最终姿态的真实表面交叉与来源 seat 接触，不认证闭合实体、厚度、承重、安装路径或实物。</p></div></div><label className="assembly-field"><span>生成时包含的零件（可选）</span><select aria-label="生成时包含的零件" value={requiredPartId} disabled={!!busy || loading} onChange={event => setRequiredPartId(event.target.value)}><option value="">自动选件</option>{parts.filter(part => part.identitySystem === 'ldraw' && part.generatable).map(part => <option key={part.id} value={part.id}>{part.id} · {part.name}</option>)}</select></label><label className="assembly-field"><span>表面覆盖零件（仅用于表面合同模块）</span><select aria-label="表面覆盖零件" value={requiredSurfaceId} disabled={!!busy || loading} onChange={event => setRequiredSurfaceId(event.target.value)}><option value="">自动选件</option>{(status?.entries ?? status?.queue ?? []).filter(part => part.exteriorGeneratable).map(part => <option key={part.partId} value={part.partId}>{part.partId} · {part.name ?? part.partId} · 仅表面合同</option>)}</select><small>可明确选择已有曲面、风挡或轮拱；仍需通过接口和碰撞检查，不作为承力认证。</small></label><label className="assembly-field"><span>零件数量（可选，2–32；杆夹/销孔/表面合同固定 2，来源模块按配方件数）</span><input aria-label="生成零件数量" type="number" min="2" max="32" placeholder="按结构默认数量" value={generationPartCount} disabled={!!busy || loading} onChange={event => setGenerationPartCount(event.target.value)} /></label><div className="assembly-module-buttons">{modules.map((module) => <button key={module.id} onClick={() => void generate(module.id)} disabled={!!busy || loading}>{busy === module.id ? <LoaderCircle size={14} className="part-spin" /> : <Play size={13} />}{module.label}</button>)}</div></section>
 
     <section className="assembly-model-import"><div className="part-section-heading"><Upload size={18} /><div><h2>重新导入真实装配模型</h2><p>检查当前来源、规则版本、连接口与连接图。旧资格失效时返回 NEEDS_REVALIDATION。</p></div></div><form onSubmit={importModel}><label className="assembly-import-file"><span>已导出的模型 JSON（最多 5 MiB）</span><input type="file" accept="application/json,.json" aria-label="选择真实装配模型 JSON" disabled={!!busy} onChange={(event) => { setImportFile(event.target.files?.[0] ?? null); setImportResult(null); }} /></label><button className="assembly-secondary" type="submit" disabled={!importFile || !!busy}>{busy === 'import' ? <LoaderCircle size={13} className="part-spin" /> : <Upload size={13} />}验证导入模型</button></form>{importResult && <div className={`assembly-import-status ${importResult.status === 'VALID' ? 'passed' : 'blocked'}`} role="status"><strong>{importResult.status}</strong><p>{importResult.status === 'VALID' ? '已按当前来源与接口规则重新核验，可查看并导出。' : '模型依赖的来源、版本或接口资格需要重新验证；当前不可导出。'}</p>{importResult.reasons.length > 0 && <ul>{importResult.reasons.map((reason, index) => <li key={index}>{reason}</li>)}</ul>}</div>}</section>
 

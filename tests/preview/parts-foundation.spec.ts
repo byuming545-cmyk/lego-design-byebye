@@ -147,3 +147,12 @@ test('compiled generator installs two different modules with current multi-point
   expect(imported.ok()).toBe(true); const model = await imported.json(); expect(model.status).toBe('VALID');
   expect(model.model.moduleComposition).toEqual(result.model.moduleComposition);
 });
+
+test('compiled generator interprets a single required exterior identity as a goal, not both mating roles', async ({ request }) => {
+  const response = await request.post('/api/parts-foundation/assembly/generate', { data: { kind: 'exterior-shell', requiredPartIds: ['11477'] } });
+  expect(response.ok()).toBe(true);
+  const result = await response.json(); expect(result.status, result.reasons.join(' ')).toBe('generated');
+  expect(result.model.placements.find((p: { partId: string }) => p.partId === '11477').collisionClass).toBe('exterior-shell');
+  const imported = await request.post('/api/parts-foundation/assembly/models/import', { data: { content: JSON.stringify(result.model) } });
+  expect(imported.ok()).toBe(true); expect((await imported.json()).status).toBe('VALID');
+});

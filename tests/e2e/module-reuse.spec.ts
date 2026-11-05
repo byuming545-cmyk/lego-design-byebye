@@ -56,3 +56,27 @@ test('normal UI composes two different source functions with multi-point mounts 
   await mkdir('artifacts/module-composition/screenshots',{recursive:true});
   await page.locator('.assembly-native-stage').screenshot({path:'artifacts/module-composition/screenshots/hood-rear-3035.png'});
 });
+
+test('existing surface parts can be selected and generated without granting structural eligibility',async({page})=>{
+  await page.goto('/part-lab?mode=assembly');
+  await page.getByLabel('生成时包含的零件',{exact:true}).selectOption('3001');
+  const surfaces=page.getByLabel('表面覆盖零件',{exact:true});await expect(surfaces).toBeVisible();
+  // Fixed two-part goals must not inherit a previous larger target count.
+  await page.getByLabel('生成零件数量',{exact:true}).fill('9');
+  let lastModel;
+  for(const partId of ['11477','18973']){
+    await surfaces.selectOption(partId);
+    const pending=page.waitForResponse(r=>r.url().endsWith('/api/parts-foundation/assembly/generate')&&r.request().method()==='POST');
+    await page.getByRole('button',{name:'表面合同模块',exact:true}).click();
+    const response=await pending, result=await response.json();expect(result.status,result.reasons.join(' ')).toBe('generated');
+    expect(response.request().postDataJSON()).toMatchObject({partCount:2,requiredPartIds:['3001',partId]});
+    expect(result.model.placements).toHaveLength(2);
+    expect(result.model.placements.find((p:{partId:string})=>p.partId===partId).collisionClass).toBe('exterior-shell');lastModel=result.model;
+    await expect(page.getByLabel('生成零件数量',{exact:true})).toHaveValue('2');
+    await expect(page.locator('.assembly-native-stage canvas')).toBeVisible();
+  }
+  const exported=await page.request.get(`/api/parts-foundation/assembly/models/${lastModel.id}/export?format=json`);expect(exported.ok()).toBe(true);
+  const imported=await page.request.post('/api/parts-foundation/assembly/models/import',{data:{content:await exported.text()}});expect((await imported.json()).status).toBe('VALID');
+  await mkdir('artifacts/collision-method-review/screenshots',{recursive:true});
+  await page.locator('.assembly-native-stage').screenshot({path:'artifacts/collision-method-review/screenshots/windscreen-18973.png'});
+});

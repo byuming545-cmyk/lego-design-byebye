@@ -201,4 +201,18 @@ describe('source-derived interface grammar admission', () => {
     expect(adopted.model?.bom.some(row => row.partId === '3623')).toBe(true);
     expect((await service.getEntry('3623'))!.assemblyVerified).toBe(false);
   }, 30_000);
+  it.each([
+    ['exterior-shell', '11477'], ['exterior-shell', '3001'], ['bar-clip', '30374'], ['pin-hole', '3673'],
+  ] as const)('honours a single required identity in either role of %s (%s)', async (module, partId) => {
+    const generated = await service.generate({ module, requiredPartIds: [partId] });
+    expect(generated.status, generated.reasons.join('; ')).toBe('generated');
+    expect(generated.model!.placements).toHaveLength(2);
+    expect(generated.model!.placements.some(part => part.partId === partId)).toBe(true);
+    expect((await service.importModel(JSON.parse(exportNativeAssemblyJson(generated.model!)))).status).toBe('VALID');
+  }, 30000);
+  it('does not satisfy the surface goal with two structural pieces, two shells or an unknown identity', async () => {
+    for (const requiredPartIds of [['3001', '3020'], ['11477', '15068'], ['no-source-part']]) {
+      expect(await service.generate({ module: 'exterior-shell', requiredPartIds })).toMatchObject({ status: 'blocked', model: null });
+    }
+  });
 });

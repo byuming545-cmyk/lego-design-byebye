@@ -394,13 +394,13 @@ export class NativeAssemblyGenerator {
       const roots = catalog.filter(part => part.capability.generatable && part.points.some(point => point.gender === 'M'));
       const shells = catalog.filter(part => part.capability.exteriorGeneratable && part.exteriorPoints.some(point => point.gender === 'F'));
       for (const root of roots) {
-        if (required.size && !required.has(root.native.partId)) continue;
+        if (required.size > 1 && !required.has(root.native.partId)) continue;
         search.testedRoots++;
         let base: NativeAssembly;
         try { base = await this.engine.createAssembly(root.native.partId); }
         catch (error) { recordRejection('root-admission', error instanceof Error ? error.message : 'Exterior root was not admitted.'); continue; }
         for (const candidate of shells) {
-          if (required.size && !required.has(candidate.native.partId)) continue;
+          if ([...required].some(id => id !== root.native.partId && id !== candidate.native.partId)) continue;
           if (candidate.native.partId === root.native.partId) continue;
           for (const rootPoint of root.points.filter(point => point.gender === 'M')) for (const connection of candidate.exteriorPoints.filter(point => point.gender === 'F')) for (const twistDegrees of [0, 90, 180, 270]) {
             if (budgetReached()) return block('合法表面合同搜索已达到预算，未移动或改造真实零件强行完成。');
@@ -425,13 +425,13 @@ export class NativeAssemblyGenerator {
       const bars = catalog.filter(part => part.points.some(isSourceDeclaredBarEndpoint));
       const clips = catalog.filter(part => part.points.some(isSourceDeclaredClipEndpoint));
       for (const root of bars) {
-        if (required.size && !required.has(root.native.partId)) continue;
+        if (required.size > 1 && !required.has(root.native.partId)) continue;
         search.testedRoots++;
         let base: NativeAssembly;
         try { base = await this.engine.createAssembly(root.native.partId); }
         catch (error) { recordRejection('root-admission', error instanceof Error ? error.message : 'Bar root was not admitted.'); continue; }
         for (const candidate of clips) {
-          if (required.size && !required.has(candidate.native.partId)) continue;
+          if ([...required].some(id => id !== root.native.partId && id !== candidate.native.partId)) continue;
           if (candidate.native.partId === root.native.partId) continue;
           const connections = candidate.points.filter(isSourceDeclaredClipEndpoint);
           for (const connection of connections) for (const twistDegrees of [0, 90, 180, 270]) {
@@ -456,13 +456,13 @@ export class NativeAssemblyGenerator {
       const pins = catalog.filter(part => part.points.some(isSourceDeclaredPinEndpoint));
       const holes = catalog.filter(part => part.points.some(isSourceDeclaredPinHoleEndpoint));
       for (const root of pins) {
-        if (required.size && !required.has(root.native.partId)) continue;
+        if (required.size > 1 && !required.has(root.native.partId)) continue;
         search.testedRoots++;
         let base: NativeAssembly;
         try { base = await this.engine.createAssembly(root.native.partId); }
         catch (error) { recordRejection('root-admission', error instanceof Error ? error.message : 'Pin root was not admitted.'); continue; }
         for (const candidate of holes) {
-          if (required.size && !required.has(candidate.native.partId)) continue;
+          if ([...required].some(id => id !== root.native.partId && id !== candidate.native.partId)) continue;
           if (candidate.native.partId === root.native.partId) continue;
           const connections = candidate.points.filter(isSourceDeclaredPinHoleEndpoint);
           for (const connection of connections) for (const twistDegrees of [0, 90, 180, 270]) {

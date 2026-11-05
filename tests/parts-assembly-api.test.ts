@@ -402,4 +402,14 @@ describe('reviewed source modules over the normal production API',()=>{
     const imported=await post(`${prefix}/assembly/models/import`,{content:await exported.text()});
     expect(await imported.json()).toMatchObject({status:'VALID',model:{moduleComposition:generated.model.moduleComposition,bom:generated.model.bom}});
   },30000);
+  it('selects one qualified exterior part without upgrading its structural authority',async()=>{
+    const response=await post(`${prefix}/assembly/generate`,{kind:'exterior-shell',requiredPartIds:['11477']});
+    expect(response.status).toBe(200);const generated=await response.json();expect(generated.status,generated.reasons.join(' ')).toBe('generated');
+    const panel=generated.model.placements.find((p:{partId:string})=>p.partId==='11477');expect(panel.collisionClass).toBe('exterior-shell');
+    const valid=await post(`${prefix}/assembly/models/import`,{content:JSON.stringify(generated.model)});expect(await valid.json()).toMatchObject({status:'VALID'});
+    panel.collisionClass='structural';
+    const {contentSha256:_old,...content}=generated.model;generated.model.contentSha256=createHash('sha256').update(JSON.stringify(content)).digest('hex');
+    const denied=await post(`${prefix}/assembly/models/import`,{content:JSON.stringify(generated.model)});
+    expect(await denied.json()).toMatchObject({status:'NEEDS_REVALIDATION',model:null});
+  },30000);
 });
