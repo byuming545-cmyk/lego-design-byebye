@@ -1,3 +1,4 @@
+import { createVehicleRouter } from '../vehicles/api.js';
 import { SourceSnapshotGuard, sourceSnapshotMiddleware } from '../parts/sourceSnapshot.js';
 import express, { type ErrorRequestHandler } from 'express';
 import { existsSync } from 'node:fs';
@@ -76,6 +77,7 @@ export function createApp(options: AppOptions = {}) {
   const studio = new AssemblyStudioService(partsRegistry.repository, dataDir);
   const sourceSnapshot = new SourceSnapshotGuard();
   app.use(['/api/parts-foundation', '/api/interface-library', '/api/mini-cars'], sourceSnapshotMiddleware(sourceSnapshot));
+  app.use('/api/vehicles', sourceSnapshotMiddleware(sourceSnapshot), createVehicleRouter());
   app.use('/api/mini-cars', createMiniCarsRouter(new MiniCarService(new MiniCatalog(partsRegistry.repository), dataDir)));
   app.use('/api/parts-foundation', createPartsFoundationRouter({ dataDir: options.partsDataDir, registry: partsRegistry }));
   app.use('/api/interface-library', createInterfaceLibraryRouter({ library: interfaceLibrary, studio }));

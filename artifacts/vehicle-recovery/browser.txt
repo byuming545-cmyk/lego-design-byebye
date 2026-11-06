@@ -1,0 +1,12 @@
+[WebServer] (node:5037) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:5045) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/vehicle-browser/workflow.spec.ts:2:1 › default entry accepts only vehicle identity and polls real task states (2.9s)
+  ✓  2 tests/vehicle-browser/workflow.spec.ts:68:1 › direct vehicle route preserves ordinary form input and exposes API errors (507ms)
+  ✓  3 tests/vehicle-browser/workflow.spec.ts:83:1 › reopens a persisted real support, revalidates export and renders native geometry (5.3s)
+
+  3 passed (9.8s)

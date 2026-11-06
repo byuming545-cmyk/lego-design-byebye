@@ -1,0 +1,25 @@
+
+> bricklab@0.6.0 test
+> vitest run --maxWorkers=1
+
+
+ RUN  v5.0.5 /workspace/lego-design-byebye
+
+ ❯ tests/vehicles.test.ts (18 tests | 1 failed) 49ms
+   ❯ vehicle recovery contracts (18)
+     × does not confuse trim tokens with unrelated words 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/vehicles.test.ts > vehicle recovery contracts > does not confuse trim tokens with unrelated words
+TypeError: titleVariantMatch is not a function
+ ❯ tests/vehicles.test.ts:19:69
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 69 passed (70)
+      Tests  1 failed | 955 passed (956)
+   Start at  16:03:32
+   Duration  403.00s (tests 99%, import 1%)

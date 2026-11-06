@@ -1,0 +1,38 @@
+{
+  "currentRun": {
+    "build": "passed (typecheck, Vite, server TypeScript)",
+    "fullUnit": {
+      "filesPassed": 71,
+      "testsPassed": 958,
+      "failed": 0
+    },
+    "newModuleTests": {
+      "filesPassed": 4,
+      "testsPassed": 23,
+      "note": "20 overlap with full run; 3 additional concurrency/cache/backoff tests"
+    },
+    "browser": {
+      "passed": 3,
+      "scope": "2 controlled API UI cases; 1 persisted actual native-support revalidation/render/export case"
+    },
+    "nativeSupportReimport": "VALID",
+    "realVisionRequests": 0,
+    "realVisionBlocker": "VISION_CREDENTIAL_MISSING",
+    "wheelModule": "blocked with 8 source/mechanical/evidence categories",
+    "gitDiffCheck": "passed"
+  },
+  "history": {
+    "initialFullUnit": {
+      "passed": 955,
+      "failed": 1,
+      "reason": "titleVariantMatch export added during active run; old transformed module cache. Final module and full rerun pass; no assertions removed."
+    }
+  },
+  "limitations": [
+    "complete Charger not generated",
+    "no restored 806c777 code",
+    "full body planning/assembly, wheels, stability and complete instructions remain incomplete",
+    "no physical build certification",
+    "environment draft saved for missing key only; no environment publication"
+  ]
+}

@@ -1,0 +1,15 @@
+
+> bricklab@0.6.0 test
+> vitest run --maxWorkers=1 tests/vehicles.test.ts tests/vehicles-api.test.ts tests/vehicles-network.test.ts tests/vehicles-capacity.test.ts
+
+
+ RUN  v5.0.5 /workspace/lego-design-byebye
+
+
+ Test Files  4 passed (4)
+      Tests  23 passed (23)
+   Start at  16:15:35
+   Duration  1.10s (tests 40%, transform 37%, import 22%, worker 2%)
+
+    Isolate  4 workers spawned · ~91ms startup each (spawn + environment, per file)
+             at least ~274ms faster with isolate: false — reuses workers across files instead of one per file

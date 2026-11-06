@@ -1,0 +1,183 @@
+import type { LDrawMesh } from "../parts/ldraw/types.js";
+import { randomUUID } from "node:crypto";
+import { mkdir, readFile, writeFile, rename } from "node:fs/promises";
+import path from "node:path";
+import { VehicleNativeAssembly } from "./native-assembly.js";
+import { researchVehicle } from "./research.js";
+import { analyzeVehicle } from "./vision-provider.js";
+import { planVehicle } from "./planner.js";
+import { parseInput, type Job, type Stage, type Event } from "./types.js";
+export class VehicleService {
+  private active = new Map<string, Promise<void>>();
+  private starting = 0;
+  constructor(
+    readonly directory = path.join(
+      process.env.BRICKLAB_DATA_DIR ?? "data",
+      "vehicle-platform",
+    ),
+    private assembly = new VehicleNativeAssembly(),
+  ) {}
+  private file(id: string) {
+    if (!/^[a-f0-9-]{36}$/.test(id)) throw Error("INVALID_JOB_ID");
+    return path.join(this.directory, id, "job.json");
+  }
+  private async save(job: Job) {
+    const file = this.file(job.id);
+    await mkdir(path.dirname(file), { recursive: true });
+    const tmp = file + "." + randomUUID() + ".tmp";
+    await writeFile(tmp, JSON.stringify(job, null, 2));
+    await rename(tmp, file);
+  }
+  async get(id: string): Promise<Job> {
+    const job = JSON.parse(await readFile(this.file(id), "utf8")) as Job;
+    if (job.state === "running" && !this.active.has(id))
+      return {
+        ...job,
+        state: "blocked",
+        error: "TASK_INTERRUPTED_NO_AUTOMATIC_RETRY",
+      };
+    return job;
+  }
+  async model(id: string) {
+    const job = await this.get(id);
+    const saved = (
+      job.assembly as { generated?: { model?: unknown } } | undefined
+    )?.generated?.model;
+    if (!saved) throw Error("NO_LOCAL_MODEL");
+    const checked = await this.assembly.importModel(saved);
+    if (checked.status !== "VALID" || !checked.model)
+      throw Error("MODEL_REQUIRES_REVALIDATION");
+    const assets: Record<string, { mesh: LDrawMesh }> = {};
+    for (const placement of checked.model.placements) {
+      const part = await this.assembly.repository.getPart(placement.partId);
+      if (!part?.geometry.mesh) throw Error("MODEL_SOURCE_UNAVAILABLE");
+      assets[placement.partId] = { mesh: part.geometry.mesh };
+    }
+    return { scope: "local-support-only", model: checked.model, assets };
+  }
+  async create(value: unknown) {
+    if (this.active.size + this.starting >= 2) throw Error("TASK_CAPACITY");
+    const job: Job = {
+      id: randomUUID(),
+      input: parseInput(value),
+      state: "running",
+      events: [],
+    };
+    this.starting++;
+    try {
+      await this.save(job);
+    } finally {
+      this.starting--;
+    }
+    const task = this.run(job)
+      .catch(() => {
+        job.state = "failed";
+        job.error = "TASK_STORAGE_FAILURE";
+      })
+      .finally(() => this.active.delete(job.id));
+    this.active.set(job.id, task);
+    return job;
+  }
+  async wait(id: string) {
+    await this.active.get(id);
+    return this.get(id);
+  }
+  private async run(job: Job) {
+    const event = async (
+      stage: Stage,
+      state: Event["state"],
+      detail: string,
+    ) => {
+      job.events.push({ at: new Date().toISOString(), stage, state, detail });
+      await this.save(job);
+    };
+    let current: Stage = "research";
+    try {
+      await event(
+        "research",
+        "running",
+        "Searching year-scoped sources and licensed image candidates",
+      );
+      const images = path.join(this.directory, job.id, "sources");
+      job.research = await researchVehicle(job.input, images);
+      await event(
+        "research",
+        job.research.issues.length ? "partial" : "passed",
+        `${job.research.measurements.length} dimension observations; ${job.research.images.length} title-candidate images`,
+      );
+      current = "vision";
+      await event(
+        "vision",
+        "running",
+        "Checking provider, cache, credentials and bounded budget",
+      );
+      try {
+        job.vision = await analyzeVehicle(job.research, images, this.directory);
+        await event(
+          "vision",
+          "passed",
+          "Provider response passed local contract validation",
+        );
+      } catch (e) {
+        await event(
+          "vision",
+          "blocked",
+          e instanceof Error ? e.message : "VISION_FAILED",
+        );
+      }
+      current = "planning";
+      if (job.vision) {
+        job.plan = planVehicle(job.research, job.vision);
+        await event(
+          "planning",
+          (job.plan as { status: string }).status === "blocked"
+            ? "blocked"
+            : "partial",
+          "Quantified design targets; no complete vehicle assembly",
+        );
+      } else
+        await event(
+          "planning",
+          "skipped",
+          "Visual evidence unavailable; no invented body proportions",
+        );
+      current = "assembly";
+      await event(
+        "assembly",
+        "running",
+        "Independent regression of existing native support; not a complete car",
+      );
+      const generated = await this.assembly.generate({
+        module: "simple-chassis",
+        partCount: 5,
+        requiredPartIds: ["3028", "3024"],
+      });
+      if (generated.model) {
+        const exported = structuredClone(generated.model),
+          reimport = await this.assembly.importModel(exported);
+        job.assembly = {
+          scope: "local-support-only",
+          generated,
+          reimport,
+          completeCar: false,
+          physicalBuild: "UNKNOWN",
+        };
+        await event(
+          "assembly",
+          reimport.status === "VALID" ? "partial" : "blocked",
+          "Local native model, BOM, steps and current reimport: " +
+            reimport.status,
+        );
+      } else {
+        job.assembly = generated;
+        await event("assembly", "blocked", generated.reasons.join("; "));
+      }
+      job.state = job.vision ? "partial" : "blocked";
+    } catch (e) {
+      job.state = "failed";
+      job.error = e instanceof Error ? e.message : "TASK_FAILED";
+      await event(current, "failed", job.error);
+    }
+    await this.save(job);
+  }
+}
