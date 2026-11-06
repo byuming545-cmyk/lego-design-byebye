@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "campaign": "vehicle-body-2026-11-07",
+  "enabled": false,
+  "maxRequests": 8,
+  "budgetFen": 500,
+  "reserveFenPerRequest": 100,
+  "provider": "dashscope",
+  "region": "beijing",
+  "model": "qwen3-vl-plus",
+  "maxOutputTokens": 6000,
+  "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing",
+  "priceCheckedAt": "2026-11-06T17:38:00Z",
+  "priceTiersCnyPerMillionTokens": [
+    [
+      32768,
+      1,
+      10
+    ],
+    [
+      131072,
+      1.5,
+      15
+    ],
+    [
+      262144,
+      3,
+      30
+    ]
+  ],
+  "reservationBasis": "Conservative full 256K input context at 3 CNY/M plus 6000 output at 30 CNY/M = 0.966432 CNY, rounded up to 1 CNY. Retain reservations even on failure. Thus this campaign stops after at most 5 paid attempts (also <=8). This is a local reservation, not a vendor billing hard cap."
+}

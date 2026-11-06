@@ -69,6 +69,7 @@ export function createApp(options: AppOptions = {}) {
   const feedbackJson = express.json({ limit: '1mb', strict: true });
   const referenceJson = express.json({ limit: '10mb', strict: true });
   const studioJson = express.json({ limit: '3mb', strict: true });
+  app.use('/api/vehicles/jobs/:id/preview/import', express.json({limit:'8mb',strict:true}));
   app.use('/api/mini-cars', express.json({ limit: '2mb', strict: true }));
   app.use((request, response, next) => (request.path === '/api/speed/models/import' ? modelJson : request.path === '/api/automotive/references/import' || request.path === '/api/parts-foundation/inventories/import' || request.path === '/api/parts-foundation/assembly/models/import' ? referenceJson : /^\/api\/speed\/models\/[^/]+\/feedback$/.test(request.path) ? feedbackJson : request.path.startsWith('/api/interface-library/studio') ? studioJson : defaultJson)(request, response, next));
   const dataDir = options.partsDataDir ?? process.env.BRICKLAB_DATA_DIR ?? 'data';

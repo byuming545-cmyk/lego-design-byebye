@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 2,
+  "identity": "confirmed",
+  "imageAssessments": [
+    {
+      "imageId": "a6d887705172ab8b31fe9492576960a2b342e337bdbe58050f5528a5295deeb8",
+      "view": "front",
+      "identity": "confirmed",
+      "modified": false,
+      "features": [
+        "long hood",
+        "split grille"
+      ],
+      "duplicateOf": null,
+      "vehicleType": "photo"
+    },
+    {
+      "imageId": "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+      "view": "side",
+      "identity": "confirmed",
+      "modified": false,
+      "features": [
+        "green paint",
+        "black vinyl roof"
+      ],
+      "duplicateOf": null,
+      "vehicleType": "photo"
+    },
+    {
+      "imageId": "13a7a9ee3d9f761e2d463c45cc86226e25ae3aa562476b5a2690856645a7e078",
+      "view": "front",
+      "identity": "confirmed",
+      "modified": false,
+      "features": [
+        "R/T badge",
+        "horizontal grille"
+      ],
+      "duplicateOf": null,
+      "vehicleType": "photo"
+    },
+    {
+      "imageId": "eeed1a1a1a916eed29f31245dd67b094d0bd9c0aa1ef62fcbe785bc12f9990c1",
+      "view": "front",
+      "identity": "confirmed",
+      "modified": false,
+      "features": [
+        "hood open",
+        "redline tires"
+      ],
+      "duplicateOf": "13a7a9ee3d9f761e2d463c45cc86226e25ae3aa562476b5a2690856645a7e078",
+      "vehicleType": "photo"
+    },
+    {
+      "imageId": "a92fb28640c3dab0f149997a50d6e5de90e483cbd29ff1627b884c66bbfe55ce",
+      "view": "front",
+      "identity": "confirmed",
+      "modified": false,
+      "features": [
+        "black paint",
+        "chrome bumper"
+      ],
+      "duplicateOf": null,
+      "vehicleType": "photo"
+    },
+    {
+      "imageId": "a427934395673b3ab6f17334f6e3068c9b036c2739fec860ffb034dd41c02134",
+      "view": "rear",
+      "identity": "confirmed",
+      "modified": false,
+      "features": [
+        "R/T stripe",
+        "tail light detail"
+      ],
+      "duplicateOf": null,
+      "vehicleType": "photo"
+    },
+    {
+      "imageId": "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e",
+      "view": "rear",
+      "identity": "confirmed",
+      "modified": false,
+      "features": [
+        "white stripe",
+        "dual exhaust"
+      ],
+      "duplicateOf": null,
+      "vehicleType": "photo"
+    },
+    {
+      "imageId": "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+      "view": "front",
+      "identity": "confirmed",
+      "modified": false,
+      "features": [
+        "blue paint",
+        "license plate OAT-723"
+      ],
+      "duplicateOf": null,
+      "vehicleType": "photo"
+    }
+  ],
+  "constraints": [
+    {
+      "name": "hoodLength",
+      "min": 0.42,
+      "max": 0.52,
+      "imageIds": [
+        "a6d887705172ab8b31fe9492576960a2b342e337bdbe58050f5528a5295deeb8",
+        "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "cabinStart",
+      "min": 0.52,
+      "max": 0.58,
+      "imageIds": [
+        "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+        "a92fb28640c3dab0f149997a50d6e5de90e483cbd29ff1627b884c66bbfe55ce"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "cabinEnd",
+      "min": 0.78,
+      "max": 0.84,
+      "imageIds": [
+        "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+        "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "roofHeight",
+      "min": 0.78,
+      "max": 0.83,
+      "imageIds": [
+        "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+        "a92fb28640c3dab0f149997a50d6e5de90e483cbd29ff1627b884c66bbfe55ce"
+      ],
+      "unit": "heightFraction"
+    },
+    {
+      "name": "wheelRadius",
+      "min": 0.22,
+      "max": 0.26,
+      "imageIds": [
+        "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+        "a92fb28640c3dab0f149997a50d6e5de90e483cbd29ff1627b884c66bbfe55ce"
+      ],
+      "unit": "heightFraction"
+    },
+    {
+      "name": "frontOverhang",
+      "min": 0.12,
+      "max": 0.16,
+      "imageIds": [
+        "a6d887705172ab8b31fe9492576960a2b342e337bdbe58050f5528a5295deeb8",
+        "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "rearOverhang",
+      "min": 0.14,
+      "max": 0.18,
+      "imageIds": [
+        "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e",
+        "a92fb28640c3dab0f149997a50d6e5de90e483cbd29ff1627b884c66bbfe55ce"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "frontAxle",
+      "min": 0.18,
+      "max": 0.22,
+      "imageIds": [
+        "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+        "a92fb28640c3dab0f149997a50d6e5de90e483cbd29ff1627b884c66bbfe55ce"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "rearAxle",
+      "min": 0.74,
+      "max": 0.78,
+      "imageIds": [
+        "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+        "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "hoodStart",
+      "min": 0,
+      "max": 0.02,
+      "imageIds": [
+        "a6d887705172ab8b31fe9492576960a2b342e337bdbe58050f5528a5295deeb8",
+        "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "hoodEnd",
+      "min": 0.48,
+      "max": 0.52,
+      "imageIds": [
+        "a6d887705172ab8b31fe9492576960a2b342e337bdbe58050f5528a5295deeb8",
+        "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "roofStart",
+      "min": 0.54,
+      "max": 0.58,
+      "imageIds": [
+        "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+        "a92fb28640c3dab0f149997a50d6e5de90e483cbd29ff1627b884c66bbfe55ce"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "roofEnd",
+      "min": 0.78,
+      "max": 0.84,
+      "imageIds": [
+        "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+        "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "groundClearance",
+      "min": 0.08,
+      "max": 0.12,
+      "imageIds": [
+        "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+        "a92fb28640c3dab0f149997a50d6e5de90e483cbd29ff1627b884c66bbfe55ce"
+      ],
+      "unit": "heightFraction"
+    },
+    {
+      "name": "windshieldAngle",
+      "min": 58,
+      "max": 64,
+      "imageIds": [
+        "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+        "a92fb28640c3dab0f149997a50d6e5de90e483cbd29ff1627b884c66bbfe55ce"
+      ],
+      "unit": "degrees"
+    },
+    {
+      "name": "rearWindowAngle",
+      "min": 48,
+      "max": 54,
+      "imageIds": [
+        "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+        "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+      ],
+      "unit": "degrees"
+    }
+  ],
+  "sections": [
+    {
+      "name": "nose",
+      "x": [
+        0,
+        0.1
+      ],
+      "height": [
+        0.2,
+        0.35
+      ],
+      "width": [
+        0.8,
+        1
+      ],
+      "imageIds": [
+        "a6d887705172ab8b31fe9492576960a2b342e337bdbe58050f5528a5295deeb8",
+        "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99"
+      ]
+    },
+    {
+      "name": "hood",
+      "x": [
+        0.1,
+        0.5
+      ],
+      "height": [
+        0.25,
+        0.4
+      ],
+      "width": [
+        0.9,
+        1
+      ],
+      "imageIds": [
+        "a6d887705172ab8b31fe9492576960a2b342e337bdbe58050f5528a5295deeb8",
+        "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99"
+      ]
+    },
+    {
+      "name": "windshield",
+      "x": [
+        0.52,
+        0.58
+      ],
+      "height": [
+        0.4,
+        0.75
+      ],
+      "width": [
+        0.85,
+        0.95
+      ],
+      "imageIds": [
+        "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+        "a92fb28640c3dab0f149997a50d6e5de90e483cbd29ff1627b884c66bbfe55ce"
+      ]
+    },
+    {
+      "name": "roof",
+      "x": [
+        0.56,
+        0.82
+      ],
+      "height": [
+        0.78,
+        1
+      ],
+      "width": [
+        0.8,
+        0.9
+      ],
+      "imageIds": [
+        "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+        "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+      ]
+    },
+    {
+      "name": "rearWindow",
+      "x": [
+        0.78,
+        0.84
+      ],
+      "height": [
+        0.5,
+        0.78
+      ],
+      "width": [
+        0.75,
+        0.85
+      ],
+      "imageIds": [
+        "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+        "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+      ]
+    },
+    {
+      "name": "tail",
+      "x": [
+        0.84,
+        1
+      ],
+      "height": [
+        0.3,
+        0.6
+      ],
+      "width": [
+        0.7,
+        0.85
+      ],
+      "imageIds": [
+        "a427934395673b3ab6f17334f6e3068c9b036c2739fec860ffb034dd41c02134",
+        "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+      ]
+    }
+  ],
+  "features": [
+    {
+      "name": "split grille",
+      "description": "Two vertical black grilles with chrome surround and 'Charger' script",
+      "imageIds": [
+        "a6d887705172ab8b31fe9492576960a2b342e337bdbe58050f5528a5295deeb8",
+        "13a7a9ee3d9f761e2d463c45cc86226e25ae3aa562476b5a2690856645a7e078"
+      ]
+    },
+    {
+      "name": "R/T badging",
+      "description": "Red 'R/T' emblem on grille and rear quarter panel stripes",
+      "imageIds": [
+        "13a7a9ee3d9f761e2d463c45cc86226e25ae3aa562476b5a2690856645a7e078",
+        "a427934395673b3ab6f17334f6e3068c9b036c2739fec860ffb034dd41c02134"
+      ]
+    },
+    {
+      "name": "long hood/short deck",
+      "description": "Classic muscle car proportion with prominent hood and compact rear",
+      "imageIds": [
+        "a6d887705172ab8b31fe9492576960a2b342e337bdbe58050f5528a5295deeb8",
+        "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f"
+      ]
+    },
+    {
+      "name": "chrome bumper",
+      "description": "Full-width front and rear chrome bumpers with overriders",
+      "imageIds": [
+        "a92fb28640c3dab0f149997a50d6e5de90e483cbd29ff1627b884c66bbfe55ce",
+        "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99"
+      ]
+    },
+    {
+      "name": "dual exhaust",
+      "description": "Side-exit dual exhaust tips integrated into rear valance",
+      "imageIds": [
+        "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e",
+        "a92fb28640c3dab0f149997a50d6e5de90e483cbd29ff1627b884c66bbfe55ce"
+      ]
+    },
+    {
+      "name": "black vinyl roof",
+      "description": "Contrast roof treatment visible on multiple examples",
+      "imageIds": [
+        "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+        "a92fb28640c3dab0f149997a50d6e5de90e483cbd29ff1627b884c66bbfe55ce"
+      ]
+    }
+  ],
+  "uncertainty": [
+    "Exact year (1969) not verifiable from photos alone; body style matches 1968–1970 Charger",
+    "Trim-specific details (e.g., engine, interior) not visible in provided images",
+    "Some images show minor variations in wheel/tire fitment but no structural modification",
+    "No evidence of scale model or toy; all appear full-size production vehicles",
+    "Front/rear overhang estimates based on visible wheel centers and body lines only",
+    "Roof height and ground clearance assume level ground and standard suspension"
+  ]
+}

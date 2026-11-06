@@ -1,0 +1,151 @@
+{
+  "campaign": "vehicle-body-2026-11-07",
+  "maxRequests": 8,
+  "budgetCny": 5,
+  "attempts": 5,
+  "reservedCny": 5,
+  "knownEstimatedCny": 0.161945,
+  "unknownUsageAttempts": 1,
+  "billingScope": "Published token-price estimate only; first timeout usage unknown; no vendor invoice or hard billing cap claimed",
+  "stopped": true,
+  "internalRenderUploads": 0,
+  "records": [
+    {
+      "digest": "7639fb1b0933ee2a4232fcbf6e3cd37fabdaf99ecdb9a8928819707d1fd3d2c6",
+      "at": "2026-11-06T17:40:09.390Z",
+      "reservedFen": 100,
+      "usage": null,
+      "error": {
+        "error": "The operation was aborted due to timeout",
+        "at": "2026-11-06T17:40:54.411Z"
+      },
+      "finishReason": null
+    },
+    {
+      "digest": "51606df7769f4ec866faf88e3a3d12ad9d66330d480837095201663e689f3ae8",
+      "at": "2026-11-06T17:41:16.837Z",
+      "reservedFen": 100,
+      "usage": {
+        "model": "qwen3-vl-plus",
+        "usage": {
+          "prompt_tokens": 12446,
+          "completion_tokens": 6000,
+          "total_tokens": 18446,
+          "completion_tokens_details": {
+            "text_tokens": 6000
+          },
+          "prompt_tokens_details": {
+            "image_tokens": 11300,
+            "text_tokens": 1146,
+            "cached_tokens": 0
+          }
+        },
+        "provider": "dashscope",
+        "region": "beijing",
+        "maxOutputTokens": 6000,
+        "reserveMicroUsd": 0,
+        "actualPrice": "estimated-from-published-rates-not-invoice",
+        "campaign": "vehicle-body-2026-11-07",
+        "estimatedCny": 0.072446
+      },
+      "error": {
+        "error": "VISION_TRUNCATED_OR_FILTERED",
+        "at": "2026-11-06T17:43:12.117Z"
+      },
+      "finishReason": "length"
+    },
+    {
+      "digest": "3897ae10b0580c73a0a16bfb769b9cafe2b2b6dffab4f77bd631a2d3217ccb13",
+      "at": "2026-11-06T17:44:30.042Z",
+      "reservedFen": 100,
+      "usage": {
+        "model": "qwen3-vl-plus",
+        "usage": {
+          "prompt_tokens": 11964,
+          "completion_tokens": 2174,
+          "total_tokens": 14138,
+          "completion_tokens_details": {
+            "text_tokens": 2174
+          },
+          "prompt_tokens_details": {
+            "image_tokens": 11300,
+            "text_tokens": 664,
+            "cached_tokens": 0
+          }
+        },
+        "provider": "dashscope",
+        "region": "beijing",
+        "maxOutputTokens": 6000,
+        "reserveMicroUsd": 0,
+        "actualPrice": "estimated-from-published-rates-not-invoice",
+        "campaign": "vehicle-body-2026-11-07",
+        "estimatedCny": 0.033704
+      },
+      "error": {
+        "error": "VISION_IMAGE_ASSESSMENT",
+        "at": "2026-11-06T17:45:30.475Z"
+      },
+      "finishReason": "stop"
+    },
+    {
+      "digest": "ad7bd57f0d41ab0ab55409ffd29804a826661b880e3f3f1aaaaa51a400063b7c",
+      "at": "2026-11-06T17:51:40.191Z",
+      "reservedFen": 100,
+      "usage": {
+        "model": "qwen3-vl-plus",
+        "usage": {
+          "prompt_tokens": 6270,
+          "completion_tokens": 2193,
+          "total_tokens": 8463,
+          "completion_tokens_details": {
+            "text_tokens": 2193
+          },
+          "prompt_tokens_details": {
+            "image_tokens": 5424,
+            "text_tokens": 846,
+            "cached_tokens": 0
+          }
+        },
+        "provider": "dashscope",
+        "region": "beijing",
+        "maxOutputTokens": 6000,
+        "reserveMicroUsd": 0,
+        "actualPrice": "estimated-from-published-rates-not-invoice",
+        "campaign": "vehicle-body-2026-11-07",
+        "estimatedCny": 0.0282
+      },
+      "error": null,
+      "finishReason": "stop"
+    },
+    {
+      "digest": "4397e1cc8f2f1aa51d55c63a507ad2bcc11fd47446f054902354d3f8f534b9dd",
+      "at": "2026-11-06T18:15:47.730Z",
+      "reservedFen": 100,
+      "usage": {
+        "model": "qwen3-vl-plus",
+        "usage": {
+          "prompt_tokens": 3235,
+          "completion_tokens": 2436,
+          "total_tokens": 5671,
+          "completion_tokens_details": {
+            "text_tokens": 2436
+          },
+          "prompt_tokens_details": {
+            "image_tokens": 2086,
+            "text_tokens": 1149,
+            "cached_tokens": 0
+          }
+        },
+        "provider": "dashscope",
+        "region": "beijing",
+        "maxOutputTokens": 6000,
+        "reserveMicroUsd": 0,
+        "actualPrice": "estimated-from-published-rates-not-invoice",
+        "campaign": "vehicle-body-2026-11-07",
+        "estimatedCny": 0.027595
+      },
+      "error": null,
+      "finishReason": "stop"
+    }
+  ]
+}

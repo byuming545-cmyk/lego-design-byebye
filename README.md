@@ -1,3 +1,5 @@
+> 最新进度：真实千问视觉已接通，正常车型输入可自动生成完整原生零件外观预览（Charger首例106件/23种）。仍为外观草稿，未通过整车正式装配/实拼验证。参见 [交付与费用证据](docs/VEHICLE_PLATFORM_DELIVERY.md) 和 [运行说明](docs/VEHICLE_PLATFORM.md)。
+
 > 当前接续主线：输入真实车型后自动研究与设计。新入口 `/`、`/vehicle-generator`，现阶段为研究与局部结构，完整汽车尚未完成。见 [车辆平台运行说明](docs/VEHICLE_PLATFORM.md) 和 [实际恢复审计](docs/VEHICLE_RECOVERY_AUDIT.md)。以下保留既有零件与外观工作区说明。
 
 > 新增独立工作区 **[迷你跑车](docs/MINI_CARS_DELIVERY.md)**：运行项目后访问 `/mini-cars`。六格车身、普通黑窗、短轴/长轴和完整四轮外观，支持保存、JSON 与 BOM。轮组和整车装配未验证，原正式规则保持独立。近期目标以 [当前目标](docs/CURRENT_GOAL.md) 的最新说明为准。

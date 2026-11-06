@@ -59,7 +59,7 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
   showZones: boolean;
   /** Optional design colours for independent appearance documents. */
   designColors?: Record<string, string>;
-  view?: 'perspective' | 'side' | 'top';
+  view?: 'perspective' | 'side' | 'top' | 'front' | 'rear';
 }) {
   const host = useRef<HTMLDivElement>(null);
   const [error, setError] = useState('');
@@ -161,7 +161,7 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
       });
       const center = bounds.getCenter(new THREE.Vector3());
       const camera = new THREE.PerspectiveCamera(38, 1, Math.max(extent / 1000, 0.01), extent * 100);
-      const offset = view === 'side' ? new THREE.Vector3(extent * 1.55, 0, 0) : view === 'top' ? new THREE.Vector3(0, extent * 1.55, 0.01) : new THREE.Vector3(extent, extent * 0.8, extent * 1.2);
+      const offset = view === 'side' ? new THREE.Vector3(extent * 1.55, 0, 0) : view === 'front' ? new THREE.Vector3(0,0,extent*1.55) : view === 'rear' ? new THREE.Vector3(0,0,-extent*1.55) : view === 'top' ? new THREE.Vector3(0, extent * 1.55, 0.01) : new THREE.Vector3(extent, extent * 0.8, extent * 1.2);
       if (view === 'top') camera.up.set(0, 0, -1);
       camera.position.copy(center).add(offset);
       controls = new OrbitControls(camera, renderer.domElement);

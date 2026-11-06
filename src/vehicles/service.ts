@@ -1,3 +1,11 @@
+import { BodyCatalog } from "./body-catalog.js";
+import {
+  generateBodyPreview,
+  validateBodyPreview,
+  type BodyPreview,
+} from "./body-preview.js";
+import { MINI_COLORS } from "../mini-cars/types.js";
+import { readdir } from "node:fs/promises";
 import type { LDrawMesh } from "../parts/ldraw/types.js";
 import { randomUUID } from "node:crypto";
 import { mkdir, readFile, writeFile, rename } from "node:fs/promises";
@@ -10,6 +18,7 @@ import { parseInput, type Job, type Stage, type Event } from "./types.js";
 export class VehicleService {
   private active = new Map<string, Promise<void>>();
   private starting = 0;
+  private bodyCatalog = new BodyCatalog();
   constructor(
     readonly directory = path.join(
       process.env.BRICKLAB_DATA_DIR ?? "data",
@@ -54,6 +63,47 @@ export class VehicleService {
       assets[placement.partId] = { mesh: part.geometry.mesh };
     }
     return { scope: "local-support-only", model: checked.model, assets };
+  }
+  async list() {
+    await mkdir(this.directory, { recursive: true });
+    const entries = (
+      await readdir(this.directory, { withFileTypes: true })
+    ).filter((x) => x.isDirectory() && /^[a-f0-9-]{36}$/.test(x.name));
+    return Promise.all(
+      entries.slice(-50).map(async (x) => {
+        const job = await this.get(x.name);
+        return {
+          id: job.id,
+          input: job.input,
+          state: job.state,
+          hasPreview: !!job.preview,
+        };
+      }),
+    );
+  }
+  async preview(id: string, value?: unknown) {
+    const job = await this.get(id);
+    if (!job.preview || !job.research || !job.vision)
+      throw Error("NO_CAR_PREVIEW");
+    const model = await validateBodyPreview(
+      value ?? job.preview,
+      this.bodyCatalog,
+      job.research,
+      job.vision,
+    );
+    const parts = await this.bodyCatalog.load(
+        model.sources.map((x) => x.partId),
+      ),
+      assets: Record<string, { mesh: LDrawMesh }> = {};
+    for (const [id, p] of parts) assets[id] = { mesh: p.geometry.mesh! };
+    return {
+      scope: "complete-appearance-not-formal-assembly",
+      model,
+      assets,
+      designColors: Object.fromEntries(
+        model.placements.map((x) => [x.instanceId, MINI_COLORS[x.color].hex]),
+      ),
+    };
   }
   async create(value: unknown) {
     if (this.active.size + this.starting >= 2) throw Error("TASK_CAPACITY");
@@ -105,6 +155,11 @@ export class VehicleService {
         job.research.issues.length ? "partial" : "passed",
         `${job.research.measurements.length} dimension observations; ${job.research.images.length} title-candidate images`,
       );
+      await event(
+        "images",
+        "passed",
+        `${job.research.images.filter((x) => x.purpose !== "generated-preview").length} reference candidates; original bytes, licensing and duplicate-selection audit retained`,
+      );
       current = "vision";
       await event(
         "vision",
@@ -141,6 +196,51 @@ export class VehicleService {
           "skipped",
           "Visual evidence unavailable; no invented body proportions",
         );
+      if (job.vision && job.vision.schemaVersion >= 2) {
+        try {
+          current = "selection";
+          await event(
+            "selection",
+            "running",
+            "Inspecting hash-verified native geometry and profile-driven shape candidates",
+          );
+          current = "generation";
+          await event(
+            "generation",
+            "running",
+            "Quantizing source dimensions and visual envelope; no vehicle-name layout",
+          );
+          const preview = await generateBodyPreview(
+            this.bodyCatalog,
+            job.research,
+            job.vision,
+          );
+          job.preview = preview;
+          job.plan = preview.plan;
+          await event(
+            "generation",
+            "passed",
+            `${preview.placements.length} real instances / ${preview.sources.length} native identities; full appearance draft`,
+          );
+          current = "validation";
+          await event(
+            "validation",
+            "partial",
+            `Source/rigid checks passed; dimensional metrics ${preview.checks.metricPass ? "passed" : "failed"}; whole-car connections, wheels and stability remain unverified`,
+          );
+          await event(
+            "output",
+            "partial",
+            "Full preview, source-backed BOM and draft steps saved; not build-certified",
+          );
+        } catch (e) {
+          await event(
+            current,
+            "blocked",
+            e instanceof Error ? e.message : "BODY_GENERATION_FAILED",
+          );
+        }
+      }
       current = "assembly";
       await event(
         "assembly",

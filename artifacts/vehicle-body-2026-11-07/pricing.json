@@ -1,0 +1,26 @@
+{
+  "url": "https://help.aliyun.com/zh/model-studio/model-pricing",
+  "retrievedAt": "2026-11-06T17:38:19.895Z",
+  "sha256": "4cfee76509fc68239a79c8cdbb37335534f094aa63584aba409ba44ff15617ec",
+  "region": "beijing",
+  "model": "qwen3-vl-plus",
+  "unit": "CNY per million tokens",
+  "tiers": [
+    [
+      32768,
+      1,
+      10
+    ],
+    [
+      131072,
+      1.5,
+      15
+    ],
+    [
+      262144,
+      3,
+      30
+    ]
+  ],
+  "sourceQuote": "华北2（北京）；非思考和思考模式；0<Token≤32K 输入1元，输出10元；32K<Token≤128K 输入1.5元，输出15元；128K<Token≤256K 输入3元，输出30元"
+}

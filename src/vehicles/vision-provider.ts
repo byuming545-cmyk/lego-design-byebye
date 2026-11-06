@@ -1,7 +1,23 @@
+import {
+  rememberImageFeedback,
+  rememberSuccessfulResearch,
+  successfulResearch,
+} from "./image-feedback.js";
+import {
+  loadCampaign,
+  reserveCampaign,
+  estimateCny,
+  type Campaign,
+} from "./campaign-budget.js";
 import { mkdir, readFile, writeFile, rmdir } from "node:fs/promises";
 import path from "node:path";
 import { boundedFetch, hash } from "./network.js";
-import { validateVision, VISION_PROMPT } from "./vision-contract.js";
+import {
+  validateVision,
+  VISION_PROMPT,
+  REVIEW_PROMPT,
+  PUBLIC_LANDMARK_PROMPT,
+} from "./vision-contract.js";
 import type { Research, VisionResult } from "./types.js";
 export interface VisionConfig {
   provider: "dashscope" | "openai";
@@ -11,6 +27,7 @@ export interface VisionConfig {
   maxRequests: number;
   dailyBudget: number;
   reserve: number;
+  campaign?: Campaign;
 }
 export function visionConfig(): VisionConfig {
   const provider = process.env.VEHICLE_VISION_PROVIDER ?? "dashscope",
@@ -39,6 +56,7 @@ export function visionConfig(): VisionConfig {
     maxRequests: integer("VEHICLE_VISION_MAX_REQUESTS_PER_DAY"),
     dailyBudget: integer("VEHICLE_VISION_DAILY_BUDGET_MICRO_USD"),
     reserve: integer("VEHICLE_VISION_RESERVE_MICRO_USD"),
+    campaign: loadCampaign(),
   };
 }
 export async function analyzeVehicle(
@@ -48,6 +66,12 @@ export async function analyzeVehicle(
   config = visionConfig(),
 ): Promise<VisionResult> {
   if (research.images.length < 3) throw Error("VISION_INSUFFICIENT_IMAGES");
+  const prompt =
+    research.analysisPurpose === "public-photo-landmarks"
+      ? PUBLIC_LANDMARK_PROMPT
+      : research.images.some((x) => x.purpose === "generated-preview")
+        ? REVIEW_PROMPT
+        : VISION_PROMPT;
   const digest = hash(
     JSON.stringify({
       input: research.input,
@@ -55,35 +79,64 @@ export async function analyzeVehicle(
       provider: config.provider,
       region: config.region,
       model: config.model,
-      prompt: VISION_PROMPT,
+      prompt: prompt,
+      transport: "short-image-aliases-1",
     }),
   );
+  const shared = await successfulResearch(research.input, hash(VISION_PROMPT));
+  if (shared?.analysisDigest === digest && shared.vision)
+    return validateVision(
+      shared.vision,
+      research.images.map((x) => x.id),
+    );
   const cache = path.join(stateDirectory, "vision-cache");
   await mkdir(cache, { recursive: true });
   try {
     const cached = JSON.parse(
       await readFile(path.join(cache, digest + ".json"), "utf8"),
     );
-    return validateVision(
+    const validated = validateVision(
       cached,
       research.images.map((x) => x.id),
     );
+    await rememberSuccessfulResearch(
+      research,
+      imagesDirectory,
+      hash(VISION_PROMPT),
+      validated,
+      digest,
+    );
+    return validated;
   } catch (e) {
     if ((e as NodeJS.ErrnoException).code !== "ENOENT") throw e;
   }
   if (!config.key) throw Error("VISION_CREDENTIAL_MISSING");
   if (
-    config.maxRequests < 1 ||
-    config.reserve < 1 ||
-    config.dailyBudget < config.reserve
+    !config.campaign &&
+    (config.maxRequests < 1 ||
+      config.reserve < 1 ||
+      config.dailyBudget < config.reserve)
   )
     throw Error("VISION_BUDGET_DISABLED");
+  const aliases = new Map(
+    research.images.map((x, i) => [
+      config.campaign ? "p" + (i + 1) : x.id,
+      x.id,
+    ]),
+  );
   const parts = [];
   for (const image of research.images) {
     const bytes = await readFile(path.join(imagesDirectory, image.localFile));
     if (hash(bytes) !== image.sha256) throw Error("IMAGE_INTEGRITY");
     parts.push(
-      { type: "text", text: "imageId: " + image.id },
+      {
+        type: "text",
+        text:
+          "imageId: " +
+          [...aliases].find(([, id]) => id === image.id)![0] +
+          "; purpose: " +
+          (image.purpose ?? "reference-photo"),
+      },
       {
         type: "image_url",
         image_url: {
@@ -93,51 +146,61 @@ export async function analyzeVehicle(
     );
   }
   // Exclusive, persistent reservations across processes. Fail closed after any crash; no automatic retry.
-  const ledger = path.join(
-    stateDirectory,
-    "vision-budget",
-    new Date().toISOString().slice(0, 10),
-  );
-  await mkdir(ledger, { recursive: true });
-  const lock = path.join(ledger, "reservation.lock");
-  try {
-    await mkdir(lock);
-  } catch {
-    throw Error("VISION_BUDGET_LOCKED");
-  }
-  try {
-    let previous: { requests: number; reserved: number } = {
-      requests: 0,
-      reserved: 0,
-    };
-    try {
-      previous = JSON.parse(
-        await readFile(path.join(ledger, "ledger.json"), "utf8"),
-      );
-    } catch (e) {
-      if ((e as NodeJS.ErrnoException).code !== "ENOENT") throw e;
-    }
+  if (config.campaign) {
     if (
-      !Number.isSafeInteger(previous.requests) ||
-      !Number.isSafeInteger(previous.reserved) ||
-      previous.requests < 0 ||
-      previous.reserved < 0
+      config.provider !== config.campaign.provider ||
+      config.region !== config.campaign.region ||
+      config.model !== config.campaign.model
     )
-      throw Error("VISION_LEDGER_INVALID");
-    if (
-      previous.requests >= config.maxRequests ||
-      previous.reserved + config.reserve > config.dailyBudget
-    )
-      throw Error("VISION_DAILY_LIMIT");
-    await writeFile(
-      path.join(ledger, "ledger.json"),
-      JSON.stringify({
-        requests: previous.requests + 1,
-        reserved: previous.reserved + config.reserve,
-      }),
+      throw Error("CAMPAIGN_MODEL_MISMATCH");
+    await reserveCampaign(config.campaign, digest);
+  } else {
+    const ledger = path.join(
+      stateDirectory,
+      "vision-budget",
+      new Date().toISOString().slice(0, 10),
     );
-  } finally {
-    await rmdir(lock);
+    await mkdir(ledger, { recursive: true });
+    const lock = path.join(ledger, "reservation.lock");
+    try {
+      await mkdir(lock);
+    } catch {
+      throw Error("VISION_BUDGET_LOCKED");
+    }
+    try {
+      let previous: { requests: number; reserved: number } = {
+        requests: 0,
+        reserved: 0,
+      };
+      try {
+        previous = JSON.parse(
+          await readFile(path.join(ledger, "ledger.json"), "utf8"),
+        );
+      } catch (e) {
+        if ((e as NodeJS.ErrnoException).code !== "ENOENT") throw e;
+      }
+      if (
+        !Number.isSafeInteger(previous.requests) ||
+        !Number.isSafeInteger(previous.reserved) ||
+        previous.requests < 0 ||
+        previous.reserved < 0
+      )
+        throw Error("VISION_LEDGER_INVALID");
+      if (
+        previous.requests >= config.maxRequests ||
+        previous.reserved + config.reserve > config.dailyBudget
+      )
+        throw Error("VISION_DAILY_LIMIT");
+      await writeFile(
+        path.join(ledger, "ledger.json"),
+        JSON.stringify({
+          requests: previous.requests + 1,
+          reserved: previous.reserved + config.reserve,
+        }),
+      );
+    } finally {
+      await rmdir(lock);
+    }
   }
   const endpoint =
     config.provider === "openai"
@@ -147,15 +210,30 @@ export async function analyzeVehicle(
         : "https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions";
   const body = {
     model: config.model,
-    max_tokens: 4000,
+    max_tokens: config.campaign?.maxOutputTokens ?? 4000,
     response_format: { type: "json_object" },
     ...(config.provider === "dashscope" ? { enable_thinking: false } : {}),
     messages: [
-      { role: "system", content: VISION_PROMPT },
+      { role: "system", content: prompt },
       {
         role: "user",
         content: [
-          { type: "text", text: JSON.stringify(research.input) },
+          {
+            type: "text",
+            text: JSON.stringify(
+              research.images.some((x) => x.purpose === "generated-preview")
+                ? {
+                    vehicle: research.input,
+                    physicalDimensionsMm: research.measurements.map((x) => ({
+                      name: x.key,
+                      mm: x.mm,
+                      scope: x.scope,
+                    })),
+                    note: "wheelbase/length is a physical reference; visual observations must remain consistent within their uncertainty",
+                  }
+                : research.input,
+            ),
+          },
           ...parts,
         ],
       },
@@ -167,11 +245,12 @@ export async function analyzeVehicle(
       {
         ...body,
         messages: [
-          { role: "system", content: VISION_PROMPT },
+          { role: "system", content: prompt },
           {
             role: "user",
             input: research.input,
             imageIds: research.images.map((x) => x.id),
+            imageAliasMap: Object.fromEntries(aliases),
           },
         ],
       },
@@ -202,18 +281,74 @@ export async function analyzeVehicle(
         usage: response.usage,
         provider: config.provider,
         region: config.region,
-        maxOutputTokens: 4000,
+        maxOutputTokens: body.max_tokens,
         reserveMicroUsd: config.reserve,
-        actualPrice: "unknown",
+        actualPrice: "estimated-from-published-rates-not-invoice",
+        campaign: config.campaign?.campaign,
+        estimatedCny:
+          config.campaign && response.usage
+            ? estimateCny(
+                response.usage.prompt_tokens,
+                response.usage.completion_tokens,
+                config.campaign,
+              )
+            : null,
       }),
     );
     if (choice?.finish_reason !== "stop")
       throw Error("VISION_TRUNCATED_OR_FILTERED");
-    const result = validateVision(
-      JSON.parse(choice.message.content),
+    const parsed = JSON.parse(choice.message.content);
+    await rememberImageFeedback(research, parsed, aliases);
+    const transport = validateVision(parsed, [...aliases.keys()]);
+    const expand = (ids: string[]) => ids.map((id) => aliases.get(id)!);
+    const result: VisionResult = {
+      ...transport,
+      ...(transport.landmarks2d
+        ? {
+            landmarks2d: transport.landmarks2d.map((g) => ({
+              ...g,
+              imageId: aliases.get(g.imageId)!,
+            })),
+          }
+        : {}),
+      imageAssessments: transport.imageAssessments.map((x) => ({
+        ...x,
+        imageId: aliases.get(x.imageId)!,
+        ...(x.duplicateOf ? { duplicateOf: aliases.get(x.duplicateOf)! } : {}),
+      })),
+      constraints: transport.constraints.map((x) => ({
+        ...x,
+        imageIds: expand(x.imageIds),
+      })),
+      ...(transport.sections
+        ? {
+            sections: transport.sections.map((x) => ({
+              ...x,
+              imageIds: expand(x.imageIds),
+            })),
+          }
+        : {}),
+      ...(transport.features
+        ? {
+            features: transport.features.map((x) => ({
+              ...x,
+              imageIds: expand(x.imageIds),
+            })),
+          }
+        : {}),
+    };
+    validateVision(
+      result,
       research.images.map((x) => x.id),
     );
     await writeFile(path.join(cache, digest + ".json"), JSON.stringify(result));
+    await rememberSuccessfulResearch(
+      research,
+      imagesDirectory,
+      hash(VISION_PROMPT),
+      result,
+      digest,
+    );
     return result;
   } catch (e) {
     await writeFile(

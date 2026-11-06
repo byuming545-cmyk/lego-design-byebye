@@ -1,3 +1,6 @@
+import { VISION_PROMPT } from "./vision-contract.js";
+import { imageFeedback, successfulResearch } from "./image-feedback.js";
+import sharp from "sharp";
 import { mkdir, writeFile, readFile } from "node:fs/promises";
 import path from "node:path";
 import { boundedFetch, hash, wiki } from "./network.js";
@@ -109,6 +112,34 @@ export async function researchVehicle(
   input: VehicleInput,
   directory: string,
 ): Promise<Research> {
+  const previous = await successfulResearch(input, hash(VISION_PROMPT));
+  if (previous) {
+    await mkdir(directory, { recursive: true });
+    for (const image of previous.research.images) {
+      const data = await readFile(
+        path.join(previous.imagesDirectory, image.localFile),
+      );
+      if (hash(data) !== image.sha256) throw Error("RESEARCH_CACHE_INTEGRITY");
+      await writeFile(path.join(directory, image.localFile), data);
+      if (image.originalFile) {
+        const original = await readFile(
+          path.join(previous.imagesDirectory, image.originalFile),
+        );
+        if (hash(original) !== image.originalSha256)
+          throw Error("RESEARCH_CACHE_ORIGINAL_INTEGRITY");
+        await writeFile(path.join(directory, image.originalFile), original);
+      }
+    }
+    for (const source of previous.research.sources) {
+      const raw = await readFile(
+        path.join(previous.imagesDirectory, source.id + ".wiki.json"),
+      );
+      if (hash(raw) !== source.sha256)
+        throw Error("RESEARCH_CACHE_SOURCE_INTEGRITY");
+      await writeFile(path.join(directory, source.id + ".wiki.json"), raw);
+    }
+    return structuredClone(previous.research);
+  }
   const result: Research = {
     input,
     sources: [],
@@ -168,36 +199,80 @@ export async function researchVehicle(
     if (values.size > 1) result.issues.push("CONFLICT_" + key);
     if (!values.size) result.issues.push("MISSING_" + key);
   }
-  let images;
+  const groups: any[][] = [];
   try {
-    images = await wiki("commons.wikimedia.org", {
+    const c = await wiki("commons.wikimedia.org", {
       action: "query",
-      generator: "search",
-      gsrsearch: query + (input.variant ? " " + input.variant : ""),
-      gsrnamespace: "6",
-      gsrlimit: "12",
+      generator: "categorymembers",
+      gcmtitle: `Category:${input.year} ${input.make} ${input.model}`,
+      gcmtype: "file",
+      gcmlimit: "50",
       prop: "imageinfo",
-      iiprop: "url|extmetadata|mime",
+      iiprop: "url|extmetadata|mime|size",
       iiurlwidth: "1024",
     });
+    await writeFile(
+      path.join(directory, "image-category.json"),
+      JSON.stringify(c.data, null, 2),
+    );
+    groups.push(
+      (c.data.query?.pages ?? []).map((x: any) => ({
+        ...x,
+        categoryEvidence: true,
+      })),
+    );
   } catch (e) {
-    result.issues.push("IMAGE_SEARCH_FAILED: " + String(e));
-    return result;
+    result.issues.push("IMAGE_CATEGORY_FAILED: " + String(e));
   }
-  await writeFile(
-    path.join(directory, "image-search.json"),
-    JSON.stringify(images.data, null, 2),
-  );
+
+  const searches = [
+    query + (input.variant ? " " + input.variant : ""),
+    query + " side",
+    query + " rear",
+    query + " front",
+  ];
+  for (const [index, search] of searches.entries()) {
+    try {
+      const response = await wiki("commons.wikimedia.org", {
+        action: "query",
+        generator: "search",
+        gsrsearch: search,
+        gsrnamespace: "6",
+        gsrlimit: "12",
+        prop: "imageinfo",
+        iiprop: "url|extmetadata|mime|size",
+        iiurlwidth: "1024",
+      });
+      await writeFile(
+        path.join(directory, "image-search-" + index + ".json"),
+        JSON.stringify(response.data, null, 2),
+      );
+      groups.push(response.data.query?.pages ?? []);
+    } catch (e) {
+      result.issues.push("IMAGE_SEARCH_FAILED: " + String(e));
+      if (/HTTP_403|HTTP_429|BACKOFF/.test(String(e))) break;
+    }
+  }
+  const records: any[] = [];
+  for (let i = 0; i < 50; i++)
+    for (const group of groups) if (group[i]) records.push(group[i]);
+  const excluded = await imageFeedback(input);
   const seen = new Set<string>();
-  for (const record of images.data.query?.pages ?? []) {
-    if (result.images.length >= 6) break;
+  const visualHashes: bigint[] = [];
+  const authors = new Map<string, number>();
+  result.imageAudit = [];
+  for (const record of records) {
+    if (result.images.length >= 8) break;
     const title = String(record.title);
-    if (!titleVariantMatch(title, input.variant)) continue;
+
     if (
-      ![String(input.year), ...input.model.toLowerCase().split(/\s+/)].every(
-        (t) => title.toLowerCase().includes(t.toLowerCase()),
-      ) ||
-      /restomod|custom|replica|modified/i.test(title)
+      (!record.categoryEvidence &&
+        ![String(input.year), ...input.model.toLowerCase().split(/\s+/)].every(
+          (t) => title.toLowerCase().includes(t.toLowerCase()),
+        )) ||
+      /restomod|custom|replica|modified|diecast|miniature|scale model|interior|dashboard|engine|hellephant|hellcat/i.test(
+        title,
+      )
     )
       continue;
     const info = record.imageinfo?.[0],
@@ -214,11 +289,69 @@ export async function researchVehicle(
         /^http:\/\/(upload\.wikimedia\.org)\//,
         "https://$1/",
       );
-      const { bytes, mime } = await boundedFetch(url);
+      const raw = await boundedFetch(url);
+      const originalBytes = raw.bytes,
+        mime = raw.mime;
+      if (excluded.has(hash(originalBytes))) {
+        result.imageAudit!.push({
+          title,
+          reason: "prior-provider-negative-selection",
+        });
+        continue;
+      }
+      const bytes = await sharp(originalBytes, { limitInputPixels: 16000000 })
+        .rotate()
+        .resize({
+          width: 1024,
+          height: 1024,
+          fit: "inside",
+          withoutEnlargement: true,
+        })
+        .jpeg({ quality: 85 })
+        .toBuffer();
+      const pixels = await sharp(bytes)
+        .resize(9, 8, { fit: "fill" })
+        .greyscale()
+        .raw()
+        .toBuffer();
+      let dhash = 0n;
+      for (let yy = 0; yy < 8; yy++)
+        for (let xx = 0; xx < 8; xx++)
+          dhash =
+            (dhash << 1n) |
+            (pixels[yy * 9 + xx] > pixels[yy * 9 + xx + 1] ? 1n : 0n);
+      const distance = (a: bigint, b: bigint) => {
+        let n = a ^ b,
+          c = 0;
+        while (n) {
+          c++;
+          n &= n - 1n;
+        }
+        return c;
+      };
+      if (
+        visualHashes.some((h) => distance(h, dhash) <= 8) ||
+        (authors.get(author) ?? 0) >= 2
+      ) {
+        result.imageAudit!.push({
+          title,
+          reason: visualHashes.some((h) => distance(h, dhash) <= 8)
+            ? "near-duplicate-dhash"
+            : "author-diversity-quota",
+        });
+        continue;
+      }
       if (!/^image\/(jpeg|png|webp)/.test(mime)) throw Error("IMAGE_MIME");
       const sha256 = hash(bytes);
       if (seen.has(sha256)) continue;
       seen.add(sha256);
+      visualHashes.push(dhash);
+      authors.set(author, (authors.get(author) ?? 0) + 1);
+      const originalSha256 = hash(originalBytes);
+      await writeFile(
+        path.join(directory, originalSha256 + ".original.image"),
+        originalBytes,
+      );
       const localFile = sha256 + ".image";
       await writeFile(path.join(directory, localFile), bytes, {
         flag: "wx",
@@ -233,7 +366,10 @@ export async function researchVehicle(
         page: info.descriptionurl,
         url,
         sha256,
-        mime,
+        mime: "image/jpeg",
+        originalSha256,
+        originalFile: originalSha256 + ".original.image",
+        perceptualHash: dhash.toString(16),
         author,
         license,
         licenseUrl,

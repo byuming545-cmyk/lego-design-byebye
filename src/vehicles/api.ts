@@ -1,7 +1,79 @@
+import compression from "compression";
 import { Router } from "express";
 import { VehicleService } from "./service.js";
 export function createVehicleRouter(service = new VehicleService()) {
   const router = Router();
+  router.use(compression());
+  router.get("/jobs", async (_req, res, next) => {
+    try {
+      res.json({ jobs: await service.list() });
+    } catch (e) {
+      next(e);
+    }
+  });
+  router.get("/jobs/:id/preview", async (req, res, next) => {
+    try {
+      const p = await service.preview(req.params.id);
+      if (req.query.download === "json") {
+        res.setHeader(
+          "Content-Disposition",
+          "attachment; filename=vehicle-appearance.json",
+        );
+        res.json(p.model);
+      } else if (req.query.download === "bom") {
+        res.setHeader(
+          "Content-Disposition",
+          "attachment; filename=vehicle-bom.csv",
+        );
+        res
+          .type("text/csv")
+          .send(
+            "part_id,name,ldraw_design_color,quantity,color_availability\r\n" +
+              p.model.bom
+                .map((x) =>
+                  [
+                    x.partId,
+                    x.name,
+                    x.ldrawColor,
+                    x.quantity,
+                    x.colorAvailability,
+                  ]
+                    .map((v) => '"' + String(v).replaceAll('"', '""') + '"')
+                    .join(","),
+                )
+                .join("\r\n"),
+          );
+      } else res.json(p);
+    } catch (e) {
+      if (e instanceof Error && /NO_CAR_PREVIEW|PREVIEW_/.test(e.message))
+        res.status(409).json({ error: e.message });
+      else next(e);
+    }
+  });
+  router.post("/jobs/:id/preview/import", async (req, res, next) => {
+    try {
+      if (
+        typeof req.body?.content !== "string" ||
+        req.body.content.length > 8e6 ||
+        Object.keys(req.body).length !== 1
+      )
+        throw Error("PREVIEW_IMPORT_INPUT");
+      const p = await service.preview(
+        req.params.id,
+        JSON.parse(req.body.content),
+      );
+      res.json({ status: "APPEARANCE_REOPENED_NOT_FORMAL", model: p.model });
+    } catch (e) {
+      if (
+        e instanceof SyntaxError ||
+        (e instanceof Error && /PREVIEW_|NO_CAR_PREVIEW/.test(e.message))
+      )
+        res.status(409).json({
+          error: e instanceof Error ? e.message : "PREVIEW_IMPORT_FAILED",
+        });
+      else next(e);
+    }
+  });
   router.use((_req, res, next) => {
     res.setHeader("Cache-Control", "no-store");
     next();

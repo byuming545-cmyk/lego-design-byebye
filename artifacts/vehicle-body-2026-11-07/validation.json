@@ -1,0 +1,206 @@
+{
+  "baseline": "3b51425f5a474ab9074f1c7cc2f0f22791c28112",
+  "branch": "codex/vehicle-evidence-body",
+  "normalApiJob": "00dfe220-7044-4b96-8029-c5396a87a4bd",
+  "normalPageJob": "65a51deb-c883-4857-9dd2-97b4e68299c6",
+  "automaticStages": [
+    {
+      "at": "2026-11-06T18:24:27.688Z",
+      "stage": "research",
+      "state": "running",
+      "detail": "Searching year-scoped sources and licensed image candidates"
+    },
+    {
+      "at": "2026-11-06T18:24:27.718Z",
+      "stage": "research",
+      "state": "passed",
+      "detail": "4 dimension observations; 3 title-candidate images"
+    },
+    {
+      "at": "2026-11-06T18:24:27.720Z",
+      "stage": "images",
+      "state": "passed",
+      "detail": "3 reference candidates; original bytes, licensing and duplicate-selection audit retained"
+    },
+    {
+      "at": "2026-11-06T18:24:27.725Z",
+      "stage": "vision",
+      "state": "running",
+      "detail": "Checking provider, cache, credentials and bounded budget"
+    },
+    {
+      "at": "2026-11-06T18:24:27.730Z",
+      "stage": "vision",
+      "state": "passed",
+      "detail": "Provider response passed local contract validation"
+    },
+    {
+      "at": "2026-11-06T18:24:27.732Z",
+      "stage": "planning",
+      "state": "partial",
+      "detail": "Quantified design targets; no complete vehicle assembly"
+    },
+    {
+      "at": "2026-11-06T18:24:27.733Z",
+      "stage": "selection",
+      "state": "running",
+      "detail": "Inspecting hash-verified native geometry and profile-driven shape candidates"
+    },
+    {
+      "at": "2026-11-06T18:24:27.737Z",
+      "stage": "generation",
+      "state": "running",
+      "detail": "Quantizing source dimensions and visual envelope; no vehicle-name layout"
+    },
+    {
+      "at": "2026-11-06T18:24:29.789Z",
+      "stage": "generation",
+      "state": "passed",
+      "detail": "106 real instances / 23 native identities; full appearance draft"
+    },
+    {
+      "at": "2026-11-06T18:24:29.795Z",
+      "stage": "validation",
+      "state": "partial",
+      "detail": "Source/rigid checks passed; dimensional metrics passed; whole-car connections, wheels and stability remain unverified"
+    },
+    {
+      "at": "2026-11-06T18:24:29.800Z",
+      "stage": "output",
+      "state": "partial",
+      "detail": "Full preview, source-backed BOM and draft steps saved; not build-certified"
+    },
+    {
+      "at": "2026-11-06T18:24:29.804Z",
+      "stage": "assembly",
+      "state": "running",
+      "detail": "Independent regression of existing native support; not a complete car"
+    },
+    {
+      "at": "2026-11-06T18:25:01.858Z",
+      "stage": "assembly",
+      "state": "partial",
+      "detail": "Local native model, BOM, steps and current reimport: VALID"
+    }
+  ],
+  "preview": {
+    "state": "APPEARANCE_DRAFT",
+    "id": "vehicle-e92753e3f3d0d42d6138f80e",
+    "instances": 106,
+    "nativeKinds": 23,
+    "widthStuds": 8,
+    "checks": {
+      "sourceIntegrity": true,
+      "rigidTransforms": true,
+      "formalConnections": "NOT_VERIFIED",
+      "collision": "UNKNOWN",
+      "wheelFit": "UNKNOWN",
+      "stability": "UNKNOWN",
+      "physicalBuildVerified": false,
+      "measured": {
+        "frontOverhang": 92,
+        "rearOverhang": 92,
+        "length": 424,
+        "width": 160,
+        "overallWidth": 170,
+        "height": 116,
+        "wheelbase": 240,
+        "hoodLength": 212,
+        "cabinStart": 212,
+        "cabinEnd": 352
+      },
+      "target": {
+        "length": 433.8938507340108,
+        "width": 160,
+        "height": 110.97833897957088,
+        "wheelbase": 244.0652910378811,
+        "hoodLength": 228.8,
+        "cabinStart": 228.8,
+        "cabinEnd": 360.79999999999995,
+        "frontOverhang": 100,
+        "rearOverhang": 100
+      },
+      "errors": {
+        "length": -9.893850734010812,
+        "width": 0,
+        "height": 5.021661020429121,
+        "wheelbase": -4.06529103788111,
+        "hoodLength": -16.80000000000001,
+        "cabinStart": -16.80000000000001,
+        "cabinEnd": -8.799999999999955,
+        "frontOverhang": -8,
+        "rearOverhang": -8
+      },
+      "metricPass": true,
+      "partCount": 106,
+      "nativePartKinds": 23,
+      "rejectionReasons": [
+        "WHOLE_VEHICLE_CONNECTION_GRAPH_NOT_VERIFIED",
+        "WHEEL_FIT_AND_INSERTION_PATH_UNKNOWN",
+        "STRUCTURAL_STABILITY_UNKNOWN",
+        "PHYSICAL_HEIGHT_ANCHOR_CALIBRATES_VISUAL_ROOF",
+        "LANDMARK_VS_NORMALIZED_frontAxle_CONFLICT",
+        "LANDMARK_VS_NORMALIZED_rearAxle_CONFLICT",
+        "LANDMARK_GLASS_HORIZONTAL_EXTENT_UNKNOWN",
+        "FRONT_OVERHANG_VS_AXLE_OBSERVATION",
+        "REAR_OVERHANG_VS_AXLE_OBSERVATION",
+        "ROOF_HEIGHT_NORMALIZATION_CONFLICT"
+      ]
+    },
+    "stepScope": "DRAFT_NOT_BUILD_INSTRUCTIONS"
+  },
+  "formalLocalSupport": "VALID",
+  "wheelStatus": "blocked",
+  "paidRequests": 5,
+  "knownEstimatedCny": 0.161945,
+  "unknownUsageAttempts": 1,
+  "reservedCny": 5,
+  "stopped": true,
+  "internalRenderUploads": 0,
+  "automatedReview": {
+    "renderEgressRejected": 2,
+    "saferAlternative": "public reference photographs only; no generated renders or project-derived measurements",
+    "paidReviewOfInternalRenders": "not executed"
+  },
+  "validation": {
+    "fullUnit": {
+      "files": 74,
+      "passed": 978,
+      "failed": 0
+    },
+    "newBodyTests": {
+      "passed": 19,
+      "overlapWithFull": 17
+    },
+    "compiledBrowser": {
+      "passed": 4,
+      "scope": "one controlled identity-form response; actual source geometry/render/import/export and legacy services"
+    },
+    "unmockedNormalPage": {
+      "passed": true,
+      "pageErrors": [],
+      "uses": "genuine validated vision cache; no additional paid call"
+    },
+    "exitCodes": {
+      "unitFull": 0,
+      "unitNewBody": 0,
+      "browser": 0,
+      "build": 0
+    }
+  },
+  "interruptions": {
+    "firstFullUnit": "interrupted by environment reconnection, not counted as pass",
+    "tasks": "retained with TASK_INTERRUPTED_NO_AUTOMATIC_RETRY; fresh cached tasks completed",
+    "nodePollConnections": "ECONNRESET observed in polling harness; cause not isolated; completed records read over fresh connections and real browser flow passed"
+  },
+  "remaining": [
+    "coarse appearance; Charger identity similarity not accepted as complete",
+    "whole-vehicle connection graph and collision unverified",
+    "wheel fit/retention/clearance/installation unknown",
+    "stability and physical build unknown",
+    "draft steps are not build-certified instructions",
+    "vision coordinate conflicts retained; calibration is a design interpretation"
+  ],
+  "noDeployment": true,
+  "noMainMerge": true
+}

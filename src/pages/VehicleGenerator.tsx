@@ -1,3 +1,5 @@
+import type { BodyPreview } from "../vehicles/body-preview.js";
+import "./vehicle-generator.css";
 import { useEffect, useState } from "react";
 import NativeAssemblyViewer, {
   type AssemblyAsset,
@@ -5,6 +7,23 @@ import NativeAssemblyViewer, {
 } from "../components/NativeAssemblyViewer.js";
 import type { Job } from "../vehicles/types.js";
 export default function VehicleGenerator() {
+  const [appearance, setAppearance] = useState<{
+    model: BodyPreview;
+    assets: Record<string, AssemblyAsset>;
+    designColors: Record<string, string>;
+  }>();
+  const [view, setView] = useState<
+    "perspective" | "front" | "rear" | "side" | "top"
+  >("perspective");
+  const [importStatus, setImportStatus] = useState("");
+  const [saved, setSaved] = useState<string[]>(() => {
+    try {
+      return JSON.parse(localStorage.getItem("bricklab-vehicle-jobs") ?? "[]");
+    } catch {
+      return [];
+    }
+  });
+
   const [support, setSupport] = useState<{
     model: { placements: AssemblyPlacement[] };
     assets: Record<string, AssemblyAsset>;
@@ -63,6 +82,41 @@ export default function VehicleGenerator() {
       .catch(() => {});
     return () => controller.abort();
   }, [job?.id, job?.state]);
+  useEffect(() => {
+    setAppearance(undefined);
+    if (!job?.preview || job.state === "running") return;
+    const c = new AbortController();
+    fetch("/api/vehicles/jobs/" + job.id + "/preview", { signal: c.signal })
+      .then(async (r) => {
+        if (!r.ok) throw Error((await r.json()).error);
+        setAppearance(await r.json());
+      })
+      .catch((e) => {
+        if (!c.signal.aborted) setError(String(e));
+      });
+    return () => c.abort();
+  }, [job?.id, job?.state]);
+  async function importAppearance(file: File) {
+    if (!job || file.size > 8e6) {
+      setImportStatus("文件过大");
+      return;
+    }
+    try {
+      const r = await fetch(
+        "/api/vehicles/jobs/" + job.id + "/preview/import",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ content: await file.text() }),
+        },
+      );
+      const data = await r.json();
+      if (!r.ok) throw Error(data.error);
+      setImportStatus(data.status);
+    } catch (e) {
+      setImportStatus(String(e));
+    }
+  }
   async function generate() {
     setBusy(true);
     setError("");
@@ -89,7 +143,7 @@ export default function VehicleGenerator() {
       <p>BRICKLAB · VEHICLE RESEARCH</p>
       <h1>从真实车型，开始自动设计</h1>
       <p>
-        自动检索尺寸与许可图片、分析视觉约束，再接入真实零件装配。当前输出为研究与局部结构，完整汽车仍在开发中。
+        自动检索尺寸与许可图片、分析视觉约束，再接入真实零件装配。依据真实视觉轮廓生成完整外观预览；外观、正式连接与实拼证据分别展示。
       </p>
       <form
         onSubmit={(e) => {
@@ -137,6 +191,173 @@ export default function VehicleGenerator() {
         </label>
         <button disabled={busy || job?.state === "running"}>生成</button>
       </form>
+      {saved.length > 0 && (
+        <nav className="vehicle-saved" aria-label="保存的车型任务">
+          {saved.map((id) => (
+            <a key={id} href={"/vehicle-generator?job=" + id}>
+              重开 {id.slice(0, 8)}
+            </a>
+          ))}
+        </nav>
+      )}
+      {job && (
+        <button
+          onClick={() => {
+            const next = [job.id, ...saved.filter((id) => id !== job.id)].slice(
+              0,
+              10,
+            );
+            localStorage.setItem("bricklab-vehicle-jobs", JSON.stringify(next));
+            setSaved(next);
+          }}
+        >
+          保存当前任务
+        </button>
+      )}
+      {appearance && job && (
+        <section className="vehicle-result">
+          <div>
+            <h2>完整汽车外观预览</h2>
+            <p>
+              真实零件 · {appearance.model.placements.length} 件 /{" "}
+              {appearance.model.sources.length} 种 ·{" "}
+              {appearance.model.plan.widthStuds}{" "}
+              格宽。整车连接、轮组配合、碰撞与稳定性尚未验证。
+            </p>
+          </div>
+          <div className="vehicle-views">
+            {(
+              [
+                ["perspective", "斜侧"],
+                ["side", "侧面"],
+                ["front", "正面"],
+                ["rear", "背面"],
+                ["top", "俯视"],
+              ] as const
+            ).map(([id, label]) => (
+              <button
+                key={id}
+                aria-pressed={view === id}
+                onClick={() => setView(id)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+          <div data-testid="vehicle-preview-stage">
+            <NativeAssemblyViewer
+              placements={appearance.model.placements}
+              assets={appearance.assets}
+              designColors={appearance.designColors}
+              view={view}
+              showConnections={false}
+              showProxies={false}
+              showPath={false}
+              showZones={false}
+            />
+          </div>
+          <div className="vehicle-downloads">
+            <a href={"/api/vehicles/jobs/" + job.id + "/preview?download=json"}>
+              导出外观模型 JSON
+            </a>
+            <a href={"/api/vehicles/jobs/" + job.id + "/preview?download=bom"}>
+              导出实际 BOM
+            </a>
+            <label>
+              重新导入外观模型 JSON
+              <input
+                type="file"
+                accept="application/json,.json"
+                onChange={(e) => {
+                  const f = e.target.files?.[0];
+                  if (f) void importAppearance(f);
+                }}
+              />
+            </label>
+            <span>{importStatus}</span>
+          </div>
+          <h3>尺寸比较（LDU）</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>项目</th>
+                <th>目标</th>
+                <th>实际实例</th>
+                <th>误差</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(appearance.model.checks.target).map(
+                ([key, value]) => (
+                  <tr key={key}>
+                    <td>
+                      {{
+                        length: "车长",
+                        width: "车身宽",
+                        height: "总高",
+                        wheelbase: "轴距",
+                        hoodLength: "机盖长度",
+                        cabinStart: "座舱起点",
+                        cabinEnd: "座舱终点",
+                        frontOverhang: "前悬",
+                        rearOverhang: "后悬",
+                      }[key] ?? key}
+                    </td>
+                    <td>{value.toFixed(1)}</td>
+                    <td>{appearance.model.checks.measured[key].toFixed(1)}</td>
+                    <td>{appearance.model.checks.errors[key].toFixed(1)}</td>
+                  </tr>
+                ),
+              )}
+            </tbody>
+          </table>
+          <p>
+            容差在生成前按一格纵向、一个板高加凸点设定；配色为设计指定色，未核对实物供应。
+          </p>
+          <details>
+            <summary>未验证范围与视觉估计冲突</summary>
+            <ul>
+              {appearance.model.checks.rejectionReasons.map((x) => (
+                <li key={x}>{x}</li>
+              ))}
+            </ul>
+          </details>
+          <h3>实际零件清单</h3>
+          <details>
+            <summary>
+              {appearance.model.bom.length} 条编号＋设计颜色记录
+            </summary>
+            <table>
+              <thead>
+                <tr>
+                  <th>编号</th>
+                  <th>名称</th>
+                  <th>颜色</th>
+                  <th>数量</th>
+                </tr>
+              </thead>
+              <tbody>
+                {appearance.model.bom.map((x) => (
+                  <tr key={x.partId + ":" + x.color}>
+                    <td>{x.partId}</td>
+                    <td>{x.name}</td>
+                    <td>{x.ldrawColor}</td>
+                    <td>{x.quantity}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </details>
+          <h3>步骤状态：外观分组草稿，非可实拼说明书</h3>
+          <ol>
+            {appearance.model.steps.items.map((x) => (
+              <li key={x.step}>
+                {x.role} · {x.instanceIds.length} 件
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
       {error && <p role="alert">{error}</p>}
       {job && (
         <section aria-live="polite">
@@ -181,9 +402,12 @@ export default function VehicleGenerator() {
           {job.plan !== undefined && (
             <>
               <h2>设计目标（未完成整车）</h2>
-              <pre style={{ whiteSpace: "pre-wrap" }}>
-                {JSON.stringify(job.plan, null, 2)}
-              </pre>
+              <details>
+                <summary>查看约束与设计决策</summary>
+                <pre style={{ whiteSpace: "pre-wrap" }}>
+                  {JSON.stringify(job.plan, null, 2)}
+                </pre>
+              </details>
             </>
           )}
           {job.assembly !== undefined && (

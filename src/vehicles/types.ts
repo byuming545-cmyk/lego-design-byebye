@@ -32,6 +32,10 @@ export interface VehicleImage {
   license: string;
   licenseUrl: string;
   localFile: string;
+  purpose?: "reference-photo" | "generated-preview";
+  originalSha256?: string;
+  originalFile?: string;
+  perceptualHash?: string;
   identity: "title-candidate";
   view: "unknown";
 }
@@ -41,16 +45,27 @@ export interface Research {
   measurements: Measurement[];
   images: VehicleImage[];
   issues: string[];
+  analysisPurpose?: "public-photo-landmarks";
+  imageAudit?: { title: string; reason: string }[];
 }
 export interface VisionResult {
-  schemaVersion: 1;
+  schemaVersion: 1 | 2 | 3;
   identity: "confirmed" | "uncertain" | "wrong";
   imageAssessments: {
     imageId: string;
-    view: "front" | "rear" | "side" | "top" | "oblique" | "unknown";
+    view:
+      | "front"
+      | "rear"
+      | "side"
+      | "top"
+      | "oblique"
+      | "interior"
+      | "unknown";
     identity: "confirmed" | "uncertain" | "wrong";
     modified: boolean;
     features: string[];
+    duplicateOf?: string | null;
+    vehicleType?: "photo" | "scale-model" | "unknown";
   }[];
   constraints: {
     name:
@@ -59,14 +74,50 @@ export interface VisionResult {
       | "cabinEnd"
       | "roofHeight"
       | "frontOverhang"
-      | "rearOverhang";
+      | "rearOverhang"
+      | "frontAxle"
+      | "rearAxle"
+      | "hoodStart"
+      | "hoodEnd"
+      | "roofStart"
+      | "roofEnd"
+      | "wheelRadius"
+      | "groundClearance"
+      | "windshieldAngle"
+      | "rearWindowAngle";
     min: number;
     max: number;
     imageIds: string[];
+    unit?: "lengthFraction" | "heightFraction" | "widthFraction" | "degrees";
+  }[];
+  sections?: {
+    name: "nose" | "hood" | "windshield" | "roof" | "rearWindow" | "tail";
+    x: [number, number];
+    height: [number, number] | null;
+    width: [number, number] | null;
+    imageIds: string[];
+  }[];
+  features?: { name: string; description: string; imageIds: string[] }[];
+  landmarks2d?: {
+    imageId: string;
+    points: {
+      name: string;
+      x: [number, number] | null;
+      y: [number, number] | null;
+    }[];
   }[];
   uncertainty: string[];
 }
-export type Stage = "research" | "vision" | "planning" | "assembly";
+export type Stage =
+  | "research"
+  | "vision"
+  | "planning"
+  | "assembly"
+  | "images"
+  | "selection"
+  | "generation"
+  | "validation"
+  | "output";
 export interface Event {
   at: string;
   stage: Stage;
@@ -82,6 +133,7 @@ export interface Job {
   vision?: VisionResult;
   plan?: unknown;
   assembly?: unknown;
+  preview?: unknown;
   error?: string;
 }
 export function parseInput(value: unknown): VehicleInput {

@@ -67,7 +67,7 @@ export async function boundedFetch(
   const r = await fetch(u, {
     ...init,
     redirect: "error",
-    signal: AbortSignal.timeout(45000),
+    signal: AbortSignal.timeout(init.method === "POST" ? 180000 : 45000),
   });
   if (!r.ok) {
     if (r.status === 403 || r.status === 429) {
