@@ -69,7 +69,8 @@ for (const variant of variants) {
 }
 const disabled = summaries.find(s => s.name === "disabled")!;
 const old = original.preview as Parameters<typeof geometry>[0];
-if (old?.placements && geometry(old) !== disabled.geometryHash)
+const compareBaseline = old?.placements && !(old as {layout?:{craft?:unknown}}).layout?.craft;
+if (compareBaseline && geometry(old) !== disabled.geometryHash)
     throw Error("DISABLED_CONTROL_GEOMETRY_DIFFERS_FROM_BASELINE");
-await save("comparison-summary.json", { corpusDigest: corpus.digest, summary: corpus.summary, variants: summaries, disabledMatchesOriginalBaseline: true,
+await save("comparison-summary.json", { corpusDigest: corpus.digest, summary: corpus.summary, variants: summaries, disabledMatchesOriginalBaseline: compareBaseline ? geometry(old) === disabled.geometryHash : null, baselineComparisonScope: "only pre-craft snapshots can be a disabled baseline; source case/generator revisions are not silently rewritten",
     modelWeightsUpdated: false, formalWholeVehicle: "NOT_VERIFIED", physicalBuildVerified: false, newPaidCalls: 0, externalRenderUploads: 0 });

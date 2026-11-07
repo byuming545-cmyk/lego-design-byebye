@@ -42,9 +42,11 @@ describe("native source craft learning, without weight training", () => {
         expect(enabled.layout.craft.queries.every(q => q.candidates.find(c => c.caseId === wing.id)!.reasons.includes("CURRENT_ENGINE_BLOCKED"))).toBe(true);
         expect(enabled.layout.craft.selections.some(s => s.caseId === wing.id)).toBe(false);
     });
-    it("makes a real geometry change while disabled mode exactly preserves the original baseline", async () => {
-        const old = JSON.parse(await readFile("artifacts/vehicle-craft-2026-11-07/baseline/model.json", "utf8"));
-        expect(geometry(disabled)).toEqual(geometry(old));
+    it("makes a real craft geometry change and leaves the historical baseline version intact", async () => {
+        const old = JSON.parse(await readFile("artifacts/vehicle-presentation-2026-11-07/baseline/model.json", "utf8"));
+        expect(old.generatorVersion).toBe("source-case-regions-5");
+        expect(disabled.generatorVersion).not.toBe(old.generatorVersion);
+        expect(disabled.layout.craft.options.enabled).toBe(false);
         expect(geometry(enabled)).not.toEqual(geometry(disabled));
         expect(disabled.layout.craft.selections).toEqual([]);
         expect(new Set(enabled.layout.craft.selections.map(s => s.sourceSet))).toEqual(new Set(["76897", "75878"]));

@@ -11,8 +11,8 @@ import { bodyPlan, type BodyPlan } from "./body-plan.js";
 import { regionShell } from "./body-surfaces.js";
 import type { Research, VisionResult, VehicleInput } from "./types.js";
 import { craftOptions, designCaseLibrary, type CraftOptions } from "./design-cases.js";
-export const BODY_SCHEMA = "bricklab-vehicle-envelope-appearance-3";
-export const BODY_GENERATOR = "source-case-regions-5";
+export const BODY_SCHEMA = "bricklab-vehicle-envelope-appearance-4";
+export const BODY_GENERATOR = "evidence-cabin-regions-6";
 export interface BodyPlacement {
   instanceId: string;
   partId: string;
@@ -31,6 +31,7 @@ export interface BodyPreview {
   units: "LDU";
   sourceSnapshot: string;
   input: VehicleInput;
+  observation?: Research["observation"];
   craftOptions:CraftOptions;
   plan: BodyPlan;
   placements: BodyPlacement[];
@@ -71,14 +72,24 @@ export async function generateBodyPreview(
   research: Research,
   vision: VisionResult,
   options?:CraftOptions,
+  progress?: (stage: "planning" | "craft" | "selection" | "generation" | "validation", state: "running" | "passed", detail: string) => Promise<void>,
 ): Promise<BodyPreview> {
-  const parts = await catalog.palette(),
-    tyre = parts.get("18977")!,
+  await progress?.("planning","running","Reading native tyre geometry and solving physical dimensions / observed body regions");
+  const tyre = (await catalog.load(["18977"])).get("18977")!,
     radius = (tyre.geometry.bounds!.max[0] - tyre.geometry.bounds!.min[0]) / 2,
     plan = bodyPlan(research, vision, radius);
+  await progress?.("planning","passed",`Side / top layout solved; ${plan.conflicts.length} evidence conflicts retained`);
+  await progress?.("craft","running","Revalidating attributable source patterns and current interface permissions");
   const selectedOptions=craftOptions(options),corpus=await designCaseLibrary(catalog).load();
+  await progress?.("craft","passed",`${corpus.summary.designFamilies} design families reviewed; installation candidates will be checked in context`);
+  await progress?.("selection","running","Reading hash-verified native curves, tiles, slopes and arches");
+  const parts = await catalog.palette();
   for(const [id,part]of await catalog.load(corpus.cases.flatMap(c=>c.members.map(m=>m.partId))))parts.set(id,part);
+  await progress?.("selection","passed",`${parts.size} native identities inspected; no part scaling`);
+  await progress?.("generation","running","Fitting functional surfaces and source patterns to this layout");
   const { placements, layout } = regionShell(parts, plan,corpus,selectedOptions);
+  if(new Set(placements.map(p=>p.instanceId)).size!==placements.length)throw Error("BODY_DUPLICATE_INSTANCE_ID");
+  await progress?.("validation","running","Checking actual source poses, native pair collisions, tyre envelopes and BOM; formal assembly remains unverified");
   const sourceIds = [...new Set(placements.map((p) => p.partId))].sort(),
     sources = sourceIds.map((id) => catalog.source(parts.get(id)!));
   const bom = new Map<string, BodyPreview["bom"][number]>();
@@ -184,6 +195,7 @@ export async function generateBodyPreview(
     units: "LDU" as const,
     sourceSnapshot: catalog.snapshot,
     input: research.input,
+    ...(research.observation ? {observation:research.observation}:{}),
     craftOptions:selectedOptions,
     plan,
     placements,

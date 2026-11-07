@@ -11,6 +11,7 @@ import type { DesignCorpus,CraftOptions } from "./design-cases.js";
  * solid voxels. Source geometry is translated/rotated, never resampled. */
 export function regionShell(parts: Map<string, NativeAssemblyPart>, plan: BodyPlan,corpus:DesignCorpus,options:CraftOptions) {
     let placements: BodyPlacement[] = [];
+    let nextInstance=0;
     const I = IDENTITY_ROTATION, ry = (angle: number) => axisRotation([0, 1, 0], angle);
     const W = plan.width, L = plan.length, R = plan.wheelRadiusLdu;
     const snap = (n: number) => Math.round(n / 8) * 8;
@@ -19,7 +20,9 @@ export function regionShell(parts: Map<string, NativeAssemblyPart>, plan: BodyPl
     const roofHeight = snap(plan.height), glassBase = roofHeight - 32;
     const start = plan.cabinStart * L, end = plan.cabinEnd * L;
     const desiredRoofWidth = plan.profile.find(p => p.name === "roof-start")!.width * W;
-    const roofWidth = W - Math.max(40, Math.round((W - desiredRoofWidth) / 40) * 40);
+    const roofWidth = Math.min(W-20,Math.round(desiredRoofWidth/20)*20);
+    const roofBegin=plan.roofStart*L,roofFinish=plan.roofEnd*L;
+    const shortDeck=L-end<60;
     const ground = Math.max(8, snap(plan.groundClearance));
     const regions: {
         role: string;
@@ -36,7 +39,7 @@ export function regionShell(parts: Map<string, NativeAssemblyPart>, plan: BodyPl
         const transform = { rotation, translation: center.map((v, a) => v - offset[a] - (a === 2 ? L / 2 : 0)) as Vector3 };
         if (!isRigidTransform(transform) || placements.length >= 700)
             throw Error("BODY_NONRIGID_OR_BUDGET");
-        const instanceId = "vehicle-part-" + (placements.length + 1);
+        const instanceId = "vehicle-part-" + (++nextInstance);
         placements.push({ instanceId, partId: id, role, color, transform, assemblyStatus: "NOT_VERIFIED", decision: {
                 constraints: ["native-bounds", "section-profile", "wheel-clearance", "cabinStart/cabinEnd"],
                 imageIds: plan.imageIds, purpose,
@@ -111,7 +114,7 @@ export function regionShell(parts: Map<string, NativeAssemblyPart>, plan: BodyPl
     // than being added onto a filled fender. Their 80-LDU span is source-derived.
     const tyreBounds = parts.get("18977")!.geometry.bounds!;
     const tyreHalfWidth = (tyreBounds.max[2] - tyreBounds.min[2]) / 2;
-    const archTop = Math.min(hoodHeight, tailHeight) - 8;
+    const archTop = (shortDeck ? hoodHeight : Math.min(hoodHeight, tailHeight)) - 8;
     const archCandidates = [...parts.values()].filter(p => /^Car Mudguard/.test(p.geometry.name ?? "")).flatMap(p => {
         const b = p.geometry.bounds!, size = b.max.map((v, a) => v - b.min[a]);
         if (Math.abs(size[0] - (R * 2 + 20)) > 0.001 || size[1] > 60 || size[2] > W / 2)
@@ -149,18 +152,21 @@ export function regionShell(parts: Map<string, NativeAssemblyPart>, plan: BodyPl
                 }
             }
     };
-    coveredRun("hood", 60, start, hoodHeight);
+    const frontRun = Math.min(60,Math.max(20,plan.axleFront-archSpan/2));
+    coveredRun("hood", frontRun, start, hoodHeight);
     coveredRun("tail", end, L - 60, tailHeight);
     // A shallow curved hood leading edge gives a distinct nose, not a slab of
     // stacked plates. Native curve depth fixes the transition length.
     for (let x = -W / 2; x < W / 2;) {
         const width = Math.min(40, W / 2 - x), id = sourceFit("end-transition", /^Slope Brick Curved/, [width, 16, 40], continuousCurve).partId;
-        put(id, "hood", "white", [x + width / 2, -hoodHeight + 8, 40], I, "curved hood leading edge, rising toward the long flat hood");
-        put(id, "tail", "white", [x + width / 2, -tailHeight + 8, L - 40], ry(180), "curved deck trailing edge, lowering toward the rear panel");
+        if(frontRun===60)put(id, "hood", "white", [x + width / 2, -hoodHeight + 8, 40], I, "curved hood leading edge, rising toward the long flat hood");
+        if(!shortDeck)put(id, "tail", "white", [x + width / 2, -tailHeight + 8, L - 40], ry(180), "curved deck trailing edge, lowering toward the rear panel");
         x += width;
     }
-    rectangle("hood", "white", W, 20, [0, -hoodHeight + 20, 10], I, "Tile", "low leading lip below the rising hood transition");
-    rectangle("tail", "white", W, 20, [0, -tailHeight + 20, L - 10], I, "Tile", "low rear deck lip");
+    if(frontRun===60)rectangle("hood", "white", W, 20, [0, -hoodHeight + 20, 10], I, "Tile", "low leading lip below the rising hood transition");
+    else for(let x=-W/2;x<W/2;x+=20){const slope=sourceFit("compact-nose",/^Slope Brick 31/,[20,15.6,20]);put(slope.partId,"hood","white",[x+10,-hoodHeight+7.8,10],I,"short shallow native nose stops before actual wheel-arch span; long curved recipe rejected");}
+    if(shortDeck)rectangle("tail","white",W,L-end,[0,-tailHeight+4,(end+L)/2],I,"Tile","short native hatch landing selected from observed cabin end, without a saloon trunk");
+    else rectangle("tail", "white", W, 20, [0, -tailHeight + 20, L - 10], I, "Tile", "low rear deck lip");
     // The cabin shoulder is a visible narrow surface in its own right. It
     // bridges the window base to the straight side without adding hidden fill.
     const shoulderWidth = (W - roofWidth) / 2;
@@ -185,11 +191,48 @@ export function regionShell(parts: Map<string, NativeAssemblyPart>, plan: BodyPl
             rectangle("side", "white", 20, 40, [side * (W / 2 - 4), -(Math.min(hoodHeight, tailHeight) - 36), z + 10], sideRotation, "Tile", "flat side skin below belt; exact native tile footprint");
             rectangle("side-skirt", "graphite", 20, 20, [side * (W / 2 - 10), -20, z + 10], I, "Tile", "native plate-height lower sill; no overlap with side skin");
         }
-    // Separate windshield / rear glass, pillars, side windows and hardtop. The
-    // slope's native 20:20 face is retained; angular evidence conflicts survive.
+    // The wider one-stud roof inset leaves a ten-LDU shoulder. Thin native
+    // belt layers bridge the visible body-to-glass gap; arch spans receive only
+    // the upper cap, never hidden fill inside the wheel opening.
+    const beltGaps:{z:number;bottom:number;top:number;residual:number}[]=[];
+    for(let z=start;z<end-.001;z+=20){
+        const overArch=[plan.axleFront,plan.axleRear].some(a=>Math.abs(z+10-a)<archSpan/2);
+        const bottom=overArch?archTop:Math.min(hoodHeight,tailHeight)-16;
+        for(const side of [-1,1])for(let top=bottom+8;top<=hoodHeight+.001;top+=8)
+            rectangle("belt","white",20,20,[side*(W/2-10),-top+4,z+10],I,"Tile","native thin shoulder/belt closes cabin base; actual arch opening reserved");
+        beltGaps.push({z,bottom,top:hoodHeight,residual:(hoodHeight-bottom)%8});
+    }
+    // Short shallow transitions retain the native 45-degree slope. Taller,
+    // longer observed glass is expressed by unscaled thin tiles: native length
+    // solves the run, endpoint rise error is retained, and no freeform mesh is used.
+    const glassFits:{role:string;kind:string;run:number;targetRise:number;actualRise:number;angle:number;partId:string;gapLdu:number}[]=[];
     const slopeWidth = (parts.get("3039")!.geometry.bounds!.max[0] - parts.get("3039")!.geometry.bounds!.min[0]);
     for (const rear of [false, true]) {
         const edge = rear ? end : start, rot = ry(rear ? 180 : 0);
+        const run=rear?end-roofFinish:roofBegin-start;
+        const targetRise=roofHeight-8-(rear?tailHeight:hoodHeight);
+        if(run>20.001||targetRise>32){
+            const candidates=flat.filter(p=>p.kind==="Tile"&&p.w===1&&p.d*20>run).map(p=>{
+                const length=p.d*20,angle=Math.acos(run/length)*180/Math.PI,rise=Math.sqrt(length*length-run*run);
+                return{...p,angle,rise,error:Math.abs(rise-targetRise)};
+            }).sort((a,b)=>a.error-b.error||a.id.localeCompare(b.id));
+            const fit=candidates[0];
+            if(!fit||fit.error>20)throw Error("BODY_NATIVE_GLASS_FACE_UNAVAILABLE");
+            const angle=(rear?-1:1)*fit.angle,rotation=multiply(axisRotation([1,0,0],angle),fit.rotation);
+            // Anchor the upper, outward face to the actual roof underside. Tile
+            // thickness projects inward, away from the exterior hood/roof surfaces.
+            const topZ=rear?roofFinish:roofBegin;
+            const lowZ=rear?end:start;
+            const centerY=-(roofHeight-8-fit.rise/2)+4*Math.cos(fit.angle*Math.PI/180);
+            const centerZ=(topZ+lowZ)/2+4*Math.sin(angle*Math.PI/180);
+            for(let x=-roofWidth/2;x<roofWidth/2;x+=20){
+                const pillar=x===-roofWidth/2||x+20===roofWidth/2;
+                put(fit.id,rear?"rear-window":"windshield",pillar?"white":"black",[x+10,centerY,centerZ],rotation,"rigid native tile glass face; observed run, roof underside anchor; endpoint error recorded, external mounting UNKNOWN");
+            }
+            glassFits.push({role:rear?"rear-window":"windshield",kind:"native-tile-face",run,targetRise,actualRise:fit.rise,angle:fit.angle,partId:fit.id,gapLdu:fit.rise-targetRise});
+            continue;
+        }
+        glassFits.push({role:rear?"rear-window":"windshield",kind:"native-45-slope",run,targetRise,actualRise:20,angle:45,partId:"3039",gapLdu:20-targetRise});
         for (let x = -roofWidth / 2; x < roofWidth / 2;) {
             const pillar = x === -roofWidth / 2 || x + 20 === roofWidth / 2;
             const width = pillar || x + slopeWidth > roofWidth / 2 - 20 ? 20 : slopeWidth;
@@ -198,18 +241,38 @@ export function regionShell(parts: Map<string, NativeAssemblyPart>, plan: BodyPl
             x += width;
         }
     }
-    const windowLength = end - start - 80;
+    // Optional belt caps are installation candidates. Reject whole native caps
+    // that intersect a tilted screen's real backing; keep the uncovered seam
+    // and its rejection record rather than burying either source in the other.
+    const beltScreenChecks=inspectBodySurfacePairs(placements.filter(p=>["belt","windshield","rear-window"].includes(p.role)),parts);
+    const beltIds=new Set(placements.filter(p=>p.role==="belt").map(p=>p.instanceId));
+    const beltRejections=beltScreenChecks.results.filter(r=>r.status!=="clear"&&(beltIds.has(r.a)||beltIds.has(r.b)));
+    const rejectedBelts=new Set(beltRejections.flatMap(r=>[r.a,r.b].filter(id=>beltIds.has(id))));
+    placements=placements.filter(p=>!rejectedBelts.has(p.instanceId));
+    const windowBegin=Math.round((roofBegin+20)/20)*20;
+    const windowEnd=Math.round((roofFinish-20)/20)*20;
+    const windowLength = windowEnd-windowBegin;
     if (windowLength >= 20)
         for (const side of [-1, 1])
-            rectangle("side-window", "black", 20, windowLength, [side * (roofWidth / 2 - 10), -glassBase - 14, (start + end) / 2], I, "Brick", "side window band, native black bricks between separate inclined screens");
-    rectangle("roof", "white", roofWidth, end - start - 40, [0, -roofHeight + 4, (start + end) / 2], I, "Tile", "flat hardtop skin with native tile landings over glass; no pyramid fill");
+            for(let row=0;row<Math.floor((roofHeight-8-hoodHeight)/20);row++){
+                const centerY=-(roofHeight-8-row*20)+10, sideRotation=axisRotation([0,0,1],side*90);
+                const hasPillar=windowLength>=80&&plan.features.some(f=>/B[ -]?pillar/i.test(f.description));
+                if(hasPillar){
+                    const pillar=Math.round((windowBegin+windowEnd)/40)*20;
+                    rectangle("side-window","black",20,pillar-windowBegin,[side*(roofWidth/2-4),centerY,(windowBegin+pillar)/2],sideRotation,"Tile","front glazing; native footprint stops at observed B-pillar region");
+                    rectangle("window-pillar","graphite",20,20,[side*(roofWidth/2-4),centerY,pillar+10],sideRotation,"Tile","narrow dark B-pillar from photo feature; no invented transparent material");
+                    rectangle("side-window","black",20,windowEnd-pillar-20,[side*(roofWidth/2-4),centerY,(pillar+20+windowEnd)/2],sideRotation,"Tile","rear quarter glazing separate from front side window");
+                }else rectangle("side-window", "black", 20, windowLength, [side * (roofWidth / 2 - 4), centerY, (windowBegin+windowEnd)/2], sideRotation, "Tile", "continuous vertical native tile glazing; visible height discretized in 20-LDU rows, lower residual retained");
+                for(const z of [windowBegin-10,windowEnd+10])rectangle("window-pillar","white",20,20,[side*(W/2-4),centerY,z],sideRotation,"Tile","native outer pillar face joins window edge to belt; two-LDU lateral seam retained");
+            }
+    rectangle("roof", "white", roofWidth, roofFinish-roofBegin, [0, -roofHeight + 4, (roofBegin+roofFinish)/2], I, "Tile", "flat hardtop sized from independent roof observations; no pyramid fill");
     // Features choose the fascia semantics, never the input model name.
     const grilleEvidence = plan.features.filter(f => /grille/i.test(f.name));
     const twin = grilleEvidence.some(f => /twin|dual|split/i.test(f.description));
     for (const rear of [false, true]) {
         const face = rear ? L - 4 : 4, rot = axisRotation([1, 0, 0], rear ? -90 : 90);
-        rectangle(rear ? "rear-bumper" : "front-bumper", "graphite", W, 20, [0, -ground - 18, face], rot, "Tile", "full-width bumper from observed bright surround; appearance colour, no chrome material claim");
         const panelHeight = rear ? tailHeight : hoodHeight;
+        rectangle(rear ? "rear-bumper" : "front-bumper", "graphite", W, 20, [0, -Math.min(ground+18,panelHeight-54), face], rot, "Tile", "full-width bumper from observed bright surround; appearance colour, no chrome material claim");
         const panelY = -panelHeight + 34;
         if (!rear && twin) {
             const insertWidth = Math.floor((W / 2 - 20) / 20) * 20;
@@ -219,6 +282,10 @@ export function regionShell(parts: Map<string, NativeAssemblyPart>, plan: BodyPl
         }
         else
             rectangle(rear ? "rear-panel" : "grille", "black", W - 40, 20, [0, panelY, rear ? L - 12 : 12], rot);
+        if (!rear && plan.features.some(f=>/round/i.test(f.description)&&/headlight|lamp/i.test(f.description))){
+            const lamp=sourceFit("round-headlamp",/^Tile.*Round/,[20,8,20]);
+            for(const side of [-1,1])put(lamp.partId,"headlamp","white",[side*(W/2-20),panelY,4],rot,"two round exposed lamps from photo evidence, source native round tiles; no hidden-light template");
+        }
         if (rear)
             for (const side of [-1, 1])
                 rectangle("taillamp", "red", 40, 20, [side * (W / 2 - 40), panelY, L - 4], rot, "Tile", "dual horizontal red lenses from rear-image feature evidence; source tile only");
@@ -242,12 +309,12 @@ export function regionShell(parts: Map<string, NativeAssemblyPart>, plan: BodyPl
             permission: { structural: admission.generationEligible, surface: admission.exteriorGeneratable, reasonCodes: admission.reasonCodes },
             placementVerification: "NOT_VERIFIED" as const };
     });
-    return { placements, layout: { version: "functional-surfaces-1", hoodHeight, tailHeight, roofHeight, glassBase, roofWidth, ground,
+    return { placements, layout: { version: "functional-surfaces-2", hoodHeight, tailHeight, roofHeight, glassBase, roofWidth, ground,glassFits,shortDeck,beltGaps,beltRejections,
             wheelArchSpan: archSpan, regions, selection, selectionCandidates, archCandidates,
             wheelEnvelope: inspectWheelEnvelope(placements, usedParts, R, tyreHalfWidth),
             mountCandidates: inspectMountCandidates(placements, usedParts),
             surfacePairs: inspectBodySurfacePairs(placements, usedParts,learned.hints),
             craft:learned.report,
-            angularConflicts: plan.constraints.filter(c => /WindowAngle|windshieldAngle/.test(c.name)).map(c => ({ name: c.name, observed: [c.min, c.max], sourceFaceDegrees: 45, errorDegrees: 45 - (c.min + c.max) / 2 })),
+            angularConflicts: plan.constraints.filter(c => /WindowAngle|windshieldAngle/.test(c.name)).map(c => {const angle=glassFits.find(f=>f.role===(c.name==="windshieldAngle"?"windshield":"rear-window"))!.angle;return({ name: c.name, observed: [c.min, c.max], sourceFaceDegrees: angle, errorDegrees: angle - (c.min + c.max) / 2 });}),
             scope: "APPEARANCE_ONLY_NO_NEW_ASSEMBLY_PERMISSION" as const } };
 }

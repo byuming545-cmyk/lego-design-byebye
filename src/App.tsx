@@ -343,7 +343,7 @@ export default function App() {
         </nav>
         <button className="version-button" onClick={() => setAboutOpen(true)}>
           <span className="status-dot" /> {area === 'vehicles' ? 'VEHICLE DESIGN' : area === 'mini-cars' ? 'MINI CARS' : area === 'interface-library' ? 'INTERFACE LIBRARY' : area === 'part-lab' ? 'PART LAB' : area === 'speed' ? 'V0.2.1' : 'V0.1'}{" "}
-          <span className="version-label">· {area === 'vehicles' ? '研究与局部结构' : area === 'mini-cars' ? '外观草稿' : area === 'interface-library' ? '来源绑定' : area === 'part-lab' ? '来源核验中' : '历史原型'}</span>
+          <span className="version-label">· {area === 'vehicles' ? '两车演示原型' : area === 'mini-cars' ? '外观草稿' : area === 'interface-library' ? '来源绑定' : area === 'part-lab' ? '来源核验中' : '历史原型'}</span>
           <ArrowUpRight size={14} />
         </button>
       </header>

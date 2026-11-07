@@ -1,0 +1,791 @@
+{
+  "version": "craft-region-retrieval-1",
+  "options": {
+    "enabled": true,
+    "excludedSourceSets": [
+      "75878"
+    ]
+  },
+  "corpusDigest": "b90ffd072cb665c789a2eefa52c38b7ac9f7ee3f35527dbcb253cbe1099815a2",
+  "summary": {
+    "recipes": 6,
+    "sourceFiles": 4,
+    "sourceSets": 2,
+    "designFamilies": 4,
+    "validatedFamilies": 3,
+    "validatedRecipes": 5,
+    "blockedRecipes": 1,
+    "modelWeightsUpdated": false
+  },
+  "queries": [
+    {
+      "query": {
+        "region": "nose-cover",
+        "size": [
+          40,
+          16.00006098,
+          60
+        ],
+        "twinGrille": false
+      },
+      "candidates": [
+        {
+          "caseId": "75878-curved-cover-left",
+          "familyId": "design-d1bb1084b0e83221",
+          "sourceSet": "75878",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "bounds": {
+            "min": [
+              -20,
+              -8.00006098,
+              -40
+            ],
+            "max": [
+              20,
+              8,
+              20
+            ]
+          },
+          "size": [
+            40,
+            16.00006098,
+            60
+          ],
+          "score": 0.003,
+          "reasons": [
+            "SOURCE_SET_HELD_OUT"
+          ],
+          "eligible": false
+        },
+        {
+          "caseId": "75878-curved-cover-right",
+          "familyId": "design-d1bb1084b0e83221",
+          "sourceSet": "75878",
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "bounds": {
+            "min": [
+              -20,
+              -8.00006098,
+              -40
+            ],
+            "max": [
+              20,
+              8,
+              20
+            ]
+          },
+          "size": [
+            40,
+            16.00006098,
+            60
+          ],
+          "score": 0.003,
+          "reasons": [
+            "SOURCE_SET_HELD_OUT"
+          ],
+          "eligible": false
+        },
+        {
+          "caseId": "76897-rear-panel-core",
+          "familyId": "design-60304e6e046a88c2",
+          "sourceSet": "76897",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "bounds": {
+            "min": [
+              -60,
+              -16,
+              -10
+            ],
+            "max": [
+              60,
+              8,
+              10
+            ]
+          },
+          "size": [
+            120,
+            24,
+            20
+          ],
+          "score": 128.00293901999999,
+          "reasons": [
+            "NO_CURVED_SURFACE_PATTERN",
+            "NO_SOURCE_SLOPE_DIRECTION",
+            "NATIVE_FOOTPRINT_OR_HEIGHT_MISMATCH"
+          ],
+          "eligible": false
+        },
+        {
+          "caseId": "76897-spoiler-blade",
+          "familyId": "design-645c51895f4f0a71",
+          "sourceSet": "76897",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "bounds": {
+            "min": [
+              -80,
+              -15.6,
+              -30
+            ],
+            "max": [
+              80,
+              15.9441,
+              10.000647
+            ]
+          },
+          "size": [
+            160,
+            31.5441,
+            40.000647
+          ],
+          "score": 155.55139202,
+          "reasons": [
+            "CURRENT_ENGINE_BLOCKED",
+            "NATIVE_FOOTPRINT_OR_HEIGHT_MISMATCH"
+          ],
+          "eligible": false
+        },
+        {
+          "caseId": "76897-hood-core",
+          "familyId": "design-b69226d7dddd013d",
+          "sourceSet": "76897",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "bounds": {
+            "min": [
+              -80,
+              -16,
+              -10
+            ],
+            "max": [
+              80,
+              8,
+              10
+            ]
+          },
+          "size": [
+            160,
+            24,
+            20
+          ],
+          "score": 168.00493902,
+          "reasons": [
+            "NO_CURVED_SURFACE_PATTERN",
+            "NO_SOURCE_SLOPE_DIRECTION",
+            "NATIVE_FOOTPRINT_OR_HEIGHT_MISMATCH"
+          ],
+          "eligible": false
+        },
+        {
+          "caseId": "76897-hood-adapted",
+          "familyId": "design-b69226d7dddd013d",
+          "sourceSet": "76897",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "bounds": {
+            "min": [
+              -80,
+              -16,
+              -10
+            ],
+            "max": [
+              80,
+              8,
+              10
+            ]
+          },
+          "size": [
+            160,
+            24,
+            20
+          ],
+          "score": 168.00693902,
+          "reasons": [
+            "NO_CURVED_SURFACE_PATTERN",
+            "NO_SOURCE_SLOPE_DIRECTION",
+            "NATIVE_FOOTPRINT_OR_HEIGHT_MISMATCH"
+          ],
+          "eligible": false
+        }
+      ],
+      "attempts": []
+    },
+    {
+      "query": {
+        "region": "front-fascia",
+        "size": [
+          160,
+          20,
+          24
+        ],
+        "twinGrille": true
+      },
+      "candidates": [
+        {
+          "caseId": "76897-hood-adapted",
+          "familyId": "design-b69226d7dddd013d",
+          "sourceSet": "76897",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0
+          ],
+          "bounds": {
+            "min": [
+              -80,
+              -10,
+              -16
+            ],
+            "max": [
+              80,
+              10,
+              8
+            ]
+          },
+          "size": [
+            160,
+            20,
+            24
+          ],
+          "score": 0.007,
+          "reasons": [],
+          "eligible": true
+        },
+        {
+          "caseId": "76897-hood-core",
+          "familyId": "design-b69226d7dddd013d",
+          "sourceSet": "76897",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0
+          ],
+          "bounds": {
+            "min": [
+              -80,
+              -10,
+              -16
+            ],
+            "max": [
+              80,
+              10,
+              8
+            ]
+          },
+          "size": [
+            160,
+            20,
+            24
+          ],
+          "score": 0.005,
+          "reasons": [
+            "NO_PAIRED_FACE_TILES"
+          ],
+          "eligible": false
+        },
+        {
+          "caseId": "76897-spoiler-blade",
+          "familyId": "design-645c51895f4f0a71",
+          "sourceSet": "76897",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0
+          ],
+          "bounds": {
+            "min": [
+              -80,
+              -10.000647,
+              -15.6
+            ],
+            "max": [
+              80,
+              30,
+              15.9441
+            ]
+          },
+          "size": [
+            160,
+            40.000647,
+            31.5441
+          ],
+          "score": 27.552747,
+          "reasons": [
+            "CURRENT_ENGINE_BLOCKED",
+            "NO_SOURCE_GRILLE_FEATURE",
+            "NO_PAIRED_FACE_TILES",
+            "NATIVE_FOOTPRINT_OR_HEIGHT_MISMATCH"
+          ],
+          "eligible": false
+        },
+        {
+          "caseId": "76897-rear-panel-core",
+          "familyId": "design-60304e6e046a88c2",
+          "sourceSet": "76897",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0
+          ],
+          "bounds": {
+            "min": [
+              -60,
+              -10,
+              -16
+            ],
+            "max": [
+              60,
+              10,
+              8
+            ]
+          },
+          "size": [
+            120,
+            20,
+            24
+          ],
+          "score": 40.003,
+          "reasons": [
+            "NO_SOURCE_GRILLE_FEATURE",
+            "NO_PAIRED_FACE_TILES",
+            "NATIVE_FOOTPRINT_OR_HEIGHT_MISMATCH"
+          ],
+          "eligible": false
+        },
+        {
+          "caseId": "75878-curved-cover-left",
+          "familyId": "design-d1bb1084b0e83221",
+          "sourceSet": "75878",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0
+          ],
+          "bounds": {
+            "min": [
+              -20,
+              -20,
+              -8.00006098
+            ],
+            "max": [
+              20,
+              40,
+              8
+            ]
+          },
+          "size": [
+            40,
+            60,
+            16.00006098
+          ],
+          "score": 168.00293901999999,
+          "reasons": [
+            "SOURCE_SET_HELD_OUT",
+            "NO_SOURCE_GRILLE_FEATURE",
+            "NO_PAIRED_FACE_TILES",
+            "NATIVE_FOOTPRINT_OR_HEIGHT_MISMATCH"
+          ],
+          "eligible": false
+        },
+        {
+          "caseId": "75878-curved-cover-right",
+          "familyId": "design-d1bb1084b0e83221",
+          "sourceSet": "75878",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0
+          ],
+          "bounds": {
+            "min": [
+              -20,
+              -40,
+              -8.00006098
+            ],
+            "max": [
+              20,
+              20,
+              8
+            ]
+          },
+          "size": [
+            40,
+            60,
+            16.00006098
+          ],
+          "score": 168.00293901999999,
+          "reasons": [
+            "SOURCE_SET_HELD_OUT",
+            "NO_SOURCE_GRILLE_FEATURE",
+            "NO_PAIRED_FACE_TILES",
+            "NATIVE_FOOTPRINT_OR_HEIGHT_MISMATCH"
+          ],
+          "eligible": false
+        }
+      ],
+      "attempts": [
+        {
+          "caseId": "76897-hood-adapted",
+          "status": "REJECTED",
+          "reasons": [
+            "NATIVE_BOUNDARY_RETILING_UNAVAILABLE"
+          ],
+          "removedInstanceIds": [
+            "vehicle-part-127",
+            "vehicle-part-128",
+            "vehicle-part-129",
+            "vehicle-part-130"
+          ]
+        }
+      ]
+    },
+    {
+      "query": {
+        "region": "window",
+        "size": [
+          160,
+          30.97833897957088,
+          120.00000000000004
+        ],
+        "twinGrille": false
+      },
+      "candidates": [
+        {
+          "caseId": "76897-spoiler-blade",
+          "familyId": "design-645c51895f4f0a71",
+          "sourceSet": "76897",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "bounds": {
+            "min": [
+              -80,
+              -15.6,
+              -30
+            ],
+            "max": [
+              80,
+              15.9441,
+              10.000647
+            ]
+          },
+          "size": [
+            160,
+            31.5441,
+            40.000647
+          ],
+          "score": 80.57311402042916,
+          "reasons": [
+            "CURRENT_ENGINE_BLOCKED",
+            "NO_REVIEWED_COCKPIT_SOURCE",
+            "NATIVE_FOOTPRINT_OR_HEIGHT_MISMATCH"
+          ],
+          "eligible": false
+        },
+        {
+          "caseId": "76897-hood-core",
+          "familyId": "design-b69226d7dddd013d",
+          "sourceSet": "76897",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "bounds": {
+            "min": [
+              -80,
+              -16,
+              -10
+            ],
+            "max": [
+              80,
+              8,
+              10
+            ]
+          },
+          "size": [
+            160,
+            24,
+            20
+          ],
+          "score": 106.98333897957092,
+          "reasons": [
+            "NO_REVIEWED_COCKPIT_SOURCE",
+            "NATIVE_FOOTPRINT_OR_HEIGHT_MISMATCH"
+          ],
+          "eligible": false
+        },
+        {
+          "caseId": "76897-hood-adapted",
+          "familyId": "design-b69226d7dddd013d",
+          "sourceSet": "76897",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "bounds": {
+            "min": [
+              -80,
+              -16,
+              -10
+            ],
+            "max": [
+              80,
+              8,
+              10
+            ]
+          },
+          "size": [
+            160,
+            24,
+            20
+          ],
+          "score": 106.98533897957093,
+          "reasons": [
+            "NO_REVIEWED_COCKPIT_SOURCE",
+            "NATIVE_FOOTPRINT_OR_HEIGHT_MISMATCH"
+          ],
+          "eligible": false
+        },
+        {
+          "caseId": "76897-rear-panel-core",
+          "familyId": "design-60304e6e046a88c2",
+          "sourceSet": "76897",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "bounds": {
+            "min": [
+              -60,
+              -16,
+              -10
+            ],
+            "max": [
+              60,
+              8,
+              10
+            ]
+          },
+          "size": [
+            120,
+            24,
+            20
+          ],
+          "score": 146.98133897957092,
+          "reasons": [
+            "NO_REVIEWED_COCKPIT_SOURCE",
+            "NATIVE_FOOTPRINT_OR_HEIGHT_MISMATCH"
+          ],
+          "eligible": false
+        },
+        {
+          "caseId": "75878-curved-cover-left",
+          "familyId": "design-d1bb1084b0e83221",
+          "sourceSet": "75878",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "bounds": {
+            "min": [
+              -20,
+              -8.00006098,
+              -40
+            ],
+            "max": [
+              20,
+              8,
+              20
+            ]
+          },
+          "size": [
+            40,
+            16.00006098,
+            60
+          ],
+          "score": 194.98127799957092,
+          "reasons": [
+            "SOURCE_SET_HELD_OUT",
+            "NO_REVIEWED_COCKPIT_SOURCE",
+            "NATIVE_FOOTPRINT_OR_HEIGHT_MISMATCH"
+          ],
+          "eligible": false
+        },
+        {
+          "caseId": "75878-curved-cover-right",
+          "familyId": "design-d1bb1084b0e83221",
+          "sourceSet": "75878",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "bounds": {
+            "min": [
+              -20,
+              -8.00006098,
+              -20
+            ],
+            "max": [
+              20,
+              8,
+              40
+            ]
+          },
+          "size": [
+            40,
+            16.00006098,
+            60
+          ],
+          "score": 194.98127799957092,
+          "reasons": [
+            "SOURCE_SET_HELD_OUT",
+            "NO_REVIEWED_COCKPIT_SOURCE",
+            "NATIVE_FOOTPRINT_OR_HEIGHT_MISMATCH"
+          ],
+          "eligible": false
+        }
+      ],
+      "attempts": []
+    }
+  ],
+  "selections": [],
+  "externalConnections": "NOT_VERIFIED",
+  "occupancy": "WHOLE_GRAPH_UNKNOWN",
+  "modelWeightsUpdated": false
+}

@@ -1,0 +1,58 @@
+{
+  "sourceIntegrity": true,
+  "rigidTransforms": true,
+  "formalConnections": "NOT_VERIFIED",
+  "collision": "UNKNOWN",
+  "wheelFit": "UNKNOWN",
+  "stability": "UNKNOWN",
+  "physicalBuildVerified": false,
+  "measured": {
+    "frontOverhang": 60,
+    "rearOverhang": 60,
+    "length": 360,
+    "width": 160,
+    "overallWidth": 160,
+    "height": 136,
+    "wheelbase": 240,
+    "hoodLength": 100,
+    "cabinStart": 100,
+    "cabinEnd": 340,
+    "roofStart": 140,
+    "roofEnd": 280,
+    "bodyGroundClearance": 16,
+    "wheelDiameter": 60,
+    "sideWindowHeight": 40
+  },
+  "target": {
+    "length": 368.19875776397515,
+    "width": 160,
+    "height": 138.6335403726708,
+    "wheelbase": 238.50931677018633,
+    "hoodLength": 100,
+    "cabinStart": 100,
+    "cabinEnd": 340,
+    "frontOverhang": 60,
+    "rearOverhang": 60
+  },
+  "errors": {
+    "length": -8.198757763975152,
+    "width": 0,
+    "height": -2.633540372670808,
+    "wheelbase": 1.4906832298136692,
+    "hoodLength": 0,
+    "cabinStart": 0,
+    "cabinEnd": 0,
+    "frontOverhang": 0,
+    "rearOverhang": 0
+  },
+  "metricPass": true,
+  "partCount": 160,
+  "nativePartKinds": 15,
+  "rejectionReasons": [
+    "WHOLE_VEHICLE_CONNECTION_GRAPH_NOT_VERIFIED",
+    "WHEEL_FIT_AND_INSERTION_PATH_UNKNOWN",
+    "STRUCTURAL_STABILITY_UNKNOWN",
+    "QUANTIZED_rearAxle_VS_OBSERVATION",
+    "QUANTIZED_rearOverhang_VS_OBSERVATION"
+  ]
+}

@@ -1,5 +1,5 @@
 import type { Research, VisionResult } from "./types.js";
-export const BODY_PLAN_VERSION = "vehicle-region-plan-3";
+export const BODY_PLAN_VERSION = "vehicle-region-plan-4";
 export function bodyPlan(
   research: Research,
   vision: VisionResult,
@@ -98,7 +98,7 @@ export function bodyPlan(
         height = dimensions.height * scale,
         windowHeight = height * (1 - sections.find(s => s.name === "hood")!.height!.reduce((a,b) => a+b) / 2),
         desiredRoofWidth = profileWidth("roof") * widthStuds * 20,
-        roofWidth = widthStuds * 20 - Math.max(40,Math.round((widthStuds*20-desiredRoofWidth)/40)*40),
+        roofWidth = Math.min((widthStuds-1)*20,Math.round(desiredRoofWidth/20)*20),
         coverError = Math.abs(roofWidth-desiredRoofWidth);
       return {
         widthStuds,
@@ -164,10 +164,10 @@ export function bodyPlan(
   if (roofSection.height![1] < 1) throw Error("BODY_ROOF_HEIGHT_CONFLICT");
   const cabinStart = Math.round(center("cabinStart") * length / 20) * 20 / length,
     cabinEnd = Math.round(center("cabinEnd") * length / 20) * 20 / length,
-    // Reserve one native sloping face at each end, instead of filling the
-    // entire observed cabin volume and leaving a one-plate black slit.
-    roofStart = cabinStart + 20 / length,
-    roofEnd = cabinEnd - 20 / length;
+    // Roof extents are independent observations. The native one-stud minimum
+    // reserves a glass surface without forcing every car to the same short run.
+    roofStart = Math.max(cabinStart+20/length,Math.round(center("roofStart")*length/20)*20/length),
+    roofEnd = Math.min(cabinEnd-20/length,Math.round(center("roofEnd")*length/20)*20/length);
   if (!(cabinStart < roofStart && roofStart < roofEnd && roofEnd < cabinEnd))
     throw Error("BODY_ROOF_SEGMENT_ORDER");
   const chosenHood = (hoodSection.height![0] + hoodSection.height![1]) / 2,
@@ -246,6 +246,12 @@ export function bodyPlan(
     conflicts.push("ROOF_HEIGHT_NORMALIZATION_CONFLICT");
   if (chosenHood * height < wheelRadiusLdu * 2)
     conflicts.push("HOOD_HEIGHT_BELOW_NATIVE_WHEEL_TOP");
+  const observationDeviations = [
+    ["frontAxle",axleFront/length],["rearAxle",axleRear/length],
+    ["frontOverhang",axleFront/length],["rearOverhang",1-axleRear/length],
+    ["cabinStart",cabinStart],["cabinEnd",cabinEnd],["roofStart",roofStart],["roofEnd",roofEnd],
+  ].map(([name,value])=>{const c=observation(name as string),chosen=value as number;return{name:name as string,observed:[c.min,c.max],chosen,errorToInterval:chosen<c.min?chosen-c.min:chosen>c.max?chosen-c.max:0,imageIds:c.imageIds};});
+  for(const d of observationDeviations)if(Math.abs(d.errorToInterval)>1e-9)conflicts.push("QUANTIZED_"+d.name+"_VS_OBSERVATION");
   return {
     version: BODY_PLAN_VERSION,
     coordinateSystem:
@@ -257,6 +263,7 @@ export function bodyPlan(
     widthStuds: choice.widthStuds,
     widthChoices: choices,
     conflicts,
+    observationDeviations,
     length,
     width,
     height,
@@ -279,7 +286,7 @@ export function bodyPlan(
         "visual section/roof ratios treated as design estimates; raw output remains unchanged and original visual intervals are not all satisfied",
     },
     selectionPolicy:
-      "Score all 6–12-stud widths against native wheel ratio and length quantization; use section midpoints, distinct one-stud glass runs and a flat hardtop; archive raw intervals and report source-slope/boundary conflicts rather than rewriting observations",
+      "Score all 6–12-stud widths against native wheel ratio, length quantization and one-stud roof resolution; independently quantize observed roof extents with minimum glass run; archive raw intervals and actual chosen-value deviations",
     constraints,
     features: vision.features ?? [],
     imageIds: [...ids],

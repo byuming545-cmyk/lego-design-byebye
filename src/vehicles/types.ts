@@ -40,6 +40,7 @@ export interface VehicleImage {
   view: "unknown";
 }
 export interface Research {
+  observation?: import("./demo-evidence.js").ObservationProvenance;
   input: VehicleInput;
   sources: Source[];
   measurements: Measurement[];
@@ -109,6 +110,7 @@ export interface VisionResult {
   uncertainty: string[];
 }
 export type Stage =
+  | "craft"
   | "research"
   | "vision"
   | "planning"

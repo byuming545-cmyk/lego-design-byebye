@@ -1,0 +1,701 @@
+{
+  "version": "vehicle-region-plan-4",
+  "coordinateSystem": "native LDraw: X lateral, Y down, Z front(-) to rear(+); ground Y=0",
+  "units": "LDU",
+  "dimensionsMm": {
+    "length": 3705,
+    "width": 1610,
+    "height": 1395,
+    "wheelbase": 2400
+  },
+  "dimensionSources": [
+    {
+      "key": "length",
+      "mm": 3705,
+      "sourceId": "39976c9b1fc3c15ad07a214c092af840e921c71d8b411042ef3b279cdf387d47",
+      "scope": "generation-body",
+      "applicableYears": [
+        1974,
+        1983
+      ],
+      "variant": "unconfirmed",
+      "evidence": "| length = {{cvt|3705|mm|in|1}},<br />later {{cvt|3815|mm|in|1}},<br />USA {{cvt|155.3|in|mm|0}},<br />Pickup: {{cvt|4380|mm|in|1}} | LOCAL REVIEW: early European hatchback value selected; later, USA, Cabriolet and pickup alternatives excluded; exact 1976 GTI dimensions unconfirmed."
+    },
+    {
+      "key": "width",
+      "mm": 1610,
+      "sourceId": "39976c9b1fc3c15ad07a214c092af840e921c71d8b411042ef3b279cdf387d47",
+      "scope": "generation-body",
+      "applicableYears": [
+        1974,
+        1983
+      ],
+      "variant": "unconfirmed",
+      "evidence": "| width = {{cvt|1610|mm|in|1}},<br />later {{cvt|1630|mm|in|1}},<br />Pickup: {{cvt|1640|mm|in|1}} | LOCAL REVIEW: early European hatchback value selected; later, USA, Cabriolet and pickup alternatives excluded; exact 1976 GTI dimensions unconfirmed."
+    },
+    {
+      "key": "height",
+      "mm": 1395,
+      "sourceId": "39976c9b1fc3c15ad07a214c092af840e921c71d8b411042ef3b279cdf387d47",
+      "scope": "generation-body",
+      "applicableYears": [
+        1974,
+        1983
+      ],
+      "variant": "unconfirmed",
+      "evidence": "| height = Saloon: {{cvt|1395|mm|in|1}},<br />Cabrio: {{cvt|1412|mm|in|1}},<br />Pickup: {{cvt|1490|mm|in|1}} | LOCAL REVIEW: early European hatchback value selected; later, USA, Cabriolet and pickup alternatives excluded; exact 1976 GTI dimensions unconfirmed."
+    },
+    {
+      "key": "wheelbase",
+      "mm": 2400,
+      "sourceId": "39976c9b1fc3c15ad07a214c092af840e921c71d8b411042ef3b279cdf387d47",
+      "scope": "generation-body",
+      "applicableYears": [
+        1974,
+        1983
+      ],
+      "variant": "unconfirmed",
+      "evidence": "| wheelbase = {{cvt|2400|mm|in|1}},<br />Pickup: {{cvt|2625|mm|in|1}} | LOCAL REVIEW: early European hatchback value selected; later, USA, Cabriolet and pickup alternatives excluded; exact 1976 GTI dimensions unconfirmed."
+    }
+  ],
+  "scaleLduPerMm": 0.09937888198757763,
+  "widthStuds": 8,
+  "widthChoices": [
+    {
+      "widthStuds": 8,
+      "scale": 0.09937888198757763,
+      "wheelRatio": 0.2163978494623656,
+      "lengthErrorLdu": -8.198757763975152,
+      "windowHeightLdu": 53.37391304347826,
+      "nativeRoofWidthLdu": 140,
+      "coverWidthErrorLdu": 0.8000000000000114,
+      "resolutionPenalty": 0.0002500000000000036,
+      "score": 0.011101290757912136
+    },
+    {
+      "widthStuds": 9,
+      "scale": 0.11180124223602485,
+      "wheelRatio": 0.1923536439665472,
+      "lengthErrorLdu": 5.776397515527947,
+      "windowHeightLdu": 60.04565217391304,
+      "nativeRoofWidthLdu": 160,
+      "coverWidthErrorLdu": 3.4000000000000057,
+      "resolutionPenalty": 0.0009444444444444461,
+      "score": 0.021379824319552692
+    },
+    {
+      "widthStuds": 10,
+      "scale": 0.12422360248447205,
+      "wheelRatio": 0.17311827956989245,
+      "lengthErrorLdu": -0.24844720496895434,
+      "windowHeightLdu": 66.71739130434783,
+      "nativeRoofWidthLdu": 180,
+      "coverWidthErrorLdu": 6,
+      "resolutionPenalty": 0.0015,
+      "score": 0.03848968264333295
+    },
+    {
+      "widthStuds": 7,
+      "scale": 0.08695652173913043,
+      "wheelRatio": 0.24731182795698925,
+      "lengthErrorLdu": -2.173913043478251,
+      "windowHeightLdu": 46.70217391304348,
+      "nativeRoofWidthLdu": 120,
+      "coverWidthErrorLdu": 1.7999999999999972,
+      "resolutionPenalty": 0.0006428571428571418,
+      "score": 0.0393042127651635
+    },
+    {
+      "widthStuds": 11,
+      "scale": 0.13664596273291926,
+      "wheelRatio": 0.1573802541544477,
+      "lengthErrorLdu": -6.2732919254658555,
+      "windowHeightLdu": 73.38913043478261,
+      "nativeRoofWidthLdu": 200,
+      "coverWidthErrorLdu": 8.599999999999994,
+      "resolutionPenalty": 0.001954545454545453,
+      "score": 0.05705251483095289
+    },
+    {
+      "widthStuds": 12,
+      "scale": 0.14906832298136646,
+      "wheelRatio": 0.1442652329749104,
+      "lengthErrorLdu": 7.7018633540373,
+      "windowHeightLdu": 80.0608695652174,
+      "nativeRoofWidthLdu": 200,
+      "coverWidthErrorLdu": 8.799999999999983,
+      "resolutionPenalty": 0.00183333333333333,
+      "score": 0.07035712420007838
+    },
+    {
+      "widthStuds": 6,
+      "scale": 0.07453416149068323,
+      "wheelRatio": 0.2885304659498208,
+      "lengthErrorLdu": 3.85093167701865,
+      "windowHeightLdu": 40.0304347826087,
+      "nativeRoofWidthLdu": 100,
+      "coverWidthErrorLdu": 4.3999999999999915,
+      "resolutionPenalty": 0.00183333333333333,
+      "score": 0.08315282312480952
+    }
+  ],
+  "conflicts": [],
+  "length": 360,
+  "width": 160,
+  "height": 138.6335403726708,
+  "axleFront": 60,
+  "axleRear": 300,
+  "wheelRadiusLdu": 30,
+  "groundClearance": 13.170186335403727,
+  "cabinStart": 0.2777777777777778,
+  "cabinEnd": 0.9444444444444444,
+  "roofStart": 0.3888888888888889,
+  "roofEnd": 0.7777777777777778,
+  "profile": [
+    {
+      "name": "nose",
+      "x": 0,
+      "height": 0.57,
+      "width": 0.97,
+      "evidenceImageIds": [
+        "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983",
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade",
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ]
+    },
+    {
+      "name": "hood-start",
+      "x": 0.015,
+      "height": 0.615,
+      "width": 0.97,
+      "evidenceImageIds": [
+        "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983",
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade",
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ]
+    },
+    {
+      "name": "hood-end",
+      "x": 0.2777777777777778,
+      "height": 0.615,
+      "width": 0.97,
+      "evidenceImageIds": [
+        "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983",
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade",
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ]
+    },
+    {
+      "name": "roof-start",
+      "x": 0.3888888888888889,
+      "height": 1,
+      "width": 0.87,
+      "evidenceImageIds": [
+        "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983",
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade",
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ]
+    },
+    {
+      "name": "roof-end",
+      "x": 0.7777777777777778,
+      "height": 1,
+      "width": 0.87,
+      "evidenceImageIds": [
+        "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983",
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade",
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ]
+    },
+    {
+      "name": "rear-window-end",
+      "x": 0.9444444444444444,
+      "height": 0.565,
+      "width": 0.96,
+      "evidenceImageIds": [
+        "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983",
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade",
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ]
+    },
+    {
+      "name": "tail",
+      "x": 1,
+      "height": 0.565,
+      "width": 0.96,
+      "evidenceImageIds": [
+        "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983",
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade",
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ]
+    }
+  ],
+  "observedSections": [
+    {
+      "name": "nose",
+      "x": 0.015,
+      "height": 0.5249999999999999,
+      "width": 0.97,
+      "evidenceImageIds": [
+        "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983"
+      ],
+      "uncertainty": {
+        "x": [
+          0,
+          0.03
+        ],
+        "height": [
+          0.48,
+          0.57
+        ],
+        "width": [
+          0.94,
+          1
+        ]
+      }
+    },
+    {
+      "name": "hood",
+      "x": 0.16,
+      "height": 0.615,
+      "width": 0.97,
+      "evidenceImageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "uncertainty": {
+        "x": [
+          0.1,
+          0.22
+        ],
+        "height": [
+          0.58,
+          0.65
+        ],
+        "width": [
+          0.94,
+          1
+        ]
+      }
+    },
+    {
+      "name": "windshield",
+      "x": 0.35,
+      "height": 0.79,
+      "width": 0.8799999999999999,
+      "evidenceImageIds": [
+        "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983"
+      ],
+      "uncertainty": {
+        "x": [
+          0.3,
+          0.4
+        ],
+        "height": [
+          0.72,
+          0.86
+        ],
+        "width": [
+          0.82,
+          0.94
+        ]
+      }
+    },
+    {
+      "name": "roof",
+      "x": 0.5650000000000001,
+      "height": 1,
+      "width": 0.87,
+      "evidenceImageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "uncertainty": {
+        "x": [
+          0.45,
+          0.68
+        ],
+        "height": [
+          0.98,
+          1
+        ],
+        "width": [
+          0.82,
+          0.92
+        ]
+      }
+    },
+    {
+      "name": "rearWindow",
+      "x": 0.845,
+      "height": 0.8,
+      "width": 0.8999999999999999,
+      "evidenceImageIds": [
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ],
+      "uncertainty": {
+        "x": [
+          0.8,
+          0.89
+        ],
+        "height": [
+          0.72,
+          0.88
+        ],
+        "width": [
+          0.84,
+          0.96
+        ]
+      }
+    },
+    {
+      "name": "tail",
+      "x": 0.975,
+      "height": 0.565,
+      "width": 0.96,
+      "evidenceImageIds": [
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ],
+      "uncertainty": {
+        "x": [
+          0.96,
+          0.99
+        ],
+        "height": [
+          0.52,
+          0.61
+        ],
+        "width": [
+          0.92,
+          1
+        ]
+      }
+    }
+  ],
+  "rawVisualSections": [
+    {
+      "name": "nose",
+      "x": [
+        0,
+        0.03
+      ],
+      "height": [
+        0.48,
+        0.57
+      ],
+      "width": [
+        0.94,
+        1
+      ],
+      "imageIds": [
+        "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983"
+      ]
+    },
+    {
+      "name": "hood",
+      "x": [
+        0.1,
+        0.22
+      ],
+      "height": [
+        0.58,
+        0.65
+      ],
+      "width": [
+        0.94,
+        1
+      ],
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ]
+    },
+    {
+      "name": "windshield",
+      "x": [
+        0.3,
+        0.4
+      ],
+      "height": [
+        0.72,
+        0.86
+      ],
+      "width": [
+        0.82,
+        0.94
+      ],
+      "imageIds": [
+        "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983"
+      ]
+    },
+    {
+      "name": "roof",
+      "x": [
+        0.45,
+        0.68
+      ],
+      "height": [
+        0.98,
+        1
+      ],
+      "width": [
+        0.82,
+        0.92
+      ],
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ]
+    },
+    {
+      "name": "rearWindow",
+      "x": [
+        0.8,
+        0.89
+      ],
+      "height": [
+        0.72,
+        0.88
+      ],
+      "width": [
+        0.84,
+        0.96
+      ],
+      "imageIds": [
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ]
+    },
+    {
+      "name": "tail",
+      "x": [
+        0.96,
+        0.99
+      ],
+      "height": [
+        0.52,
+        0.61
+      ],
+      "width": [
+        0.92,
+        1
+      ],
+      "imageIds": [
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ]
+    }
+  ],
+  "heightCalibration": {
+    "factor": 1,
+    "roofObservation": [
+      0.98,
+      1
+    ],
+    "anchor": "authoritative physical total vehicle height",
+    "assumption": "visual section/roof ratios treated as design estimates; raw output remains unchanged and original visual intervals are not all satisfied"
+  },
+  "selectionPolicy": "Score all 6–12-stud widths against native wheel ratio and length quantization; use section midpoints, distinct one-stud glass runs and a flat hardtop; archive raw intervals and report source-slope/boundary conflicts rather than rewriting observations",
+  "constraints": [
+    {
+      "name": "hoodLength",
+      "min": 0.25,
+      "max": 0.33,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "cabinStart",
+      "min": 0.26,
+      "max": 0.32,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "cabinEnd",
+      "min": 0.9,
+      "max": 0.96,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "roofHeight",
+      "min": 0.98,
+      "max": 1,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "heightFraction"
+    },
+    {
+      "name": "wheelRadius",
+      "min": 0.19,
+      "max": 0.23,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "heightFraction"
+    },
+    {
+      "name": "frontOverhang",
+      "min": 0.12,
+      "max": 0.2,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "rearOverhang",
+      "min": 0.19,
+      "max": 0.28,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "frontAxle",
+      "min": 0.13,
+      "max": 0.19,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "rearAxle",
+      "min": 0.72,
+      "max": 0.79,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "hoodStart",
+      "min": 0,
+      "max": 0.03,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "hoodEnd",
+      "min": 0.26,
+      "max": 0.32,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "roofStart",
+      "min": 0.36,
+      "max": 0.43,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "roofEnd",
+      "min": 0.73,
+      "max": 0.81,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "groundClearance",
+      "min": 0.07,
+      "max": 0.12,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "heightFraction"
+    },
+    {
+      "name": "windshieldAngle",
+      "min": 48,
+      "max": 60,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "degrees"
+    },
+    {
+      "name": "rearWindowAngle",
+      "min": 45,
+      "max": 58,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "degrees"
+    }
+  ],
+  "features": [
+    {
+      "name": "grille",
+      "description": "Single black horizontal grille with two round exposed headlights, red surround",
+      "imageIds": [
+        "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983"
+      ]
+    },
+    {
+      "name": "body silhouette",
+      "description": "Short hood, tall long cabin, two-box hatchback; rear glass continues towards rear panel",
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade",
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ]
+    },
+    {
+      "name": "windows",
+      "description": "Front side window and rear quarter window separated by a narrow dark B pillar",
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ]
+    },
+    {
+      "name": "bumper",
+      "description": "Dark horizontal bumper and lower sill trim; exact early-year shape unconfirmed",
+      "imageIds": [
+        "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983",
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ]
+    },
+    {
+      "name": "taillights",
+      "description": "Compact rectangular rear corner light clusters below the hatch glass",
+      "imageIds": [
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ]
+    }
+  ],
+  "imageIds": [
+    "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade",
+    "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983",
+    "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+  ],
+  "quantization": {
+    "longitudinalLdu": 20,
+    "lateralLdu": 20,
+    "verticalLdu": 8,
+    "comparisonToleranceLdu": {
+      "length": 20,
+      "width": 0,
+      "height": 12,
+      "wheelbase": 20,
+      "hoodLength": 20,
+      "cabinStart": 20,
+      "cabinEnd": 20,
+      "frontOverhang": 20,
+      "rearOverhang": 20
+    },
+    "basis": "one native stud longitudinal, one plate plus stud vertical; fixed before generation"
+  },
+  "scope": "design-estimate-not-assembly-proof"
+}

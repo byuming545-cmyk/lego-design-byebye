@@ -1,0 +1,1430 @@
+[
+  {
+    "instanceId": "vehicle-part-1",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-2",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-3",
+    "nearbyEndpointPairs": 2,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-7",
+        "fixedConnectionId": "parts/s/87079s01.dat:8:1",
+        "movingConnectionId": "p/stud.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "translation": [
+            -30,
+            -80,
+            -120
+          ]
+        },
+        "poseErrorLdu": 4,
+        "matchesRequestedPose": false
+      },
+      {
+        "fixedInstanceId": "vehicle-part-8",
+        "fixedConnectionId": "parts/s/87079s01.dat:8:0",
+        "movingConnectionId": "p/stud.dat:8:2",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "translation": [
+            -30,
+            -80,
+            -120
+          ]
+        },
+        "poseErrorLdu": 4,
+        "matchesRequestedPose": false
+      }
+    ],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-4",
+    "nearbyEndpointPairs": 2,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-7",
+        "fixedConnectionId": "parts/s/87079s01.dat:8:7",
+        "movingConnectionId": "p/stud.dat:8:2",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0
+          ],
+          "translation": [
+            30,
+            -80,
+            -120
+          ]
+        },
+        "poseErrorLdu": 4,
+        "matchesRequestedPose": false
+      },
+      {
+        "fixedInstanceId": "vehicle-part-8",
+        "fixedConnectionId": "parts/s/87079s01.dat:8:6",
+        "movingConnectionId": "p/stud.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0
+          ],
+          "translation": [
+            30,
+            -80,
+            -120
+          ]
+        },
+        "poseErrorLdu": 4,
+        "matchesRequestedPose": false
+      }
+    ],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-5",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-6",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-7",
+    "nearbyEndpointPairs": 2,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-3",
+        "fixedConnectionId": "p/stud.dat:8:1",
+        "movingConnectionId": "parts/s/87079s01.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -84,
+            -140
+          ]
+        },
+        "poseErrorLdu": 4,
+        "matchesRequestedPose": false
+      },
+      {
+        "fixedInstanceId": "vehicle-part-4",
+        "fixedConnectionId": "p/stud.dat:8:2",
+        "movingConnectionId": "parts/s/87079s01.dat:8:7",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -84,
+            -140
+          ]
+        },
+        "poseErrorLdu": 4,
+        "matchesRequestedPose": false
+      }
+    ],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-8",
+    "nearbyEndpointPairs": 2,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-3",
+        "fixedConnectionId": "p/stud.dat:8:2",
+        "movingConnectionId": "parts/s/87079s01.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -84,
+            -100
+          ]
+        },
+        "poseErrorLdu": 4,
+        "matchesRequestedPose": false
+      },
+      {
+        "fixedInstanceId": "vehicle-part-4",
+        "fixedConnectionId": "p/stud.dat:8:1",
+        "movingConnectionId": "parts/s/87079s01.dat:8:6",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -84,
+            -100
+          ]
+        },
+        "poseErrorLdu": 4,
+        "matchesRequestedPose": false
+      }
+    ],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-9",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-10",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-11",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-12",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-13",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-14",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-15",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-16",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-17",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-18",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-19",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-20",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-21",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-22",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-23",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-24",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-25",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-26",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-27",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-28",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-29",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-30",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-31",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-32",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-33",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-34",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-35",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-36",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-37",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-38",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-39",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-40",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-41",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-42",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-43",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-44",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-45",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-46",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-47",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-48",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-49",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-50",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-51",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-52",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-53",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-54",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-55",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-56",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-57",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-58",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-61",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-64",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-65",
+    "nearbyEndpointPairs": 8,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-66",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-67",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-68",
+    "nearbyEndpointPairs": 8,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-69",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-70",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-71",
+    "nearbyEndpointPairs": 8,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-72",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-73",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-74",
+    "nearbyEndpointPairs": 8,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-75",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-76",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-77",
+    "nearbyEndpointPairs": 8,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-78",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-79",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-80",
+    "nearbyEndpointPairs": 8,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-81",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-82",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-83",
+    "nearbyEndpointPairs": 8,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-84",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-85",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-86",
+    "nearbyEndpointPairs": 8,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-87",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-88",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-89",
+    "nearbyEndpointPairs": 8,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-90",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-91",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-92",
+    "nearbyEndpointPairs": 8,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-93",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-94",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-95",
+    "nearbyEndpointPairs": 8,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-96",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-97",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-98",
+    "nearbyEndpointPairs": 8,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-99",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-100",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-101",
+    "nearbyEndpointPairs": 8,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-102",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-103",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-104",
+    "nearbyEndpointPairs": 8,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-105",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-106",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-107",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-108",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-109",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-114",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-115",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-116",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-117",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-118",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-119",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-120",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-121",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-122",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-123",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-124",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-125",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-126",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-127",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-128",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-129",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-130",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-131",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-132",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-133",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-134",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-135",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-136",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-137",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-138",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-139",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-140",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-141",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-142",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-143",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-144",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-145",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-146",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-147",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-148",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-149",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-150",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-151",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-152",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-153",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-154",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-155",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-156",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-157",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-158",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-159",
+    "nearbyEndpointPairs": 2,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-160",
+    "nearbyEndpointPairs": 2,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  }
+]

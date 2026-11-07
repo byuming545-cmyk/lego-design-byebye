@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 2,
+  "identity": "confirmed",
+  "imageAssessments": [
+    {
+      "imageId": "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade",
+      "view": "side",
+      "identity": "confirmed",
+      "modified": false,
+      "features": [
+        "Mk1 hatchback body family; exact year unconfirmed"
+      ],
+      "duplicateOf": null,
+      "vehicleType": "photo"
+    },
+    {
+      "imageId": "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983",
+      "view": "oblique",
+      "identity": "confirmed",
+      "modified": false,
+      "features": [
+        "Mk1 hatchback body family; exact year unconfirmed"
+      ],
+      "duplicateOf": null,
+      "vehicleType": "photo"
+    },
+    {
+      "imageId": "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49",
+      "view": "oblique",
+      "identity": "confirmed",
+      "modified": false,
+      "features": [
+        "Mk1 hatchback body family; exact year unconfirmed"
+      ],
+      "duplicateOf": null,
+      "vehicleType": "photo"
+    }
+  ],
+  "constraints": [
+    {
+      "name": "hoodLength",
+      "min": 0.25,
+      "max": 0.33,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "cabinStart",
+      "min": 0.26,
+      "max": 0.32,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "cabinEnd",
+      "min": 0.9,
+      "max": 0.96,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "roofHeight",
+      "min": 0.98,
+      "max": 1,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "heightFraction"
+    },
+    {
+      "name": "wheelRadius",
+      "min": 0.19,
+      "max": 0.23,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "heightFraction"
+    },
+    {
+      "name": "frontOverhang",
+      "min": 0.12,
+      "max": 0.2,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "rearOverhang",
+      "min": 0.19,
+      "max": 0.28,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "frontAxle",
+      "min": 0.13,
+      "max": 0.19,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "rearAxle",
+      "min": 0.72,
+      "max": 0.79,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "hoodStart",
+      "min": 0,
+      "max": 0.03,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "hoodEnd",
+      "min": 0.26,
+      "max": 0.32,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "roofStart",
+      "min": 0.36,
+      "max": 0.43,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "roofEnd",
+      "min": 0.73,
+      "max": 0.81,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "lengthFraction"
+    },
+    {
+      "name": "groundClearance",
+      "min": 0.07,
+      "max": 0.12,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "heightFraction"
+    },
+    {
+      "name": "windshieldAngle",
+      "min": 48,
+      "max": 60,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "degrees"
+    },
+    {
+      "name": "rearWindowAngle",
+      "min": 45,
+      "max": 58,
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ],
+      "unit": "degrees"
+    }
+  ],
+  "sections": [
+    {
+      "name": "nose",
+      "x": [
+        0,
+        0.03
+      ],
+      "height": [
+        0.48,
+        0.57
+      ],
+      "width": [
+        0.94,
+        1
+      ],
+      "imageIds": [
+        "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983"
+      ]
+    },
+    {
+      "name": "hood",
+      "x": [
+        0.1,
+        0.22
+      ],
+      "height": [
+        0.58,
+        0.65
+      ],
+      "width": [
+        0.94,
+        1
+      ],
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ]
+    },
+    {
+      "name": "windshield",
+      "x": [
+        0.3,
+        0.4
+      ],
+      "height": [
+        0.72,
+        0.86
+      ],
+      "width": [
+        0.82,
+        0.94
+      ],
+      "imageIds": [
+        "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983"
+      ]
+    },
+    {
+      "name": "roof",
+      "x": [
+        0.45,
+        0.68
+      ],
+      "height": [
+        0.98,
+        1
+      ],
+      "width": [
+        0.82,
+        0.92
+      ],
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ]
+    },
+    {
+      "name": "rearWindow",
+      "x": [
+        0.8,
+        0.89
+      ],
+      "height": [
+        0.72,
+        0.88
+      ],
+      "width": [
+        0.84,
+        0.96
+      ],
+      "imageIds": [
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ]
+    },
+    {
+      "name": "tail",
+      "x": [
+        0.96,
+        0.99
+      ],
+      "height": [
+        0.52,
+        0.61
+      ],
+      "width": [
+        0.92,
+        1
+      ],
+      "imageIds": [
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ]
+    }
+  ],
+  "features": [
+    {
+      "name": "grille",
+      "description": "Single black horizontal grille with two round exposed headlights, red surround",
+      "imageIds": [
+        "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983"
+      ]
+    },
+    {
+      "name": "body silhouette",
+      "description": "Short hood, tall long cabin, two-box hatchback; rear glass continues towards rear panel",
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade",
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ]
+    },
+    {
+      "name": "windows",
+      "description": "Front side window and rear quarter window separated by a narrow dark B pillar",
+      "imageIds": [
+        "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade"
+      ]
+    },
+    {
+      "name": "bumper",
+      "description": "Dark horizontal bumper and lower sill trim; exact early-year shape unconfirmed",
+      "imageIds": [
+        "e5a511695d7acd84bfb4efa6b408af0d505a7d1ca2b06326b644088be79ee983",
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ]
+    },
+    {
+      "name": "taillights",
+      "description": "Compact rectangular rear corner light clusters below the hatch glass",
+      "imageIds": [
+        "2b38be8c16f4c8add52f5025f7c434f53a1992abfbbb4f4e482ac7ad26242a49"
+      ]
+    }
+  ],
+  "uncertainty": [
+    "LOCAL PHOTO REVIEW by development agent, NOT a paid/provider model response.",
+    "Reference photographs show 1979/1982 Mk1 bodies; exact 1976 trim unconfirmed.",
+    "Near-side photo has perspective and low camera elevation; all intervals are broad estimates.",
+    "Native wheel sizing may conflict with physical wheelbase/observed axle positions; retain discrepancies.",
+    "Round lamps, hatch seals and hidden mounting require native-part fit; no physical assembly evidence."
+  ]
+}

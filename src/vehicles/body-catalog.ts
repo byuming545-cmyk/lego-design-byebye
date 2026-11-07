@@ -40,7 +40,7 @@ export class BodyCatalog {
       (x) =>
         /^(?:Plate|Tile|Brick)\s+\d+ x\s*\d+(?:$| with Groove$)/.test(x.name) ||
         /^(?:Slope Brick|Wedge|Car Mudguard|Vehicle Mudguard)\s/.test(x.name) ||
-        /^Tile\s+.*Grille/.test(x.name),
+        /^Tile\s+.*Grille/.test(x.name) || /^Tile\s+1 x\s*1 Round with Groove$/.test(x.name),
     );
     return this.load([...roots.map((x) => x.partId), "18977", "66727"]);
   }

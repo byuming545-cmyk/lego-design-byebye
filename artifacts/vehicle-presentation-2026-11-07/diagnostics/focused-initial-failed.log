@@ -1,0 +1,30 @@
+
+ RUN  v5.0.5 /workspace/lego-design-byebye
+
+ ❯ tests/vehicle-design-cases.test.ts (15 tests | 1 failed) 84754ms
+   ❯ native source craft learning, without weight training (15)
+     × makes a real craft geometry change and leaves the historical baseline version intact 8ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/vehicle-design-cases.test.ts > native source craft learning, without weight training > makes a real craft geometry change and leaves the historical baseline version intact
+AssertionError: expected 'source-region-shell-4' to be 'source-case-regions-5' // Object.is equality
+
+Expected: "source-case-regions-5"
+Received: "source-region-shell-4"
+
+ ❯ tests/vehicle-design-cases.test.ts:47:38
+     45|     it("makes a real craft geometry change and leaves the historical b…
+     46|         const old = JSON.parse(await readFile("artifacts/vehicle-craft…
+     47|         expect(old.generatorVersion).toBe("source-case-regions-5");
+       |                                      ^
+     48|         expect(disabled.generatorVersion).not.toBe(old.generatorVersio…
+     49|         expect(disabled.layout.craft.options.enabled).toBe(false);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 46 passed (47)
+   Start at  03:14:32
+   Duration  237.71s (tests 100%)

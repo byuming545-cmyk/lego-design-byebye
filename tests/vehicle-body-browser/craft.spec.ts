@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { readFile, writeFile, mkdir, cp, readdir } from "node:fs/promises";
 const root = process.env.VEHICLE_BODY_BROWSER_DATA_DIR ?? "/tmp/bricklab-vehicle-body-browser";
-const artifacts = "artifacts/vehicle-craft-2026-11-07";
+const artifacts = "artifacts/vehicle-presentation-2026-11-07/craft-controls";
 const cases = new Map<string, any>();
 test.beforeAll(async () => {
     for (const name of ["enabled", "disabled", "holdout-76897", "holdout-75878"]) {
@@ -32,7 +32,7 @@ test("normal cached workflow executes both craft controls without route mocks or
         expect(result.preview.layout.craft.options.enabled).toBe(enabled);
         await writeFile(`${artifacts}/unmocked-${name}-job.json`, JSON.stringify(result, null, 2));
         await page.getByText("本次使用的拼搭工艺", { exact: true }).click();
-        await expect(page.getByText(/本功能未训练或微调模型/)).toBeVisible();
+        await expect(page.locator(".vehicle-evidence").getByText(/本功能未训练或微调模型/)).toBeVisible();
         await page.screenshot({ path: `${artifacts}/unmocked-${name}-page.png`, fullPage: true });
     }
     const cache = await readdir(`${root}/vehicle-platform/vision-cache`).catch((e) => { if (e.code === "ENOENT")
@@ -54,7 +54,7 @@ test("job-bound controls and historical schema cannot be bypassed by an otherwis
     const j = cases.get("enabled"), disabled = cases.get("disabled");
     const r = await request.post(`/api/vehicles/jobs/${j.id}/preview/import`, { data: { content: JSON.stringify(disabled.preview) } });
     expect(r.status()).toBe(409);
-    const old = await readFile("artifacts/vehicle-craft-2026-11-07/baseline/model.json", "utf8");
+    const old = await readFile("artifacts/vehicle-presentation-2026-11-07/baseline/model.json", "utf8");
     expect((await request.post(`/api/vehicles/jobs/${j.id}/preview/import`, { data: { content: old } })).status()).toBe(409);
 });
 test("rejects unsupported control grants before starting research", async ({ request }) => {

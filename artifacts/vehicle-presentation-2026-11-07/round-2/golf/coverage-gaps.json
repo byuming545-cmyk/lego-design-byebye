@@ -1,0 +1,189 @@
+{
+  "scope": "Known cabin-belt target cells versus actual BOM/poses, not a whole-surface coverage certificate",
+  "actualBeltInstances": 48,
+  "rejectedMissingCaps": [
+    {
+      "nativePartId": "3070b",
+      "translationLdu": [
+        -70.0,
+        -80,
+        -70.0
+      ],
+      "boundsLdu": {
+        "min": [
+          -80.0,
+          -80,
+          -80.0
+        ],
+        "max": [
+          -60.0,
+          -72,
+          -60.0
+        ]
+      },
+      "status": "NOT_IN_BOM",
+      "reason": "native belt cap rejected against tilted screen backing; open region retained"
+    },
+    {
+      "nativePartId": "3070b",
+      "translationLdu": [
+        -70.0,
+        -88,
+        -70.0
+      ],
+      "boundsLdu": {
+        "min": [
+          -80.0,
+          -88,
+          -80.0
+        ],
+        "max": [
+          -60.0,
+          -80,
+          -60.0
+        ]
+      },
+      "status": "NOT_IN_BOM",
+      "reason": "native belt cap rejected against tilted screen backing; open region retained"
+    },
+    {
+      "nativePartId": "3070b",
+      "translationLdu": [
+        70.0,
+        -80,
+        -70.0
+      ],
+      "boundsLdu": {
+        "min": [
+          60.0,
+          -80,
+          -80.0
+        ],
+        "max": [
+          80.0,
+          -72,
+          -60.0
+        ]
+      },
+      "status": "NOT_IN_BOM",
+      "reason": "native belt cap rejected against tilted screen backing; open region retained"
+    },
+    {
+      "nativePartId": "3070b",
+      "translationLdu": [
+        70.0,
+        -88,
+        -70.0
+      ],
+      "boundsLdu": {
+        "min": [
+          60.0,
+          -88,
+          -80.0
+        ],
+        "max": [
+          80.0,
+          -80,
+          -60.0
+        ]
+      },
+      "status": "NOT_IN_BOM",
+      "reason": "native belt cap rejected against tilted screen backing; open region retained"
+    },
+    {
+      "nativePartId": "3070b",
+      "translationLdu": [
+        -70.0,
+        -88,
+        130.0
+      ],
+      "boundsLdu": {
+        "min": [
+          -80.0,
+          -88,
+          120.0
+        ],
+        "max": [
+          -60.0,
+          -80,
+          140.0
+        ]
+      },
+      "status": "NOT_IN_BOM",
+      "reason": "native belt cap rejected against tilted screen backing; open region retained"
+    },
+    {
+      "nativePartId": "3070b",
+      "translationLdu": [
+        70.0,
+        -88,
+        130.0
+      ],
+      "boundsLdu": {
+        "min": [
+          60.0,
+          -88,
+          120.0
+        ],
+        "max": [
+          80.0,
+          -80,
+          140.0
+        ]
+      },
+      "status": "NOT_IN_BOM",
+      "reason": "native belt cap rejected against tilted screen backing; open region retained"
+    },
+    {
+      "nativePartId": "3070b",
+      "translationLdu": [
+        -70.0,
+        -88,
+        150.0
+      ],
+      "boundsLdu": {
+        "min": [
+          -80.0,
+          -88,
+          140.0
+        ],
+        "max": [
+          -60.0,
+          -80,
+          160.0
+        ]
+      },
+      "status": "NOT_IN_BOM",
+      "reason": "native belt cap rejected against tilted screen backing; open region retained"
+    },
+    {
+      "nativePartId": "3070b",
+      "translationLdu": [
+        70.0,
+        -88,
+        150.0
+      ],
+      "boundsLdu": {
+        "min": [
+          60.0,
+          -88,
+          140.0
+        ],
+        "max": [
+          80.0,
+          -80,
+          160.0
+        ]
+      },
+      "status": "NOT_IN_BOM",
+      "reason": "native belt cap rejected against tilted screen backing; open region retained"
+    }
+  ],
+  "visualLimitations": [
+    "A/C pillars remain too broad",
+    "sloping glass side/backing remains visible",
+    "two-LDU lateral pillar seam remains",
+    "front/rear endpoint rise errors retained in glassFits"
+  ],
+  "baselineNote": null
+}

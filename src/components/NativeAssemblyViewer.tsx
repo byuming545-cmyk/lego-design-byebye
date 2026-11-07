@@ -49,7 +49,7 @@ function disposeScene(scene: THREE.Scene) {
 }
 
 /** Meshes and solved transforms are supplied by the assembly API, with no shape fallback. */
-export default function NativeAssemblyViewer({ placements, assets, debug, showConnections, showProxies, showPath, showZones, designColors, view = 'perspective' }: {
+export default function NativeAssemblyViewer({ placements, assets, debug, showConnections, showProxies, showPath, showZones, designColors, view = 'perspective', fitToModel = false }: {
   placements: AssemblyPlacement[];
   assets: Record<string, AssemblyAsset>;
   debug?: AssemblyDebugView;
@@ -60,6 +60,8 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
   /** Optional design colours for independent appearance documents. */
   designColors?: Record<string, string>;
   view?: 'perspective' | 'side' | 'top' | 'front' | 'rear';
+  /** Fit actual transformed bounds to the current viewport without scaling parts. */
+  fitToModel?: boolean;
 }) {
   const host = useRef<HTMLDivElement>(null);
   const [error, setError] = useState('');
@@ -78,7 +80,7 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power', preserveDrawingBuffer: true });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.outputColorSpace = THREE.SRGBColorSpace;
-      renderer.domElement.setAttribute('aria-label', designColors ? '迷你跑车三维预览' : '原生网格与装配求解结果三维视图');
+      renderer.domElement.setAttribute('aria-label', designColors ? (fitToModel ? '真实积木汽车三维预览' : '迷你跑车三维预览') : '原生网格与装配求解结果三维视图');
       renderer.domElement.setAttribute('role', 'img');
       container.appendChild(renderer.domElement);
       const native = new THREE.Group();
@@ -129,6 +131,8 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
       });
       native.updateMatrixWorld(true);
       const bounds = new THREE.Box3().setFromObject(native);
+      const fitPoints: THREE.Vector3[] = [];
+      if(fitToModel)native.traverse(object=>{const mesh=object as THREE.Mesh;if(!mesh.geometry)return;mesh.geometry.computeBoundingBox();const box=mesh.geometry.boundingBox!;for(let i=0;i<8;i++)fitPoints.push(new THREE.Vector3(i&1?box.max.x:box.min.x,i&2?box.max.y:box.min.y,i&4?box.max.z:box.min.z).applyMatrix4(mesh.matrixWorld));});
       const extent = Math.max(bounds.getSize(new THREE.Vector3()).length(), 15);
       if (showProxies) (debug?.proxies ?? []).forEach((proxy) => {
         const geometry = new THREE.BufferGeometry();
@@ -161,7 +165,7 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
       });
       const center = bounds.getCenter(new THREE.Vector3());
       const camera = new THREE.PerspectiveCamera(38, 1, Math.max(extent / 1000, 0.01), extent * 100);
-      const offset = view === 'side' ? new THREE.Vector3(extent * 1.55, 0, 0) : view === 'front' ? new THREE.Vector3(0,0,extent*1.55) : view === 'rear' ? new THREE.Vector3(0,0,-extent*1.55) : view === 'top' ? new THREE.Vector3(0, extent * 1.55, 0.01) : new THREE.Vector3(extent, extent * 0.8, extent * 1.2);
+      const offset = view === 'side' ? new THREE.Vector3(extent * 1.55, 0, 0) : view === 'front' ? new THREE.Vector3(0,0,extent*1.55) : view === 'rear' ? new THREE.Vector3(0,0,-extent*1.55) : view === 'top' ? new THREE.Vector3(0, extent * 1.55, 0.01) : new THREE.Vector3(extent, extent * (fitToModel ? 0.6 : 0.8), extent * 1.2);
       if (view === 'top') camera.up.set(0, 0, -1);
       camera.position.copy(center).add(offset);
       controls = new OrbitControls(camera, renderer.domElement);
@@ -178,13 +182,22 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
         if (!renderer || stopped) return;
         const width = Math.max(container.clientWidth, 1), height = Math.max(container.clientHeight, 1);
         renderer.setSize(width, height); camera.aspect = width / height; camera.updateProjectionMatrix();
+        if (fitToModel && controls) {
+          const back=offset.clone().normalize(),right=new THREE.Vector3().crossVectors(camera.up,back).normalize(),up=new THREE.Vector3().crossVectors(back,right);
+          const tan=Math.tan(THREE.MathUtils.degToRad(camera.fov/2)); let distance=0;
+          for(const world of fitPoints){
+            const point=world.clone().sub(center);
+            distance=Math.max(distance,point.dot(back)+Math.abs(point.dot(right))/(tan*camera.aspect*.83),point.dot(back)+Math.abs(point.dot(up))/(tan*.8));
+          }
+          camera.position.copy(center).addScaledVector(back,distance); controls.target.copy(center);controls.update();
+        }
       });
       observer.observe(container);
       const animate = () => { if (!renderer || stopped) return; controls?.update(); renderer.render(scene, camera); frame = requestAnimationFrame(animate); };
       animate();
     } catch (reason) { release(); setError(reason instanceof Error ? reason.message : '无法显示三维装配结果。'); }
     return release;
-  }, [placements, assets, debug, showConnections, showProxies, showPath, showZones, designColors, view, revision]);
+  }, [placements, assets, debug, showConnections, showProxies, showPath, showZones, designColors, view, revision, fitToModel]);
 
   return <div className="assembly-native-stage"><div ref={host} className="assembly-native-canvas" />{error && <div className="assembly-viewer-error" role="status"><strong>装配三维视图暂不可用</strong><p>{error}</p><p>变换、检查结果和失败原因仍可在下方查看。</p></div>}<span className="assembly-stage-hint">{designColors ? '真实零件外观草稿 · 拖动旋转' : '真实源网格 · LDraw LDU 坐标 · 拖动旋转'}</span><button className="part-reset-view" onClick={() => setRevision((value) => value + 1)}><RotateCcw size={13} />重置视角</button></div>;
 }

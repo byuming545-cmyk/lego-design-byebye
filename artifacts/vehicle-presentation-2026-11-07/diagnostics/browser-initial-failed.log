@@ -1,0 +1,99 @@
+[WebServer] (node:25990) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 13 tests using 1 worker
+
+(node:26003) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 tests/vehicle-body-browser/craft.spec.ts:18:1 › normal cached workflow executes both craft controls without route mocks or new provider requests (1.2m)
+(node:26331) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 tests/vehicle-body-browser/craft.spec.ts:42:1 › whole-set holdouts preserve exclusions and explicit context rejections in actual API output (31.1s)
+  ✘   3 tests/vehicle-body-browser/craft.spec.ts:53:1 › job-bound controls and historical schema cannot be bypassed by an otherwise valid appearance document (8.1s)
+(node:26815) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   4 tests/vehicle-body-browser/craft.spec.ts:60:1 › rejects unsupported control grants before starting research (26ms)
+  ✘   5 tests/vehicle-body-browser/presentation.spec.ts:6:1 › two real cached-input generations, five views, repeated generation and persistent reopening (53.8s)
+(node:26999) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   6 tests/vehicle-body-browser/presentation.spec.ts:43:1 › failed submission keeps the old model and retries against the actual API (35.9s)
+  ✓   7 tests/vehicle-body-browser/presentation.spec.ts:50:1 › saved examples reopen offline after reload and never pretend to execute a generation (4.7s)
+  ✓   8 tests/vehicle-body-browser/presentation.spec.ts:57:1 › narrow display keeps the model and controls within the viewport (2.1s)
+  ✓   9 tests/vehicle-body-browser/presentation.spec.ts:61:1 › missing job and unsupported year fail visibly while prepared examples remain available (1.2s)
+  ✓  10 tests/vehicle-body-browser/workflow.spec.ts:20:1 › identity-only form automatically displays the actual completed appearance result (9.2s)
+  ✓  11 tests/vehicle-body-browser/workflow.spec.ts:47:1 › renders five actual source-mesh views and exposes persistent saving and sources (36.6s)
+  ✓  12 tests/vehicle-body-browser/workflow.spec.ts:79:1 › exports true instance BOM and reimports only as appearance, rejecting forged validation (48.6s)
+  ✓  13 tests/vehicle-body-browser/workflow.spec.ts:127:1 › preserves the independent old mini-car mode and pinned real geometry API (28.3s)
+
+
+  1) tests/vehicle-body-browser/craft.spec.ts:18:1 › normal cached workflow executes both craft controls without route mocks or new provider requests
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText(/本功能未训练或微调模型/)
+    Expected: visible
+    Error: strict mode violation: getByText(/本功能未训练或微调模型/) resolved to 2 elements:
+        1) <p>外观草稿；整车装配、轮组配合和实物可拼未验证。本功能未训练或微调模型。</p> aka getByText('外观草稿；整车装配、轮组配合和实物可拼未验证。本功能未训练或微调模型。')
+        2) <p>…</p> aka getByText('资料库 4 个设计家族 / 2 个来源；实际采用 0')
+
+    Call log:
+      - Expect "toBeVisible" getByText(/本功能未训练或微调模型/) with timeout 30000ms
+      - waiting for getByText(/本功能未训练或微调模型/)
+
+
+      33 |         await writeFile(`${artifacts}/unmocked-${name}-job.json`, JSON.stringify(result, null, 2));
+      34 |         await page.getByText("本次使用的拼搭工艺", { exact: true }).click();
+    > 35 |         await expect(page.getByText(/本功能未训练或微调模型/)).toBeVisible();
+         |                                                     ^
+      36 |         await page.screenshot({ path: `${artifacts}/unmocked-${name}-page.png`, fullPage: true });
+      37 |     }
+      38 |     const cache = await readdir(`${root}/vehicle-platform/vision-cache`).catch((e) => { if (e.code === "ENOENT")
+        at /workspace/lego-design-byebye/tests/vehicle-body-browser/craft.spec.ts:35:53
+
+    Error Context: test-results/vehicle-body/craft-normal-cached-workfl-ab4b3-ks-or-new-provider-requests/error-context.md
+
+  2) tests/vehicle-body-browser/craft.spec.ts:53:1 › job-bound controls and historical schema cannot be bypassed by an otherwise valid appearance document
+
+    Error: ENOENT: no such file or directory, open 'artifacts/vehicle-presentation-2026-11-07/craft-controls/baseline/model.json'
+
+      55 |     const r = await request.post(`/api/vehicles/jobs/${j.id}/preview/import`, { data: { content: JSON.stringify(disabled.preview) } });
+      56 |     expect(r.status()).toBe(409);
+    > 57 |     const old = await readFile("artifacts/vehicle-presentation-2026-11-07/craft-controls/baseline/model.json", "utf8");
+         |                 ^
+      58 |     expect((await request.post(`/api/vehicles/jobs/${j.id}/preview/import`, { data: { content: old } })).status()).toBe(409);
+      59 | });
+      60 | test("rejects unsupported control grants before starting research", async ({ request }) => {
+        at /workspace/lego-design-byebye/tests/vehicle-body-browser/craft.spec.ts:57:17
+
+    Error Context: test-results/vehicle-body/craft-job-bound-controls-a-d020a-e-valid-appearance-document/error-context.md
+
+  3) tests/vehicle-body-browser/presentation.spec.ts:6:1 › two real cached-input generations, five views, repeated generation and persistent reopening
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('使用已缓存资料', { exact: true })
+    Expected: visible
+    Timeout: 30000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('使用已缓存资料', { exact: true }) with timeout 30000ms
+      - waiting for getByText('使用已缓存资料', { exact: true })
+
+
+      19 |     expect(result.preview.input.model).toBe(model);expect(result.research.observation.method).toBe(id==="golf"?"local-photo-review":"cached-provider");
+      20 |     expect(result.events.some((e:any)=>e.stage==="craft"&&e.state==="passed")).toBe(true);
+    > 21 |     await expect(page.getByText("使用已缓存资料",{exact:true})).toBeVisible();
+         |                                                          ^
+      22 |     await expect(stage).toHaveAttribute("data-model-hash",result.preview.contentSha256);
+      23 |     for(const[label,file]of[["正面","front"],["背面","rear"],["侧面","side"],["俯视","top"],["斜侧","perspective"]]){
+      24 |       await page.getByRole("button",{name:label,exact:true}).click();await page.waitForTimeout(300);await stage.screenshot({path:`${output}/${id}-${file}.png`});
+        at /workspace/lego-design-byebye/tests/vehicle-body-browser/presentation.spec.ts:21:58
+
+    Error Context: test-results/vehicle-body/presentation-two-real-cach-74a78-on-and-persistent-reopening/error-context.md
+
+  3 failed
+    tests/vehicle-body-browser/craft.spec.ts:18:1 › normal cached workflow executes both craft controls without route mocks or new provider requests
+    tests/vehicle-body-browser/craft.spec.ts:53:1 › job-bound controls and historical schema cannot be bypassed by an otherwise valid appearance document
+    tests/vehicle-body-browser/presentation.spec.ts:6:1 › two real cached-input generations, five views, repeated generation and persistent reopening
+  10 passed (5.6m)

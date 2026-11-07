@@ -30,7 +30,9 @@ import { VehicleService } from "../src/vehicles/service.js";
 it("reserves capacity before asynchronous task persistence and releases it after completion", async () => {
   const dir = await mkdtemp(path.join(tmpdir(), "vehicle-capacity-")),
     service = new VehicleService(dir),
-    input = { make: "Dodge", model: "Charger", year: 1969, variant: "R/T" };
+    // Capacity is exercised on the uncached research path, independent of
+    // the two explicitly prepared classroom dossiers.
+    input = { make: "CapacityFixture", model: "Unprepared", year: 1969, variant: "" };
   const first = service.create(input),
     second = service.create(input);
   await expect(service.create(input)).rejects.toThrow("TASK_CAPACITY");

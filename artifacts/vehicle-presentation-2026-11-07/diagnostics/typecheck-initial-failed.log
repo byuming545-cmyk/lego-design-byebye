@@ -1,0 +1,6 @@
+
+> bricklab@0.6.0 typecheck
+> tsc --noEmit
+
+src/pages/VehicleGenerator.tsx(92,66): error TS2550: Property 'findLast' does not exist on type 'Event[]'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2023' or later.
+src/pages/VehicleGenerator.tsx(92,75): error TS7006: Parameter 'e' implicitly has an 'any' type.

@@ -1,5 +1,6 @@
 import { BodyCatalog } from "./body-catalog.js";
 import { craftOptions } from "./design-cases.js";
+import { loadDemoEvidence } from "./demo-evidence.js";
 import {
   generateBodyPreview,
   validateBodyPreview,
@@ -151,14 +152,16 @@ export class VehicleService {
       await event(
         "research",
         "running",
-        "Searching year-scoped sources and licensed image candidates",
+        "Checking prepared local dossiers and year-scoped research sources",
       );
       const images = path.join(this.directory, job.id, "sources");
-      job.research = await researchVehicle(job.input, images);
+      const demo = await loadDemoEvidence(job.input);
+      if (demo) await demo.copySources(images);
+      job.research = demo?.research ?? await researchVehicle(job.input, images);
       await event(
         "research",
         job.research.issues.length ? "partial" : "passed",
-        `${job.research.measurements.length} dimension observations; ${job.research.images.length} title-candidate images`,
+        `${demo ? "使用已缓存资料；" : ""}${job.research.measurements.length} dimension observations; ${job.research.images.length} title-candidate images`,
       );
       await event(
         "images",
@@ -169,14 +172,14 @@ export class VehicleService {
       await event(
         "vision",
         "running",
-        "Checking provider, cache, credentials and bounded budget",
+        demo ? "Reading pinned cached observations; no provider request" : "Checking provider, cache, credentials and bounded budget",
       );
       try {
-        job.vision = await analyzeVehicle(job.research, images, this.directory);
+        job.vision = demo?.vision ?? await analyzeVehicle(job.research, images, this.directory);
         await event(
           "vision",
           "passed",
-          "Provider response passed local contract validation",
+          demo ? demo.research.observation.label : "Provider response passed local contract validation",
         );
       } catch (e) {
         await event(
@@ -203,23 +206,12 @@ export class VehicleService {
         );
       if (job.vision && job.vision.schemaVersion >= 2) {
         try {
-          current = "selection";
-          await event(
-            "selection",
-            "running",
-            "Inspecting hash-verified native geometry and profile-driven shape candidates",
-          );
-          current = "generation";
-          await event(
-            "generation",
-            "running",
-            "Quantizing source dimensions and visual envelope; no vehicle-name layout",
-          );
           const preview = await generateBodyPreview(
             this.bodyCatalog,
             job.research,
             job.vision,
             job.craftOptions,
+            async (stage,state,detail) => { current=stage; await event(stage,state,detail); },
           );
           job.preview = preview;
           job.plan = preview.plan;

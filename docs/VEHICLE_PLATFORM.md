@@ -1,3 +1,5 @@
+最新课堂演示：[两车交付](VEHICLE_PRESENTATION_DELIVERY.md) · [启动与离线准备](VEHICLE_PRESENTATION_RUNBOOK.md) · [汇报稿](VEHICLE_PRESENTATION_SCRIPT.md)。
+
 # 车型自动研究与完整外观预览
 
 当前实现及边界见 [工艺检索交付](VEHICLE_CRAFT_DELIVERY.md)，[独立外壳阶段](VEHICLE_SURFACES_DELIVERY.md)保留为历史；[上一阶段](VEHICLE_PLATFORM_DELIVERY.md)保留为历史。入口 `/`、`/vehicle-generator`，输入品牌、型号、年份和版本；标准流程没有图片上传入口。当前能由真实公开资料与真实千问响应生成完整、可旋转的原生零件外观，BOM与草稿步骤来自实际实例。**完整外观不等于正式可拼整车，辨识度仍需提高。**

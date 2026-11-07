@@ -1,0 +1,3451 @@
+[
+  {
+    "partId": "3029",
+    "name": "Plate  4 x 12",
+    "nativeSize": [
+      240,
+      12,
+      80
+    ],
+    "instances": [
+      {
+        "instanceId": "vehicle-part-1",
+        "role": "chassis",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "internal spine; native source, structural mating not yet verified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": true,
+      "surface": false,
+      "reasonCodes": []
+    },
+    "placementVerification": "NOT_VERIFIED"
+  },
+  {
+    "partId": "3035",
+    "name": "Plate  4 x  8",
+    "nativeSize": [
+      160,
+      12,
+      80
+    ],
+    "instances": [
+      {
+        "instanceId": "vehicle-part-2",
+        "role": "chassis",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "internal spine; native source, structural mating not yet verified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": true,
+      "surface": false,
+      "reasonCodes": []
+    },
+    "placementVerification": "NOT_VERIFIED"
+  },
+  {
+    "partId": "1846",
+    "name": "Car Mudguard  4 x  3 x  1.667",
+    "nativeSize": [
+      80,
+      44,
+      60
+    ],
+    "instances": [
+      {
+        "instanceId": "vehicle-part-3",
+        "role": "wheel-arch",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "native curved wheel surround, centered on the actual axle; mechanical clearance UNKNOWN",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-4",
+        "role": "wheel-arch",
+        "rotation": [
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        "purpose": "native curved wheel surround, centered on the actual axle; mechanical clearance UNKNOWN",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-5",
+        "role": "wheel-arch",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "native curved wheel surround, centered on the actual axle; mechanical clearance UNKNOWN",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-6",
+        "role": "wheel-arch",
+        "rotation": [
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        "purpose": "native curved wheel surround, centered on the actual axle; mechanical clearance UNKNOWN",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": false,
+      "surface": true,
+      "reasonCodes": [
+        "grammar-collision-branched-native-boundary"
+      ]
+    },
+    "placementVerification": "NOT_VERIFIED"
+  },
+  {
+    "partId": "6934",
+    "name": "Tile  3 x  6",
+    "nativeSize": [
+      120,
+      8,
+      60
+    ],
+    "instances": [
+      {
+        "instanceId": "vehicle-part-7",
+        "role": "hood",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "continuous planar cover; mounting unverified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-124",
+        "role": "roof",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "flat hardtop sized from independent roof observations; no pyramid fill",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": true,
+      "surface": false,
+      "reasonCodes": []
+    },
+    "placementVerification": "NOT_VERIFIED"
+  },
+  {
+    "partId": "4162",
+    "name": "Tile  1 x  8",
+    "nativeSize": [
+      160,
+      8,
+      20
+    ],
+    "instances": [
+      {
+        "instanceId": "vehicle-part-8",
+        "role": "hood",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "continuous planar cover; mounting unverified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-41",
+        "role": "tail",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "low rear deck lip",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-127",
+        "role": "front-bumper",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0
+        ],
+        "purpose": "full-width bumper from observed bright surround; appearance colour, no chrome material claim",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-131",
+        "role": "rear-bumper",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0
+        ],
+        "purpose": "full-width bumper from observed bright surround; appearance colour, no chrome material claim",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": true,
+      "surface": false,
+      "reasonCodes": []
+    },
+    "placementVerification": "NOT_VERIFIED"
+  },
+  {
+    "partId": "26603",
+    "name": "Tile  2 x  3",
+    "nativeSize": [
+      60,
+      8,
+      40
+    ],
+    "instances": [
+      {
+        "instanceId": "vehicle-part-9",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "continuous planar cover; mounting unverified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": true,
+      "surface": false,
+      "reasonCodes": []
+    },
+    "placementVerification": "NOT_VERIFIED"
+  },
+  {
+    "partId": "2431",
+    "name": "Tile  1 x  4 with Groove",
+    "nativeSize": [
+      80,
+      8,
+      20
+    ],
+    "instances": [
+      {
+        "instanceId": "vehicle-part-10",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "continuous planar cover; mounting unverified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-29",
+        "role": "tail",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "continuous planar cover; mounting unverified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-125",
+        "role": "roof",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "flat hardtop sized from independent roof observations; no pyramid fill",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": true,
+      "surface": false,
+      "reasonCodes": []
+    },
+    "placementVerification": "NOT_VERIFIED"
+  },
+  {
+    "partId": "3069b",
+    "name": "Tile  1 x  2 with Groove",
+    "nativeSize": [
+      40,
+      8,
+      20
+    ],
+    "instances": [
+      {
+        "instanceId": "vehicle-part-11",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-12",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-13",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-14",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-15",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-16",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-17",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-18",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-30",
+        "role": "tail",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-31",
+        "role": "tail",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-42",
+        "role": "side",
+        "rotation": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-44",
+        "role": "side",
+        "rotation": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-46",
+        "role": "side",
+        "rotation": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-48",
+        "role": "side",
+        "rotation": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-50",
+        "role": "side",
+        "rotation": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-52",
+        "role": "side",
+        "rotation": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-54",
+        "role": "side",
+        "rotation": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-56",
+        "role": "side",
+        "rotation": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-58",
+        "role": "side",
+        "rotation": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-60",
+        "role": "side",
+        "rotation": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-62",
+        "role": "side",
+        "rotation": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-64",
+        "role": "side",
+        "rotation": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-66",
+        "role": "side",
+        "rotation": [
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-68",
+        "role": "side",
+        "rotation": [
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-70",
+        "role": "side",
+        "rotation": [
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-72",
+        "role": "side",
+        "rotation": [
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-74",
+        "role": "side",
+        "rotation": [
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-76",
+        "role": "side",
+        "rotation": [
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-78",
+        "role": "side",
+        "rotation": [
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-80",
+        "role": "side",
+        "rotation": [
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-82",
+        "role": "side",
+        "rotation": [
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-84",
+        "role": "side",
+        "rotation": [
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-86",
+        "role": "side",
+        "rotation": [
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-88",
+        "role": "side",
+        "rotation": [
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "flat side skin below belt; exact native tile footprint",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-118",
+        "role": "side-window",
+        "rotation": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "continuous vertical native tile glazing; visible height discretized in 20-LDU rows, lower residual retained",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-121",
+        "role": "side-window",
+        "rotation": [
+          0,
+          -1,
+          0,
+          0,
+          0,
+          1,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "continuous vertical native tile glazing; visible height discretized in 20-LDU rows, lower residual retained",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-133",
+        "role": "taillamp",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0
+        ],
+        "purpose": "dual horizontal red lenses from rear-image feature evidence; source tile only",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-134",
+        "role": "taillamp",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0
+        ],
+        "purpose": "dual horizontal red lenses from rear-image feature evidence; source tile only",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "craft-nose-cover-0-source-104",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "nose-cover: 75878-curved-cover-left, source source-104; internal source layout validated, external mounting NOT_VERIFIED",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "craft-nose-cover-1-source-104",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "nose-cover: 75878-curved-cover-left, source source-104; internal source layout validated, external mounting NOT_VERIFIED",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "craft-nose-cover-2-source-104",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "nose-cover: 75878-curved-cover-left, source source-104; internal source layout validated, external mounting NOT_VERIFIED",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "craft-nose-cover-3-source-104",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "nose-cover: 75878-curved-cover-left, source source-104; internal source layout validated, external mounting NOT_VERIFIED",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": true,
+      "surface": false,
+      "reasonCodes": []
+    },
+    "placementVerification": "NOT_VERIFIED"
+  },
+  {
+    "partId": "11477",
+    "name": "Slope Brick Curved  2 x  1",
+    "nativeSize": [
+      20,
+      16.00006098,
+      40
+    ],
+    "instances": [
+      {
+        "instanceId": "vehicle-part-19",
+        "role": "hood",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-20",
+        "role": "hood",
+        "rotation": [
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-21",
+        "role": "hood",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-22",
+        "role": "hood",
+        "rotation": [
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-23",
+        "role": "hood",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-24",
+        "role": "hood",
+        "rotation": [
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-25",
+        "role": "hood",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-26",
+        "role": "hood",
+        "rotation": [
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-27",
+        "role": "hood",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-28",
+        "role": "hood",
+        "rotation": [
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": false,
+      "surface": true,
+      "reasonCodes": [
+        "grammar-collision-open-external-shell"
+      ]
+    },
+    "placementVerification": "NOT_VERIFIED"
+  },
+  {
+    "partId": "15068",
+    "name": "Slope Brick Curved  2 x  2 x  0.667",
+    "nativeSize": [
+      40,
+      16.00006098,
+      40
+    ],
+    "instances": [
+      {
+        "instanceId": "vehicle-part-33",
+        "role": "tail",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "curved deck trailing edge, lowering toward the rear panel",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-35",
+        "role": "tail",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "curved deck trailing edge, lowering toward the rear panel",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-37",
+        "role": "tail",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "curved deck trailing edge, lowering toward the rear panel",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-39",
+        "role": "tail",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "curved deck trailing edge, lowering toward the rear panel",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "craft-nose-cover-0-source-103",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "nose-cover: 75878-curved-cover-left, source source-103; internal source layout validated, external mounting NOT_VERIFIED",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "craft-nose-cover-1-source-103",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "nose-cover: 75878-curved-cover-left, source source-103; internal source layout validated, external mounting NOT_VERIFIED",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "craft-nose-cover-2-source-103",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "nose-cover: 75878-curved-cover-left, source source-103; internal source layout validated, external mounting NOT_VERIFIED",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "craft-nose-cover-3-source-103",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "nose-cover: 75878-curved-cover-left, source source-103; internal source layout validated, external mounting NOT_VERIFIED",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": false,
+      "surface": true,
+      "reasonCodes": [
+        "grammar-collision-open-external-shell"
+      ]
+    },
+    "placementVerification": "NOT_VERIFIED"
+  },
+  {
+    "partId": "3070b",
+    "name": "Tile  1 x  1 with Groove",
+    "nativeSize": [
+      20,
+      8,
+      20
+    ],
+    "instances": [
+      {
+        "instanceId": "vehicle-part-43",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-45",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-47",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-49",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-51",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-53",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-55",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-57",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-59",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-61",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-63",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-65",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-67",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-69",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-71",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-73",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-75",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-77",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-79",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-81",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-83",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-85",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-87",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-89",
+        "role": "side-skirt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native plate-height lower sill; no overlap with side skin",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-90",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-91",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-92",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-93",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-94",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-95",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-96",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-97",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-98",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-99",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-100",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-101",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-102",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-103",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-104",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-105",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-106",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-107",
+        "role": "belt",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native thin shoulder/belt closes cabin base; actual arch opening reserved",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-119",
+        "role": "window-pillar",
+        "rotation": [
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native outer pillar face joins window edge to belt; two-LDU lateral seam retained",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-120",
+        "role": "window-pillar",
+        "rotation": [
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native outer pillar face joins window edge to belt; two-LDU lateral seam retained",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-122",
+        "role": "window-pillar",
+        "rotation": [
+          0,
+          -1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native outer pillar face joins window edge to belt; two-LDU lateral seam retained",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-123",
+        "role": "window-pillar",
+        "rotation": [
+          0,
+          -1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native outer pillar face joins window edge to belt; two-LDU lateral seam retained",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-130",
+        "role": "grille-divider",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0
+        ],
+        "purpose": "central divider in front of recessed grille inserts",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": true,
+      "surface": false,
+      "reasonCodes": []
+    },
+    "placementVerification": "NOT_VERIFIED"
+  },
+  {
+    "partId": "3040b",
+    "name": "Slope Brick 45  2 x  1",
+    "nativeSize": [
+      20,
+      28,
+      40
+    ],
+    "instances": [
+      {
+        "instanceId": "vehicle-part-108",
+        "role": "windshield",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-111",
+        "role": "windshield",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-112",
+        "role": "windshield",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-113",
+        "role": "rear-window",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-116",
+        "role": "rear-window",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-117",
+        "role": "rear-window",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": false,
+      "surface": true,
+      "reasonCodes": [
+        "grammar-collision-open-nonplanar-shell"
+      ]
+    },
+    "placementVerification": "NOT_VERIFIED"
+  },
+  {
+    "partId": "3039",
+    "name": "Slope Brick 45  2 x  2",
+    "nativeSize": [
+      40,
+      28,
+      40
+    ],
+    "instances": [
+      {
+        "instanceId": "vehicle-part-109",
+        "role": "windshield",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-110",
+        "role": "windshield",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-114",
+        "role": "rear-window",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-115",
+        "role": "rear-window",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": true,
+      "surface": false,
+      "reasonCodes": []
+    },
+    "placementVerification": "NOT_VERIFIED"
+  },
+  {
+    "partId": "6636",
+    "name": "Tile  1 x  6",
+    "nativeSize": [
+      120,
+      8,
+      20
+    ],
+    "instances": [
+      {
+        "instanceId": "vehicle-part-126",
+        "role": "roof",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "flat hardtop sized from independent roof observations; no pyramid fill",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-132",
+        "role": "rear-panel",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0
+        ],
+        "purpose": "continuous planar cover; mounting unverified",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": true,
+      "surface": false,
+      "reasonCodes": []
+    },
+    "placementVerification": "NOT_VERIFIED"
+  },
+  {
+    "partId": "63864",
+    "name": "Tile  1 x  3",
+    "nativeSize": [
+      60,
+      8,
+      20
+    ],
+    "instances": [
+      {
+        "instanceId": "vehicle-part-128",
+        "role": "grille",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0
+        ],
+        "purpose": "separate recessed twin dark grille inserts; covered lamp areas stay dark",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-129",
+        "role": "grille",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          1,
+          0
+        ],
+        "purpose": "separate recessed twin dark grille inserts; covered lamp areas stay dark",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": true,
+      "surface": false,
+      "reasonCodes": []
+    },
+    "placementVerification": "NOT_VERIFIED"
+  },
+  {
+    "partId": "18977",
+    "name": "Tyre 11.2/ 28 x 17.6 Intermediate",
+    "nativeSize": [
+      60,
+      60,
+      28
+    ],
+    "instances": [
+      {
+        "instanceId": "vehicle-part-135",
+        "role": "wheel",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-137",
+        "role": "wheel",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-139",
+        "role": "wheel",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-141",
+        "role": "wheel",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": false,
+      "surface": false,
+      "reasonCodes": [
+        "grammar-source-interpretation-incomplete",
+        "grammar-no-supported-connector",
+        "grammar-collision-branched-native-boundary"
+      ]
+    },
+    "placementVerification": "NOT_VERIFIED"
+  },
+  {
+    "partId": "66727",
+    "name": "Wheel Rim 11 x 18 with Drilled Disc Brake",
+    "nativeSize": [
+      44,
+      44.000557473,
+      30
+    ],
+    "instances": [
+      {
+        "instanceId": "vehicle-part-136",
+        "role": "wheel",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-138",
+        "role": "wheel",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-140",
+        "role": "wheel",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "vehicle-part-142",
+        "role": "wheel",
+        "rotation": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "purpose": "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": false,
+      "surface": true,
+      "reasonCodes": [
+        "grammar-collision-branched-native-boundary"
+      ]
+    },
+    "placementVerification": "NOT_VERIFIED"
+  },
+  {
+    "partId": "3022",
+    "name": "Plate  2 x  2",
+    "nativeSize": [
+      40,
+      12,
+      40
+    ],
+    "instances": [
+      {
+        "instanceId": "craft-nose-cover-0-source-102",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "nose-cover: 75878-curved-cover-left, source source-102; internal source layout validated, external mounting NOT_VERIFIED",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "craft-nose-cover-1-source-102",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "nose-cover: 75878-curved-cover-left, source source-102; internal source layout validated, external mounting NOT_VERIFIED",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "craft-nose-cover-2-source-102",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "nose-cover: 75878-curved-cover-left, source source-102; internal source layout validated, external mounting NOT_VERIFIED",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      },
+      {
+        "instanceId": "craft-nose-cover-3-source-102",
+        "role": "hood",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "purpose": "nose-cover: 75878-curved-cover-left, source source-102; internal source layout validated, external mounting NOT_VERIFIED",
+        "evidence": [
+          "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+          "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+          "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+        ]
+      }
+    ],
+    "permission": {
+      "structural": true,
+      "surface": false,
+      "reasonCodes": []
+    },
+    "placementVerification": "NOT_VERIFIED"
+  }
+]

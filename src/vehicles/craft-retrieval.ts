@@ -195,9 +195,10 @@ export function applyDesignCases(base: BodyPlacement[], parts: Map<string, Nativ
     const coverCases = corpus.cases.filter(c => c.features.curveMembers.length && c.validation.status === "VALID");
     const cover = coverCases[0];
     if (cover) {
-        const span = cover.size[2], unit = cover.size[0];
+        const frontArch=placements.filter(p=>p.role==="wheel-arch").map(p=>worldBounds(p).min[2]+L/2);
+        const span = Math.min(cover.size[2],Math.max(20,Math.min(...frontArch))), unit = cover.size[0];
         if (W % unit === 0 && span < plan.cabinStart * L)
-            install({ region: "nose-cover", size: cover.size, twinGrille: false }, p => p.role === "hood" && worldBounds(p).max[2] <= -L / 2 + span + .0001, row => Array.from({ length: W / unit }, (_, i) => [-W / 2 + (i + .5) * unit, -hoodHeight + row.size[1] / 2, -L / 2 + span / 2] as Vector3), "hood");
+            install({ region: "nose-cover", size: [cover.size[0],cover.size[1],span], twinGrille: false }, p => p.role === "hood" && worldBounds(p).max[2] <= -L / 2 + span + .0001, row => Array.from({ length: W / unit }, (_, i) => [-W / 2 + (i + .5) * unit, -hoodHeight + row.size[1] / 2, -L / 2 + span / 2] as Vector3), "hood");
     }
     const twin = plan.features.some(f => /grille/i.test(f.name) && /twin|dual|split/i.test(f.description));
     const frame = corpus.cases.find(c => c.features.grilleMembers.length && c.features.flatTrimMembers.length >= 2);

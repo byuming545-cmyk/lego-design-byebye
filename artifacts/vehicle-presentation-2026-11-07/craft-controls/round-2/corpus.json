@@ -1,0 +1,2323 @@
+{
+  "version": "source-design-cases-1",
+  "libraryDigest": "0814bc20fa2ef748da1c000d2d34e05869b9e0abaad79eeb00372eee1798f6df",
+  "sourceSnapshot": "d10e9e5ba146e8cebccfacaa870f36527b014b3477b034c92edf3bf79d4485d0",
+  "cases": [
+    {
+      "id": "76897-hood-core",
+      "familyId": "design-b69226d7dddd013d",
+      "sourceGroup": "73e7d39acc7b9f00948f5e2ad7ba1cffaf08febcfd8eda60494a849eac7b0032",
+      "recipeDigest": "569a7f01b734608d951b518102ea3a9e1c15186e14ca02b32f5e3b4a25f8db05",
+      "role": "hood",
+      "source": {
+        "kind": "licensed-set-reconstruction",
+        "setNumber": "76897",
+        "author": "Adrien Pennamen [Adrien Pennamen]",
+        "license": "CC-BY-2.0",
+        "repository": "https://github.com/vdirienzo/ldrawomr",
+        "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+        "upstreamPath": "corpus/mpds_licensed/76897-1.mpd",
+        "sourceUrl": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/76897-1.mpd",
+        "originalSha256": "73e7d39acc7b9f00948f5e2ad7ba1cffaf08febcfd8eda60494a849eac7b0032",
+        "note": "Third-party reconstruction of the official set design; not LEGO-authored CAD. Only explicitly licensed source sections redistributed. Source model omits stickers.",
+        "file": "source/76897-hood.ldr",
+        "sha256": "f37b4e5fd9cd9ef730bdf32811b3ee1d4a63be5d16530763c7622ba8c105733c",
+        "section": "76897 - Hood.ldr"
+      },
+      "selectedOrdinals": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "adaptation": "Extracted unchanged source subassembly; source placements outside selectedOrdinals are excluded, not silently substituted.",
+      "members": [
+        {
+          "localId": "source-0",
+          "ordinal": 0,
+          "sourcePartId": "3460",
+          "sourceColor": "15",
+          "partId": "3460",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-1",
+          "ordinal": 1,
+          "sourcePartId": "3666",
+          "sourceColor": "15",
+          "partId": "3666",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -8,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-2",
+          "ordinal": 2,
+          "sourcePartId": "54200",
+          "sourceColor": "14",
+          "partId": "54200",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              -1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0
+            ],
+            "translation": [
+              70,
+              0,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-3",
+          "ordinal": 3,
+          "sourcePartId": "54200",
+          "sourceColor": "14",
+          "partId": "54200",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              -70,
+              0,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-4",
+          "ordinal": 4,
+          "sourcePartId": "2412b",
+          "sourceColor": "15",
+          "partId": "2412b",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -16,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        }
+      ],
+      "bounds": {
+        "min": [
+          -80,
+          -16,
+          -10
+        ],
+        "max": [
+          80,
+          8,
+          10
+        ]
+      },
+      "size": [
+        160,
+        24,
+        20
+      ],
+      "features": {
+        "grilleMembers": [
+          "source-4"
+        ],
+        "flatTrimMembers": [],
+        "curveMembers": [],
+        "topProfile": [
+          {
+            "z": -8.571428571428571,
+            "topY": -16
+          },
+          {
+            "z": -5.714285714285714,
+            "topY": -8
+          },
+          {
+            "z": -2.8571428571428568,
+            "topY": -8
+          },
+          {
+            "z": 0,
+            "topY": -16
+          },
+          {
+            "z": 2.8571428571428577,
+            "topY": -8
+          },
+          {
+            "z": 5.7142857142857135,
+            "topY": -8
+          },
+          {
+            "z": 8.571428571428573,
+            "topY": -16
+          }
+        ],
+        "edgeRiseLdu": 0
+      },
+      "permissions": [
+        {
+          "localId": "source-0",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "p/stud.dat:8:7",
+            "p/stud.dat:8:8",
+            "p/stud.dat:8:9",
+            "p/stud.dat:8:10",
+            "p/stud.dat:8:11",
+            "p/stud.dat:8:12",
+            "p/stud.dat:8:13",
+            "p/stud.dat:8:14",
+            "parts/3460.dat:8:15",
+            "parts/3460.dat:8:16",
+            "parts/3460.dat:8:17",
+            "parts/3460.dat:8:18",
+            "parts/3460.dat:8:19",
+            "parts/3460.dat:8:20",
+            "parts/3460.dat:8:21",
+            "parts/3460.dat:8:22"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-1",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "p/stud.dat:8:5",
+            "p/stud.dat:8:6",
+            "p/stud.dat:8:7",
+            "p/stud.dat:8:8",
+            "p/stud.dat:8:9",
+            "p/stud.dat:8:10",
+            "parts/3666.dat:8:11",
+            "parts/3666.dat:8:12",
+            "parts/3666.dat:8:13",
+            "parts/3666.dat:8:14",
+            "parts/3666.dat:8:15",
+            "parts/3666.dat:8:16"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-2",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "parts/s/54200s01.dat:8:0"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-3",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "parts/s/54200s01.dat:8:0"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-4",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "parts/2412b.dat:9:0",
+            "parts/2412b.dat:9:1"
+          ],
+          "reasonCodes": []
+        }
+      ],
+      "validation": {
+        "status": "VALID",
+        "reasons": [],
+        "versions": {
+          "module": "source-module-assembly-3-selected-native-records",
+          "validationSuite": "source-module-suite-3-selected-native-records",
+          "parser": "ldcad-shadow-parser-2-clear-scope",
+          "admission": "source-connector-admission-3-impact",
+          "schema": "connector-schema-2",
+          "grammar": "connector-grammar-2",
+          "ingestion": "native-connector-adapter-2-source-declared-bar-clip"
+        },
+        "nativeVersions": {
+          "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+          "assemblyEngineVersion": "native-assembly-0.8.0-import-snapshot",
+          "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-2",
+          "collisionVersion": "native-exterior-shell-4.1.0-contact-regions"
+        },
+        "edges": [
+          {
+            "fixedLocalId": "source-0",
+            "fixedConnectionId": "p/stud.dat:8:8",
+            "movingLocalId": "source-1",
+            "movingConnectionId": "parts/3666.dat:8:11",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-0",
+            "fixedConnectionId": "p/stud.dat:8:9",
+            "movingLocalId": "source-1",
+            "movingConnectionId": "parts/3666.dat:8:12",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-0",
+            "fixedConnectionId": "p/stud.dat:8:10",
+            "movingLocalId": "source-1",
+            "movingConnectionId": "parts/3666.dat:8:13",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-0",
+            "fixedConnectionId": "p/stud.dat:8:11",
+            "movingLocalId": "source-1",
+            "movingConnectionId": "parts/3666.dat:8:14",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-0",
+            "fixedConnectionId": "p/stud.dat:8:12",
+            "movingLocalId": "source-1",
+            "movingConnectionId": "parts/3666.dat:8:15",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-0",
+            "fixedConnectionId": "p/stud.dat:8:13",
+            "movingLocalId": "source-1",
+            "movingConnectionId": "parts/3666.dat:8:16",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-0",
+            "fixedConnectionId": "p/stud.dat:8:14",
+            "movingLocalId": "source-2",
+            "movingConnectionId": "parts/s/54200s01.dat:8:0",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-0",
+            "fixedConnectionId": "p/stud.dat:8:7",
+            "movingLocalId": "source-3",
+            "movingConnectionId": "parts/s/54200s01.dat:8:0",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-1",
+            "fixedConnectionId": "p/stud.dat:8:7",
+            "movingLocalId": "source-4",
+            "movingConnectionId": "parts/2412b.dat:9:0",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-1",
+            "fixedConnectionId": "p/stud.dat:8:8",
+            "movingLocalId": "source-4",
+            "movingConnectionId": "parts/2412b.dat:9:1",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          }
+        ],
+        "ports": [
+          {
+            "localId": "source-0",
+            "connectionId": "parts/3460.dat:8:15"
+          },
+          {
+            "localId": "source-0",
+            "connectionId": "parts/3460.dat:8:16"
+          },
+          {
+            "localId": "source-0",
+            "connectionId": "parts/3460.dat:8:17"
+          },
+          {
+            "localId": "source-0",
+            "connectionId": "parts/3460.dat:8:18"
+          },
+          {
+            "localId": "source-0",
+            "connectionId": "parts/3460.dat:8:19"
+          },
+          {
+            "localId": "source-0",
+            "connectionId": "parts/3460.dat:8:20"
+          },
+          {
+            "localId": "source-0",
+            "connectionId": "parts/3460.dat:8:21"
+          },
+          {
+            "localId": "source-0",
+            "connectionId": "parts/3460.dat:8:22"
+          },
+          {
+            "localId": "source-1",
+            "connectionId": "p/stud.dat:8:5"
+          },
+          {
+            "localId": "source-1",
+            "connectionId": "p/stud.dat:8:6"
+          },
+          {
+            "localId": "source-1",
+            "connectionId": "p/stud.dat:8:9"
+          },
+          {
+            "localId": "source-1",
+            "connectionId": "p/stud.dat:8:10"
+          }
+        ]
+      },
+      "steps": "SOURCE_STEP_ORDER_UNKNOWN",
+      "physicalBuildVerified": false
+    },
+    {
+      "id": "76897-hood-adapted",
+      "familyId": "design-b69226d7dddd013d",
+      "sourceGroup": "73e7d39acc7b9f00948f5e2ad7ba1cffaf08febcfd8eda60494a849eac7b0032",
+      "recipeDigest": "d2b61392f4a0a4c3570fec2effef548d31e26b297d8d1f93a21e1640c8e8a6d8",
+      "role": "hood",
+      "source": {
+        "kind": "licensed-set-reconstruction",
+        "setNumber": "76897",
+        "author": "Adrien Pennamen [Adrien Pennamen]",
+        "license": "CC-BY-2.0",
+        "repository": "https://github.com/vdirienzo/ldrawomr",
+        "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+        "upstreamPath": "corpus/mpds_licensed/76897-1.mpd",
+        "sourceUrl": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/76897-1.mpd",
+        "originalSha256": "73e7d39acc7b9f00948f5e2ad7ba1cffaf08febcfd8eda60494a849eac7b0032",
+        "note": "Third-party reconstruction of the official set design; not LEGO-authored CAD. Only explicitly licensed source sections redistributed. Source model omits stickers.",
+        "file": "source/76897-hood.ldr",
+        "sha256": "f37b4e5fd9cd9ef730bdf32811b3ee1d4a63be5d16530763c7622ba8c105733c",
+        "section": "76897 - Hood.ldr"
+      },
+      "selectedOrdinals": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "adaptation": "Two 3069a source tiles replaced explicitly by actual 3069b; no alias or exact-identity claim.",
+      "members": [
+        {
+          "localId": "source-0",
+          "ordinal": 0,
+          "sourcePartId": "3460",
+          "sourceColor": "15",
+          "partId": "3460",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-1",
+          "ordinal": 1,
+          "sourcePartId": "3666",
+          "sourceColor": "15",
+          "partId": "3666",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -8,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-2",
+          "ordinal": 2,
+          "sourcePartId": "54200",
+          "sourceColor": "14",
+          "partId": "54200",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              -1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0
+            ],
+            "translation": [
+              70,
+              0,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-3",
+          "ordinal": 3,
+          "sourcePartId": "54200",
+          "sourceColor": "14",
+          "partId": "54200",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              -70,
+              0,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-4",
+          "ordinal": 4,
+          "sourcePartId": "2412b",
+          "sourceColor": "15",
+          "partId": "2412b",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -16,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-5",
+          "ordinal": 5,
+          "sourcePartId": "3069a",
+          "sourceColor": "0",
+          "partId": "3069b",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              40,
+              -16,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-6",
+          "ordinal": 6,
+          "sourcePartId": "3069a",
+          "sourceColor": "0",
+          "partId": "3069b",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              -40,
+              -16,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        }
+      ],
+      "bounds": {
+        "min": [
+          -80,
+          -16,
+          -10
+        ],
+        "max": [
+          80,
+          8,
+          10
+        ]
+      },
+      "size": [
+        160,
+        24,
+        20
+      ],
+      "features": {
+        "grilleMembers": [
+          "source-4"
+        ],
+        "flatTrimMembers": [
+          "source-5",
+          "source-6"
+        ],
+        "curveMembers": [],
+        "topProfile": [
+          {
+            "z": -8.571428571428571,
+            "topY": -16
+          },
+          {
+            "z": -5.714285714285714,
+            "topY": -8
+          },
+          {
+            "z": -2.8571428571428568,
+            "topY": -8
+          },
+          {
+            "z": 0,
+            "topY": -16
+          },
+          {
+            "z": 2.8571428571428577,
+            "topY": -8
+          },
+          {
+            "z": 5.7142857142857135,
+            "topY": -8
+          },
+          {
+            "z": 8.571428571428573,
+            "topY": -16
+          }
+        ],
+        "edgeRiseLdu": 0
+      },
+      "permissions": [
+        {
+          "localId": "source-0",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "p/stud.dat:8:7",
+            "p/stud.dat:8:8",
+            "p/stud.dat:8:9",
+            "p/stud.dat:8:10",
+            "p/stud.dat:8:11",
+            "p/stud.dat:8:12",
+            "p/stud.dat:8:13",
+            "p/stud.dat:8:14",
+            "parts/3460.dat:8:15",
+            "parts/3460.dat:8:16",
+            "parts/3460.dat:8:17",
+            "parts/3460.dat:8:18",
+            "parts/3460.dat:8:19",
+            "parts/3460.dat:8:20",
+            "parts/3460.dat:8:21",
+            "parts/3460.dat:8:22"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-1",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "p/stud.dat:8:5",
+            "p/stud.dat:8:6",
+            "p/stud.dat:8:7",
+            "p/stud.dat:8:8",
+            "p/stud.dat:8:9",
+            "p/stud.dat:8:10",
+            "parts/3666.dat:8:11",
+            "parts/3666.dat:8:12",
+            "parts/3666.dat:8:13",
+            "parts/3666.dat:8:14",
+            "parts/3666.dat:8:15",
+            "parts/3666.dat:8:16"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-2",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "parts/s/54200s01.dat:8:0"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-3",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "parts/s/54200s01.dat:8:0"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-4",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "parts/2412b.dat:9:0",
+            "parts/2412b.dat:9:1"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-5",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "parts/s/3069bs01.dat:8:0",
+            "parts/s/3069bs01.dat:8:1"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-6",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "parts/s/3069bs01.dat:8:0",
+            "parts/s/3069bs01.dat:8:1"
+          ],
+          "reasonCodes": []
+        }
+      ],
+      "validation": {
+        "status": "VALID",
+        "reasons": [],
+        "versions": {
+          "module": "source-module-assembly-3-selected-native-records",
+          "validationSuite": "source-module-suite-3-selected-native-records",
+          "parser": "ldcad-shadow-parser-2-clear-scope",
+          "admission": "source-connector-admission-3-impact",
+          "schema": "connector-schema-2",
+          "grammar": "connector-grammar-2",
+          "ingestion": "native-connector-adapter-2-source-declared-bar-clip"
+        },
+        "nativeVersions": {
+          "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+          "assemblyEngineVersion": "native-assembly-0.8.0-import-snapshot",
+          "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-2",
+          "collisionVersion": "native-exterior-shell-4.1.0-contact-regions"
+        },
+        "edges": [
+          {
+            "fixedLocalId": "source-0",
+            "fixedConnectionId": "p/stud.dat:8:8",
+            "movingLocalId": "source-1",
+            "movingConnectionId": "parts/3666.dat:8:11",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-0",
+            "fixedConnectionId": "p/stud.dat:8:9",
+            "movingLocalId": "source-1",
+            "movingConnectionId": "parts/3666.dat:8:12",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-0",
+            "fixedConnectionId": "p/stud.dat:8:10",
+            "movingLocalId": "source-1",
+            "movingConnectionId": "parts/3666.dat:8:13",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-0",
+            "fixedConnectionId": "p/stud.dat:8:11",
+            "movingLocalId": "source-1",
+            "movingConnectionId": "parts/3666.dat:8:14",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-0",
+            "fixedConnectionId": "p/stud.dat:8:12",
+            "movingLocalId": "source-1",
+            "movingConnectionId": "parts/3666.dat:8:15",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-0",
+            "fixedConnectionId": "p/stud.dat:8:13",
+            "movingLocalId": "source-1",
+            "movingConnectionId": "parts/3666.dat:8:16",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-0",
+            "fixedConnectionId": "p/stud.dat:8:14",
+            "movingLocalId": "source-2",
+            "movingConnectionId": "parts/s/54200s01.dat:8:0",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-0",
+            "fixedConnectionId": "p/stud.dat:8:7",
+            "movingLocalId": "source-3",
+            "movingConnectionId": "parts/s/54200s01.dat:8:0",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-1",
+            "fixedConnectionId": "p/stud.dat:8:7",
+            "movingLocalId": "source-4",
+            "movingConnectionId": "parts/2412b.dat:9:0",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-1",
+            "fixedConnectionId": "p/stud.dat:8:8",
+            "movingLocalId": "source-4",
+            "movingConnectionId": "parts/2412b.dat:9:1",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-1",
+            "fixedConnectionId": "p/stud.dat:8:9",
+            "movingLocalId": "source-5",
+            "movingConnectionId": "parts/s/3069bs01.dat:8:0",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-1",
+            "fixedConnectionId": "p/stud.dat:8:10",
+            "movingLocalId": "source-5",
+            "movingConnectionId": "parts/s/3069bs01.dat:8:1",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-1",
+            "fixedConnectionId": "p/stud.dat:8:5",
+            "movingLocalId": "source-6",
+            "movingConnectionId": "parts/s/3069bs01.dat:8:0",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-1",
+            "fixedConnectionId": "p/stud.dat:8:6",
+            "movingLocalId": "source-6",
+            "movingConnectionId": "parts/s/3069bs01.dat:8:1",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          }
+        ],
+        "ports": [
+          {
+            "localId": "source-0",
+            "connectionId": "parts/3460.dat:8:15"
+          },
+          {
+            "localId": "source-0",
+            "connectionId": "parts/3460.dat:8:16"
+          },
+          {
+            "localId": "source-0",
+            "connectionId": "parts/3460.dat:8:17"
+          },
+          {
+            "localId": "source-0",
+            "connectionId": "parts/3460.dat:8:18"
+          },
+          {
+            "localId": "source-0",
+            "connectionId": "parts/3460.dat:8:19"
+          },
+          {
+            "localId": "source-0",
+            "connectionId": "parts/3460.dat:8:20"
+          },
+          {
+            "localId": "source-0",
+            "connectionId": "parts/3460.dat:8:21"
+          },
+          {
+            "localId": "source-0",
+            "connectionId": "parts/3460.dat:8:22"
+          }
+        ]
+      },
+      "steps": "SOURCE_STEP_ORDER_UNKNOWN",
+      "physicalBuildVerified": false
+    },
+    {
+      "id": "76897-spoiler-blade",
+      "familyId": "design-645c51895f4f0a71",
+      "sourceGroup": "73e7d39acc7b9f00948f5e2ad7ba1cffaf08febcfd8eda60494a849eac7b0032",
+      "recipeDigest": "471e89ace343c89046b8a08ab666ca7e9113404fae685ab4e46b3edd8f5b0200",
+      "role": "rear-wing",
+      "source": {
+        "kind": "licensed-set-reconstruction",
+        "setNumber": "76897",
+        "author": "Adrien Pennamen [Adrien Pennamen]",
+        "license": "CC-BY-2.0",
+        "repository": "https://github.com/vdirienzo/ldrawomr",
+        "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+        "upstreamPath": "corpus/mpds_licensed/76897-1.mpd",
+        "sourceUrl": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/76897-1.mpd",
+        "originalSha256": "73e7d39acc7b9f00948f5e2ad7ba1cffaf08febcfd8eda60494a849eac7b0032",
+        "note": "Third-party reconstruction of the official set design; not LEGO-authored CAD. Only explicitly licensed source sections redistributed. Source model omits stickers.",
+        "file": "source/76897-spoiler.ldr",
+        "sha256": "efa075c78aad6045ee2acc078f407941b5bf1925a2f7f70074f3bafa5d1941a9",
+        "section": "76897 - Spoiler.ldr"
+      },
+      "selectedOrdinals": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "adaptation": "Extracted unchanged source subassembly; source placements outside selectedOrdinals are excluded, not silently substituted.",
+      "members": [
+        {
+          "localId": "source-0",
+          "ordinal": 0,
+          "sourcePartId": "3666",
+          "sourceColor": "15",
+          "partId": "3666",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-1",
+          "ordinal": 1,
+          "sourcePartId": "85984",
+          "sourceColor": "15",
+          "partId": "85984",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              20,
+              0,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-2",
+          "ordinal": 2,
+          "sourcePartId": "85984",
+          "sourceColor": "15",
+          "partId": "85984",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              60,
+              0,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-3",
+          "ordinal": 3,
+          "sourcePartId": "85984",
+          "sourceColor": "15",
+          "partId": "85984",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              -20,
+              0,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-4",
+          "ordinal": 4,
+          "sourcePartId": "85984",
+          "sourceColor": "15",
+          "partId": "85984",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              -60,
+              0,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-5",
+          "ordinal": 5,
+          "sourcePartId": "24201",
+          "sourceColor": "15",
+          "partId": "24201",
+          "transform": {
+            "rotation": [
+              -1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              -1
+            ],
+            "translation": [
+              70,
+              0,
+              0
+            ]
+          },
+          "collisionClass": "exterior-shell"
+        },
+        {
+          "localId": "source-6",
+          "ordinal": 6,
+          "sourcePartId": "24201",
+          "sourceColor": "15",
+          "partId": "24201",
+          "transform": {
+            "rotation": [
+              -1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              -1
+            ],
+            "translation": [
+              -70,
+              0,
+              0
+            ]
+          },
+          "collisionClass": "exterior-shell"
+        },
+        {
+          "localId": "source-7",
+          "ordinal": 7,
+          "sourcePartId": "4162",
+          "sourceColor": "15",
+          "partId": "4162",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              0,
+              -20
+            ]
+          },
+          "collisionClass": "structural"
+        }
+      ],
+      "bounds": {
+        "min": [
+          -80,
+          -15.6,
+          -30
+        ],
+        "max": [
+          80,
+          15.9441,
+          10.000647
+        ]
+      },
+      "size": [
+        160,
+        31.5441,
+        40.000647
+      ],
+      "features": {
+        "grilleMembers": [],
+        "flatTrimMembers": [
+          "source-7"
+        ],
+        "curveMembers": [
+          "source-5",
+          "source-6"
+        ],
+        "topProfile": [
+          {
+            "z": -27.14281092857143,
+            "topY": 0
+          },
+          {
+            "z": -21.428432785714286,
+            "topY": 0
+          },
+          {
+            "z": -15.71405464285714,
+            "topY": 0
+          },
+          {
+            "z": -9.9996765,
+            "topY": -4.000194100000002
+          },
+          {
+            "z": -4.285298357142857,
+            "topY": -7.428820985714286
+          },
+          {
+            "z": 1.4290797857142863,
+            "topY": -10.85744787142857
+          },
+          {
+            "z": 7.143457928571429,
+            "topY": -13.6
+          }
+        ],
+        "edgeRiseLdu": 13.6
+      },
+      "permissions": [
+        {
+          "localId": "source-0",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "p/stud.dat:8:5",
+            "p/stud.dat:8:6",
+            "p/stud.dat:8:7",
+            "p/stud.dat:8:8",
+            "p/stud.dat:8:9",
+            "p/stud.dat:8:10",
+            "parts/3666.dat:8:11",
+            "parts/3666.dat:8:12",
+            "parts/3666.dat:8:13",
+            "parts/3666.dat:8:14",
+            "parts/3666.dat:8:15",
+            "parts/3666.dat:8:16"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-1",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "parts/s/85984s01.dat:8:0",
+            "parts/s/85984s01.dat:8:1"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-2",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "parts/s/85984s01.dat:8:0",
+            "parts/s/85984s01.dat:8:1"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-3",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "parts/s/85984s01.dat:8:0",
+            "parts/s/85984s01.dat:8:1"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-4",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "parts/s/85984s01.dat:8:0",
+            "parts/s/85984s01.dat:8:1"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-5",
+          "structural": false,
+          "surface": true,
+          "allowedConnectionIds": [
+            "p/stud2a.dat:11:0",
+            "p/stud2a.dat:11:1"
+          ],
+          "reasonCodes": [
+            "grammar-collision-branched-native-boundary"
+          ]
+        },
+        {
+          "localId": "source-6",
+          "structural": false,
+          "surface": true,
+          "allowedConnectionIds": [
+            "p/stud2a.dat:11:0",
+            "p/stud2a.dat:11:1"
+          ],
+          "reasonCodes": [
+            "grammar-collision-branched-native-boundary"
+          ]
+        },
+        {
+          "localId": "source-7",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "parts/s/4162s01.dat:8:7",
+            "parts/s/4162s01.dat:8:8",
+            "parts/s/4162s01.dat:8:9",
+            "parts/s/4162s01.dat:8:10",
+            "parts/s/4162s01.dat:8:11",
+            "parts/s/4162s01.dat:8:12",
+            "parts/s/4162s01.dat:8:13",
+            "parts/s/4162s01.dat:8:14"
+          ],
+          "reasonCodes": []
+        }
+      ],
+      "validation": {
+        "status": "BLOCKED",
+        "reasons": [
+          "native-plastic-collision: root: A closed native surface cell lies strictly inside both source solids; the local connection zone grants no solid exemption. no-collision-free-transform: Every permitted source-derived placement was rejected by native collision checks. No current legal attachment reproduces the remaining source placements."
+        ],
+        "versions": {
+          "module": "source-module-assembly-3-selected-native-records",
+          "validationSuite": "source-module-suite-3-selected-native-records",
+          "parser": "ldcad-shadow-parser-2-clear-scope",
+          "admission": "source-connector-admission-3-impact",
+          "schema": "connector-schema-2",
+          "grammar": "connector-grammar-2",
+          "ingestion": "native-connector-adapter-2-source-declared-bar-clip"
+        },
+        "nativeVersions": {
+          "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+          "assemblyEngineVersion": "native-assembly-0.8.0-import-snapshot",
+          "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-2",
+          "collisionVersion": "native-exterior-shell-4.1.0-contact-regions"
+        },
+        "edges": [],
+        "ports": []
+      },
+      "steps": "SOURCE_STEP_ORDER_UNKNOWN",
+      "physicalBuildVerified": false
+    },
+    {
+      "id": "76897-rear-panel-core",
+      "familyId": "design-60304e6e046a88c2",
+      "sourceGroup": "73e7d39acc7b9f00948f5e2ad7ba1cffaf08febcfd8eda60494a849eac7b0032",
+      "recipeDigest": "6551e803f218bf416dbee40f3ac06b612b5b1cf6a6d534232f7f7984060e494b",
+      "role": "rear-panel",
+      "source": {
+        "kind": "licensed-set-reconstruction",
+        "setNumber": "76897",
+        "author": "Adrien Pennamen [Adrien Pennamen]",
+        "license": "CC-BY-2.0",
+        "repository": "https://github.com/vdirienzo/ldrawomr",
+        "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+        "upstreamPath": "corpus/mpds_licensed/76897-1.mpd",
+        "sourceUrl": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/76897-1.mpd",
+        "originalSha256": "73e7d39acc7b9f00948f5e2ad7ba1cffaf08febcfd8eda60494a849eac7b0032",
+        "note": "Third-party reconstruction of the official set design; not LEGO-authored CAD. Only explicitly licensed source sections redistributed. Source model omits stickers.",
+        "file": "source/76897-rear-panel.ldr",
+        "sha256": "4c2a9e60ef117a746039426965adbf4a79ab27ede2e2726bb981037a85d8af92",
+        "section": "76897 - Back trunk.ldr"
+      },
+      "selectedOrdinals": [
+        5,
+        6,
+        7
+      ],
+      "adaptation": "Extracted source rear-panel stack: two 3666 plates and one 6636 tile at unchanged source poses; remaining trunk members and sticker are outside this core.",
+      "members": [
+        {
+          "localId": "source-5",
+          "ordinal": 5,
+          "sourcePartId": "3666",
+          "sourceColor": "15",
+          "partId": "3666",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-6",
+          "ordinal": 6,
+          "sourcePartId": "3666",
+          "sourceColor": "15",
+          "partId": "3666",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -8,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-7",
+          "ordinal": 7,
+          "sourcePartId": "6636",
+          "sourceColor": "15",
+          "partId": "6636",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -16,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        }
+      ],
+      "bounds": {
+        "min": [
+          -60,
+          -16,
+          -10
+        ],
+        "max": [
+          60,
+          8,
+          10
+        ]
+      },
+      "size": [
+        120,
+        24,
+        20
+      ],
+      "features": {
+        "grilleMembers": [],
+        "flatTrimMembers": [
+          "source-7"
+        ],
+        "curveMembers": [],
+        "topProfile": [
+          {
+            "z": -8.571428571428571,
+            "topY": -16
+          },
+          {
+            "z": -5.714285714285714,
+            "topY": -16
+          },
+          {
+            "z": -2.8571428571428568,
+            "topY": -16
+          },
+          {
+            "z": 0,
+            "topY": -16
+          },
+          {
+            "z": 2.8571428571428577,
+            "topY": -15.999999999999998
+          },
+          {
+            "z": 5.7142857142857135,
+            "topY": -16
+          },
+          {
+            "z": 8.571428571428573,
+            "topY": -16
+          }
+        ],
+        "edgeRiseLdu": 0
+      },
+      "permissions": [
+        {
+          "localId": "source-5",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "p/stud.dat:8:5",
+            "p/stud.dat:8:6",
+            "p/stud.dat:8:7",
+            "p/stud.dat:8:8",
+            "p/stud.dat:8:9",
+            "p/stud.dat:8:10",
+            "parts/3666.dat:8:11",
+            "parts/3666.dat:8:12",
+            "parts/3666.dat:8:13",
+            "parts/3666.dat:8:14",
+            "parts/3666.dat:8:15",
+            "parts/3666.dat:8:16"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-6",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "p/stud.dat:8:5",
+            "p/stud.dat:8:6",
+            "p/stud.dat:8:7",
+            "p/stud.dat:8:8",
+            "p/stud.dat:8:9",
+            "p/stud.dat:8:10",
+            "parts/3666.dat:8:11",
+            "parts/3666.dat:8:12",
+            "parts/3666.dat:8:13",
+            "parts/3666.dat:8:14",
+            "parts/3666.dat:8:15",
+            "parts/3666.dat:8:16"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-7",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "parts/s/6636s01.dat:8:5",
+            "parts/s/6636s01.dat:8:6",
+            "parts/s/6636s01.dat:8:7",
+            "parts/s/6636s01.dat:8:8",
+            "parts/s/6636s01.dat:8:9",
+            "parts/s/6636s01.dat:8:10"
+          ],
+          "reasonCodes": []
+        }
+      ],
+      "validation": {
+        "status": "VALID",
+        "reasons": [],
+        "versions": {
+          "module": "source-module-assembly-3-selected-native-records",
+          "validationSuite": "source-module-suite-3-selected-native-records",
+          "parser": "ldcad-shadow-parser-2-clear-scope",
+          "admission": "source-connector-admission-3-impact",
+          "schema": "connector-schema-2",
+          "grammar": "connector-grammar-2",
+          "ingestion": "native-connector-adapter-2-source-declared-bar-clip"
+        },
+        "nativeVersions": {
+          "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+          "assemblyEngineVersion": "native-assembly-0.8.0-import-snapshot",
+          "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-2",
+          "collisionVersion": "native-exterior-shell-4.1.0-contact-regions"
+        },
+        "edges": [
+          {
+            "fixedLocalId": "source-5",
+            "fixedConnectionId": "p/stud.dat:8:5",
+            "movingLocalId": "source-6",
+            "movingConnectionId": "parts/3666.dat:8:11",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-5",
+            "fixedConnectionId": "p/stud.dat:8:6",
+            "movingLocalId": "source-6",
+            "movingConnectionId": "parts/3666.dat:8:12",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-5",
+            "fixedConnectionId": "p/stud.dat:8:7",
+            "movingLocalId": "source-6",
+            "movingConnectionId": "parts/3666.dat:8:13",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-5",
+            "fixedConnectionId": "p/stud.dat:8:8",
+            "movingLocalId": "source-6",
+            "movingConnectionId": "parts/3666.dat:8:14",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-5",
+            "fixedConnectionId": "p/stud.dat:8:9",
+            "movingLocalId": "source-6",
+            "movingConnectionId": "parts/3666.dat:8:15",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-5",
+            "fixedConnectionId": "p/stud.dat:8:10",
+            "movingLocalId": "source-6",
+            "movingConnectionId": "parts/3666.dat:8:16",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-6",
+            "fixedConnectionId": "p/stud.dat:8:5",
+            "movingLocalId": "source-7",
+            "movingConnectionId": "parts/s/6636s01.dat:8:5",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-6",
+            "fixedConnectionId": "p/stud.dat:8:6",
+            "movingLocalId": "source-7",
+            "movingConnectionId": "parts/s/6636s01.dat:8:6",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-6",
+            "fixedConnectionId": "p/stud.dat:8:7",
+            "movingLocalId": "source-7",
+            "movingConnectionId": "parts/s/6636s01.dat:8:7",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-6",
+            "fixedConnectionId": "p/stud.dat:8:8",
+            "movingLocalId": "source-7",
+            "movingConnectionId": "parts/s/6636s01.dat:8:8",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-6",
+            "fixedConnectionId": "p/stud.dat:8:9",
+            "movingLocalId": "source-7",
+            "movingConnectionId": "parts/s/6636s01.dat:8:9",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-6",
+            "fixedConnectionId": "p/stud.dat:8:10",
+            "movingLocalId": "source-7",
+            "movingConnectionId": "parts/s/6636s01.dat:8:10",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          }
+        ],
+        "ports": [
+          {
+            "localId": "source-5",
+            "connectionId": "parts/3666.dat:8:11"
+          },
+          {
+            "localId": "source-5",
+            "connectionId": "parts/3666.dat:8:12"
+          },
+          {
+            "localId": "source-5",
+            "connectionId": "parts/3666.dat:8:13"
+          },
+          {
+            "localId": "source-5",
+            "connectionId": "parts/3666.dat:8:14"
+          },
+          {
+            "localId": "source-5",
+            "connectionId": "parts/3666.dat:8:15"
+          },
+          {
+            "localId": "source-5",
+            "connectionId": "parts/3666.dat:8:16"
+          }
+        ]
+      },
+      "steps": "SOURCE_STEP_ORDER_UNKNOWN",
+      "physicalBuildVerified": false
+    },
+    {
+      "id": "75878-curved-cover-right",
+      "familyId": "design-d1bb1084b0e83221",
+      "sourceGroup": "86cbff6fcbfc1966d503155fc754e1ae97219f0ccf85cfa0a5c2b3982aa3e4b2",
+      "recipeDigest": "7f4b72691ef5af40eb747fee74875dda3db0cb159121e7b15528ecfd2eafb81b",
+      "role": "body-cover",
+      "source": {
+        "kind": "licensed-set-reconstruction",
+        "setNumber": "75878",
+        "author": "Magnus Forsberg [MagFors]",
+        "license": "CC-BY-2.0",
+        "repository": "https://github.com/vdirienzo/ldrawomr",
+        "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+        "upstreamPath": "corpus/mpds_licensed/75878-1.mpd",
+        "sourceUrl": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/75878-1.mpd",
+        "originalSha256": "86cbff6fcbfc1966d503155fc754e1ae97219f0ccf85cfa0a5c2b3982aa3e4b2",
+        "note": "Third-party reconstruction of the official set design; not LEGO-authored CAD. Literal three-record extraction; original relative poses unchanged. Other parent members, stickers, wheels and driver excluded.",
+        "file": "source/75878-body.ldr",
+        "sha256": "b9f465dcced41726f002626c52287caedc7c777bf31561fed9430bd2da0e62d7",
+        "section": "75878 - body-1.ldr"
+      },
+      "selectedOrdinals": [
+        99,
+        100,
+        101
+      ],
+      "adaptation": "Three unchanged source records: 3022 structural carrier, 15068 exterior curved cover, 3069b structural trim. Parent placement orientation is normalized by a single rigid transform. This is a local body-cover core, not a complete car side or cockpit.",
+      "members": [
+        {
+          "localId": "source-99",
+          "ordinal": 99,
+          "sourcePartId": "3022",
+          "sourceColor": "1",
+          "partId": "3022",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-100",
+          "ordinal": 100,
+          "sourcePartId": "15068",
+          "sourceColor": "1",
+          "partId": "15068",
+          "transform": {
+            "rotation": [
+              -1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              -1
+            ],
+            "translation": [
+              0,
+              8,
+              20
+            ]
+          },
+          "collisionClass": "exterior-shell"
+        },
+        {
+          "localId": "source-101",
+          "ordinal": 101,
+          "sourcePartId": "3069b",
+          "sourceColor": "1",
+          "partId": "3069b",
+          "transform": {
+            "rotation": [
+              -1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              -1
+            ],
+            "translation": [
+              0,
+              -8,
+              -10
+            ]
+          },
+          "collisionClass": "structural"
+        }
+      ],
+      "bounds": {
+        "min": [
+          -20,
+          -8.00006098,
+          -20
+        ],
+        "max": [
+          20,
+          8,
+          40
+        ]
+      },
+      "size": [
+        40,
+        16.00006098,
+        60
+      ],
+      "features": {
+        "grilleMembers": [],
+        "flatTrimMembers": [
+          "source-101"
+        ],
+        "curveMembers": [
+          "source-100"
+        ],
+        "topProfile": [
+          {
+            "z": -15.714285714285715,
+            "topY": -8
+          },
+          {
+            "z": -7.142857142857142,
+            "topY": -8
+          },
+          {
+            "z": 1.428571428571427,
+            "topY": -7.9327991784212974
+          },
+          {
+            "z": 10,
+            "topY": -7.274281345314223
+          },
+          {
+            "z": 18.57142857142857,
+            "topY": -5.638187781213313
+          },
+          {
+            "z": 27.142857142857146,
+            "topY": -2.9179182062567834
+          },
+          {
+            "z": 35.714285714285715,
+            "topY": 1.2798001566190826
+          }
+        ],
+        "edgeRiseLdu": -9.279800156619082
+      },
+      "permissions": [
+        {
+          "localId": "source-99",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "p/stud.dat:8:0",
+            "p/stud.dat:8:1",
+            "p/stud.dat:8:2",
+            "p/stud.dat:8:3",
+            "parts/3022.dat:9:4",
+            "parts/3022.dat:9:5",
+            "parts/3022.dat:9:6",
+            "parts/3022.dat:9:7"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-100",
+          "structural": false,
+          "surface": true,
+          "allowedConnectionIds": [
+            "parts/s/15068s01.dat:8:1",
+            "parts/s/15068s01.dat:8:2",
+            "parts/s/15068s01.dat:9:3",
+            "parts/s/15068s01.dat:9:4"
+          ],
+          "reasonCodes": [
+            "grammar-collision-open-external-shell"
+          ]
+        },
+        {
+          "localId": "source-101",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "parts/s/3069bs01.dat:8:0",
+            "parts/s/3069bs01.dat:8:1"
+          ],
+          "reasonCodes": []
+        }
+      ],
+      "validation": {
+        "status": "VALID",
+        "reasons": [],
+        "versions": {
+          "module": "source-module-assembly-3-selected-native-records",
+          "validationSuite": "source-module-suite-3-selected-native-records",
+          "parser": "ldcad-shadow-parser-2-clear-scope",
+          "admission": "source-connector-admission-3-impact",
+          "schema": "connector-schema-2",
+          "grammar": "connector-grammar-2",
+          "ingestion": "native-connector-adapter-2-source-declared-bar-clip"
+        },
+        "nativeVersions": {
+          "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+          "assemblyEngineVersion": "native-assembly-0.8.0-import-snapshot",
+          "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-2",
+          "collisionVersion": "native-exterior-shell-4.1.0-contact-regions"
+        },
+        "edges": [
+          {
+            "fixedLocalId": "source-99",
+            "fixedConnectionId": "p/stud.dat:8:0",
+            "movingLocalId": "source-100",
+            "movingConnectionId": "parts/s/15068s01.dat:9:3",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-99",
+            "fixedConnectionId": "p/stud.dat:8:1",
+            "movingLocalId": "source-100",
+            "movingConnectionId": "parts/s/15068s01.dat:9:4",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-99",
+            "fixedConnectionId": "p/stud.dat:8:2",
+            "movingLocalId": "source-101",
+            "movingConnectionId": "parts/s/3069bs01.dat:8:0",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-99",
+            "fixedConnectionId": "p/stud.dat:8:3",
+            "movingLocalId": "source-101",
+            "movingConnectionId": "parts/s/3069bs01.dat:8:1",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          }
+        ],
+        "ports": [
+          {
+            "localId": "source-99",
+            "connectionId": "parts/3022.dat:9:4"
+          },
+          {
+            "localId": "source-99",
+            "connectionId": "parts/3022.dat:9:5"
+          },
+          {
+            "localId": "source-99",
+            "connectionId": "parts/3022.dat:9:6"
+          },
+          {
+            "localId": "source-99",
+            "connectionId": "parts/3022.dat:9:7"
+          },
+          {
+            "localId": "source-100",
+            "connectionId": "parts/s/15068s01.dat:8:1"
+          },
+          {
+            "localId": "source-100",
+            "connectionId": "parts/s/15068s01.dat:8:2"
+          }
+        ]
+      },
+      "steps": "SOURCE_STEP_ORDER_UNKNOWN",
+      "physicalBuildVerified": false
+    },
+    {
+      "id": "75878-curved-cover-left",
+      "familyId": "design-d1bb1084b0e83221",
+      "sourceGroup": "86cbff6fcbfc1966d503155fc754e1ae97219f0ccf85cfa0a5c2b3982aa3e4b2",
+      "recipeDigest": "c48d675d8bfcec74dd89f22ae6123de361ece3ecd26389c4952c849beb4cb14f",
+      "role": "body-cover",
+      "source": {
+        "kind": "licensed-set-reconstruction",
+        "setNumber": "75878",
+        "author": "Magnus Forsberg [MagFors]",
+        "license": "CC-BY-2.0",
+        "repository": "https://github.com/vdirienzo/ldrawomr",
+        "revision": "99a10d3d5ec094277793eb5919f13163d279cf2e",
+        "upstreamPath": "corpus/mpds_licensed/75878-1.mpd",
+        "sourceUrl": "https://raw.githubusercontent.com/vdirienzo/ldrawomr/99a10d3d5ec094277793eb5919f13163d279cf2e/corpus/mpds_licensed/75878-1.mpd",
+        "originalSha256": "86cbff6fcbfc1966d503155fc754e1ae97219f0ccf85cfa0a5c2b3982aa3e4b2",
+        "note": "Third-party reconstruction of the official set design; not LEGO-authored CAD. Literal three-record extraction; original relative poses unchanged. Other parent members, stickers, wheels and driver excluded.",
+        "file": "source/75878-body.ldr",
+        "sha256": "b9f465dcced41726f002626c52287caedc7c777bf31561fed9430bd2da0e62d7",
+        "section": "75878 - body-1.ldr"
+      },
+      "selectedOrdinals": [
+        102,
+        103,
+        104
+      ],
+      "adaptation": "Three unchanged source records: 3022 structural carrier, 15068 exterior curved cover, 3069b structural trim. Parent placement orientation is normalized by a single rigid transform. This is a local body-cover core, not a complete car side or cockpit.",
+      "members": [
+        {
+          "localId": "source-102",
+          "ordinal": 102,
+          "sourcePartId": "3022",
+          "sourceColor": "1",
+          "partId": "3022",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          "collisionClass": "structural"
+        },
+        {
+          "localId": "source-103",
+          "ordinal": 103,
+          "sourcePartId": "15068",
+          "sourceColor": "1",
+          "partId": "15068",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              8,
+              -20
+            ]
+          },
+          "collisionClass": "exterior-shell"
+        },
+        {
+          "localId": "source-104",
+          "ordinal": 104,
+          "sourcePartId": "3069b",
+          "sourceColor": "1",
+          "partId": "3069b",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -8,
+              10
+            ]
+          },
+          "collisionClass": "structural"
+        }
+      ],
+      "bounds": {
+        "min": [
+          -20,
+          -8.00006098,
+          -40
+        ],
+        "max": [
+          20,
+          8,
+          20
+        ]
+      },
+      "size": [
+        40,
+        16.00006098,
+        60
+      ],
+      "features": {
+        "grilleMembers": [],
+        "flatTrimMembers": [
+          "source-104"
+        ],
+        "curveMembers": [
+          "source-103"
+        ],
+        "topProfile": [
+          {
+            "z": -35.714285714285715,
+            "topY": 1.2798001566190826
+          },
+          {
+            "z": -27.142857142857142,
+            "topY": -2.9179182062567843
+          },
+          {
+            "z": -18.571428571428573,
+            "topY": -5.638187781213313
+          },
+          {
+            "z": -10,
+            "topY": -7.274281345314223
+          },
+          {
+            "z": -1.4285714285714306,
+            "topY": -7.9327991784212974
+          },
+          {
+            "z": 7.142857142857146,
+            "topY": -8
+          },
+          {
+            "z": 15.714285714285715,
+            "topY": -8
+          }
+        ],
+        "edgeRiseLdu": 9.279800156619082
+      },
+      "permissions": [
+        {
+          "localId": "source-102",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "p/stud.dat:8:0",
+            "p/stud.dat:8:1",
+            "p/stud.dat:8:2",
+            "p/stud.dat:8:3",
+            "parts/3022.dat:9:4",
+            "parts/3022.dat:9:5",
+            "parts/3022.dat:9:6",
+            "parts/3022.dat:9:7"
+          ],
+          "reasonCodes": []
+        },
+        {
+          "localId": "source-103",
+          "structural": false,
+          "surface": true,
+          "allowedConnectionIds": [
+            "parts/s/15068s01.dat:8:1",
+            "parts/s/15068s01.dat:8:2",
+            "parts/s/15068s01.dat:9:3",
+            "parts/s/15068s01.dat:9:4"
+          ],
+          "reasonCodes": [
+            "grammar-collision-open-external-shell"
+          ]
+        },
+        {
+          "localId": "source-104",
+          "structural": true,
+          "surface": false,
+          "allowedConnectionIds": [
+            "parts/s/3069bs01.dat:8:0",
+            "parts/s/3069bs01.dat:8:1"
+          ],
+          "reasonCodes": []
+        }
+      ],
+      "validation": {
+        "status": "VALID",
+        "reasons": [],
+        "versions": {
+          "module": "source-module-assembly-3-selected-native-records",
+          "validationSuite": "source-module-suite-3-selected-native-records",
+          "parser": "ldcad-shadow-parser-2-clear-scope",
+          "admission": "source-connector-admission-3-impact",
+          "schema": "connector-schema-2",
+          "grammar": "connector-grammar-2",
+          "ingestion": "native-connector-adapter-2-source-declared-bar-clip"
+        },
+        "nativeVersions": {
+          "partLibraryVersion": "ldraw-c43ed06a-shadow-9b1131fb-geometry-1-connections-2-expansion-1",
+          "assemblyEngineVersion": "native-assembly-0.8.0-import-snapshot",
+          "connectionRuleVersion": "source-stud-2.0.0-connector-grammar-2",
+          "collisionVersion": "native-exterior-shell-4.1.0-contact-regions"
+        },
+        "edges": [
+          {
+            "fixedLocalId": "source-102",
+            "fixedConnectionId": "p/stud.dat:8:3",
+            "movingLocalId": "source-103",
+            "movingConnectionId": "parts/s/15068s01.dat:9:3",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-102",
+            "fixedConnectionId": "p/stud.dat:8:2",
+            "movingLocalId": "source-103",
+            "movingConnectionId": "parts/s/15068s01.dat:9:4",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-102",
+            "fixedConnectionId": "p/stud.dat:8:1",
+            "movingLocalId": "source-104",
+            "movingConnectionId": "parts/s/3069bs01.dat:8:0",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          },
+          {
+            "fixedLocalId": "source-102",
+            "fixedConnectionId": "p/stud.dat:8:0",
+            "movingLocalId": "source-104",
+            "movingConnectionId": "parts/s/3069bs01.dat:8:1",
+            "ruleId": "ldcad-standard-stud-to-capped-underside-v1"
+          }
+        ],
+        "ports": [
+          {
+            "localId": "source-102",
+            "connectionId": "parts/3022.dat:9:4"
+          },
+          {
+            "localId": "source-102",
+            "connectionId": "parts/3022.dat:9:5"
+          },
+          {
+            "localId": "source-102",
+            "connectionId": "parts/3022.dat:9:6"
+          },
+          {
+            "localId": "source-102",
+            "connectionId": "parts/3022.dat:9:7"
+          },
+          {
+            "localId": "source-103",
+            "connectionId": "parts/s/15068s01.dat:8:1"
+          },
+          {
+            "localId": "source-103",
+            "connectionId": "parts/s/15068s01.dat:8:2"
+          }
+        ]
+      },
+      "steps": "SOURCE_STEP_ORDER_UNKNOWN",
+      "physicalBuildVerified": false
+    }
+  ],
+  "summary": {
+    "recipes": 6,
+    "sourceFiles": 4,
+    "sourceSets": 2,
+    "designFamilies": 4,
+    "validatedFamilies": 3,
+    "validatedRecipes": 5,
+    "blockedRecipes": 1,
+    "modelWeightsUpdated": false
+  },
+  "digest": "b90ffd072cb665c789a2eefa52c38b7ac9f7ee3f35527dbcb253cbe1099815a2"
+}

@@ -1,3 +1,5 @@
+后续两车演示见 [2026-11-07 课堂演示交付](VEHICLE_PRESENTATION_DELIVERY.md)。本报告和原模型保留为历史，不自动迁移。
+
 # 已有设计工艺接入车辆生成：2026-11-07
 
 基线为现场干净 HEAD `a9a6f1d1bfdcc023c81764f0d4a5e0e0409df11d`，分支 `codex/vehicle-design-cases`。首验仍为 1969 Dodge Charger R/T。未恢复旧代码、覆盖历史模型、发布、推送或合并。

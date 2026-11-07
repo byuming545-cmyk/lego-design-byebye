@@ -1,0 +1,270 @@
+{
+  "scope": "two real service generations, offline input dossiers, no provider requests",
+  "cars": [
+    {
+      "id": "charger",
+      "jobId": "c32c0b6e-af05-4a6c-affe-051899a1e2ae",
+      "modelHash": "a44e1e081684666a408cdca577b564655bd58075bf5fc9519af2083d7ced8fc7",
+      "input": {
+        "make": "Dodge",
+        "model": "Charger",
+        "year": 1969,
+        "variant": "R/T"
+      },
+      "parts": 158,
+      "nativeKinds": 21,
+      "dimensions": {
+        "frontOverhang": 100,
+        "rearOverhang": 100,
+        "length": 440,
+        "width": 160,
+        "overallWidth": 160,
+        "height": 112,
+        "wheelbase": 240,
+        "hoodLength": 240,
+        "cabinStart": 240,
+        "cabinEnd": 360,
+        "roofStart": 259.99999999999994,
+        "roofEnd": 339.99999999999994,
+        "bodyGroundClearance": 8,
+        "wheelDiameter": 60,
+        "sideWindowHeight": 20
+      },
+      "errors": {
+        "length": 6.106149265989188,
+        "width": 0,
+        "height": 1.0216610204291214,
+        "wheelbase": -4.06529103788111,
+        "hoodLength": 2.842170943040401e-14,
+        "cabinStart": 2.842170943040401e-14,
+        "cabinEnd": 0,
+        "frontOverhang": 0,
+        "rearOverhang": 0
+      },
+      "conflicts": [
+        "SOURCE_SLOPE_VS_VISUAL_roofStart_CONFLICT",
+        "SOURCE_SLOPE_VS_VISUAL_roofEnd_CONFLICT",
+        "PHYSICAL_HEIGHT_ANCHOR_CALIBRATES_VISUAL_ROOF",
+        "LANDMARK_VS_NORMALIZED_frontAxle_CONFLICT",
+        "LANDMARK_VS_NORMALIZED_rearAxle_CONFLICT",
+        "LANDMARK_GLASS_HORIZONTAL_EXTENT_UNKNOWN",
+        "FRONT_OVERHANG_VS_AXLE_OBSERVATION",
+        "REAR_OVERHANG_VS_AXLE_OBSERVATION",
+        "ROOF_HEIGHT_NORMALIZATION_CONFLICT",
+        "QUANTIZED_frontOverhang_VS_OBSERVATION",
+        "QUANTIZED_rearOverhang_VS_OBSERVATION",
+        "QUANTIZED_roofStart_VS_OBSERVATION",
+        "QUANTIZED_roofEnd_VS_OBSERVATION"
+      ],
+      "glassFits": [
+        {
+          "role": "windshield",
+          "kind": "native-45-slope",
+          "run": 19.99999999999997,
+          "targetRise": 24,
+          "actualRise": 20,
+          "angle": 45,
+          "partId": "3039",
+          "gapLdu": -4
+        },
+        {
+          "role": "rear-window",
+          "kind": "native-45-slope",
+          "run": 19.999999999999943,
+          "targetRise": 24,
+          "actualRise": 20,
+          "angle": 45,
+          "partId": "3039",
+          "gapLdu": -4
+        }
+      ],
+      "sourcePatterns": [
+        {
+          "id": "75878-curved-cover-left",
+          "family": "design-d1bb1084b0e83221",
+          "members": 3
+        },
+        {
+          "id": "75878-curved-cover-left",
+          "family": "design-d1bb1084b0e83221",
+          "members": 3
+        },
+        {
+          "id": "75878-curved-cover-left",
+          "family": "design-d1bb1084b0e83221",
+          "members": 3
+        },
+        {
+          "id": "75878-curved-cover-left",
+          "family": "design-d1bb1084b0e83221",
+          "members": 3
+        },
+        {
+          "id": "76897-hood-adapted",
+          "family": "design-b69226d7dddd013d",
+          "members": 7
+        }
+      ],
+      "pairFailures": [],
+      "tyreConflicts": [],
+      "provenance": {
+        "method": "cached-provider",
+        "label": "复用已保存的千问照片分析；本次无模型调用",
+        "originalJobId": "78fce202-3cca-c651-96c5-ecbf08fa1e90",
+        "originalModelHash": "78fce2023ccac65196c5ecbf08fa1e90f5c87f5f104f3116320b6a8f36de5533",
+        "limitations": [
+          "Exact year/trim not verifiable from photos alone; body shape matches 1969 Charger",
+          "Windshield/rear window angles estimated from oblique front/rear views",
+          "Roof height and ground clearance inferred from visible wheel radius and chassis gap",
+          "No interior or engine bay photos available for trim confirmation",
+          "Color variants (green, blue, black) confirm production range, not specific build",
+          "R/T stripe present in p3 but not p1/p2 — may be optional decal"
+        ],
+        "bundleDigest": "541a2d0b8d88724f1e0e473df6debc6332a6110cd51242a39d6557514440d759",
+        "manifestDigest": "3816b14486c3829c80235bdc3d621d943dab633cd36af443c0b87d44957f610e"
+      },
+      "formal": "NOT_VERIFIED",
+      "physicalBuild": false
+    },
+    {
+      "id": "golf",
+      "jobId": "da8c40bd-5f10-43b6-9db1-733125b7f241",
+      "modelHash": "035cad4a2321f4b56499a9cf2f4a615272796a804d7ab301e95c9d920986e5ab",
+      "input": {
+        "make": "Volkswagen",
+        "model": "Golf",
+        "year": 1976,
+        "variant": "GTI Mk1"
+      },
+      "parts": 160,
+      "nativeKinds": 15,
+      "dimensions": {
+        "frontOverhang": 60,
+        "rearOverhang": 60,
+        "length": 360,
+        "width": 160,
+        "overallWidth": 160,
+        "height": 136,
+        "wheelbase": 240,
+        "hoodLength": 100,
+        "cabinStart": 100,
+        "cabinEnd": 340,
+        "roofStart": 140,
+        "roofEnd": 280,
+        "bodyGroundClearance": 16,
+        "wheelDiameter": 60,
+        "sideWindowHeight": 40
+      },
+      "errors": {
+        "length": -8.198757763975152,
+        "width": 0,
+        "height": -2.633540372670808,
+        "wheelbase": 1.4906832298136692,
+        "hoodLength": 0,
+        "cabinStart": 0,
+        "cabinEnd": 0,
+        "frontOverhang": 0,
+        "rearOverhang": 0
+      },
+      "conflicts": [
+        "QUANTIZED_rearAxle_VS_OBSERVATION",
+        "QUANTIZED_rearOverhang_VS_OBSERVATION"
+      ],
+      "glassFits": [
+        {
+          "role": "windshield",
+          "kind": "native-tile-face",
+          "run": 40,
+          "targetRise": 40,
+          "actualRise": 44.721359549995796,
+          "angle": 48.189685104221404,
+          "partId": "63864",
+          "gapLdu": 4.721359549995796
+        },
+        {
+          "role": "rear-window",
+          "kind": "native-tile-face",
+          "run": 60,
+          "targetRise": 48,
+          "actualRise": 52.91502622129181,
+          "angle": 41.40962210927086,
+          "partId": "2431",
+          "gapLdu": 4.915026221291811
+        }
+      ],
+      "sourcePatterns": [],
+      "pairFailures": [],
+      "tyreConflicts": [],
+      "provenance": {
+        "method": "local-photo-review",
+        "label": "本地照片审阅估计；非千问响应，精确年款未确认",
+        "limitations": [
+          "LOCAL PHOTO REVIEW by development agent, NOT a paid/provider model response.",
+          "Reference photographs show 1979/1982 Mk1 bodies; exact 1976 trim unconfirmed.",
+          "Near-side photo has perspective and low camera elevation; all intervals are broad estimates.",
+          "Native wheel sizing may conflict with physical wheelbase/observed axle positions; retain discrepancies.",
+          "Round lamps, hatch seals and hidden mounting require native-part fit; no physical assembly evidence."
+        ],
+        "dimensionSelection": "Early European hatchback alternatives explicitly selected from retained original infobox",
+        "pixelReview": {
+          "sidePhoto": "327d95239cd58c9100dcb251cc6b5ce184fdd67e4d864d50465c6cc874b82ade",
+          "imagePixels": [
+            1280,
+            853
+          ],
+          "frontBumperX": [
+            24,
+            45
+          ],
+          "rearBumperX": [
+            1200,
+            1225
+          ],
+          "frontAxleX": [
+            185,
+            215
+          ],
+          "rearAxleX": [
+            890,
+            920
+          ],
+          "groundY": [
+            660,
+            680
+          ],
+          "roofY": [
+            240,
+            260
+          ],
+          "hoodY": [
+            400,
+            425
+          ],
+          "windshieldBaseX": [
+            330,
+            355
+          ],
+          "windshieldTopX": [
+            465,
+            495
+          ],
+          "roofRearX": [
+            900,
+            940
+          ],
+          "rearGlassBaseX": [
+            1080,
+            1110
+          ],
+          "note": "Image measurements retained; projective bias is not silently corrected to match dimensions."
+        },
+        "bundleDigest": "f122bf27d3f2ce3bbf4a2b545f80780a0c23ccde3f17b3062371d9fbb77616ca",
+        "manifestDigest": "3816b14486c3829c80235bdc3d621d943dab633cd36af443c0b87d44957f610e"
+      },
+      "formal": "NOT_VERIFIED",
+      "physicalBuild": false
+    }
+  ],
+  "paidCalls": 0,
+  "externalRenderUploads": 0
+}
