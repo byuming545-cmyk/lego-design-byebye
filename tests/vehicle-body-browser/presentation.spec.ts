@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { writeFile, mkdir, readdir, readFile } from "node:fs/promises";
-const output="artifacts/vehicle-presentation-2026-11-07/browser";
+const output="artifacts/vehicle-interactions-2026-11-07/browser-regression";
 const root=process.env.VEHICLE_BODY_BROWSER_DATA_DIR??"/tmp/bricklab-vehicle-body-browser";
 test.beforeAll(async()=>{await mkdir(output,{recursive:true});});
 test("two real cached-input generations, five views, repeated generation and persistent reopening",async({page,request})=>{

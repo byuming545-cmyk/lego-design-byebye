@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RotateCcw } from 'lucide-react';
+import './native-assembly-viewer.css';
 import type { NativeConnectionPoint, NativeMesh, NativeVector } from './NativePartViewer.js';
 
 export interface AssemblyTransform {
@@ -49,7 +50,7 @@ function disposeScene(scene: THREE.Scene) {
 }
 
 /** Meshes and solved transforms are supplied by the assembly API, with no shape fallback. */
-export default function NativeAssemblyViewer({ placements, assets, debug, showConnections, showProxies, showPath, showZones, designColors, view = 'perspective', fitToModel = false }: {
+export default function NativeAssemblyViewer({ placements, assets, debug, showConnections, showProxies, showPath, showZones, designColors, visibleInstanceIds, highlightInstanceIds, view = 'perspective', fitToModel = false }: {
   placements: AssemblyPlacement[];
   assets: Record<string, AssemblyAsset>;
   debug?: AssemblyDebugView;
@@ -59,13 +60,17 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
   showZones: boolean;
   /** Optional design colours for independent appearance documents. */
   designColors?: Record<string, string>;
+  /** Presentation-only visibility. All placements remain loaded and frame the camera. */
+  visibleInstanceIds?: string[];
+  highlightInstanceIds?: string[];
   view?: 'perspective' | 'side' | 'top' | 'front' | 'rear';
   /** Fit actual transformed bounds to the current viewport without scaling parts. */
   fitToModel?: boolean;
 }) {
   const host = useRef<HTMLDivElement>(null);
   const [error, setError] = useState('');
-  const [revision, setRevision] = useState(0);
+  const runtime = useRef<{ setColors: (colors?: Record<string,string>) => void; setPresentation: (visible?: string[],highlight?: string[])=>void; setView: (next: typeof view) => void; reset: () => void } | undefined>(undefined);
+  const latestColors=useRef(designColors), latestView=useRef(view);latestColors.current=designColors;latestView.current=view;
 
   useEffect(() => {
     const container = host.current;
@@ -73,7 +78,8 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
     const scene = new THREE.Scene();
     let renderer: THREE.WebGLRenderer | undefined, controls: OrbitControls | undefined, observer: ResizeObserver | undefined;
     let frame = 0, stopped = false;
-    const release = () => { stopped = true; cancelAnimationFrame(frame); observer?.disconnect(); controls?.dispose(); disposeScene(scene); renderer?.dispose(); renderer?.forceContextLoss(); renderer?.domElement.remove(); };
+    const meshes = new Map<string,{mesh:THREE.Mesh<THREE.BufferGeometry,THREE.MeshStandardMaterial>; index:number}>();
+    const release = () => { runtime.current=undefined; stopped = true; cancelAnimationFrame(frame); observer?.disconnect(); controls?.dispose(); disposeScene(scene); renderer?.dispose(); renderer?.forceContextLoss(); renderer?.domElement.remove(); };
     setError('');
     try {
       if (!placements.length) throw new Error('尚无可显示的装配放置结果。');
@@ -88,7 +94,7 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
       scene.add(native);
       const geometryCache = new Map<string, THREE.BufferGeometry>();
       const colors = ['#a5ba83', '#84b8b5', '#d6b480', '#ada5cb', '#d2927f'];
-      const partMaterials = new Map<string, THREE.MeshStandardMaterial>();
+
       placements.forEach((placement, index) => {
         const asset = assets[placement.partId];
         if (!asset?.mesh.positions.length || !asset.mesh.indices.length) throw new Error(`零件 ${placement.partId} 缺少可显示的真实网格。`);
@@ -106,13 +112,9 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
         instance.name = placement.instanceId;
         instance.matrix.copy(matrixFor(placement.transform));
         instance.matrixAutoUpdate = false;
-        const designColor = designColors?.[placement.instanceId] ?? colors[index % colors.length];
-        let material = partMaterials.get(designColor);
-        if (!material) {
-          material = new THREE.MeshStandardMaterial({ color: designColor, roughness: 0.48, metalness: 0.02, side: THREE.DoubleSide });
-          partMaterials.set(designColor, material);
-        }
-        instance.add(new THREE.Mesh(geometry, material));
+        const designColor = latestColors.current?.[placement.instanceId] ?? colors[index % colors.length];
+        const material = new THREE.MeshStandardMaterial({ color: designColor, roughness: 0.48, metalness: 0.02, side: THREE.DoubleSide });
+        const partMesh=new THREE.Mesh(geometry,material);instance.add(partMesh);meshes.set(placement.instanceId,{mesh:partMesh,index});
         if (showConnections && asset.connections?.length) {
           const extent = new THREE.Box3().setFromBufferAttribute(geometry.getAttribute('position') as THREE.BufferAttribute).getSize(new THREE.Vector3()).length();
           const size = Math.max(0.55, extent / 90);
@@ -165,15 +167,32 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
       });
       const center = bounds.getCenter(new THREE.Vector3());
       const camera = new THREE.PerspectiveCamera(38, 1, Math.max(extent / 1000, 0.01), extent * 100);
-      const offset = view === 'side' ? new THREE.Vector3(extent * 1.55, 0, 0) : view === 'front' ? new THREE.Vector3(0,0,extent*1.55) : view === 'rear' ? new THREE.Vector3(0,0,-extent*1.55) : view === 'top' ? new THREE.Vector3(0, extent * 1.55, 0.01) : new THREE.Vector3(extent, extent * (fitToModel ? 0.6 : 0.8), extent * 1.2);
-      if (view === 'top') camera.up.set(0, 0, -1);
-      camera.position.copy(center).add(offset);
+      let currentView=latestView.current;
+      const offsetFor=(next:typeof view)=>next==='side'?new THREE.Vector3(extent*1.55,0,0):next==='front'?new THREE.Vector3(0,0,extent*1.55):next==='rear'?new THREE.Vector3(0,0,-extent*1.55):next==='top'?new THREE.Vector3(0,extent*1.55,.01):new THREE.Vector3(extent,extent*(fitToModel ? .6 : .8),extent*1.2);
       controls = new OrbitControls(camera, renderer.domElement);
-      controls.target.copy(center);
-      controls.enableDamping = true;
-      controls.minDistance = extent * 0.12;
-      controls.maxDistance = extent * 10;
-      controls.update();
+      controls.target.copy(center);controls.enableDamping=true;controls.minDistance=extent*.12;controls.maxDistance=extent*10;
+      const frameCamera=()=>{
+        const offset=offsetFor(currentView);controls!.reset();camera.up.set(0,1,0);if(currentView==='top')camera.up.set(0,0,-1);
+        controls!.target.copy(center);
+        if(fitToModel){
+          const back=offset.clone().normalize(),right=new THREE.Vector3().crossVectors(camera.up,back).normalize(),up=new THREE.Vector3().crossVectors(back,right);
+          const tan=Math.tan(THREE.MathUtils.degToRad(camera.fov/2));let distance=0;
+          for(const world of fitPoints){const point=world.clone().sub(center);distance=Math.max(distance,point.dot(back)+Math.abs(point.dot(right))/(tan*camera.aspect*.83),point.dot(back)+Math.abs(point.dot(up))/(tan*.8));}
+          camera.position.copy(center).addScaledVector(back,distance);
+        }else camera.position.copy(center).add(offset);
+        controls!.update();controls!.saveState();
+      };
+      frameCamera();
+      runtime.current={
+        setColors:(design)=>{for(const[id,{mesh,index}]of meshes)mesh.material.color.set(design?.[id]??colors[index%colors.length]);renderer!.domElement.dataset.materialColours=JSON.stringify(Object.fromEntries([...meshes].map(([id,{mesh}])=>[id,"#"+mesh.material.color.getHexString()])));},
+        setPresentation:(visible,highlight)=>{
+          const shown=visible?new Set(visible):undefined,current=new Set(highlight);
+          for(const[id,{mesh}]of meshes){mesh.parent!.visible=!shown||shown.has(id);mesh.material.emissive.set(current.has(id)?'#77cbbd':'#000000');mesh.material.emissiveIntensity=current.has(id)?.35:0;}
+          renderer!.domElement.dataset.visibleInstances=JSON.stringify([...meshes].filter(([,v])=>v.mesh.parent!.visible).map(([id])=>id));
+          renderer!.domElement.dataset.highlightInstances=JSON.stringify([...meshes].filter(([,v])=>v.mesh.material.emissiveIntensity>0).map(([id])=>id));
+        },
+        setView:(next)=>{currentView=next;frameCamera();},reset:frameCamera,
+      };
       scene.add(new THREE.HemisphereLight('#ffffff', '#737f6c', 2.6));
       const light = new THREE.DirectionalLight('#fff9ee', 3.1);
       light.position.set(extent, extent * 2, extent);
@@ -182,22 +201,18 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
         if (!renderer || stopped) return;
         const width = Math.max(container.clientWidth, 1), height = Math.max(container.clientHeight, 1);
         renderer.setSize(width, height); camera.aspect = width / height; camera.updateProjectionMatrix();
-        if (fitToModel && controls) {
-          const back=offset.clone().normalize(),right=new THREE.Vector3().crossVectors(camera.up,back).normalize(),up=new THREE.Vector3().crossVectors(back,right);
-          const tan=Math.tan(THREE.MathUtils.degToRad(camera.fov/2)); let distance=0;
-          for(const world of fitPoints){
-            const point=world.clone().sub(center);
-            distance=Math.max(distance,point.dot(back)+Math.abs(point.dot(right))/(tan*camera.aspect*.83),point.dot(back)+Math.abs(point.dot(up))/(tan*.8));
-          }
-          camera.position.copy(center).addScaledVector(back,distance); controls.target.copy(center);controls.update();
-        }
+        frameCamera();
       });
       observer.observe(container);
-      const animate = () => { if (!renderer || stopped) return; controls?.update(); renderer.render(scene, camera); frame = requestAnimationFrame(animate); };
+      const animate = () => { if (!renderer || stopped) return; controls?.update(); renderer.domElement.dataset.cameraPosition=JSON.stringify(camera.position.toArray().map(v=>Math.round(v*1e6)/1e6));renderer.domElement.dataset.cameraTarget=JSON.stringify(controls?.target.toArray().map(v=>Math.round(v*1e6)/1e6)); renderer.render(scene, camera); frame = requestAnimationFrame(animate); };
       animate();
     } catch (reason) { release(); setError(reason instanceof Error ? reason.message : '无法显示三维装配结果。'); }
     return release;
-  }, [placements, assets, debug, showConnections, showProxies, showPath, showZones, designColors, view, revision, fitToModel]);
+  }, [placements, assets, debug, showConnections, showProxies, showPath, showZones, fitToModel]);
 
-  return <div className="assembly-native-stage"><div ref={host} className="assembly-native-canvas" />{error && <div className="assembly-viewer-error" role="status"><strong>装配三维视图暂不可用</strong><p>{error}</p><p>变换、检查结果和失败原因仍可在下方查看。</p></div>}<span className="assembly-stage-hint">{designColors ? '真实零件外观草稿 · 拖动旋转' : '真实源网格 · LDraw LDU 坐标 · 拖动旋转'}</span><button className="part-reset-view" onClick={() => setRevision((value) => value + 1)}><RotateCcw size={13} />重置视角</button></div>;
+  useEffect(()=>runtime.current?.setColors(designColors),[designColors,placements,assets]);
+  useEffect(()=>runtime.current?.setPresentation(visibleInstanceIds,highlightInstanceIds),[visibleInstanceIds,highlightInstanceIds,placements,assets]);
+  useEffect(()=>runtime.current?.setView(view),[view,placements,assets]);
+
+  return <div className="assembly-native-stage"><div ref={host} className="assembly-native-canvas" />{error && <div className="assembly-viewer-error" role="status"><strong>装配三维视图暂不可用</strong><p>{error}</p><p>变换、检查结果和失败原因仍可在下方查看。</p></div>}<span className="assembly-stage-hint">{designColors ? '真实零件外观草稿 · 拖动旋转' : '真实源网格 · LDraw LDU 坐标 · 拖动旋转'}</span><button className="part-reset-view" onClick={() => runtime.current?.reset()}><RotateCcw size={13} />重置视角</button></div>;
 }

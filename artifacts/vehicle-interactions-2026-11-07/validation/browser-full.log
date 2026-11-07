@@ -1,0 +1,25 @@
+[WebServer] (node:37932) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 16 tests using 1 worker
+
+(node:37944) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/vehicle-body-browser/craft.spec.ts:20:1 › normal cached workflow executes both craft controls without route mocks or new provider requests (1.8m)
+  ✓   2 tests/vehicle-body-browser/craft.spec.ts:44:1 › whole-set holdouts preserve exclusions and explicit context rejections in actual API output (31.3s)
+  ✓   3 tests/vehicle-body-browser/craft.spec.ts:55:1 › job-bound controls and historical schema cannot be bypassed by an otherwise valid appearance document (7.1s)
+  ✓   4 tests/vehicle-body-browser/craft.spec.ts:62:1 › rejects unsupported control grants before starting research (493ms)
+  ✓   5 tests/vehicle-body-browser/paint-groups.spec.ts:51:1 › real full-page colours, seven actual functional groups and immutable API save/reopen (2.6m)
+  ✓   6 tests/vehicle-body-browser/paint-groups.spec.ts:68:1 › same single HTML works self-contained without networking, saves complete drafts and restores colours (1.6m)
+  ✓   7 tests/vehicle-body-browser/presentation.spec.ts:6:1 › two real cached-input generations, five views, repeated generation and persistent reopening (2.5m)
+  ✓   8 tests/vehicle-body-browser/presentation.spec.ts:43:1 › failed submission keeps the old model and retries against the actual API (35.3s)
+  ✓   9 tests/vehicle-body-browser/presentation.spec.ts:50:1 › saved examples reopen offline after reload and never pretend to execute a generation (4.8s)
+  ✓  10 tests/vehicle-body-browser/presentation.spec.ts:57:1 › narrow display keeps the model and controls within the viewport (2.4s)
+  ✓  11 tests/vehicle-body-browser/presentation.spec.ts:61:1 › missing job and unsupported year fail visibly while prepared examples remain available (1.0s)
+  ✓  12 tests/vehicle-body-browser/presentation.spec.ts:66:1 › query interruption remains unknown and resumes the same actual job without a duplicate submission (34.2s)
+  ✓  13 tests/vehicle-body-browser/workflow.spec.ts:22:1 › identity-only form automatically displays the actual completed appearance result (9.1s)
+  ✓  14 tests/vehicle-body-browser/workflow.spec.ts:49:1 › renders five actual source-mesh views and exposes persistent saving and sources (31.9s)
+  ✓  15 tests/vehicle-body-browser/workflow.spec.ts:81:1 › exports true instance BOM and reimports only as appearance, rejecting forged validation (54.4s)
+  ✓  16 tests/vehicle-body-browser/workflow.spec.ts:129:1 › preserves the independent old mini-car mode and pinned real geometry API (26.1s)
+
+  16 passed (12.6m)

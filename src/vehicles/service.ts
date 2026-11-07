@@ -1,6 +1,7 @@
 import { BodyCatalog } from "./body-catalog.js";
 import { craftOptions } from "./design-cases.js";
 import { loadDemoEvidence } from "./demo-evidence.js";
+import { createDesignDraft, validateDesignDraft } from "./appearance-design.js";
 import {
   generateBodyPreview,
   validateBodyPreview,
@@ -82,6 +83,30 @@ export class VehicleService {
         };
       }),
     );
+  }
+  async saveDesign(id: string, value: unknown) {
+    const checked = await this.preview(id);
+    const v = value as { content?: unknown; options?: unknown; parentContentSha256?: unknown };
+    let draft;
+    if (v && Object.keys(v).length === 1 && typeof v.content === "string" && v.content.length <= 8e6) {
+      draft = await validateDesignDraft(JSON.parse(v.content), checked.model);
+    } else {
+      if (!v || Object.keys(v).sort().join() !== "options,parentContentSha256" || v.parentContentSha256 !== checked.model.contentSha256) throw Error("DESIGN_INPUT_OR_PARENT");
+      draft = await createDesignDraft(checked.model, v.options);
+    }
+    const directory = path.join(path.dirname(this.file(id)), "designs");
+    await mkdir(directory, { recursive: true });
+    const file = path.join(directory, draft.contentSha256 + ".json"), bytes = JSON.stringify(draft, null, 2);
+    try { await writeFile(file, bytes, { flag: "wx" }); }
+    catch (e) { if ((e as NodeJS.ErrnoException).code !== "EEXIST") throw e; if (await readFile(file,"utf8") !== bytes) throw Error("DESIGN_SAVED_CONTENT_CHANGED"); }
+    return draft;
+  }
+  async design(id: string, digest: string) {
+    if (!/^[a-f0-9]{64}$/.test(digest)) throw Error("DESIGN_ID_INVALID");
+    const value=JSON.parse(await readFile(path.join(path.dirname(this.file(id)),"designs",digest+".json"),"utf8"));
+    const checked=await this.preview(id),draft=await validateDesignDraft(value,checked.model);
+    if(draft.contentSha256!==digest)throw Error("DESIGN_SAVED_CONTENT_CHANGED");
+    return draft;
   }
   async preview(id: string, value?: unknown) {
     const job = await this.get(id);

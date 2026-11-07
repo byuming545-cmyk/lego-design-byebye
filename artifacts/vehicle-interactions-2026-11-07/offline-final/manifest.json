@@ -1,0 +1,28 @@
+{
+  "scope": "SELF_CONTAINED_SAVED_EXAMPLES_NOT_NEW_GENERATION",
+  "designSchema": "bricklab-vehicle-colour-draft-1",
+  "paintVersion": "functional-role-paint-1",
+  "groupVersion": "functional-appearance-groups-1",
+  "models": {
+    "charger": {
+      "baseSha256": "a44e1e081684666a408cdca577b564655bd58075bf5fc9519af2083d7ced8fc7",
+      "parts": 158,
+      "kinds": 21
+    },
+    "golf": {
+      "baseSha256": "035cad4a2321f4b56499a9cf2f4a615272796a804d7ab301e95c9d920986e5ab",
+      "parts": 160,
+      "kinds": 15
+    }
+  },
+  "logicHashes": {
+    "src/vehicles/appearance-design.ts": "2eaf6931d959450e1ce65a261b993c9f05f180872edd525ebd0766fd16a38fd4",
+    "src/vehicles/appearance-groups.ts": "afc516d4328b6d69c1d6c07611bb08a57a982470f45eb5ce78f550fb8e28e2aa",
+    "src/components/VehicleDesignStudio.tsx": "44d81b632a8238a7e5d1c5c5af1f94bd008ac508b57163e9274ba51b38e3583a",
+    "src/components/NativeAssemblyViewer.tsx": "334f39adb9bddbd2ac05cab368188483dffb12a2a4aaa8524e0df00c1027e0bd"
+  },
+  "htmlSha256": "9e560515fd3fd7e8a983201ebf6c5c760f965947efd1e80017578e36d122b943",
+  "externalRuntimeDependencies": 0,
+  "assemblyQualification": "UNCHANGED_NOT_VERIFIED",
+  "steps": "DRAFT_NOT_BUILD_INSTRUCTIONS"
+}

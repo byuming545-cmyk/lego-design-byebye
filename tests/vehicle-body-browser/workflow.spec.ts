@@ -1,7 +1,9 @@
 import { test, expect } from "@playwright/test";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 let job: any;
+const output="artifacts/vehicle-interactions-2026-11-07/workflow-regression";
 test.beforeAll(async () => {
+  await mkdir(output,{recursive:true});
   job = JSON.parse(
     await readFile(
       "artifacts/vehicle-presentation-2026-11-07/craft-controls/round-2/enabled/job.json",
@@ -64,7 +66,7 @@ test("renders five actual source-mesh views and exposes persistent saving and so
     ).toHaveAttribute("aria-pressed", "true");
     await page.waitForTimeout(400);
     await stage.screenshot({
-      path: "artifacts/vehicle-presentation-2026-11-07/craft-controls/round-2/enabled/" + file + ".png",
+      path: output + "/" + file + ".png",
     });
   }
   await page.getByRole("button", { name: "保存当前任务", exact: true }).click();
@@ -72,7 +74,7 @@ test("renders five actual source-mesh views and exposes persistent saving and so
     page.getByRole("navigation", { name: "保存的车型任务" }),
   ).toContainText(job.id.slice(0, 8));
   await page.screenshot({
-    path: "artifacts/vehicle-presentation-2026-11-07/craft-controls/round-2/enabled/page.png",
+    path: output + "/page.png",
     fullPage: true,
   });
 });

@@ -1,0 +1,40 @@
+{
+  "baseline": "eb0a38d",
+  "branch": "codex/vehicle-paint-steps",
+  "unit": {
+    "files": 78,
+    "tests": 1033,
+    "passed": 1033,
+    "durationSeconds": 819.84
+  },
+  "browserRegression": {
+    "tests": 16,
+    "passed": 16,
+    "minutes": 12.6
+  },
+  "finalBrowserRecheck": {
+    "tests": 2,
+    "passed": 2,
+    "minutes": 4.1
+  },
+  "typecheck": "PASS",
+  "build": "PASS_WITH_EXISTING_LARGE_CHUNK_NOTICE",
+  "oldOfflineFilesPreserved": 20,
+  "geometryChanged": false,
+  "addedPaidCalls": 0,
+  "published": false,
+  "fileURL": "ERR_BLOCKED_BY_ADMINISTRATOR",
+  "sameHTMLNetworkDisabled": "PASS",
+  "initialAttempts": [
+    {
+      "scope": "unit",
+      "result": "INTERRUPTED",
+      "reason": "local HTTP listener prohibited in file sandbox; rerun with local ports allowed"
+    },
+    {
+      "scope": "final-browser",
+      "result": "2 failed",
+      "reason": "incorrect multicolour test expectation; actual original accent parts are all graphite; corrected from actual model"
+    }
+  ]
+}

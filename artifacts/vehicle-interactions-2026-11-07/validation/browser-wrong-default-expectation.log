@@ -1,0 +1,68 @@
+[WebServer] (node:40880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:40892) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/vehicle-body-browser/paint-groups.spec.ts:52:1 › real full-page colours, seven actual functional groups and immutable API save/reopen (1.1m)
+(node:41457) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/vehicle-body-browser/paint-groups.spec.ts:69:1 › same single HTML works self-contained without networking, saves complete drafts and restores colours (32.7s)
+
+
+  1) tests/vehicle-body-browser/paint-groups.spec.ts:52:1 › real full-page colours, seven actual functional groups and immutable API save/reopen 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('保留原配色（多色）', { exact: true })
+    Expected: visible
+    Timeout: 30000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('保留原配色（多色）', { exact: true }) with timeout 30000ms
+      - waiting for getByText('保留原配色（多色）', { exact: true })
+
+
+      14 |  await expect(canvas).toHaveAttribute('data-visible-instances',/.+/,{timeout:120000});
+      15 |  await page.getByRole('button',{name:'恢复默认配色',exact:true}).click();
+    > 16 |  await page.getByLabel('配色区域').selectOption('accent');await expect(page.getByText('保留原配色（多色）',{exact:true})).toBeVisible();await expect(page.locator('.vehicle-swatches [aria-checked=true]')).toHaveCount(0);await page.getByLabel('配色区域').selectOption('body');
+         |                                                                                                              ^
+      17 |  const original=await canvas.getAttribute('data-material-colours');
+      18 |  for(const [key,c]of Object.entries(PAINT_PALETTE)){
+      19 |   await page.getByRole('radio',{name:c.label,exact:true}).click();await expect(page.getByRole('radio',{name:c.label,exact:true})).toHaveAttribute('aria-checked','true');
+        at checkEditor (/workspace/lego-design-byebye/tests/vehicle-body-browser/paint-groups.spec.ts:16:110)
+        at /workspace/lego-design-byebye/tests/vehicle-body-browser/paint-groups.spec.ts:56:80
+
+    Error Context: test-results/vehicle-body/paint-groups-real-full-pag-63426-d-immutable-API-save-reopen/error-context.md
+
+  2) tests/vehicle-body-browser/paint-groups.spec.ts:69:1 › same single HTML works self-contained without networking, saves complete drafts and restores colours 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('保留原配色（多色）', { exact: true })
+    Expected: visible
+    Timeout: 30000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('保留原配色（多色）', { exact: true }) with timeout 30000ms
+      - waiting for getByText('保留原配色（多色）', { exact: true })
+
+
+      14 |  await expect(canvas).toHaveAttribute('data-visible-instances',/.+/,{timeout:120000});
+      15 |  await page.getByRole('button',{name:'恢复默认配色',exact:true}).click();
+    > 16 |  await page.getByLabel('配色区域').selectOption('accent');await expect(page.getByText('保留原配色（多色）',{exact:true})).toBeVisible();await expect(page.locator('.vehicle-swatches [aria-checked=true]')).toHaveCount(0);await page.getByLabel('配色区域').selectOption('body');
+         |                                                                                                              ^
+      17 |  const original=await canvas.getAttribute('data-material-colours');
+      18 |  for(const [key,c]of Object.entries(PAINT_PALETTE)){
+      19 |   await page.getByRole('radio',{name:c.label,exact:true}).click();await expect(page.getByRole('radio',{name:c.label,exact:true})).toHaveAttribute('aria-checked','true');
+        at checkEditor (/workspace/lego-design-byebye/tests/vehicle-body-browser/paint-groups.spec.ts:16:110)
+        at /workspace/lego-design-byebye/tests/vehicle-body-browser/paint-groups.spec.ts:75:17
+
+    Error Context: test-results/vehicle-body/paint-groups-same-single-H-64970-drafts-and-restores-colours/error-context.md
+
+  2 failed
+    tests/vehicle-body-browser/paint-groups.spec.ts:52:1 › real full-page colours, seven actual functional groups and immutable API save/reopen 
+    tests/vehicle-body-browser/paint-groups.spec.ts:69:1 › same single HTML works self-contained without networking, saves complete drafts and restores colours 

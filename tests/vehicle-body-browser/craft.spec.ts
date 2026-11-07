@@ -2,8 +2,10 @@ import { test, expect } from "@playwright/test";
 import { readFile, writeFile, mkdir, cp, readdir } from "node:fs/promises";
 const root = process.env.VEHICLE_BODY_BROWSER_DATA_DIR ?? "/tmp/bricklab-vehicle-body-browser";
 const artifacts = "artifacts/vehicle-presentation-2026-11-07/craft-controls";
+const output = "artifacts/vehicle-interactions-2026-11-07/craft-regression";
 const cases = new Map<string, any>();
 test.beforeAll(async () => {
+    await mkdir(output, { recursive: true });
     for (const name of ["enabled", "disabled", "holdout-76897", "holdout-75878"]) {
         const j = JSON.parse(await readFile(`${artifacts}/round-2/${name}/job.json`, "utf8"));
         cases.set(name, j);
@@ -30,10 +32,10 @@ test("normal cached workflow executes both craft controls without route mocks or
         const name = enabled ? "enabled" : "disabled";
         expect(result.preview.contentSha256).toBe(cases.get(name).preview.contentSha256);
         expect(result.preview.layout.craft.options.enabled).toBe(enabled);
-        await writeFile(`${artifacts}/unmocked-${name}-job.json`, JSON.stringify(result, null, 2));
+        await writeFile(`${output}/unmocked-${name}-job.json`, JSON.stringify(result, null, 2));
         await page.getByText("本次使用的拼搭工艺", { exact: true }).click();
         await expect(page.locator(".vehicle-evidence").getByText(/本功能未训练或微调模型/)).toBeVisible();
-        await page.screenshot({ path: `${artifacts}/unmocked-${name}-page.png`, fullPage: true });
+        await page.screenshot({ path: `${output}/unmocked-${name}-page.png`, fullPage: true });
     }
     const cache = await readdir(`${root}/vehicle-platform/vision-cache`).catch((e) => { if (e.code === "ENOENT")
         return []; throw e; });

@@ -1,16 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowDownToLine, ArrowRight, Blocks, Box, Check, ChevronDown, CircleHelp, Database, FolderOpen, Layers3, LoaderCircle, RefreshCw, WifiOff } from "lucide-react";
-import NativeAssemblyViewer, { type AssemblyAsset } from "../components/NativeAssemblyViewer.js";
+import { type AssemblyAsset } from "../components/NativeAssemblyViewer.js";
 import type { BodyPreview } from "../vehicles/body-preview.js";
 import type { Job, VehicleInput } from "../vehicles/types.js";
 import { DEMO_CARS } from "../vehicles/demo-catalog.js";
 import { bodyLayoutSvg } from "../vehicles/body-layout.js";
 import { verifySavedExample } from "../vehicles/saved-example.js";
+import VehicleDesignStudio from "../components/VehicleDesignStudio.js";
+import { createDesignDraft, validateDesignDraft, paintAppearance, paintBomCsv, parsePaintOptions, PAINT_PALETTE, DESIGN_SCHEMA, type PaintOptions, type DesignDraft } from "../vehicles/appearance-design.js";
 import "./vehicle-generator.css";
 
 type Preview = { model: BodyPreview; assets: Record<string, AssemblyAsset>; designColors: Record<string, string> };
 type Result = { preview: Preview; job: Job; mode: "generated" | "saved-example" };
-const views = [["perspective", "斜侧"], ["side", "侧面"], ["front", "正面"], ["rear", "背面"], ["top", "俯视"]] as const;
 const steps = [["research", "车型资料"], ["planning", "比例规划"], ["craft", "工艺检索"], ["selection", "真实选件"], ["generation", "生成与检查"]] as const;
 const title = (input: VehicleInput) => `${input.year} ${input.make} ${input.model} ${input.variant}`;
 const message = (error: unknown) => {
@@ -38,7 +39,8 @@ function download(value: string, name: string, type: string) {
 export default function VehicleGenerator() {
   const [input, setInput] = useState<VehicleInput>({ ...DEMO_CARS[0].input });
   const [useCraft, setUseCraft] = useState(true), [job, setJob] = useState<Job>(), [result, setResult] = useState<Result>();
-  const [view, setView] = useState<typeof views[number][0]>("perspective");
+  const [paintOptions,setPaintOptions]=useState<PaintOptions>(parsePaintOptions);
+  const [importedDesign,setImportedDesign]=useState<DesignDraft>();
   const [error, setError] = useState(""), [busy, setBusy] = useState(false), [importStatus, setImportStatus] = useState("");
   const [tracking,setTracking]=useState(true);
   const [offline, setOffline] = useState(!navigator.onLine), [cacheState, setCacheState] = useState("备用结果正在准备");
@@ -46,15 +48,16 @@ export default function VehicleGenerator() {
   const lock = useRef(false), latest = useRef(0), resultRef = useRef<Result | undefined>(undefined);
   const pending = busy || job?.state === "running"&&tracking;
   const displayed = result?.preview.model;
+  const painted=displayed?paintAppearance(displayed,paintOptions):undefined;
   const observation=job?.research?.observation??displayed?.observation;
-  const setLocation = (key: "job" | "example", value: string) => { const u = new URL(location.href); u.searchParams.delete("job"); u.searchParams.delete("example"); u.searchParams.set(key, value); history.replaceState({}, "", u); };
+  const setLocation = (key: "job" | "example", value: string) => { const u = new URL(location.href); u.searchParams.delete("job"); u.searchParams.delete("example");u.searchParams.delete("design"); u.searchParams.set(key, value); history.replaceState({}, "", u); };
   async function openExample(id: string) {
     if (lock.current || pending) return;
     lock.current = true; setBusy(true); setError(""); ++latest.current;
     try {
       const payload = await verifySavedExample(await json(`/vehicle-demos/${id}.json`));
       const next: Result = { ...payload, mode: "saved-example" };
-      setResult(next); resultRef.current = next; setJob(undefined); setInput(payload.job.input); setView("perspective"); setLocation("example", id);
+      setResult(next); resultRef.current = next;setImportedDesign(undefined); setJob(undefined); setInput(payload.job.input); setLocation("example", id);
     } catch (e) { setError(message(e)); } finally { lock.current = false; setBusy(false); }
   }
   useEffect(() => {
@@ -97,7 +100,9 @@ export default function VehicleGenerator() {
     const c = new AbortController(), token = ++latest.current;
     json<Preview>(`/api/vehicles/jobs/${job.id}/preview`, { signal: c.signal }).then(preview => {
       if (token !== latest.current) return;
-      const next: Result = { preview, job, mode: "generated" }; setResult(next); resultRef.current = next; setView("perspective"); setImportStatus("");
+      const next: Result = { preview, job, mode: "generated" }; setResult(next); resultRef.current = next;setImportedDesign(undefined); setImportStatus("");
+      const digest=new URL(location.href).searchParams.get("design");
+      if(digest)void json<{draft:DesignDraft}>(`/api/vehicles/jobs/${job.id}/designs/${encodeURIComponent(digest)}`,{signal:c.signal}).then(async({draft})=>{const checked=await validateDesignDraft(draft,preview.model);if(token===latest.current)setImportedDesign(checked);}).catch(e=>{if(!c.signal.aborted)setError(message(e));});
     }).catch(e => { if (!c.signal.aborted) setError(message(e)); });
     return () => c.abort();
   }, [job?.id, job?.state]);
@@ -111,13 +116,25 @@ export default function VehicleGenerator() {
   }
   async function importAppearance(file: File) {
     if (!result || result.mode !== "generated" || file.size > 8e6) { setImportStatus("请先生成一个当前任务；文件上限 8 MB"); return; }
-    try { const data = await json<{ status: string }>(`/api/vehicles/jobs/${result.job.id}/preview/import`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ content: await file.text() }) }); setImportStatus(data.status); }
+    try {
+      const content=await file.text(),value=JSON.parse(content);
+      if(value.schema===DESIGN_SCHEMA){const draft=await validateDesignDraft(value,result.preview.model);await persistDesign(draft);setImportedDesign(draft);setImportStatus("COLOUR_DRAFT_REOPENED_NOT_FORMAL");return;}
+      const data = await json<{ status: string }>(`/api/vehicles/jobs/${result.job.id}/preview/import`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ content }) }); setImportStatus(data.status); }
     catch (e) { setImportStatus(message(e)); }
   }
-  function saveCurrent() {
+  async function persistDesign(draft:DesignDraft){
+    const current=resultRef.current;if(!current||current.mode!=="generated")throw Error("DESIGN_TASK_REQUIRED");
+    const value=await json<{draft:DesignDraft}>(`/api/vehicles/jobs/${current.job.id}/designs`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({content:JSON.stringify(draft)})});
+    if(value.draft.contentSha256!==draft.contentSha256)throw Error("DESIGN_SAVE_BINDING");
+    const url=new URL(location.href);if(url.searchParams.get("job")===current.job.id){url.searchParams.set("design",draft.contentSha256);history.replaceState({},"",url);}
+    const refs=JSON.parse(localStorage.getItem("bricklab-vehicle-design-links")??"[]") as {job:string;digest:string}[];
+    const next=[{job:current.job.id,digest:draft.contentSha256},...refs.filter(r=>r.job!==current.job.id)].slice(0,10);localStorage.setItem("bricklab-vehicle-design-links",JSON.stringify(next));
+  }
+  async function saveCurrent() {
     if (!result || result.mode === "saved-example") return;
     const next = [result.job.id, ...saved.filter(id => id !== result.job.id)].slice(0, 10);
     localStorage.setItem("bricklab-vehicle-jobs", JSON.stringify(next)); setSaved(next);
+    try{await persistDesign(await createDesignDraft(result.preview.model,paintOptions));setImportStatus("配色草稿已保存到当前任务");}catch(e){setError(message(e));}
   }
   const selections = displayed?.layout.craft.selections ?? [];
   const familyCount = new Set(selections.map(s => s.familyId)).size;
@@ -159,20 +176,19 @@ export default function VehicleGenerator() {
         {job && job.state!=="running" && (!job.preview||job.error) && <details className="vehicle-failure-details"><summary>本次任务诊断</summary><p>任务 {job.id}</p><ol>{job.events.map((e,i)=><li key={i}>{e.stage} · {e.state}：{e.detail}</li>)}</ol></details>}
         {result && displayed ? <>
           <div className="vehicle-model-label"><strong>{title(displayed.input)}</strong><span>{result.mode === "saved-example" ? "已保存示例 · 本次未重新生成" : "当前引擎实际生成"}{pending ? " · 新任务处理中，保留上次结果" : ""}</span></div>
-          <div className="vehicle-views" aria-label="模型视角">{views.map(([id, label]) => <button key={id} aria-pressed={view === id} onClick={() => setView(id)}>{label}</button>)}</div>
-          <div data-testid="vehicle-preview-stage" data-model-hash={displayed.contentSha256} className="vehicle-render-stage"><NativeAssemblyViewer key={displayed.contentSha256} placements={displayed.placements} assets={result.preview.assets} designColors={result.preview.designColors} view={view} fitToModel showConnections={false} showProxies={false} showPath={false} showZones={false} /></div>
+          <VehicleDesignStudio key={displayed.contentSha256} base={displayed} assets={result.preview.assets} initialDraft={importedDesign} onChange={setPaintOptions} onSave={result.mode==="generated"?persistDesign:undefined}/>
           <div className="vehicle-metrics"><div><Box size={17} /><strong>{displayed.placements.length}</strong><span>真实零件实例</span></div><div><Layers3 size={17} /><strong>{displayed.sources.length}</strong><span>原生零件种类</span></div><div><Blocks size={17} /><strong>{familyCount}</strong><span>采用的工艺家族</span></div><div><strong>{displayed.plan.widthStuds}</strong><span>格车身宽度</span></div></div>
           <p className="vehicle-boundary">整车连接未验证 · 轮组与稳定性未知 · 步骤为外观分组草稿</p>
-          <div className="vehicle-downloads"><button className="vehicle-secondary" onClick={saveCurrent} disabled={result.mode === "saved-example"}><FolderOpen size={14} />保存当前任务</button><button className="vehicle-text-button" onClick={() => download(JSON.stringify(displayed, null, 2), 'vehicle-appearance.json', 'application/json')}><ArrowDownToLine size={14} />模型 JSON</button><button className="vehicle-text-button" onClick={() => download('part_id,name,quantity\n' + displayed.bom.map(b => `${b.partId},"${b.name.replaceAll('"', '""')}",${b.quantity}`).join('\n'), 'vehicle-bom.csv', 'text/csv')}>零件清单</button></div>
+          <div className="vehicle-downloads"><button className="vehicle-secondary" onClick={saveCurrent} disabled={result.mode === "saved-example"}><FolderOpen size={14} />保存当前任务</button><button className="vehicle-text-button" onClick={() => void createDesignDraft(displayed,paintOptions).then(d=>download(JSON.stringify(d,null,2),'vehicle-colour-draft.json','application/json')).catch(e=>setError(message(e)))}><ArrowDownToLine size={14} />模型 JSON</button><button className="vehicle-text-button" onClick={() => download(paintBomCsv(painted!.bom), 'vehicle-colour-bom.csv', 'text/csv')}>零件清单</button></div>
         </> : <div className="vehicle-empty"><div className="vehicle-empty-grid"><Blocks size={52} strokeWidth={1} /></div><h3>{pending ? "正在把资料转成积木设计" : "你的下一辆积木车，从这里开始"}</h3><p>{pending ? "执行阶段来自真实任务事件，完成后自动显示模型。" : "选择上方车型，或直接点击生成。"}</p><span>原生零件 / 刚体姿态 / 来源可追溯</span></div>}
       </div>
     </section>
-    {saved.length > 0 && <nav className="vehicle-saved" aria-label="保存的车型任务"><FolderOpen size={15} /><span>保存的任务</span>{saved.map(id => <a key={id} href={`/vehicle-generator?job=${id}`}>重开 {id.slice(0, 8)}</a>)}</nav>}
+    {saved.length > 0 && <nav className="vehicle-saved" aria-label="保存的车型任务"><FolderOpen size={15} /><span>保存的任务</span>{saved.map(id => <a key={id} href={(()=>{try{const refs=JSON.parse(localStorage.getItem("bricklab-vehicle-design-links")??"[]") as {job:string;digest:string}[];const d=refs.find(r=>r.job===id);return `/vehicle-generator?job=${id}${d?"&design="+d.digest:""}`;}catch{return `/vehicle-generator?job=${id}`;}})()}>重开 {id.slice(0, 8)}</a>)}</nav>}
     {result && displayed && <section className="vehicle-evidence">
       <div className="vehicle-section-label"><span>04 / 设计依据与验证详情</span><span>模型、来源与实际 BOM 一致</span></div>
       <details><summary>本次使用的拼搭工艺 <ChevronDown size={15} /></summary><p>资料库 {displayed.layout.craft.summary.designFamilies} 个设计家族 / {displayed.layout.craft.summary.sourceSets} 个来源；实际采用 {familyCount} 个家族、{selections.length} 次组合。本功能未训练或微调模型。</p>{selections.map(s => <p key={s.groupId}>{s.region} · {s.caseId} · {s.members.length} 个成员 · {s.source.author} / {s.source.license} · 外部安装未验证</p>)}<pre>{JSON.stringify(displayed.layout.craft.queries, null, 2)}</pre></details>
       <details><summary>比例规划与来源证据 <ChevronDown size={15} /></summary><p>{displayed.observation?.label ?? "使用已保存的研究与视觉估计"}</p><p>年款、配置与透视误差保留；原始区间没有为适配模型而修改。</p><div className="vehicle-layout-svg" dangerouslySetInnerHTML={{ __html: bodyLayoutSvg(displayed.plan) }} />{result.job.research?.sources.map(s => <p key={s.id}><a href={s.url} target="_blank" rel="noreferrer">{s.scope}</a> · SHA256 {s.sha256}</p>)}{result.job.research?.images.map(i => <p key={i.id}><a href={i.page} target="_blank" rel="noreferrer">{i.title}</a> · {i.author} · {i.license}</p>)}<pre>{JSON.stringify(displayed.checks, null, 2)}</pre></details>
-      <details><summary>零件、草稿步骤与重新导入 <ChevronDown size={15} /></summary><p>步骤状态：外观分组草稿，非可实拼说明书</p><table><thead><tr><th>编号</th><th>真实零件名称</th><th>数量</th></tr></thead><tbody>{displayed.bom.map(b => <tr key={b.partId + b.color}><td>{b.partId}</td><td>{b.name}</td><td>{b.quantity}</td></tr>)}</tbody></table><label>重新导入外观模型 JSON<input type="file" accept="application/json,.json" onChange={e => { const f = e.target.files?.[0]; if (f) void importAppearance(f); }} /></label><p role="status">{importStatus}</p><pre>{JSON.stringify(displayed.steps, null, 2)}</pre></details>
+      <details><summary>零件、草稿步骤与重新导入 <ChevronDown size={15} /></summary><p>步骤状态：外观分组草稿，非可实拼说明书</p><table><thead><tr><th>编号</th><th>真实零件名称</th><th>数量</th></tr></thead><tbody>{painted!.bom.map(b => <tr key={b.partId + b.color}><td>{b.partId}</td><td>{b.name} · {PAINT_PALETTE[b.color].label}</td><td>{b.quantity}</td></tr>)}</tbody></table><label>重新导入外观模型 JSON<input type="file" accept="application/json,.json" onChange={e => { const f = e.target.files?.[0]; if (f) void importAppearance(f); }} /></label><p role="status">{importStatus}</p><pre>{JSON.stringify(displayed.steps, null, 2)}</pre></details>
       <details><summary>实际任务日志与装配范围 <ChevronDown size={15} /></summary><p>{result.mode === "saved-example" ? "以下为已保存任务记录，本次没有执行生成。" : "本次真实后端任务记录。"}</p><ol>{result.job.events.map((e, i) => <li key={i}>{e.stage} · {e.state}：{e.detail}</li>)}</ol><p>独立局部支撑验证与整车分开；源模块内部验证不代表已经安装到新车。BLOCKED 和 UNKNOWN 保持原状态。</p><pre>{JSON.stringify(result.job.assembly, null, 2)}</pre></details>
     </section>}
     <footer className="vehicle-footer"><span>BRICKLAB · 从资料到积木的设计实验</span><span>两款案例验证 / 非任意车型质量保证</span></footer>

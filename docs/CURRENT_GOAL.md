@@ -1,3 +1,7 @@
+# 最新：设计配色与步骤分组交互
+
+2026-11-07：从实际 HEAD `eb0a38d` 接续，依次完成八色/四预设与可视化功能分组，两端共用组件。只改配色与展示，不调整几何或新增车型。离线单文件与 ZIP 为用户无需访问云端 localhost 的查看入口。来源模块原色、完整 BOM、原模型与验证状态保留；功能分组不是实拼说明书。见 [本轮交付](VEHICLE_INTERACTIONS_DELIVERY.md) 与 [操作说明](VEHICLE_INTERACTIONS_RUNBOOK.md)。以下保留历史。
+
 # 最新：两车课堂演示原型
 
 2026-11-07：从 e680c95 接续，准备 Charger 与 Golf Mk1 两款可追溯输入，独立车顶/玻璃/短尾规划，共同生成、真实五视图、两款实际截图卡片、真实阶段反馈及明确标注的离线备用。新增费用为零。Golf 是本地照片审阅，精确1976配置未确认；整车/轮组/实拼步骤未通过，窗柱与侧面仍粗。见 [本轮交付](VEHICLE_PRESENTATION_DELIVERY.md)、[启动演示](VEHICLE_PRESENTATION_RUNBOOK.md) 与 [三分钟稿](VEHICLE_PRESENTATION_SCRIPT.md)。以下保留历史。
