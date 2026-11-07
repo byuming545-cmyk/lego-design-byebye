@@ -85,7 +85,7 @@ export function createVehicleRouter(service = new VehicleService()) {
     } catch (e) {
       if (
         e instanceof Error &&
-        ["INVALID_VEHICLE_INPUT", "TASK_CAPACITY"].includes(e.message)
+        ["INVALID_VEHICLE_INPUT", "CRAFT_OPTIONS_INVALID", "TASK_CAPACITY"].includes(e.message)
       )
         res
           .status(e.message === "TASK_CAPACITY" ? 429 : 400)

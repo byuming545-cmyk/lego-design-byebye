@@ -1,0 +1,267 @@
+{
+  "corpusDigest": "b90ffd072cb665c789a2eefa52c38b7ac9f7ee3f35527dbcb253cbe1099815a2",
+  "summary": {
+    "recipes": 6,
+    "sourceFiles": 4,
+    "sourceSets": 2,
+    "designFamilies": 4,
+    "validatedFamilies": 3,
+    "validatedRecipes": 5,
+    "blockedRecipes": 1,
+    "modelWeightsUpdated": false
+  },
+  "variants": [
+    {
+      "name": "enabled",
+      "id": "78fce202-3cca-c651-96c5-ecbf08fa1e90",
+      "hash": "78fce2023ccac65196c5ecbf08fa1e90f5c87f5f104f3116320b6a8f36de5533",
+      "options": {
+        "enabled": true,
+        "excludedSourceSets": []
+      },
+      "geometryHash": "1b3bc2a31f3b088fedb74e20b39819424ceacbd298ed2a30d4982facde4ede84",
+      "parts": 139,
+      "nativeKinds": 23,
+      "selectedCases": [
+        {
+          "caseId": "75878-curved-cover-left",
+          "familyId": "design-d1bb1084b0e83221",
+          "region": "nose-cover",
+          "members": [
+            "craft-nose-cover-0-source-102",
+            "craft-nose-cover-0-source-103",
+            "craft-nose-cover-0-source-104"
+          ]
+        },
+        {
+          "caseId": "75878-curved-cover-left",
+          "familyId": "design-d1bb1084b0e83221",
+          "region": "nose-cover",
+          "members": [
+            "craft-nose-cover-1-source-102",
+            "craft-nose-cover-1-source-103",
+            "craft-nose-cover-1-source-104"
+          ]
+        },
+        {
+          "caseId": "75878-curved-cover-left",
+          "familyId": "design-d1bb1084b0e83221",
+          "region": "nose-cover",
+          "members": [
+            "craft-nose-cover-2-source-102",
+            "craft-nose-cover-2-source-103",
+            "craft-nose-cover-2-source-104"
+          ]
+        },
+        {
+          "caseId": "75878-curved-cover-left",
+          "familyId": "design-d1bb1084b0e83221",
+          "region": "nose-cover",
+          "members": [
+            "craft-nose-cover-3-source-102",
+            "craft-nose-cover-3-source-103",
+            "craft-nose-cover-3-source-104"
+          ]
+        },
+        {
+          "caseId": "76897-hood-adapted",
+          "familyId": "design-b69226d7dddd013d",
+          "region": "front-fascia",
+          "members": [
+            "craft-front-fascia-0-source-0",
+            "craft-front-fascia-0-source-1",
+            "craft-front-fascia-0-source-2",
+            "craft-front-fascia-0-source-3",
+            "craft-front-fascia-0-source-4",
+            "craft-front-fascia-0-source-5",
+            "craft-front-fascia-0-source-6"
+          ]
+        }
+      ],
+      "rejected": [],
+      "metrics": {
+        "frontOverhang": 100,
+        "rearOverhang": 100,
+        "length": 440,
+        "width": 160,
+        "overallWidth": 160,
+        "height": 112,
+        "wheelbase": 240,
+        "hoodLength": 240,
+        "cabinStart": 240,
+        "cabinEnd": 360,
+        "roofStart": 260,
+        "roofEnd": 340,
+        "bodyGroundClearance": 8,
+        "wheelDiameter": 60,
+        "sideWindowHeight": 24
+      },
+      "wheelConflicts": 0,
+      "nativePairFailures": []
+    },
+    {
+      "name": "disabled",
+      "id": "feaf342b-dac0-fa07-9c58-da371b607b3c",
+      "hash": "feaf342bdac0fa079c58da371b607b3c69cf56e8a7229a0001e96d48aeed661f",
+      "options": {
+        "enabled": false,
+        "excludedSourceSets": []
+      },
+      "geometryHash": "51aa0a27b6858e95ca4884eada2cb69bffd91d7a1fde21401f67a0f20b45727c",
+      "parts": 123,
+      "nativeKinds": 19,
+      "selectedCases": [],
+      "rejected": [],
+      "metrics": {
+        "frontOverhang": 100,
+        "rearOverhang": 100,
+        "length": 440,
+        "width": 160,
+        "overallWidth": 160,
+        "height": 112,
+        "wheelbase": 240,
+        "hoodLength": 240,
+        "cabinStart": 240,
+        "cabinEnd": 360,
+        "roofStart": 260,
+        "roofEnd": 340,
+        "bodyGroundClearance": 8,
+        "wheelDiameter": 60,
+        "sideWindowHeight": 24
+      },
+      "wheelConflicts": 0,
+      "nativePairFailures": []
+    },
+    {
+      "name": "holdout-76897",
+      "id": "423938d6-ce0f-ab4f-28ba-b86494788392",
+      "hash": "423938d6ce0fab4f28bab864947883924064b2023cd1a86b9a964a063ec4f9a1",
+      "options": {
+        "enabled": true,
+        "excludedSourceSets": [
+          "76897"
+        ]
+      },
+      "geometryHash": "8245ff3e9f068a584731acc8679cb7661c45b2885ac0b7fa629f3d273ee75a3d",
+      "parts": 130,
+      "nativeKinds": 20,
+      "selectedCases": [
+        {
+          "caseId": "75878-curved-cover-left",
+          "familyId": "design-d1bb1084b0e83221",
+          "region": "nose-cover",
+          "members": [
+            "craft-nose-cover-0-source-102",
+            "craft-nose-cover-0-source-103",
+            "craft-nose-cover-0-source-104"
+          ]
+        },
+        {
+          "caseId": "75878-curved-cover-left",
+          "familyId": "design-d1bb1084b0e83221",
+          "region": "nose-cover",
+          "members": [
+            "craft-nose-cover-1-source-102",
+            "craft-nose-cover-1-source-103",
+            "craft-nose-cover-1-source-104"
+          ]
+        },
+        {
+          "caseId": "75878-curved-cover-left",
+          "familyId": "design-d1bb1084b0e83221",
+          "region": "nose-cover",
+          "members": [
+            "craft-nose-cover-2-source-102",
+            "craft-nose-cover-2-source-103",
+            "craft-nose-cover-2-source-104"
+          ]
+        },
+        {
+          "caseId": "75878-curved-cover-left",
+          "familyId": "design-d1bb1084b0e83221",
+          "region": "nose-cover",
+          "members": [
+            "craft-nose-cover-3-source-102",
+            "craft-nose-cover-3-source-103",
+            "craft-nose-cover-3-source-104"
+          ]
+        }
+      ],
+      "rejected": [],
+      "metrics": {
+        "frontOverhang": 100,
+        "rearOverhang": 100,
+        "length": 440,
+        "width": 160,
+        "overallWidth": 160,
+        "height": 112,
+        "wheelbase": 240,
+        "hoodLength": 240,
+        "cabinStart": 240,
+        "cabinEnd": 360,
+        "roofStart": 260,
+        "roofEnd": 340,
+        "bodyGroundClearance": 8,
+        "wheelDiameter": 60,
+        "sideWindowHeight": 24
+      },
+      "wheelConflicts": 0,
+      "nativePairFailures": []
+    },
+    {
+      "name": "holdout-75878",
+      "id": "e69e5115-8d99-d994-93ed-29e3fc54ac4d",
+      "hash": "e69e51158d99d99493ed29e3fc54ac4d5a27e3509a479aecb05c129de33053b6",
+      "options": {
+        "enabled": true,
+        "excludedSourceSets": [
+          "75878"
+        ]
+      },
+      "geometryHash": "51aa0a27b6858e95ca4884eada2cb69bffd91d7a1fde21401f67a0f20b45727c",
+      "parts": 123,
+      "nativeKinds": 19,
+      "selectedCases": [],
+      "rejected": [
+        {
+          "caseId": "76897-hood-adapted",
+          "status": "REJECTED",
+          "reasons": [
+            "NATIVE_BOUNDARY_RETILING_UNAVAILABLE"
+          ],
+          "removedInstanceIds": [
+            "vehicle-part-108",
+            "vehicle-part-109",
+            "vehicle-part-110",
+            "vehicle-part-111"
+          ]
+        }
+      ],
+      "metrics": {
+        "frontOverhang": 100,
+        "rearOverhang": 100,
+        "length": 440,
+        "width": 160,
+        "overallWidth": 160,
+        "height": 112,
+        "wheelbase": 240,
+        "hoodLength": 240,
+        "cabinStart": 240,
+        "cabinEnd": 360,
+        "roofStart": 260,
+        "roofEnd": 340,
+        "bodyGroundClearance": 8,
+        "wheelDiameter": 60,
+        "sideWindowHeight": 24
+      },
+      "wheelConflicts": 0,
+      "nativePairFailures": []
+    }
+  ],
+  "disabledMatchesOriginalBaseline": true,
+  "modelWeightsUpdated": false,
+  "formalWholeVehicle": "NOT_VERIFIED",
+  "physicalBuildVerified": false,
+  "newPaidCalls": 0,
+  "externalRenderUploads": 0
+}

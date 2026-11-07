@@ -1,0 +1,79 @@
+{
+  "baseline": "a9a6f1d1bfdcc023c81764f0d4a5e0e0409df11d",
+  "branch": "codex/vehicle-design-cases",
+  "schema": "bricklab-vehicle-envelope-appearance-3",
+  "generator": "source-case-regions-5",
+  "corpusVersion": "source-design-cases-1",
+  "corpusDigest": "b90ffd072cb665c789a2eefa52c38b7ac9f7ee3f35527dbcb253cbe1099815a2",
+  "modelHash": "78fce2023ccac65196c5ecbf08fa1e90f5c87f5f104f3116320b6a8f36de5533",
+  "summary": {
+    "recipes": 6,
+    "sourceFiles": 4,
+    "sourceSets": 2,
+    "designFamilies": 4,
+    "validatedFamilies": 3,
+    "validatedRecipes": 5,
+    "blockedRecipes": 1,
+    "modelWeightsUpdated": false
+  },
+  "checksExitCodes": {
+    "allUnit": 0,
+    "focusedCurrent": 0,
+    "browser": 0,
+    "buildAndTypecheck": 0,
+    "actualRenders": 0,
+    "offlineGeneration": 0
+  },
+  "unit": {
+    "files": 75,
+    "tests": 1000,
+    "status": "PASS"
+  },
+  "focusedCurrent": {
+    "tests": 39,
+    "status": "PASS"
+  },
+  "browser": {
+    "tests": 8,
+    "status": "PASS",
+    "normalCreateWorkflowRoutesMocked": 0,
+    "initialFailuresPreserved": "diagnostics/"
+  },
+  "model": {
+    "parts": 139,
+    "nativeKinds": 23,
+    "selectedDesignFamilies": 2,
+    "sourceMemberInstances": 19,
+    "physicalBuildVerified": false,
+    "wholeVehicleAssembly": "NOT_VERIFIED",
+    "wholeVehicleOccupancy": "UNKNOWN",
+    "wholeVehicleCollision": "UNKNOWN",
+    "draftSteps": "DRAFT_NOT_BUILD_INSTRUCTIONS"
+  },
+  "nativePairChecks": {
+    "positiveAabbPairs": 24,
+    "allClear": true,
+    "sourceJointCandidatePairs": 14,
+    "wholeVehicleCertificate": false
+  },
+  "wheelStaticEnvelopeConflicts": 0,
+  "formalWheel": "blocked",
+  "localSupportReimport": "VALID",
+  "localSupportParts": 5,
+  "protectedSourcesAndFormalPipelinesUnchanged": true,
+  "originalPdfsRead": 0,
+  "digitalSourceFilesRead": 4,
+  "modelWeightsUpdated": false,
+  "fineTuningRecommendedNow": false,
+  "sourceSetHoldoutsOnlyNotModelGeneralization": true,
+  "newPaidCalls": 0,
+  "internalRenderExternalUploads": 0,
+  "oldBudgetLedgerUnchanged": true,
+  "oldLedgerSha256": "f44600058512306b7750ac97354678a2908e9e17371c5eb67c50a6158e3f9897",
+  "environmentPublished": false,
+  "merged": false,
+  "visualReview": "visual-review.json",
+  "actualTriangleMeasurements": "actual-surface-profiles.json",
+  "renderBindings": "render-manifest.json",
+  "note": "Round 2 geometry hashes equal round 1; binding/provenance/API fixes do not count as extra learned designs."
+}

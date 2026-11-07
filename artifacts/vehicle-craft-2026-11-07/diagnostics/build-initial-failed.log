@@ -1,0 +1,9 @@
+
+> bricklab@0.6.0 build
+> npm run typecheck && vite build && tsc -p tsconfig.server.json
+
+
+> bricklab@0.6.0 typecheck
+> tsc --noEmit
+
+src/vehicles/design-cases.ts(157,117): error TS2339: Property 'versions' does not exist on type 'NativeGeneratorEngine'.

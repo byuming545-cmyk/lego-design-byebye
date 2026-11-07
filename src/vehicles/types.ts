@@ -134,6 +134,7 @@ export interface Job {
   plan?: unknown;
   assembly?: unknown;
   preview?: unknown;
+  craftOptions?: import("./design-cases.js").CraftOptions;
   error?: string;
 }
 export function parseInput(value: unknown): VehicleInput {

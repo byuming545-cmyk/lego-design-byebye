@@ -1,0 +1,93 @@
+{
+  "status": "blocked",
+  "module": "wheel-module",
+  "model": null,
+  "reasons": [
+    "轮毂／轮胎／轮架的原生来源、机械规则或实体证据尚不完整；当前来源审查结果保留具体阻塞原因，未生成轮组。",
+    "wheel-connections-missing: 18977: source connections are missing.",
+    "wheel-connections-partial: 18975: source connections are partial.",
+    "wheel-installation-path-not-verified: A final pose cannot establish a swept whole-part insertion path or an elastic assembly process.",
+    "wheel-mechanical-rule-not-verified: No implemented source-backed wheel rule provides the required seating transform, insertion depth and occupancy semantics.",
+    "wheel-proxy-branched-native-boundary: 66727: The source mesh has open/branched boundary chains.; 18977: The source mesh has open/branched boundary chains.",
+    "wheel-proxy-unresolved-boundary-cap: 18975: A nonconvex native boundary needs a more capable source-backed proxy.",
+    "wheel-retention-tolerance-not-evidenced: The source review has not established prerequisite wheel-retention-tolerance-not-evidenced.",
+    "wheel-rotation-clearance-not-verified: Static source geometry or a displayed wheel does not certify clearance over a rotation range."
+  ],
+  "search": {
+    "attempts": 0,
+    "modulePoseEvaluations": 0,
+    "attachmentApiCalls": 0,
+    "acceptedAttachments": 0,
+    "rejectedAttachments": 0,
+    "transformFailures": 0,
+    "compatibilityFailures": 0,
+    "collisionFailures": 0,
+    "occupancyFailures": 0,
+    "designGoalFailures": 0,
+    "backtracks": 0,
+    "testedRoots": 0,
+    "exhausted": false,
+    "timeBudgetExceeded": false,
+    "catalogTimeMs": 15392.36,
+    "searchTimeMs": 15.189,
+    "budget": {
+      "maxAttempts": 1800,
+      "maxBacktracks": 120,
+      "maxSearchTimeMs": 10000
+    },
+    "finalPlacements": 0,
+    "finalConnectionEdges": 0,
+    "rejectionCounts": {
+      "wheel-connections-missing": 1,
+      "wheel-connections-partial": 1,
+      "wheel-installation-path-not-verified": 1,
+      "wheel-mechanical-rule-not-verified": 1,
+      "wheel-proxy-branched-native-boundary": 1,
+      "wheel-proxy-unresolved-boundary-cap": 1,
+      "wheel-retention-tolerance-not-evidenced": 1,
+      "wheel-rotation-clearance-not-verified": 1
+    },
+    "rejectionReasons": [
+      {
+        "code": "wheel-connections-missing",
+        "reason": "18977: source connections are missing.",
+        "count": 1
+      },
+      {
+        "code": "wheel-connections-partial",
+        "reason": "18975: source connections are partial.",
+        "count": 1
+      },
+      {
+        "code": "wheel-installation-path-not-verified",
+        "reason": "A final pose cannot establish a swept whole-part insertion path or an elastic assembly process.",
+        "count": 1
+      },
+      {
+        "code": "wheel-mechanical-rule-not-verified",
+        "reason": "No implemented source-backed wheel rule provides the required seating transform, insertion depth and occupancy semantics.",
+        "count": 1
+      },
+      {
+        "code": "wheel-proxy-branched-native-boundary",
+        "reason": "66727: The source mesh has open/branched boundary chains.; 18977: The source mesh has open/branched boundary chains.",
+        "count": 1
+      },
+      {
+        "code": "wheel-proxy-unresolved-boundary-cap",
+        "reason": "18975: A nonconvex native boundary needs a more capable source-backed proxy.",
+        "count": 1
+      },
+      {
+        "code": "wheel-retention-tolerance-not-evidenced",
+        "reason": "The source review has not established prerequisite wheel-retention-tolerance-not-evidenced.",
+        "count": 1
+      },
+      {
+        "code": "wheel-rotation-clearance-not-verified",
+        "reason": "Static source geometry or a displayed wheel does not certify clearance over a rotation range.",
+        "count": 1
+      }
+    ]
+  }
+}

@@ -1,3 +1,5 @@
+> 本文保留 a9a6f1d 阶段的外壳交付。当前工艺案例检索、实际接入及对照见 [最新交付](VEHICLE_CRAFT_DELIVERY.md)，历史模型与渲染未改写。
+
 # 车身比例与独立覆盖件：2026-11-07
 
 基线为现场干净 HEAD `76e2065feffb70582da5d3fe17f0ab01e8d89ea5`，工作分支 `codex/vehicle-surface-design`。没有恢复旧代码、覆盖历史模型、切换车型或发布环境。本轮仍以 **1969 Dodge Charger R/T** 验收，GTR 截图只提供覆盖连续性和积木收边工艺参照。

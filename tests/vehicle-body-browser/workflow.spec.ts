@@ -4,7 +4,7 @@ let job: any;
 test.beforeAll(async () => {
   job = JSON.parse(
     await readFile(
-      "artifacts/vehicle-surface-2026-11-07/round-2/job.json",
+      "artifacts/vehicle-craft-2026-11-07/round-2/enabled/job.json",
       "utf8",
     ),
   );
@@ -63,7 +63,7 @@ test("renders five actual source-mesh views and exposes persistent saving and so
     ).toHaveAttribute("aria-pressed", "true");
     await page.waitForTimeout(400);
     await stage.screenshot({
-      path: "artifacts/vehicle-surface-2026-11-07/round-2/" + file + ".png",
+      path: "artifacts/vehicle-craft-2026-11-07/round-2/enabled/" + file + ".png",
     });
   }
   await page.getByRole("button", { name: "保存当前任务", exact: true }).click();
@@ -71,7 +71,7 @@ test("renders five actual source-mesh views and exposes persistent saving and so
     page.getByRole("navigation", { name: "保存的车型任务" }),
   ).toContainText(job.id.slice(0, 8));
   await page.screenshot({
-    path: "artifacts/vehicle-surface-2026-11-07/round-2/page.png",
+    path: "artifacts/vehicle-craft-2026-11-07/round-2/enabled/page.png",
     fullPage: true,
   });
 });
@@ -109,7 +109,7 @@ test("exports true instance BOM and reimports only as appearance, rejecting forg
     page.getByTestId("vehicle-preview-stage").locator("canvas"),
   ).toBeVisible();
   const file = await readFile(
-    "artifacts/vehicle-surface-2026-11-07/round-2/model.json",
+    "artifacts/vehicle-craft-2026-11-07/round-2/enabled/model.json",
   );
   await page
     .getByLabel("重新导入外观模型 JSON")

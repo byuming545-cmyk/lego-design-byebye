@@ -10,8 +10,9 @@ import { BodyCatalog } from "./body-catalog.js";
 import { bodyPlan, type BodyPlan } from "./body-plan.js";
 import { regionShell } from "./body-surfaces.js";
 import type { Research, VisionResult, VehicleInput } from "./types.js";
-export const BODY_SCHEMA = "bricklab-vehicle-envelope-appearance-2";
-export const BODY_GENERATOR = "source-region-shell-4";
+import { craftOptions, designCaseLibrary, type CraftOptions } from "./design-cases.js";
+export const BODY_SCHEMA = "bricklab-vehicle-envelope-appearance-3";
+export const BODY_GENERATOR = "source-case-regions-5";
 export interface BodyPlacement {
   instanceId: string;
   partId: string;
@@ -20,6 +21,7 @@ export interface BodyPlacement {
   transform: { rotation: Matrix3; translation: Vector3 };
   assemblyStatus: "NOT_VERIFIED";
   decision: { constraints: string[]; imageIds: string[]; purpose: string };
+  craft?: {caseId:string;groupId:string;localId:string;sourcePartId:string;sourceColor:string};
 }
 export interface BodyPreview {
   schema: typeof BODY_SCHEMA;
@@ -29,6 +31,7 @@ export interface BodyPreview {
   units: "LDU";
   sourceSnapshot: string;
   input: VehicleInput;
+  craftOptions:CraftOptions;
   plan: BodyPlan;
   placements: BodyPlacement[];
   layout: ReturnType<typeof regionShell>["layout"];
@@ -67,12 +70,15 @@ export async function generateBodyPreview(
   catalog: BodyCatalog,
   research: Research,
   vision: VisionResult,
+  options?:CraftOptions,
 ): Promise<BodyPreview> {
   const parts = await catalog.palette(),
     tyre = parts.get("18977")!,
     radius = (tyre.geometry.bounds!.max[0] - tyre.geometry.bounds!.min[0]) / 2,
     plan = bodyPlan(research, vision, radius);
-  const { placements, layout } = regionShell(parts, plan);
+  const selectedOptions=craftOptions(options),corpus=await designCaseLibrary(catalog).load();
+  for(const [id,part]of await catalog.load(corpus.cases.flatMap(c=>c.members.map(m=>m.partId))))parts.set(id,part);
+  const { placements, layout } = regionShell(parts, plan,corpus,selectedOptions);
   const sourceIds = [...new Set(placements.map((p) => p.partId))].sort(),
     sources = sourceIds.map((id) => catalog.source(parts.get(id)!));
   const bom = new Map<string, BodyPreview["bom"][number]>();
@@ -178,6 +184,7 @@ export async function generateBodyPreview(
     units: "LDU" as const,
     sourceSnapshot: catalog.snapshot,
     input: research.input,
+    craftOptions:selectedOptions,
     plan,
     placements,
     layout,
@@ -229,11 +236,12 @@ export async function validateBodyPreview(
   catalog: BodyCatalog,
   research: Research,
   vision: VisionResult,
+  expectedOptions?:CraftOptions,
 ) {
   const v = value as BodyPreview;
   if (!v || v.schema !== BODY_SCHEMA || v.generatorVersion !== BODY_GENERATOR)
     throw Error("PREVIEW_SCHEMA_OR_VERSION");
-  const expected = await generateBodyPreview(catalog, research, vision);
+  const expected = await generateBodyPreview(catalog, research, vision,craftOptions(expectedOptions??v.craftOptions));
   if (stableJson(v) !== stableJson(expected))
     throw Error("PREVIEW_SOURCE_LAYOUT_OR_HASH_CHANGED");
   return expected;

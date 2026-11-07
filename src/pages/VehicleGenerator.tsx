@@ -8,6 +8,7 @@ import NativeAssemblyViewer, {
 } from "../components/NativeAssemblyViewer.js";
 import type { Job } from "../vehicles/types.js";
 export default function VehicleGenerator() {
+  const [useCraft,setUseCraft]=useState(true);
   const [appearance, setAppearance] = useState<{
     model: BodyPreview;
     assets: Record<string, AssemblyAsset>;
@@ -125,7 +126,7 @@ export default function VehicleGenerator() {
       const r = await fetch("/api/vehicles/jobs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ make, model, year, variant }),
+        body: JSON.stringify({ make, model, year, variant, ...(!useCraft?{craftOptions:{enabled:false,excludedSourceSets:[]}}:{}) }),
       });
       const data = await r.json();
       if (!r.ok) throw Error(data.error);
@@ -190,6 +191,7 @@ export default function VehicleGenerator() {
             onChange={(e) => setVariant(e.target.value)}
           />
         </label>
+        <label><input type="checkbox" checked={useCraft} onChange={e=>setUseCraft(e.target.checked)} />使用已有拼搭工艺</label>
         <button disabled={busy || job?.state === "running"}>生成</button>
       </form>
       {saved.length > 0 && (
@@ -278,6 +280,12 @@ export default function VehicleGenerator() {
             <span>{importStatus}</span>
           </div>
           <h3>尺寸比较（LDU）</h3>
+          <details>
+            <summary>本次使用的拼搭工艺</summary>
+            <p>{appearance.model.layout.craft.options.enabled?"已启用工艺检索":"已关闭工艺检索"}；实际采用 {appearance.model.layout.craft.selections.length} 个局部组合。工艺库含 {appearance.model.layout.craft.summary.designFamilies} 组设计，来自 {appearance.model.layout.craft.summary.sourceSets} 个套装来源。本功能未训练或微调模型。</p>
+            <ul>{appearance.model.layout.craft.selections.map(s=><li key={s.groupId}>{s.region} · 来源 {s.sourceSet} · {s.members.length} 件；内部数字检查通过，整车安装尚未验证。</li>)}</ul>
+            <p>当前没有可核验的座舱工艺样本，窗区仍使用原生斜坡规划。</p>
+          </details>
           <details>
             <summary>侧面与俯视布局诊断</summary>
             <img style={{width:"100%"}} alt="侧面和俯视布局：灰色保留视觉区间，蓝色为选择轮廓" src={"data:image/svg+xml," + encodeURIComponent(bodyLayoutSvg(appearance.model.plan))} />

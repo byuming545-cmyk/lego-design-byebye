@@ -4,6 +4,8 @@ import { assessGrammarAdmission } from "../parts/grammar/admission.js";
 import { checkNativePairCollision } from "../parts/assembly/collision.js";
 import type { NativeAssemblyPart, Vector3 } from "../parts/assembly/types.js";
 import type { BodyPlacement } from "./body-preview.js";
+import { sameModulePose } from "../parts/modules/assembly.js";
+export interface SourceJointHint {fixedInstanceId:string;fixedConnectionId:string;movingInstanceId:string;movingConnectionId:string;caseId:string}
 /** Conservative diagnostic against the tyre's full external cylinder, not a
  * tyre/rim fit certificate. Clips actual source triangles to its axial slab. */
 export function inspectWheelEnvelope(placements: BodyPlacement[], parts: Map<string, NativeAssemblyPart>, radius: number, halfWidth: number) {
@@ -109,7 +111,7 @@ export function inspectMountCandidates(placements: BodyPlacement[], parts: Map<s
             verifiedGraphEdge: false, insertionPathVerified: false };
     });
 }
-export function inspectBodySurfacePairs(placements: BodyPlacement[], parts: Map<string, NativeAssemblyPart>) {
+export function inspectBodySurfacePairs(placements: BodyPlacement[], parts: Map<string, NativeAssemblyPart>, sourceJoints:SourceJointHint[] = []) {
     const admission = new Map([...parts].map(([id, p]) => [id, assessGrammarAdmission(p)]));
     const body = placements.filter(p => p.role !== "wheel").map(p => {
         const b = parts.get(p.partId)!.geometry.bounds!;
@@ -126,8 +128,22 @@ export function inspectBodySurfacePairs(placements: BodyPlacement[], parts: Map<
                 continue;
             }
             const pose = (p: BodyPlacement) => ({ ...p, collisionClass: admission.get(p.partId)!.exteriorGeneratable ? "exterior-shell" as const : "structural" as const });
-            const result = checkNativePairCollision(parts.get(a.p.partId)!, pose(a.p), parts.get(b.p.partId)!, pose(b.p));
-            results.push({ a: a.p.instanceId, b: b.p.instanceId, roleA: a.p.role, roleB: b.p.role, status: result.status, reasonCode: result.reasonCode });
+            // A source joint is only a hint: solve it again from current native
+            // endpoints, permissions and exact world poses. The existing kernel
+            // independently validates the returned local penetration zone.
+            const hint=sourceJoints.find(h=>(h.fixedInstanceId===a.p.instanceId&&h.movingInstanceId===b.p.instanceId)||(h.fixedInstanceId===b.p.instanceId&&h.movingInstanceId===a.p.instanceId));
+            let zone;
+            if(hint){
+                const fixed=hint.fixedInstanceId===a.p.instanceId?a.p:b.p,moving=hint.movingInstanceId===b.p.instanceId?b.p:a.p;
+                const cap=(p:BodyPlacement)=>admission.get(p.partId)!.capability;
+                const ids=(p:BodyPlacement)=>new Set([...cap(p).allowedConnectionIds,...(cap(p).exteriorAllowedConnectionIds??[])]);
+                if(ids(fixed).has(hint.fixedConnectionId)&&ids(moving).has(hint.movingConnectionId)) {
+                    const solved=solveAttachment({fixedPart:parts.get(fixed.partId)!,fixedPlacement:fixed,fixedConnectionId:hint.fixedConnectionId,movingPart:parts.get(moving.partId)!,movingConnectionId:hint.movingConnectionId});
+                    zone=solved.candidates.find(c=>sameModulePose(c.transform,moving.transform))?.penetrationZone;
+                }
+            }
+            const result = checkNativePairCollision(parts.get(a.p.partId)!, pose(a.p), parts.get(b.p.partId)!, pose(b.p),zone);
+            results.push({ a: a.p.instanceId, b: b.p.instanceId, roleA: a.p.role, roleB: b.p.role, status: result.status, reasonCode: result.reasonCode,sourceJoint:zone?hint?.caseId:undefined });
         }
     return { method: "native-pair-kernel-unchanged", scope: "NON_WHEEL_POSITIVE_AABB_OVERLAPS_ONLY", broadPhaseDisjoint,
         results, matingZonesInvented: 0, wholeVehicleCollisionCertificate: false };

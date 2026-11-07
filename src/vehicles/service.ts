@@ -1,4 +1,5 @@
 import { BodyCatalog } from "./body-catalog.js";
+import { craftOptions } from "./design-cases.js";
 import {
   generateBodyPreview,
   validateBodyPreview,
@@ -90,6 +91,7 @@ export class VehicleService {
       this.bodyCatalog,
       job.research,
       job.vision,
+      job.craftOptions,
     );
     const parts = await this.bodyCatalog.load(
         model.sources.map((x) => x.partId),
@@ -107,9 +109,12 @@ export class VehicleService {
   }
   async create(value: unknown) {
     if (this.active.size + this.starting >= 2) throw Error("TASK_CAPACITY");
+    const identity=value&&typeof value==="object"&&!Array.isArray(value)
+      ?Object.fromEntries(Object.entries(value).filter(([key])=>key!=="craftOptions")):value;
     const job: Job = {
       id: randomUUID(),
-      input: parseInput(value),
+      input: parseInput(identity),
+      craftOptions:craftOptions((value as {craftOptions?:unknown})?.craftOptions),
       state: "running",
       events: [],
     };
@@ -214,6 +219,7 @@ export class VehicleService {
             this.bodyCatalog,
             job.research,
             job.vision,
+            job.craftOptions,
           );
           job.preview = preview;
           job.plan = preview.plan;

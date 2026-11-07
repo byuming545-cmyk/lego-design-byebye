@@ -1,0 +1,37 @@
+[WebServer] (node:13883) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+(node:13895) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/vehicle-body-browser/craft.spec.ts:15:1 › normal cached workflow executes both craft controls without route mocks or new provider requests (665ms)
+(node:14044) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/vehicle-body-browser/craft.spec.ts:35:1 › whole-set holdouts preserve exclusions and explicit context rejections in actual API output (36.0s)
+  ✓  3 tests/vehicle-body-browser/craft.spec.ts:43:1 › job-bound controls and historical schema cannot be bypassed by an otherwise valid appearance document (4.4s)
+  ✓  4 tests/vehicle-body-browser/craft.spec.ts:50:1 › rejects unsupported control grants before starting research (8ms)
+  ✓  5 tests/vehicle-body-browser/workflow.spec.ts:20:1 › identity-only form automatically displays the actual completed appearance result (9.6s)
+  ✓  6 tests/vehicle-body-browser/workflow.spec.ts:46:1 › renders five actual source-mesh views and exposes persistent saving and sources (36.3s)
+  ✓  7 tests/vehicle-body-browser/workflow.spec.ts:78:1 › exports true instance BOM and reimports only as appearance, rejecting forged validation (31.6s)
+  ✓  8 tests/vehicle-body-browser/workflow.spec.ts:125:1 › preserves the independent old mini-car mode and pinned real geometry API (25.7s)
+
+
+  1) tests/vehicle-body-browser/craft.spec.ts:15:1 › normal cached workflow executes both craft controls without route mocks or new provider requests
+
+    TypeError: Cannot read properties of undefined (reading 'enabled')
+
+      19 |   const created=page.waitForResponse(r=>r.request().method()==="POST"&&new URL(r.url()).pathname==="/api/vehicles/jobs");
+      20 |   await page.getByRole("button",{name:"生成",exact:true}).click();
+    > 21 |   const j=await(await created).json();expect(j.craftOptions.enabled).toBe(enabled);
+         |                                                             ^
+      22 |   await expect(page.getByTestId("vehicle-preview-stage").locator("canvas")).toBeVisible({timeout:120000});
+      23 |   const result=await(await request.get(`/api/vehicles/jobs/${j.id}`)).json();
+      24 |   const name=enabled?"enabled":"disabled";
+        at /workspace/lego-design-byebye/tests/vehicle-body-browser/craft.spec.ts:21:61
+
+    Error Context: test-results/vehicle-body/craft-normal-cached-workfl-ab4b3-ks-or-new-provider-requests/error-context.md
+
+  1 failed
+    tests/vehicle-body-browser/craft.spec.ts:15:1 › normal cached workflow executes both craft controls without route mocks or new provider requests
+  7 passed (2.4m)

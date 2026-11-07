@@ -5,10 +5,12 @@ import type { MiniColor } from "../mini-cars/types.js";
 import type { BodyPlacement } from "./body-preview.js";
 import type { BodyPlan } from "./body-plan.js";
 import { inspectWheelEnvelope, inspectMountCandidates, inspectBodySurfacePairs } from "./body-inspection.js";
+import { applyDesignCases } from "./craft-retrieval.js";
+import type { DesignCorpus,CraftOptions } from "./design-cases.js";
 /** A surface planner: rectangles are independent cover regions, never filled
  * solid voxels. Source geometry is translated/rotated, never resampled. */
-export function regionShell(parts: Map<string, NativeAssemblyPart>, plan: BodyPlan) {
-    const placements: BodyPlacement[] = [];
+export function regionShell(parts: Map<string, NativeAssemblyPart>, plan: BodyPlan,corpus:DesignCorpus,options:CraftOptions) {
+    let placements: BodyPlacement[] = [];
     const I = IDENTITY_ROTATION, ry = (angle: number) => axisRotation([0, 1, 0], angle);
     const W = plan.width, L = plan.length, R = plan.wheelRadiusLdu;
     const snap = (n: number) => Math.round(n / 8) * 8;
@@ -225,6 +227,12 @@ export function regionShell(parts: Map<string, NativeAssemblyPart>, plan: BodyPl
         for (const side of [-1, 1])
             for (const [id, color] of [["18977", "black"], ["66727", "graphite"]] as const)
                 put(id, "wheel", color, [side * (W / 2 - 18), -R, axle], ry(90), "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN");
+    const learned=applyDesignCases(placements,parts,plan,corpus,options);
+    placements=learned.placements;
+    if(placements.length>700||placements.some(p=>!isRigidTransform(p.transform)))throw Error("BODY_NONRIGID_OR_BUDGET");
+    // Rebuild region membership after replacement; removed covers never leak
+    // into the actual BOM, draft groups or rendered instances.
+    regions.splice(0,regions.length,...[...new Set(placements.map(p=>p.role))].map(role=>({role,purpose:placements.find(p=>p.role===role)!.decision.purpose,instanceIds:placements.filter(p=>p.role===role).map(p=>p.instanceId)})));
     const usedIds = [...new Set(placements.map(p => p.partId))];
     const usedParts = new Map(usedIds.map(id => [id, parts.get(id)!]));
     const selection = usedIds.map(id => {
@@ -238,7 +246,8 @@ export function regionShell(parts: Map<string, NativeAssemblyPart>, plan: BodyPl
             wheelArchSpan: archSpan, regions, selection, selectionCandidates, archCandidates,
             wheelEnvelope: inspectWheelEnvelope(placements, usedParts, R, tyreHalfWidth),
             mountCandidates: inspectMountCandidates(placements, usedParts),
-            surfacePairs: inspectBodySurfacePairs(placements, usedParts),
+            surfacePairs: inspectBodySurfacePairs(placements, usedParts,learned.hints),
+            craft:learned.report,
             angularConflicts: plan.constraints.filter(c => /WindowAngle|windshieldAngle/.test(c.name)).map(c => ({ name: c.name, observed: [c.min, c.max], sourceFaceDegrees: 45, errorDegrees: 45 - (c.min + c.max) / 2 })),
             scope: "APPEARANCE_ONLY_NO_NEW_ASSEMBLY_PERMISSION" as const } };
 }

@@ -1,6 +1,6 @@
 # 车型自动研究与完整外观预览
 
-当前实现及边界见 [独立外壳交付](VEHICLE_SURFACES_DELIVERY.md)；[上一阶段](VEHICLE_PLATFORM_DELIVERY.md)保留为历史。入口 `/`、`/vehicle-generator`，输入品牌、型号、年份和版本；标准流程没有图片上传入口。当前能由真实公开资料与真实千问响应生成完整、可旋转的原生零件外观，BOM与草稿步骤来自实际实例。**完整外观不等于正式可拼整车，辨识度仍需提高。**
+当前实现及边界见 [工艺检索交付](VEHICLE_CRAFT_DELIVERY.md)，[独立外壳阶段](VEHICLE_SURFACES_DELIVERY.md)保留为历史；[上一阶段](VEHICLE_PLATFORM_DELIVERY.md)保留为历史。入口 `/`、`/vehicle-generator`，输入品牌、型号、年份和版本；标准流程没有图片上传入口。当前能由真实公开资料与真实千问响应生成完整、可旋转的原生零件外观，BOM与草稿步骤来自实际实例。**完整外观不等于正式可拼整车，辨识度仍需提高。**
 
 ## 运行
 
@@ -12,7 +12,7 @@ npm run build
 INVENTORY_PROVIDER=mock PORT=3001 npm run dev
 ```
 
-开发前端端口5173，Express API3001；浏览器进入 `/vehicle-generator`，参数 `Dodge / Charger / 1969 / R/T`。本实例已有经过严格验证的真实视觉缓存，重开或重复该输入不再次付费；本轮正常流程记录在 `artifacts/vehicle-surface-2026-11-07/unmocked-workflow.json`，可用 `/vehicle-generator?job=<id>` 重开当前任务。旧阶段任务使用旧版外观格式，原 JSON 保留，当前校验会明确拒绝旧格式，不能直接重算成新模型。Git只保留公开证据，真实研究缓存、任务数据库及原图在忽略的data目录；新克隆并不自带该运行数据库。
+开发前端端口5173，Express API3001；浏览器进入 `/vehicle-generator`，参数 `Dodge / Charger / 1969 / R/T`。本实例已有经过严格验证的真实视觉缓存，重开或重复该输入不再次付费；本轮正常流程记录在 `artifacts/vehicle-craft-2026-11-07/unmocked-enabled-job.json`，可用 `/vehicle-generator?job=<id>` 重开当前任务。旧阶段任务使用旧版外观格式，原 JSON 保留，当前校验会明确拒绝旧格式，不能直接重算成新模型。Git只保留公开证据，真实研究缓存、任务数据库及原图在忽略的data目录；新克隆并不自带该运行数据库。
 
 `DASHSCOPE_API_KEY`由环境安全绑定，不能放入前端或Git；本轮已就绪，不需重新提供。预算模板 `config/vehicle-vision-budget.json` 默认关闭，本轮账本已5次/500分，不再调用。新的研究若无缓存和新授权额度，应明确停止；不要清空账本、换campaign或反复发布环境解锁。详细配置见 [阿里云说明](ALIYUN_VISION_SETUP.md)。
 

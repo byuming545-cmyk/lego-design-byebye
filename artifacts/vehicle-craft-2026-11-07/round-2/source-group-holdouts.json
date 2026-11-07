@@ -1,0 +1,46 @@
+[
+  {
+    "heldOutSet": "76897",
+    "includedCases": [
+      "75878-curved-cover-right",
+      "75878-curved-cover-left"
+    ],
+    "heldOutCases": [
+      "76897-hood-core",
+      "76897-hood-adapted",
+      "76897-spoiler-blade",
+      "76897-rear-panel-core"
+    ],
+    "includedFamilies": [
+      "design-d1bb1084b0e83221"
+    ],
+    "heldOutFamilies": [
+      "design-b69226d7dddd013d",
+      "design-645c51895f4f0a71",
+      "design-60304e6e046a88c2"
+    ],
+    "interpretation": "source-set ablation of a two-source corpus; not a trained-model generalization benchmark"
+  },
+  {
+    "heldOutSet": "75878",
+    "includedCases": [
+      "76897-hood-core",
+      "76897-hood-adapted",
+      "76897-spoiler-blade",
+      "76897-rear-panel-core"
+    ],
+    "heldOutCases": [
+      "75878-curved-cover-right",
+      "75878-curved-cover-left"
+    ],
+    "includedFamilies": [
+      "design-b69226d7dddd013d",
+      "design-645c51895f4f0a71",
+      "design-60304e6e046a88c2"
+    ],
+    "heldOutFamilies": [
+      "design-d1bb1084b0e83221"
+    ],
+    "interpretation": "source-set ablation of a two-source corpus; not a trained-model generalization benchmark"
+  }
+]

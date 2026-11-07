@@ -1,0 +1,17 @@
+[WebServer] (node:17390) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+(node:17402) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/vehicle-body-browser/craft.spec.ts:18:1 › normal cached workflow executes both craft controls without route mocks or new provider requests (1.4m)
+  ✓  2 tests/vehicle-body-browser/craft.spec.ts:42:1 › whole-set holdouts preserve exclusions and explicit context rejections in actual API output (26.0s)
+  ✓  3 tests/vehicle-body-browser/craft.spec.ts:53:1 › job-bound controls and historical schema cannot be bypassed by an otherwise valid appearance document (3.7s)
+  ✓  4 tests/vehicle-body-browser/craft.spec.ts:60:1 › rejects unsupported control grants before starting research (9ms)
+  ✓  5 tests/vehicle-body-browser/workflow.spec.ts:20:1 › identity-only form automatically displays the actual completed appearance result (9.0s)
+  ✓  6 tests/vehicle-body-browser/workflow.spec.ts:46:1 › renders five actual source-mesh views and exposes persistent saving and sources (23.4s)
+  ✓  7 tests/vehicle-body-browser/workflow.spec.ts:78:1 › exports true instance BOM and reimports only as appearance, rejecting forged validation (28.3s)
+  ✓  8 tests/vehicle-body-browser/workflow.spec.ts:125:1 › preserves the independent old mini-car mode and pinned real geometry API (23.9s)
+
+  8 passed (3.3m)

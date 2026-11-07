@@ -1,0 +1,2826 @@
+[
+  {
+    "instanceId": "vehicle-part-1",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-2",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-3",
+    "nearbyEndpointPairs": 2,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-7",
+        "fixedConnectionId": "parts/6934.dat:8:6",
+        "movingConnectionId": "p/stud.dat:8:2",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "translation": [
+            -30,
+            -72,
+            -119.99999999999999
+          ]
+        },
+        "poseErrorLdu": 4,
+        "matchesRequestedPose": false
+      },
+      {
+        "fixedInstanceId": "vehicle-part-7",
+        "fixedConnectionId": "parts/6934.dat:8:8",
+        "movingConnectionId": "p/stud.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "translation": [
+            -30,
+            -72,
+            -120
+          ]
+        },
+        "poseErrorLdu": 4,
+        "matchesRequestedPose": false
+      }
+    ],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-4",
+    "nearbyEndpointPairs": 2,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-8",
+        "fixedConnectionId": "parts/s/4162s01.dat:8:12",
+        "movingConnectionId": "p/stud.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0
+          ],
+          "translation": [
+            30,
+            -72,
+            -120
+          ]
+        },
+        "poseErrorLdu": 4,
+        "matchesRequestedPose": false
+      },
+      {
+        "fixedInstanceId": "vehicle-part-8",
+        "fixedConnectionId": "parts/s/4162s01.dat:8:13",
+        "movingConnectionId": "p/stud.dat:8:2",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0
+          ],
+          "translation": [
+            30,
+            -72,
+            -120
+          ]
+        },
+        "poseErrorLdu": 4,
+        "matchesRequestedPose": false
+      }
+    ],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-5",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-6",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-7",
+    "nearbyEndpointPairs": 2,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-3",
+        "fixedConnectionId": "p/stud.dat:8:1",
+        "movingConnectionId": "parts/6934.dat:8:8",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "translation": [
+            -10,
+            -76,
+            -100
+          ]
+        },
+        "poseErrorLdu": 4,
+        "matchesRequestedPose": false
+      },
+      {
+        "fixedInstanceId": "vehicle-part-3",
+        "fixedConnectionId": "p/stud.dat:8:2",
+        "movingConnectionId": "parts/6934.dat:8:6",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "translation": [
+            -10,
+            -76,
+            -100
+          ]
+        },
+        "poseErrorLdu": 4,
+        "matchesRequestedPose": false
+      }
+    ],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-8",
+    "nearbyEndpointPairs": 2,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-4",
+        "fixedConnectionId": "p/stud.dat:8:1",
+        "movingConnectionId": "parts/s/4162s01.dat:8:12",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "translation": [
+            30,
+            -76,
+            -80
+          ]
+        },
+        "poseErrorLdu": 4,
+        "matchesRequestedPose": false
+      },
+      {
+        "fixedInstanceId": "vehicle-part-4",
+        "fixedConnectionId": "p/stud.dat:8:2",
+        "movingConnectionId": "parts/s/4162s01.dat:8:13",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "translation": [
+            30,
+            -76,
+            -80
+          ]
+        },
+        "poseErrorLdu": 4,
+        "matchesRequestedPose": false
+      }
+    ],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-9",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-10",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-11",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-12",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-13",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-14",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-15",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-16",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-17",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-18",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-19",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-20",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-21",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-22",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-23",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-24",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-25",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-26",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-27",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-28",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-29",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-30",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-31",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-33",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-35",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-37",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-39",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-41",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-42",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-43",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-44",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-45",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-46",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-47",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-48",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-49",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-50",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-51",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-52",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-53",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-54",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-55",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-56",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-57",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-58",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-59",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-60",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-61",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-62",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-63",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-64",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-65",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-66",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-67",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-68",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-69",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-70",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-71",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-72",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-73",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-74",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-75",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-76",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-77",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-78",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-79",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-80",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-81",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-82",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-83",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-84",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-85",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-86",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-87",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-88",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-89",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-90",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-91",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-92",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-93",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-94",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-95",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-96",
+    "nearbyEndpointPairs": 1,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-106",
+        "fixedConnectionId": "parts/6934.dat:8:0",
+        "movingConnectionId": "p/stud.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -50,
+            -104,
+            50
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-97",
+    "nearbyEndpointPairs": 2,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-106",
+        "fixedConnectionId": "parts/6934.dat:8:2",
+        "movingConnectionId": "p/stud.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -20,
+            -104,
+            50
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-106",
+        "fixedConnectionId": "parts/6934.dat:8:4",
+        "movingConnectionId": "p/stud.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -20,
+            -104,
+            50
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-98",
+    "nearbyEndpointPairs": 2,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-106",
+        "fixedConnectionId": "parts/6934.dat:8:6",
+        "movingConnectionId": "p/stud.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            20,
+            -104,
+            50
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-106",
+        "fixedConnectionId": "parts/6934.dat:8:8",
+        "movingConnectionId": "p/stud.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            20,
+            -104,
+            50
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-99",
+    "nearbyEndpointPairs": 1,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-106",
+        "fixedConnectionId": "parts/6934.dat:8:10",
+        "movingConnectionId": "p/stud.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            50,
+            -104,
+            50
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-100",
+    "nearbyEndpointPairs": 1,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-107",
+        "fixedConnectionId": "parts/s/6636s01.dat:8:5",
+        "movingConnectionId": "p/stud.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "translation": [
+            -50,
+            -104,
+            110
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-101",
+    "nearbyEndpointPairs": 2,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-107",
+        "fixedConnectionId": "parts/s/6636s01.dat:8:6",
+        "movingConnectionId": "p/stud.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "translation": [
+            -20,
+            -104,
+            110
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-107",
+        "fixedConnectionId": "parts/s/6636s01.dat:8:7",
+        "movingConnectionId": "p/stud.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "translation": [
+            -20,
+            -104,
+            110
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-102",
+    "nearbyEndpointPairs": 2,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-107",
+        "fixedConnectionId": "parts/s/6636s01.dat:8:8",
+        "movingConnectionId": "p/stud.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "translation": [
+            20,
+            -104,
+            110
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-107",
+        "fixedConnectionId": "parts/s/6636s01.dat:8:9",
+        "movingConnectionId": "p/stud.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "translation": [
+            20,
+            -104,
+            110
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-103",
+    "nearbyEndpointPairs": 1,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-107",
+        "fixedConnectionId": "parts/s/6636s01.dat:8:10",
+        "movingConnectionId": "p/stud.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "translation": [
+            50,
+            -104,
+            110
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-104",
+    "nearbyEndpointPairs": 2,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-106",
+        "fixedConnectionId": "parts/6934.dat:8:1",
+        "movingConnectionId": "p/stud.dat:8:2",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "translation": [
+            -50,
+            -104,
+            80
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-106",
+        "fixedConnectionId": "parts/6934.dat:9:12",
+        "movingConnectionId": "p/stud.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "translation": [
+            -50,
+            -104,
+            80
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-105",
+    "nearbyEndpointPairs": 2,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-106",
+        "fixedConnectionId": "parts/6934.dat:8:11",
+        "movingConnectionId": "p/stud.dat:8:2",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "translation": [
+            50,
+            -104,
+            80
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-106",
+        "fixedConnectionId": "parts/6934.dat:9:13",
+        "movingConnectionId": "p/stud.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "translation": [
+            50,
+            -104,
+            80
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-106",
+    "nearbyEndpointPairs": 10,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-96",
+        "fixedConnectionId": "p/stud.dat:8:0",
+        "movingConnectionId": "parts/6934.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -112,
+            70
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-97",
+        "fixedConnectionId": "p/stud.dat:8:0",
+        "movingConnectionId": "parts/6934.dat:8:2",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -112,
+            70
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-97",
+        "fixedConnectionId": "p/stud.dat:8:1",
+        "movingConnectionId": "parts/6934.dat:8:4",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -112,
+            70
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-98",
+        "fixedConnectionId": "p/stud.dat:8:0",
+        "movingConnectionId": "parts/6934.dat:8:6",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -112,
+            70
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-98",
+        "fixedConnectionId": "p/stud.dat:8:1",
+        "movingConnectionId": "parts/6934.dat:8:8",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -112,
+            70
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-99",
+        "fixedConnectionId": "p/stud.dat:8:0",
+        "movingConnectionId": "parts/6934.dat:8:10",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -112,
+            70
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-104",
+        "fixedConnectionId": "p/stud.dat:8:1",
+        "movingConnectionId": "parts/6934.dat:9:12",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -112,
+            70
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-104",
+        "fixedConnectionId": "p/stud.dat:8:2",
+        "movingConnectionId": "parts/6934.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -112,
+            70
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-107",
+    "nearbyEndpointPairs": 6,
+    "candidates": [
+      {
+        "fixedInstanceId": "vehicle-part-100",
+        "fixedConnectionId": "p/stud.dat:8:0",
+        "movingConnectionId": "parts/s/6636s01.dat:8:5",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -112,
+            110
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-101",
+        "fixedConnectionId": "p/stud.dat:8:0",
+        "movingConnectionId": "parts/s/6636s01.dat:8:7",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -112,
+            110
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-101",
+        "fixedConnectionId": "p/stud.dat:8:1",
+        "movingConnectionId": "parts/s/6636s01.dat:8:6",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -112,
+            110
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-102",
+        "fixedConnectionId": "p/stud.dat:8:0",
+        "movingConnectionId": "parts/s/6636s01.dat:8:9",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -112,
+            110
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-102",
+        "fixedConnectionId": "p/stud.dat:8:1",
+        "movingConnectionId": "parts/s/6636s01.dat:8:8",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -112,
+            110
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "vehicle-part-103",
+        "fixedConnectionId": "p/stud.dat:8:0",
+        "movingConnectionId": "parts/s/6636s01.dat:8:10",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            -112,
+            110
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-108",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-109",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-110",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-111",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-112",
+    "nearbyEndpointPairs": 0,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-113",
+    "nearbyEndpointPairs": 4,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-114",
+    "nearbyEndpointPairs": 2,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "vehicle-part-115",
+    "nearbyEndpointPairs": 2,
+    "candidates": [],
+    "status": "NO_MATCHING_INSTALLATION_POSE",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "craft-nose-cover-0-source-102",
+    "nearbyEndpointPairs": 8,
+    "candidates": [
+      {
+        "fixedInstanceId": "craft-nose-cover-0-source-103",
+        "fixedConnectionId": "parts/s/15068s01.dat:9:3",
+        "movingConnectionId": "p/stud.dat:8:3",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -60,
+            -71.99993902,
+            -180
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-0-source-103",
+        "fixedConnectionId": "parts/s/15068s01.dat:9:4",
+        "movingConnectionId": "p/stud.dat:8:2",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -60,
+            -71.99993902,
+            -180
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-0-source-104",
+        "fixedConnectionId": "parts/s/3069bs01.dat:8:0",
+        "movingConnectionId": "p/stud.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -60,
+            -71.99993902,
+            -180
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-0-source-104",
+        "fixedConnectionId": "parts/s/3069bs01.dat:8:1",
+        "movingConnectionId": "p/stud.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -60,
+            -71.99993902,
+            -180
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "craft-nose-cover-0-source-103",
+    "nearbyEndpointPairs": 4,
+    "candidates": [
+      {
+        "fixedInstanceId": "craft-nose-cover-0-source-102",
+        "fixedConnectionId": "p/stud.dat:8:2",
+        "movingConnectionId": "parts/s/15068s01.dat:9:4",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -60,
+            -63.99993902,
+            -200
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-0-source-102",
+        "fixedConnectionId": "p/stud.dat:8:3",
+        "movingConnectionId": "parts/s/15068s01.dat:9:3",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -60,
+            -63.99993902,
+            -200
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "craft-nose-cover-0-source-104",
+    "nearbyEndpointPairs": 4,
+    "candidates": [
+      {
+        "fixedInstanceId": "craft-nose-cover-0-source-102",
+        "fixedConnectionId": "p/stud.dat:8:0",
+        "movingConnectionId": "parts/s/3069bs01.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -60,
+            -79.99993902,
+            -170
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-0-source-102",
+        "fixedConnectionId": "p/stud.dat:8:1",
+        "movingConnectionId": "parts/s/3069bs01.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -60,
+            -79.99993902,
+            -170
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "craft-nose-cover-1-source-102",
+    "nearbyEndpointPairs": 8,
+    "candidates": [
+      {
+        "fixedInstanceId": "craft-nose-cover-1-source-103",
+        "fixedConnectionId": "parts/s/15068s01.dat:9:3",
+        "movingConnectionId": "p/stud.dat:8:3",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -20,
+            -71.99993902,
+            -180
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-1-source-103",
+        "fixedConnectionId": "parts/s/15068s01.dat:9:4",
+        "movingConnectionId": "p/stud.dat:8:2",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -20,
+            -71.99993902,
+            -180
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-1-source-104",
+        "fixedConnectionId": "parts/s/3069bs01.dat:8:0",
+        "movingConnectionId": "p/stud.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -20,
+            -71.99993902,
+            -180
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-1-source-104",
+        "fixedConnectionId": "parts/s/3069bs01.dat:8:1",
+        "movingConnectionId": "p/stud.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -20,
+            -71.99993902,
+            -180
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "craft-nose-cover-1-source-103",
+    "nearbyEndpointPairs": 4,
+    "candidates": [
+      {
+        "fixedInstanceId": "craft-nose-cover-1-source-102",
+        "fixedConnectionId": "p/stud.dat:8:2",
+        "movingConnectionId": "parts/s/15068s01.dat:9:4",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -20,
+            -63.99993902,
+            -200
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-1-source-102",
+        "fixedConnectionId": "p/stud.dat:8:3",
+        "movingConnectionId": "parts/s/15068s01.dat:9:3",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -20,
+            -63.99993902,
+            -200
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "craft-nose-cover-1-source-104",
+    "nearbyEndpointPairs": 4,
+    "candidates": [
+      {
+        "fixedInstanceId": "craft-nose-cover-1-source-102",
+        "fixedConnectionId": "p/stud.dat:8:0",
+        "movingConnectionId": "parts/s/3069bs01.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -20,
+            -79.99993902,
+            -170
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-1-source-102",
+        "fixedConnectionId": "p/stud.dat:8:1",
+        "movingConnectionId": "parts/s/3069bs01.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            -20,
+            -79.99993902,
+            -170
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "craft-nose-cover-2-source-102",
+    "nearbyEndpointPairs": 8,
+    "candidates": [
+      {
+        "fixedInstanceId": "craft-nose-cover-2-source-103",
+        "fixedConnectionId": "parts/s/15068s01.dat:9:3",
+        "movingConnectionId": "p/stud.dat:8:3",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            20,
+            -71.99993902,
+            -180
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-2-source-103",
+        "fixedConnectionId": "parts/s/15068s01.dat:9:4",
+        "movingConnectionId": "p/stud.dat:8:2",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            20,
+            -71.99993902,
+            -180
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-2-source-104",
+        "fixedConnectionId": "parts/s/3069bs01.dat:8:0",
+        "movingConnectionId": "p/stud.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            20,
+            -71.99993902,
+            -180
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-2-source-104",
+        "fixedConnectionId": "parts/s/3069bs01.dat:8:1",
+        "movingConnectionId": "p/stud.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            20,
+            -71.99993902,
+            -180
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "craft-nose-cover-2-source-103",
+    "nearbyEndpointPairs": 4,
+    "candidates": [
+      {
+        "fixedInstanceId": "craft-nose-cover-2-source-102",
+        "fixedConnectionId": "p/stud.dat:8:2",
+        "movingConnectionId": "parts/s/15068s01.dat:9:4",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            20,
+            -63.99993902,
+            -200
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-2-source-102",
+        "fixedConnectionId": "p/stud.dat:8:3",
+        "movingConnectionId": "parts/s/15068s01.dat:9:3",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            20,
+            -63.99993902,
+            -200
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "craft-nose-cover-2-source-104",
+    "nearbyEndpointPairs": 4,
+    "candidates": [
+      {
+        "fixedInstanceId": "craft-nose-cover-2-source-102",
+        "fixedConnectionId": "p/stud.dat:8:0",
+        "movingConnectionId": "parts/s/3069bs01.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            20,
+            -79.99993902,
+            -170
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-2-source-102",
+        "fixedConnectionId": "p/stud.dat:8:1",
+        "movingConnectionId": "parts/s/3069bs01.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            20,
+            -79.99993902,
+            -170
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "craft-nose-cover-3-source-102",
+    "nearbyEndpointPairs": 8,
+    "candidates": [
+      {
+        "fixedInstanceId": "craft-nose-cover-3-source-103",
+        "fixedConnectionId": "parts/s/15068s01.dat:9:3",
+        "movingConnectionId": "p/stud.dat:8:3",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            60,
+            -71.99993902,
+            -180
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-3-source-103",
+        "fixedConnectionId": "parts/s/15068s01.dat:9:4",
+        "movingConnectionId": "p/stud.dat:8:2",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            60,
+            -71.99993902,
+            -180
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-3-source-104",
+        "fixedConnectionId": "parts/s/3069bs01.dat:8:0",
+        "movingConnectionId": "p/stud.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            60,
+            -71.99993902,
+            -180
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-3-source-104",
+        "fixedConnectionId": "parts/s/3069bs01.dat:8:1",
+        "movingConnectionId": "p/stud.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            60,
+            -71.99993902,
+            -180
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "craft-nose-cover-3-source-103",
+    "nearbyEndpointPairs": 4,
+    "candidates": [
+      {
+        "fixedInstanceId": "craft-nose-cover-3-source-102",
+        "fixedConnectionId": "p/stud.dat:8:2",
+        "movingConnectionId": "parts/s/15068s01.dat:9:4",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            60,
+            -63.99993902,
+            -200
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-3-source-102",
+        "fixedConnectionId": "p/stud.dat:8:3",
+        "movingConnectionId": "parts/s/15068s01.dat:9:3",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            60,
+            -63.99993902,
+            -200
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  },
+  {
+    "instanceId": "craft-nose-cover-3-source-104",
+    "nearbyEndpointPairs": 4,
+    "candidates": [
+      {
+        "fixedInstanceId": "craft-nose-cover-3-source-102",
+        "fixedConnectionId": "p/stud.dat:8:0",
+        "movingConnectionId": "parts/s/3069bs01.dat:8:1",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            60,
+            -79.99993902,
+            -170
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      },
+      {
+        "fixedInstanceId": "craft-nose-cover-3-source-102",
+        "fixedConnectionId": "p/stud.dat:8:1",
+        "movingConnectionId": "parts/s/3069bs01.dat:8:0",
+        "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+        "transform": {
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "translation": [
+            60,
+            -79.99993902,
+            -170
+          ]
+        },
+        "poseErrorLdu": 0,
+        "matchesRequestedPose": true
+      }
+    ],
+    "status": "SOURCE_POSE_CANDIDATE_ONLY",
+    "verifiedGraphEdge": false,
+    "insertionPathVerified": false
+  }
+]

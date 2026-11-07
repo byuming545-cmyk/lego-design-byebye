@@ -1,0 +1,40 @@
+[WebServer] (node:15375) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+(node:15402) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/vehicle-body-browser/craft.spec.ts:18:1 › normal cached workflow executes both craft controls without route mocks or new provider requests (1.4m)
+  ✓  2 tests/vehicle-body-browser/craft.spec.ts:42:1 › whole-set holdouts preserve exclusions and explicit context rejections in actual API output (23.3s)
+  ✓  3 tests/vehicle-body-browser/craft.spec.ts:53:1 › job-bound controls and historical schema cannot be bypassed by an otherwise valid appearance document (3.7s)
+  ✘  4 tests/vehicle-body-browser/craft.spec.ts:60:1 › rejects unsupported control grants before starting research (6ms)
+(node:15753) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  5 tests/vehicle-body-browser/workflow.spec.ts:20:1 › identity-only form automatically displays the actual completed appearance result (9.8s)
+  ✓  6 tests/vehicle-body-browser/workflow.spec.ts:46:1 › renders five actual source-mesh views and exposes persistent saving and sources (29.8s)
+  ✓  7 tests/vehicle-body-browser/workflow.spec.ts:78:1 › exports true instance BOM and reimports only as appearance, rejecting forged validation (37.6s)
+  ✓  8 tests/vehicle-body-browser/workflow.spec.ts:125:1 › preserves the independent old mini-car mode and pinned real geometry API (26.9s)
+
+
+  1) tests/vehicle-body-browser/craft.spec.ts:60:1 › rejects unsupported control grants before starting research
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 400
+    Received: 500
+
+      60 | test("rejects unsupported control grants before starting research", async ({ request }) => {
+      61 |     for (const craftOptions of [{ enabled: true, excludedSourceSets: ["../private"] }, { enabled: true, excludedSourceSets: [], formal: true }]) {
+    > 62 |         expect((await request.post("/api/vehicles/jobs", { data: { make: "Dodge", model: "Charger", year: 1969, variant: "R/T", craftOptions } })).status()).toBe(400);
+         |                                                                                                                                                              ^
+      63 |     }
+      64 | });
+      65 |
+        at /workspace/lego-design-byebye/tests/vehicle-body-browser/craft.spec.ts:62:158
+
+    Error Context: test-results/vehicle-body/craft-rejects-unsupported--fa274-ts-before-starting-research/error-context.md
+
+  1 failed
+    tests/vehicle-body-browser/craft.spec.ts:60:1 › rejects unsupported control grants before starting research
+  7 passed (3.6m)

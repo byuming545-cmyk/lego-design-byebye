@@ -1,0 +1,29 @@
+{
+  "scope": "local actual-render review and independent source-triangle measurements; no external visual model",
+  "localAppearanceBenefitObserved": true,
+  "wholeVehicleStylingComplete": false,
+  "learnedCockpit": false,
+  "globalProportionsChanged": false,
+  "retainedConflicts": [
+    "SOURCE_SLOPE_VS_VISUAL_roofStart_CONFLICT",
+    "SOURCE_SLOPE_VS_VISUAL_roofEnd_CONFLICT",
+    "PHYSICAL_HEIGHT_ANCHOR_CALIBRATES_VISUAL_ROOF",
+    "LANDMARK_VS_NORMALIZED_frontAxle_CONFLICT",
+    "LANDMARK_VS_NORMALIZED_rearAxle_CONFLICT",
+    "LANDMARK_GLASS_HORIZONTAL_EXTENT_UNKNOWN",
+    "FRONT_OVERHANG_VS_AXLE_OBSERVATION",
+    "REAR_OVERHANG_VS_AXLE_OBSERVATION",
+    "ROOF_HEIGHT_NORMALIZATION_CONFLICT"
+  ],
+  "remaining": [
+    "central fascia divider is too broad",
+    "side and lower apron are planar",
+    "roof width120 versus observed131.2–140.8",
+    "windshield45 degrees versus observed58–62",
+    "rear-window and quarter-body contour lack reviewed source samples"
+  ],
+  "sourceFamiliesUsed": 2,
+  "sourceMemberInstances": 19,
+  "modelWeightsUpdated": false,
+  "fineTuningRecommendedNow": false
+}
