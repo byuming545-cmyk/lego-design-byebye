@@ -1,0 +1,121 @@
+{
+  "baseline": "76e2065feffb70582da5d3fe17f0ab01e8d89ea5",
+  "rounds": 2,
+  "finalHash": "018d22dbb63be6f3526432addb3c99e16fc9cdccae404d72d42a3851ece65729",
+  "views": [
+    "perspective",
+    "side",
+    "front",
+    "rear",
+    "top"
+  ],
+  "improvements": [
+    "stud-covered hood replaced by planar tiles and native curved edges",
+    "separate black windshield and side-window band below flat tiled hardtop",
+    "native wheel surrounds, actual wheel-cylinder screening",
+    "twin recessed grille, central divider and separate bumper; correct source-face orientation"
+  ],
+  "remaining": [
+    "straight slab sides and thick bumpers",
+    "roof width120 versus observed131.2–140.8 LDU",
+    "nose/tail width160 versus observed140.8–150.4 LDU",
+    "45-degree screens versus observed windshield58–62/rear48–52",
+    "Charger rear-window recess, quarter contour and fascia detail still simplified",
+    "0.4 LDU shallow shoulder edge discrepancy; seating and retention unverified"
+  ],
+  "coverageScope": "qualitative actual five-view review and native region bounds; no exhaustive area-coverage certificate",
+  "finalWheelEnvelopeConflicts": 0,
+  "finalPositiveAabbPairResults": {
+    "method": "native-pair-kernel-unchanged",
+    "scope": "NON_WHEEL_POSITIVE_AABB_OVERLAPS_ONLY",
+    "broadPhaseDisjoint": 6545,
+    "results": [
+      {
+        "a": "vehicle-part-96",
+        "b": "vehicle-part-106",
+        "roleA": "windshield",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "exterior-surface-clear"
+      },
+      {
+        "a": "vehicle-part-97",
+        "b": "vehicle-part-106",
+        "roleA": "windshield",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "native-solid-clearance"
+      },
+      {
+        "a": "vehicle-part-98",
+        "b": "vehicle-part-106",
+        "roleA": "windshield",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "native-solid-clearance"
+      },
+      {
+        "a": "vehicle-part-99",
+        "b": "vehicle-part-106",
+        "roleA": "windshield",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "exterior-surface-clear"
+      },
+      {
+        "a": "vehicle-part-100",
+        "b": "vehicle-part-107",
+        "roleA": "rear-window",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "exterior-surface-clear"
+      },
+      {
+        "a": "vehicle-part-101",
+        "b": "vehicle-part-107",
+        "roleA": "rear-window",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "native-solid-clearance"
+      },
+      {
+        "a": "vehicle-part-102",
+        "b": "vehicle-part-107",
+        "roleA": "rear-window",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "native-solid-clearance"
+      },
+      {
+        "a": "vehicle-part-103",
+        "b": "vehicle-part-107",
+        "roleA": "rear-window",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "exterior-surface-clear"
+      },
+      {
+        "a": "vehicle-part-104",
+        "b": "vehicle-part-106",
+        "roleA": "side-window",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "native-solid-clearance"
+      },
+      {
+        "a": "vehicle-part-105",
+        "b": "vehicle-part-106",
+        "roleA": "side-window",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "native-solid-clearance"
+      }
+    ],
+    "matingZonesInvented": 0,
+    "wholeVehicleCollisionCertificate": false
+  },
+  "formalWholeCar": "NOT_VERIFIED",
+  "physicalBuildVerified": false,
+  "newPaidCalls": 0,
+  "internalRenderExternalUploads": 0
+}

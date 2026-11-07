@@ -47,7 +47,8 @@
     "evidence:module-composition": "tsx src/cli/module-composition.ts",
     "review:collision-methods": "tsx src/cli/collision-method-review.ts",
     "evidence:surface-modules": "tsx src/cli/surface-body-modules.ts",
-    "evidence:mini-cars": "tsx src/cli/mini-cars-evidence.ts"
+    "evidence:mini-cars": "tsx src/cli/mini-cars-evidence.ts",
+    "evidence:vehicle-surfaces": "node --import tsx src/cli/vehicle-surface-evidence.ts"
   },
   "dependencies": {
     "@fontsource/noto-sans-sc": "^5.2.9",

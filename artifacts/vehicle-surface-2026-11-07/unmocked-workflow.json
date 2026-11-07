@@ -1,0 +1,95 @@
+{
+  "job": "44ef2c1b-ea6f-412b-9f0e-23dda5e6ba7a",
+  "input": {
+    "make": "Dodge",
+    "model": "Charger",
+    "year": 1969,
+    "variant": "R/T"
+  },
+  "state": "partial",
+  "hash": "018d22dbb63be6f3526432addb3c99e16fc9cdccae404d72d42a3851ece65729",
+  "parts": 123,
+  "networkRoutesMocked": 0,
+  "realResearchAndVisionReused": true,
+  "newPaidCalls": 0,
+  "events": [
+    {
+      "at": "2026-11-07T01:23:04.628Z",
+      "stage": "research",
+      "state": "running",
+      "detail": "Searching year-scoped sources and licensed image candidates"
+    },
+    {
+      "at": "2026-11-07T01:23:04.657Z",
+      "stage": "research",
+      "state": "passed",
+      "detail": "4 dimension observations; 3 title-candidate images"
+    },
+    {
+      "at": "2026-11-07T01:23:04.658Z",
+      "stage": "images",
+      "state": "passed",
+      "detail": "3 reference candidates; original bytes, licensing and duplicate-selection audit retained"
+    },
+    {
+      "at": "2026-11-07T01:23:04.659Z",
+      "stage": "vision",
+      "state": "running",
+      "detail": "Checking provider, cache, credentials and bounded budget"
+    },
+    {
+      "at": "2026-11-07T01:23:04.661Z",
+      "stage": "vision",
+      "state": "passed",
+      "detail": "Provider response passed local contract validation"
+    },
+    {
+      "at": "2026-11-07T01:23:04.663Z",
+      "stage": "planning",
+      "state": "partial",
+      "detail": "Quantified design targets; no complete vehicle assembly"
+    },
+    {
+      "at": "2026-11-07T01:23:04.664Z",
+      "stage": "selection",
+      "state": "running",
+      "detail": "Inspecting hash-verified native geometry and profile-driven shape candidates"
+    },
+    {
+      "at": "2026-11-07T01:23:04.665Z",
+      "stage": "generation",
+      "state": "running",
+      "detail": "Quantizing source dimensions and visual envelope; no vehicle-name layout"
+    },
+    {
+      "at": "2026-11-07T01:23:22.592Z",
+      "stage": "generation",
+      "state": "passed",
+      "detail": "123 real instances / 19 native identities; full appearance draft"
+    },
+    {
+      "at": "2026-11-07T01:23:22.600Z",
+      "stage": "validation",
+      "state": "partial",
+      "detail": "Source/rigid checks passed; dimensional metrics passed; whole-car connections, wheels and stability remain unverified"
+    },
+    {
+      "at": "2026-11-07T01:23:22.606Z",
+      "stage": "output",
+      "state": "partial",
+      "detail": "Full preview, source-backed BOM and draft steps saved; not build-certified"
+    },
+    {
+      "at": "2026-11-07T01:23:22.617Z",
+      "stage": "assembly",
+      "state": "running",
+      "detail": "Independent regression of existing native support; not a complete car"
+    },
+    {
+      "at": "2026-11-07T01:23:50.568Z",
+      "stage": "assembly",
+      "state": "partial",
+      "detail": "Local native model, BOM, steps and current reimport: VALID"
+    }
+  ]
+}

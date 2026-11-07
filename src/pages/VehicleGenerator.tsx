@@ -1,4 +1,5 @@
 import type { BodyPreview } from "../vehicles/body-preview.js";
+import { bodyLayoutSvg } from "../vehicles/body-layout.js";
 import "./vehicle-generator.css";
 import { useEffect, useState } from "react";
 import NativeAssemblyViewer, {
@@ -277,6 +278,11 @@ export default function VehicleGenerator() {
             <span>{importStatus}</span>
           </div>
           <h3>尺寸比较（LDU）</h3>
+          <details>
+            <summary>侧面与俯视布局诊断</summary>
+            <img style={{width:"100%"}} alt="侧面和俯视布局：灰色保留视觉区间，蓝色为选择轮廓" src={"data:image/svg+xml," + encodeURIComponent(bodyLayoutSvg(appearance.model.plan))} />
+            <p>布局先于外壳规划；原始视觉区间、尺寸来源及冲突保留在导出模型中。轮拱机械净空仍未验证。</p>
+          </details>
           <table>
             <thead>
               <tr>

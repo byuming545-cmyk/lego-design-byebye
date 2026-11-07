@@ -1,3 +1,5 @@
+> 本文是 76e2065 阶段的历史交付。当前比例与外壳改进见 [最新交付](VEHICLE_SURFACES_DELIVERY.md)，原模型和证据原样保留。
+
 # 真实视觉到完整汽车预览：2026-11-07
 
 基准 `3b51425f5a474ab9074f1c7cc2f0f22791c28112`；分支 `codex/vehicle-evidence-body`。未重新执行旧环境恢复，未更改原始 LDraw/Shadow 文件、接口权限、碰撞容差或历史模型。真实密钥已绑定北京 DashScope，模型列表只读认证 HTTP 200，存在 `qwen3-vl-plus`。

@@ -1,0 +1,89 @@
+{
+  "method": "native-pair-kernel-unchanged",
+  "scope": "NON_WHEEL_POSITIVE_AABB_OVERLAPS_ONLY",
+  "broadPhaseDisjoint": 6545,
+  "results": [
+    {
+      "a": "vehicle-part-96",
+      "b": "vehicle-part-106",
+      "roleA": "windshield",
+      "roleB": "roof",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear"
+    },
+    {
+      "a": "vehicle-part-97",
+      "b": "vehicle-part-106",
+      "roleA": "windshield",
+      "roleB": "roof",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance"
+    },
+    {
+      "a": "vehicle-part-98",
+      "b": "vehicle-part-106",
+      "roleA": "windshield",
+      "roleB": "roof",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance"
+    },
+    {
+      "a": "vehicle-part-99",
+      "b": "vehicle-part-106",
+      "roleA": "windshield",
+      "roleB": "roof",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear"
+    },
+    {
+      "a": "vehicle-part-100",
+      "b": "vehicle-part-107",
+      "roleA": "rear-window",
+      "roleB": "roof",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear"
+    },
+    {
+      "a": "vehicle-part-101",
+      "b": "vehicle-part-107",
+      "roleA": "rear-window",
+      "roleB": "roof",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance"
+    },
+    {
+      "a": "vehicle-part-102",
+      "b": "vehicle-part-107",
+      "roleA": "rear-window",
+      "roleB": "roof",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance"
+    },
+    {
+      "a": "vehicle-part-103",
+      "b": "vehicle-part-107",
+      "roleA": "rear-window",
+      "roleB": "roof",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear"
+    },
+    {
+      "a": "vehicle-part-104",
+      "b": "vehicle-part-106",
+      "roleA": "side-window",
+      "roleB": "roof",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance"
+    },
+    {
+      "a": "vehicle-part-105",
+      "b": "vehicle-part-106",
+      "roleA": "side-window",
+      "roleB": "roof",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance"
+    }
+  ],
+  "matingZonesInvented": 0,
+  "wholeVehicleCollisionCertificate": false
+}

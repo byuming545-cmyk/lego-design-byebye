@@ -1,0 +1,13 @@
+import type { BodyPlan } from "./body-plan.js";
+/** Deterministic layout diagnostic generated before any shell placement.
+ * Gray boxes retain observed intervals; blue lines show chosen design values. */
+export function bodyLayoutSvg(p: BodyPlan) {
+    const k = 650 / p.length, x = (n: number) => 75 + n * k;
+    const y = (h: number) => 220 - h * k;
+    const outline = p.profile.map(s => `${x(s.x * p.length)},${y(s.height * p.height)}`).join(" ");
+    const observed = p.observedSections.map(s => `<rect x="${x(s.uncertainty.x[0] * p.length)}" y="${y(s.uncertainty.height![1] * p.height)}" width="${(s.uncertainty.x[1] - s.uncertainty.x[0]) * p.length * k}" height="${(s.uncertainty.height![1] - s.uncertainty.height![0]) * p.height * k}" fill="none" stroke="#999" stroke-dasharray="4 3"/>`).join("");
+    const wheels = [p.axleFront, p.axleRear].map(a => `<circle cx="${x(a)}" cy="${y(p.wheelRadiusLdu)}" r="${p.wheelRadiusLdu * k}" fill="#333"/><circle cx="${x(a)}" cy="${y(p.wheelRadiusLdu)}" r="${p.wheelRadiusLdu * k * .6}" fill="#aaa"/>`).join("");
+    const marks = [["screen", p.cabinStart], ["roof", p.roofStart], ["roof end", p.roofEnd], ["deck", p.cabinEnd]] as const;
+    const topY = 400, topOutline = p.profile.map(s => `${x(s.x * p.length)},${topY + s.width * p.width * k / 2}`).join(" ") + " " + [...p.profile].reverse().map(s => `${x(s.x * p.length)},${topY - s.width * p.width * k / 2}`).join(" ");
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 570" role="img" aria-label="Side and top vehicle layout: observations and selected dimensions"><rect width="800" height="570" fill="#fbfcfa"/><g font-family="sans-serif" font-size="12" fill="#253445"><text x="24" y="22">SIDE / TOP · LDU · gray: calibrated observed interval, blue: selected envelope</text><line x1="60" x2="740" y1="220" y2="220" stroke="#bbb"/>${observed}<polyline points="${outline}" fill="none" stroke="#176791" stroke-width="3"/>${wheels}${marks.map(([n, t], i) => `<line x1="${x(t * p.length)}" x2="${x(t * p.length)}" y1="${y(p.height)}" y2="220" stroke="#479ac3" stroke-dasharray="3 3"/><text x="${x(t * p.length) - 20}" y="${48 + i % 2 * 16}">${n}</text>`).join("")}<polygon points="${topOutline}" fill="#e5eff4" stroke="#176791" stroke-width="2"/>${[p.axleFront, p.axleRear].map(a => `<line x1="${x(a)}" x2="${x(a)}" y1="${topY - p.width * k / 2 - 8}" y2="${topY + p.width * k / 2 + 8}" stroke="#333"/>`).join("")}<text x="24" y="541">L ${p.length.toFixed(1)} · W ${p.width} · H ${p.height.toFixed(1)} · WB ${(p.axleRear - p.axleFront).toFixed(1)} · wheel Ø ${p.wheelRadiusLdu * 2}</text><text x="24" y="560">${p.conflicts.length} unresolved evidence conflicts · layout estimate, not an assembly certificate</text></g></svg>`;
+}

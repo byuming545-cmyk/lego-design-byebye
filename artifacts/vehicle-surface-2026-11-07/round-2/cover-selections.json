@@ -1,0 +1,5504 @@
+{
+  "version": "functional-surfaces-1",
+  "hoodHeight": 80,
+  "tailHeight": 80,
+  "roofHeight": 112,
+  "glassBase": 80,
+  "roofWidth": 120,
+  "ground": 8,
+  "wheelArchSpan": 80,
+  "regions": [
+    {
+      "role": "chassis",
+      "purpose": "internal spine; native source, structural mating not yet verified",
+      "instanceIds": [
+        "vehicle-part-1",
+        "vehicle-part-2"
+      ]
+    },
+    {
+      "role": "wheel-arch",
+      "purpose": "native curved wheel surround, centered on the actual axle; mechanical clearance UNKNOWN",
+      "instanceIds": [
+        "vehicle-part-3",
+        "vehicle-part-4",
+        "vehicle-part-5",
+        "vehicle-part-6"
+      ]
+    },
+    {
+      "role": "hood",
+      "purpose": "continuous planar cover; mounting unverified",
+      "instanceIds": [
+        "vehicle-part-7",
+        "vehicle-part-8",
+        "vehicle-part-9",
+        "vehicle-part-10",
+        "vehicle-part-11",
+        "vehicle-part-12",
+        "vehicle-part-13",
+        "vehicle-part-14",
+        "vehicle-part-15",
+        "vehicle-part-16",
+        "vehicle-part-17",
+        "vehicle-part-18",
+        "vehicle-part-19",
+        "vehicle-part-20",
+        "vehicle-part-21",
+        "vehicle-part-22",
+        "vehicle-part-23",
+        "vehicle-part-24",
+        "vehicle-part-25",
+        "vehicle-part-26",
+        "vehicle-part-27",
+        "vehicle-part-28",
+        "vehicle-part-32",
+        "vehicle-part-34",
+        "vehicle-part-36",
+        "vehicle-part-38",
+        "vehicle-part-40"
+      ]
+    },
+    {
+      "role": "tail",
+      "purpose": "continuous planar cover; mounting unverified",
+      "instanceIds": [
+        "vehicle-part-29",
+        "vehicle-part-30",
+        "vehicle-part-31",
+        "vehicle-part-33",
+        "vehicle-part-35",
+        "vehicle-part-37",
+        "vehicle-part-39",
+        "vehicle-part-41"
+      ]
+    },
+    {
+      "role": "shoulder",
+      "purpose": "native shallow shoulder slope joins window base to side belt; 0.4 LDU edge gap retained",
+      "instanceIds": [
+        "vehicle-part-42",
+        "vehicle-part-43",
+        "vehicle-part-44",
+        "vehicle-part-45",
+        "vehicle-part-46",
+        "vehicle-part-47"
+      ]
+    },
+    {
+      "role": "side",
+      "purpose": "flat side skin below belt; exact native tile footprint",
+      "instanceIds": [
+        "vehicle-part-48",
+        "vehicle-part-50",
+        "vehicle-part-52",
+        "vehicle-part-54",
+        "vehicle-part-56",
+        "vehicle-part-58",
+        "vehicle-part-60",
+        "vehicle-part-62",
+        "vehicle-part-64",
+        "vehicle-part-66",
+        "vehicle-part-68",
+        "vehicle-part-70",
+        "vehicle-part-72",
+        "vehicle-part-74",
+        "vehicle-part-76",
+        "vehicle-part-78",
+        "vehicle-part-80",
+        "vehicle-part-82",
+        "vehicle-part-84",
+        "vehicle-part-86",
+        "vehicle-part-88",
+        "vehicle-part-90",
+        "vehicle-part-92",
+        "vehicle-part-94"
+      ]
+    },
+    {
+      "role": "side-skirt",
+      "purpose": "native plate-height lower sill; no overlap with side skin",
+      "instanceIds": [
+        "vehicle-part-49",
+        "vehicle-part-51",
+        "vehicle-part-53",
+        "vehicle-part-55",
+        "vehicle-part-57",
+        "vehicle-part-59",
+        "vehicle-part-61",
+        "vehicle-part-63",
+        "vehicle-part-65",
+        "vehicle-part-67",
+        "vehicle-part-69",
+        "vehicle-part-71",
+        "vehicle-part-73",
+        "vehicle-part-75",
+        "vehicle-part-77",
+        "vehicle-part-79",
+        "vehicle-part-81",
+        "vehicle-part-83",
+        "vehicle-part-85",
+        "vehicle-part-87",
+        "vehicle-part-89",
+        "vehicle-part-91",
+        "vehicle-part-93",
+        "vehicle-part-95"
+      ]
+    },
+    {
+      "role": "windshield",
+      "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+      "instanceIds": [
+        "vehicle-part-96",
+        "vehicle-part-97",
+        "vehicle-part-98",
+        "vehicle-part-99"
+      ]
+    },
+    {
+      "role": "rear-window",
+      "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+      "instanceIds": [
+        "vehicle-part-100",
+        "vehicle-part-101",
+        "vehicle-part-102",
+        "vehicle-part-103"
+      ]
+    },
+    {
+      "role": "side-window",
+      "purpose": "side window band, native black bricks between separate inclined screens",
+      "instanceIds": [
+        "vehicle-part-104",
+        "vehicle-part-105"
+      ]
+    },
+    {
+      "role": "roof",
+      "purpose": "flat hardtop skin with native tile landings over glass; no pyramid fill",
+      "instanceIds": [
+        "vehicle-part-106",
+        "vehicle-part-107"
+      ]
+    },
+    {
+      "role": "front-bumper",
+      "purpose": "full-width bumper from observed bright surround; appearance colour, no chrome material claim",
+      "instanceIds": [
+        "vehicle-part-108"
+      ]
+    },
+    {
+      "role": "grille",
+      "purpose": "separate recessed twin dark grille inserts; covered lamp areas stay dark",
+      "instanceIds": [
+        "vehicle-part-109",
+        "vehicle-part-110"
+      ]
+    },
+    {
+      "role": "grille-divider",
+      "purpose": "central divider in front of recessed grille inserts",
+      "instanceIds": [
+        "vehicle-part-111"
+      ]
+    },
+    {
+      "role": "rear-bumper",
+      "purpose": "full-width bumper from observed bright surround; appearance colour, no chrome material claim",
+      "instanceIds": [
+        "vehicle-part-112"
+      ]
+    },
+    {
+      "role": "rear-panel",
+      "purpose": "continuous planar cover; mounting unverified",
+      "instanceIds": [
+        "vehicle-part-113"
+      ]
+    },
+    {
+      "role": "taillamp",
+      "purpose": "dual horizontal red lenses from rear-image feature evidence; source tile only",
+      "instanceIds": [
+        "vehicle-part-114",
+        "vehicle-part-115"
+      ]
+    },
+    {
+      "role": "wheel",
+      "purpose": "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN",
+      "instanceIds": [
+        "vehicle-part-116",
+        "vehicle-part-117",
+        "vehicle-part-118",
+        "vehicle-part-119",
+        "vehicle-part-120",
+        "vehicle-part-121",
+        "vehicle-part-122",
+        "vehicle-part-123"
+      ]
+    }
+  ],
+  "selection": [
+    {
+      "partId": "3029",
+      "name": "Plate  4 x 12",
+      "nativeSize": [
+        240,
+        12,
+        80
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-1",
+          "role": "chassis",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "internal spine; native source, structural mating not yet verified",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": true,
+        "surface": false,
+        "reasonCodes": []
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "3035",
+      "name": "Plate  4 x  8",
+      "nativeSize": [
+        160,
+        12,
+        80
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-2",
+          "role": "chassis",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "internal spine; native source, structural mating not yet verified",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": true,
+        "surface": false,
+        "reasonCodes": []
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "1846",
+      "name": "Car Mudguard  4 x  3 x  1.667",
+      "nativeSize": [
+        80,
+        44,
+        60
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-3",
+          "role": "wheel-arch",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "native curved wheel surround, centered on the actual axle; mechanical clearance UNKNOWN",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-4",
+          "role": "wheel-arch",
+          "rotation": [
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0
+          ],
+          "purpose": "native curved wheel surround, centered on the actual axle; mechanical clearance UNKNOWN",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-5",
+          "role": "wheel-arch",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "native curved wheel surround, centered on the actual axle; mechanical clearance UNKNOWN",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-6",
+          "role": "wheel-arch",
+          "rotation": [
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0
+          ],
+          "purpose": "native curved wheel surround, centered on the actual axle; mechanical clearance UNKNOWN",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": false,
+        "surface": true,
+        "reasonCodes": [
+          "grammar-collision-branched-native-boundary"
+        ]
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "6934",
+      "name": "Tile  3 x  6",
+      "nativeSize": [
+        120,
+        8,
+        60
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-7",
+          "role": "hood",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "continuous planar cover; mounting unverified",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-106",
+          "role": "roof",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "flat hardtop skin with native tile landings over glass; no pyramid fill",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": true,
+        "surface": false,
+        "reasonCodes": []
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "4162",
+      "name": "Tile  1 x  8",
+      "nativeSize": [
+        160,
+        8,
+        20
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-8",
+          "role": "hood",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "continuous planar cover; mounting unverified",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-40",
+          "role": "hood",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "low leading lip below the rising hood transition",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-41",
+          "role": "tail",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "low rear deck lip",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-108",
+          "role": "front-bumper",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0
+          ],
+          "purpose": "full-width bumper from observed bright surround; appearance colour, no chrome material claim",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-112",
+          "role": "rear-bumper",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -1,
+            0
+          ],
+          "purpose": "full-width bumper from observed bright surround; appearance colour, no chrome material claim",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": true,
+        "surface": false,
+        "reasonCodes": []
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "26603",
+      "name": "Tile  2 x  3",
+      "nativeSize": [
+        60,
+        8,
+        40
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-9",
+          "role": "hood",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "continuous planar cover; mounting unverified",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": true,
+        "surface": false,
+        "reasonCodes": []
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "2431",
+      "name": "Tile  1 x  4 with Groove",
+      "nativeSize": [
+        80,
+        8,
+        20
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-10",
+          "role": "hood",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "continuous planar cover; mounting unverified",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-29",
+          "role": "tail",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "continuous planar cover; mounting unverified",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": true,
+        "surface": false,
+        "reasonCodes": []
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "3069b",
+      "name": "Tile  1 x  2 with Groove",
+      "nativeSize": [
+        40,
+        8,
+        20
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-11",
+          "role": "hood",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-12",
+          "role": "hood",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-13",
+          "role": "hood",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-14",
+          "role": "hood",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-15",
+          "role": "hood",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-16",
+          "role": "hood",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-17",
+          "role": "hood",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-18",
+          "role": "hood",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-30",
+          "role": "tail",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-31",
+          "role": "tail",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "flat arch cap adjoining curved fender without filling wheel opening",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-43",
+          "role": "shoulder",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "flat shoulder over reserved native arch span; slope rejected to avoid source-surface crossing",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-44",
+          "role": "shoulder",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "flat shoulder over reserved native arch span; slope rejected to avoid source-surface crossing",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-46",
+          "role": "shoulder",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "flat shoulder over reserved native arch span; slope rejected to avoid source-surface crossing",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-47",
+          "role": "shoulder",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "flat shoulder over reserved native arch span; slope rejected to avoid source-surface crossing",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-48",
+          "role": "side",
+          "rotation": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-50",
+          "role": "side",
+          "rotation": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-52",
+          "role": "side",
+          "rotation": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-54",
+          "role": "side",
+          "rotation": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-56",
+          "role": "side",
+          "rotation": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-58",
+          "role": "side",
+          "rotation": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-60",
+          "role": "side",
+          "rotation": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-62",
+          "role": "side",
+          "rotation": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-64",
+          "role": "side",
+          "rotation": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-66",
+          "role": "side",
+          "rotation": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-68",
+          "role": "side",
+          "rotation": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-70",
+          "role": "side",
+          "rotation": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-72",
+          "role": "side",
+          "rotation": [
+            0,
+            -1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-74",
+          "role": "side",
+          "rotation": [
+            0,
+            -1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-76",
+          "role": "side",
+          "rotation": [
+            0,
+            -1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-78",
+          "role": "side",
+          "rotation": [
+            0,
+            -1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-80",
+          "role": "side",
+          "rotation": [
+            0,
+            -1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-82",
+          "role": "side",
+          "rotation": [
+            0,
+            -1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-84",
+          "role": "side",
+          "rotation": [
+            0,
+            -1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-86",
+          "role": "side",
+          "rotation": [
+            0,
+            -1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-88",
+          "role": "side",
+          "rotation": [
+            0,
+            -1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-90",
+          "role": "side",
+          "rotation": [
+            0,
+            -1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-92",
+          "role": "side",
+          "rotation": [
+            0,
+            -1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-94",
+          "role": "side",
+          "rotation": [
+            0,
+            -1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "flat side skin below belt; exact native tile footprint",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-114",
+          "role": "taillamp",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -1,
+            0
+          ],
+          "purpose": "dual horizontal red lenses from rear-image feature evidence; source tile only",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-115",
+          "role": "taillamp",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -1,
+            0
+          ],
+          "purpose": "dual horizontal red lenses from rear-image feature evidence; source tile only",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": true,
+        "surface": false,
+        "reasonCodes": []
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "11477",
+      "name": "Slope Brick Curved  2 x  1",
+      "nativeSize": [
+        20,
+        16.00006098,
+        40
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-19",
+          "role": "hood",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-20",
+          "role": "hood",
+          "rotation": [
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0
+          ],
+          "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-21",
+          "role": "hood",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-22",
+          "role": "hood",
+          "rotation": [
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0
+          ],
+          "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-23",
+          "role": "hood",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-24",
+          "role": "hood",
+          "rotation": [
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0
+          ],
+          "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-25",
+          "role": "hood",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-26",
+          "role": "hood",
+          "rotation": [
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0
+          ],
+          "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-27",
+          "role": "hood",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-28",
+          "role": "hood",
+          "rotation": [
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0
+          ],
+          "purpose": "curved lateral edge: high inward, low outward; no extra cover underneath",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": false,
+        "surface": true,
+        "reasonCodes": [
+          "grammar-collision-open-external-shell"
+        ]
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "15068",
+      "name": "Slope Brick Curved  2 x  2 x  0.667",
+      "nativeSize": [
+        40,
+        16.00006098,
+        40
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-32",
+          "role": "hood",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "curved hood leading edge, rising toward the long flat hood",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-33",
+          "role": "tail",
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "curved deck trailing edge, lowering toward the rear panel",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-34",
+          "role": "hood",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "curved hood leading edge, rising toward the long flat hood",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-35",
+          "role": "tail",
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "curved deck trailing edge, lowering toward the rear panel",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-36",
+          "role": "hood",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "curved hood leading edge, rising toward the long flat hood",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-37",
+          "role": "tail",
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "curved deck trailing edge, lowering toward the rear panel",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-38",
+          "role": "hood",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "curved hood leading edge, rising toward the long flat hood",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-39",
+          "role": "tail",
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "curved deck trailing edge, lowering toward the rear panel",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": false,
+        "surface": true,
+        "reasonCodes": [
+          "grammar-collision-open-external-shell"
+        ]
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "85984",
+      "name": "Slope Brick 31  1 x  2 x  0.667",
+      "nativeSize": [
+        40,
+        15.6,
+        20
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-42",
+          "role": "shoulder",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "native shallow shoulder slope joins window base to side belt; 0.4 LDU edge gap retained",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-45",
+          "role": "shoulder",
+          "rotation": [
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0
+          ],
+          "purpose": "native shallow shoulder slope joins window base to side belt; 0.4 LDU edge gap retained",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": true,
+        "surface": false,
+        "reasonCodes": []
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "3070b",
+      "name": "Tile  1 x  1 with Groove",
+      "nativeSize": [
+        20,
+        8,
+        20
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-49",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-51",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-53",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-55",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-57",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-59",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-61",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-63",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-65",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-67",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-69",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-71",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-73",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-75",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-77",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-79",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-81",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-83",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-85",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-87",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-89",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-91",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-93",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-95",
+          "role": "side-skirt",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native plate-height lower sill; no overlap with side skin",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-111",
+          "role": "grille-divider",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0
+          ],
+          "purpose": "central divider in front of recessed grille inserts",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": true,
+        "surface": false,
+        "reasonCodes": []
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "3040b",
+      "name": "Slope Brick 45  2 x  1",
+      "nativeSize": [
+        20,
+        28,
+        40
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-96",
+          "role": "windshield",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-99",
+          "role": "windshield",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-100",
+          "role": "rear-window",
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-103",
+          "role": "rear-window",
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": false,
+        "surface": true,
+        "reasonCodes": [
+          "grammar-collision-open-nonplanar-shell"
+        ]
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "3039",
+      "name": "Slope Brick 45  2 x  2",
+      "nativeSize": [
+        40,
+        28,
+        40
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-97",
+          "role": "windshield",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-98",
+          "role": "windshield",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-101",
+          "role": "rear-window",
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-102",
+          "role": "rear-window",
+          "rotation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            -1
+          ],
+          "purpose": "native 45-degree glass/pillar face; black front pillars join side glazing, broad white rear pillars define hardtop; source landing under roof; angle and mounting not verified",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": true,
+        "surface": false,
+        "reasonCodes": []
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "3004",
+      "name": "Brick  1 x  2",
+      "nativeSize": [
+        40,
+        28,
+        20
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-104",
+          "role": "side-window",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "side window band, native black bricks between separate inclined screens",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-105",
+          "role": "side-window",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "side window band, native black bricks between separate inclined screens",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": true,
+        "surface": false,
+        "reasonCodes": []
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "6636",
+      "name": "Tile  1 x  6",
+      "nativeSize": [
+        120,
+        8,
+        20
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-107",
+          "role": "roof",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "purpose": "flat hardtop skin with native tile landings over glass; no pyramid fill",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-113",
+          "role": "rear-panel",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            -1,
+            0
+          ],
+          "purpose": "continuous planar cover; mounting unverified",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": true,
+        "surface": false,
+        "reasonCodes": []
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "63864",
+      "name": "Tile  1 x  3",
+      "nativeSize": [
+        60,
+        8,
+        20
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-109",
+          "role": "grille",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0
+          ],
+          "purpose": "separate recessed twin dark grille inserts; covered lamp areas stay dark",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-110",
+          "role": "grille",
+          "rotation": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            1,
+            0
+          ],
+          "purpose": "separate recessed twin dark grille inserts; covered lamp areas stay dark",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": true,
+        "surface": false,
+        "reasonCodes": []
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "18977",
+      "name": "Tyre 11.2/ 28 x 17.6 Intermediate",
+      "nativeSize": [
+        60,
+        60,
+        28
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-116",
+          "role": "wheel",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-118",
+          "role": "wheel",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-120",
+          "role": "wheel",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-122",
+          "role": "wheel",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": false,
+        "surface": false,
+        "reasonCodes": [
+          "grammar-source-interpretation-incomplete",
+          "grammar-no-supported-connector",
+          "grammar-collision-branched-native-boundary"
+        ]
+      },
+      "placementVerification": "NOT_VERIFIED"
+    },
+    {
+      "partId": "66727",
+      "name": "Wheel Rim 11 x 18 with Drilled Disc Brake",
+      "nativeSize": [
+        44,
+        44.000557473,
+        30
+      ],
+      "instances": [
+        {
+          "instanceId": "vehicle-part-117",
+          "role": "wheel",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-119",
+          "role": "wheel",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-121",
+          "role": "wheel",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        },
+        {
+          "instanceId": "vehicle-part-123",
+          "role": "wheel",
+          "rotation": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "purpose": "unscaled source wheel geometry; tyre/rim compatibility and chassis mount UNKNOWN",
+          "evidence": [
+            "ff7729444ddafc3926296887ade47e10c5cf49498340d780cc6cdc585d372a3f",
+            "5de3c2d8a62979ebcd6e4bd6e16ad2e72e36ab204e6c116398e5b089f6c69b99",
+            "2adf408adc22ba7b52a2db0e2d2428de80a075aec24cef05e0d03710492ce69e"
+          ]
+        }
+      ],
+      "permission": {
+        "structural": false,
+        "surface": true,
+        "reasonCodes": [
+          "grammar-collision-branched-native-boundary"
+        ]
+      },
+      "placementVerification": "NOT_VERIFIED"
+    }
+  ],
+  "selectionCandidates": [
+    {
+      "region": "lateral-edge",
+      "target": [
+        20,
+        16,
+        40
+      ],
+      "candidates": [
+        {
+          "partId": "11477",
+          "score": 0.0000609800000006544
+        },
+        {
+          "partId": "15068",
+          "score": 20.00006098
+        },
+        {
+          "partId": "30602",
+          "score": 35.965
+        },
+        {
+          "partId": "61068",
+          "score": 60.00006098
+        },
+        {
+          "partId": "88930",
+          "score": 60.00006098
+        }
+      ],
+      "selected": "11477"
+    },
+    {
+      "region": "end-transition",
+      "target": [
+        40,
+        16,
+        40
+      ],
+      "candidates": [
+        {
+          "partId": "15068",
+          "score": 0.0000609800000006544
+        },
+        {
+          "partId": "30602",
+          "score": 15.965000000000003
+        },
+        {
+          "partId": "11477",
+          "score": 20.00006098
+        },
+        {
+          "partId": "61068",
+          "score": 40.00006098
+        },
+        {
+          "partId": "88930",
+          "score": 40.00006098
+        }
+      ],
+      "selected": "15068"
+    },
+    {
+      "region": "cabin-shoulder",
+      "target": [
+        40,
+        15.6,
+        20
+      ],
+      "candidates": [
+        {
+          "partId": "85984",
+          "score": 0
+        },
+        {
+          "partId": "54200",
+          "score": 20
+        }
+      ],
+      "selected": "85984"
+    }
+  ],
+  "archCandidates": [
+    {
+      "partId": "50745",
+      "score": 0,
+      "externalEnvelopeClear": false,
+      "conflicts": [
+        {
+          "wheel": "candidate-tyre",
+          "instanceId": "candidate-arch",
+          "partId": "50745",
+          "role": "wheel-arch",
+          "penetrationLdu": 20
+        }
+      ]
+    },
+    {
+      "partId": "35789",
+      "score": 5.849499999999999,
+      "externalEnvelopeClear": false,
+      "conflicts": [
+        {
+          "wheel": "candidate-tyre",
+          "instanceId": "candidate-arch",
+          "partId": "35789",
+          "role": "wheel-arch",
+          "penetrationLdu": 24
+        }
+      ]
+    },
+    {
+      "partId": "18974",
+      "score": 13.849599999999995,
+      "externalEnvelopeClear": false,
+      "conflicts": [
+        {
+          "wheel": "candidate-tyre",
+          "instanceId": "candidate-arch",
+          "partId": "18974",
+          "role": "wheel-arch",
+          "penetrationLdu": 24
+        }
+      ]
+    },
+    {
+      "partId": "1846",
+      "score": 16,
+      "externalEnvelopeClear": true,
+      "conflicts": []
+    },
+    {
+      "partId": "93587",
+      "score": 19.999000000000002,
+      "externalEnvelopeClear": false,
+      "conflicts": [
+        {
+          "wheel": "candidate-tyre",
+          "instanceId": "candidate-arch",
+          "partId": "93587",
+          "role": "wheel-arch",
+          "penetrationLdu": 28
+        }
+      ]
+    },
+    {
+      "partId": "98835",
+      "score": 20.025,
+      "externalEnvelopeClear": false,
+      "conflicts": [
+        {
+          "wheel": "candidate-tyre",
+          "instanceId": "candidate-arch",
+          "partId": "98835",
+          "role": "wheel-arch",
+          "penetrationLdu": 28
+        }
+      ]
+    },
+    {
+      "partId": "44674",
+      "score": 25.964000000000006,
+      "externalEnvelopeClear": false,
+      "conflicts": [
+        {
+          "wheel": "candidate-tyre",
+          "instanceId": "candidate-arch",
+          "partId": "44674",
+          "role": "wheel-arch",
+          "penetrationLdu": 4
+        }
+      ]
+    },
+    {
+      "partId": "93590",
+      "score": 28,
+      "externalEnvelopeClear": false,
+      "conflicts": [
+        {
+          "wheel": "candidate-tyre",
+          "instanceId": "candidate-arch",
+          "partId": "93590",
+          "role": "wheel-arch",
+          "penetrationLdu": 12
+        }
+      ]
+    },
+    {
+      "partId": "2513",
+      "score": 32,
+      "externalEnvelopeClear": false,
+      "conflicts": [
+        {
+          "wheel": "candidate-tyre",
+          "instanceId": "candidate-arch",
+          "partId": "2513",
+          "role": "wheel-arch",
+          "penetrationLdu": 16
+        }
+      ]
+    },
+    {
+      "partId": "28326",
+      "score": 32,
+      "externalEnvelopeClear": true,
+      "conflicts": []
+    },
+    {
+      "partId": "41854",
+      "score": 32,
+      "externalEnvelopeClear": false,
+      "conflicts": [
+        {
+          "wheel": "candidate-tyre",
+          "instanceId": "candidate-arch",
+          "partId": "41854",
+          "role": "wheel-arch",
+          "penetrationLdu": 12
+        }
+      ]
+    },
+    {
+      "partId": "93597",
+      "score": 32,
+      "externalEnvelopeClear": false,
+      "conflicts": [
+        {
+          "wheel": "candidate-tyre",
+          "instanceId": "candidate-arch",
+          "partId": "93597",
+          "role": "wheel-arch",
+          "penetrationLdu": 20
+        }
+      ]
+    },
+    {
+      "partId": "3788",
+      "score": 36,
+      "externalEnvelopeClear": false,
+      "conflicts": [
+        {
+          "wheel": "candidate-tyre",
+          "instanceId": "candidate-arch",
+          "partId": "3788",
+          "role": "wheel-arch",
+          "penetrationLdu": 8
+        }
+      ]
+    },
+    {
+      "partId": "60212",
+      "score": 36,
+      "externalEnvelopeClear": false,
+      "conflicts": [
+        {
+          "wheel": "candidate-tyre",
+          "instanceId": "candidate-arch",
+          "partId": "60212",
+          "role": "wheel-arch",
+          "penetrationLdu": 8
+        }
+      ]
+    },
+    {
+      "partId": "3787",
+      "score": 40,
+      "externalEnvelopeClear": false,
+      "conflicts": [
+        {
+          "wheel": "candidate-tyre",
+          "instanceId": "candidate-arch",
+          "partId": "3787",
+          "role": "wheel-arch",
+          "penetrationLdu": 4
+        }
+      ]
+    },
+    {
+      "partId": "24151",
+      "score": 44,
+      "externalEnvelopeClear": false,
+      "conflicts": [
+        {
+          "wheel": "candidate-tyre",
+          "instanceId": "candidate-arch",
+          "partId": "24151",
+          "role": "wheel-arch",
+          "penetrationLdu": 24
+        }
+      ]
+    }
+  ],
+  "wheelEnvelope": {
+    "method": "source-triangles-vs-full-tyre-external-cylinder-1",
+    "radiusLdu": 30,
+    "halfWidthLdu": 14,
+    "conflicts": [],
+    "scope": "STATIC_EXTERNAL_ENVELOPE_ONLY",
+    "mechanicalClearance": "UNKNOWN",
+    "steeringTravel": "UNKNOWN",
+    "rimFit": "UNKNOWN"
+  },
+  "mountCandidates": [
+    {
+      "instanceId": "vehicle-part-1",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-2",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-3",
+      "nearbyEndpointPairs": 2,
+      "candidates": [
+        {
+          "fixedInstanceId": "vehicle-part-7",
+          "fixedConnectionId": "parts/6934.dat:8:6",
+          "movingConnectionId": "p/stud.dat:8:2",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              -30,
+              -72,
+              -119.99999999999999
+            ]
+          },
+          "poseErrorLdu": 4,
+          "matchesRequestedPose": false
+        },
+        {
+          "fixedInstanceId": "vehicle-part-7",
+          "fixedConnectionId": "parts/6934.dat:8:8",
+          "movingConnectionId": "p/stud.dat:8:1",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              -30,
+              -72,
+              -120
+            ]
+          },
+          "poseErrorLdu": 4,
+          "matchesRequestedPose": false
+        }
+      ],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-4",
+      "nearbyEndpointPairs": 2,
+      "candidates": [
+        {
+          "fixedInstanceId": "vehicle-part-8",
+          "fixedConnectionId": "parts/s/4162s01.dat:8:12",
+          "movingConnectionId": "p/stud.dat:8:1",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              -1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0
+            ],
+            "translation": [
+              30,
+              -72,
+              -120
+            ]
+          },
+          "poseErrorLdu": 4,
+          "matchesRequestedPose": false
+        },
+        {
+          "fixedInstanceId": "vehicle-part-8",
+          "fixedConnectionId": "parts/s/4162s01.dat:8:13",
+          "movingConnectionId": "p/stud.dat:8:2",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              -1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0
+            ],
+            "translation": [
+              30,
+              -72,
+              -120
+            ]
+          },
+          "poseErrorLdu": 4,
+          "matchesRequestedPose": false
+        }
+      ],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-5",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-6",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-7",
+      "nearbyEndpointPairs": 2,
+      "candidates": [
+        {
+          "fixedInstanceId": "vehicle-part-3",
+          "fixedConnectionId": "p/stud.dat:8:1",
+          "movingConnectionId": "parts/6934.dat:8:8",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              -10,
+              -76,
+              -100
+            ]
+          },
+          "poseErrorLdu": 4,
+          "matchesRequestedPose": false
+        },
+        {
+          "fixedInstanceId": "vehicle-part-3",
+          "fixedConnectionId": "p/stud.dat:8:2",
+          "movingConnectionId": "parts/6934.dat:8:6",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              -10,
+              -76,
+              -100
+            ]
+          },
+          "poseErrorLdu": 4,
+          "matchesRequestedPose": false
+        }
+      ],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-8",
+      "nearbyEndpointPairs": 2,
+      "candidates": [
+        {
+          "fixedInstanceId": "vehicle-part-4",
+          "fixedConnectionId": "p/stud.dat:8:1",
+          "movingConnectionId": "parts/s/4162s01.dat:8:12",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              30,
+              -76,
+              -80
+            ]
+          },
+          "poseErrorLdu": 4,
+          "matchesRequestedPose": false
+        },
+        {
+          "fixedInstanceId": "vehicle-part-4",
+          "fixedConnectionId": "p/stud.dat:8:2",
+          "movingConnectionId": "parts/s/4162s01.dat:8:13",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              30,
+              -76,
+              -80
+            ]
+          },
+          "poseErrorLdu": 4,
+          "matchesRequestedPose": false
+        }
+      ],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-9",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-10",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-11",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-12",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-13",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-14",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-15",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-16",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-17",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-18",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-19",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-20",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-21",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-22",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-23",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-24",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-25",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-26",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-27",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-28",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-29",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-30",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-31",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-32",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-33",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-34",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-35",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-36",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-37",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-38",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-39",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-40",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-41",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-42",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-43",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-44",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-45",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-46",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-47",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-48",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-49",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-50",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-51",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-52",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-53",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-54",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-55",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-56",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-57",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-58",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-59",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-60",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-61",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-62",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-63",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-64",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-65",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-66",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-67",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-68",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-69",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-70",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-71",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-72",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-73",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-74",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-75",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-76",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-77",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-78",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-79",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-80",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-81",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-82",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-83",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-84",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-85",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-86",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-87",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-88",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-89",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-90",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-91",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-92",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-93",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-94",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-95",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-96",
+      "nearbyEndpointPairs": 1,
+      "candidates": [
+        {
+          "fixedInstanceId": "vehicle-part-106",
+          "fixedConnectionId": "parts/6934.dat:8:0",
+          "movingConnectionId": "p/stud.dat:8:0",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              -50,
+              -104,
+              50
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        }
+      ],
+      "status": "SOURCE_POSE_CANDIDATE_ONLY",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-97",
+      "nearbyEndpointPairs": 2,
+      "candidates": [
+        {
+          "fixedInstanceId": "vehicle-part-106",
+          "fixedConnectionId": "parts/6934.dat:8:2",
+          "movingConnectionId": "p/stud.dat:8:0",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              -20,
+              -104,
+              50
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-106",
+          "fixedConnectionId": "parts/6934.dat:8:4",
+          "movingConnectionId": "p/stud.dat:8:1",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              -20,
+              -104,
+              50
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        }
+      ],
+      "status": "SOURCE_POSE_CANDIDATE_ONLY",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-98",
+      "nearbyEndpointPairs": 2,
+      "candidates": [
+        {
+          "fixedInstanceId": "vehicle-part-106",
+          "fixedConnectionId": "parts/6934.dat:8:6",
+          "movingConnectionId": "p/stud.dat:8:0",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              20,
+              -104,
+              50
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-106",
+          "fixedConnectionId": "parts/6934.dat:8:8",
+          "movingConnectionId": "p/stud.dat:8:1",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              20,
+              -104,
+              50
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        }
+      ],
+      "status": "SOURCE_POSE_CANDIDATE_ONLY",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-99",
+      "nearbyEndpointPairs": 1,
+      "candidates": [
+        {
+          "fixedInstanceId": "vehicle-part-106",
+          "fixedConnectionId": "parts/6934.dat:8:10",
+          "movingConnectionId": "p/stud.dat:8:0",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              50,
+              -104,
+              50
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        }
+      ],
+      "status": "SOURCE_POSE_CANDIDATE_ONLY",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-100",
+      "nearbyEndpointPairs": 1,
+      "candidates": [
+        {
+          "fixedInstanceId": "vehicle-part-107",
+          "fixedConnectionId": "parts/s/6636s01.dat:8:5",
+          "movingConnectionId": "p/stud.dat:8:0",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              -1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              -1
+            ],
+            "translation": [
+              -50,
+              -104,
+              110
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        }
+      ],
+      "status": "SOURCE_POSE_CANDIDATE_ONLY",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-101",
+      "nearbyEndpointPairs": 2,
+      "candidates": [
+        {
+          "fixedInstanceId": "vehicle-part-107",
+          "fixedConnectionId": "parts/s/6636s01.dat:8:6",
+          "movingConnectionId": "p/stud.dat:8:1",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              -1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              -1
+            ],
+            "translation": [
+              -20,
+              -104,
+              110
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-107",
+          "fixedConnectionId": "parts/s/6636s01.dat:8:7",
+          "movingConnectionId": "p/stud.dat:8:0",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              -1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              -1
+            ],
+            "translation": [
+              -20,
+              -104,
+              110
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        }
+      ],
+      "status": "SOURCE_POSE_CANDIDATE_ONLY",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-102",
+      "nearbyEndpointPairs": 2,
+      "candidates": [
+        {
+          "fixedInstanceId": "vehicle-part-107",
+          "fixedConnectionId": "parts/s/6636s01.dat:8:8",
+          "movingConnectionId": "p/stud.dat:8:1",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              -1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              -1
+            ],
+            "translation": [
+              20,
+              -104,
+              110
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-107",
+          "fixedConnectionId": "parts/s/6636s01.dat:8:9",
+          "movingConnectionId": "p/stud.dat:8:0",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              -1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              -1
+            ],
+            "translation": [
+              20,
+              -104,
+              110
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        }
+      ],
+      "status": "SOURCE_POSE_CANDIDATE_ONLY",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-103",
+      "nearbyEndpointPairs": 1,
+      "candidates": [
+        {
+          "fixedInstanceId": "vehicle-part-107",
+          "fixedConnectionId": "parts/s/6636s01.dat:8:10",
+          "movingConnectionId": "p/stud.dat:8:0",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              -1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              -1
+            ],
+            "translation": [
+              50,
+              -104,
+              110
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        }
+      ],
+      "status": "SOURCE_POSE_CANDIDATE_ONLY",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-104",
+      "nearbyEndpointPairs": 2,
+      "candidates": [
+        {
+          "fixedInstanceId": "vehicle-part-106",
+          "fixedConnectionId": "parts/6934.dat:8:1",
+          "movingConnectionId": "p/stud.dat:8:2",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              -50,
+              -104,
+              80
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-106",
+          "fixedConnectionId": "parts/6934.dat:9:12",
+          "movingConnectionId": "p/stud.dat:8:1",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              -50,
+              -104,
+              80
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        }
+      ],
+      "status": "SOURCE_POSE_CANDIDATE_ONLY",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-105",
+      "nearbyEndpointPairs": 2,
+      "candidates": [
+        {
+          "fixedInstanceId": "vehicle-part-106",
+          "fixedConnectionId": "parts/6934.dat:8:11",
+          "movingConnectionId": "p/stud.dat:8:2",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              50,
+              -104,
+              80
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-106",
+          "fixedConnectionId": "parts/6934.dat:9:13",
+          "movingConnectionId": "p/stud.dat:8:1",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              50,
+              -104,
+              80
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        }
+      ],
+      "status": "SOURCE_POSE_CANDIDATE_ONLY",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-106",
+      "nearbyEndpointPairs": 10,
+      "candidates": [
+        {
+          "fixedInstanceId": "vehicle-part-96",
+          "fixedConnectionId": "p/stud.dat:8:0",
+          "movingConnectionId": "parts/6934.dat:8:0",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -112,
+              70
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-97",
+          "fixedConnectionId": "p/stud.dat:8:0",
+          "movingConnectionId": "parts/6934.dat:8:2",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -112,
+              70
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-97",
+          "fixedConnectionId": "p/stud.dat:8:1",
+          "movingConnectionId": "parts/6934.dat:8:4",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -112,
+              70
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-98",
+          "fixedConnectionId": "p/stud.dat:8:0",
+          "movingConnectionId": "parts/6934.dat:8:6",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -112,
+              70
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-98",
+          "fixedConnectionId": "p/stud.dat:8:1",
+          "movingConnectionId": "parts/6934.dat:8:8",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -112,
+              70
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-99",
+          "fixedConnectionId": "p/stud.dat:8:0",
+          "movingConnectionId": "parts/6934.dat:8:10",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -112,
+              70
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-104",
+          "fixedConnectionId": "p/stud.dat:8:1",
+          "movingConnectionId": "parts/6934.dat:9:12",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -112,
+              70
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-104",
+          "fixedConnectionId": "p/stud.dat:8:2",
+          "movingConnectionId": "parts/6934.dat:8:1",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -112,
+              70
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        }
+      ],
+      "status": "SOURCE_POSE_CANDIDATE_ONLY",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-107",
+      "nearbyEndpointPairs": 6,
+      "candidates": [
+        {
+          "fixedInstanceId": "vehicle-part-100",
+          "fixedConnectionId": "p/stud.dat:8:0",
+          "movingConnectionId": "parts/s/6636s01.dat:8:5",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -112,
+              110
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-101",
+          "fixedConnectionId": "p/stud.dat:8:0",
+          "movingConnectionId": "parts/s/6636s01.dat:8:7",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -112,
+              110
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-101",
+          "fixedConnectionId": "p/stud.dat:8:1",
+          "movingConnectionId": "parts/s/6636s01.dat:8:6",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -112,
+              110
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-102",
+          "fixedConnectionId": "p/stud.dat:8:0",
+          "movingConnectionId": "parts/s/6636s01.dat:8:9",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -112,
+              110
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-102",
+          "fixedConnectionId": "p/stud.dat:8:1",
+          "movingConnectionId": "parts/s/6636s01.dat:8:8",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -112,
+              110
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "vehicle-part-103",
+          "fixedConnectionId": "p/stud.dat:8:0",
+          "movingConnectionId": "parts/s/6636s01.dat:8:10",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              -112,
+              110
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        }
+      ],
+      "status": "SOURCE_POSE_CANDIDATE_ONLY",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-108",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-109",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-110",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-111",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-112",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-113",
+      "nearbyEndpointPairs": 4,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-114",
+      "nearbyEndpointPairs": 2,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    },
+    {
+      "instanceId": "vehicle-part-115",
+      "nearbyEndpointPairs": 2,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  ],
+  "surfacePairs": {
+    "method": "native-pair-kernel-unchanged",
+    "scope": "NON_WHEEL_POSITIVE_AABB_OVERLAPS_ONLY",
+    "broadPhaseDisjoint": 6545,
+    "results": [
+      {
+        "a": "vehicle-part-96",
+        "b": "vehicle-part-106",
+        "roleA": "windshield",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "exterior-surface-clear"
+      },
+      {
+        "a": "vehicle-part-97",
+        "b": "vehicle-part-106",
+        "roleA": "windshield",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "native-solid-clearance"
+      },
+      {
+        "a": "vehicle-part-98",
+        "b": "vehicle-part-106",
+        "roleA": "windshield",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "native-solid-clearance"
+      },
+      {
+        "a": "vehicle-part-99",
+        "b": "vehicle-part-106",
+        "roleA": "windshield",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "exterior-surface-clear"
+      },
+      {
+        "a": "vehicle-part-100",
+        "b": "vehicle-part-107",
+        "roleA": "rear-window",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "exterior-surface-clear"
+      },
+      {
+        "a": "vehicle-part-101",
+        "b": "vehicle-part-107",
+        "roleA": "rear-window",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "native-solid-clearance"
+      },
+      {
+        "a": "vehicle-part-102",
+        "b": "vehicle-part-107",
+        "roleA": "rear-window",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "native-solid-clearance"
+      },
+      {
+        "a": "vehicle-part-103",
+        "b": "vehicle-part-107",
+        "roleA": "rear-window",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "exterior-surface-clear"
+      },
+      {
+        "a": "vehicle-part-104",
+        "b": "vehicle-part-106",
+        "roleA": "side-window",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "native-solid-clearance"
+      },
+      {
+        "a": "vehicle-part-105",
+        "b": "vehicle-part-106",
+        "roleA": "side-window",
+        "roleB": "roof",
+        "status": "clear",
+        "reasonCode": "native-solid-clearance"
+      }
+    ],
+    "matingZonesInvented": 0,
+    "wholeVehicleCollisionCertificate": false
+  },
+  "angularConflicts": [
+    {
+      "name": "windshieldAngle",
+      "observed": [
+        58,
+        62
+      ],
+      "sourceFaceDegrees": 45,
+      "errorDegrees": -15
+    },
+    {
+      "name": "rearWindowAngle",
+      "observed": [
+        48,
+        52
+      ],
+      "sourceFaceDegrees": 45,
+      "errorDegrees": -5
+    }
+  ],
+  "scope": "APPEARANCE_ONLY_NO_NEW_ASSEMBLY_PERMISSION"
+}

@@ -1,3 +1,5 @@
+> 本文保留 76e2065 阶段的接续记录。当前外壳版本、实际对比、未验证范围和复现方式见 [最新交付](VEHICLE_SURFACES_DELIVERY.md)。不要按本文旧版本恢复或重写历史模型。
+
 # 下一轮接续要点
 
 基准3b51425，工作分支codex/vehicle-evidence-body。先读VEHICLE_PLATFORM_DELIVERY.md及artifacts/vehicle-body-2026-11-07/validation.json，再查当前HEAD和用户修改。不重新恢复806c777，不重复已有调用。

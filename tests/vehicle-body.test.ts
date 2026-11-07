@@ -10,6 +10,8 @@ import {
   type BodyPreview,
 } from "../src/vehicles/body-preview.js";
 import { bodyPlan } from "../src/vehicles/body-plan.js";
+import { inspectWheelEnvelope } from "../src/vehicles/body-inspection.js";
+import { bodyLayoutSvg } from "../src/vehicles/body-layout.js";
 import { validateVision } from "../src/vehicles/vision-contract.js";
 import {
   loadCampaign,
@@ -28,7 +30,7 @@ let research: Research,
 beforeAll(async () => {
   const job = JSON.parse(
     await readFile(
-      "artifacts/vehicle-body-2026-11-07/api-job-round-1.json",
+      "artifacts/vehicle-body-2026-11-07/api-job-final.json",
       "utf8",
     ),
   );
@@ -42,6 +44,42 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 describe("source-derived full vehicle preview", () => {
+  it("uses continuous native curves and rejects a dimension-matching arch that penetrates the actual tyre", () => {
+    expect(model.bom.some(x=>x.partId==="15068")).toBe(true);
+    expect(model.bom.some(x=>x.partId==="11477")).toBe(true);
+    expect(model.bom.some(x=>x.partId==="66956")).toBe(false);
+    expect(model.layout.archCandidates.find(x=>x.partId==="50745")?.externalEnvelopeClear).toBe(false);
+    expect(model.placements.filter(x=>x.role==="wheel-arch").every(x=>x.partId==="1846")).toBe(true);
+    expect(model.layout.wheelEnvelope.conflicts).toEqual([]);
+    expect(model.layout.surfacePairs.results.every(x=>x.status==="clear")).toBe(true);
+    expect(model.layout.surfacePairs.wholeVehicleCollisionCertificate).toBe(false);
+    expect(model.layout.mountCandidates.some(x=>x.status==="NO_MATCHING_INSTALLATION_POSE")).toBe(true);
+    expect(model.layout.mountCandidates.every(x=>!x.verifiedGraphEdge)).toBe(true);
+    expect(model.layout.selection.every(x=>x.placementVerification==="NOT_VERIFIED")).toBe(true);
+  });
+  it("detects an introduced wheel/body intrusion without promoting the external-envelope check to assembly proof", async () => {
+    const parts=await catalog.load(model.sources.map(x=>x.partId));
+    const bad=structuredClone(model.placements);
+    for(const p of bad.filter(x=>x.partId==="18977"))p.transform.translation[1]-=40;
+    expect(inspectWheelEnvelope(bad,parts,30,14).conflicts.length).toBeGreaterThan(0);
+    expect(model.layout.wheelEnvelope.mechanicalClearance).toBe("UNKNOWN");
+  });
+  it("keeps a layout diagnostic, odd-width alternatives and evidence conflicts without modifying raw vision", () => {
+    expect(model.plan.widthChoices.map(x=>x.widthStuds)).toEqual(expect.arrayContaining([6,7,8,9,10,11,12]));
+    expect(bodyLayoutSvg(model.plan)).toContain("observed interval");
+    expect(model.plan.rawVisualSections).toEqual(vision.sections);
+    expect(model.layout.angularConflicts.some(x=>x.errorDegrees!==0)).toBe(true);
+  });
+  it("blocks historical low-hood evidence that cannot clear the native wheel instead of hiding collisions", async () => {
+    const old=JSON.parse(await readFile("artifacts/vehicle-body-2026-11-07/api-job-round-1.json","utf8"));
+    await expect(generateBodyPreview(catalog,old.research,old.vision)).rejects.toThrow("WHEEL_SURROUND_CLEARANCE");
+  });
+  it("rejects a historical generator version without silently rewriting its saved model", async () => {
+    const old=JSON.parse(await readFile("artifacts/vehicle-body-2026-11-07/preview-final.json","utf8"));
+    const before=JSON.stringify(old);
+    await expect(validateBodyPreview(old,catalog,research,vision)).rejects.toThrow("VERSION");
+    expect(JSON.stringify(old)).toBe(before);
+  });
   it("uses the genuine analyzed image IDs and rejects unknown profile evidence", () => {
     expect(
       validateVision(
@@ -113,7 +151,7 @@ describe("source-derived full vehicle preview", () => {
     ).toEqual([1, 1]);
     expect(model.sources.some((x) => /Slope/.test(x.name))).toBe(true);
     expect(model.checks.rejectionReasons).toContain(
-      "HOOD_HEIGHT_BELOW_NATIVE_WHEEL_TOP",
+      "LANDMARK_VS_NORMALIZED_frontAxle_CONFLICT",
     );
     expect(
       model.placements.every((x) =>
@@ -126,8 +164,8 @@ describe("source-derived full vehicle preview", () => {
   it("changes geometry and selection when actual constraints change, rather than branching on the vehicle name", async () => {
     const changed = structuredClone(vision);
     const radius = changed.constraints.find((x) => x.name === "wheelRadius")!;
-    radius.min = 0.3;
-    radius.max = 0.34;
+    radius.min = 0.18;
+    radius.max = 0.20;
     const other = await generateBodyPreview(catalog, research, changed);
     expect(other.plan.widthStuds).not.toBe(model.plan.widthStuds);
     expect(other.placements.map((x) => [x.partId, x.transform])).not.toEqual(

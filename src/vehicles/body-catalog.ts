@@ -39,7 +39,8 @@ export class BodyCatalog {
     const roots = manifest.roots.filter(
       (x) =>
         /^(?:Plate|Tile|Brick)\s+\d+ x\s*\d+(?:$| with Groove$)/.test(x.name) ||
-        /^Slope Brick 45\s+2 x\s*2$/.test(x.name),
+        /^(?:Slope Brick|Wedge|Car Mudguard|Vehicle Mudguard)\s/.test(x.name) ||
+        /^Tile\s+.*Grille/.test(x.name),
     );
     return this.load([...roots.map((x) => x.partId), "18977", "66727"]);
   }

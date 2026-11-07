@@ -1,0 +1,39 @@
+{
+  "method": "source-triangles-vs-full-tyre-external-cylinder-1",
+  "radiusLdu": 30,
+  "halfWidthLdu": 14,
+  "conflicts": [
+    {
+      "wheel": "vehicle-part-110",
+      "instanceId": "vehicle-part-3",
+      "partId": "50745",
+      "role": "wheel-arch",
+      "penetrationLdu": 20
+    },
+    {
+      "wheel": "vehicle-part-112",
+      "instanceId": "vehicle-part-4",
+      "partId": "50745",
+      "role": "wheel-arch",
+      "penetrationLdu": 20
+    },
+    {
+      "wheel": "vehicle-part-114",
+      "instanceId": "vehicle-part-5",
+      "partId": "50745",
+      "role": "wheel-arch",
+      "penetrationLdu": 20
+    },
+    {
+      "wheel": "vehicle-part-116",
+      "instanceId": "vehicle-part-6",
+      "partId": "50745",
+      "role": "wheel-arch",
+      "penetrationLdu": 20
+    }
+  ],
+  "scope": "STATIC_EXTERNAL_ENVELOPE_ONLY",
+  "mechanicalClearance": "UNKNOWN",
+  "steeringTravel": "UNKNOWN",
+  "rimFit": "UNKNOWN"
+}

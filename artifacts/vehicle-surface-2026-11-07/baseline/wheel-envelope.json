@@ -1,0 +1,123 @@
+{
+  "method": "source-triangles-vs-full-tyre-external-cylinder-1",
+  "radiusLdu": 30,
+  "halfWidthLdu": 14,
+  "conflicts": [
+    {
+      "wheel": "vehicle-part-89",
+      "instanceId": "vehicle-part-1",
+      "partId": "6934",
+      "role": "chassis",
+      "penetrationLdu": 5.586888768532596
+    },
+    {
+      "wheel": "vehicle-part-91",
+      "instanceId": "vehicle-part-2",
+      "partId": "26603",
+      "role": "chassis",
+      "penetrationLdu": 5.586888768532596
+    },
+    {
+      "wheel": "vehicle-part-95",
+      "instanceId": "vehicle-part-5",
+      "partId": "4162",
+      "role": "chassis",
+      "penetrationLdu": 5.586888768532596
+    },
+    {
+      "wheel": "vehicle-part-93",
+      "instanceId": "vehicle-part-7",
+      "partId": "2431",
+      "role": "chassis",
+      "penetrationLdu": 5.586888768532596
+    },
+    {
+      "wheel": "vehicle-part-89",
+      "instanceId": "vehicle-part-10",
+      "partId": "3622",
+      "role": "side",
+      "penetrationLdu": 10
+    },
+    {
+      "wheel": "vehicle-part-91",
+      "instanceId": "vehicle-part-12",
+      "partId": "3622",
+      "role": "side",
+      "penetrationLdu": 10
+    },
+    {
+      "wheel": "vehicle-part-89",
+      "instanceId": "vehicle-part-13",
+      "partId": "3009",
+      "role": "hood",
+      "penetrationLdu": 10
+    },
+    {
+      "wheel": "vehicle-part-91",
+      "instanceId": "vehicle-part-13",
+      "partId": "3009",
+      "role": "hood",
+      "penetrationLdu": 10
+    },
+    {
+      "wheel": "vehicle-part-93",
+      "instanceId": "vehicle-part-23",
+      "partId": "3009",
+      "role": "cabin",
+      "penetrationLdu": 10
+    },
+    {
+      "wheel": "vehicle-part-95",
+      "instanceId": "vehicle-part-23",
+      "partId": "3009",
+      "role": "cabin",
+      "penetrationLdu": 10
+    },
+    {
+      "wheel": "vehicle-part-89",
+      "instanceId": "vehicle-part-29",
+      "partId": "3622",
+      "role": "side",
+      "penetrationLdu": 7.639320225002102
+    },
+    {
+      "wheel": "vehicle-part-91",
+      "instanceId": "vehicle-part-31",
+      "partId": "3622",
+      "role": "side",
+      "penetrationLdu": 7.639320225002102
+    },
+    {
+      "wheel": "vehicle-part-89",
+      "instanceId": "vehicle-part-32",
+      "partId": "3009",
+      "role": "hood",
+      "penetrationLdu": 7.639320225002102
+    },
+    {
+      "wheel": "vehicle-part-91",
+      "instanceId": "vehicle-part-32",
+      "partId": "3009",
+      "role": "hood",
+      "penetrationLdu": 7.639320225002102
+    },
+    {
+      "wheel": "vehicle-part-93",
+      "instanceId": "vehicle-part-42",
+      "partId": "3009",
+      "role": "cabin",
+      "penetrationLdu": 7.639320225002102
+    },
+    {
+      "wheel": "vehicle-part-95",
+      "instanceId": "vehicle-part-42",
+      "partId": "3009",
+      "role": "cabin",
+      "penetrationLdu": 7.639320225002102
+    }
+  ],
+  "scope": "STATIC_EXTERNAL_ENVELOPE_ONLY",
+  "mechanicalClearance": "UNKNOWN",
+  "steeringTravel": "UNKNOWN",
+  "rimFit": "UNKNOWN"
+}

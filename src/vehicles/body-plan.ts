@@ -1,5 +1,5 @@
 import type { Research, VisionResult } from "./types.js";
-export const BODY_PLAN_VERSION = "vehicle-envelope-plan-2-roof-calibration";
+export const BODY_PLAN_VERSION = "vehicle-region-plan-3";
 export function bodyPlan(
   research: Research,
   vision: VisionResult,
@@ -90,14 +90,25 @@ export function bodyPlan(
   const wheelFraction = center("wheelRadius") / calibration;
   if (wheelFraction < 0.1 || wheelFraction > 0.45)
     throw Error("BODY_WHEEL_RADIUS_OUT_OF_RANGE");
+  const profileWidth=(name:string)=>{const s=sections.find(s=>s.name===name)!;return(s.width![0]+s.width![1])/2;};
   // Choose source-compatible resolution by visible wheel/body ratio, then quantization error. No vehicle-name branch.
-  const choices = [6, 8, 10, 12]
+  const choices = [6, 7, 8, 9, 10, 11, 12]
     .map((widthStuds) => {
       const scale = (widthStuds * 20) / dimensions.width,
-        height = dimensions.height * scale;
+        height = dimensions.height * scale,
+        windowHeight = height * (1 - sections.find(s => s.name === "hood")!.height!.reduce((a,b) => a+b) / 2),
+        desiredRoofWidth = profileWidth("roof") * widthStuds * 20,
+        roofWidth = widthStuds * 20 - Math.max(40,Math.round((widthStuds*20-desiredRoofWidth)/40)*40),
+        coverError = Math.abs(roofWidth-desiredRoofWidth);
       return {
         widthStuds,
         scale,
+        wheelRatio: wheelRadiusLdu / height,
+        lengthErrorLdu: Math.round((dimensions.length * scale) / 20) * 20 - dimensions.length * scale,
+        windowHeightLdu: windowHeight,
+        nativeRoofWidthLdu: roofWidth,
+        coverWidthErrorLdu: coverError,
+        resolutionPenalty: Math.max(0,24-windowHeight)/height*.2+coverError/(widthStuds*20)*.05,
         score:
           Math.abs(wheelRadiusLdu / height - wheelFraction) +
           (Math.abs(
@@ -105,7 +116,7 @@ export function bodyPlan(
               dimensions.length * scale,
           ) /
             (dimensions.length * scale)) *
-            0.2,
+            0.2 + Math.max(0,24-windowHeight)/height*.2+coverError/(widthStuds*20)*.05,
       };
     })
     .sort((a, b) => a.score - b.score);
@@ -151,14 +162,16 @@ export function bodyPlan(
     tailSection = sections.find((x) => x.name === "tail")!,
     roofSection = sections.find((x) => x.name === "roof")!;
   if (roofSection.height![1] < 1) throw Error("BODY_ROOF_HEIGHT_CONFLICT");
-  const cabinStart = cStart.min,
-    cabinEnd = cEnd.max,
-    roofStart = rStart.max,
-    roofEnd = rEnd.min;
+  const cabinStart = Math.round(center("cabinStart") * length / 20) * 20 / length,
+    cabinEnd = Math.round(center("cabinEnd") * length / 20) * 20 / length,
+    // Reserve one native sloping face at each end, instead of filling the
+    // entire observed cabin volume and leaving a one-plate black slit.
+    roofStart = cabinStart + 20 / length,
+    roofEnd = cabinEnd - 20 / length;
   if (!(cabinStart < roofStart && roofStart < roofEnd && roofEnd < cabinEnd))
     throw Error("BODY_ROOF_SEGMENT_ORDER");
-  const chosenHood = hoodSection.height![1],
-    chosenTail = tailSection.height![1],
+  const chosenHood = (hoodSection.height![0] + hoodSection.height![1]) / 2,
+    chosenTail = (tailSection.height![0] + tailSection.height![1]) / 2,
     widthOf = (name: string) => {
       const x = sections.find((s) => s.name === name)!;
       return (x.width![0] + x.width![1]) / 2;
@@ -196,6 +209,8 @@ export function bodyPlan(
     evidenceImageIds: [...new Set(sections.flatMap((s) => s.imageIds))],
   }));
   const conflicts: string[] = [];
+  for (const [name, value, observed] of [["roofStart", roofStart, rStart], ["roofEnd", roofEnd, rEnd]] as const)
+    if (value < observed.min || value > observed.max) conflicts.push("SOURCE_SLOPE_VS_VISUAL_" + name + "_CONFLICT");
   if (calibration !== 1)
     conflicts.push("PHYSICAL_HEIGHT_ANCHOR_CALIBRATES_VISUAL_ROOF");
   for (const group of vision.landmarks2d ?? []) {
@@ -264,7 +279,7 @@ export function bodyPlan(
         "visual section/roof ratios treated as design estimates; raw output remains unchanged and original visual intervals are not all satisfied",
     },
     selectionPolicy:
-      "Choose upper hood/deck height inside observed intervals to maximize wheel clearance; use guaranteed flat hardtop interior between roofStart.max and roofEnd.min; keep unresolved angular conflicts explicit",
+      "Score all 6–12-stud widths against native wheel ratio and length quantization; use section midpoints, distinct one-stud glass runs and a flat hardtop; archive raw intervals and report source-slope/boundary conflicts rather than rewriting observations",
     constraints,
     features: vision.features ?? [],
     imageIds: [...ids],

@@ -1,0 +1,66 @@
+{
+  "baseline": "76e2065feffb70582da5d3fe17f0ab01e8d89ea5",
+  "branch": "codex/vehicle-surface-design",
+  "schema": "bricklab-vehicle-envelope-appearance-2",
+  "generator": "source-region-shell-4",
+  "planVersion": "vehicle-region-plan-3",
+  "modelHash": "018d22dbb63be6f3526432addb3c99e16fc9cdccae404d72d42a3851ece65729",
+  "partCount": 123,
+  "nativePartKinds": 19,
+  "checksExitCodes": {
+    "fullUnit": 0,
+    "focusedCurrent": 0,
+    "typecheck": 0,
+    "buildCurrent": 0,
+    "browser": 0
+  },
+  "fullUnit": {
+    "files": 74,
+    "tests": 985,
+    "status": "PASS"
+  },
+  "focusedCurrent": {
+    "tests": 24,
+    "status": "PASS"
+  },
+  "browser": {
+    "tests": 4,
+    "status": "PASS",
+    "firstFormPostControlled": true,
+    "meshAndImportChecksActualService": true
+  },
+  "unmockedNormalWorkflow": {
+    "id": "44ef2c1b-ea6f-412b-9f0e-23dda5e6ba7a",
+    "mockedRoutes": 0,
+    "sameExportedModel": true,
+    "persistedAsNewTask": true
+  },
+  "offlineReplayExactJsonMatch": true,
+  "nativePartsAndFormalPipelinesUnchanged": true,
+  "budgetTemplateUnchanged": true,
+  "wheelStaticSourceTriangleConflicts": 0,
+  "nonWheelPositiveAabbOverlaps": 10,
+  "nonWheelPositiveAabbStatuses": [
+    "clear"
+  ],
+  "wholeCarCollisionCertificate": false,
+  "matchingSourcePoseCandidates": 12,
+  "instancesWithoutMatchingInstallationPose": 103,
+  "formalWholeVehicle": "NOT_VERIFIED",
+  "formalWheel": "BLOCKED",
+  "localFivePartSupportReimport": "VALID",
+  "steps": "DRAFT_NOT_BUILD_INSTRUCTIONS",
+  "physicalBuildVerified": false,
+  "newPaidCalls": 0,
+  "internalRenderExternalUploads": 0,
+  "environmentPublished": false,
+  "initialRestrictedUnitAttempt": {
+    "status": "INTERRUPTED_NOT_A_PASS",
+    "reason": "local HTTP listener disallowed in restricted execution; rerun permitted local listener, same test settings"
+  },
+  "buildAdvisories": [
+    "existing large bundle advisory, no build failure"
+  ],
+  "visualReview": "visual-review.json",
+  "unmetSurfaceIntervals": "surface-interval-errors.json"
+}

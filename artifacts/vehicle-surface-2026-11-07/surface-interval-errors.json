@@ -1,0 +1,87 @@
+{
+  "scope": "additional surface comparisons; not hidden inside physical-dimension metricPass",
+  "rows": [
+    {
+      "metric": "noseHeight",
+      "observedCalibratedLdu": [
+        73.1984789014191,
+        77.92096141118807
+      ],
+      "actualLdu": 64,
+      "errorFromMidLdu": -11.559720156303584,
+      "basis": "native cover top; nose is front lip, hood is main deck"
+    },
+    {
+      "metric": "hoodHeight",
+      "observedCalibratedLdu": [
+        80.28220266607255,
+        85.00468517584153
+      ],
+      "actualLdu": 80,
+      "errorFromMidLdu": -2.64344392095704,
+      "basis": "native cover top; nose is front lip, hood is main deck"
+    },
+    {
+      "metric": "roofHeight",
+      "observedCalibratedLdu": [
+        108.6170977246864,
+        110.97833897957088
+      ],
+      "actualLdu": 112,
+      "errorFromMidLdu": 2.2022816478713594,
+      "basis": "native cover top; nose is front lip, hood is main deck"
+    },
+    {
+      "metric": "tailHeight",
+      "observedCalibratedLdu": [
+        75.55972015630358,
+        80.28220266607255
+      ],
+      "actualLdu": 80,
+      "errorFromMidLdu": 2.079038588811926,
+      "basis": "native cover top; nose is front lip, hood is main deck"
+    },
+    {
+      "metric": "noseWidth",
+      "observedLdu": [
+        140.8,
+        150.39999999999998
+      ],
+      "actualLdu": 160,
+      "errorFromMidLdu": 14.400000000000006
+    },
+    {
+      "metric": "hoodWidth",
+      "observedLdu": [
+        150.39999999999998,
+        156.8
+      ],
+      "actualLdu": 160,
+      "errorFromMidLdu": 6.400000000000006
+    },
+    {
+      "metric": "roofWidth",
+      "observedLdu": [
+        131.2,
+        140.8
+      ],
+      "actualLdu": 120,
+      "errorFromMidLdu": -16.0
+    },
+    {
+      "metric": "tailWidth",
+      "observedLdu": [
+        140.8,
+        150.39999999999998
+      ],
+      "actualLdu": 160,
+      "errorFromMidLdu": 14.400000000000006
+    },
+    {
+      "metric": "groundClearance",
+      "chosenTargetLdu": 11.215895960701314,
+      "actualLdu": 8,
+      "errorLdu": -3.215895960701314
+    }
+  ]
+}
