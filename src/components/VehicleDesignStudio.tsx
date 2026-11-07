@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import NativeAssemblyViewer, { type AssemblyAsset } from "./NativeAssemblyViewer.js";
 import type { BodyPreview } from "../vehicles/body-preview.js";
 import { appearanceGroups, groupPresentation, GROUP_NOTICE } from "../vehicles/appearance-groups.js";
+import VehicleSequencePanel from "./VehicleSequencePanel.js";
 import { PAINT_PALETTE, PAINT_CHANNELS, PAINT_PRESETS, PAINT_VERSION, paintAppearance, parsePaintOptions, createDesignDraft, validateDesignDraft, paintBomCsv, type PaintChannel, type PaintColor, type PaintOptions, type DesignDraft } from "../vehicles/appearance-design.js";
 import "./vehicle-design-studio.css";
 const views = [["perspective", "斜侧"], ["side", "侧面"], ["front", "正面"], ["rear", "背面"], ["top", "俯视"]] as const;
@@ -18,7 +19,10 @@ export default function VehicleDesignStudio({ base, assets, initialDraft, onChan
   const painted=useMemo(()=>paintAppearance(base,options),[base,options]);
   const grouping=useMemo(()=>{try{return appearanceGroups(base);}catch{return undefined;}},[base]);
   const [groupIndex,setGroupIndex]=useState<number|null>(null),[playing,setPlaying]=useState(false);
-  const presentation=useMemo(()=>grouping?groupPresentation(grouping,groupIndex):{},[grouping,groupIndex]);
+  const [mode,setMode]=useState<"groups"|"sequence">("groups");
+  const [sequenceView,setSequenceView]=useState<{visibleInstanceIds?:string[];highlightInstanceIds?:string[]}>({});
+  const groupView=useMemo(()=>grouping?groupPresentation(grouping,groupIndex):{},[grouping,groupIndex]);
+  const presentation=mode==="sequence"?sequenceView:groupView;
   const group=groupIndex===null?undefined:grouping?.groups[groupIndex];
   useEffect(()=>{setPlaying(false);setGroupIndex(null);},[base.contentSha256]);
   useEffect(()=>{
@@ -45,14 +49,15 @@ export default function VehicleDesignStudio({ base, assets, initialDraft, onChan
     </section>
     <div className="vehicle-views" aria-label="模型视角">{views.map(([id,label])=><button type="button" key={id} aria-pressed={view===id} onClick={()=>setView(id)}>{label}</button>)}</div>
     <div data-testid={stageTestId} data-model-hash={base.contentSha256} data-paint-options={JSON.stringify(options)} className="vehicle-render-stage"><NativeAssemblyViewer placements={base.placements} assets={assets} designColors={painted.designColors} {...presentation} view={view} fitToModel showConnections={false} showProxies={false} showPath={false} showZones={false}/></div>
-    <section className="vehicle-groups" aria-label="步骤分组演示" data-group-index={groupIndex??"all"} data-playing={playing}>
+    <div className="vehicle-demo-modes" aria-label="模型演示模式">{[["groups","功能分组概览"],["sequence","拼搭顺序演示（草稿）"]].map(([id,label])=><button key={id} type="button" aria-pressed={mode===id} onClick={()=>{if(mode===id)return;setPlaying(false);setGroupIndex(null);setSequenceView({});setMode(id as "groups"|"sequence");}}>{label}</button>)}</div>
+    {mode==="sequence"?<VehicleSequencePanel key={base.contentSha256} base={base} assets={assets} options={options} onPresentation={setSequenceView} onImportOptions={setOptions}/>:<section className="vehicle-groups" aria-label="步骤分组演示" data-group-index={groupIndex??"all"} data-playing={playing}>
       <div className="vehicle-paint-heading"><strong>步骤分组演示</strong><span>外观分组草稿</span></div>
       <p className="vehicle-group-notice">{GROUP_NOTICE}</p>
       {grouping?<><div className="vehicle-group-controls"><button type="button" disabled={groupIndex===0} onClick={()=>selectGroup(Math.max(0,(groupIndex??1)-1))}>上一步</button><button type="button" disabled={groupIndex===grouping.groups.length-1} onClick={()=>selectGroup(Math.min(grouping.groups.length-1,(groupIndex??-1)+1))}>下一步</button><button type="button" onClick={()=>{if(playing)setPlaying(false);else{if(groupIndex===null||groupIndex===grouping.groups.length-1)setGroupIndex(0);setPlaying(true);}}}>{playing?"暂停":"播放"}</button><button type="button" onClick={()=>selectGroup(null)}>显示全部</button><span>{group?`${groupIndex!+1} / ${grouping.groups.length}`:`全部 ${base.placements.length} 件`}</span></div>
       <input className="vehicle-group-slider" aria-label="分组进度" type="range" min={1} max={grouping.groups.length} value={groupIndex===null?grouping.groups.length:groupIndex+1} onChange={e=>selectGroup(Number(e.target.value)-1)}/>
       <div className="vehicle-group-summary" aria-live="polite"><strong>{group?group.name:"完整模型"}</strong><span>{group?`${group.members.length} 件 · 当前组发光高亮，后续组隐藏`:"所有零件显示，设计配色完整恢复"}</span><p>{group?.use??"选择下一步或播放，逐组查看模型组成；保存和导出始终包含完整模型。"}</p></div>
       {group&&<details className="vehicle-group-members"><summary>当前组编号、用途与来源（{group.members.length} 件）</summary><table><thead><tr><th>实例 / 编号</th><th>用途 / 设计颜色</th><th>来源</th></tr></thead><tbody>{group.members.map(p=><tr key={p.instanceId}><td>{p.instanceId}<br/>{p.partId} × 1</td><td>{p.role}<br/>{PAINT_PALETTE[painted.placements.find(q=>q.instanceId===p.instanceId)!.color].label}</td><td>{p.craft?`${p.craft.caseId} / ${p.craft.localId}`:`原外观分组 ${p.sourceGroup}`}<br/>外部装配未验证</td></tr>)}</tbody></table><p>来源模块的原色、源文件与局部姿态随完整草稿保留；分组编号不代表原说明书步骤。</p></details>}</>:<p role="status">原始分组与模型成员不一致，未开启演示；完整模型和验证状态保持不变。</p>}
-    </section>
+    </section>}
     <div className="vehicle-design-actions"><button type="button" disabled={busy} onClick={()=>void save()}>{busy?"正在保存配色":"保存配色草稿"}</button><button type="button" onClick={()=>void exportDraft()}>导出配色草稿 JSON</button><button type="button" onClick={()=>downloadDesignText(paintBomCsv(painted.bom),"vehicle-colour-bom.csv","text/csv")}>当前配色 BOM</button><label>导入配色草稿 JSON<input type="file" accept="application/json,.json" onChange={e=>{if(e.target.files?.[0])void importDraft(e.target.files[0]);}}/></label></div>
     <p className="vehicle-design-status" role="status">{status}</p>
     <details className="vehicle-paint-bom"><summary>当前配色零件清单（{painted.placements.length} 件）</summary><table><thead><tr><th>编号</th><th>设计颜色</th><th>数量</th><th>实物颜色供应</th></tr></thead><tbody>{painted.bom.map(b=><tr key={b.partId+b.color}><td>{b.partId}</td><td>{PAINT_PALETTE[b.color].label}</td><td>{b.quantity}</td><td>未验证</td></tr>)}</tbody></table></details>

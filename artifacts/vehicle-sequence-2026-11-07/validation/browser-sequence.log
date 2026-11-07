@@ -1,0 +1,13 @@
+[WebServer] (node:53590) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:53602) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/vehicle-body-browser/sequence.spec.ts:46:1 › both actual full-page models support fine sequence, colour save/reopen and source preservation (6.6m)
+  ✓  2 tests/vehicle-body-browser/sequence.spec.ts:53:1 › actual single-file sequence operates after server shutdown and network loss (3.1m)
+
+  Slow test file: tests/vehicle-body-browser/sequence.spec.ts (9.7m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  2 passed (9.7m)

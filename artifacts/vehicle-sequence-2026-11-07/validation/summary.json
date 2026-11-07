@@ -1,0 +1,67 @@
+{
+  "baseline": "74c99c0",
+  "branch": "codex/vehicle-assembly-sequence",
+  "unit": {
+    "files": 79,
+    "passed": 1053,
+    "durationSeconds": 802.75
+  },
+  "sequenceBrowser": {
+    "passed": 2,
+    "durationMinutes": 9.7
+  },
+  "regressionBrowser": {
+    "passed": 8,
+    "durationMinutes": 7.7
+  },
+  "typecheck": "PASS",
+  "build": "PASS_WITH_EXISTING_LARGE_CHUNK_NOTICE",
+  "preservedFiles": 120,
+  "allPreservedHashesMatch": true,
+  "modelGeometryChanged": false,
+  "paidCallsAdded": 0,
+  "published": false,
+  "filePolicy": "Error: page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///workspace/lego-design-byebye/artifacts/vehicle-sequence-2026-11-07/offline/bricklab-sequence-demo.html\nCall log:\n\u001b[2m  - navigating to \"file:///workspace/lego-design-byebye/artifacts/vehicle-sequence-2026-11-07/offline/bricklab-sequence-demo.html\", waiting until \"load\"\u001b[22m\n",
+  "offlineServerStopped": true,
+  "offlineNetworkDisabled": true,
+  "htmlSha256": "d31edbb6fd5f8340913e4de62e12ee5b27443559bd327935a266edff1652df3c",
+  "initialCameraTest": "rotation inertia did not converge within wait; test uses stable manually zoomed camera without renderer changes",
+  "documents": [
+    {
+      "scope": "full",
+      "id": "charger",
+      "parts": 158,
+      "bomCount": 158,
+      "steps": 88,
+      "sourceHash": "a44e1e081684666a408cdca577b564655bd58075bf5fc9519af2083d7ced8fc7",
+      "documentSha256": "8d3eb85a51ae1e0fc83a9a017aab23a715aaeeb5a5ede5f60b530107280437fa"
+    },
+    {
+      "scope": "full",
+      "id": "golf",
+      "parts": 160,
+      "bomCount": 160,
+      "steps": 88,
+      "sourceHash": "035cad4a2321f4b56499a9cf2f4a615272796a804d7ab301e95c9d920986e5ab",
+      "documentSha256": "9a707eda154d5cc41e246488e33aee7716fb49029ce9e4c0306c3656c10089cc"
+    },
+    {
+      "scope": "offline",
+      "id": "charger",
+      "parts": 158,
+      "bomCount": 158,
+      "steps": 88,
+      "sourceHash": "a44e1e081684666a408cdca577b564655bd58075bf5fc9519af2083d7ced8fc7",
+      "documentSha256": "8d3eb85a51ae1e0fc83a9a017aab23a715aaeeb5a5ede5f60b530107280437fa"
+    },
+    {
+      "scope": "offline",
+      "id": "golf",
+      "parts": 160,
+      "bomCount": 160,
+      "steps": 88,
+      "sourceHash": "035cad4a2321f4b56499a9cf2f4a615272796a804d7ab301e95c9d920986e5ab",
+      "documentSha256": "9a707eda154d5cc41e246488e33aee7716fb49029ce9e4c0306c3656c10089cc"
+    }
+  ]
+}

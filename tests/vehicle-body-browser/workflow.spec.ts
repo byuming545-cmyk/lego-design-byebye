@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 let job: any;
-const output="artifacts/vehicle-interactions-2026-11-07/workflow-regression";
+const output="artifacts/vehicle-sequence-2026-11-07/regression/workflow-regression";
 test.beforeAll(async () => {
   await mkdir(output,{recursive:true});
   job = JSON.parse(

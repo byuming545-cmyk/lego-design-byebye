@@ -51,7 +51,7 @@
     "evidence:vehicle-surfaces": "node --import tsx src/cli/vehicle-surface-evidence.ts",
     "evidence:vehicle-craft": "node --import tsx src/cli/vehicle-craft-evidence.ts",
     "evidence:vehicle-presentation": "node --import tsx src/cli/vehicle-presentation.ts",
-    "export:vehicle-review": "node scripts/export-vehicle-review.mjs"
+    "export:vehicle-review": "node --import tsx scripts/export-vehicle-review.mjs"
   },
   "dependencies": {
     "@fontsource/noto-sans-sc": "^5.2.9",

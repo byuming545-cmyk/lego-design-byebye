@@ -1,0 +1,60 @@
+[WebServer] (node:52929) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:52941) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/vehicle-body-browser/sequence.spec.ts:45:1 › both actual full-page models support fine sequence, colour save/reopen and source preservation (1.0m)
+(node:53156) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/vehicle-body-browser/sequence.spec.ts:52:1 › actual single-file sequence operates after server shutdown and network loss (31.2s)
+
+
+  1) tests/vehicle-body-browser/sequence.spec.ts:45:1 › both actual full-page models support fine sequence, colour save/reopen and source preservation 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 25000ms exceeded while waiting on the predicate
+
+      16 |  await expect(panel).toHaveAttribute('data-step-index','all');await expect(panel.getByText('建议顺序演示，连接、安装路径与实物拼搭尚未完整验证。',{exact:true})).toBeVisible();
+      17 |  await canvas.evaluate(el=>(window as any).sequenceCanvas=el);const colours=await canvas.getAttribute('data-material-colours');
+    > 18 |  const b=(await canvas.boundingBox())!;await page.mouse.move(b.x+b.width*.52,b.y+b.height*.5);await page.mouse.down();await page.mouse.move(b.x+b.width*.58,b.y+b.height*.52,{steps:6});await page.mouse.up();await expect.poll(async()=>{const a=await canvas.getAttribute('data-camera-position');await page.waitForTimeout(300);return a===await canvas.getAttribute('data-camera-position');},{timeout:25000}).toBe(true);
+         |                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+      19 |  const camera=await canvas.getAttribute('data-camera-position'),target=await canvas.getAttribute('data-camera-target');
+      20 |  await panel.getByRole('button',{name:'开始演示',exact:true}).click();await expect(panel).toHaveAttribute('data-step-index','0');await panel.getByRole('button',{name:'下一步',exact:true}).click();await expect(panel).toHaveAttribute('data-step-index','1');await panel.getByRole('button',{name:'上一步',exact:true}).click();await expect(panel).toHaveAttribute('data-step-index','0');
+      21 |  const frames:any[]=[];
+        at checkSequence (/workspace/lego-design-byebye/tests/vehicle-body-browser/sequence.spec.ts:18:404)
+        at /workspace/lego-design-byebye/tests/vehicle-body-browser/sequence.spec.ts:47:204
+
+    Error Context: test-results/vehicle-body/sequence-both-actual-full--946df-pen-and-source-preservation/error-context.md
+
+  2) tests/vehicle-body-browser/sequence.spec.ts:52:1 › actual single-file sequence operates after server shutdown and network loss 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 25000ms exceeded while waiting on the predicate
+
+      16 |  await expect(panel).toHaveAttribute('data-step-index','all');await expect(panel.getByText('建议顺序演示，连接、安装路径与实物拼搭尚未完整验证。',{exact:true})).toBeVisible();
+      17 |  await canvas.evaluate(el=>(window as any).sequenceCanvas=el);const colours=await canvas.getAttribute('data-material-colours');
+    > 18 |  const b=(await canvas.boundingBox())!;await page.mouse.move(b.x+b.width*.52,b.y+b.height*.5);await page.mouse.down();await page.mouse.move(b.x+b.width*.58,b.y+b.height*.52,{steps:6});await page.mouse.up();await expect.poll(async()=>{const a=await canvas.getAttribute('data-camera-position');await page.waitForTimeout(300);return a===await canvas.getAttribute('data-camera-position');},{timeout:25000}).toBe(true);
+         |                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+      19 |  const camera=await canvas.getAttribute('data-camera-position'),target=await canvas.getAttribute('data-camera-target');
+      20 |  await panel.getByRole('button',{name:'开始演示',exact:true}).click();await expect(panel).toHaveAttribute('data-step-index','0');await panel.getByRole('button',{name:'下一步',exact:true}).click();await expect(panel).toHaveAttribute('data-step-index','1');await panel.getByRole('button',{name:'上一步',exact:true}).click();await expect(panel).toHaveAttribute('data-step-index','0');
+      21 |  const frames:any[]=[];
+        at checkSequence (/workspace/lego-design-byebye/tests/vehicle-body-browser/sequence.spec.ts:18:404)
+        at /workspace/lego-design-byebye/tests/vehicle-body-browser/sequence.spec.ts:54:226
+
+    Error Context: test-results/vehicle-body/sequence-actual-single-fil-3d4e9-r-shutdown-and-network-loss/error-context.md
+
+  2 failed
+    tests/vehicle-body-browser/sequence.spec.ts:45:1 › both actual full-page models support fine sequence, colour save/reopen and source preservation 
+    tests/vehicle-body-browser/sequence.spec.ts:52:1 › actual single-file sequence operates after server shutdown and network loss 

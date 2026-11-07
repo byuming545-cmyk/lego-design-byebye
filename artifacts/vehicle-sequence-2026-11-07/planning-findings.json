@@ -1,0 +1,238 @@
+{
+  "charger": {
+    "steps": 88,
+    "parts": 158,
+    "maxAdd": 2,
+    "noEarlierProjection": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      39,
+      45,
+      46
+    ],
+    "positiveNativeVerticalGap": [
+      14,
+      15,
+      28,
+      29,
+      58,
+      59,
+      67,
+      70,
+      71,
+      72,
+      73,
+      75,
+      76,
+      78
+    ],
+    "unknownSupport": 88,
+    "unknownInstallationPath": 88,
+    "physicalBuild": false,
+    "stageRanges": [
+      {
+        "id": "base",
+        "name": "底部承托",
+        "startStep": 1,
+        "endStep": 1,
+        "reason": "先展示模型中实际存在的底部承托，建立整车位置参照。"
+      },
+      {
+        "id": "lower",
+        "name": "车身下部",
+        "startStep": 2,
+        "endStep": 13,
+        "reason": "先展示低位侧裙，随后再展示上方侧面覆盖。"
+      },
+      {
+        "id": "arches",
+        "name": "轮拱区域",
+        "startStep": 14,
+        "endStep": 15,
+        "reason": "用原轮拱位置标明车轮包围区域；轮胎净空和接口仍未知。"
+      },
+      {
+        "id": "body",
+        "name": "侧面与腰线",
+        "startStep": 16,
+        "endStep": 38,
+        "reason": "按实际几何高度由下向上展开侧面，邻近的同用途零件可小组展示。"
+      },
+      {
+        "id": "front",
+        "name": "前脸与保险杠",
+        "startStep": 39,
+        "endStep": 44,
+        "reason": "先展示前脸层次，机盖覆盖稍后出现，避免过早遮挡观察。"
+      },
+      {
+        "id": "rear",
+        "name": "尾部面板与灯区",
+        "startStep": 45,
+        "endStep": 47,
+        "reason": "先展示尾部面板与灯区，随后展示上方覆盖。"
+      },
+      {
+        "id": "cover",
+        "name": "机盖与前后覆盖",
+        "startStep": 48,
+        "endStep": 69,
+        "reason": "下部和饰件展示之后，再按原生几何高度展开上方覆盖；不证明安装路径可行。"
+      },
+      {
+        "id": "pillars",
+        "name": "窗柱",
+        "startStep": 70,
+        "endStep": 71,
+        "reason": "窗柱单独展示，便于观察其与后续窗区、车顶的位置关系。"
+      },
+      {
+        "id": "cabin",
+        "name": "窗区",
+        "startStep": 72,
+        "endStep": 78,
+        "reason": "前挡、侧窗与后窗分别呈现；黑色积木仅表达玻璃外观。"
+      },
+      {
+        "id": "roof",
+        "name": "车顶封盖",
+        "startStep": 79,
+        "endStep": 80,
+        "reason": "车顶较晚展示，让座舱内部和窗柱在此前保持可见。"
+      },
+      {
+        "id": "wheels",
+        "name": "轮胎与轮毂",
+        "startStep": 81,
+        "endStep": 88,
+        "reason": "轮组放在最后逐件展示，单独强调轮胎/轮毂配合与底盘安装未知；这不是已证实的安装时机。"
+      }
+    ]
+  },
+  "golf": {
+    "steps": 88,
+    "parts": 160,
+    "maxAdd": 2,
+    "noEarlierProjection": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      44,
+      45,
+      47,
+      48
+    ],
+    "positiveNativeVerticalGap": [
+      10,
+      11,
+      50,
+      51,
+      52,
+      53,
+      54,
+      67,
+      70,
+      71,
+      72
+    ],
+    "unknownSupport": 88,
+    "unknownInstallationPath": 88,
+    "physicalBuild": false,
+    "stageRanges": [
+      {
+        "id": "base",
+        "name": "底部承托",
+        "startStep": 1,
+        "endStep": 1,
+        "reason": "先展示模型中实际存在的底部承托，建立整车位置参照。"
+      },
+      {
+        "id": "lower",
+        "name": "车身下部",
+        "startStep": 2,
+        "endStep": 9,
+        "reason": "先展示低位侧裙，随后再展示上方侧面覆盖。"
+      },
+      {
+        "id": "arches",
+        "name": "轮拱区域",
+        "startStep": 10,
+        "endStep": 11,
+        "reason": "用原轮拱位置标明车轮包围区域；轮胎净空和接口仍未知。"
+      },
+      {
+        "id": "body",
+        "name": "侧面与腰线",
+        "startStep": 12,
+        "endStep": 43,
+        "reason": "按实际几何高度由下向上展开侧面，邻近的同用途零件可小组展示。"
+      },
+      {
+        "id": "front",
+        "name": "前脸与保险杠",
+        "startStep": 44,
+        "endStep": 46,
+        "reason": "先展示前脸层次，机盖覆盖稍后出现，避免过早遮挡观察。"
+      },
+      {
+        "id": "rear",
+        "name": "尾部面板与灯区",
+        "startStep": 47,
+        "endStep": 49,
+        "reason": "先展示尾部面板与灯区，随后展示上方覆盖。"
+      },
+      {
+        "id": "cover",
+        "name": "机盖与前后覆盖",
+        "startStep": 50,
+        "endStep": 59,
+        "reason": "下部和饰件展示之后，再按原生几何高度展开上方覆盖；不证明安装路径可行。"
+      },
+      {
+        "id": "pillars",
+        "name": "窗柱",
+        "startStep": 60,
+        "endStep": 65,
+        "reason": "窗柱单独展示，便于观察其与后续窗区、车顶的位置关系。"
+      },
+      {
+        "id": "cabin",
+        "name": "窗区",
+        "startStep": 66,
+        "endStep": 77,
+        "reason": "前挡、侧窗与后窗分别呈现；黑色积木仅表达玻璃外观。"
+      },
+      {
+        "id": "roof",
+        "name": "车顶封盖",
+        "startStep": 78,
+        "endStep": 80,
+        "reason": "车顶较晚展示，让座舱内部和窗柱在此前保持可见。"
+      },
+      {
+        "id": "wheels",
+        "name": "轮胎与轮毂",
+        "startStep": 81,
+        "endStep": 88,
+        "reason": "轮组放在最后逐件展示，单独强调轮胎/轮毂配合与底盘安装未知；这不是已证实的安装时机。"
+      }
+    ]
+  }
+}

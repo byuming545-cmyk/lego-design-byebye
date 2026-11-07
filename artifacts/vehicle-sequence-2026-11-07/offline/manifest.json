@@ -1,0 +1,36 @@
+{
+  "scope": "SELF_CONTAINED_SAVED_EXAMPLES_NOT_NEW_GENERATION",
+  "designSchema": "bricklab-vehicle-colour-draft-1",
+  "paintVersion": "functional-role-paint-1",
+  "groupVersion": "functional-appearance-groups-1",
+  "sequenceSchema": "bricklab-vehicle-sequence-demo-1",
+  "sequenceVersion": "native-role-spatial-sequence-1",
+  "models": {
+    "charger": {
+      "baseSha256": "a44e1e081684666a408cdca577b564655bd58075bf5fc9519af2083d7ced8fc7",
+      "parts": 158,
+      "kinds": 21,
+      "steps": 88,
+      "sequenceDocumentSha256": "751a50ecaaf68c1cc394451f6f70a5e41b9f6b52f7405a5887a01c07dc11ca1e"
+    },
+    "golf": {
+      "baseSha256": "035cad4a2321f4b56499a9cf2f4a615272796a804d7ab301e95c9d920986e5ab",
+      "parts": 160,
+      "kinds": 15,
+      "steps": 88,
+      "sequenceDocumentSha256": "a37c56f4d1dc92bc71fab10fd7a0b0368e5e61f6c9fb8bb20775c2fe7c5a7072"
+    }
+  },
+  "logicHashes": {
+    "src/vehicles/appearance-design.ts": "2eaf6931d959450e1ce65a261b993c9f05f180872edd525ebd0766fd16a38fd4",
+    "src/vehicles/appearance-groups.ts": "afc516d4328b6d69c1d6c07611bb08a57a982470f45eb5ce78f550fb8e28e2aa",
+    "src/vehicles/appearance-sequence.ts": "6876bde6e3431479367adea560554bc4b8919df5a69e7390d4ecd35ba5405f53",
+    "src/components/VehicleSequencePanel.tsx": "7d394d51ca5a7ff12d3e17d636ba70d561441621b7dce5ca8a95deefd6876638",
+    "src/components/VehicleDesignStudio.tsx": "c3e0a0d4a021367d71b2c4f617354c8c0de71e877a59c5d505e5eab7be6857b0",
+    "src/components/NativeAssemblyViewer.tsx": "334f39adb9bddbd2ac05cab368188483dffb12a2a4aaa8524e0df00c1027e0bd"
+  },
+  "htmlSha256": "d31edbb6fd5f8340913e4de62e12ee5b27443559bd327935a266edff1652df3c",
+  "externalRuntimeDependencies": 0,
+  "assemblyQualification": "UNCHANGED_NOT_VERIFIED",
+  "steps": "DRAFT_NOT_BUILD_INSTRUCTIONS"
+}

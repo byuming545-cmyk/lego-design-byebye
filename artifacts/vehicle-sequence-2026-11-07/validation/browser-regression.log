@@ -1,0 +1,17 @@
+[WebServer] (node:55714) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+(node:55726) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/vehicle-body-browser/paint-groups.spec.ts:52:1 › real full-page colours, seven actual functional groups and immutable API save/reopen (2.7m)
+  ✓  2 tests/vehicle-body-browser/paint-groups.spec.ts:69:1 › same single HTML works self-contained without networking, saves complete drafts and restores colours (1.4m)
+  ✓  3 tests/vehicle-body-browser/presentation.spec.ts:6:1 › two real cached-input generations, five views, repeated generation and persistent reopening (2.4m)
+  ✓  4 tests/vehicle-body-browser/presentation.spec.ts:43:1 › failed submission keeps the old model and retries against the actual API (30.8s)
+  ✓  5 tests/vehicle-body-browser/presentation.spec.ts:50:1 › saved examples reopen offline after reload and never pretend to execute a generation (4.1s)
+  ✓  6 tests/vehicle-body-browser/presentation.spec.ts:57:1 › narrow display keeps the model and controls within the viewport (1.6s)
+  ✓  7 tests/vehicle-body-browser/presentation.spec.ts:61:1 › missing job and unsupported year fail visibly while prepared examples remain available (914ms)
+  ✓  8 tests/vehicle-body-browser/presentation.spec.ts:66:1 › query interruption remains unknown and resumes the same actual job without a duplicate submission (31.3s)
+
+  8 passed (7.7m)

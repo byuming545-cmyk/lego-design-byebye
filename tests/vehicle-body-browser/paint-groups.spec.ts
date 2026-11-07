@@ -5,7 +5,7 @@ import {pathToFileURL} from 'node:url';
 import path from 'node:path';
 import {appearanceGroups} from '../../src/vehicles/appearance-groups.js';
 import {PAINT_PALETTE,paintAppearance,validateDesignDraft,designDigest,PAINT_PRESETS} from '../../src/vehicles/appearance-design.js';
-const output=process.env.VEHICLE_INTERACTION_OUTPUT??'artifacts/vehicle-interactions-2026-11-07/browser-final';
+const output=process.env.VEHICLE_INTERACTION_OUTPUT??'artifacts/vehicle-sequence-2026-11-07/regression/paint';
 const root=process.env.VEHICLE_BODY_BROWSER_DATA_DIR??'/tmp/bricklab-vehicle-body-browser';
 const examples:Record<string,any>={};
 test.beforeAll(async()=>{await mkdir(output,{recursive:true});for(const id of ['charger','golf']){const data=JSON.parse(await readFile(`public/vehicle-demos/${id}.json`,'utf8'));examples[id]=data;const dir=`${root}/vehicle-platform/${data.job.id}`;await mkdir(dir,{recursive:true});await writeFile(`${dir}/job.json`,JSON.stringify(data.job));}});
@@ -67,7 +67,7 @@ test('real full-page colours, seven actual functional groups and immutable API s
  expect(calls.filter(p=>p==='/api/vehicles/jobs')).toEqual([]);expect(errors).toEqual([]);await writeFile(`${output}/full-checks.json`,JSON.stringify({cars:2,groups:7,allEightColours:true,routeMocks:0,calls,errors,apiSavedDigest:saved.contentSha256,geometryUnchanged:true,cameraStable:true,exportContainsHiddenParts:true},null,2));
 });
 test('same single HTML works self-contained without networking, saves complete drafts and restores colours',async({browser})=>{
- test.setTimeout(240000);const file=path.resolve('artifacts/vehicle-interactions-2026-11-07/offline-final/bricklab-paint-steps.html'),html=await readFile(file,'utf8');expect(html).not.toMatch(/<(script|link)\b[^>]*(src|href)=["']https?:/i);
+ test.setTimeout(240000);const file=path.resolve('artifacts/vehicle-sequence-2026-11-07/offline/bricklab-sequence-demo.html'),html=await readFile(file,'utf8');expect(html).not.toMatch(/<(script|link)\b[^>]*(src|href)=["']https?:/i);
  const server=createServer((_q,r)=>{r.setHeader('Content-Type','text/html; charset=utf-8');r.end(html);});await new Promise<void>(r=>server.listen(0,'127.0.0.1',r));const port=(server.address() as any).port;
  const context=await browser.newContext({viewport:{width:1440,height:1100}}),page=await context.newPage(),requests:string[]=[],errors:string[]=[];page.on('request',r=>requests.push(r.url()));page.on('pageerror',e=>errors.push(e.message));
  try{

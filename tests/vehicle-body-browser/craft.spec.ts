@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { readFile, writeFile, mkdir, cp, readdir } from "node:fs/promises";
 const root = process.env.VEHICLE_BODY_BROWSER_DATA_DIR ?? "/tmp/bricklab-vehicle-body-browser";
 const artifacts = "artifacts/vehicle-presentation-2026-11-07/craft-controls";
-const output = "artifacts/vehicle-interactions-2026-11-07/craft-regression";
+const output = "artifacts/vehicle-sequence-2026-11-07/regression/craft-regression";
 const cases = new Map<string, any>();
 test.beforeAll(async () => {
     await mkdir(output, { recursive: true });
