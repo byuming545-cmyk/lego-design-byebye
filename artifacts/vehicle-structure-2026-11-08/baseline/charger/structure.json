@@ -1,0 +1,6975 @@
+{
+  "version": "source-pose-occupancy-collision-1",
+  "versions": {
+    "assembly": "native-assembly-0.8.0-import-snapshot",
+    "collision": "native-exterior-shell-4.1.0-contact-regions",
+    "connection": "source-stud-2.0.0-connector-grammar-2"
+  },
+  "scope": "WHOLE_MODEL_FINAL_POSE_AUDIT_NOT_PHYSICAL_CERTIFICATE",
+  "edges": [
+    {
+      "id": "joint-0",
+      "fixedInstanceId": "craft-nose-cover-0-source-102",
+      "movingInstanceId": "craft-nose-cover-0-source-103",
+      "fixedConnectionId": "p/stud.dat:8:3",
+      "movingConnectionId": "parts/s/15068s01.dat:9:3",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "anchor": [
+        -70,
+        -71.99993902,
+        -190
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-1",
+      "fixedInstanceId": "craft-nose-cover-0-source-102",
+      "movingInstanceId": "craft-nose-cover-0-source-103",
+      "fixedConnectionId": "p/stud.dat:8:2",
+      "movingConnectionId": "parts/s/15068s01.dat:9:4",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "anchor": [
+        -50,
+        -71.99993902,
+        -190
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-2",
+      "fixedInstanceId": "craft-nose-cover-0-source-102",
+      "movingInstanceId": "craft-nose-cover-0-source-104",
+      "fixedConnectionId": "p/stud.dat:8:1",
+      "movingConnectionId": "parts/s/3069bs01.dat:8:0",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "anchor": [
+        -70,
+        -71.99993902,
+        -170
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-3",
+      "fixedInstanceId": "craft-nose-cover-0-source-102",
+      "movingInstanceId": "craft-nose-cover-0-source-104",
+      "fixedConnectionId": "p/stud.dat:8:0",
+      "movingConnectionId": "parts/s/3069bs01.dat:8:1",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "anchor": [
+        -50,
+        -71.99993902,
+        -170
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-4",
+      "fixedInstanceId": "craft-nose-cover-1-source-102",
+      "movingInstanceId": "craft-nose-cover-1-source-103",
+      "fixedConnectionId": "p/stud.dat:8:3",
+      "movingConnectionId": "parts/s/15068s01.dat:9:3",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "anchor": [
+        -30,
+        -71.99993902,
+        -190
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-5",
+      "fixedInstanceId": "craft-nose-cover-1-source-102",
+      "movingInstanceId": "craft-nose-cover-1-source-103",
+      "fixedConnectionId": "p/stud.dat:8:2",
+      "movingConnectionId": "parts/s/15068s01.dat:9:4",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "anchor": [
+        -10,
+        -71.99993902,
+        -190
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-6",
+      "fixedInstanceId": "craft-nose-cover-1-source-102",
+      "movingInstanceId": "craft-nose-cover-1-source-104",
+      "fixedConnectionId": "p/stud.dat:8:1",
+      "movingConnectionId": "parts/s/3069bs01.dat:8:0",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "anchor": [
+        -30,
+        -71.99993902,
+        -170
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-7",
+      "fixedInstanceId": "craft-nose-cover-1-source-102",
+      "movingInstanceId": "craft-nose-cover-1-source-104",
+      "fixedConnectionId": "p/stud.dat:8:0",
+      "movingConnectionId": "parts/s/3069bs01.dat:8:1",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "anchor": [
+        -10,
+        -71.99993902,
+        -170
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-8",
+      "fixedInstanceId": "craft-nose-cover-2-source-102",
+      "movingInstanceId": "craft-nose-cover-2-source-103",
+      "fixedConnectionId": "p/stud.dat:8:3",
+      "movingConnectionId": "parts/s/15068s01.dat:9:3",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "anchor": [
+        10,
+        -71.99993902,
+        -190
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-9",
+      "fixedInstanceId": "craft-nose-cover-2-source-102",
+      "movingInstanceId": "craft-nose-cover-2-source-103",
+      "fixedConnectionId": "p/stud.dat:8:2",
+      "movingConnectionId": "parts/s/15068s01.dat:9:4",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "anchor": [
+        30,
+        -71.99993902,
+        -190
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-10",
+      "fixedInstanceId": "craft-nose-cover-2-source-102",
+      "movingInstanceId": "craft-nose-cover-2-source-104",
+      "fixedConnectionId": "p/stud.dat:8:1",
+      "movingConnectionId": "parts/s/3069bs01.dat:8:0",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "anchor": [
+        10,
+        -71.99993902,
+        -170
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-11",
+      "fixedInstanceId": "craft-nose-cover-2-source-102",
+      "movingInstanceId": "craft-nose-cover-2-source-104",
+      "fixedConnectionId": "p/stud.dat:8:0",
+      "movingConnectionId": "parts/s/3069bs01.dat:8:1",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "anchor": [
+        30,
+        -71.99993902,
+        -170
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-12",
+      "fixedInstanceId": "craft-nose-cover-3-source-102",
+      "movingInstanceId": "craft-nose-cover-3-source-103",
+      "fixedConnectionId": "p/stud.dat:8:3",
+      "movingConnectionId": "parts/s/15068s01.dat:9:3",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "anchor": [
+        50,
+        -71.99993902,
+        -190
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-13",
+      "fixedInstanceId": "craft-nose-cover-3-source-102",
+      "movingInstanceId": "craft-nose-cover-3-source-103",
+      "fixedConnectionId": "p/stud.dat:8:2",
+      "movingConnectionId": "parts/s/15068s01.dat:9:4",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "anchor": [
+        70,
+        -71.99993902,
+        -190
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-14",
+      "fixedInstanceId": "craft-nose-cover-3-source-102",
+      "movingInstanceId": "craft-nose-cover-3-source-104",
+      "fixedConnectionId": "p/stud.dat:8:1",
+      "movingConnectionId": "parts/s/3069bs01.dat:8:0",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "anchor": [
+        50,
+        -71.99993902,
+        -170
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-15",
+      "fixedInstanceId": "craft-nose-cover-3-source-102",
+      "movingInstanceId": "craft-nose-cover-3-source-104",
+      "fixedConnectionId": "p/stud.dat:8:0",
+      "movingConnectionId": "parts/s/3069bs01.dat:8:1",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "anchor": [
+        70,
+        -71.99993902,
+        -170
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-16",
+      "fixedInstanceId": "craft-front-fascia-0-source-0",
+      "movingInstanceId": "craft-front-fascia-0-source-1",
+      "fixedConnectionId": "p/stud.dat:8:8",
+      "movingConnectionId": "parts/3666.dat:8:11",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "anchor": [
+        -50,
+        -53.99993902,
+        -204
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-17",
+      "fixedInstanceId": "craft-front-fascia-0-source-0",
+      "movingInstanceId": "craft-front-fascia-0-source-1",
+      "fixedConnectionId": "p/stud.dat:8:9",
+      "movingConnectionId": "parts/3666.dat:8:12",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "anchor": [
+        -30,
+        -53.99993902,
+        -204
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-18",
+      "fixedInstanceId": "craft-front-fascia-0-source-0",
+      "movingInstanceId": "craft-front-fascia-0-source-1",
+      "fixedConnectionId": "p/stud.dat:8:10",
+      "movingConnectionId": "parts/3666.dat:8:13",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "anchor": [
+        -10,
+        -53.99993902,
+        -204
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-19",
+      "fixedInstanceId": "craft-front-fascia-0-source-0",
+      "movingInstanceId": "craft-front-fascia-0-source-1",
+      "fixedConnectionId": "p/stud.dat:8:11",
+      "movingConnectionId": "parts/3666.dat:8:14",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "anchor": [
+        10,
+        -53.99993902,
+        -204
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-20",
+      "fixedInstanceId": "craft-front-fascia-0-source-0",
+      "movingInstanceId": "craft-front-fascia-0-source-1",
+      "fixedConnectionId": "p/stud.dat:8:12",
+      "movingConnectionId": "parts/3666.dat:8:15",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "anchor": [
+        30,
+        -53.99993902,
+        -204
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-21",
+      "fixedInstanceId": "craft-front-fascia-0-source-0",
+      "movingInstanceId": "craft-front-fascia-0-source-1",
+      "fixedConnectionId": "p/stud.dat:8:13",
+      "movingConnectionId": "parts/3666.dat:8:16",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "anchor": [
+        50,
+        -53.99993902,
+        -204
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-22",
+      "fixedInstanceId": "craft-front-fascia-0-source-0",
+      "movingInstanceId": "craft-front-fascia-0-source-2",
+      "fixedConnectionId": "p/stud.dat:8:14",
+      "movingConnectionId": "parts/s/54200s01.dat:8:0",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 90,
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "anchor": [
+        70,
+        -53.99993902,
+        -204
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-23",
+      "fixedInstanceId": "craft-front-fascia-0-source-0",
+      "movingInstanceId": "craft-front-fascia-0-source-3",
+      "fixedConnectionId": "p/stud.dat:8:7",
+      "movingConnectionId": "parts/s/54200s01.dat:8:0",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 270,
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "anchor": [
+        -70,
+        -53.99993902,
+        -204
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-24",
+      "fixedInstanceId": "craft-front-fascia-0-source-1",
+      "movingInstanceId": "craft-front-fascia-0-source-4",
+      "fixedConnectionId": "p/stud.dat:8:7",
+      "movingConnectionId": "parts/2412b.dat:9:0",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "anchor": [
+        -10,
+        -53.99993902,
+        -212
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-25",
+      "fixedInstanceId": "craft-front-fascia-0-source-1",
+      "movingInstanceId": "craft-front-fascia-0-source-4",
+      "fixedConnectionId": "p/stud.dat:8:8",
+      "movingConnectionId": "parts/2412b.dat:9:1",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "anchor": [
+        10,
+        -53.99993902,
+        -212
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-26",
+      "fixedInstanceId": "craft-front-fascia-0-source-1",
+      "movingInstanceId": "craft-front-fascia-0-source-5",
+      "fixedConnectionId": "p/stud.dat:8:9",
+      "movingConnectionId": "parts/s/3069bs01.dat:8:0",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "anchor": [
+        30,
+        -53.99993902,
+        -212
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-27",
+      "fixedInstanceId": "craft-front-fascia-0-source-1",
+      "movingInstanceId": "craft-front-fascia-0-source-5",
+      "fixedConnectionId": "p/stud.dat:8:10",
+      "movingConnectionId": "parts/s/3069bs01.dat:8:1",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "anchor": [
+        50,
+        -53.99993902,
+        -212
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-28",
+      "fixedInstanceId": "craft-front-fascia-0-source-1",
+      "movingInstanceId": "craft-front-fascia-0-source-6",
+      "fixedConnectionId": "p/stud.dat:8:5",
+      "movingConnectionId": "parts/s/3069bs01.dat:8:0",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "anchor": [
+        -50,
+        -53.99993902,
+        -212
+      ],
+      "insertionDepthLdu": 4
+    },
+    {
+      "id": "joint-29",
+      "fixedInstanceId": "craft-front-fascia-0-source-1",
+      "movingInstanceId": "craft-front-fascia-0-source-6",
+      "fixedConnectionId": "p/stud.dat:8:6",
+      "movingConnectionId": "parts/s/3069bs01.dat:8:1",
+      "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+      "ruleVersion": "source-stud-2.0.0-connector-grammar-2",
+      "twistDeg": 0,
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "anchor": [
+        -30,
+        -53.99993902,
+        -212
+      ],
+      "insertionDepthLdu": 4
+    }
+  ],
+  "rejectedOccupancyEdges": [],
+  "occupancy": {
+    "valid": true,
+    "issues": []
+  },
+  "components": [
+    [
+      "craft-front-fascia-0-source-0",
+      "craft-front-fascia-0-source-1",
+      "craft-front-fascia-0-source-2",
+      "craft-front-fascia-0-source-3",
+      "craft-front-fascia-0-source-4",
+      "craft-front-fascia-0-source-5",
+      "craft-front-fascia-0-source-6"
+    ],
+    [
+      "craft-nose-cover-0-source-102",
+      "craft-nose-cover-0-source-103",
+      "craft-nose-cover-0-source-104"
+    ],
+    [
+      "craft-nose-cover-1-source-102",
+      "craft-nose-cover-1-source-103",
+      "craft-nose-cover-1-source-104"
+    ],
+    [
+      "craft-nose-cover-2-source-102",
+      "craft-nose-cover-2-source-103",
+      "craft-nose-cover-2-source-104"
+    ],
+    [
+      "craft-nose-cover-3-source-102",
+      "craft-nose-cover-3-source-103",
+      "craft-nose-cover-3-source-104"
+    ],
+    [
+      "craft-front-apron"
+    ],
+    [
+      "craft-front-bumper"
+    ],
+    [
+      "craft-side--1--188000"
+    ],
+    [
+      "craft-side--1--196000"
+    ],
+    [
+      "craft-side--1-lower"
+    ],
+    [
+      "craft-side-1--188000"
+    ],
+    [
+      "craft-side-1--196000"
+    ],
+    [
+      "craft-side-1-lower"
+    ],
+    [
+      "vehicle-part-1"
+    ],
+    [
+      "vehicle-part-10"
+    ],
+    [
+      "vehicle-part-100"
+    ],
+    [
+      "vehicle-part-101"
+    ],
+    [
+      "vehicle-part-102"
+    ],
+    [
+      "vehicle-part-103"
+    ],
+    [
+      "vehicle-part-104"
+    ],
+    [
+      "vehicle-part-105"
+    ],
+    [
+      "vehicle-part-106"
+    ],
+    [
+      "vehicle-part-107"
+    ],
+    [
+      "vehicle-part-108"
+    ],
+    [
+      "vehicle-part-109"
+    ],
+    [
+      "vehicle-part-11"
+    ],
+    [
+      "vehicle-part-110"
+    ],
+    [
+      "vehicle-part-111"
+    ],
+    [
+      "vehicle-part-112"
+    ],
+    [
+      "vehicle-part-113"
+    ],
+    [
+      "vehicle-part-114"
+    ],
+    [
+      "vehicle-part-115"
+    ],
+    [
+      "vehicle-part-116"
+    ],
+    [
+      "vehicle-part-117"
+    ],
+    [
+      "vehicle-part-118"
+    ],
+    [
+      "vehicle-part-119"
+    ],
+    [
+      "vehicle-part-12"
+    ],
+    [
+      "vehicle-part-120"
+    ],
+    [
+      "vehicle-part-121"
+    ],
+    [
+      "vehicle-part-122"
+    ],
+    [
+      "vehicle-part-123"
+    ],
+    [
+      "vehicle-part-124"
+    ],
+    [
+      "vehicle-part-125"
+    ],
+    [
+      "vehicle-part-126"
+    ],
+    [
+      "vehicle-part-13"
+    ],
+    [
+      "vehicle-part-131"
+    ],
+    [
+      "vehicle-part-132"
+    ],
+    [
+      "vehicle-part-133"
+    ],
+    [
+      "vehicle-part-134"
+    ],
+    [
+      "vehicle-part-135"
+    ],
+    [
+      "vehicle-part-136"
+    ],
+    [
+      "vehicle-part-137"
+    ],
+    [
+      "vehicle-part-138"
+    ],
+    [
+      "vehicle-part-139"
+    ],
+    [
+      "vehicle-part-14"
+    ],
+    [
+      "vehicle-part-140"
+    ],
+    [
+      "vehicle-part-141"
+    ],
+    [
+      "vehicle-part-142"
+    ],
+    [
+      "vehicle-part-15"
+    ],
+    [
+      "vehicle-part-16"
+    ],
+    [
+      "vehicle-part-17"
+    ],
+    [
+      "vehicle-part-18"
+    ],
+    [
+      "vehicle-part-19"
+    ],
+    [
+      "vehicle-part-2"
+    ],
+    [
+      "vehicle-part-20"
+    ],
+    [
+      "vehicle-part-21"
+    ],
+    [
+      "vehicle-part-22"
+    ],
+    [
+      "vehicle-part-23"
+    ],
+    [
+      "vehicle-part-24"
+    ],
+    [
+      "vehicle-part-25"
+    ],
+    [
+      "vehicle-part-26"
+    ],
+    [
+      "vehicle-part-27"
+    ],
+    [
+      "vehicle-part-28"
+    ],
+    [
+      "vehicle-part-29"
+    ],
+    [
+      "vehicle-part-3"
+    ],
+    [
+      "vehicle-part-30"
+    ],
+    [
+      "vehicle-part-31"
+    ],
+    [
+      "vehicle-part-33"
+    ],
+    [
+      "vehicle-part-35"
+    ],
+    [
+      "vehicle-part-37"
+    ],
+    [
+      "vehicle-part-39"
+    ],
+    [
+      "vehicle-part-4"
+    ],
+    [
+      "vehicle-part-41"
+    ],
+    [
+      "vehicle-part-43"
+    ],
+    [
+      "vehicle-part-44"
+    ],
+    [
+      "vehicle-part-45"
+    ],
+    [
+      "vehicle-part-46"
+    ],
+    [
+      "vehicle-part-47"
+    ],
+    [
+      "vehicle-part-48"
+    ],
+    [
+      "vehicle-part-49"
+    ],
+    [
+      "vehicle-part-5"
+    ],
+    [
+      "vehicle-part-50"
+    ],
+    [
+      "vehicle-part-51"
+    ],
+    [
+      "vehicle-part-52"
+    ],
+    [
+      "vehicle-part-53"
+    ],
+    [
+      "vehicle-part-54"
+    ],
+    [
+      "vehicle-part-55"
+    ],
+    [
+      "vehicle-part-56"
+    ],
+    [
+      "vehicle-part-57"
+    ],
+    [
+      "vehicle-part-58"
+    ],
+    [
+      "vehicle-part-59"
+    ],
+    [
+      "vehicle-part-6"
+    ],
+    [
+      "vehicle-part-60"
+    ],
+    [
+      "vehicle-part-61"
+    ],
+    [
+      "vehicle-part-62"
+    ],
+    [
+      "vehicle-part-63"
+    ],
+    [
+      "vehicle-part-64"
+    ],
+    [
+      "vehicle-part-65"
+    ],
+    [
+      "vehicle-part-67"
+    ],
+    [
+      "vehicle-part-68"
+    ],
+    [
+      "vehicle-part-69"
+    ],
+    [
+      "vehicle-part-7"
+    ],
+    [
+      "vehicle-part-70"
+    ],
+    [
+      "vehicle-part-71"
+    ],
+    [
+      "vehicle-part-72"
+    ],
+    [
+      "vehicle-part-73"
+    ],
+    [
+      "vehicle-part-74"
+    ],
+    [
+      "vehicle-part-75"
+    ],
+    [
+      "vehicle-part-76"
+    ],
+    [
+      "vehicle-part-77"
+    ],
+    [
+      "vehicle-part-78"
+    ],
+    [
+      "vehicle-part-79"
+    ],
+    [
+      "vehicle-part-8"
+    ],
+    [
+      "vehicle-part-80"
+    ],
+    [
+      "vehicle-part-81"
+    ],
+    [
+      "vehicle-part-82"
+    ],
+    [
+      "vehicle-part-83"
+    ],
+    [
+      "vehicle-part-84"
+    ],
+    [
+      "vehicle-part-85"
+    ],
+    [
+      "vehicle-part-86"
+    ],
+    [
+      "vehicle-part-87"
+    ],
+    [
+      "vehicle-part-88"
+    ],
+    [
+      "vehicle-part-89"
+    ],
+    [
+      "vehicle-part-9"
+    ],
+    [
+      "vehicle-part-90"
+    ],
+    [
+      "vehicle-part-91"
+    ],
+    [
+      "vehicle-part-92"
+    ],
+    [
+      "vehicle-part-93"
+    ],
+    [
+      "vehicle-part-94"
+    ],
+    [
+      "vehicle-part-95"
+    ],
+    [
+      "vehicle-part-96"
+    ],
+    [
+      "vehicle-part-97"
+    ],
+    [
+      "vehicle-part-98"
+    ],
+    [
+      "vehicle-part-99"
+    ]
+  ],
+  "connectedToChassis": [
+    "vehicle-part-1",
+    "vehicle-part-2"
+  ],
+  "unconnected": [
+    {
+      "instanceId": "vehicle-part-3",
+      "partId": "1846",
+      "role": "wheel-arch",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-4",
+      "partId": "1846",
+      "role": "wheel-arch",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-5",
+      "partId": "1846",
+      "role": "wheel-arch",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-6",
+      "partId": "1846",
+      "role": "wheel-arch",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-7",
+      "partId": "6934",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-8",
+      "partId": "4162",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-9",
+      "partId": "26603",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-10",
+      "partId": "2431",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-11",
+      "partId": "3069b",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-12",
+      "partId": "3069b",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-13",
+      "partId": "3069b",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-14",
+      "partId": "3069b",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-15",
+      "partId": "3069b",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-16",
+      "partId": "3069b",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-17",
+      "partId": "3069b",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-18",
+      "partId": "3069b",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-19",
+      "partId": "11477",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-20",
+      "partId": "11477",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-21",
+      "partId": "11477",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-22",
+      "partId": "11477",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-23",
+      "partId": "11477",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-24",
+      "partId": "11477",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-25",
+      "partId": "11477",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-26",
+      "partId": "11477",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-27",
+      "partId": "11477",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-28",
+      "partId": "11477",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-29",
+      "partId": "2431",
+      "role": "tail",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-30",
+      "partId": "3069b",
+      "role": "tail",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-31",
+      "partId": "3069b",
+      "role": "tail",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-33",
+      "partId": "15068",
+      "role": "tail",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-35",
+      "partId": "15068",
+      "role": "tail",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-37",
+      "partId": "15068",
+      "role": "tail",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-39",
+      "partId": "15068",
+      "role": "tail",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-41",
+      "partId": "4162",
+      "role": "tail",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-43",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-44",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-45",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-46",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-47",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-48",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-49",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-50",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-51",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-52",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-53",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-54",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-55",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-56",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-57",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-58",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-59",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-60",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-61",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-62",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-63",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-64",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-65",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-67",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-68",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-69",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-70",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-71",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-72",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-73",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-74",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-75",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-76",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-77",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-78",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-79",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-80",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-81",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-82",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-83",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-84",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-85",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-86",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-87",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-88",
+      "partId": "3069b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-89",
+      "partId": "3070b",
+      "role": "side-skirt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-90",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-91",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-92",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-93",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-94",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-95",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-96",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-97",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-98",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-99",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-100",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-101",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-102",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-103",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-104",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-105",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-106",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-107",
+      "partId": "3070b",
+      "role": "belt",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-108",
+      "partId": "3040b",
+      "role": "windshield",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-109",
+      "partId": "3039",
+      "role": "windshield",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-110",
+      "partId": "3039",
+      "role": "windshield",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-111",
+      "partId": "3040b",
+      "role": "windshield",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-112",
+      "partId": "3040b",
+      "role": "windshield",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-113",
+      "partId": "3040b",
+      "role": "rear-window",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-114",
+      "partId": "3039",
+      "role": "rear-window",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-115",
+      "partId": "3039",
+      "role": "rear-window",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-116",
+      "partId": "3040b",
+      "role": "rear-window",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-117",
+      "partId": "3040b",
+      "role": "rear-window",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-118",
+      "partId": "3069b",
+      "role": "side-window",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-119",
+      "partId": "3070b",
+      "role": "window-pillar",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-120",
+      "partId": "3070b",
+      "role": "window-pillar",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-121",
+      "partId": "3069b",
+      "role": "side-window",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-122",
+      "partId": "3070b",
+      "role": "window-pillar",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-123",
+      "partId": "3070b",
+      "role": "window-pillar",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-124",
+      "partId": "6934",
+      "role": "roof",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-125",
+      "partId": "2431",
+      "role": "roof",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-126",
+      "partId": "6636",
+      "role": "roof",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-131",
+      "partId": "4162",
+      "role": "rear-bumper",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-132",
+      "partId": "6636",
+      "role": "rear-panel",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-133",
+      "partId": "3069b",
+      "role": "taillamp",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-134",
+      "partId": "3069b",
+      "role": "taillamp",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "vehicle-part-135",
+      "partId": "18977",
+      "role": "wheel",
+      "reason": "WHEEL_MATING_UNKNOWN"
+    },
+    {
+      "instanceId": "vehicle-part-136",
+      "partId": "66727",
+      "role": "wheel",
+      "reason": "WHEEL_MATING_UNKNOWN"
+    },
+    {
+      "instanceId": "vehicle-part-137",
+      "partId": "18977",
+      "role": "wheel",
+      "reason": "WHEEL_MATING_UNKNOWN"
+    },
+    {
+      "instanceId": "vehicle-part-138",
+      "partId": "66727",
+      "role": "wheel",
+      "reason": "WHEEL_MATING_UNKNOWN"
+    },
+    {
+      "instanceId": "vehicle-part-139",
+      "partId": "18977",
+      "role": "wheel",
+      "reason": "WHEEL_MATING_UNKNOWN"
+    },
+    {
+      "instanceId": "vehicle-part-140",
+      "partId": "66727",
+      "role": "wheel",
+      "reason": "WHEEL_MATING_UNKNOWN"
+    },
+    {
+      "instanceId": "vehicle-part-141",
+      "partId": "18977",
+      "role": "wheel",
+      "reason": "WHEEL_MATING_UNKNOWN"
+    },
+    {
+      "instanceId": "vehicle-part-142",
+      "partId": "66727",
+      "role": "wheel",
+      "reason": "WHEEL_MATING_UNKNOWN"
+    },
+    {
+      "instanceId": "craft-nose-cover-0-source-102",
+      "partId": "3022",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-nose-cover-0-source-103",
+      "partId": "15068",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-nose-cover-0-source-104",
+      "partId": "3069b",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-nose-cover-1-source-102",
+      "partId": "3022",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-nose-cover-1-source-103",
+      "partId": "15068",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-nose-cover-1-source-104",
+      "partId": "3069b",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-nose-cover-2-source-102",
+      "partId": "3022",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-nose-cover-2-source-103",
+      "partId": "15068",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-nose-cover-2-source-104",
+      "partId": "3069b",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-nose-cover-3-source-102",
+      "partId": "3022",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-nose-cover-3-source-103",
+      "partId": "15068",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-nose-cover-3-source-104",
+      "partId": "3069b",
+      "role": "hood",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-front-fascia-0-source-0",
+      "partId": "3460",
+      "role": "grille",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-front-fascia-0-source-1",
+      "partId": "3666",
+      "role": "grille",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-front-fascia-0-source-2",
+      "partId": "54200",
+      "role": "grille",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-front-fascia-0-source-3",
+      "partId": "54200",
+      "role": "grille",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-front-fascia-0-source-4",
+      "partId": "2412b",
+      "role": "grille",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-front-fascia-0-source-5",
+      "partId": "3069b",
+      "role": "grille",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-front-fascia-0-source-6",
+      "partId": "3069b",
+      "role": "grille",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-front-bumper",
+      "partId": "4162",
+      "role": "front-bumper",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-front-apron",
+      "partId": "4162",
+      "role": "front-apron",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-side--1-lower",
+      "partId": "3070b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-side--1--196000",
+      "partId": "3070b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-side--1--188000",
+      "partId": "3070b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-side-1-lower",
+      "partId": "3070b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-side-1--196000",
+      "partId": "3070b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    },
+    {
+      "instanceId": "craft-side-1--188000",
+      "partId": "3070b",
+      "role": "side",
+      "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN"
+    }
+  ],
+  "pairs": [
+    {
+      "a": "vehicle-part-1",
+      "b": "vehicle-part-2",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-3",
+      "b": "vehicle-part-7",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-3",
+      "b": "vehicle-part-11",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-3",
+      "b": "vehicle-part-13",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-3",
+      "b": "vehicle-part-15",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-3",
+      "b": "vehicle-part-17",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-3",
+      "b": "vehicle-part-19",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-3",
+      "b": "vehicle-part-44",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-3",
+      "b": "vehicle-part-46",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-3",
+      "b": "vehicle-part-135",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-3",
+      "b": "vehicle-part-136",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-3",
+      "b": "craft-nose-cover-0-source-102",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-3",
+      "b": "craft-nose-cover-0-source-104",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-3",
+      "b": "craft-nose-cover-1-source-102",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-3",
+      "b": "craft-nose-cover-1-source-104",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-4",
+      "b": "vehicle-part-7",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-4",
+      "b": "vehicle-part-8",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-4",
+      "b": "vehicle-part-12",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-4",
+      "b": "vehicle-part-14",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-4",
+      "b": "vehicle-part-16",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-4",
+      "b": "vehicle-part-18",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-4",
+      "b": "vehicle-part-20",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-4",
+      "b": "vehicle-part-68",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-4",
+      "b": "vehicle-part-70",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-4",
+      "b": "vehicle-part-137",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-4",
+      "b": "vehicle-part-138",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-4",
+      "b": "craft-nose-cover-2-source-102",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-4",
+      "b": "craft-nose-cover-2-source-104",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-4",
+      "b": "craft-nose-cover-3-source-102",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-4",
+      "b": "craft-nose-cover-3-source-104",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-5",
+      "b": "vehicle-part-29",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-5",
+      "b": "vehicle-part-30",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-5",
+      "b": "vehicle-part-33",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-5",
+      "b": "vehicle-part-35",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-5",
+      "b": "vehicle-part-60",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-5",
+      "b": "vehicle-part-62",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-5",
+      "b": "vehicle-part-98",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-5",
+      "b": "vehicle-part-99",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-5",
+      "b": "vehicle-part-102",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-5",
+      "b": "vehicle-part-104",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-5",
+      "b": "vehicle-part-106",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-5",
+      "b": "vehicle-part-139",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-5",
+      "b": "vehicle-part-140",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-6",
+      "b": "vehicle-part-29",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-6",
+      "b": "vehicle-part-31",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-6",
+      "b": "vehicle-part-37",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-6",
+      "b": "vehicle-part-39",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-6",
+      "b": "vehicle-part-84",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-6",
+      "b": "vehicle-part-86",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-6",
+      "b": "vehicle-part-100",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-6",
+      "b": "vehicle-part-101",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-6",
+      "b": "vehicle-part-103",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-6",
+      "b": "vehicle-part-105",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-6",
+      "b": "vehicle-part-107",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-6",
+      "b": "vehicle-part-141",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-6",
+      "b": "vehicle-part-142",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-7",
+      "b": "vehicle-part-8",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-7",
+      "b": "vehicle-part-9",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-7",
+      "b": "vehicle-part-11",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-7",
+      "b": "vehicle-part-13",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-7",
+      "b": "vehicle-part-15",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-7",
+      "b": "vehicle-part-17",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-7",
+      "b": "vehicle-part-19",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-7",
+      "b": "vehicle-part-21",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-7",
+      "b": "vehicle-part-23",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-7",
+      "b": "craft-nose-cover-0-source-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-7",
+      "b": "craft-nose-cover-0-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-7",
+      "b": "craft-nose-cover-1-source-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-7",
+      "b": "craft-nose-cover-1-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-7",
+      "b": "craft-nose-cover-2-source-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-7",
+      "b": "craft-nose-cover-2-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-8",
+      "b": "vehicle-part-9",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-8",
+      "b": "vehicle-part-10",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-8",
+      "b": "vehicle-part-12",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-8",
+      "b": "vehicle-part-14",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-8",
+      "b": "vehicle-part-16",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-8",
+      "b": "vehicle-part-18",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-8",
+      "b": "vehicle-part-20",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-8",
+      "b": "vehicle-part-22",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-8",
+      "b": "vehicle-part-24",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-8",
+      "b": "vehicle-part-26",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-8",
+      "b": "vehicle-part-28",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-8",
+      "b": "craft-nose-cover-2-source-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-8",
+      "b": "craft-nose-cover-2-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-8",
+      "b": "craft-nose-cover-3-source-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-8",
+      "b": "craft-nose-cover-3-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-9",
+      "b": "vehicle-part-10",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-9",
+      "b": "vehicle-part-21",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-9",
+      "b": "vehicle-part-23",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-9",
+      "b": "vehicle-part-25",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-9",
+      "b": "vehicle-part-27",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-10",
+      "b": "vehicle-part-25",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-10",
+      "b": "vehicle-part-26",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-10",
+      "b": "vehicle-part-27",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-10",
+      "b": "vehicle-part-28",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-10",
+      "b": "vehicle-part-109",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-10",
+      "b": "vehicle-part-110",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-10",
+      "b": "vehicle-part-111",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-11",
+      "b": "vehicle-part-13",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-11",
+      "b": "craft-nose-cover-0-source-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-11",
+      "b": "craft-nose-cover-0-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-11",
+      "b": "craft-nose-cover-1-source-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-11",
+      "b": "craft-nose-cover-1-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-12",
+      "b": "vehicle-part-14",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-12",
+      "b": "craft-nose-cover-2-source-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-12",
+      "b": "craft-nose-cover-2-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-12",
+      "b": "craft-nose-cover-3-source-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-12",
+      "b": "craft-nose-cover-3-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-13",
+      "b": "vehicle-part-15",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-14",
+      "b": "vehicle-part-16",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-15",
+      "b": "vehicle-part-17",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-16",
+      "b": "vehicle-part-18",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-17",
+      "b": "vehicle-part-19",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-18",
+      "b": "vehicle-part-20",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-19",
+      "b": "vehicle-part-21",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-19",
+      "b": "vehicle-part-46",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-19",
+      "b": "vehicle-part-48",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-20",
+      "b": "vehicle-part-22",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-20",
+      "b": "vehicle-part-70",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-20",
+      "b": "vehicle-part-72",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-21",
+      "b": "vehicle-part-23",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-21",
+      "b": "vehicle-part-46",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-21",
+      "b": "vehicle-part-48",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-21",
+      "b": "vehicle-part-50",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-22",
+      "b": "vehicle-part-24",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-22",
+      "b": "vehicle-part-70",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-22",
+      "b": "vehicle-part-72",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-22",
+      "b": "vehicle-part-74",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-23",
+      "b": "vehicle-part-25",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-23",
+      "b": "vehicle-part-48",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-23",
+      "b": "vehicle-part-50",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-23",
+      "b": "vehicle-part-52",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-24",
+      "b": "vehicle-part-26",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-24",
+      "b": "vehicle-part-72",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-24",
+      "b": "vehicle-part-74",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-24",
+      "b": "vehicle-part-76",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-25",
+      "b": "vehicle-part-27",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-25",
+      "b": "vehicle-part-50",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-25",
+      "b": "vehicle-part-52",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-25",
+      "b": "vehicle-part-54",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-26",
+      "b": "vehicle-part-28",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-26",
+      "b": "vehicle-part-74",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-26",
+      "b": "vehicle-part-76",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-26",
+      "b": "vehicle-part-78",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-27",
+      "b": "vehicle-part-52",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-27",
+      "b": "vehicle-part-54",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-27",
+      "b": "vehicle-part-56",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-27",
+      "b": "vehicle-part-90",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-27",
+      "b": "vehicle-part-91",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-27",
+      "b": "vehicle-part-108",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-27",
+      "b": "vehicle-part-109",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-28",
+      "b": "vehicle-part-76",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-28",
+      "b": "vehicle-part-78",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-28",
+      "b": "vehicle-part-80",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-28",
+      "b": "vehicle-part-92",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-28",
+      "b": "vehicle-part-93",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-28",
+      "b": "vehicle-part-111",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-28",
+      "b": "vehicle-part-112",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-29",
+      "b": "vehicle-part-30",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-29",
+      "b": "vehicle-part-31",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-29",
+      "b": "vehicle-part-33",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-29",
+      "b": "vehicle-part-35",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-29",
+      "b": "vehicle-part-37",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-29",
+      "b": "vehicle-part-39",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-29",
+      "b": "vehicle-part-114",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-29",
+      "b": "vehicle-part-115",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-29",
+      "b": "vehicle-part-116",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-30",
+      "b": "vehicle-part-33",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-30",
+      "b": "vehicle-part-35",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-30",
+      "b": "vehicle-part-106",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-30",
+      "b": "vehicle-part-113",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-30",
+      "b": "vehicle-part-114",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-31",
+      "b": "vehicle-part-37",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-31",
+      "b": "vehicle-part-39",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-31",
+      "b": "vehicle-part-107",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-31",
+      "b": "vehicle-part-116",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-31",
+      "b": "vehicle-part-117",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-33",
+      "b": "vehicle-part-35",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-33",
+      "b": "vehicle-part-41",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-33",
+      "b": "vehicle-part-62",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-33",
+      "b": "vehicle-part-64",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-35",
+      "b": "vehicle-part-37",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-35",
+      "b": "vehicle-part-41",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-37",
+      "b": "vehicle-part-39",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-37",
+      "b": "vehicle-part-41",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-39",
+      "b": "vehicle-part-41",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-39",
+      "b": "vehicle-part-86",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-39",
+      "b": "vehicle-part-88",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-41",
+      "b": "vehicle-part-64",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-41",
+      "b": "vehicle-part-88",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-41",
+      "b": "vehicle-part-132",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-41",
+      "b": "vehicle-part-133",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-41",
+      "b": "vehicle-part-134",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-43",
+      "b": "vehicle-part-44",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-43",
+      "b": "vehicle-part-45",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-43",
+      "b": "craft-side--1-lower",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-44",
+      "b": "vehicle-part-45",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-44",
+      "b": "craft-nose-cover-0-source-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-44",
+      "b": "craft-nose-cover-0-source-103",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-44",
+      "b": "craft-side--1-lower",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-44",
+      "b": "craft-side--1--188000",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-45",
+      "b": "craft-side--1-lower",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-46",
+      "b": "vehicle-part-47",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-46",
+      "b": "vehicle-part-48",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-46",
+      "b": "vehicle-part-49",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-47",
+      "b": "vehicle-part-48",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-47",
+      "b": "vehicle-part-49",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-48",
+      "b": "vehicle-part-49",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-48",
+      "b": "vehicle-part-50",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-48",
+      "b": "vehicle-part-51",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-49",
+      "b": "vehicle-part-50",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-49",
+      "b": "vehicle-part-51",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-50",
+      "b": "vehicle-part-51",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-50",
+      "b": "vehicle-part-52",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-50",
+      "b": "vehicle-part-53",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-51",
+      "b": "vehicle-part-52",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-51",
+      "b": "vehicle-part-53",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-52",
+      "b": "vehicle-part-53",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-52",
+      "b": "vehicle-part-54",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-52",
+      "b": "vehicle-part-55",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-53",
+      "b": "vehicle-part-54",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-53",
+      "b": "vehicle-part-55",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-54",
+      "b": "vehicle-part-55",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-54",
+      "b": "vehicle-part-56",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-54",
+      "b": "vehicle-part-57",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-54",
+      "b": "vehicle-part-90",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-55",
+      "b": "vehicle-part-56",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-55",
+      "b": "vehicle-part-57",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-56",
+      "b": "vehicle-part-57",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-56",
+      "b": "vehicle-part-58",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-56",
+      "b": "vehicle-part-59",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-56",
+      "b": "vehicle-part-90",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-56",
+      "b": "vehicle-part-94",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-57",
+      "b": "vehicle-part-58",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-57",
+      "b": "vehicle-part-59",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-58",
+      "b": "vehicle-part-59",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-58",
+      "b": "vehicle-part-60",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-58",
+      "b": "vehicle-part-61",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-58",
+      "b": "vehicle-part-90",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-58",
+      "b": "vehicle-part-94",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-58",
+      "b": "vehicle-part-98",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-59",
+      "b": "vehicle-part-60",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-59",
+      "b": "vehicle-part-61",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-60",
+      "b": "vehicle-part-61",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-60",
+      "b": "vehicle-part-94",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-60",
+      "b": "vehicle-part-98",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-62",
+      "b": "vehicle-part-63",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-62",
+      "b": "vehicle-part-64",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-62",
+      "b": "vehicle-part-65",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-63",
+      "b": "vehicle-part-64",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-63",
+      "b": "vehicle-part-65",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-64",
+      "b": "vehicle-part-65",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-67",
+      "b": "vehicle-part-68",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-67",
+      "b": "vehicle-part-69",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-67",
+      "b": "craft-side-1-lower",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-68",
+      "b": "vehicle-part-69",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-68",
+      "b": "craft-nose-cover-3-source-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-68",
+      "b": "craft-nose-cover-3-source-103",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-68",
+      "b": "craft-side-1-lower",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-68",
+      "b": "craft-side-1--188000",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-69",
+      "b": "craft-side-1-lower",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-70",
+      "b": "vehicle-part-71",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-70",
+      "b": "vehicle-part-72",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-70",
+      "b": "vehicle-part-73",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-71",
+      "b": "vehicle-part-72",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-71",
+      "b": "vehicle-part-73",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-72",
+      "b": "vehicle-part-73",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-72",
+      "b": "vehicle-part-74",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-72",
+      "b": "vehicle-part-75",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-73",
+      "b": "vehicle-part-74",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-73",
+      "b": "vehicle-part-75",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-74",
+      "b": "vehicle-part-75",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-74",
+      "b": "vehicle-part-76",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-74",
+      "b": "vehicle-part-77",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-75",
+      "b": "vehicle-part-76",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-75",
+      "b": "vehicle-part-77",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-76",
+      "b": "vehicle-part-77",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-76",
+      "b": "vehicle-part-78",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-76",
+      "b": "vehicle-part-79",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-77",
+      "b": "vehicle-part-78",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-77",
+      "b": "vehicle-part-79",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-78",
+      "b": "vehicle-part-79",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-78",
+      "b": "vehicle-part-80",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-78",
+      "b": "vehicle-part-81",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-78",
+      "b": "vehicle-part-92",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-79",
+      "b": "vehicle-part-80",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-79",
+      "b": "vehicle-part-81",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-80",
+      "b": "vehicle-part-81",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-80",
+      "b": "vehicle-part-82",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-80",
+      "b": "vehicle-part-83",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-80",
+      "b": "vehicle-part-92",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-80",
+      "b": "vehicle-part-96",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-81",
+      "b": "vehicle-part-82",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-81",
+      "b": "vehicle-part-83",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-82",
+      "b": "vehicle-part-83",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-82",
+      "b": "vehicle-part-84",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-82",
+      "b": "vehicle-part-85",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-82",
+      "b": "vehicle-part-92",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-82",
+      "b": "vehicle-part-96",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-82",
+      "b": "vehicle-part-100",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-83",
+      "b": "vehicle-part-84",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-83",
+      "b": "vehicle-part-85",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-84",
+      "b": "vehicle-part-85",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-84",
+      "b": "vehicle-part-96",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-84",
+      "b": "vehicle-part-100",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-86",
+      "b": "vehicle-part-87",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-86",
+      "b": "vehicle-part-88",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-86",
+      "b": "vehicle-part-89",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-87",
+      "b": "vehicle-part-88",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-87",
+      "b": "vehicle-part-89",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-88",
+      "b": "vehicle-part-89",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-90",
+      "b": "vehicle-part-91",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-90",
+      "b": "vehicle-part-94",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-90",
+      "b": "vehicle-part-95",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-91",
+      "b": "vehicle-part-94",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-91",
+      "b": "vehicle-part-95",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-91",
+      "b": "vehicle-part-108",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-92",
+      "b": "vehicle-part-93",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-92",
+      "b": "vehicle-part-96",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-92",
+      "b": "vehicle-part-97",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-93",
+      "b": "vehicle-part-96",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-93",
+      "b": "vehicle-part-97",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-93",
+      "b": "vehicle-part-112",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-94",
+      "b": "vehicle-part-95",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-94",
+      "b": "vehicle-part-98",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-94",
+      "b": "vehicle-part-99",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-95",
+      "b": "vehicle-part-98",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-95",
+      "b": "vehicle-part-99",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-95",
+      "b": "vehicle-part-108",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-96",
+      "b": "vehicle-part-97",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-96",
+      "b": "vehicle-part-100",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-96",
+      "b": "vehicle-part-101",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-97",
+      "b": "vehicle-part-100",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-97",
+      "b": "vehicle-part-101",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-97",
+      "b": "vehicle-part-112",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-98",
+      "b": "vehicle-part-99",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-98",
+      "b": "vehicle-part-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-99",
+      "b": "vehicle-part-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-99",
+      "b": "vehicle-part-108",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-100",
+      "b": "vehicle-part-101",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-100",
+      "b": "vehicle-part-103",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-101",
+      "b": "vehicle-part-103",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-101",
+      "b": "vehicle-part-112",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-102",
+      "b": "vehicle-part-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-102",
+      "b": "vehicle-part-113",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-103",
+      "b": "vehicle-part-105",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-103",
+      "b": "vehicle-part-117",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-104",
+      "b": "vehicle-part-106",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-104",
+      "b": "vehicle-part-113",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-105",
+      "b": "vehicle-part-107",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-105",
+      "b": "vehicle-part-117",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-106",
+      "b": "vehicle-part-113",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-107",
+      "b": "vehicle-part-117",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-108",
+      "b": "vehicle-part-109",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-108",
+      "b": "vehicle-part-118",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-108",
+      "b": "vehicle-part-124",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 1,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-109",
+      "b": "vehicle-part-110",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-109",
+      "b": "vehicle-part-124",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-110",
+      "b": "vehicle-part-111",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-110",
+      "b": "vehicle-part-124",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-111",
+      "b": "vehicle-part-112",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-111",
+      "b": "vehicle-part-124",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 1,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-111",
+      "b": "vehicle-part-125",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-112",
+      "b": "vehicle-part-121",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-112",
+      "b": "vehicle-part-124",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-112",
+      "b": "vehicle-part-125",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 1,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-113",
+      "b": "vehicle-part-114",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-113",
+      "b": "vehicle-part-118",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-113",
+      "b": "vehicle-part-124",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-113",
+      "b": "vehicle-part-126",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 1,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-114",
+      "b": "vehicle-part-115",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-114",
+      "b": "vehicle-part-124",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-114",
+      "b": "vehicle-part-126",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-115",
+      "b": "vehicle-part-116",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-115",
+      "b": "vehicle-part-124",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-115",
+      "b": "vehicle-part-126",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-116",
+      "b": "vehicle-part-117",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-116",
+      "b": "vehicle-part-124",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-116",
+      "b": "vehicle-part-125",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-116",
+      "b": "vehicle-part-126",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 1,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-117",
+      "b": "vehicle-part-121",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-117",
+      "b": "vehicle-part-124",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-117",
+      "b": "vehicle-part-125",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 1,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-117",
+      "b": "vehicle-part-126",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-118",
+      "b": "vehicle-part-124",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-118",
+      "b": "vehicle-part-126",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-121",
+      "b": "vehicle-part-125",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-124",
+      "b": "vehicle-part-125",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-124",
+      "b": "vehicle-part-126",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-125",
+      "b": "vehicle-part-126",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-131",
+      "b": "vehicle-part-132",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-131",
+      "b": "vehicle-part-133",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-131",
+      "b": "vehicle-part-134",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-132",
+      "b": "vehicle-part-133",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-132",
+      "b": "vehicle-part-134",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-135",
+      "b": "vehicle-part-136",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-137",
+      "b": "vehicle-part-138",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-139",
+      "b": "vehicle-part-140",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-141",
+      "b": "vehicle-part-142",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "craft-nose-cover-0-source-102",
+      "b": "craft-nose-cover-0-source-103",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "craft-nose-cover-0-source-102",
+      "b": "craft-nose-cover-0-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-0-source-102",
+      "b": "craft-nose-cover-1-source-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-0-source-102",
+      "b": "craft-nose-cover-1-source-103",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "craft-nose-cover-0-source-102",
+      "b": "craft-nose-cover-1-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-0-source-102",
+      "b": "craft-front-fascia-0-source-0",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-0-source-102",
+      "b": "craft-side--1--196000",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-0-source-102",
+      "b": "craft-side--1--188000",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-0-source-103",
+      "b": "craft-nose-cover-0-source-104",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-0-source-103",
+      "b": "craft-nose-cover-1-source-102",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-0-source-103",
+      "b": "craft-nose-cover-1-source-103",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "craft-nose-cover-0-source-103",
+      "b": "craft-nose-cover-1-source-104",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-0-source-103",
+      "b": "craft-front-fascia-0-source-0",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-0-source-103",
+      "b": "craft-front-fascia-0-source-1",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-0-source-103",
+      "b": "craft-front-fascia-0-source-3",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-0-source-103",
+      "b": "craft-front-fascia-0-source-6",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-0-source-103",
+      "b": "craft-side--1--196000",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-0-source-103",
+      "b": "craft-side--1--188000",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-0-source-104",
+      "b": "craft-nose-cover-1-source-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-0-source-104",
+      "b": "craft-nose-cover-1-source-103",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "craft-nose-cover-0-source-104",
+      "b": "craft-nose-cover-1-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-1-source-102",
+      "b": "craft-nose-cover-1-source-103",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "craft-nose-cover-1-source-102",
+      "b": "craft-nose-cover-1-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-1-source-102",
+      "b": "craft-nose-cover-2-source-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-1-source-102",
+      "b": "craft-nose-cover-2-source-103",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "craft-nose-cover-1-source-102",
+      "b": "craft-nose-cover-2-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-1-source-102",
+      "b": "craft-front-fascia-0-source-0",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-1-source-103",
+      "b": "craft-nose-cover-1-source-104",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-1-source-103",
+      "b": "craft-nose-cover-2-source-102",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-1-source-103",
+      "b": "craft-nose-cover-2-source-103",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "craft-nose-cover-1-source-103",
+      "b": "craft-nose-cover-2-source-104",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-1-source-103",
+      "b": "craft-front-fascia-0-source-0",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-1-source-103",
+      "b": "craft-front-fascia-0-source-1",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-1-source-103",
+      "b": "craft-front-fascia-0-source-4",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-1-source-103",
+      "b": "craft-front-fascia-0-source-6",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-1-source-104",
+      "b": "craft-nose-cover-2-source-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-1-source-104",
+      "b": "craft-nose-cover-2-source-103",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "craft-nose-cover-1-source-104",
+      "b": "craft-nose-cover-2-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-2-source-102",
+      "b": "craft-nose-cover-2-source-103",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "craft-nose-cover-2-source-102",
+      "b": "craft-nose-cover-2-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-2-source-102",
+      "b": "craft-nose-cover-3-source-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-2-source-102",
+      "b": "craft-nose-cover-3-source-103",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "craft-nose-cover-2-source-102",
+      "b": "craft-nose-cover-3-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-2-source-102",
+      "b": "craft-front-fascia-0-source-0",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-2-source-103",
+      "b": "craft-nose-cover-2-source-104",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-2-source-103",
+      "b": "craft-nose-cover-3-source-102",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-2-source-103",
+      "b": "craft-nose-cover-3-source-103",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "craft-nose-cover-2-source-103",
+      "b": "craft-nose-cover-3-source-104",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-2-source-103",
+      "b": "craft-front-fascia-0-source-0",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-2-source-103",
+      "b": "craft-front-fascia-0-source-1",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-2-source-103",
+      "b": "craft-front-fascia-0-source-4",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-2-source-103",
+      "b": "craft-front-fascia-0-source-5",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-2-source-104",
+      "b": "craft-nose-cover-3-source-102",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-2-source-104",
+      "b": "craft-nose-cover-3-source-103",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "craft-nose-cover-2-source-104",
+      "b": "craft-nose-cover-3-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-3-source-102",
+      "b": "craft-nose-cover-3-source-103",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "craft-nose-cover-3-source-102",
+      "b": "craft-nose-cover-3-source-104",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-3-source-102",
+      "b": "craft-front-fascia-0-source-0",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-3-source-102",
+      "b": "craft-side-1--196000",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-3-source-102",
+      "b": "craft-side-1--188000",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-3-source-103",
+      "b": "craft-nose-cover-3-source-104",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-3-source-103",
+      "b": "craft-front-fascia-0-source-0",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-3-source-103",
+      "b": "craft-front-fascia-0-source-1",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-3-source-103",
+      "b": "craft-front-fascia-0-source-2",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-3-source-103",
+      "b": "craft-front-fascia-0-source-5",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-3-source-103",
+      "b": "craft-side-1--196000",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-nose-cover-3-source-103",
+      "b": "craft-side-1--188000",
+      "status": "clear",
+      "reasonCode": "exterior-surface-clear",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-0",
+      "b": "craft-front-fascia-0-source-1",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 6,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-0",
+      "b": "craft-front-fascia-0-source-2",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 1,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-0",
+      "b": "craft-front-fascia-0-source-3",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 1,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-0",
+      "b": "craft-front-bumper",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-0",
+      "b": "craft-side--1-lower",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-0",
+      "b": "craft-side--1--196000",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-0",
+      "b": "craft-side-1-lower",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-0",
+      "b": "craft-side-1--196000",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-1",
+      "b": "craft-front-fascia-0-source-2",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-1",
+      "b": "craft-front-fascia-0-source-3",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-1",
+      "b": "craft-front-fascia-0-source-4",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-1",
+      "b": "craft-front-fascia-0-source-5",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-1",
+      "b": "craft-front-fascia-0-source-6",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-1",
+      "b": "craft-front-bumper",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-2",
+      "b": "craft-front-fascia-0-source-5",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-2",
+      "b": "craft-front-bumper",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-3",
+      "b": "craft-front-fascia-0-source-6",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-3",
+      "b": "craft-front-bumper",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-4",
+      "b": "craft-front-fascia-0-source-5",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-4",
+      "b": "craft-front-fascia-0-source-6",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-4",
+      "b": "craft-front-bumper",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-5",
+      "b": "craft-front-bumper",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-fascia-0-source-6",
+      "b": "craft-front-bumper",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-bumper",
+      "b": "craft-front-apron",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-bumper",
+      "b": "craft-side--1-lower",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-front-bumper",
+      "b": "craft-side-1-lower",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-side--1-lower",
+      "b": "craft-side--1--196000",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-side--1-lower",
+      "b": "craft-side--1--188000",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-side--1--196000",
+      "b": "craft-side--1--188000",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-side-1-lower",
+      "b": "craft-side-1--196000",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-side-1-lower",
+      "b": "craft-side-1--188000",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "craft-side-1--196000",
+      "b": "craft-side-1--188000",
+      "status": "clear",
+      "reasonCode": "native-solid-clearance",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    }
+  ],
+  "disjointPairs": 11905,
+  "blockers": [
+    {
+      "a": "vehicle-part-3",
+      "b": "vehicle-part-135",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-3",
+      "b": "vehicle-part-136",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-4",
+      "b": "vehicle-part-137",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-4",
+      "b": "vehicle-part-138",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-5",
+      "b": "vehicle-part-139",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-5",
+      "b": "vehicle-part-140",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-6",
+      "b": "vehicle-part-141",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-6",
+      "b": "vehicle-part-142",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-19",
+      "b": "vehicle-part-21",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-20",
+      "b": "vehicle-part-22",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-21",
+      "b": "vehicle-part-23",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-22",
+      "b": "vehicle-part-24",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-23",
+      "b": "vehicle-part-25",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-24",
+      "b": "vehicle-part-26",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-25",
+      "b": "vehicle-part-27",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-26",
+      "b": "vehicle-part-28",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-28",
+      "b": "vehicle-part-111",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-33",
+      "b": "vehicle-part-35",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-35",
+      "b": "vehicle-part-37",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-37",
+      "b": "vehicle-part-39",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-108",
+      "b": "vehicle-part-124",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 1,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-109",
+      "b": "vehicle-part-124",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-110",
+      "b": "vehicle-part-124",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-111",
+      "b": "vehicle-part-112",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-111",
+      "b": "vehicle-part-124",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 1,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-112",
+      "b": "vehicle-part-125",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 1,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-113",
+      "b": "vehicle-part-126",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 1,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-114",
+      "b": "vehicle-part-126",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-115",
+      "b": "vehicle-part-126",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 2,
+      "collisionClassA": "structural",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-116",
+      "b": "vehicle-part-117",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-116",
+      "b": "vehicle-part-126",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 1,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-117",
+      "b": "vehicle-part-125",
+      "status": "blocked",
+      "reasonCode": "MULTIPOINT_CLOSURE_BLOCKED",
+      "sourcePoseMatches": 1,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "structural"
+    },
+    {
+      "a": "vehicle-part-135",
+      "b": "vehicle-part-136",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-137",
+      "b": "vehicle-part-138",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-139",
+      "b": "vehicle-part-140",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "vehicle-part-141",
+      "b": "vehicle-part-142",
+      "status": "UNKNOWN",
+      "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "craft-nose-cover-0-source-103",
+      "b": "craft-nose-cover-1-source-103",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "craft-nose-cover-1-source-103",
+      "b": "craft-nose-cover-2-source-103",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    },
+    {
+      "a": "craft-nose-cover-2-source-103",
+      "b": "craft-nose-cover-3-source-103",
+      "status": "collision",
+      "reasonCode": "exterior-surface-crossing",
+      "sourcePoseMatches": 0,
+      "collisionClassA": "exterior-shell",
+      "collisionClassB": "exterior-shell"
+    }
+  ],
+  "roles": [
+    {
+      "role": "chassis",
+      "total": 2,
+      "connectedToChassis": 2
+    },
+    {
+      "role": "wheel-arch",
+      "total": 4,
+      "connectedToChassis": 0
+    },
+    {
+      "role": "hood",
+      "total": 34,
+      "connectedToChassis": 0
+    },
+    {
+      "role": "tail",
+      "total": 8,
+      "connectedToChassis": 0
+    },
+    {
+      "role": "side-skirt",
+      "total": 24,
+      "connectedToChassis": 0
+    },
+    {
+      "role": "side",
+      "total": 28,
+      "connectedToChassis": 0
+    },
+    {
+      "role": "belt",
+      "total": 18,
+      "connectedToChassis": 0
+    },
+    {
+      "role": "windshield",
+      "total": 5,
+      "connectedToChassis": 0
+    },
+    {
+      "role": "rear-window",
+      "total": 5,
+      "connectedToChassis": 0
+    },
+    {
+      "role": "side-window",
+      "total": 2,
+      "connectedToChassis": 0
+    },
+    {
+      "role": "window-pillar",
+      "total": 4,
+      "connectedToChassis": 0
+    },
+    {
+      "role": "roof",
+      "total": 3,
+      "connectedToChassis": 0
+    },
+    {
+      "role": "rear-bumper",
+      "total": 1,
+      "connectedToChassis": 0
+    },
+    {
+      "role": "rear-panel",
+      "total": 1,
+      "connectedToChassis": 0
+    },
+    {
+      "role": "taillamp",
+      "total": 2,
+      "connectedToChassis": 0
+    },
+    {
+      "role": "wheel",
+      "total": 8,
+      "connectedToChassis": 0
+    },
+    {
+      "role": "grille",
+      "total": 7,
+      "connectedToChassis": 0
+    },
+    {
+      "role": "front-bumper",
+      "total": 1,
+      "connectedToChassis": 0
+    },
+    {
+      "role": "front-apron",
+      "total": 1,
+      "connectedToChassis": 0
+    }
+  ],
+  "finalPoseConnectivity": "BLOCKED",
+  "installationPath": "UNKNOWN",
+  "stability": "UNKNOWN",
+  "physicalBuildVerified": false
+}

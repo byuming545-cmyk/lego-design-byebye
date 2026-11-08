@@ -5,7 +5,7 @@ import { appearanceGroups, groupPresentation, GROUP_NOTICE } from "../vehicles/a
 import VehicleSequencePanel from "./VehicleSequencePanel.js";
 import { PAINT_PALETTE, PAINT_CHANNELS, PAINT_PRESETS, PAINT_VERSION, paintAppearance, parsePaintOptions, createDesignDraft, validateDesignDraft, paintBomCsv, type PaintChannel, type PaintColor, type PaintOptions, type DesignDraft } from "../vehicles/appearance-design.js";
 import "./vehicle-design-studio.css";
-const views = [["perspective", "斜侧"], ["side", "侧面"], ["front", "正面"], ["rear", "背面"], ["top", "俯视"]] as const;
+const views = [["perspective", "斜侧"], ["side", "侧面"], ["front", "正面"], ["rear", "背面"], ["top", "俯视"], ["bottom", "底视"]] as const;
 export function downloadDesignText(value: string, name: string, type = "application/json") {
   const url = URL.createObjectURL(new Blob([value], { type })); const a = document.createElement("a");a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
@@ -19,10 +19,12 @@ export default function VehicleDesignStudio({ base, assets, initialDraft, onChan
   const painted=useMemo(()=>paintAppearance(base,options),[base,options]);
   const grouping=useMemo(()=>{try{return appearanceGroups(base);}catch{return undefined;}},[base]);
   const [groupIndex,setGroupIndex]=useState<number|null>(null),[playing,setPlaying]=useState(false);
-  const [mode,setMode]=useState<"groups"|"sequence">("groups");
+  const [mode,setMode]=useState<"groups"|"sequence"|"structure">("groups");
+  const [structureView,setStructureView]=useState('internal');
   const [sequenceView,setSequenceView]=useState<{visibleInstanceIds?:string[];highlightInstanceIds?:string[]}>({});
   const groupView=useMemo(()=>grouping?groupPresentation(grouping,groupIndex):{},[grouping,groupIndex]);
-  const presentation=mode==="sequence"?sequenceView:groupView;
+  const structureIds=base.structure?(structureView==='floor'?base.structure.floorInstanceIds:structureView==='axles'?base.placements.filter(p=>p.role==='wheel'||base.structure!.internalInstanceIds.includes(p.instanceId)).map(p=>p.instanceId):structureView==='cabin'?base.placements.filter(p=>base.structure!.internalInstanceIds.includes(p.instanceId)||['windshield','rear-window','side-window','window-pillar'].includes(p.role)).map(p=>p.instanceId):base.structure.internalInstanceIds):undefined;
+  const presentation=mode==="structure"?{visibleInstanceIds:structureIds}:mode==="sequence"?sequenceView:groupView;
   const group=groupIndex===null?undefined:grouping?.groups[groupIndex];
   useEffect(()=>{setPlaying(false);setGroupIndex(null);},[base.contentSha256]);
   useEffect(()=>{
@@ -49,8 +51,8 @@ export default function VehicleDesignStudio({ base, assets, initialDraft, onChan
     </section>
     <div className="vehicle-views" aria-label="模型视角">{views.map(([id,label])=><button type="button" key={id} aria-pressed={view===id} onClick={()=>setView(id)}>{label}</button>)}</div>
     <div data-testid={stageTestId} data-model-hash={base.contentSha256} data-paint-options={JSON.stringify(options)} className="vehicle-render-stage"><NativeAssemblyViewer placements={base.placements} assets={assets} designColors={painted.designColors} {...presentation} view={view} fitToModel showConnections={false} showProxies={false} showPath={false} showZones={false}/></div>
-    <div className="vehicle-demo-modes" aria-label="模型演示模式">{[["groups","功能分组概览"],["sequence","拼搭顺序演示（草稿）"]].map(([id,label])=><button key={id} type="button" aria-pressed={mode===id} onClick={()=>{if(mode===id)return;setPlaying(false);setGroupIndex(null);setSequenceView({});setMode(id as "groups"|"sequence");}}>{label}</button>)}</div>
-    {mode==="sequence"?<VehicleSequencePanel key={base.contentSha256} base={base} assets={assets} options={options} onPresentation={setSequenceView} onImportOptions={setOptions}/>:<section className="vehicle-groups" aria-label="步骤分组演示" data-group-index={groupIndex??"all"} data-playing={playing}>
+    <div className="vehicle-demo-modes" aria-label="模型演示模式">{[["groups","功能分组概览"],["sequence","拼搭顺序演示（草稿）"],...(base.structure?[["structure","查看内部结构"]]:[])].map(([id,label])=><button key={id} type="button" aria-pressed={mode===id} onClick={()=>{if(mode===id)return;setPlaying(false);setGroupIndex(null);setSequenceView({});setMode(id as "groups"|"sequence"|"structure");}}>{label}</button>)}</div>
+    {mode==='structure'&&base.structure?<section className="vehicle-groups" aria-label="结构修订检查" data-testid="structure-panel"><strong>结构修订草稿 · 完整模型检查</strong><p>仅显示已有刚体零件；内部查看不会删除 BOM。整车连接仍为 NOT_VERIFIED，轮组、安装路径与实物承重仍未知。</p><label>查看区域<select aria-label="结构查看区域" value={structureView} onChange={e=>setStructureView(e.target.value)}><option value="internal">内部支承</option><option value="floor">底盘</option><option value="axles">轮位与底部支承</option><option value="cabin">座舱与车顶支承</option></select></label><p>{base.structure.audit.connectedToChassis.length} / {base.placements.length} 件存在局部源接口连接链；{base.structure.audit.components.length} 个连接组件；{base.structure.audit.blockers.length} 个碰撞或未知配合记录。</p><p>底板原生连接图：{base.structure.floorValidation?.valid?"通过当前引擎检查（非实物承重认证）":"BLOCKED / 尚未通过"}。</p><p>接口占用：{base.structure.audit.occupancy.valid?'本次检查无重复占用':'BLOCKED'}。单个局部接口通过不等于整车通过。</p><details><summary>接口、拒绝原因与来源证据</summary><pre>{JSON.stringify(base.structure,null,2)}</pre></details><button type="button" onClick={()=>setMode('groups')}>恢复完整模型</button></section>:mode==="sequence"?<VehicleSequencePanel key={base.contentSha256} base={base} assets={assets} options={options} onPresentation={setSequenceView} onImportOptions={setOptions}/>:<section className="vehicle-groups" aria-label="步骤分组演示" data-group-index={groupIndex??"all"} data-playing={playing}>
       <div className="vehicle-paint-heading"><strong>步骤分组演示</strong><span>外观分组草稿</span></div>
       <p className="vehicle-group-notice">{GROUP_NOTICE}</p>
       {grouping?<><div className="vehicle-group-controls"><button type="button" disabled={groupIndex===0} onClick={()=>selectGroup(Math.max(0,(groupIndex??1)-1))}>上一步</button><button type="button" disabled={groupIndex===grouping.groups.length-1} onClick={()=>selectGroup(Math.min(grouping.groups.length-1,(groupIndex??-1)+1))}>下一步</button><button type="button" onClick={()=>{if(playing)setPlaying(false);else{if(groupIndex===null||groupIndex===grouping.groups.length-1)setGroupIndex(0);setPlaying(true);}}}>{playing?"暂停":"播放"}</button><button type="button" onClick={()=>selectGroup(null)}>显示全部</button><span>{group?`${groupIndex!+1} / ${grouping.groups.length}`:`全部 ${base.placements.length} 件`}</span></div>

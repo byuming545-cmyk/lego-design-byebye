@@ -11,6 +11,7 @@ import { ModuleCatalog, MODULE_DIRECTORY } from "../src/parts/modules/catalog.js
 import { miniDigest, stableJson } from "../src/mini-cars/catalog.js";
 import { AttachmentEngine } from "../src/parts/assembly/engine.js";
 import { assessGrammarAdmission } from "../src/parts/grammar/admission.js";
+import { COLLISION_VERSION } from "../src/parts/assembly/collision.js";
 import { inspectBodySurfacePairs } from "../src/vehicles/body-inspection.js";
 import type { Research, VisionResult } from "../src/vehicles/types.js";
 let c: BodyCatalog, corpus: DesignCorpus, research: Research, vision: VisionResult, enabled: BodyPreview, disabled: BodyPreview, holdoutA: BodyPreview, holdoutB: BodyPreview;
@@ -33,7 +34,7 @@ describe("native source craft learning, without weight training", () => {
         expect(family("76897-hood-core")).toBe(family("76897-hood-adapted"));
         expect(family("75878-curved-cover-left")).toBe(family("75878-curved-cover-right"));
         expect(corpus.cases.every(c => c.steps === "SOURCE_STEP_ORDER_UNKNOWN" && !c.physicalBuildVerified)).toBe(true);
-        expect(corpus.cases.every(c => c.validation.nativeVersions.collisionVersion.includes("4.1.0"))).toBe(true);
+        expect(corpus.cases.every(c => c.validation.nativeVersions.collisionVersion === COLLISION_VERSION)).toBe(true);
     });
     it("retains the real blocked source design and excludes it from every retrieval", () => {
         const wing = corpus.cases.find(c => c.role === "rear-wing")!;

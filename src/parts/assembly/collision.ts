@@ -8,7 +8,7 @@ import { boundsOverlap, buildNativeCollisionProxy, polygonArea, splitConvexPolyg
 import type { CollisionProxy, CollisionTriangle, MeshBounds, Plane, TriangleBvh } from './proxy.js';
 import { intersectCoplanarSourceTriangles } from './surfaceContact.js';
 
-export const COLLISION_VERSION = 'native-exterior-shell-4.1.0-contact-regions';
+export const COLLISION_VERSION = 'native-exterior-shell-4.2.0-separating-contact-plane';
 /** A numerical surface-comparison tolerance, not modified LEGO geometry. */
 export const COLLISION_TOLERANCE_LDU = 0.0001;
 const EPS = COLLISION_TOLERANCE_LDU;
@@ -367,6 +367,16 @@ function deriveNativePairCollision(fixedPart: NativeAssemblyPart, fixedPlacement
     if (exteriorA && exteriorB) {
       if (openA || openB) return result('blocked', 'exterior-surface-pair-unresolved', 'An exterior shell cannot be paired with a structural open CLIP/PIN surface under the surface-only contract.');
       if (!boundsOverlap(a.bounds, b.bounds, EPS)) { proof.broadPhaseOnly = true; return result('clear', 'exterior-surface-broadphase', 'The two exterior source surfaces have disjoint bounds; no crossing was checked.'); }
+      // Two finite-volume native envelopes separated by a plane may touch
+      // that plane without either mesh crossing it. The old triangle-contact
+      // branch mislabeled adjacent curved covers as intersecting. This uses
+      // the existing comparison epsilon, grants no seat or support, and does
+      // not exempt coplanar zero-thickness sheets or positive-volume overlap.
+      const volumetric = [a,b].every(p=>p.bounds.min.every((v,k)=>p.bounds.max[k]-v>EPS));
+      if (volumetric && a.bounds.min.some((v,k)=>Math.min(a.bounds.max[k],b.bounds.max[k])-Math.max(v,b.bounds.min[k])<=EPS)) {
+        proof.broadPhaseOnly=true;
+        return result('clear','exterior-separating-contact-plane','Native envelopes have disjoint interiors at a separating plane; boundary contact alone is not surface penetration or a connection.');
+      }
       proof.surfaceCrossingChecked = true;
       let contact: Vector3 | null = null;
       for (const faceA of a.triangles) for (const faceB of b.triangles) {

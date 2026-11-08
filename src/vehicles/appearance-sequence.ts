@@ -6,6 +6,8 @@ import { canonicalJson, createDesignDraft, designDigest, paintAppearance, type P
 
 export const SEQUENCE_VERSION = "native-role-spatial-sequence-1";
 export const SEQUENCE_SCHEMA = "bricklab-vehicle-sequence-demo-1";
+export const STRUCTURAL_SEQUENCE_VERSION = "source-joint-predecessor-sequence-3";
+export const STRUCTURAL_SEQUENCE_SCHEMA = "bricklab-vehicle-structural-sequence-draft-1";
 export const SEQUENCE_NOTICE = "建议顺序演示，连接、安装路径与实物拼搭尚未完整验证。";
 const phases = [
   { id:"base", name:"底部承托", roles:["chassis"], reason:"先展示模型中实际存在的底部承托，建立整车位置参照。" },
@@ -70,16 +72,44 @@ export function appearanceSequence(base:BodyPreview,assets:Record<string,Assembl
       previous.push(...batch);
     }
   }
-  return {version:SEQUENCE_VERSION,status:"DRAFT_NOT_BUILD_INSTRUCTIONS" as const,notice:SEQUENCE_NOTICE,scope:"PRESENTATION_ORDER_ONLY_NOT_BUILD_INSTRUCTIONS" as const,parentContentSha256:base.contentSha256,
+  if(base.structure){
+    const originals=new Map(steps.flatMap(s=>s.members.map(m=>[m.instanceId,{step:s,member:m}] as const))),prior=new Set<string>(),ordered:SequenceStep[]=[];
+    const audit=base.structure.audit,internal=new Set(base.structure.internalInstanceIds);
+    const priority=(id:string)=>{const p=base.placements.find(p=>p.instanceId===id)!;return p.role==='chassis'?0:internal.has(id)?1:p.role==='roof'?5:p.role==='wheel'?6:['windshield','rear-window','side-window','window-pillar'].includes(p.role)?4:3;};
+    const pending=[...originals.keys()];
+    while(pending.length){
+      pending.sort((a,b)=>priority(a)-priority(b)||originals.get(b)!.member.bounds.max[1]-originals.get(a)!.member.bounds.max[1]||a.localeCompare(b));
+      const joints=(id:string)=>audit.edges.filter(e=>e.fixedInstanceId===id&&prior.has(e.movingInstanceId)||e.movingInstanceId===id&&prior.has(e.fixedInstanceId));
+      // A prior final-pose joint does not justify inserting a low floor plate
+      // underneath an already closed upper layer. Keep lower phases/heights
+      // first; independent starts are explicit subassemblies, never fake joins.
+      const rank=priority(pending[0]),lowest=originals.get(pending[0])!.member.bounds.max[1];
+      const eligible=pending.filter(id=>priority(id)===rank&&Math.abs(originals.get(id)!.member.bounds.max[1]-lowest)<1e-8);
+      const id=eligible.find(id=>joints(id).length)??eligible[0],source=originals.get(id)!,edges=joints(id),number=ordered.length+1;
+      const component=audit.components.findIndex(c=>c.includes(id));
+      ordered.push({...source.step,step:number,name:`${source.member.role==='internal-support'?'内部承托':source.member.role==='internal-mount'?'侧向安装支架':uses[source.member.role]??source.member.role} · 1 件`,members:[source.member],cumulativeCount:number,displayAfterStep:number>1?number-1:null,
+        purpose:[base.placements.find(p=>p.instanceId===id)!.decision.purpose],priorNeighbourHints:[],
+        stage:priority(id)<=1?'structure':source.step.stage,
+        orderEvidence:edges.length?'SOURCE_JOINT_PREDECESSOR_FINAL_POSE':'SUBASSEMBLY_SEED_OR_UNRESOLVED',
+        connection:edges.length?'LOCAL_SOURCE_PAIR_CLEAR':'NOT_VERIFIED',
+        verifiedJointIds:edges.map(e=>e.id),componentId:component,predecessorInstanceIds:edges.map(e=>e.fixedInstanceId===id?e.movingInstanceId:e.fixedInstanceId),
+        reason:edges.length?'先展示实际连接对象，再展示本件；依据当前接口权限、原生姿态闭合和局部碰撞检查。底盘与内部件优先、封盖较晚是额外启发式，未验证安装路径。':'独立子组件的起点或尚无已展示连接对象；不是与主体连接通过。',
+        warnings:["连接、承托、安装路径及实物稳定性尚未完整验证。",...(source.member.role==='wheel'?['轮胎、轮毂和底盘配合仍 UNKNOWN，不授予轮组资格。']:[]),...(edges.length?['仅局部接口最终姿态通过，不代表整车碰撞、承重或实际安装路径通过。']:['本件作为独立组件起点；合并到主体的接口可能仍缺失。'])]});
+      prior.add(id);pending.splice(pending.indexOf(id),1);
+    }
+    steps.splice(0,steps.length,...ordered);
+  }
+  return {version:base.structure?STRUCTURAL_SEQUENCE_VERSION:SEQUENCE_VERSION,status:"DRAFT_NOT_BUILD_INSTRUCTIONS" as const,notice:SEQUENCE_NOTICE,scope:"PRESENTATION_ORDER_ONLY_NOT_BUILD_INSTRUCTIONS" as const,parentContentSha256:base.contentSha256,
     boundsEvidence:"TRANSFORMED_NATIVE_MESH_VERTICES" as const,sourceBindings:base.sources.map(s=>({partId:s.partId,meshSha256:s.meshSha256})),
-    stages:phases.flatMap(p=>{const items=steps.filter(s=>s.stage===p.id);return items.length?[{id:p.id,name:p.name,startStep:items[0].step,endStep:items.at(-1)!.step,reason:p.reason}]:[];}),
+    stages:[...(base.structure?[{id:'structure',name:'底盘与内部支承',reason:'实际连接依赖与低位优先'}]:[]),...phases].flatMap(p=>{const items=steps.filter(s=>s.stage===p.id);return items.length?[{id:p.id,name:p.name,startStep:items[0].step,endStep:items.at(-1)!.step,reason:p.reason}]:[];}),
     steps,totalParts:base.placements.length,validation:structuredClone(base.checks)};
 }
 interface SequenceStep {
   step:number;stage:string;name:string;purpose:string[];
   members:{instanceId:string;partId:string;role:string;originalDesignColor:BodyPlacement["color"];craft:BodyPlacement["craft"]|null;sourceGroup:number;bounds:Bounds}[];
-  cumulativeCount:number;orderEvidence:"HEURISTIC_NOT_INSTRUCTION_EVIDENCE";reason:string;displayAfterStep:number|null;originalInstructionStep:null;
-  connection:"NOT_VERIFIED";support:"UNKNOWN";installationPath:"UNKNOWN";
+  cumulativeCount:number;orderEvidence:"HEURISTIC_NOT_INSTRUCTION_EVIDENCE"|"SOURCE_JOINT_PREDECESSOR_FINAL_POSE"|"SUBASSEMBLY_SEED_OR_UNRESOLVED";reason:string;displayAfterStep:number|null;originalInstructionStep:null;
+  connection:"NOT_VERIFIED"|"LOCAL_SOURCE_PAIR_CLEAR";support:"UNKNOWN";installationPath:"UNKNOWN";
+  verifiedJointIds?:string[];componentId?:number;predecessorInstanceIds?:string[];
   priorNeighbourHints:{instanceId:string;candidatePriorInstanceId:string|null;signedNativeYGapLdu:number|null;scope:"BOUNDING_BOX_PROXIMITY_ONLY_NOT_CONNECTION"}[];warnings:string[];
 }
 export type AppearanceSequence=ReturnType<typeof appearanceSequence>;
@@ -95,12 +125,12 @@ export function sequenceStepBom(base:BodyPreview,options:PaintOptions,step:Seque
 }
 export async function createSequenceDocument(base:BodyPreview,assets:Record<string,AssemblyAsset>,options:PaintOptions){
   for(const source of base.sources)if(!assets[source.partId]?.mesh||await designDigest(assets[source.partId].mesh)!==source.meshSha256)throw Error("SEQUENCE_MESH_BINDING");
-  const value={schema:SEQUENCE_SCHEMA,scope:"PRESENTATION_ORDER_ONLY_NOT_BUILD_INSTRUCTIONS" as const,sequence:appearanceSequence(base,assets),designDraft:await createDesignDraft(base,options)};
+  const value={schema:base.structure?STRUCTURAL_SEQUENCE_SCHEMA:SEQUENCE_SCHEMA,scope:"PRESENTATION_ORDER_ONLY_NOT_BUILD_INSTRUCTIONS" as const,sequence:appearanceSequence(base,assets),designDraft:await createDesignDraft(base,options)};
   return {...value,contentSha256:await designDigest(value)};
 }
 export async function validateSequenceDocument(value:unknown,base:BodyPreview,assets:Record<string,AssemblyAsset>){
   const v=value as Awaited<ReturnType<typeof createSequenceDocument>>;
-  if(v?.schema!==SEQUENCE_SCHEMA||v.sequence?.version!==SEQUENCE_VERSION||v.sequence?.parentContentSha256!==base.contentSha256)throw Error("SEQUENCE_SCHEMA_OR_PARENT");
+  if(v?.schema!==(base.structure?STRUCTURAL_SEQUENCE_SCHEMA:SEQUENCE_SCHEMA)||v.sequence?.version!==(base.structure?STRUCTURAL_SEQUENCE_VERSION:SEQUENCE_VERSION)||v.sequence?.parentContentSha256!==base.contentSha256)throw Error("SEQUENCE_SCHEMA_OR_PARENT");
   const expected=await createSequenceDocument(base,assets,v.designDraft?.designOptions);
   if(canonicalJson(value)!==canonicalJson(expected))throw Error("SEQUENCE_CONTENT_OR_ORDER_CHANGED");
   return expected;

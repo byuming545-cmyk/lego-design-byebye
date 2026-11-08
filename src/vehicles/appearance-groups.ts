@@ -2,7 +2,7 @@ import type { BodyPreview } from "./body-preview.js";
 export const GROUP_VERSION = "functional-appearance-groups-1";
 export const GROUP_NOTICE = "按功能分组展示模型组成，非已验证实拼说明书。";
 const definitions = [
-  { id: "base", name: "底部支撑", use: "展示底部承托零件，不代表已验证底盘", roles: ["chassis"] },
+  { id: "base", name: "底部支撑", use: "展示底部承托零件，不代表已验证底盘", roles: ["chassis","internal-support","internal-mount"] },
   { id: "wheels", name: "轮组", use: "展示真实轮胎与轮毂；配合与安装状态保持原结论", roles: ["wheel"] },
   { id: "body", name: "侧面与轮拱", use: "展示侧面、腰线、侧裙和轮拱覆盖", roles: ["side", "belt", "shoulder", "side-skirt", "wheel-arch"] },
   { id: "front", name: "机盖与前脸", use: "展示机盖、格栅、灯区与前保险杠", roles: ["hood", "grille", "grille-divider", "headlamp", "front-bumper", "front-apron"] },
@@ -23,7 +23,7 @@ export function appearanceGroups(base: BodyPreview) {
   }
   if (sourceSteps.size !== actual.size) throw Error("GROUP_SOURCE_INCOMPLETE");
   return {
-    version: GROUP_VERSION, status: "DRAFT_NOT_BUILD_INSTRUCTIONS" as const, notice: GROUP_NOTICE,
+    version: base.structure?'functional-structure-groups-2':GROUP_VERSION, status: "DRAFT_NOT_BUILD_INSTRUCTIONS" as const, notice: GROUP_NOTICE,
     parentContentSha256: base.contentSha256,
     groups: definitions.map(d => ({id:d.id,name:d.name,use:d.use,members:base.placements.filter(p => {
       const match=definitions.find(q=>(q.roles as readonly string[]).includes(p.role));

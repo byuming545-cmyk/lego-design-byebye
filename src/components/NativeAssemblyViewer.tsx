@@ -63,7 +63,7 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
   /** Presentation-only visibility. All placements remain loaded and frame the camera. */
   visibleInstanceIds?: string[];
   highlightInstanceIds?: string[];
-  view?: 'perspective' | 'side' | 'top' | 'front' | 'rear';
+  view?: 'perspective' | 'side' | 'top' | 'bottom' | 'front' | 'rear';
   /** Fit actual transformed bounds to the current viewport without scaling parts. */
   fitToModel?: boolean;
 }) {
@@ -168,7 +168,7 @@ export default function NativeAssemblyViewer({ placements, assets, debug, showCo
       const center = bounds.getCenter(new THREE.Vector3());
       const camera = new THREE.PerspectiveCamera(38, 1, Math.max(extent / 1000, 0.01), extent * 100);
       let currentView=latestView.current;
-      const offsetFor=(next:typeof view)=>next==='side'?new THREE.Vector3(extent*1.55,0,0):next==='front'?new THREE.Vector3(0,0,extent*1.55):next==='rear'?new THREE.Vector3(0,0,-extent*1.55):next==='top'?new THREE.Vector3(0,extent*1.55,.01):new THREE.Vector3(extent,extent*(fitToModel ? .6 : .8),extent*1.2);
+      const offsetFor=(next:typeof view)=>next==='side'?new THREE.Vector3(extent*1.55,0,0):next==='front'?new THREE.Vector3(0,0,extent*1.55):next==='rear'?new THREE.Vector3(0,0,-extent*1.55):next==='top'?new THREE.Vector3(0,extent*1.55,.01):next==='bottom'?new THREE.Vector3(0,-extent*1.55,.01):new THREE.Vector3(extent,extent*(fitToModel ? .6 : .8),extent*1.2);
       controls = new OrbitControls(camera, renderer.domElement);
       controls.target.copy(center);controls.enableDamping=true;controls.minDistance=extent*.12;controls.maxDistance=extent*10;
       const frameCamera=()=>{

@@ -12,7 +12,7 @@ import { regionShell } from "./body-surfaces.js";
 import type { Research, VisionResult, VehicleInput } from "./types.js";
 import { craftOptions, designCaseLibrary, type CraftOptions } from "./design-cases.js";
 export const BODY_SCHEMA = "bricklab-vehicle-envelope-appearance-4";
-export const BODY_GENERATOR = "evidence-cabin-regions-6";
+export const BODY_GENERATOR = "evidence-cabin-regions-7-collision-4.2";
 export interface BodyPlacement {
   instanceId: string;
   partId: string;
@@ -66,6 +66,18 @@ export interface BodyPreview {
     rejectionReasons: string[];
   };
   contentSha256: string;
+  structure?: {
+    schema: 'bricklab-vehicle-structure-revision-1';
+    version: string;
+    parentContentSha256: string;
+    audit: import('./structure-audit.js').StructureAudit;
+    changes: {instanceId:string;action:string;reason:string;original?:BodyPlacement;replacement?:BodyPlacement}[];
+    rejected: {instanceId:string;reason:string}[];
+    internalInstanceIds: string[];
+    floorInstanceIds: string[];
+    floorGraph: import('../parts/assembly/types.js').NativeAssembly;
+    floorValidation: {valid:boolean;issues:string[]};
+  };
 }
 export async function generateBodyPreview(
   catalog: BodyCatalog,

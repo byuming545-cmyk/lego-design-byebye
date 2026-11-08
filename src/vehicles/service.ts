@@ -1,5 +1,8 @@
 import { BodyCatalog } from "./body-catalog.js";
 import { craftOptions } from "./design-cases.js";
+import { reviseVehicleStructure, STRUCTURE_VERSION } from './structure-revision.js';
+import { miniDigest, stableJson } from '../mini-cars/catalog.js';
+import { auditStructure } from './structure-audit.js';
 import { loadDemoEvidence } from "./demo-evidence.js";
 import { createDesignDraft, validateDesignDraft } from "./appearance-design.js";
 import {
@@ -19,6 +22,7 @@ import { analyzeVehicle } from "./vision-provider.js";
 import { planVehicle } from "./planner.js";
 import { parseInput, type Job, type Stage, type Event } from "./types.js";
 export class VehicleService {
+  private structureBusy=false;
   private active = new Map<string, Promise<void>>();
   private starting = 0;
   private bodyCatalog = new BodyCatalog();
@@ -132,6 +136,31 @@ export class VehicleService {
         model.placements.map((x) => [x.instanceId, MINI_COLORS[x.color].hex]),
       ),
     };
+  }
+  /** Explicit derivative generation. Research, model calls and the immutable
+   * task preview are not rewritten. Occupancy failures remain blockers. */
+  async reviseStructure(id:string,parent:unknown){
+    if(this.structureBusy)throw Error('STRUCTURE_CAPACITY');
+    this.structureBusy=true;
+    try{
+      const base=await this.preview(id);
+      if(parent!==base.model.contentSha256)throw Error('STRUCTURE_PARENT_MISMATCH');
+      const {model,parts}=await reviseVehicleStructure(base.model,this.bodyCatalog);
+      const assets:Record<string,{mesh:LDrawMesh}>={};for(const s of model.sources)assets[s.partId]={mesh:parts.get(s.partId)!.geometry.mesh!};
+      const directory=path.join(path.dirname(this.file(id)),'structure-revisions');await mkdir(directory,{recursive:true});
+      const payload={scope:'structural-revision-not-build-certified',version:STRUCTURE_VERSION,model,assets,designColors:Object.fromEntries(model.placements.map(p=>[p.instanceId,MINI_COLORS[p.color].hex]))};
+      const file=path.join(directory,model.contentSha256+'.json'),bytes=JSON.stringify(payload);try{await writeFile(file,bytes,{flag:'wx'});}catch(e){if((e as NodeJS.ErrnoException).code!=='EEXIST')throw e;if(await readFile(file,'utf8')!==bytes)throw Error('STRUCTURE_SAVED_CONTENT_CHANGED');}
+      return payload;
+    }finally{this.structureBusy=false;}
+  }
+  async structureRevision(id:string,digest:string){
+    if(!/^[a-f0-9]{64}$/.test(digest))throw Error('STRUCTURE_DIGEST');
+    const base=await this.preview(id),payload=JSON.parse(await readFile(path.join(path.dirname(this.file(id)),'structure-revisions',digest+'.json'),'utf8'));
+    const model=payload.model as BodyPreview,{contentSha256,...raw}=model;
+    if(payload.version!==STRUCTURE_VERSION||contentSha256!==digest||miniDigest(raw)!==digest||model.structure?.parentContentSha256!==base.model.contentSha256||model.sourceSnapshot!==this.bodyCatalog.snapshot)throw Error('STRUCTURE_REVALIDATION_REQUIRED');
+    const parts=await this.bodyCatalog.load(model.sources.map(s=>s.partId));
+    if(model.sources.some(s=>stableJson(this.bodyCatalog.source(parts.get(s.partId)!))!==stableJson(s))||stableJson(auditStructure(model.placements,parts))!==stableJson(model.structure.audit))throw Error('STRUCTURE_CURRENT_SOURCE_OR_AUDIT_CHANGED');
+    return {...payload,assets:Object.fromEntries([...parts].map(([id,p])=>[id,{mesh:p.geometry.mesh!}]))};
   }
   async create(value: unknown) {
     if (this.active.size + this.starting >= 2) throw Error("TASK_CAPACITY");

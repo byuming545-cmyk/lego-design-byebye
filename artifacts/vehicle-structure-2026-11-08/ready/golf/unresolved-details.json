@@ -1,0 +1,5714 @@
+[
+  {
+    "instanceId": "vehicle-part-9",
+    "partId": "3069b",
+    "role": "hood",
+    "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "3069b",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "parts/s/3069bs01.dat:8:0",
+        "parts/s/3069bs01.dat:8:1"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "parts/s/3069bs01.dat:8:0",
+        "gender": "F",
+        "position": [
+          -70,
+          -80,
+          -150
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3069bs01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "5f4add909d77611a003815436be28418390055dcb37200f1d9d0e9c51299e42a",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3069bs01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3069b.dat",
+              "line": 13,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3069bs01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/3069bs01.dat:8:1",
+        "gender": "F",
+        "position": [
+          -50,
+          -80,
+          -150
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3069bs01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "5f4add909d77611a003815436be28418390055dcb37200f1d9d0e9c51299e42a",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3069bs01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3069b.dat",
+              "line": 13,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3069bs01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "vehicle-part-9",
+        "reason": "NO_CLEAR_VERTICAL_OR_BEARING_PLATE_SUPPORT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "vehicle-part-9",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  },
+  {
+    "instanceId": "vehicle-part-10",
+    "partId": "3069b",
+    "role": "hood",
+    "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "3069b",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "parts/s/3069bs01.dat:8:0",
+        "parts/s/3069bs01.dat:8:1"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "parts/s/3069bs01.dat:8:0",
+        "gender": "F",
+        "position": [
+          50,
+          -80,
+          -150
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3069bs01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "5f4add909d77611a003815436be28418390055dcb37200f1d9d0e9c51299e42a",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3069bs01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3069b.dat",
+              "line": 13,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3069bs01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/3069bs01.dat:8:1",
+        "gender": "F",
+        "position": [
+          70,
+          -80,
+          -150
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3069bs01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "5f4add909d77611a003815436be28418390055dcb37200f1d9d0e9c51299e42a",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3069bs01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3069b.dat",
+              "line": 13,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3069bs01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "vehicle-part-10",
+        "reason": "NO_CLEAR_VERTICAL_OR_BEARING_PLATE_SUPPORT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "vehicle-part-10",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  },
+  {
+    "instanceId": "vehicle-part-17",
+    "partId": "54200",
+    "role": "hood",
+    "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "54200",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "parts/s/54200s01.dat:8:0"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "parts/s/54200s01.dat:8:0",
+        "gender": "F",
+        "position": [
+          -70,
+          -72,
+          -170
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/54200s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "515ce0762d6b02f0c53e5a62bdbb2beb4959b345d2968392191278414cce6368",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/54200s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 6 4]",
+          "transforms": [
+            {
+              "file": "parts/54200.dat",
+              "line": 25,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\54200s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "vehicle-part-17",
+        "reason": "NO_CLEAR_VERTICAL_OR_BEARING_PLATE_SUPPORT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "vehicle-part-17",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  },
+  {
+    "instanceId": "vehicle-part-18",
+    "partId": "54200",
+    "role": "hood",
+    "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "54200",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "parts/s/54200s01.dat:8:0"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "parts/s/54200s01.dat:8:0",
+        "gender": "F",
+        "position": [
+          -50,
+          -72,
+          -170
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/54200s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "515ce0762d6b02f0c53e5a62bdbb2beb4959b345d2968392191278414cce6368",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/54200s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 6 4]",
+          "transforms": [
+            {
+              "file": "parts/54200.dat",
+              "line": 25,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\54200s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "vehicle-part-18",
+        "reason": "NO_CLEAR_VERTICAL_OR_BEARING_PLATE_SUPPORT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "vehicle-part-18",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  },
+  {
+    "instanceId": "vehicle-part-19",
+    "partId": "54200",
+    "role": "hood",
+    "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "54200",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "parts/s/54200s01.dat:8:0"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "parts/s/54200s01.dat:8:0",
+        "gender": "F",
+        "position": [
+          -30,
+          -72,
+          -170
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/54200s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "515ce0762d6b02f0c53e5a62bdbb2beb4959b345d2968392191278414cce6368",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/54200s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 6 4]",
+          "transforms": [
+            {
+              "file": "parts/54200.dat",
+              "line": 25,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\54200s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "vehicle-part-19",
+        "reason": "NO_CLEAR_VERTICAL_OR_BEARING_PLATE_SUPPORT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "vehicle-part-19",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  },
+  {
+    "instanceId": "vehicle-part-22",
+    "partId": "54200",
+    "role": "hood",
+    "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "54200",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "parts/s/54200s01.dat:8:0"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "parts/s/54200s01.dat:8:0",
+        "gender": "F",
+        "position": [
+          30,
+          -72,
+          -170
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/54200s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "515ce0762d6b02f0c53e5a62bdbb2beb4959b345d2968392191278414cce6368",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/54200s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 6 4]",
+          "transforms": [
+            {
+              "file": "parts/54200.dat",
+              "line": 25,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\54200s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "vehicle-part-22",
+        "reason": "NO_CLEAR_VERTICAL_OR_BEARING_PLATE_SUPPORT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "vehicle-part-22",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  },
+  {
+    "instanceId": "vehicle-part-23",
+    "partId": "54200",
+    "role": "hood",
+    "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "54200",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "parts/s/54200s01.dat:8:0"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "parts/s/54200s01.dat:8:0",
+        "gender": "F",
+        "position": [
+          50,
+          -72,
+          -170
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/54200s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "515ce0762d6b02f0c53e5a62bdbb2beb4959b345d2968392191278414cce6368",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/54200s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 6 4]",
+          "transforms": [
+            {
+              "file": "parts/54200.dat",
+              "line": 25,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\54200s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "vehicle-part-23",
+        "reason": "NO_CLEAR_VERTICAL_OR_BEARING_PLATE_SUPPORT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "vehicle-part-23",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  },
+  {
+    "instanceId": "vehicle-part-24",
+    "partId": "54200",
+    "role": "hood",
+    "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "54200",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "parts/s/54200s01.dat:8:0"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "parts/s/54200s01.dat:8:0",
+        "gender": "F",
+        "position": [
+          70,
+          -72,
+          -170
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/54200s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "515ce0762d6b02f0c53e5a62bdbb2beb4959b345d2968392191278414cce6368",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/54200s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=R 6 4]",
+          "transforms": [
+            {
+              "file": "parts/54200.dat",
+              "line": 25,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\54200s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "vehicle-part-24",
+        "reason": "NO_CLEAR_VERTICAL_OR_BEARING_PLATE_SUPPORT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "vehicle-part-24",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  },
+  {
+    "instanceId": "vehicle-part-153",
+    "partId": "4162",
+    "role": "front-bumper",
+    "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "4162",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "parts/s/4162s01.dat:8:7",
+        "parts/s/4162s01.dat:8:8",
+        "parts/s/4162s01.dat:8:9",
+        "parts/s/4162s01.dat:8:10",
+        "parts/s/4162s01.dat:8:11",
+        "parts/s/4162s01.dat:8:12",
+        "parts/s/4162s01.dat:8:13",
+        "parts/s/4162s01.dat:8:14"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "p/stud3.dat:8:0",
+        "gender": "M",
+        "position": [
+          -60,
+          -34,
+          -176
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud3.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/4162s01.dat",
+              "line": 24,
+              "directive": "1 16 0 4 0 1 0 0 0 -1 0 0 0 1 stug3-1x7.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "p/stug3-1x7.dat",
+              "line": 12,
+              "directive": "1 16 -60 0 0 1 0 0 0 1 0 0 0 1 stud3.dat",
+              "position": [
+                -60,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud3.dat:8:1",
+        "gender": "M",
+        "position": [
+          -40,
+          -34,
+          -176
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud3.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/4162s01.dat",
+              "line": 24,
+              "directive": "1 16 0 4 0 1 0 0 0 -1 0 0 0 1 stug3-1x7.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "p/stug3-1x7.dat",
+              "line": 13,
+              "directive": "1 16 -40 0 0 1 0 0 0 1 0 0 0 1 stud3.dat",
+              "position": [
+                -40,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud3.dat:8:2",
+        "gender": "M",
+        "position": [
+          -20,
+          -34,
+          -176
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud3.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/4162s01.dat",
+              "line": 24,
+              "directive": "1 16 0 4 0 1 0 0 0 -1 0 0 0 1 stug3-1x7.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "p/stug3-1x7.dat",
+              "line": 14,
+              "directive": "1 16 -20 0 0 1 0 0 0 1 0 0 0 1 stud3.dat",
+              "position": [
+                -20,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud3.dat:8:3",
+        "gender": "M",
+        "position": [
+          0,
+          -34,
+          -176
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud3.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/4162s01.dat",
+              "line": 24,
+              "directive": "1 16 0 4 0 1 0 0 0 -1 0 0 0 1 stug3-1x7.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "p/stug3-1x7.dat",
+              "line": 15,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 stud3.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud3.dat:8:4",
+        "gender": "M",
+        "position": [
+          20,
+          -34,
+          -176
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud3.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/4162s01.dat",
+              "line": 24,
+              "directive": "1 16 0 4 0 1 0 0 0 -1 0 0 0 1 stug3-1x7.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "p/stug3-1x7.dat",
+              "line": 16,
+              "directive": "1 16 20 0 0 1 0 0 0 1 0 0 0 1 stud3.dat",
+              "position": [
+                20,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud3.dat:8:5",
+        "gender": "M",
+        "position": [
+          40,
+          -34,
+          -176
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud3.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/4162s01.dat",
+              "line": 24,
+              "directive": "1 16 0 4 0 1 0 0 0 -1 0 0 0 1 stug3-1x7.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "p/stug3-1x7.dat",
+              "line": 17,
+              "directive": "1 16 40 0 0 1 0 0 0 1 0 0 0 1 stud3.dat",
+              "position": [
+                40,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud3.dat:8:6",
+        "gender": "M",
+        "position": [
+          60,
+          -34,
+          -176
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud3.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/4162s01.dat",
+              "line": 24,
+              "directive": "1 16 0 4 0 1 0 0 0 -1 0 0 0 1 stug3-1x7.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "p/stug3-1x7.dat",
+              "line": 18,
+              "directive": "1 16 60 0 0 1 0 0 0 1 0 0 0 1 stud3.dat",
+              "position": [
+                60,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/4162s01.dat:8:7",
+        "gender": "F",
+        "position": [
+          -70,
+          -34,
+          -172
+        ],
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/4162s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "04e80a196a8c6c693aef8deaab83028fe6bf2688af9be004e2a6310b677d36c2",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4162s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 8 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/4162s01.dat:8:8",
+        "gender": "F",
+        "position": [
+          -50,
+          -34,
+          -172
+        ],
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/4162s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "04e80a196a8c6c693aef8deaab83028fe6bf2688af9be004e2a6310b677d36c2",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4162s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 8 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/4162s01.dat:8:9",
+        "gender": "F",
+        "position": [
+          -30,
+          -34,
+          -172
+        ],
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/4162s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "04e80a196a8c6c693aef8deaab83028fe6bf2688af9be004e2a6310b677d36c2",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4162s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 8 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/4162s01.dat:8:10",
+        "gender": "F",
+        "position": [
+          -10,
+          -34,
+          -172
+        ],
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/4162s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "04e80a196a8c6c693aef8deaab83028fe6bf2688af9be004e2a6310b677d36c2",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4162s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 8 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/4162s01.dat:8:11",
+        "gender": "F",
+        "position": [
+          10,
+          -34,
+          -172
+        ],
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/4162s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "04e80a196a8c6c693aef8deaab83028fe6bf2688af9be004e2a6310b677d36c2",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4162s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 8 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/4162s01.dat:8:12",
+        "gender": "F",
+        "position": [
+          30,
+          -34,
+          -172
+        ],
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/4162s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "04e80a196a8c6c693aef8deaab83028fe6bf2688af9be004e2a6310b677d36c2",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4162s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 8 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/4162s01.dat:8:13",
+        "gender": "F",
+        "position": [
+          50,
+          -34,
+          -172
+        ],
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/4162s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "04e80a196a8c6c693aef8deaab83028fe6bf2688af9be004e2a6310b677d36c2",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4162s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 8 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/4162s01.dat:8:14",
+        "gender": "F",
+        "position": [
+          70,
+          -34,
+          -172
+        ],
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/4162s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "04e80a196a8c6c693aef8deaab83028fe6bf2688af9be004e2a6310b677d36c2",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4162s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 8 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "vehicle-part-153",
+        "reason": "NO_CLEAR_SOURCE_BACKED_SIDE_MOUNT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "vehicle-part-153",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  },
+  {
+    "instanceId": "vehicle-part-155",
+    "partId": "98138",
+    "role": "headlamp",
+    "reason": "CURRENT_INTERFACE_PERMISSION_UNAVAILABLE",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "98138",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": false,
+      "assemblyVerified": false,
+      "generatable": false,
+      "allowedConnectionIds": [],
+      "ruleIds": [],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [
+        "grammar-no-supported-connector"
+      ],
+      "reasons": [
+        "No source feature satisfies an enabled native connector rule."
+      ]
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "p/stud4o.dat:8:0",
+        "gender": "F",
+        "position": [
+          -60,
+          -54,
+          -176
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud4o.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "cd593dfee734bccf08b57db82799d477d429df18e17bee4785d692b25ed30210",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud4o.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [ID=aStud] [gender=F] [caps=A] [secs=R 6 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/98138.dat",
+              "line": 12,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\98138s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/98138s01.dat",
+              "line": 17,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\98138s02.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/98138s02.dat",
+              "line": 12,
+              "directive": "1 16 0 4 0 1 0 0 0 -1 0 0 0 1 stud4o.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "vehicle-part-155",
+        "reason": "NO_CLEAR_SOURCE_BACKED_SIDE_MOUNT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "vehicle-part-155",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  },
+  {
+    "instanceId": "vehicle-part-156",
+    "partId": "98138",
+    "role": "headlamp",
+    "reason": "CURRENT_INTERFACE_PERMISSION_UNAVAILABLE",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "98138",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": false,
+      "assemblyVerified": false,
+      "generatable": false,
+      "allowedConnectionIds": [],
+      "ruleIds": [],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [
+        "grammar-no-supported-connector"
+      ],
+      "reasons": [
+        "No source feature satisfies an enabled native connector rule."
+      ]
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "p/stud4o.dat:8:0",
+        "gender": "F",
+        "position": [
+          60,
+          -54,
+          -176
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud4o.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "cd593dfee734bccf08b57db82799d477d429df18e17bee4785d692b25ed30210",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud4o.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [ID=aStud] [gender=F] [caps=A] [secs=R 6 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/98138.dat",
+              "line": 12,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\98138s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/98138s01.dat",
+              "line": 17,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\98138s02.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/98138s02.dat",
+              "line": 12,
+              "directive": "1 16 0 4 0 1 0 0 0 -1 0 0 0 1 stud4o.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "vehicle-part-156",
+        "reason": "NO_CLEAR_SOURCE_BACKED_SIDE_MOUNT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "vehicle-part-156",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  },
+  {
+    "instanceId": "vehicle-part-157",
+    "partId": "4162",
+    "role": "rear-bumper",
+    "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "4162",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "parts/s/4162s01.dat:8:7",
+        "parts/s/4162s01.dat:8:8",
+        "parts/s/4162s01.dat:8:9",
+        "parts/s/4162s01.dat:8:10",
+        "parts/s/4162s01.dat:8:11",
+        "parts/s/4162s01.dat:8:12",
+        "parts/s/4162s01.dat:8:13",
+        "parts/s/4162s01.dat:8:14"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "p/stud3.dat:8:0",
+        "gender": "M",
+        "position": [
+          -60,
+          -26,
+          176
+        ],
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud3.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/4162s01.dat",
+              "line": 24,
+              "directive": "1 16 0 4 0 1 0 0 0 -1 0 0 0 1 stug3-1x7.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "p/stug3-1x7.dat",
+              "line": 12,
+              "directive": "1 16 -60 0 0 1 0 0 0 1 0 0 0 1 stud3.dat",
+              "position": [
+                -60,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud3.dat:8:1",
+        "gender": "M",
+        "position": [
+          -40,
+          -26,
+          176
+        ],
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud3.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/4162s01.dat",
+              "line": 24,
+              "directive": "1 16 0 4 0 1 0 0 0 -1 0 0 0 1 stug3-1x7.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "p/stug3-1x7.dat",
+              "line": 13,
+              "directive": "1 16 -40 0 0 1 0 0 0 1 0 0 0 1 stud3.dat",
+              "position": [
+                -40,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud3.dat:8:2",
+        "gender": "M",
+        "position": [
+          -20,
+          -26,
+          176
+        ],
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud3.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/4162s01.dat",
+              "line": 24,
+              "directive": "1 16 0 4 0 1 0 0 0 -1 0 0 0 1 stug3-1x7.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "p/stug3-1x7.dat",
+              "line": 14,
+              "directive": "1 16 -20 0 0 1 0 0 0 1 0 0 0 1 stud3.dat",
+              "position": [
+                -20,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud3.dat:8:3",
+        "gender": "M",
+        "position": [
+          0,
+          -26,
+          176
+        ],
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud3.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/4162s01.dat",
+              "line": 24,
+              "directive": "1 16 0 4 0 1 0 0 0 -1 0 0 0 1 stug3-1x7.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "p/stug3-1x7.dat",
+              "line": 15,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 stud3.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud3.dat:8:4",
+        "gender": "M",
+        "position": [
+          20,
+          -26,
+          176
+        ],
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud3.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/4162s01.dat",
+              "line": 24,
+              "directive": "1 16 0 4 0 1 0 0 0 -1 0 0 0 1 stug3-1x7.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "p/stug3-1x7.dat",
+              "line": 16,
+              "directive": "1 16 20 0 0 1 0 0 0 1 0 0 0 1 stud3.dat",
+              "position": [
+                20,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud3.dat:8:5",
+        "gender": "M",
+        "position": [
+          40,
+          -26,
+          176
+        ],
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud3.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/4162s01.dat",
+              "line": 24,
+              "directive": "1 16 0 4 0 1 0 0 0 -1 0 0 0 1 stug3-1x7.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "p/stug3-1x7.dat",
+              "line": 17,
+              "directive": "1 16 40 0 0 1 0 0 0 1 0 0 0 1 stud3.dat",
+              "position": [
+                40,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud3.dat:8:6",
+        "gender": "M",
+        "position": [
+          60,
+          -26,
+          176
+        ],
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud3.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/4162s01.dat",
+              "line": 24,
+              "directive": "1 16 0 4 0 1 0 0 0 -1 0 0 0 1 stug3-1x7.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "p/stug3-1x7.dat",
+              "line": 18,
+              "directive": "1 16 60 0 0 1 0 0 0 1 0 0 0 1 stud3.dat",
+              "position": [
+                60,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/4162s01.dat:8:7",
+        "gender": "F",
+        "position": [
+          -70,
+          -26,
+          172
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/4162s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "04e80a196a8c6c693aef8deaab83028fe6bf2688af9be004e2a6310b677d36c2",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4162s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 8 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/4162s01.dat:8:8",
+        "gender": "F",
+        "position": [
+          -50,
+          -26,
+          172
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/4162s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "04e80a196a8c6c693aef8deaab83028fe6bf2688af9be004e2a6310b677d36c2",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4162s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 8 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/4162s01.dat:8:9",
+        "gender": "F",
+        "position": [
+          -30,
+          -26,
+          172
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/4162s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "04e80a196a8c6c693aef8deaab83028fe6bf2688af9be004e2a6310b677d36c2",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4162s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 8 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/4162s01.dat:8:10",
+        "gender": "F",
+        "position": [
+          -10,
+          -26,
+          172
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/4162s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "04e80a196a8c6c693aef8deaab83028fe6bf2688af9be004e2a6310b677d36c2",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4162s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 8 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/4162s01.dat:8:11",
+        "gender": "F",
+        "position": [
+          10,
+          -26,
+          172
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/4162s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "04e80a196a8c6c693aef8deaab83028fe6bf2688af9be004e2a6310b677d36c2",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4162s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 8 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/4162s01.dat:8:12",
+        "gender": "F",
+        "position": [
+          30,
+          -26,
+          172
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/4162s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "04e80a196a8c6c693aef8deaab83028fe6bf2688af9be004e2a6310b677d36c2",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4162s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 8 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/4162s01.dat:8:13",
+        "gender": "F",
+        "position": [
+          50,
+          -26,
+          172
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/4162s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "04e80a196a8c6c693aef8deaab83028fe6bf2688af9be004e2a6310b677d36c2",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4162s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 8 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/4162s01.dat:8:14",
+        "gender": "F",
+        "position": [
+          70,
+          -26,
+          172
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/4162s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "04e80a196a8c6c693aef8deaab83028fe6bf2688af9be004e2a6310b677d36c2",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/4162s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 8 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/4162.dat",
+              "line": 20,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\4162s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "vehicle-part-157",
+        "reason": "NO_CLEAR_SOURCE_BACKED_SIDE_MOUNT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "vehicle-part-157",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  },
+  {
+    "instanceId": "vehicle-part-159",
+    "partId": "3069b",
+    "role": "taillamp",
+    "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "3069b",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "parts/s/3069bs01.dat:8:0",
+        "parts/s/3069bs01.dat:8:1"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "parts/s/3069bs01.dat:8:0",
+        "gender": "F",
+        "position": [
+          -50,
+          -46,
+          172
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3069bs01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "5f4add909d77611a003815436be28418390055dcb37200f1d9d0e9c51299e42a",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3069bs01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3069b.dat",
+              "line": 13,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3069bs01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/3069bs01.dat:8:1",
+        "gender": "F",
+        "position": [
+          -30,
+          -46,
+          172
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3069bs01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "5f4add909d77611a003815436be28418390055dcb37200f1d9d0e9c51299e42a",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3069bs01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3069b.dat",
+              "line": 13,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3069bs01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "vehicle-part-159",
+        "reason": "NO_CLEAR_SOURCE_BACKED_SIDE_MOUNT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "vehicle-part-159",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  },
+  {
+    "instanceId": "vehicle-part-160",
+    "partId": "3069b",
+    "role": "taillamp",
+    "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "3069b",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "parts/s/3069bs01.dat:8:0",
+        "parts/s/3069bs01.dat:8:1"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "parts/s/3069bs01.dat:8:0",
+        "gender": "F",
+        "position": [
+          30,
+          -46,
+          172
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3069bs01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "5f4add909d77611a003815436be28418390055dcb37200f1d9d0e9c51299e42a",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3069bs01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3069b.dat",
+              "line": 13,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3069bs01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/3069bs01.dat:8:1",
+        "gender": "F",
+        "position": [
+          50,
+          -46,
+          172
+        ],
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3069bs01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "5f4add909d77611a003815436be28418390055dcb37200f1d9d0e9c51299e42a",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3069bs01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3069b.dat",
+              "line": 13,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3069bs01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "vehicle-part-160",
+        "reason": "NO_CLEAR_SOURCE_BACKED_SIDE_MOUNT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "vehicle-part-160",
+      "nearbyEndpointPairs": 0,
+      "candidates": [],
+      "status": "NO_MATCHING_INSTALLATION_POSE",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  },
+  {
+    "instanceId": "vehicle-part-161",
+    "partId": "18977",
+    "role": "wheel",
+    "reason": "WHEEL_MATING_UNKNOWN",
+    "sourceConnectionStatus": "missing",
+    "permission": {
+      "partId": "18977",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": false,
+      "collisionGeometryReady": false,
+      "exteriorCollisionGeometryReady": true,
+      "connectable": false,
+      "assemblyVerified": false,
+      "generatable": false,
+      "allowedConnectionIds": [],
+      "ruleIds": [],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [
+        "grammar-source-interpretation-incomplete",
+        "grammar-no-supported-connector",
+        "grammar-collision-branched-native-boundary"
+      ],
+      "reasons": [
+        "Connector source interpretation contains unresolved structural syntax or missing evidence.",
+        "No source feature satisfies an enabled native connector rule.",
+        "The source mesh has open/branched boundary chains. A separate exterior-shell surface proxy is available only when that placement contract is explicitly selected; this is not structural eligibility."
+      ]
+    },
+    "actualWorldEndpoints": [],
+    "attemptedSupportRejections": [],
+    "currentPairIssues": [
+      {
+        "a": "vehicle-part-3",
+        "b": "vehicle-part-161",
+        "status": "UNKNOWN",
+        "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+        "sourcePoseMatches": 0,
+        "collisionClassA": "exterior-shell",
+        "collisionClassB": "exterior-shell"
+      },
+      {
+        "a": "vehicle-part-161",
+        "b": "vehicle-part-162",
+        "status": "UNKNOWN",
+        "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+        "sourcePoseMatches": 0,
+        "collisionClassA": "exterior-shell",
+        "collisionClassB": "exterior-shell"
+      }
+    ],
+    "currentMathematicalCandidates": null
+  },
+  {
+    "instanceId": "vehicle-part-162",
+    "partId": "66727",
+    "role": "wheel",
+    "reason": "WHEEL_MATING_UNKNOWN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "66727",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": false,
+      "exteriorCollisionGeometryReady": true,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": false,
+      "allowedConnectionIds": [],
+      "ruleIds": [],
+      "exteriorGeneratable": true,
+      "exteriorAllowedConnectionIds": [
+        "p/connhol2.dat:8:0",
+        "p/stud2a.dat:11:1"
+      ],
+      "exteriorRuleIds": [
+        "ldcad-source-declared-pin-hole-v1",
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "reasonCodes": [
+        "grammar-collision-branched-native-boundary"
+      ],
+      "reasons": [
+        "The source mesh has open/branched boundary chains. A separate exterior-shell surface proxy is available only when that placement contract is explicitly selected; this is not structural eligibility."
+      ]
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "p/connhol2.dat:8:0",
+        "gender": "F",
+        "position": [
+          -57,
+          -29.9997212635,
+          -120
+        ],
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/connhol2.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "5a9b8fe861444088dec2c30a8b5851873c7a859fd451900dfff06b9efe552979",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhol2.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=none] [secs=R 8 2   R 6 16   R 8 2] [center=true] [slide=true]",
+          "transforms": [
+            {
+              "file": "parts/66727.dat",
+              "line": 13,
+              "directive": "1 16 0 0 0 1 0 0 0 0 -1 0 1 0 connhol2.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                1,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud2a.dat:11:1",
+        "gender": "M",
+        "position": [
+          -69,
+          -29.9997212635,
+          -120
+        ],
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud2a.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "d316e281be1503e4b98cba6274f3974841851686d11c779da1397583bd0efb79",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud2a.dat",
+          "line": 11,
+          "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=M] [caps=one] [secs=R 6 4]",
+          "transforms": [
+            {
+              "file": "parts/66727.dat",
+              "line": 92,
+              "directive": "1 16 0 0 -12 -1 0 0 0 0 1 0 1 0 stud2a.dat",
+              "position": [
+                0,
+                0,
+                -12
+              ],
+              "matrix": [
+                -1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [],
+    "currentPairIssues": [
+      {
+        "a": "vehicle-part-3",
+        "b": "vehicle-part-162",
+        "status": "UNKNOWN",
+        "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+        "sourcePoseMatches": 0,
+        "collisionClassA": "exterior-shell",
+        "collisionClassB": "exterior-shell"
+      },
+      {
+        "a": "vehicle-part-161",
+        "b": "vehicle-part-162",
+        "status": "UNKNOWN",
+        "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+        "sourcePoseMatches": 0,
+        "collisionClassA": "exterior-shell",
+        "collisionClassB": "exterior-shell"
+      }
+    ],
+    "currentMathematicalCandidates": null
+  },
+  {
+    "instanceId": "vehicle-part-163",
+    "partId": "18977",
+    "role": "wheel",
+    "reason": "WHEEL_MATING_UNKNOWN",
+    "sourceConnectionStatus": "missing",
+    "permission": {
+      "partId": "18977",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": false,
+      "collisionGeometryReady": false,
+      "exteriorCollisionGeometryReady": true,
+      "connectable": false,
+      "assemblyVerified": false,
+      "generatable": false,
+      "allowedConnectionIds": [],
+      "ruleIds": [],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [
+        "grammar-source-interpretation-incomplete",
+        "grammar-no-supported-connector",
+        "grammar-collision-branched-native-boundary"
+      ],
+      "reasons": [
+        "Connector source interpretation contains unresolved structural syntax or missing evidence.",
+        "No source feature satisfies an enabled native connector rule.",
+        "The source mesh has open/branched boundary chains. A separate exterior-shell surface proxy is available only when that placement contract is explicitly selected; this is not structural eligibility."
+      ]
+    },
+    "actualWorldEndpoints": [],
+    "attemptedSupportRejections": [],
+    "currentPairIssues": [
+      {
+        "a": "vehicle-part-4",
+        "b": "vehicle-part-163",
+        "status": "UNKNOWN",
+        "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+        "sourcePoseMatches": 0,
+        "collisionClassA": "exterior-shell",
+        "collisionClassB": "exterior-shell"
+      },
+      {
+        "a": "vehicle-part-163",
+        "b": "vehicle-part-164",
+        "status": "UNKNOWN",
+        "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+        "sourcePoseMatches": 0,
+        "collisionClassA": "exterior-shell",
+        "collisionClassB": "exterior-shell"
+      }
+    ],
+    "currentMathematicalCandidates": null
+  },
+  {
+    "instanceId": "vehicle-part-164",
+    "partId": "66727",
+    "role": "wheel",
+    "reason": "WHEEL_MATING_UNKNOWN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "66727",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": false,
+      "exteriorCollisionGeometryReady": true,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": false,
+      "allowedConnectionIds": [],
+      "ruleIds": [],
+      "exteriorGeneratable": true,
+      "exteriorAllowedConnectionIds": [
+        "p/connhol2.dat:8:0",
+        "p/stud2a.dat:11:1"
+      ],
+      "exteriorRuleIds": [
+        "ldcad-source-declared-pin-hole-v1",
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "reasonCodes": [
+        "grammar-collision-branched-native-boundary"
+      ],
+      "reasons": [
+        "The source mesh has open/branched boundary chains. A separate exterior-shell surface proxy is available only when that placement contract is explicitly selected; this is not structural eligibility."
+      ]
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "p/connhol2.dat:8:0",
+        "gender": "F",
+        "position": [
+          67,
+          -29.9997212635,
+          -120
+        ],
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/connhol2.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "5a9b8fe861444088dec2c30a8b5851873c7a859fd451900dfff06b9efe552979",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhol2.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=none] [secs=R 8 2   R 6 16   R 8 2] [center=true] [slide=true]",
+          "transforms": [
+            {
+              "file": "parts/66727.dat",
+              "line": 13,
+              "directive": "1 16 0 0 0 1 0 0 0 0 -1 0 1 0 connhol2.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                1,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud2a.dat:11:1",
+        "gender": "M",
+        "position": [
+          55,
+          -29.9997212635,
+          -120
+        ],
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud2a.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "d316e281be1503e4b98cba6274f3974841851686d11c779da1397583bd0efb79",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud2a.dat",
+          "line": 11,
+          "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=M] [caps=one] [secs=R 6 4]",
+          "transforms": [
+            {
+              "file": "parts/66727.dat",
+              "line": 92,
+              "directive": "1 16 0 0 -12 -1 0 0 0 0 1 0 1 0 stud2a.dat",
+              "position": [
+                0,
+                0,
+                -12
+              ],
+              "matrix": [
+                -1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [],
+    "currentPairIssues": [
+      {
+        "a": "vehicle-part-4",
+        "b": "vehicle-part-164",
+        "status": "UNKNOWN",
+        "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+        "sourcePoseMatches": 0,
+        "collisionClassA": "exterior-shell",
+        "collisionClassB": "exterior-shell"
+      },
+      {
+        "a": "vehicle-part-163",
+        "b": "vehicle-part-164",
+        "status": "UNKNOWN",
+        "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+        "sourcePoseMatches": 0,
+        "collisionClassA": "exterior-shell",
+        "collisionClassB": "exterior-shell"
+      }
+    ],
+    "currentMathematicalCandidates": null
+  },
+  {
+    "instanceId": "vehicle-part-165",
+    "partId": "18977",
+    "role": "wheel",
+    "reason": "WHEEL_MATING_UNKNOWN",
+    "sourceConnectionStatus": "missing",
+    "permission": {
+      "partId": "18977",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": false,
+      "collisionGeometryReady": false,
+      "exteriorCollisionGeometryReady": true,
+      "connectable": false,
+      "assemblyVerified": false,
+      "generatable": false,
+      "allowedConnectionIds": [],
+      "ruleIds": [],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [
+        "grammar-source-interpretation-incomplete",
+        "grammar-no-supported-connector",
+        "grammar-collision-branched-native-boundary"
+      ],
+      "reasons": [
+        "Connector source interpretation contains unresolved structural syntax or missing evidence.",
+        "No source feature satisfies an enabled native connector rule.",
+        "The source mesh has open/branched boundary chains. A separate exterior-shell surface proxy is available only when that placement contract is explicitly selected; this is not structural eligibility."
+      ]
+    },
+    "actualWorldEndpoints": [],
+    "attemptedSupportRejections": [],
+    "currentPairIssues": [
+      {
+        "a": "vehicle-part-5",
+        "b": "vehicle-part-165",
+        "status": "UNKNOWN",
+        "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+        "sourcePoseMatches": 0,
+        "collisionClassA": "exterior-shell",
+        "collisionClassB": "exterior-shell"
+      },
+      {
+        "a": "vehicle-part-165",
+        "b": "vehicle-part-166",
+        "status": "UNKNOWN",
+        "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+        "sourcePoseMatches": 0,
+        "collisionClassA": "exterior-shell",
+        "collisionClassB": "exterior-shell"
+      }
+    ],
+    "currentMathematicalCandidates": null
+  },
+  {
+    "instanceId": "vehicle-part-166",
+    "partId": "66727",
+    "role": "wheel",
+    "reason": "WHEEL_MATING_UNKNOWN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "66727",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": false,
+      "exteriorCollisionGeometryReady": true,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": false,
+      "allowedConnectionIds": [],
+      "ruleIds": [],
+      "exteriorGeneratable": true,
+      "exteriorAllowedConnectionIds": [
+        "p/connhol2.dat:8:0",
+        "p/stud2a.dat:11:1"
+      ],
+      "exteriorRuleIds": [
+        "ldcad-source-declared-pin-hole-v1",
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "reasonCodes": [
+        "grammar-collision-branched-native-boundary"
+      ],
+      "reasons": [
+        "The source mesh has open/branched boundary chains. A separate exterior-shell surface proxy is available only when that placement contract is explicitly selected; this is not structural eligibility."
+      ]
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "p/connhol2.dat:8:0",
+        "gender": "F",
+        "position": [
+          -57,
+          -29.9997212635,
+          120
+        ],
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/connhol2.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "5a9b8fe861444088dec2c30a8b5851873c7a859fd451900dfff06b9efe552979",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhol2.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=none] [secs=R 8 2   R 6 16   R 8 2] [center=true] [slide=true]",
+          "transforms": [
+            {
+              "file": "parts/66727.dat",
+              "line": 13,
+              "directive": "1 16 0 0 0 1 0 0 0 0 -1 0 1 0 connhol2.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                1,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud2a.dat:11:1",
+        "gender": "M",
+        "position": [
+          -69,
+          -29.9997212635,
+          120
+        ],
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud2a.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "d316e281be1503e4b98cba6274f3974841851686d11c779da1397583bd0efb79",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud2a.dat",
+          "line": 11,
+          "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=M] [caps=one] [secs=R 6 4]",
+          "transforms": [
+            {
+              "file": "parts/66727.dat",
+              "line": 92,
+              "directive": "1 16 0 0 -12 -1 0 0 0 0 1 0 1 0 stud2a.dat",
+              "position": [
+                0,
+                0,
+                -12
+              ],
+              "matrix": [
+                -1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [],
+    "currentPairIssues": [
+      {
+        "a": "vehicle-part-5",
+        "b": "vehicle-part-166",
+        "status": "UNKNOWN",
+        "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+        "sourcePoseMatches": 0,
+        "collisionClassA": "exterior-shell",
+        "collisionClassB": "exterior-shell"
+      },
+      {
+        "a": "vehicle-part-165",
+        "b": "vehicle-part-166",
+        "status": "UNKNOWN",
+        "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+        "sourcePoseMatches": 0,
+        "collisionClassA": "exterior-shell",
+        "collisionClassB": "exterior-shell"
+      }
+    ],
+    "currentMathematicalCandidates": null
+  },
+  {
+    "instanceId": "vehicle-part-167",
+    "partId": "18977",
+    "role": "wheel",
+    "reason": "WHEEL_MATING_UNKNOWN",
+    "sourceConnectionStatus": "missing",
+    "permission": {
+      "partId": "18977",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": false,
+      "collisionGeometryReady": false,
+      "exteriorCollisionGeometryReady": true,
+      "connectable": false,
+      "assemblyVerified": false,
+      "generatable": false,
+      "allowedConnectionIds": [],
+      "ruleIds": [],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [
+        "grammar-source-interpretation-incomplete",
+        "grammar-no-supported-connector",
+        "grammar-collision-branched-native-boundary"
+      ],
+      "reasons": [
+        "Connector source interpretation contains unresolved structural syntax or missing evidence.",
+        "No source feature satisfies an enabled native connector rule.",
+        "The source mesh has open/branched boundary chains. A separate exterior-shell surface proxy is available only when that placement contract is explicitly selected; this is not structural eligibility."
+      ]
+    },
+    "actualWorldEndpoints": [],
+    "attemptedSupportRejections": [],
+    "currentPairIssues": [
+      {
+        "a": "vehicle-part-6",
+        "b": "vehicle-part-167",
+        "status": "UNKNOWN",
+        "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+        "sourcePoseMatches": 0,
+        "collisionClassA": "exterior-shell",
+        "collisionClassB": "exterior-shell"
+      },
+      {
+        "a": "vehicle-part-167",
+        "b": "vehicle-part-168",
+        "status": "UNKNOWN",
+        "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+        "sourcePoseMatches": 0,
+        "collisionClassA": "exterior-shell",
+        "collisionClassB": "exterior-shell"
+      }
+    ],
+    "currentMathematicalCandidates": null
+  },
+  {
+    "instanceId": "vehicle-part-168",
+    "partId": "66727",
+    "role": "wheel",
+    "reason": "WHEEL_MATING_UNKNOWN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "66727",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": false,
+      "exteriorCollisionGeometryReady": true,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": false,
+      "allowedConnectionIds": [],
+      "ruleIds": [],
+      "exteriorGeneratable": true,
+      "exteriorAllowedConnectionIds": [
+        "p/connhol2.dat:8:0",
+        "p/stud2a.dat:11:1"
+      ],
+      "exteriorRuleIds": [
+        "ldcad-source-declared-pin-hole-v1",
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "reasonCodes": [
+        "grammar-collision-branched-native-boundary"
+      ],
+      "reasons": [
+        "The source mesh has open/branched boundary chains. A separate exterior-shell surface proxy is available only when that placement contract is explicitly selected; this is not structural eligibility."
+      ]
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "p/connhol2.dat:8:0",
+        "gender": "F",
+        "position": [
+          67,
+          -29.9997212635,
+          120
+        ],
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/connhol2.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "5a9b8fe861444088dec2c30a8b5851873c7a859fd451900dfff06b9efe552979",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/connhol2.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=none] [secs=R 8 2   R 6 16   R 8 2] [center=true] [slide=true]",
+          "transforms": [
+            {
+              "file": "parts/66727.dat",
+              "line": 13,
+              "directive": "1 16 0 0 0 1 0 0 0 0 -1 0 1 0 connhol2.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                1,
+                0
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud2a.dat:11:1",
+        "gender": "M",
+        "position": [
+          55,
+          -29.9997212635,
+          120
+        ],
+        "direction": [
+          -1,
+          0,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud2a.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "d316e281be1503e4b98cba6274f3974841851686d11c779da1397583bd0efb79",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud2a.dat",
+          "line": 11,
+          "raw": "0 !LDCAD SNAP_CYL [ID=studO] [gender=M] [caps=one] [secs=R 6 4]",
+          "transforms": [
+            {
+              "file": "parts/66727.dat",
+              "line": 92,
+              "directive": "1 16 0 0 -12 -1 0 0 0 0 1 0 1 0 stud2a.dat",
+              "position": [
+                0,
+                0,
+                -12
+              ],
+              "matrix": [
+                -1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [],
+    "currentPairIssues": [
+      {
+        "a": "vehicle-part-6",
+        "b": "vehicle-part-168",
+        "status": "UNKNOWN",
+        "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+        "sourcePoseMatches": 0,
+        "collisionClassA": "exterior-shell",
+        "collisionClassB": "exterior-shell"
+      },
+      {
+        "a": "vehicle-part-167",
+        "b": "vehicle-part-168",
+        "status": "UNKNOWN",
+        "reasonCode": "WHEEL_MATING_NOT_EVIDENCED",
+        "sourcePoseMatches": 0,
+        "collisionClassA": "exterior-shell",
+        "collisionClassB": "exterior-shell"
+      }
+    ],
+    "currentMathematicalCandidates": null
+  },
+  {
+    "instanceId": "structure-45",
+    "partId": "3004",
+    "role": "rear-window",
+    "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN",
+    "sourceConnectionStatus": "partial",
+    "permission": {
+      "partId": "3004",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "p/stud.dat:8:1",
+        "p/stud.dat:8:2",
+        "parts/s/3004s01.dat:8:3",
+        "parts/s/3004s01.dat:8:4",
+        "parts/s/3004s01.dat:8:5",
+        "parts/s/3004s01.dat:8:6"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "p/stud3.dat:8:0",
+        "gender": "M",
+        "position": [
+          -50,
+          -92,
+          140
+        ],
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud3.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/3004.dat",
+              "line": 18,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3004s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/3004s01.dat",
+              "line": 15,
+              "directive": "1 16 0 4 0 1 0 0 0 -5 0 0 0 1 stud3.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -5,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud.dat:8:1",
+        "gender": "M",
+        "position": [
+          -50,
+          -96,
+          130
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [ID=studC] [gender=M] [caps=one] [secs=R 6 4]",
+          "transforms": [
+            {
+              "file": "parts/3004.dat",
+              "line": 18,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3004s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/3004s01.dat",
+              "line": 23,
+              "directive": "1 16 10 0 0 1 0 0 0 1 0 0 0 1 stud.dat",
+              "position": [
+                10,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud.dat:8:2",
+        "gender": "M",
+        "position": [
+          -50,
+          -96,
+          150
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [ID=studC] [gender=M] [caps=one] [secs=R 6 4]",
+          "transforms": [
+            {
+              "file": "parts/3004.dat",
+              "line": 18,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3004s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/3004s01.dat",
+              "line": 24,
+              "directive": "1 16 -10 0 0 1 0 0 0 1 0 0 0 1 stud.dat",
+              "position": [
+                -10,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/3004s01.dat:8:3",
+        "gender": "F",
+        "position": [
+          -50,
+          -72,
+          150
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3004s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "2a6763330e98a7e7c0d50d5c7465a966882ee76829939d70d089d789386fab9d",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3004s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 20] [pos=0 24 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3004.dat",
+              "line": 18,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3004s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/3004s01.dat:8:4",
+        "gender": "F",
+        "position": [
+          -50,
+          -72,
+          130
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3004s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "2a6763330e98a7e7c0d50d5c7465a966882ee76829939d70d089d789386fab9d",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3004s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 20] [pos=0 24 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3004.dat",
+              "line": 18,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3004s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/3004s01.dat:8:5",
+        "gender": "F",
+        "position": [
+          -50,
+          -72,
+          150
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3004s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "2a6763330e98a7e7c0d50d5c7465a966882ee76829939d70d089d789386fab9d",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3004s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 20] [pos=0 24 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3004.dat",
+              "line": 8,
+              "directive": "0 !LDCAD SNAP_INCL [ref=s\\3004s01.dat]",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/3004s01.dat:8:6",
+        "gender": "F",
+        "position": [
+          -50,
+          -72,
+          130
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3004s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "2a6763330e98a7e7c0d50d5c7465a966882ee76829939d70d089d789386fab9d",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3004s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 20] [pos=0 24 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3004.dat",
+              "line": 8,
+              "directive": "0 !LDCAD SNAP_INCL [ref=s\\3004s01.dat]",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "structure-45",
+        "reason": "NO_CLEAR_VERTICAL_OR_BEARING_PLATE_SUPPORT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "structure-45",
+      "nearbyEndpointPairs": 2,
+      "candidates": [
+        {
+          "fixedInstanceId": "structure-46",
+          "fixedConnectionId": "parts/s/3069bs01.dat:8:0",
+          "movingConnectionId": "p/stud.dat:8:2",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              -50,
+              -96,
+              140
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "structure-46",
+          "fixedConnectionId": "parts/s/3069bs01.dat:8:1",
+          "movingConnectionId": "p/stud.dat:8:1",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              -50,
+              -96,
+              140
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        }
+      ],
+      "status": "SOURCE_POSE_CANDIDATE_ONLY",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  },
+  {
+    "instanceId": "structure-46",
+    "partId": "3069b",
+    "role": "rear-window",
+    "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "3069b",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "parts/s/3069bs01.dat:8:0",
+        "parts/s/3069bs01.dat:8:1"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "parts/s/3069bs01.dat:8:0",
+        "gender": "F",
+        "position": [
+          -50,
+          -96,
+          150
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3069bs01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "5f4add909d77611a003815436be28418390055dcb37200f1d9d0e9c51299e42a",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3069bs01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3069b.dat",
+              "line": 13,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3069bs01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/3069bs01.dat:8:1",
+        "gender": "F",
+        "position": [
+          -50,
+          -96,
+          130
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3069bs01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "5f4add909d77611a003815436be28418390055dcb37200f1d9d0e9c51299e42a",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3069bs01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3069b.dat",
+              "line": 13,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3069bs01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "structure-46",
+        "reason": "NO_CLEAR_VERTICAL_OR_BEARING_PLATE_SUPPORT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "structure-46",
+      "nearbyEndpointPairs": 2,
+      "candidates": [
+        {
+          "fixedInstanceId": "structure-45",
+          "fixedConnectionId": "p/stud.dat:8:1",
+          "movingConnectionId": "parts/s/3069bs01.dat:8:1",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              -50,
+              -104,
+              140
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "structure-45",
+          "fixedConnectionId": "p/stud.dat:8:2",
+          "movingConnectionId": "parts/s/3069bs01.dat:8:0",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              -50,
+              -104,
+              140
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        }
+      ],
+      "status": "SOURCE_POSE_CANDIDATE_ONLY",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  },
+  {
+    "instanceId": "structure-49",
+    "partId": "3004",
+    "role": "rear-window",
+    "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN",
+    "sourceConnectionStatus": "partial",
+    "permission": {
+      "partId": "3004",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "p/stud.dat:8:1",
+        "p/stud.dat:8:2",
+        "parts/s/3004s01.dat:8:3",
+        "parts/s/3004s01.dat:8:4",
+        "parts/s/3004s01.dat:8:5",
+        "parts/s/3004s01.dat:8:6"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "p/stud3.dat:8:0",
+        "gender": "M",
+        "position": [
+          50,
+          -92,
+          140
+        ],
+        "direction": [
+          0,
+          1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud3.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "42d2661f3b8f0507df0277d193a3c90e12b9645f39e960012f575308515bbf50",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud3.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [id=stud3] [gender=M] [caps=one] [secs=R 4 4] [scale=YOnly]",
+          "transforms": [
+            {
+              "file": "parts/3004.dat",
+              "line": 18,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3004s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/3004s01.dat",
+              "line": 15,
+              "directive": "1 16 0 4 0 1 0 0 0 -5 0 0 0 1 stud3.dat",
+              "position": [
+                0,
+                4,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                -5,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud.dat:8:1",
+        "gender": "M",
+        "position": [
+          50,
+          -96,
+          130
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [ID=studC] [gender=M] [caps=one] [secs=R 6 4]",
+          "transforms": [
+            {
+              "file": "parts/3004.dat",
+              "line": 18,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3004s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/3004s01.dat",
+              "line": 23,
+              "directive": "1 16 10 0 0 1 0 0 0 1 0 0 0 1 stud.dat",
+              "position": [
+                10,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "p/stud.dat:8:2",
+        "gender": "M",
+        "position": [
+          50,
+          -96,
+          150
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "p/stud.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "15baeb9414a00fac4d1614f97abdc5c6350df7c8a22a2daa4c369f66e611d4db",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/p/stud.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [ID=studC] [gender=M] [caps=one] [secs=R 6 4]",
+          "transforms": [
+            {
+              "file": "parts/3004.dat",
+              "line": 18,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3004s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "file": "parts/s/3004s01.dat",
+              "line": 24,
+              "directive": "1 16 -10 0 0 1 0 0 0 1 0 0 0 1 stud.dat",
+              "position": [
+                -10,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/3004s01.dat:8:3",
+        "gender": "F",
+        "position": [
+          50,
+          -72,
+          150
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3004s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "2a6763330e98a7e7c0d50d5c7465a966882ee76829939d70d089d789386fab9d",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3004s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 20] [pos=0 24 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3004.dat",
+              "line": 18,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3004s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/3004s01.dat:8:4",
+        "gender": "F",
+        "position": [
+          50,
+          -72,
+          130
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3004s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "2a6763330e98a7e7c0d50d5c7465a966882ee76829939d70d089d789386fab9d",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3004s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 20] [pos=0 24 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3004.dat",
+              "line": 18,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3004s01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/3004s01.dat:8:5",
+        "gender": "F",
+        "position": [
+          50,
+          -72,
+          150
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3004s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "2a6763330e98a7e7c0d50d5c7465a966882ee76829939d70d089d789386fab9d",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3004s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 20] [pos=0 24 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3004.dat",
+              "line": 8,
+              "directive": "0 !LDCAD SNAP_INCL [ref=s\\3004s01.dat]",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/3004s01.dat:8:6",
+        "gender": "F",
+        "position": [
+          50,
+          -72,
+          130
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3004s01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "2a6763330e98a7e7c0d50d5c7465a966882ee76829939d70d089d789386fab9d",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3004s01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 20] [pos=0 24 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3004.dat",
+              "line": 8,
+              "directive": "0 !LDCAD SNAP_INCL [ref=s\\3004s01.dat]",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "structure-49",
+        "reason": "NO_CLEAR_VERTICAL_OR_BEARING_PLATE_SUPPORT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "structure-49",
+      "nearbyEndpointPairs": 2,
+      "candidates": [
+        {
+          "fixedInstanceId": "structure-50",
+          "fixedConnectionId": "parts/s/3069bs01.dat:8:0",
+          "movingConnectionId": "p/stud.dat:8:2",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              50,
+              -96,
+              140
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "structure-50",
+          "fixedConnectionId": "parts/s/3069bs01.dat:8:1",
+          "movingConnectionId": "p/stud.dat:8:1",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              50,
+              -96,
+              140
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        }
+      ],
+      "status": "SOURCE_POSE_CANDIDATE_ONLY",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  },
+  {
+    "instanceId": "structure-50",
+    "partId": "3069b",
+    "role": "rear-window",
+    "reason": "NO_CLEAR_SOURCE_CONNECTION_CHAIN",
+    "sourceConnectionStatus": "ready",
+    "permission": {
+      "partId": "3069b",
+      "admissionBasis": "interface-grammar",
+      "grammarVersion": "connector-grammar-2",
+      "sourceReady": true,
+      "collisionGeometryReady": true,
+      "exteriorCollisionGeometryReady": false,
+      "connectable": true,
+      "assemblyVerified": false,
+      "generatable": true,
+      "allowedConnectionIds": [
+        "parts/s/3069bs01.dat:8:0",
+        "parts/s/3069bs01.dat:8:1"
+      ],
+      "ruleIds": [
+        "ldcad-standard-stud-to-capped-underside-v1"
+      ],
+      "exteriorGeneratable": false,
+      "exteriorAllowedConnectionIds": [],
+      "exteriorRuleIds": [],
+      "reasonCodes": [],
+      "reasons": []
+    },
+    "actualWorldEndpoints": [
+      {
+        "id": "parts/s/3069bs01.dat:8:0",
+        "gender": "F",
+        "position": [
+          50,
+          -96,
+          150
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3069bs01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "5f4add909d77611a003815436be28418390055dcb37200f1d9d0e9c51299e42a",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3069bs01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3069b.dat",
+              "line": 13,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3069bs01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "parts/s/3069bs01.dat:8:1",
+        "gender": "F",
+        "position": [
+          50,
+          -96,
+          130
+        ],
+        "direction": [
+          0,
+          -1,
+          0
+        ],
+        "source": {
+          "library": "LDCadShadowLibrary",
+          "path": "parts/s/3069bs01.dat",
+          "revision": "9b1131fb1991f8c0bfc072325e4e12f6271aba35",
+          "sha256": "5f4add909d77611a003815436be28418390055dcb37200f1d9d0e9c51299e42a",
+          "license": "CC-BY-SA-4.0",
+          "sourceUrl": "https://raw.githubusercontent.com/RolandMelkert/LDCadShadowLibrary/9b1131fb1991f8c0bfc072325e4e12f6271aba35/parts/s/3069bs01.dat",
+          "line": 8,
+          "raw": "0 !LDCAD SNAP_CYL [gender=F] [caps=one] [secs=S 6 4] [pos=0 8 0] [grid=C 2 1 20 0]",
+          "transforms": [
+            {
+              "file": "parts/3069b.dat",
+              "line": 13,
+              "directive": "1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\\3069bs01.dat",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "attemptedSupportRejections": [
+      {
+        "instanceId": "structure-50",
+        "reason": "NO_CLEAR_VERTICAL_OR_BEARING_PLATE_SUPPORT"
+      }
+    ],
+    "currentPairIssues": [],
+    "currentMathematicalCandidates": {
+      "instanceId": "structure-50",
+      "nearbyEndpointPairs": 2,
+      "candidates": [
+        {
+          "fixedInstanceId": "structure-49",
+          "fixedConnectionId": "p/stud.dat:8:1",
+          "movingConnectionId": "parts/s/3069bs01.dat:8:1",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              50,
+              -104,
+              140
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        },
+        {
+          "fixedInstanceId": "structure-49",
+          "fixedConnectionId": "p/stud.dat:8:2",
+          "movingConnectionId": "parts/s/3069bs01.dat:8:0",
+          "ruleId": "ldcad-standard-stud-to-capped-underside-v1",
+          "transform": {
+            "rotation": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              -1,
+              0,
+              0
+            ],
+            "translation": [
+              50,
+              -104,
+              140
+            ]
+          },
+          "poseErrorLdu": 0,
+          "matchesRequestedPose": true
+        }
+      ],
+      "status": "SOURCE_POSE_CANDIDATE_ONLY",
+      "verifiedGraphEdge": false,
+      "insertionPathVerified": false
+    }
+  }
+]

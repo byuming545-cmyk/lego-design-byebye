@@ -1,0 +1,52 @@
+{
+  "scope": "SELF_CONTAINED_SAVED_EXAMPLES_NOT_NEW_GENERATION",
+  "structuralRevision": true,
+  "designSchema": "bricklab-vehicle-colour-draft-1",
+  "paintVersion": "functional-role-paint-1",
+  "groupVersion": "functional-structure-groups-2",
+  "sequenceSchema": "bricklab-vehicle-structural-sequence-draft-1",
+  "sequenceVersion": "source-joint-predecessor-sequence-3",
+  "models": {
+    "charger": {
+      "baseSha256": "61611ac51fd003aa8ecb5636a3ec37f6d4346bd0da109d92a01178555097a8eb",
+      "parts": 370,
+      "kinds": 28,
+      "steps": 370,
+      "sequenceDocumentSha256": "81639f1d44577c58118fe0dd3238fb7ba0604613bc12e661fe610e13fa3b254b"
+    },
+    "golf": {
+      "baseSha256": "7a5da238b8afaf3cd001167d47bdb73968e5b820f0fde8e4f747198f72bfea2c",
+      "parts": 346,
+      "kinds": 23,
+      "steps": 346,
+      "sequenceDocumentSha256": "f423e3bb87e662c58cbe945a016431d32ae122e52ce18b643751b015b703ff92"
+    }
+  },
+  "logicHashes": {
+    "src/vehicles/appearance-design.ts": "2eaf6931d959450e1ce65a261b993c9f05f180872edd525ebd0766fd16a38fd4",
+    "src/vehicles/appearance-groups.ts": "ef102f19158dc886ddca97b26c343cf56b1fca1041f3299dec9748e7f1b818e1",
+    "src/vehicles/appearance-sequence.ts": "fd65691482c4eee84f1a119c02a7df309379b825b34b2437767ca5f49e6a3f18",
+    "src/components/VehicleSequencePanel.tsx": "de5a7dc62a2cc25b0116da15634833446eee188ea8fa153261fc3c8e93f91fda",
+    "src/components/VehicleDesignStudio.tsx": "fbc5f404190aa6f2203df2c266f95f5c498a755b85aa3ee19e460103d09cdbc9",
+    "src/components/NativeAssemblyViewer.tsx": "bf511970a629a4bc5b1361760b6ee296b01c2403d68960c969036e176e62bf89",
+    "src/vehicles/structure-revision.ts": "fb89b645ecefea5d4015cc8a0d9f98799a28f3c538abd9df7a2c74e6e5b146f4",
+    "src/vehicles/structure-audit.ts": "e25e978f485f2e6400d39b20c55cef40a87f90f647e23acb5e499e41fa1b7a66",
+    "src/parts/assembly/collision.ts": "585d5f5800acc9f19d55ef8b3147c9289b6d538318b98fc9ec7d45fc166032cb"
+  },
+  "htmlSha256": "6c9a9c698c57c33369a3fb6bf16001807dd1efc726a89ec91cee18b23c63b81c",
+  "externalRuntimeDependencies": 0,
+  "assemblyQualification": "UNCHANGED_NOT_VERIFIED",
+  "steps": "DRAFT_NOT_BUILD_INSTRUCTIONS",
+  "jointEvidence": {
+    "charger": {
+      "model": "61611ac51fd003aa8ecb5636a3ec37f6d4346bd0da109d92a01178555097a8eb",
+      "sha256": "c1f7ecceb143ca6af4de8b3a94b6eaafd7d52d1db13a00bf677025ab31cc9e4a",
+      "scope": "LOCAL_SOURCE_PAIR_FINAL_POSE_ONLY"
+    },
+    "golf": {
+      "model": "7a5da238b8afaf3cd001167d47bdb73968e5b820f0fde8e4f747198f72bfea2c",
+      "sha256": "76e7ceee8a41244fa41666229352c25acf1d32e9d56cc3e776da4cb3fc17306d",
+      "scope": "LOCAL_SOURCE_PAIR_FINAL_POSE_ONLY"
+    }
+  }
+}

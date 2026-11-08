@@ -4,6 +4,16 @@ import { VehicleService } from "./service.js";
 export function createVehicleRouter(service = new VehicleService()) {
   const router = Router();
   router.use(compression());
+  router.post('/jobs/:id/structure-revisions',async(req,res,next)=>{
+    try{
+      if(!req.body||Object.keys(req.body).join()!=='parentContentSha256')return void res.status(400).json({error:'STRUCTURE_INPUT'});
+      res.status(201).json(await service.reviseStructure(req.params.id,req.body.parentContentSha256));
+    }catch(e){if(e instanceof Error&&/STRUCTURE_|PREVIEW_|NO_CAR/.test(e.message))res.status(e.message==='STRUCTURE_CAPACITY'?429:409).json({error:e.message});else next(e);}
+  });
+  router.get('/jobs/:id/structure-revisions/:digest',async(req,res,next)=>{
+    try{res.json(await service.structureRevision(req.params.id,req.params.digest));}
+    catch(e){if(e instanceof Error&&/STRUCTURE_|PREVIEW_|NO_CAR/.test(e.message))res.status(409).json({error:e.message});else if((e as NodeJS.ErrnoException).code==='ENOENT')res.status(404).json({error:'STRUCTURE_NOT_FOUND'});else next(e);}
+  });
   router.post("/jobs/:id/designs", async (req,res,next)=>{
     try {res.status(201).json({status:"COLOUR_DRAFT_SAVED_NOT_FORMAL",draft:await service.saveDesign(req.params.id,req.body)});}
     catch(e){if(e instanceof SyntaxError||(e instanceof Error&&/DESIGN_|PREVIEW_|NO_CAR_PREVIEW/.test(e.message)))res.status(409).json({error:e instanceof Error?e.message:"DESIGN_IMPORT_FAILED"});else if((e as NodeJS.ErrnoException).code==="ENOENT")res.status(404).json({error:"JOB_OR_DESIGN_NOT_FOUND"});else next(e);}
