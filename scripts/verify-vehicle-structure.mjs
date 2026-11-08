@@ -21,7 +21,8 @@ async function exercise(page,id,stageId,prefix){
  await page.getByRole('button',{name:'拼搭顺序演示（草稿）',exact:true}).click();await page.getByRole('button',{name:'斜侧',exact:true}).click();await page.waitForTimeout(400);
  const camera=await canvas.getAttribute('data-camera-position');
  for(const step of [1,Math.ceil(plan.steps.length*.25),Math.ceil(plan.steps.length*.5),Math.ceil(plan.steps.length*.9),plan.steps.length]){
-  await page.getByLabel('拼搭演示进度',{exact:true}).fill(String(step));await page.waitForTimeout(150);
+  await page.getByLabel('拼搭演示进度',{exact:true}).fill(String(step));
+  await page.waitForFunction(n=>JSON.parse(document.querySelector('.vehicle-render-stage canvas')?.dataset.visibleInstances??'[]').length===n,step,{timeout:30000});
   const visible=JSON.parse(await canvas.getAttribute('data-visible-instances'));assert.equal(visible.length,step);assert.equal(await canvas.getAttribute('data-camera-position'),camera);
   await stage.screenshot({path:`${output}/${prefix}-${id}-step-${String(step).padStart(3,'0')}.png`});
  }

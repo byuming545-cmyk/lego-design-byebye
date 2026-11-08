@@ -1,0 +1,85 @@
+{
+  "baseline": "b935a57",
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "fullUnitSuiteRerun": false,
+  "responsiveWidths": [
+    1440,
+    1366,
+    1024,
+    768,
+    390
+  ],
+  "desktopControlsLayoutUnchanged": true,
+  "browserContexts": [
+    {
+      "prefix": "full",
+      "id": "charger",
+      "model": "61611ac51fd003aa8ecb5636a3ec37f6d4346bd0da109d92a01178555097a8eb",
+      "parts": 370,
+      "steps": 370,
+      "cameraStable": true,
+      "fullExport": true,
+      "importReopened": true,
+      "playbackSamples": [
+        "2",
+        "4",
+        "6"
+      ]
+    },
+    {
+      "prefix": "full",
+      "id": "golf",
+      "model": "7a5da238b8afaf3cd001167d47bdb73968e5b820f0fde8e4f747198f72bfea2c",
+      "parts": 346,
+      "steps": 346,
+      "cameraStable": true,
+      "fullExport": true,
+      "importReopened": true,
+      "playbackSamples": [
+        "2",
+        "4",
+        "6"
+      ]
+    },
+    {
+      "prefix": "offline",
+      "id": "charger",
+      "model": "61611ac51fd003aa8ecb5636a3ec37f6d4346bd0da109d92a01178555097a8eb",
+      "parts": 370,
+      "steps": 370,
+      "cameraStable": true,
+      "fullExport": true,
+      "importReopened": true,
+      "playbackSamples": [
+        "2",
+        "4",
+        "6"
+      ]
+    },
+    {
+      "prefix": "offline",
+      "id": "golf",
+      "model": "7a5da238b8afaf3cd001167d47bdb73968e5b820f0fde8e4f747198f72bfea2c",
+      "parts": 346,
+      "steps": 346,
+      "cameraStable": true,
+      "fullExport": true,
+      "importReopened": true,
+      "playbackSamples": [
+        "2",
+        "4",
+        "6"
+      ]
+    }
+  ],
+  "browserErrors": [],
+  "routeMocks": 0,
+  "fileOpen": "Error: page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///workspace/lego-design-byebye/artifacts/vehicle-visual-2026-11-08/offline/bricklab-sequence-demo.html\nCall log:\n\u001b[2m  - navigating to \"file:///workspace/lego-design-byebye/artifacts/vehicle-visual-2026-11-08/offline/bricklab-sequence-demo.html\", waiting until \"load\"\u001b[22m\n",
+  "sameHtmlAfterServerStoppedAndNetworkDisabled": true,
+  "offlineHtmlSha256": "f15b5c005bb65eb36d3d36000ec3dce5b120e06afe4a73a09847ad3472eda76e",
+  "zipCrcPassed": true,
+  "modelAndGeometryChanged": false,
+  "paidCalls": 0,
+  "deployment": false
+}

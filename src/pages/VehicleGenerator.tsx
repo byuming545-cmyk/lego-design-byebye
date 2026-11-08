@@ -7,8 +7,10 @@ import { DEMO_CARS } from "../vehicles/demo-catalog.js";
 import { bodyLayoutSvg } from "../vehicles/body-layout.js";
 import { verifySavedExample } from "../vehicles/saved-example.js";
 import VehicleDesignStudio from "../components/VehicleDesignStudio.js";
+import VehicleStudioBackdrop from "../components/VehicleStudioBackdrop.js";
 import { createDesignDraft, validateDesignDraft, paintAppearance, paintBomCsv, parsePaintOptions, PAINT_PALETTE, DESIGN_SCHEMA, type PaintOptions, type DesignDraft } from "../vehicles/appearance-design.js";
 import "./vehicle-generator.css";
+import "./vehicle-studio-theme.css";
 
 type Preview = { model: BodyPreview; assets: Record<string, AssemblyAsset>; designColors: Record<string, string> };
 type Result = { preview: Preview; job: Job; mode: "generated" | "saved-example" | "structure-revision"; reopened?:boolean };
@@ -150,6 +152,7 @@ export default function VehicleGenerator() {
   const currentStage = job?.events.filter(e => e.state === "running").at(-1)?.stage;
   return <main className="vehicle-generator">
     <section className="vehicle-hero">
+      <VehicleStudioBackdrop />
       <div><p className="vehicle-eyebrow"><span /> BRICKLAB / AUTOMOTIVE STUDIO</p><h1>把喜欢的车，<br /><em>变成积木。</em></h1><p className="vehicle-lead">从车型资料到真实零件，让比例、轮廓与拼搭工艺一起参与设计。</p></div>
       <div className="vehicle-hero-note"><Blocks size={24} strokeWidth={1.4} /><strong>两款车型 · 一个生成流程</strong><span>课堂演示版本 / 外观设计原型</span><small>资料驱动 · 原生几何 · 可追溯工艺</small></div>
     </section>

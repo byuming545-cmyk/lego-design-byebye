@@ -1,5 +1,5 @@
 /* Presentation-only offline cache. No API response or POST is cached. */
-const CACHE = 'bricklab-structure-demo-v4';
+const CACHE = 'bricklab-structure-demo-v5';
 const allowed = url => url.origin === self.location.origin && (url.pathname.startsWith('/assets/') || url.pathname.startsWith('/vehicle-demos/') || url.pathname.startsWith('/vehicle-structures/') || ['/', '/vehicle-generator'].includes(url.pathname));
 self.addEventListener('install', event => event.waitUntil(self.skipWaiting()));
 self.addEventListener('activate', event => event.waitUntil(self.clients.claim()));
